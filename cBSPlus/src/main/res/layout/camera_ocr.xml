@@ -1,0 +1,167 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <SurfaceView
+        android:id="@+id/surfaceview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+    <ImageView 
+        android:id="@+id/takepicture_imageView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:visibility="gone"
+        android:background="@color/hui_text_xxxxh"
+        />
+
+    <LinearLayout
+        android:id="@+id/buttonlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left"
+            android:background="#88000000"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <CheckBox
+                android:id="@+id/cameraOcr_light"
+                style="@style/flashlight_checkbox_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false" />
+
+            <TextView
+                android:id="@+id/cameraOcr_lightt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手电筒"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/cameraOcr_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="takepicture"
+                android:src="@drawable/back_white64" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/autofocus"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:onClick="takepicture"
+            android:padding="10dp" >
+
+            <View
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/idcard_bg_alpha" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:background="@drawable/bd_ocr_hint_align_bg"
+                android:text="请将证件放入框内 轻触对焦"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left"
+            android:background="#88000000"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="takepicture"
+                android:text="自动对焦"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3" />
+
+            <TextView
+                android:id="@+id/takepicture_sumit"
+                android:onClick="takepicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:drawableTop="@drawable/submit_photo_white128"
+                android:gravity="center_horizontal"
+                android:text="确认"
+                android:visibility="invisible"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/takepicture"
+                android:onClick="takepicture"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/photograph_button_bg"
+                android:text="拍照"
+                android:textSize="13sp"
+                android:textColor="@color/hui_text_xxxxh" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/takepicture_rephotography"
+                android:onClick="takepicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:drawableTop="@drawable/re_photography_white128"
+                android:gravity="center_horizontal"
+                android:text="重拍"
+                android:visibility="invisible"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

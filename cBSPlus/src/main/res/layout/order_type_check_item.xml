@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <RadioGroup 
+        android:id="@+id/OTCI_btnG"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/OTCI_btn_0"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@drawable/color_radiobutton"
+            android:textSize="@dimen/text_defaul" />
+
+        <RadioButton
+            android:id="@+id/OTCI_btn_1"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:gravity="center"
+            android:text="未处理"
+            android:textColor="@drawable/color_radiobutton"
+            android:textSize="@dimen/text_defaul" />
+
+        <RadioButton
+            android:id="@+id/OTCI_btn_2"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:gravity="center"
+            android:text="处理中"
+            android:textColor="@drawable/color_radiobutton"
+            android:textSize="@dimen/text_defaul" />
+
+        <RadioButton
+            android:id="@+id/OTCI_btn_3"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:gravity="center"
+            android:text="被驳回"
+            android:textColor="@drawable/color_radiobutton"
+            android:textSize="@dimen/text_defaul"  />
+    </RadioGroup>
+
+</LinearLayout>

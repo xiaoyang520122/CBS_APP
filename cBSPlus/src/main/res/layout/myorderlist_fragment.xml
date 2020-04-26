@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui_bg"
+    android:orientation="vertical" >
+
+    <HorizontalScrollView
+        android:id="@+id/map_horizon_listviewScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:scrollbars="none" >
+    </HorizontalScrollView>
+
+    <RadioGroup
+        android:id="@+id/ENDORDER_btnG"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/ENDORDER_btn_0"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="非车"
+            android:textColor="@drawable/color_radiobutton"
+            android:textSize="@dimen/text_m" />
+
+        <RadioButton
+            android:id="@+id/ENDORDER_btn_1"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:gravity="center"
+            android:text="车险"
+            android:textColor="@drawable/color_radiobutton"
+            android:textSize="@dimen/text_m" />
+
+        <RadioButton
+            android:id="@+id/ENDORDER_btn_2"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:gravity="center"
+            android:text="货运险"
+            android:textColor="@drawable/color_radiobutton"
+            android:textSize="@dimen/text_m" />
+
+        <RadioButton
+            android:id="@+id/ENDORDER_btn_3"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:gravity="center"
+            android:text="医健险"
+            android:textColor="@drawable/color_radiobutton"
+            android:textSize="@dimen/text_m" />
+    </RadioGroup>
+    
+      <TextView
+        android:id="@+id/MOLF_emptyText"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/empty_hui"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="@string/emptyHint"
+        android:textColor="@color/hui_text_m" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/MOLF_pull_refresh_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+        android:divider="#00000000"
+        android:dividerHeight="10dp"
+        android:fadingEdge="none"
+        android:background="@null"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:scrollbars="none"
+        android:smoothScrollbar="true" />
+
+
+</LinearLayout>

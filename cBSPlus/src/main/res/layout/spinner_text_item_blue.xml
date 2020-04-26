@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.cninsure.cp.view.MarqueeTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/spinner_item_textone"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="12dp"
+    android:drawableLeft="@drawable/add_new_order_bule36"
+    android:textColor="@color/bule_text_m"
+    android:textSize="@dimen/text_defaul" />

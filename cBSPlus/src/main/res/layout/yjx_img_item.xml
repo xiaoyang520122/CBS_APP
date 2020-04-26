@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <include
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        layout="@layout/item_gridview_for_exlistview_photoup" />
+
+    <com.cninsure.cp.view.MarqueeTextView
+        android:id="@+id/YJXVI_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" 
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="5dp"
+        android:ellipsize="marquee"
+        android:gravity="center_vertical|left"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="委托影像资料名称"
+        android:textColor="@color/bule_text_l"
+        android:textSize="@dimen/text_15" />
+
+    <TextView
+        android:id="@+id/YJXVI_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/delete_red40"
+        android:gravity="center_vertical|left"
+        android:text="删除"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="@dimen/text_h"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</LinearLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/dispersive_orderList_Relativeparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/dispersive_orderList_linerparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/hui_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:padding="5dp" >
+
+                <TextView
+                    android:id="@+id/dispersive_localSave_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:drawableTop="@drawable/waitcase_hui"
+                    android:gravity="center"
+                    android:text="待接单"
+                    android:textColor="@color/hui_text_h"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/dispersive_orderNow_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:drawableTop="@drawable/ordernow"
+                    android:gravity="center"
+                    android:text="处理中"
+                    android:textColor="@color/bule_text_h"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/dispersive_orderList_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:drawableTop="@drawable/searchorder_hui"
+                    android:gravity="center"
+                    android:text="完结单"
+                    android:textColor="@color/hui_text_h"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/dispersive_myCenter_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:visibility="gone"
+                    android:drawableTop="@drawable/mycenter_hui"
+                    android:gravity="center"
+                    android:text="@string/mycenter"
+                    android:textColor="@color/hui_text_h"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

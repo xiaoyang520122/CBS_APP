@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/action_view" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="0dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="0dp" >
+
+        <RadioGroup
+        android:id="@+id/ACWAFCINPUT_BtnG"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/ACWAFCINPUT_btn_0"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/radio"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="立案信息"
+                android:textColor="@drawable/color_radiobutton"
+                android:textSize="@dimen/text_defaul" />
+
+            <RadioButton
+                android:id="@+id/ACWAFCINPUT_btn_1"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/radio"
+                android:button="@null"
+                android:gravity="center"
+                android:text="出险信息"
+                android:textColor="@drawable/color_radiobutton"
+                android:textSize="@dimen/text_defaul" />
+
+            <RadioButton
+                android:id="@+id/ACWAFCINPUT_btn_2"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/radio"
+                android:button="@null"
+                android:gravity="center"
+                android:text="其他信息"
+                android:textColor="@drawable/color_radiobutton"
+                android:textSize="@dimen/text_defaul" />
+
+        </RadioGroup>
+    </LinearLayout>
+    <View 
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/hui_line"
+        />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/ACWAFCINPUT_viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/ACWAFCINPUT_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bulue_main"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="暂 存"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

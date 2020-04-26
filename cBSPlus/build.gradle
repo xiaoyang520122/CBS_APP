@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        debug {
+            storeFile file('E:\\AndroidProject\\fanhua.keystore')
+            storePassword 'xy112311456'
+            keyAlias = 'fanhuagonggu'
+            keyPassword '112311456'
+        }
+    }
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+//    aaptOptions.cruncherEnabled = false
+//    aaptOptions.useNewCruncher = false
+
+    defaultConfig {
+        applicationId "com.cninsure.cp"
+        minSdkVersion 18
+        targetSdkVersion 28
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    //导出APK名称
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "CbsPlus-${variant.name}-${variant.versionName}.apk"
+        }
+    }
+}
+
+android {
+    signingConfigs {
+        debug {
+            storeFile file('E:\\AndroidProject\\fanhua.keystore')
+            storePassword 'xy112311456'
+            keyAlias = 'fanhuagonggu'
+            keyPassword '112311456'
+        }
+    }
+    useLibrary 'org.apache.http.legacy'
+    configurations {all {exclude module: 'httpclient'exclude module: 'commons-logging'}}
+}
+
+dependencies {
+    implementation project(':library')
+    implementation project(':toggleButtonLib')
+//    implementation 'com.android.support:support-v4:19.1.0'
+//    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.google.code.gson:gson:2.1'
+    implementation files('libs/BaiduLBS_Android.jar')
+    implementation files('libs/commons-net-3.6.jar')
+    implementation files('libs/core-3.0.0.jar')
+    implementation files('libs/eventbus-3.0.0.jar')
+    implementation files('libs/fastjson-1.2.6.jar')
+    implementation files('libs/GetuiSDK2.11.1.0.jar')
+    implementation files('libs/glide-3.6.1.jar')
+//    compileOnly files('libs/httpclient-4.1.2.jar')
+    implementation files('libs/httpmime-4.1.2.jar')
+    implementation files('libs/MobCommons-2017.1201.1507.jar')
+    implementation files('libs/MobTools-2017.1201.1507.jar')
+    implementation files('libs/ocr-sdk.jar')
+    implementation files('libs/ShareSDK-Core-3.1.2.jar')
+    implementation files('libs/ShareSDK-Email-3.1.2.jar')
+    implementation files('libs/ShareSDK-Facebook-3.1.2.jar')
+    implementation files('libs/ShareSDK-QQ-3.1.2.jar')
+    implementation files('libs/ShareSDK-QZone-3.1.2.jar')
+    implementation files('libs/ShareSDK-ShortMessage-3.1.2.jar')
+    implementation files('libs/ShareSDK-SinaWeibo-3.1.2.jar')
+    implementation files('libs/ShareSDK-TencentWeibo-3.1.2.jar')
+    implementation files('libs/ShareSDK-Twitter-3.1.2.jar')
+    implementation files('libs/ShareSDK-Wechat-3.1.2.jar')
+    implementation files('libs/ShareSDK-Wechat-Core-3.1.2.jar')
+    implementation files('libs/ShareSDK-Wechat-Moments-3.1.2.jar')
+    implementation files('libs/slidingmenulibary.jar')
+    implementation files('libs/xUtils-2.6.14.jar')
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.5.3'
+    implementation 'org.apache.httpcomponents:httpcore:4.4.1'
+    implementation 'com.liulishuo.filedownloader:library:1.7.7'
+//    implementation 'com.android.support:appcompat-v7:28.0.0'
+
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'org.apache:apache:21'
+//    implementation 'com.android.support:viewpager:28.0.0'
+
+//    解决Android resource linking failed错误，资源文件找不到问题
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    //noinspection DuplicatePlatformClasses
+    implementation 'org.apache.httpcomponents:httpclient:4.5.11'
+}

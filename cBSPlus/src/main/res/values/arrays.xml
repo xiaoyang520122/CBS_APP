@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 人民币	1
+欧元	2
+港元	3
+美元	4
+英镑	5
+日元	6 -->
+     <string-array name="currency">
+        <item>人民币</item>
+        <item>欧元</item>
+        <item>港元</item>
+        <item>美元</item>
+        <item>英镑</item>
+        <item>日元</item>
+    </string-array>
+    
+     <!-- 	1财产险水灾
+			2财产险
+			3船舶险
+			4货运险
+			5机损及利损险
+			6工程险
+			7工时分配
+			      -->
+	<string-array name="pattern">
+        <item>财产险水灾</item>
+        <item>财产险</item>
+        <item>船舶险</item>
+        <item>货运险</item>
+        <item>机损及利损险</item>
+        <item>工程险</item>
+        <item>工时分配</item>
+    </string-array>
+    
+	<string-array name="guanxiType">
+        <item>共保人</item>
+        <item>经纪人</item>
+        <item>企业集团</item>
+        <item>暂无</item>
+    </string-array>
+    
+</resources>

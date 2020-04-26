@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui_line" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/action_view" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bulue_main"
+            android:gravity="center"
+            android:padding="50dp" >
+
+            <ImageView
+                android:id="@+id/changpass_changImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/chang_pass_white200" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <LinearLayout
+                android:id="@+id/changpass_changpass_Linea"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:text="输入原始密码"
+                    android:textColor="@color/bule_text_m"
+                    android:textSize="@dimen/text_h" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners_white_huiline_4_5dp"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
+
+                    <EditText
+                        android:id="@+id/changpass_yspass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:drawableLeft="@drawable/yuanshipass_bulue48"
+                        android:drawablePadding="10dp"
+                        android:hint="原始密码"
+                        android:inputType="textPassword" >
+                    </EditText>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:text="输入新密码"
+                    android:textColor="@color/bule_text_m"
+                    android:textSize="@dimen/text_h" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners_white_huiline_4_5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="10dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/changpass_oreng48"
+                        android:paddingRight="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical" >
+
+                        <EditText
+                            android:id="@+id/changpass_newpass1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="新密码"
+                            android:inputType="textPassword" >
+                        </EditText>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/hui_line" />
+
+                        <EditText
+                            android:id="@+id/changpass_newpass2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="重复新密码"
+                            android:inputType="textPassword" >
+                        </EditText>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:text="高强度的密码长度在8-16位之间，至少同时包含大小写字母、数字和特殊字符（不能包含空格）！"
+                    android:textColor="@color/bule_text_m"
+                    android:textSize="@dimen/text_m" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/changpass_changphone_Linea"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:text="输入新手机号"
+                    android:textColor="@color/bule_text_m"
+                    android:textSize="@dimen/text_h" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners_white_huiline_4_5dp"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
+
+                    <EditText
+                        android:id="@+id/changpass_newphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:drawableLeft="@drawable/chang_phone_bule48"
+                        android:drawablePadding="10dp"
+                        android:hint="新手机号（大陆内地）" >
+                    </EditText>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:text="输入登录密码"
+                    android:textColor="@color/bule_text_m"
+                    android:textSize="@dimen/text_h" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners_white_huiline_4_5dp"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
+
+                    <EditText
+                        android:id="@+id/changpass_changPhone_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:drawableLeft="@drawable/yuanshipass_bulue48"
+                        android:drawablePadding="10dp"
+                        android:hint="登录密码"
+                        android:inputType="textPassword" >
+                    </EditText>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:text="目前只支持内地手机号码！"
+                    android:textColor="@color/bule_text_m"
+                    android:textSize="@dimen/text_m" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/changpass_submit_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/corners_hui_4_10dp"
+                android:gravity="center"
+                android:text="@string/suer"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="20dp" >
+        
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:visibility="invisible"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+
+        <TextView
+            android:id="@+id/WCI_Edit_cwtfInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/add_new_bule"
+            android:gravity="center_vertical|left"
+            android:text="次委托方详细信息"
+            android:textStyle="bold"
+            android:textColor="@color/bule_text_h"
+            android:textSize="@dimen/text_h" />
+          </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/hui_text_m" />
+
+        <LinearLayout
+            android:id="@+id/WCI_Edit_cwtfInfoLinear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/survey_marginTopshort"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:visibility="invisible"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        <TextView
+            android:id="@+id/WCI_Edit_glgxfInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/add_new_bule"
+            android:gravity="center_vertical|left"
+            android:text="关联方详细信息"
+            android:textStyle="bold"
+            android:textColor="@color/bule_text_h"
+            android:textSize="@dimen/text_h" />
+        
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/hui_text_m" />
+
+        <LinearLayout
+            android:id="@+id/WCI_Edit_glgxfInfoLinear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/survey_marginTopshort"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        <TextView
+            android:id="@+id/WCI_Text_GGSInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/add_new_bule"
+            android:gravity="center_vertical|left"
+            android:text="检验师信息"
+            android:textStyle="bold"
+            android:textColor="@color/bule_text_h"
+            android:textSize="@dimen/text_h" />
+        
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/hui_text_m" />
+
+        <LinearLayout
+            android:id="@+id/WCI_Text_GGSInfoLinear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/survey_marginTopshort"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+       
+    </LinearLayout>
+
+</ScrollView>

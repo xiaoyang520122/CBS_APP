@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/leftmenu_my"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bule_text_h"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/yuangong_white128" />
+
+        <TextView
+            android:id="@+id/leftmenu_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="无用户名"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:onClick="goToPage"
+        android:id="@+id/leftmenu_changpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/text_defaul" >
+
+        <ImageView
+            android:layout_width="@dimen/my_menu_ico_size"
+            android:layout_height="@dimen/my_menu_ico_size"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/protect_menu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改密码"
+            android:textColor="@color/hui_text_xxxxh" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/hui_line" />
+
+    <LinearLayout
+        android:onClick="goToPage"
+        android:id="@+id/leftmenu_changphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/text_defaul" >
+
+        <ImageView
+            android:layout_width="@dimen/my_menu_ico_size"
+            android:layout_height="@dimen/my_menu_ico_size"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/chang_phone_bule48" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改手机"
+            android:textColor="@color/hui_text_xxxxh" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/hui_line" />
+
+    <LinearLayout
+        android:onClick="goToPage"
+        android:id="@+id/leftmenu_mymsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/text_defaul" >
+
+        <ImageView
+            android:layout_width="@dimen/my_menu_ico_size"
+            android:layout_height="@dimen/my_menu_ico_size"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/remind_music_menu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="消息中心"
+            android:textColor="@color/hui_text_xxxxh" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/hui_line" />
+
+    <LinearLayout
+        android:onClick="goToPage"
+        android:id="@+id/leftmenu_help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/text_defaul" >
+
+        <ImageView
+            android:layout_width="@dimen/my_menu_ico_size"
+            android:layout_height="@dimen/my_menu_ico_size"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/help_menu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="帮助中心"
+            android:textColor="@color/hui_text_xxxxh" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/hui_line" />
+
+    <LinearLayout
+        android:onClick="goToPage"
+        android:id="@+id/leftmenu_shard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/text_defaul" >
+
+        <ImageView
+            android:layout_width="@dimen/my_menu_ico_size"
+            android:layout_height="@dimen/my_menu_ico_size"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/share_menu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享APP"
+            android:textColor="@color/hui_text_xxxxh" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/hui_line" />
+
+    <LinearLayout
+        android:onClick="goToPage"
+        android:id="@+id/leftmenu_mymoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:padding="@dimen/text_defaul" >
+
+        <ImageView
+            android:layout_width="@dimen/my_menu_ico_size"
+            android:layout_height="@dimen/my_menu_ico_size"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/bingzhuangtu_bule48" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的业绩"
+            android:textColor="@color/hui_text_xxxxh" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/hui_line"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/text_defaul"
+        android:paddingRight="@dimen/text_defaul"
+        android:paddingBottom="@dimen/title_xxh" >
+
+        <ImageView
+            android:layout_width="@dimen/my_menu_ico_size"
+            android:layout_height="@dimen/my_menu_ico_size"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/excet_user_menu" />
+
+        <TextView
+        android:onClick="goToPage"
+            android:id="@+id/leftmenu_excit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退出用户"
+            android:textColor="@color/hui_text_xxxxh" />
+    </LinearLayout>
+
+</LinearLayout>

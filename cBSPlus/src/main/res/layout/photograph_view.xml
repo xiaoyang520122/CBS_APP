@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#333333"
+    android:baselineAligned="false"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/photography_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="15dp"
+        android:drawableTop="@drawable/camer_white110"
+        android:gravity="center"
+        android:text="@string/camer"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/photography_photos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/photos_white110"
+        android:gravity="center"
+        android:text="@string/photography"
+        android:textColor="@android:color/white" />
+    <TextView
+        android:id="@+id/photography_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginRight="15dp"
+        android:drawableTop="@drawable/display_white110"
+        android:gravity="center"
+        android:text="@string/display"
+        android:visibility="gone"
+        android:textColor="@android:color/white" />
+    
+    <TextView
+        android:id="@+id/photography_deleteplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginRight="15dp"
+        android:drawableTop="@drawable/delete_white110"
+        android:gravity="center"
+        android:text="@string/delete"
+        android:visibility="gone"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

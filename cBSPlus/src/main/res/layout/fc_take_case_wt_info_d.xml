@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="20dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:gravity="center_vertical|left"
+            android:text="委托人信息"
+            android:textStyle="bold"
+            android:textColor="@color/bule_text_h"
+            android:textSize="@dimen/text_h" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/hui_text_m" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托人："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <!-- spinner下拉框蓝色背景  android:popupBackground="@drawable/gradient_bule_bg" -->
+
+
+            <AutoCompleteTextView
+                android:id="@+id/CaseINPUT_text5_D"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:singleLine="true"
+                android:hint="录入委托人信息！"
+                android:textColorHint="@color/hui_line"
+                android:completionThreshold="1"
+                android:focusable="false"
+                android:drawableRight="@drawable/serche_hui32"
+                android:textSize="@dimen/text_m" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托人联系人："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/CaseINPUT_edit5_D"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托人联系人电话："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/CaseINPUT_edit6_D"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:inputType="number"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托人联系人E-Mail："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+             <EditText
+                android:id="@+id/CaseINPUT_edit7_D"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:visibility="gone"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托人联系人传真："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+             <EditText
+                android:id="@+id/CaseINPUT_edit8"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:visibility="gone"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托人联系人手机："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/CaseINPUT_edit9"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="left|center_vertical"
+                android:inputType="number"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical|left"
+            android:text="委托信息"
+            android:textStyle="bold"
+            android:textColor="@color/bule_text_h"
+            android:textSize="@dimen/text_h" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/hui_text_m" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托方案件编号："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/CaseINPUT_edit10"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="付款方："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/CaseINPUT_edit11"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:visibility="gone"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托人身份："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <Spinner
+                android:id="@+id/CaseINPUT_SPINN9"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:visibility="gone"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="紧急程度："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <Spinner
+                android:id="@+id/CaseINPUT_SPINN10"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托事项："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:id="@+id/CaseINPUT_SPINN11_D"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:hint="选择委托事项"
+                android:textColorHint="@color/hui_line"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical|left"
+            android:text="委托方要求："
+            android:textStyle="bold"
+            android:textColor="@color/bule_text_h"
+            android:textSize="@dimen/text_h" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/hui_text_m" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <EditText
+                android:id="@+id/CaseINPUT_edit12_D"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:background="@null"
+                android:hint="未录入委托方要求！"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bule_text_h"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp" >
+
+        <TextView
+            android:id="@+id/SCOREACTION_V_LTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/back_white_48"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_xh" />
+
+        <TextView
+            android:id="@+id/SCOREACTION_V_CTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="我的业绩"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/title_h" />
+
+        <TextView
+            android:id="@+id/SCOREACTION_V_RTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/mor_white_48"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_xh" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@color/bule_text_h"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="全年累计可用成本"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_h" />
+
+                <com.cninsure.cp.view.MarqueeTextView
+                    android:id="@+id/SCOREAC_FeeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="0.0"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title_h" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:gravity="right"
+                    android:text="元"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_xh" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="全年累计创收产能"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_h" />
+
+                <com.cninsure.cp.view.MarqueeTextView
+                    android:id="@+id/SCOREAC_countAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="0.0"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title_h" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:gravity="right"
+                    android:text="元"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_xh" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/corners_yellow_5dp" />
+
+                <TextView
+                    android:id="@+id/SCOREAC_CX_zb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车险0%"
+                    android:textColor="@color/hui_line"
+                    android:textSize="@dimen/text_defaul" />
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/corners_fh_5dp" />
+
+                <TextView
+                    android:id="@+id/SCOREAC_FC_zb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="非车0%"
+                    android:textColor="@color/hui_line"
+                    android:textSize="@dimen/text_defaul" />
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/corners_white_5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="总计100%"
+                    android:textColor="@color/hui_line"
+                    android:textSize="@dimen/text_defaul" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="5"
+                android:progressDrawable="@drawable/progressbar"
+                android:secondaryProgress="10" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/SCOREAC_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+</LinearLayout>

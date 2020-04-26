@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+         <com.cninsure.cp.view.SignView
+        android:id="@+id/LinePath_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF" />
+
+    <LinearLayout
+        android:id="@+id/LinePath_linea"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical" >
+
+        <com.cninsure.cp.view.RotateTextView
+            android:id="@+id/LinePath_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/corners_button_red10"
+            android:onClick="LinePathOnclick"
+            android:layout_marginBottom="30dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:paddingRight="5dp"
+            android:text="取消"
+            android:textColor="@color/white" />
+
+        <com.cninsure.cp.view.RotateTextView
+            android:id="@+id/LinePath_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/corners_button_blue10"
+            android:onClick="LinePathOnclick"
+            android:paddingLeft="5dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:paddingRight="5dp"
+            android:text="确定"
+            android:textColor="@color/white" />
+
+        <com.cninsure.cp.view.RotateTextView
+            android:id="@+id/LinePath_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners_button_green10"
+            android:onClick="LinePathOnclick"
+            android:paddingLeft="5dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:paddingRight="5dp"
+            android:text="清空"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</RelativeLayout>

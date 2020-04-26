@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="top"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/OrderWork_include"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/action_view" />
+
+    <LinearLayout
+        android:id="@+id/OrderWork_btnGLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <RadioGroup
+            android:id="@+id/OrderWork_btnG"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/OrderWork_title1"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@drawable/radio"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="填写信息"
+                android:textColor="@drawable/color_radiobutton"
+                android:textSize="@dimen/text_defaul" />
+
+            <RadioButton
+                android:id="@+id/OrderWork_title2"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@drawable/radio"
+                android:button="@null"
+                android:gravity="center"
+                android:text="上传图片"
+                android:textColor="@drawable/color_radiobutton"
+                android:textSize="@dimen/text_defaul" />
+
+            <RadioButton
+                android:id="@+id/OrderWork_leavingMsg"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@drawable/radio"
+                android:button="@null"
+                android:gravity="center"
+                android:text="留言"
+                android:textColor="@drawable/color_radiobutton"
+                android:textSize="@dimen/text_defaul" />
+        </RadioGroup>
+         <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hui_text_h" />
+    </LinearLayout>
+
+   
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/OrderWork_viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

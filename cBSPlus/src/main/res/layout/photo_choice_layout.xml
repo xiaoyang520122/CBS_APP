@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+    
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp" >
+
+        <TextView
+            android:id="@+id/PCHOICE_LTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="取消"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_defaul" />
+
+        <TextView
+            android:id="@+id/PCHOICE_CTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="选择图片"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_xh" />
+
+        <TextView
+            android:id="@+id/PCHOICE_RTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="确定"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_defaul" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hui_line" />
+
+</LinearLayout>
+
+    <GridView
+        android:id="@+id/PCHOICE_GridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="4"
+        android:horizontalSpacing="5dp"
+        android:listSelector="@android:color/transparent"
+        android:verticalSpacing="5dp"
+         >
+    </GridView>
+
+</LinearLayout>

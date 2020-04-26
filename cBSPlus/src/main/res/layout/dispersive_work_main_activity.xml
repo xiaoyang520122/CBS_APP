@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical" >
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            layout="@layout/action_view" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <RadioGroup
+                android:id="@+id/parkPhotoUpload_RadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/dispersive_disInfo_RB"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_button_yellow_line"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/msg_blue_yellow_48"
+                    android:text="调度任务\n信息"
+                    android:lines="2"
+                    android:textSize="@dimen/login_size"
+                    android:textColor="@drawable/radio_text_color" />
+
+                <RadioButton
+                    android:id="@+id/dispersive_photo1_RB"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_button_yellow_line"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:drawablePadding="10dp"
+                    android:text="现场环境\n(0/3)"
+                    android:lines="2"
+                    android:textSize="@dimen/login_size"
+                    android:drawableTop="@drawable/place_blue_yellow_48"
+                    android:textColor="@drawable/radio_text_color" />
+                <RadioButton
+                    android:id="@+id/dispersive_photo2_RB"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_button_yellow_line"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:drawablePadding="10dp"
+                    android:text="运输单证\n(0/5)"
+                    android:lines="2"
+                    android:textSize="@dimen/login_size"
+                    android:drawableTop="@drawable/camera_blue_yellow_48"
+                    android:textColor="@drawable/radio_text_color" />
+                <RadioButton
+                    android:id="@+id/dispersive_reson_RB"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_button_yellow_line"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:drawablePadding="10dp"
+                    android:lines="2"
+                    android:text="事故经过\n后续意见"
+                    android:textSize="@dimen/login_size"
+                    android:drawableTop="@drawable/reson_blue_yellow_48"
+                    android:textColor="@drawable/radio_text_color" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/parkPhotoUpload_ViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </androidx.viewpager.widget.ViewPager>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="归属机构："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <Spinner
+                android:id="@+id/ChoiceGGs_SPINNYYB"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:gravity="center"
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公估师姓名："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/ChoiceGGs_name"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul"
+                android:visibility="invisible" />
+        </LinearLayout>
+<Button
+            android:id="@+id/ChoiceGGs_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/corners_hui_4_10dp"
+            android:gravity="center"
+            android:text="搜索"
+            android:textColor="@android:color/white" />
+
+ <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:gravity="center_vertical|left"
+            android:text="公估师列表"
+            android:textStyle="bold"
+            android:textColor="@color/bule_text_h"
+            android:textSize="@dimen/text_h" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/hui_text_m" />
+
+        <ProgressBar
+            android:id="@+id/ChoiceGGs_progressBar1"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible" />
+
+        <ListView
+            android:id="@+id/ChoiceGGs_lisetView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+
+</LinearLayout>

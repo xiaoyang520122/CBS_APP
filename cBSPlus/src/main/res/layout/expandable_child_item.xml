@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <ImageView
+        android:id="@+id/UPPHOTO_LI_imageV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:src="@drawable/add_new_order_bule36" />
+
+    <com.cninsure.cp.view.MarqueeTextView
+        android:id="@+id/UPPHOTO_LI_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:layout_weight="2"
+        android:gravity="center_vertical"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="查查勘查勘图片1.jpg"
+        android:textColor="@color/hui_text_xxxxh" />
+
+    <TextView
+        android:id="@+id/UPPHOTO_LI_statu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:hint="已上传"
+        android:textColor="@color/bule_text_m" />
+
+    <TextView
+        android:id="@+id/UPPHOTO_LI_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="删除"
+        android:textColor="#ffff4444" />
+
+</LinearLayout>

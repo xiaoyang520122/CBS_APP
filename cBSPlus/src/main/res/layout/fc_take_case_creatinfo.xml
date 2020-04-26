@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="20dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:gravity="center_vertical|left"
+            android:text="委托信息"
+            android:textStyle="bold"
+            android:textColor="@color/bule_text_h"
+            android:textSize="@dimen/text_h" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/hui_text_m" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="险种大类："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <!-- spinner下拉框蓝色背景  android:popupBackground="@drawable/gradient_bule_bg" -->>
+            <Spinner
+                android:id="@+id/CaseINPUT_SPINN1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="归属机构："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <Spinner
+                android:id="@+id/CaseINPUT_SPINNYYB"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:gravity="center"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="案件名称："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/CaseINPUT_edit1"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="是否异地："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <Spinner
+                android:id="@+id/CaseINPUT_SPINN2"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:gravity="center"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托日期："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:id="@+id/CaseINPUT_text2"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@null"
+                android:drawableRight="@drawable/check_date_hui32"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical|left"
+            android:text="接案信息"
+            android:textStyle="bold"
+            android:textColor="@color/bule_text_h"
+            android:textSize="@dimen/text_h" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/hui_text_m" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="接案方式："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <Spinner
+                android:id="@+id/CaseINPUT_SPINN3"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="险种："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <Spinner
+                android:id="@+id/CaseINPUT_SPINN4"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="险种分类："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <Spinner
+                android:id="@+id/CaseINPUT_SPINN5"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="业务类型："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <Spinner
+                android:id="@+id/CaseINPUT_SPINN6"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="大灾选项："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <Spinner
+                android:id="@+id/CaseINPUT_SPINN7"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="所属行业："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <Spinner
+                android:id="@+id/CaseINPUT_SPINN8"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="接案人："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:id="@+id/CaseINPUT_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:hint="无结案人信息！"
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="接案人电话："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/CaseINPUT_edit2"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:inputType="number"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="接案日期："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:id="@+id/CaseINPUT_text4"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@null"
+                android:drawableRight="@drawable/check_date_hui32"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:text="查勘地点："
+                android:gravity="center_vertical"
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/CaseINPUT_edit3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:background="@null"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul"
+                android:visibility="invisible" />
+        </LinearLayout>
+        
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical|left"
+            android:text="报案摘要（2000字以内）"
+            android:textStyle="bold"
+            android:textColor="@color/bule_text_h"
+            android:textSize="@dimen/text_h" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/hui_text_m" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <EditText
+                android:id="@+id/CaseINPUT_edit4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:background="@null"
+                android:hint="未录入报案摘要！"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+  <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hui_line" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="20dp" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/expandablelist_item_title_imgl"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="5dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/expandablelist_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:textColor="@color/hui_text_xxh"
+            android:textSize="@dimen/text_defaul" >
+        </TextView>
+        <TextView
+            android:id="@+id/expandablelist_item_title_hinttext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:textColor="@color/hui_text_xxh"
+            android:textSize="@dimen/text_l" >
+        </TextView>
+
+       <!--  <ImageView
+            android:id="@+id/expandablelist_item_title_hintimg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/c" /> -->
+
+        <ImageView
+            android:id="@+id/expandablelist_item_title_imgj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:src="@drawable/meidi_down_ico" />
+    </LinearLayout>
+
+  
+</LinearLayout>

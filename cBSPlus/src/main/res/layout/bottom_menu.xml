@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/bmenu_orderList_Relativeparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/bmenu_orderList_linerparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/hui_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:padding="5dp" >
+
+                <TextView
+                    android:id="@+id/bmenu_localSave_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:drawableTop="@drawable/waitcase_hui"
+                    android:gravity="center"
+                    android:text="暂存案件"
+                    android:textColor="@color/hui_text_h"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/bmenu_orderNow_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:drawableTop="@drawable/ordernow"
+                    android:gravity="center"
+                    android:text="@string/ordernow"
+                    android:textColor="@color/bule_text_h"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:textColor="@color/bule_text_h"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/bmenu_orderList_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:drawableTop="@drawable/searchorder_hui"
+                    android:gravity="center"
+                    android:text="完成任务"
+                    android:textColor="@color/hui_text_h"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/bmenu_myCenter_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:drawableTop="@drawable/mycenter_hui"
+                    android:gravity="center"
+                    android:text="@string/mycenter"
+                    android:textColor="@color/hui_text_h"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/center_add_bule_bg" />
+
+            <ImageView
+                android:id="@+id/bmenu_add_order_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/add" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

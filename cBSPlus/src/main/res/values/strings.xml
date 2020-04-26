@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">公估CBS</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="loginPlat">登录平台主体</string>
+    <string name="loginName">请输入用户名</string>
+    <string name="loginPass">登录密码</string>
+    <string name="login">登  录</string>
+    <string name="suer">确 定</string>
+    <string name="add">添 加</string>
+    <string name="addInjured">添加伤者</string>
+    <string name="cName">版权归深圳市伟华联合科技有限公司所有\nCopyright©cnsurvey.cn</string>
+    <string name="systemName">公估CBS</string>
+    
+    <string name="ordersearch">完成订单</string>
+    <string name="ordernow">当前任务</string>
+    <string name="mycenter">用户中心</string>
+    
+    <string name="emptyHint">还没有信息！</string>
+    <string name="emptyHint2">空空如也！</string>
+    <string name="noDispatch">没有调度信息！</string>
+     <string name="diaodu_time">调度时间：%s</string>
+     <string name="baoan_no">报案号</string>
+     <string name="order_no">任务号</string>
+     <string name="case_no">案件名称</string>
+     <string name="wtren">委托人</string>
+     <string name="car_no">车 牌 号</string>
+     <string name="order_type">作业类型</string>
+     <string name="order_listTitle">待处理订单-%s</string>
+     
+     <string name="contactsName">报案联系人：无信息</string>
+    <string name="org_http">&#160;&#160;官方网站：<a href="http://www.cnsurvey.cn/">www.cnsurvey.cn</a></string>
+	<string name="serve_tel">&#160;&#160;服务热线：0755-23963333</string>
+	<string name="weixin_public">&#160;&#160;微信公众号：fhbxgg01</string>
+	
+    <string name="camer">拍照</string>
+	<string name="noLoging">未登录！！</string>
+	<string name="photography">相册选择</string>
+	<string name="display">预览</string>
+	<string name="delete">删除</string>
+	
+	<string name="progress_current">上传第%s个</string>
+	<string name="progress_current2">·共%s个文件</string>
+	
+	<string name="button_ok">OK</string>
+	<string name="copytext">复制</string>
+	<string name="callPhone">拨号</string>
+	<string name="WT_info">委托信息</string>
+	<string name="bh_info">驳回原因</string>
+	
+  
+  <string name="viewfinderview_status_text1">将二维码/条码放入取景框内</string>
+  <string name="viewfinderview_status_text2">即可自动扫描</string>
+	<string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+	
+	 <string name="cancle">取消</string>
+	 
+    <string name="title">请选择时间</string>
+    <string name="commit">确定</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    
+    <string name="day">日</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+     
+
+</resources>

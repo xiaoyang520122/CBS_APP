@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/hui_line"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bule_text_h"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp" >
+
+            <TextView
+                android:id="@+id/ACTION_V_LTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/back_white_48"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/hui_text_xxxh"
+                android:textSize="@dimen/text_xh" />
+
+            <TextView
+                android:id="@+id/ACTION_V_CTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="案件详情"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/title_h" />
+
+            <TextView
+                android:id="@+id/ACTION_V_RTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableRight="@drawable/mor_white_48"
+                android:gravity="center_vertical|right"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_xh" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bule_text_h"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/CASEINFO_WTName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="委托人名称（无）"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_h" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="委托时间："
+                        android:textColor="@color/hui_line"
+                        android:textSize="@dimen/text_defaul" />
+
+                    <TextView
+                        android:id="@+id/CASEINFO_WTTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="0000-00-00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_defaul" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="报案联系人："
+                        android:textColor="@color/hui_line"
+                        android:textSize="@dimen/text_defaul" />
+
+                    <TextView
+                        android:id="@+id/CASEINFO_conectName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="无信息"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_defaul" />
+
+                    <TextView
+                        android:id="@+id/CASEINFO_conectPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_weight="1"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/serve_tel_yellow35"
+                        android:gravity="right"
+                        android:text="无信息"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_defaul" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="作业类型："
+                        android:textColor="@color/hui_line"
+                        android:textSize="@dimen/text_defaul" />
+
+                    <TextView
+                        android:id="@+id/CASEINFO_Pusstype"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="无信息"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_defaul" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <RadioGroup
+                android:id="@+id/CASEINFO_btnG"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/CASEINFO_btn_0"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="基本信息"
+                    android:textColor="@drawable/color_radiobutton"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioButton
+                    android:id="@+id/CASEINFO_btn_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="出险信息"
+                    android:textColor="@drawable/color_radiobutton"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioButton
+                    android:id="@+id/CASEINFO_btn_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="结算信息"
+                    android:textColor="@drawable/color_radiobutton"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioButton
+                    android:id="@+id/CASEINFO_btn_3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="案件进度"
+                    android:textColor="@drawable/color_radiobutton"
+                    android:textSize="@dimen/text_defaul" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/white"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/CASEINFO_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:drawableTop="@drawable/empty_hui"
+                android:gravity="center"
+                android:text="@string/emptyHint"
+                android:textColor="@color/hui_text_m" />
+
+            <ListView
+                android:id="@+id/CASEINFO_ListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:padding="15dp"
+                android:scrollbars="none" >
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

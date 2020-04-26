@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/corners_white_popup"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="接报案录入"
+        android:textColor="@color/bule_text_m"
+        android:textSize="@dimen/text_h" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/hui_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/addFCpopup_order_cai"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/fc_cai"
+            android:gravity="center"
+            android:text="财险接报案"
+            android:textColor="@color/hui_text_xxxxh" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/hui_line" />
+
+        <TextView
+            android:id="@+id/addFCpopup_order_shui"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/fc_shui"
+            android:gravity="center"
+            android:text="水险接报案"
+            android:textColor="@color/hui_text_xxxxh" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/addFCpopup_order_fenshanxin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/dispersive_type"
+            android:gravity="center"
+            android:text="创新及分散型"
+            android:textColor="@color/hui_text_xxxxh" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/hui_line" />
+
+        <TextView
+            android:id="@+id/addFCpopup_order_yjx"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/yjx_blue_128"
+            android:gravity="center"
+            android:text="医健险接报案"
+            android:textColor="@color/hui_text_xxxxh" />
+    </LinearLayout>
+
+</LinearLayout>

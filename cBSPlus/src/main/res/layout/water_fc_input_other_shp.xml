@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="vertical" >
+     <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="其他方船名："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/WCI_Edit_other_deputeShipname"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul"
+                android:visibility="invisible" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="船舶类型："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <!-- spinner下拉框蓝色背景  android:popupBackground="@drawable/gradient_bule_bg" -->>
+            <Spinner
+                android:id="@+id/WCI_Spinn_other_shipType"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:visibility="invisible"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/corners_white_huiline_4_5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="船舶吨位："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <!-- spinner下拉框蓝色背景  android:popupBackground="@drawable/gradient_bule_bg" -->>
+            <Spinner
+                android:id="@+id/WCI_Spinn_other_shipDw"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/jt_buttom_hui2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:text="*"
+                android:visibility="invisible"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+    
+
+</LinearLayout>

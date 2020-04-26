@@ -1,0 +1,191 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+            android:clipChildren="false"
+    android:orientation="vertical" >
+
+    <SurfaceView
+        android:id="@+id/CXPA_surfaceview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+            android:clipChildren="false"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left"
+            android:background="#88000000"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/return_camera_white64" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:textColor="@android:color/white" />
+
+            <CheckBox
+                android:id="@+id/CXPA_light"
+                style="@style/flashlight_checkbox_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false" />
+
+            <TextView
+                android:id="@+id/CXPA_lightt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手电筒"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/CXPA__back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="takepicture"
+                android:src="@drawable/back_white64" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/CXPA_autofocus"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:onClick="takepicture"
+            android:padding="10dp" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/idcard_bg_alpha" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:background="@drawable/bd_ocr_hint_align_bg"
+                android:text="轻触对焦,右侧滑动选择对应拍照类型！"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left"
+            android:background="#88000000"
+            android:clipChildren="false"
+            android:gravity="center"
+            android:layerType="software"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <com.karics.library.zxing.view.VerticalViewPager
+                android:id="@+id/CXPA_viewpager"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"  
+        		android:layout_marginBottom="60dp"  
+                android:clipChildren="false" >
+            </com.karics.library.zxing.view.VerticalViewPager>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left"
+            android:background="#88000000"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="takepicture"
+                android:text="自动对焦"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2" />
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/check_photo_button"
+                android:onClick="takepicture" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:text="相册"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/CXPA_takepicture"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/photograph_button_bg"
+                android:onClick="takepicture" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:textColor="@android:color/white" />
+
+            <ImageView
+                android:id="@+id/CXPA_displaypicture"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/photoyulan_130" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:text="预览"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

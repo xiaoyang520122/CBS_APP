@@ -1,0 +1,4 @@
+#Sun Apr 26 10:37:03 CST 2020
+base.0=E\:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\dex\\release\\mergeDexRelease\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

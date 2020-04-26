@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/action_view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:drawableTop="@drawable/helpcenter_bule_300"
+        android:gravity="center_horizontal|top"
+        android:text="帮助中心"
+        android:textSize="@dimen/text_h" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal|top"
+        android:text="帮助中心更多帮助功能开发中敬请期待！\n咨询电话：0755-23963333"
+        android:textColor="@color/hui_text_xh"
+        android:textSize="@dimen/text_defaul" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:background="@color/bule_text_h"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/HELPCENTER_call"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/helpphone_white64"
+                android:text="电话咨询"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_h" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="10dp"
+            android:background="@android:color/white" />
+
+        <LinearLayout
+            android:id="@+id/HELPCENTER_msg"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/helpliuyan_white64"
+                android:text="系统留言"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_h" />
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>

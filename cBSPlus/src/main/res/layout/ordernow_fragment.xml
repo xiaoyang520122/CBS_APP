@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!--
+    LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="0dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="60dp"
+            android:visibility="gone"
+            android:paddingRight="60dp" >
+         <com.cninsure.cp.view.MarqueeTextView
+                android:id="@+id/orderNF_FC"
+                android:layout_width="0dp"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@drawable/corners_white_left_30dp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:singleLine="true"
+                android:text="非车"
+                android:textColor="@color/bulue_main"
+                android:textSize="@dimen/title_h" />
+
+            <com.cninsure.cp.view.MarqueeTextView
+                android:id="@+id/orderNF_CX"
+                android:layout_width="0dp"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@drawable/corners_alpha_right_30dp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:singleLine="true"
+                android:text="车险"
+                android:textColor="@color/hui_text_h"
+                android:textSize="@dimen/title_h" />
+        </LinearLayout>
+
+    </LinearLayout
+    -->
+
+    <include layout="@layout/order_type_check_item" />
+    <!-- @drawable/corners_top_bg -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="50sp"
+        android:background="@color/hui_bg"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/orderNF_listTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/order_listTitle"
+            android:textColor="@color/bule_text_l"
+            android:textSize="@dimen/title_xh"
+            android:visibility="gone" />
+
+        <ListView
+            android:id="@+id/orderNF_list"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/hui_bg"
+            android:divider="#00000000"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:scrollbars="none" >
+        </ListView>
+
+        <TextView
+            android:id="@+id/orderNF_emptyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:drawableTop="@drawable/empty_hui"
+            android:gravity="center"
+            android:text="@string/emptyHint"
+            android:textColor="@color/hui_text_m"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>

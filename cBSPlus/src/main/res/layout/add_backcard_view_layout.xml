@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp" >
+
+        <TextView
+            android:id="@+id/addBC_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/back_hui_48"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_defaul" />
+
+        <TextView
+            android:id="@+id/addBC_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="银行卡管理"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_xh" />
+
+        <TextView
+            android:id="@+id/addBC_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:text="确定"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_defaul" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hui_line" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/hui_bg"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="请绑定持卡人本人的银行卡"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/activity_vertical_margin" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/hui_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="持卡人："
+                        android:textColor="@color/hui_text_xh"
+                        android:textSize="@dimen/activity_vertical_margin" />
+
+                    <TextView
+                        android:id="@+id/addBC_CardUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:hint="数据异常请联系管理员！"
+                        android:textColor="@color/hui_text_xxh"
+                        android:textColorHint="@color/hui_line"
+                        android:textSize="@dimen/activity_vertical_margin" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@color/hui_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="卡    号："
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/hui_text_xh"
+                        android:textSize="@dimen/activity_vertical_margin" />
+
+                    <EditText
+                        android:id="@+id/addBC_CardNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="@null"
+                        android:hint="银行卡号信息！"
+                        android:textColor="@color/hui_text_xxh"
+                        android:textColorHint="@color/hui_line"
+                        android:textSize="@dimen/activity_vertical_margin" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@color/hui_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="开户支行："
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/hui_text_xh"
+                        android:textSize="@dimen/activity_vertical_margin" />
+
+                    <EditText
+                        android:id="@+id/addBC_CardpartName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="@null"
+                        android:hint="可拨打银行热线咨询支行信息！"
+                        android:textColor="@color/hui_text_xxh"
+                        android:textColorHint="@color/hui_line"
+                        android:textSize="@dimen/activity_vertical_margin" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="请选择所属银行"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/activity_vertical_margin" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/hui_line" />
+            </LinearLayout>
+
+            <com.cninsure.cp.view.GridViewForScrollView
+                android:id="@+id/addBC_GridView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:horizontalSpacing="5dp"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="2"
+                android:verticalSpacing="15dp" >
+            </com.cninsure.cp.view.GridViewForScrollView>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#222222" >
+
+    <com.cninsure.cp.view.GestureImageView
+        android:id="@+id/photoview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/waiting_photo100" />
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="#89000000" >
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="45dp"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:src="@drawable/icon_return" />
+    </RelativeLayout>
+
+</FrameLayout>

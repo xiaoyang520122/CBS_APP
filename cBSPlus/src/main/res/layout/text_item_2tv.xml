@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical|left"
+            android:paddingBottom="1dp"
+            android:paddingTop="1dp"
+            android:text="标题"
+            android:textColor="@color/hui_text_xh"
+            android:textSize="@dimen/order_list_defaul" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:paddingBottom="1dp"
+            android:paddingTop="1dp"
+            android:text="："
+            android:textColor="@color/hui_text_xh"
+            android:textSize="@dimen/order_list_defaul" />
+
+        <com.cninsure.cp.view.MarqueeTextView
+            android:id="@+id/FSXDSPListI_keyPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:hint="无信息！"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:paddingLeft="3dp"
+            android:paddingTop="1dp"
+            android:singleLine="true"
+            android:drawableRight="@drawable/msg_hui_36"
+            android:textColor="@color/result_view"
+            android:text=""
+            android:textSize="@dimen/text_m" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+com.zcw.togglebutton
+attr animate
+attr borderWidth
+attr isDefaultOn
+attr offBorderColor
+attr offColor
+attr onColor
+attr spotColor
+styleable ToggleButton animate borderWidth isDefaultOn offBorderColor offColor onColor spotColor

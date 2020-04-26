@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:text="北\n极\n星"
+    android:gravity="center"
+    android:textSize="@dimen/text_h"
+    android:drawableBottom="@drawable/touch_down_48"
+    android:drawableTop="@drawable/touch_up_48"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="@drawable/corners_white__4_30dp" >
+    
+
+</TextView>

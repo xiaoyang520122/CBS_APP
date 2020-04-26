@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:padding="20dp" >
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginRight="5dp" />
+
+    <TextView
+        android:id="@+id/sggsedAc_zxBan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/corners_yellow_bg_hui_line_5dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="2dp"
+        android:text="主"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_l" />
+    <TextView
+        android:id="@+id/sggsedAc_nameAndDept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="姓名 机构名称"
+        android:textColor="@color/hui_text_xxxxh"
+        android:textSize="@dimen/text_15" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="3dp"
+        android:gravity="right"
+        android:text=""
+        android:textColor="@color/bule_text_h"
+        android:textSize="@dimen/order_list_defaul" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="贡献比例："
+        android:textColor="@color/hui_text_xh"
+        android:textSize="@dimen/text_l" />
+
+    <TextView
+        android:id="@+id/sggsedAc_gxbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0"
+        android:textColor="@color/hui_text_xh"
+        android:textSize="@dimen/text_l" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textColor="@color/hui_text_xh"
+        android:textSize="@dimen/order_list_defaul" />
+
+</LinearLayout>

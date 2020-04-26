@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="添加/编辑差错明细"
+        android:textColor="@color/bule_text_l"
+        android:textSize="@dimen/text_defaul" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="差错类型："
+            android:textColor="@color/hui_text_xh"
+            android:textSize="@dimen/text_defaul" />
+
+        <Spinner
+            android:id="@+id/YJXaddErrorV_errorType"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/jt_buttom_hui2"
+            android:gravity="center_vertical|right" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hui_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="差错明细："
+            android:textColor="@color/hui_text_xh"
+            android:textSize="@dimen/text_defaul" />
+
+        <EditText
+            android:id="@+id/YJXaddErrorV_errorMessage"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:hint="请录入差错明细信息"
+            android:paddingLeft="5dp"
+            android:textColorHint="@color/hui_text_h"
+            android:textSize="@dimen/text_defaul" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hui_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="差错扣分："
+            android:textColor="@color/hui_text_xh"
+            android:textSize="@dimen/text_defaul" />
+
+        <EditText
+            android:id="@+id/YJXaddErrorV_errorPoints"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:hint="无"
+            android:inputType="number"
+            android:paddingLeft="5dp"
+            android:textColorHint="@color/hui_text_h"
+            android:textSize="@dimen/text_defaul" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hui_bg" />
+
+</LinearLayout>

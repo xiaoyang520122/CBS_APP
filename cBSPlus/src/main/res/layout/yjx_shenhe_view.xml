@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:gravity="top"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="调查经过："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:id="@+id/YjxSHV_surveyDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="无调查经过信息！"
+                android:paddingRight="15dp"
+                android:textColor="@color/bule_text_l"
+                android:textColorHint="@color/bule_text_l"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="top"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="调查结论："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:id="@+id/YjxSHV_surveyConclusion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="无调查结论！"
+                android:paddingRight="15dp"
+                android:textColor="@color/bule_text_l"
+                android:textColorHint="@color/bule_text_l"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+        
+        <TextView
+            android:id="@+id/YjxSHV_shenhechaozuoTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="10dp"
+            	android:layout_marginTop="10dp"
+                android:text="审核操作"
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+
+        <LinearLayout
+            android:id="@+id/YjxSHV_shenhelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners_hui_line5"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/corners_white_5dp"
+                android:orientation="vertical"
+                android:padding="5dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="差错信息列表："
+                        android:textColor="@color/bulue_main"
+                        android:textSize="@dimen/text_defaul" />
+
+                    <TextView
+                        android:id="@+id/YjxSHV_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/corners_button_green10"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="3dp"
+                        android:text="添加"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_defaul" />
+                </LinearLayout>
+            </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/YjxSHV_errorMsgLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/corners_white_5dp"
+                android:padding="5dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/corners_yellows_line5"
+                    android:orientation="vertical" >
+
+                    <EditText
+                        android:id="@+id/YjxSHV_analysis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@null"
+                        android:hint="请录入审核分析！"
+                        android:padding="15dp"
+                        android:textColorHint="@color/hui_text_h"
+                        android:textSize="@dimen/text_defaul" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@color/white"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="审核分析"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/text_defaul" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/corners_white_5dp"
+                android:padding="5dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/corners_yellows_line5"
+                    android:orientation="vertical" >
+
+                    <EditText
+                        android:id="@+id/YjxSHV_conclusion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@null"
+                        android:hint="请录入审核结论！"
+                        android:padding="15dp"
+                        android:textColorHint="@color/hui_text_h"
+                        android:textSize="@dimen/text_defaul" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@color/white"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="审核结论"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/text_defaul" />
+            </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/YjxSHV_passButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@color/bulue_main"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="审核通过"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/YjxSHV_backButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/yellow_logo"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="审核驳回"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+        
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:gravity="top"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="审核历史："
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:id="@+id/YjxSHV_shenheHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="无审核历史信息！"
+                android:paddingRight="15dp"
+                android:textColor="@color/bule_text_l"
+                android:textColorHint="@color/bule_text_l"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
