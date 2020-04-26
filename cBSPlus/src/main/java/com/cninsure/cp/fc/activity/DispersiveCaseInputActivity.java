@@ -824,8 +824,8 @@ deputeItem 水险委托事项
 		
 		casem.riskType=3;
 //				casem.riskType= dictEntity.data.risk_type.get(
-//						((Spinner)creatCaseView.findViewById(R.id.CaseINPUT_SPINN1))
-//				.getSelectedItemPosition()).value;//险种大类
+//////						((Spinner)creatCaseView.findViewById(R.id.CaseINPUT_SPINN1))
+//////				.getSelectedItemPosition()).value;//险种大类
 		
 		int orgPostion=((Spinner)creatCaseView.findViewById(R.id.CaseINPUT_SPINNYYB_D)).getSelectedItemPosition();
 		if (orgPostion>0) {

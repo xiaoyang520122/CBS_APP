@@ -15,14 +15,13 @@ public class URLs implements Serializable {
 	生产环境：http://sysweb.cnsurvey.cn:8010
 	对应的后台：http://sys.cnsurvey.cn:8008
 
-	测试环境：http://testweb.cnsurvey.cn:8010//后改为端口8085
+	测试环境：http://http://sysweb.cnsurvey.cn:8085//后改为端口8085
 	对应的后台：http://sys.cnsurvey.cn:8007 || 193.112.173.125:8083
 	 */
 	/**===主接口(登录架构等)===**/
 //	private final static String IPHOME="http://sys.cnsurvey.cn:8008/cninsure-pz-sys-ws";//车险外网
-//	private final static String IPHOME="http://193.112.173.125:8083/cninsure-pz-sys-ws";//车险外网测试
-	private final static String IPHOME="http://193.112.173.125:8084/cninsure-pz-sys-ws";//车险外网测试 对应：sysweb.cnsurvey.cn:8010
-//	private final static String IPHOME="http://10.80.13.97:8081/cninsure-pz-sys-ws";//车险外网测试 -冬阳
+//	private final static String IPHOME="http://193.112.173.125:8084/cninsure-pz-sys-ws";//车险外网测试 对应：http://sysweb.cnsurvey.cn:8085
+	private final static String IPHOME="http://10.80.13.194:8081/cninsure-pz-sys-ws";//车险外网测试 -冬阳
 //	private final static String IPHOME="http://10.80.8.16:8081/cninsure-pz-sys-ws"; //车险外网测试 -邹工
 
 	
