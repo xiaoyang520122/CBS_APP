@@ -66,7 +66,7 @@ public class YjxNoShenheOrderActivity extends BaseActivity {
 		params.add(start + "");
 
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		HttpUtils.requestGet(URLs.YJX_SHENHE_ORDER_LIST, params, HttpRequestTool.YJX_SHENHE_ORDER_LIST);
 	}
 

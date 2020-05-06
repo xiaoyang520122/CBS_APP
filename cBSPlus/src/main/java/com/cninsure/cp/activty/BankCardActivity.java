@@ -77,9 +77,9 @@ public class BankCardActivity extends BaseActivity {
 	private void downLoadUserInfo() {
 		List<String> paramsList = new ArrayList<String>();
 		paramsList.add("userId");
-		paramsList.add(AppApplication.USER.data.userId);
+		paramsList.add(AppApplication.getUSER().data.userId);
 		paramsList.add("targetUserId");
-		paramsList.add(AppApplication.USER.data.userId);
+		paramsList.add(AppApplication.getUSER().data.userId);
 		HttpUtils.requestGet(URLs.GetUserInfo(), paramsList, HttpRequestTool.GET_USER_INFO);
 		loadDialog.setMessage("数据加载中……").show();
 	}

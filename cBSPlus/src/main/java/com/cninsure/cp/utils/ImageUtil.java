@@ -433,7 +433,7 @@ public class ImageUtil {
 			// byte[] datas1 = baos1.toByteArray();
 			bitmap = compressAvatar(bitmap);
 
-			bitmap = ImageUtil.drawTextToRightBottom(context, bitmap, AppApplication.USER.data.name + " " + sf.format(new Date()), 10,
+			bitmap = ImageUtil.drawTextToRightBottom(context, bitmap, AppApplication.getUSER().data.name + " " + sf.format(new Date()), 10,
 					Color.parseColor("#FF0000"), 5, 5);
 			Bitmap watermark = BitmapFactory.decodeResource(context.getResources(), R.drawable.logo_water_mask);
 			// 为bitmap以便添加图片水印
@@ -475,7 +475,7 @@ public class ImageUtil {
 			byte[] datas = baos.toByteArray();
 
 			Bitmap bitmapText = ImageUtil.drawTextToRightBottom(context, BitmapFactory.decodeByteArray(datas, 0, datas.length),
-					AppApplication.USER.data.name + " " + sf.format(new Date()), 10, Color.parseColor("#FF0000"), 5, 5);
+					AppApplication.getUSER().data.name + " " + sf.format(new Date()), 10, Color.parseColor("#FF0000"), 5, 5);
 			// 将文件转化为bitmap以便添加日期水印
 			Bitmap watermark = BitmapFactory.decodeResource(context.getResources(), R.drawable.logo_water_mask);
 			// 为bitmap以便添加图片水印
@@ -647,9 +647,9 @@ public class ImageUtil {
 			}else {
 				address = "无定位信息！";
 			}
-			bm = ImageUtil.drawTextByShadowToRightBottom(context, bm, AppApplication.USER.data.name + " " + getPhotoData(imagePath)
+			bm = ImageUtil.drawTextByShadowToRightBottom(context, bm, AppApplication.getUSER().data.name + " " + getPhotoData(imagePath)
 					+address, 5,Color.parseColor("#8a8a8a"), 5, 5); //先加一层灰色的底，避免变色图片加上白色文本看不见
-			bm = ImageUtil.drawTextToRightBottom(context, bm, AppApplication.USER.data.name + " " + getPhotoData(imagePath)
+			bm = ImageUtil.drawTextToRightBottom(context, bm, AppApplication.getUSER().data.name + " " + getPhotoData(imagePath)
 					+address, 5,Color.parseColor("#FFFFFF"), 5, 5); //加上白色的公估师、时间和地址信息。
 			Bitmap watermark = BitmapFactory.decodeResource(context.getResources(), R.drawable.logo_water_mask_alph);
 			// 为bitmap以便添加图片水印

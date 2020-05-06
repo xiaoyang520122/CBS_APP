@@ -105,7 +105,7 @@ public class ScoreActivity extends BaseActivity {
 	/**获取非车月或者年的车险考核收入信息，type=0就是月度，type=1就是年度*/
 	private void downloadScoreInfoFC(int i) {
 		params=new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.targetOid+""));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.targetOid+""));
 		params.add(new BasicNameValuePair("endDate", CalendarUtil.getEndDayofMonthLong()));
 		if (i==0) { // 非车月度合计
 			params.add(new BasicNameValuePair("startDate", CalendarUtil.getBeginDayofMonthShort()));//测试后恢复
@@ -125,7 +125,7 @@ public class ScoreActivity extends BaseActivity {
 		loaddialog.setMessage("努力加载中……").show();
 		List<String> params=new ArrayList<String>();
 		params.add("userOid");
-		params.add(AppApplication.USER.data.id+"");//测试后恢复
+		params.add(AppApplication.getUSER().data.id+"");//测试后恢复
 //		params.add(7603+"");//测试后删除
 		params.add("source");
 		params.add("10");

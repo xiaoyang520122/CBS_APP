@@ -44,7 +44,7 @@ public class ScannerLoginActivity extends BaseActivity {
 		String uid=getIntent().getStringExtra("uid");
 		Log.i("JsonHttpUtils", "扫码传递uid：" + uid);
 		params.add(new BasicNameValuePair("uid", uid));
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 		params.add(new BasicNameValuePair("status", "3"));
 		HttpUtils.requestPost(URLs.SCANNER_LOGIN, params, HttpRequestTool.SCANNER_LOGIN);
 //		ToastUtil.showToastLong(this, "登录请求发送成功！");

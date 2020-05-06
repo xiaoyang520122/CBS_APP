@@ -134,7 +134,7 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 	private void dowLoadingDataCX(int startPoint) {
 		paramsList = new ArrayList<String>(4);
 		paramsList.add("userId");
-		paramsList.add(AppApplication.USER.data.userId);
+		paramsList.add(AppApplication.getUSER().data.userId);
 		paramsList.add("size");
 		paramsList.add(10 + "");
 		paramsList.add("orderStatus");
@@ -165,9 +165,9 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 	private void getYjxFinishOrder(int startPoint){
 		paramsList = new ArrayList<String>(2);
 		paramsList.add("userId");
-		paramsList.add(AppApplication.USER.data.userId);
+		paramsList.add(AppApplication.getUSER().data.userId);
 		paramsList.add("ggsId");
-		paramsList.add(AppApplication.USER.data.userId);
+		paramsList.add(AppApplication.getUSER().data.userId);
 		paramsList.add("size");
 		paramsList.add("20");
 		paramsList.add("start");
@@ -182,7 +182,7 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 		params = new ArrayList<NameValuePair>();
 		@SuppressWarnings("rawtypes")
 		APPRequestModel<PagedRequest> appre = new APPRequestModel<PagedRequest>();
-		appre.userToken = AppApplication.USER.data.targetOid;
+		appre.userToken = AppApplication.getUSER().data.targetOid;
 		PagedRequest<Map> requestData = new PagedRequest<Map>();
 		requestData.pageNo = pagePoint;
 		requestData.pageSize = 10;
@@ -632,7 +632,7 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 		loadDialog.setMessage("信息读取中……").show();
 		List<String> params2 = new ArrayList<String>();
 		params2.add("userId");
-		params2.add(AppApplication.USER.data.userId);
+		params2.add(AppApplication.getUSER().data.userId);
 		params2.add("orderUid");
 		params2.add(uid);
 		HttpUtils.requestGet(URLs.GET_ORDER_STATUS, params2, HttpRequestTool.GET_ORDER_STATUS);

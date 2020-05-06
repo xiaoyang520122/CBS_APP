@@ -254,14 +254,14 @@ public class SurveyActivity extends BaseActivity implements OnPageChangeListener
 		switch (code) {
 		case 1:
 			APPRequestModel<String[]> appre = new APPRequestModel<String[]>();
-			appre.userToken = AppApplication.USER.data.targetOid;
+			appre.userToken = AppApplication.getUSER().data.targetOid;
 			appre.requestData = ZDparamsStr;
 			params.add(new BasicNameValuePair("requestData", JSON.toJSONString(appre)));
 			HttpUtils.requestPost(URLs.FC_GET_DICT_LIST, params, HttpRequestTool.FC_GET_DICT_LIST);
 			break;
 		case 2:
 			APPRequestModel<Map<String, Integer>> appre0 = new APPRequestModel<Map<String, Integer>>();
-			appre0.userToken = AppApplication.USER.data.targetOid;
+			appre0.userToken = AppApplication.getUSER().data.targetOid;
 			Map<String, Integer> map=new HashMap<String, Integer>();
 			int id=getIntent().getIntExtra("id", 0);
 			map.put("id", id);
@@ -271,7 +271,7 @@ public class SurveyActivity extends BaseActivity implements OnPageChangeListener
 			break;
 		case 3:/**历史上次影像文件**/
 			APPRequestModel<Map<String, Object>> appre1 = new APPRequestModel<Map<String, Object>>();
-			appre1.userToken = AppApplication.USER.data.targetOid;
+			appre1.userToken = AppApplication.getUSER().data.targetOid;
 			Map<String, Object> map1=new HashMap<String, Object>();
 			map1.put("caseNo", workBean.data.m.caseNo);
 			if (!TextUtils.isEmpty(workId)) {
@@ -424,7 +424,7 @@ public class SurveyActivity extends BaseActivity implements OnPageChangeListener
 				workId=workBean.data.work.id+"";
 				
 				if (TextUtils.isEmpty(workBean.data.work.mainChecker)) {
-					((TextView)basicView.findViewById(R.id.SBI_Text1)).setText(AppApplication.USER.data.name);//默认主办公估师
+					((TextView)basicView.findViewById(R.id.SBI_Text1)).setText(AppApplication.getUSER().data.name);//默认主办公估师
 				}else {
 					((TextView)basicView.findViewById(R.id.SBI_Text1)).setText(workBean.data.work.mainChecker);//主办公估师
 				}
@@ -473,7 +473,7 @@ public class SurveyActivity extends BaseActivity implements OnPageChangeListener
 				position=getPositionByValue(workBean.data.work.filed4,dictEntity.data.feiche_case_account );
 				((Spinner)basicView.findViewById(R.id.SBI_SPINN10)).setSelection(position, true);//估损范围
 			}else {
-				((TextView)basicView.findViewById(R.id.SBI_Text1)).setText(AppApplication.USER.data.name);//默认主办公估师
+				((TextView)basicView.findViewById(R.id.SBI_Text1)).setText(AppApplication.getUSER().data.name);//默认主办公估师
 			}
 				
 			if (null!=workBean.data.m) {
@@ -796,7 +796,7 @@ public class SurveyActivity extends BaseActivity implements OnPageChangeListener
 		}
 		params=new ArrayList<NameValuePair>();
 		APPRequestModel<DataBean> appre0 = new APPRequestModel<DataBean>();
-		appre0.userToken = AppApplication.USER.data.targetOid;
+		appre0.userToken = AppApplication.getUSER().data.targetOid;
 		appre0.requestData = workBean.data;
 		params.add(new BasicNameValuePair("requestData", JSON.toJSONString(appre0)));
 		HttpUtils.requestPost(URLs.FC_SAVE_WORK_INFO, params, HttpRequestTool.FC_SAVE_WORK_INFO);

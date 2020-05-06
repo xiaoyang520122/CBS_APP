@@ -702,7 +702,7 @@ private void setConViewOnclick(View conView, final int itemCode) {
 		IsFull = true;
 		status = code;
 		final List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId + ""));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId + ""));
 		params.add(new BasicNameValuePair("caseTypeId", "200")); // 医健险固定值id
 		params.add(new BasicNameValuePair("caseType", "医健险")); // 医健险固定值-医健险
 		if (productSp.getSelectedItemPosition() > 0) { // 产品细类
@@ -1029,7 +1029,7 @@ private void setConViewOnclick(View conView, final int itemCode) {
 	private void downLoadAlldept(){
 		List<String> params=new ArrayList<String>();
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("type");
 		params.add("4");
 		params.add("grade");

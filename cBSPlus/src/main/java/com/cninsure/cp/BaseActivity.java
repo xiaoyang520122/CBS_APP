@@ -15,8 +15,17 @@ import android.os.Handler;
 import android.os.Message;
 import androidx.fragment.app.FragmentActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.bumptech.glide.Glide;
+import com.cninsure.cp.entity.dispersive.DispersiPayloadEntity;
+import com.cninsure.cp.entity.dispersive.DispersiveDispatchEntity;
 import com.cninsure.cp.utils.DialogUtil;
 
 public class BaseActivity extends FragmentActivity {
@@ -116,8 +125,25 @@ public class BaseActivity extends FragmentActivity {
             }   
         }   
         return false;   
-    } 
-	
-	
+    }
+
+	public static void disPlayAlertMessage(String value) {
+		/**显示警报弹出框**/
+		Context context=AppApplication.mInstance.getApplicationContext();
+		DispersiPayloadEntity dispatchEntity= JSON.parseObject(value,DispersiPayloadEntity.class);
+		View alertView = LayoutInflater.from(context).inflate(R.layout.alert_gif_dialog_view, null);
+		((TextView)alertView.findViewById(R.id.ALERT_GIF_DIALOG_VIEW_insuranceSmallType)).setText(dispatchEntity.data.insuranceSmallType);//案件类型
+		((TextView)alertView.findViewById(R.id.ALERT_GIF_DIALOG_VIEW_commissionFee)).setText(dispatchEntity.data.commissionFee+"");//佣金
+		((TextView)alertView.findViewById(R.id.ALERT_GIF_DIALOG_VIEW_exploreAddress)).setText(dispatchEntity.data.exploreAddress);//查勘地点
+		((TextView)alertView.findViewById(R.id.ALERT_GIF_DIALOG_VIEW_damagedState)).setText(dispatchEntity.data.damagedState);//受损基本情况
+		((TextView)alertView.findViewById(R.id.ALERT_GIF_DIALOG_VIEW_keyPoint)).setText(dispatchEntity.data.keyPoint); //查勘重点要求
+
+		Dialog alert=DialogUtil.getDialogByView(context, alertView);
+		alert.getWindow().setType(WindowManager.LayoutParams.TYPE_TOAST);
+		alert.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+//			setCallOnclick(alertView,alertInfoArr[9],alert);
+//			displayMap(alertView, alertInfoArr,alert);
+		alert.show();
+	}
 	
 }

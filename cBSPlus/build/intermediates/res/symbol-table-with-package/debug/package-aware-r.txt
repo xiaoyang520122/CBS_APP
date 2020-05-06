@@ -706,6 +706,7 @@ drawable add_new_order_bule36
 drawable add_photos_bule36
 drawable alaph_0
 drawable album_blue38
+drawable alert_ico_red86
 drawable back_hui_48
 drawable back_white32
 drawable back_white64
@@ -798,6 +799,7 @@ drawable corners_red_30dp
 drawable corners_top_bg
 drawable corners_white2_4_10dp
 drawable corners_white_4_10dp
+drawable corners_white_4_5dp
 drawable corners_white_5dp
 drawable corners_white__4_30dp
 drawable corners_white_alpha_4_50dp
@@ -847,6 +849,7 @@ drawable helpcenter_bule_300
 drawable helpliuyan_white64
 drawable helpphone_white64
 drawable hg
+drawable hint_yellow_sj_38
 drawable ic_launcher
 drawable icon_geo
 drawable icon_return
@@ -936,6 +939,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable order_color_64
 drawable ordernow
 drawable ordernow_hui
 drawable oti_bg
@@ -1142,6 +1146,14 @@ id ACYJXWORK_button
 id ACYJXWORK_submitButton
 id ACYJXWORK_submitLinearlayout
 id ACYJXWORK_viewpager
+id ALERT_GIF_DIALOG_VIEW_NaviMap
+id ALERT_GIF_DIALOG_VIEW_bddzTitle
+id ALERT_GIF_DIALOG_VIEW_callCotact
+id ALERT_GIF_DIALOG_VIEW_commissionFee
+id ALERT_GIF_DIALOG_VIEW_damagedState
+id ALERT_GIF_DIALOG_VIEW_exploreAddress
+id ALERT_GIF_DIALOG_VIEW_insuranceSmallType
+id ALERT_GIF_DIALOG_VIEW_keyPoint
 id ALT
 id AYJXBAOAN_BtnG
 id AYJXBAOAN_ButtonLayout
@@ -2021,6 +2033,7 @@ id parentPanel
 id parkPhotoUpload_RadioGroup
 id parkPhotoUpload_ViewPager
 id parkPhotoUpload_expandablelistview3
+id permission_alert_view_checkBox
 id photography_camera
 id photography_deleteplay
 id photography_display
@@ -2201,6 +2214,7 @@ layout add_bank_img_item
 layout add_error_view
 layout add_layout
 layout add_new_order_popup_view
+layout alert_gif_dialog_view
 layout back_order_layout
 layout banc_dilog_view
 layout bottom_menu
@@ -2279,6 +2293,7 @@ layout notification_template_part_time
 layout order_type_check_item
 layout ordernow_fragment
 layout ordernow_list_item
+layout permission_setting_alert_view
 layout photo_choice_layout
 layout photograph_view
 layout popupwindow_list
@@ -2330,6 +2345,7 @@ layout yjx_work_info_view
 layout yjx_wt_info_view
 menu login
 raw beep
+raw keep
 raw new_order_girl
 raw new_order_girl_old
 string WT_info

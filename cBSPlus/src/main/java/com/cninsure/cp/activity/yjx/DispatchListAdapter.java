@@ -222,7 +222,7 @@ public class DispatchListAdapter extends BaseAdapter {
 				paramsList.add("id");
 				paramsList.add(caseDisTemp.id+"");
 				paramsList.add("userId");
-				paramsList.add(AppApplication.USER.data.id+"");
+				paramsList.add(AppApplication.getUSER().data.id+"");
 				HttpUtils.requestGet(URLs.YJX_BAOAN_CASE_DISPATCH_DELETE, paramsList, HttpRequestTool.YJX_BAOAN_CASE_DISPATCH_DELETE);
 			}
 		}).show();

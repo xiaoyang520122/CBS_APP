@@ -178,7 +178,7 @@ public class DispersiveWorkActivity extends BaseActivity {
     private void submitForReview(){
         if (photoIsfull()) {
             List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
-            paramsList.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+            paramsList.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
             paramsList.add(new BasicNameValuePair("dispatchUid", caseDisTemp.uid));  //作业uid
             HttpUtils.requestPost(URLs.FSX_WORK_SUBMIT_RIVIEW, paramsList, HttpRequestTool.FSX_WORK_SUBMIT_RIVIEW);
             LoadDialogUtil.setMessageAndShow(this, "处理中……");
@@ -237,7 +237,7 @@ public class DispersiveWorkActivity extends BaseActivity {
     /**提交事故经过概述和处理意见*/
     private void submitWorkInfo() {
         List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
-        paramsList.add(new BasicNameValuePair("userId",AppApplication.USER.data.userId));
+        paramsList.add(new BasicNameValuePair("userId",AppApplication.getUSER().data.userId));
         paramsList.add(new BasicNameValuePair("uid",disWorkInfo.data.uid));  //作业uid
         paramsList.add(new BasicNameValuePair("id",disWorkInfo.data.id+""));  //作业uid
 
@@ -365,12 +365,12 @@ public class DispersiveWorkActivity extends BaseActivity {
             dialog.show();
         }
         List<String> paramsList = new ArrayList<>();
-        if (AppApplication.USER==null || AppApplication.USER.data==null){  //用户信息为空重新登录。
+        if (AppApplication.getUSER()==null || AppApplication.getUSER().data==null){  //用户信息为空重新登录。
             startActivity(new Intent(this, LoadingActivity.class));
             this.finish();
         }
         paramsList.add("userId");
-        paramsList.add(AppApplication.USER.data.userId);
+        paramsList.add(AppApplication.getUSER().data.userId);
         paramsList.add("dispatchUid");
         paramsList.add(caseDisTemp.uid+"");
         HttpUtils.requestGet(URLs.FSX_WORK_INFO, paramsList, HttpRequestTool.FSX_WORK_INFO);
@@ -536,7 +536,7 @@ public class DispersiveWorkActivity extends BaseActivity {
 
         List<String> paramsList = new ArrayList<String>();
         paramsList.add("userId");
-        paramsList.add(AppApplication.USER.data.userId);
+        paramsList.add(AppApplication.getUSER().data.userId);
         paramsList.add("workUid");
         paramsList.add(disWorkInfo.data.uid);
         HttpUtils.requestGet(URLs.FSX_WORK_IMG_DOWLOAD, paramsList, HttpRequestTool.FSX_WORK_IMG_DOWLOAD);

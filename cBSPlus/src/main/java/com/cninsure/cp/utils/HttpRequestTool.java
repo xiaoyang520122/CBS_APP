@@ -36,6 +36,7 @@ import com.cninsure.cp.entity.PersistentCookieStore;
 
 public class HttpRequestTool {
 
+
 	/**保存clientID**/
 	public final static int RECIVE_CID = 1000;
 	/**通过密码登录**/

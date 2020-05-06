@@ -20,8 +20,8 @@ public class URLs implements Serializable {
 	 */
 	/**===主接口(登录架构等)===**/
 //	private final static String IPHOME="http://sys.cnsurvey.cn:8008/cninsure-pz-sys-ws";//车险外网
-//	private final static String IPHOME="http://193.112.173.125:8084/cninsure-pz-sys-ws";//车险外网测试 对应：http://sysweb.cnsurvey.cn:8085
-	private final static String IPHOME="http://10.80.13.194:8081/cninsure-pz-sys-ws";//车险外网测试 -冬阳
+	private final static String IPHOME="http://193.112.173.125:8084/cninsure-pz-sys-ws";//车险外网测试 对应：http://sysweb.cnsurvey.cn:8085
+//	private final static String IPHOME="http://10.80.13.247:8081/cninsure-pz-sys-ws";//车险外网测试 -冬阳
 //	private final static String IPHOME="http://10.80.8.16:8081/cninsure-pz-sys-ws"; //车险外网测试 -邹工
 
 	

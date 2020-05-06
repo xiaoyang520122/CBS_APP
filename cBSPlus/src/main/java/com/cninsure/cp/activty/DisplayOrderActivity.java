@@ -429,7 +429,7 @@ public class DisplayOrderActivity extends BaseActivity implements OnClickListene
 //		}
 		showLoadingDialog();
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 		params.add(new BasicNameValuePair("workUid", getIntent().getStringExtra("orderUid")));
 //		params.add(new BasicNameValuePair("message", leavingText.getText().toString()));
 		HttpUtils.requestPost(URLs.SAVE_LEAVING_MESSAGE, params, HttpRequestTool.SAVE_LEAVING_MESSAGE);
@@ -468,7 +468,7 @@ public class DisplayOrderActivity extends BaseActivity implements OnClickListene
 	private void downloadWorkPhotos() {
 		List<String> params = new ArrayList<String>(2);
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("workId");
 		params.add(getIntent().getStringExtra("orderUid"));
 		HttpUtils.requestGet(URLs.GetWorkPhoto(), params, HttpRequestTool.GET_WORK_PHOTO);
@@ -547,7 +547,7 @@ public class DisplayOrderActivity extends BaseActivity implements OnClickListene
 			return;
 		}
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 		params.add(new BasicNameValuePair("orderUid", QorderUid));
 		// if ("SAVE_EVENT".equals(head)) {
 //		ToastUtil.showToastShort(getApplicationContext(), data);
@@ -587,7 +587,7 @@ public class DisplayOrderActivity extends BaseActivity implements OnClickListene
 	public void getDefaulMessage(int code) {
 		List<String> params = new ArrayList<String>();
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("orderUid");
 		params.add(getIntent().getStringExtra("orderUid"));
 		showLoadingDialog();
@@ -629,7 +629,7 @@ public class DisplayOrderActivity extends BaseActivity implements OnClickListene
 		case HttpRequestTool.GET_WORK_MESSAGES:
 			tempstr="javascript:getMobileWeb(\'{\"headMessage\":" + headMessage +"," +
 					"\"contentMessage\":" + values.get(0).getValue() + "," +
-					"\"userInfo\":" + JSON.toJSONString(AppApplication.USER) + ",\"orderStatus\":"+status+"}\')";
+					"\"userInfo\":" + JSON.toJSONString(AppApplication.getUSER()) + ",\"orderStatus\":"+status+"}\')";
 			contentMessage=JSON.parseObject(values.get(0).getValue(), WorkMessageEntity.class);
 			getOCREntity();
 			Log.e("JsonHttpUtils", "3********************************=="+tempstr);
@@ -806,7 +806,7 @@ public class DisplayOrderActivity extends BaseActivity implements OnClickListene
 	private void downloadLeavingMsg(){
 		List<String> params = new ArrayList<String>();
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("workUid");
 		params.add(getIntent().getStringExtra("orderUid"));
 		showLoadingDialog();//可以不显示等待界面
@@ -817,7 +817,7 @@ public class DisplayOrderActivity extends BaseActivity implements OnClickListene
 		/**获取审核信息*/
 		List<String> params2 = new ArrayList<String>();
 		params2.add("userId");
-		params2.add(AppApplication.USER.data.userId);
+		params2.add(AppApplication.getUSER().data.userId);
 		params2.add("orderUid");
 		params2.add(getIntent().getStringExtra("orderUid"));
 		HttpUtils.requestGet(URLs.GET_ORDER_STATUS, params2, HttpRequestTool.GET_ORDER_STATUS);
@@ -831,7 +831,7 @@ public class DisplayOrderActivity extends BaseActivity implements OnClickListene
 			isAudit = false;
 			showLoadingDialog();
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+			params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 			params.add(new BasicNameValuePair("orderUid", QorderUid));
 			HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
 		}else {

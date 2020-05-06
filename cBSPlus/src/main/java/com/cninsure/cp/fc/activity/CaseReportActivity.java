@@ -128,7 +128,7 @@ public class CaseReportActivity extends BaseActivity {
 //		params = new ArrayList<NameValuePair>();
 //		@SuppressWarnings("rawtypes")
 //		APPRequestModel<PagedRequest> appre = new APPRequestModel<PagedRequest>();
-//		appre.userToken = AppApplication.USER.data.targetOid;
+//		appre.userToken = AppApplication.getUSER().data.targetOid;
 //		@SuppressWarnings("rawtypes")
 //		PagedRequest<Map> requestData = new PagedRequest<Map>();
 //		requestData.pageSize = 500;

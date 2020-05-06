@@ -374,7 +374,7 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 				// outStream.write(data);
 
 //				// 将文件转化为bitmap以便添加日期水印
-//				Bitmap bitmap = ImageUtil.drawTextToRightBottom(CXPhotoActivity.this, BitmapFactory.decodeByteArray(data, 0, data.length), AppApplication.USER.data.name + " " + sf.format(new Date()),
+//				Bitmap bitmap = ImageUtil.drawTextToRightBottom(CXPhotoActivity.this, BitmapFactory.decodeByteArray(data, 0, data.length), AppApplication.getUSER().data.name + " " + sf.format(new Date()),
 //						10, Color.parseColor("#FF0000"), 5, 5);
 //				Bitmap watermark = BitmapFactory.decodeResource(getResources(), R.drawable.logo_water_mask);
 //				// 为bitmap以便添加图片水印

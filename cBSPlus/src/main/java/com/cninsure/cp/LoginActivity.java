@@ -9,6 +9,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -46,9 +47,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_login);
 		// com.getui.demo.DemoPushService 为第三方自定义推送服务
-		PushManager.getInstance().initialize(this.getApplicationContext(), com.cninsure.cp.service.CbsDemoService.class);
+//		PushManager.getInstance().initialize(this.getApplicationContext(), com.cninsure.cp.service.CbsDemoService.class);
 		// com.getui.demo.DemoIntentService 为第三方自定义的推送服务事件接收类
-		PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), com.cninsure.cp.service.CbsIntentService.class);
+//		PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), com.cninsure.cp.service.CbsIntentService.class);
 		EventBus.getDefault().register(this);
 		initView();
 		new PermissionApplicationUtil(this); //申请读写权限和拍照权限
@@ -77,7 +78,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 				jumpActivity(value.get(0).getValue());
 				break;
 			case 400:
-				DialogUtil.getAlertDialog(this,value.get(0).getValue()).show();
+				String msg = value.get(0).getValue();
+				alertDialog = DialogUtil.getAlertDialog(this,value.get(0).getValue());
+				alertDialog.show();
 				ToastUtil.showToastLong(this, value.get(0).getValue());
 				Log.i("JsonHttpUtils", "B400-LoginActivity请求返回数据为：" + value.get(0).getValue());
 				break;
@@ -89,8 +92,10 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		dialog.dismiss();
 	}
 
+	private Dialog alertDialog;
+
 	private void jumpActivity(String value) {
-		if ("99".equals(AppApplication.USER.data.userType)){//外部车童登录，跳转到外部车童界面
+		if ("99".equals(AppApplication.getUSER().data.userType)){//外部车童登录，跳转到外部车童界面
 			Intent intent=new Intent(this, DispersiveUserActivity.class);
 			LoginActivity.this.startActivity(intent);
 		}else{  //非外部车童
@@ -128,6 +133,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 	protected void onDestroy() {
 		super.onDestroy();
 		EventBus.getDefault().unregister(this);
+		if (alertDialog!=null && alertDialog.isShowing())
+		alertDialog.dismiss();
 	}
 	
 	@Override

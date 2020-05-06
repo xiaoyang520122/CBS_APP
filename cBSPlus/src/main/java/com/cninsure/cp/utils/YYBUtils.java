@@ -22,7 +22,7 @@ public class YYBUtils {
 	public static void downLoadAlldept() {
 		List<String> params = new ArrayList<String>();
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("type");
 		params.add("4");
 		params.add("grade");

@@ -278,7 +278,7 @@ public class YjxDispatchShenheActivity extends BaseActivity implements OnChecked
 	private void orderReject() {
 		LoadDialogUtil.setMessageAndShow(this, "努力处理中……");
 		final List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId + ""));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId + ""));
 		 params.add(new BasicNameValuePair("orderUid",  getIntent().getStringExtra("dispatchUid")));
 		 params.add(new BasicNameValuePair("id",  getIntent().getStringExtra("id")));
 		 params.add(new BasicNameValuePair("surveyDescription",workDataEn.surveyDescription));
@@ -301,7 +301,7 @@ public class YjxDispatchShenheActivity extends BaseActivity implements OnChecked
 	private void orderSHPass() {
 		LoadDialogUtil.setMessageAndShow(this, "努力处理中……");
 		final List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId + ""));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId + ""));
 		 params.add(new BasicNameValuePair("orderUid",  getIntent().getStringExtra("dispatchUid")));
 		 params.add(new BasicNameValuePair("id",  getIntent().getStringExtra("id")));
 		 params.add(new BasicNameValuePair("surveyDescription",workDataEn.surveyDescription));
@@ -428,7 +428,7 @@ public class YjxDispatchShenheActivity extends BaseActivity implements OnChecked
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId + ""));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId + ""));
 		params.add(new BasicNameValuePair("dispatchId", dispatchEn.id + ""));
 		params.add(new BasicNameValuePair("dispatchUid", dispatchEn.uid));
 		params.add(new BasicNameValuePair("surveyTime", getTextInfo((TextView) workView.findViewById(R.id.YJXWV_lookTime), true)));
@@ -445,7 +445,7 @@ public class YjxDispatchShenheActivity extends BaseActivity implements OnChecked
 		}
 		// 委托信息
 		wtparams = new ArrayList<NameValuePair>();
-		wtparams.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId + ""));
+		wtparams.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId + ""));
 		String typeName = getTextInfo(TypeSp, true, "未选择险种方式！");
 		String typeId = InsuranceTypeUtil.getTypeIdByName(typeName);
 		String SmallType = getTextInfo(smallTypeSp, true, "未选择险种细类方式！");
@@ -744,7 +744,7 @@ public class YjxDispatchShenheActivity extends BaseActivity implements OnChecked
 		/**获取审核信息*/
 		List<String> params2 = new ArrayList<String>();
 		params2.add("userId");
-		params2.add(AppApplication.USER.data.userId);
+		params2.add(AppApplication.getUSER().data.userId);
 		params2.add("orderUid");
 		params2.add(getIntent().getStringExtra("dispatchUid"));
 		HttpUtils.requestGet(URLs.GET_ORDER_STATUS, params2, HttpRequestTool.GET_ORDER_STATUS);

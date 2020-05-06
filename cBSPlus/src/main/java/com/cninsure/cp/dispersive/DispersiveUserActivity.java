@@ -27,6 +27,7 @@ import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.ToastUtil;
 import com.cninsure.cp.utils.UserInfoUtil;
+import com.cninsure.cp.utils.permission_util.FloatingWindowPermissionUtil;
 import com.cninsure.cp.utils.permission_util.PermissionApplicationUtil;
 
 import org.apache.http.NameValuePair;
@@ -59,6 +60,7 @@ public class DispersiveUserActivity extends BaseActivity implements View.OnClick
         getDefaulList(); //加载空数据
         getDefaulData(0); //默认重第一条开始查询
         new PermissionApplicationUtil(this); //申请读写权限和拍照权限
+        FloatingWindowPermissionUtil.isAppOps(this);  //悬浮弹框权限检查
     }
 
     private void getDefaulList(){
@@ -89,11 +91,11 @@ public class DispersiveUserActivity extends BaseActivity implements View.OnClick
     private void getDefaulData(int startNum) {
         paramsList = new ArrayList<String>(5);
         paramsList.add("userId");
-        if (AppApplication.USER==null || AppApplication.USER.data==null){  //用户信息为空重新登录。
+        if (AppApplication.getUSER()==null || AppApplication.getUSER().data==null){  //用户信息为空重新登录。
             startActivity(new Intent(this, LoadingActivity.class));
             this.finish();
         }
-        paramsList.add(AppApplication.USER.data.userId);
+        paramsList.add(AppApplication.getUSER().data.userId);
         paramsList.add("size");
         paramsList.add("10");
         paramsList.add("start");
@@ -101,7 +103,7 @@ public class DispersiveUserActivity extends BaseActivity implements View.OnClick
         paramsList.add("statusArr");
         paramsList.add(oderStatus);
         paramsList.add("ggsId");
-        paramsList.add(AppApplication.USER.data.userId);
+        paramsList.add(AppApplication.getUSER().data.userId);
         HttpUtils.requestGet(URLs.FSX_GGS_ORDER_LIST, paramsList, HttpRequestTool.FSX_GGS_ORDER_LIST);
         LoadDialogUtil.setMessageAndShow(this, "请稍后……");
     }

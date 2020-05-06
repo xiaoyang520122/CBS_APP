@@ -143,7 +143,7 @@ public class AddBanckCardActivity extends BaseActivity {
 				@Override
 				public void onClick(DialogInterface arg0, int arg1) {
 					List<NameValuePair> NVparames = new ArrayList<NameValuePair>(1);
-					NVparames.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+					NVparames.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 					NVparames.add(new BasicNameValuePair("payeeUserName", name));
 					NVparames.add(new BasicNameValuePair("payeeUserIdcard", userInfo.data.idCard));
 					NVparames.add(new BasicNameValuePair("payeeUserBankName", bankName));

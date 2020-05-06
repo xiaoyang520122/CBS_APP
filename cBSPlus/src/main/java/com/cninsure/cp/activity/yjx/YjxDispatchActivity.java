@@ -331,7 +331,7 @@ public class YjxDispatchActivity extends BaseActivity {
 	private void submitDispatchInfo(int dispatchType) {
 		
 		final List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId + ""));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId + ""));
 		params.add(new BasicNameValuePair("dispatchList[0].caseBaoanUid", caseBaoanEn.uid)); //接报案UID
 		params.add(new BasicNameValuePair("dispatchList[0].caseBaoanNo", caseBaoanEn.caseBaoanNo)); //接报案编号
 		if (ChoiceOrgYybEn==null) {

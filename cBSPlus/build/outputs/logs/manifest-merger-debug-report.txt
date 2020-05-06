@@ -1,14 +1,15 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-375:12
-INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-375:12
-INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-375:12
-INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-375:12
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-332:12
+INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-332:12
+INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-332:12
+INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-332:12
 MERGED from [:library] E:\AndroidProject\CBS_APP\library\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:toggleButtonLib] E:\AndroidProject\CBS_APP\toggleButtonLib\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-12:12
 MERGED from [com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:2:1-18:12
 MERGED from [androidx.multidex:multidex:2.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\ad9b04747fee410f8b2a24dce3cc4abe\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.0.0-alpha1] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\112d6f1c733314fe0b032419405989a4\appcompat-1.0.0-alpha1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:2:1-73:12
 MERGED from [androidx.fragment:fragment:1.0.0-alpha1] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\0c88baf2aa92327f2d0f66c3bae7b386\fragment-1.0.0-alpha1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0-alpha1] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\705509a25a1a917b5a1969d2aa0ce3bb\vectordrawable-animated-1.0.0-alpha1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0-alpha1] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\d06cb9c7cc3a28c04d22a0542c766e67\legacy-support-core-ui-1.0.0-alpha1\AndroidManifest.xml:17:1-22:12
@@ -32,9 +33,9 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0-alpha1] D:\Users\xy-wm\A
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0-alpha1] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\2074bb1b7ad04b6912d1bd16ddad3148\lifecycle-viewmodel-2.0.0-alpha1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0-alpha1] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\57ec1b816b5e7d3f5be3b655c2f4202b\lifecycle-livedata-core-2.0.0-alpha1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0-alpha1] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\24c994ee703a7e7aebd5fc28223f3a9f\core-runtime-2.0.0-alpha1\AndroidManifest.xml:17:1-22:12
-INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-375:12
-INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-375:12
-INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-375:12
+INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-332:12
+INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-332:12
+INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:2:1-332:12
 	package
 		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:3:5-30
 		INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml
@@ -62,11 +63,13 @@ ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:13:6-1
 	android:anyDensity
 		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:14:9-34
 application
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:20:5-287:19
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:20:5-241:19
 MERGED from [:library] E:\AndroidProject\CBS_APP\library\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-20
 MERGED from [:library] E:\AndroidProject\CBS_APP\library\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-20
 MERGED from [com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:11:5-16:19
 MERGED from [com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:11:5-16:19
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:24:5-71:19
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:24:5-71:19
 MERGED from [androidx.core:core:1.0.0-alpha1] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\3f01129468fbdd45d038fb8b3be8c763\core-1.0.0-alpha1\AndroidManifest.xml:22:5-89
 MERGED from [androidx.core:core:1.0.0-alpha1] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\3f01129468fbdd45d038fb8b3be8c763\core-1.0.0-alpha1\AndroidManifest.xml:22:5-89
 	android:appComponentFactory
@@ -81,6 +84,8 @@ MERGED from [androidx.core:core:1.0.0-alpha1] D:\Users\xy-wm\AndroidStudioFile\.
 		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:26:9-40
 	android:networkSecurityConfig
 		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:25:9-60
+	android:usesCleartextTraffic
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:24:18-53
 	android:name
 		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:21:9-54
 uses-library#org.apache.http.legacy
@@ -309,316 +314,244 @@ activity#com.cninsure.cp.dispersive.DispersiveWorkActivity
 ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:156:9-157:20
 	android:name
 		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:156:19-83
+service#com.cninsure.cp.service.DemoPushService
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:161:9-165:45
+	android:process
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:165:13-43
+	android:label
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:164:13-40
+	android:exported
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:163:13-36
+	android:name
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:162:13-67
+service#com.cninsure.cp.service.DemoIntentService
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:166:9-168:71
+	android:permission
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:168:13-69
+	android:name
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:167:13-69
 meta-data#com.baidu.lbsapi.API_KEY
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:160:9-163:21
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:172:9-175:21
 	android:value
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:162:13-61
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:174:13-61
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:161:13-52
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:173:13-52
 service#com.baidu.location.f
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:165:9-169:19
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:177:9-181:19
 	android:process
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:168:13-38
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:180:13-38
 	android:enabled
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:167:13-35
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:179:13-35
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:166:13-48
-service#com.cninsure.cp.service.CbsDemoService
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:172:9-177:19
-	android:process
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:176:13-43
-	android:label
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:175:13-40
-	android:exported
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:174:13-36
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:173:13-66
-service#com.cninsure.cp.service.CbsIntentService
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:178:9-76
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:178:18-73
-meta-data#PUSH_APPID
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:180:9-182:54
-	android:value
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:182:13-51
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:181:13-38
-meta-data#PUSH_APPKEY
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:183:9-185:54
-	android:value
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:185:13-51
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:184:13-39
-meta-data#PUSH_APPSECRET
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:186:9-188:54
-	android:value
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:188:13-51
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:187:13-42
-service#com.igexin.sdk.PushService
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:190:9-198:19
-	android:process
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:194:13-43
-	android:label
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:193:13-47
-	android:exported
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:192:13-36
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:191:13-54
-intent-filter#action:name:com.igexin.sdk.action.service.message
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:195:13-197:29
-action#com.igexin.sdk.action.service.message
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:196:17-80
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:196:25-77
-receiver#com.igexin.sdk.PushReceiver
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:200:9-211:20
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:200:19-61
-intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED+action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MEDIA_MOUNTED+action:name:android.intent.action.USER_PRESENT+action:name:android.net.conn.CONNECTIVITY_CHANGE+action:name:com.igexin.sdk.action.refreshls
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:201:13-210:29
-action#android.intent.action.BOOT_COMPLETED
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:202:17-79
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:202:25-76
-action#android.net.conn.CONNECTIVITY_CHANGE
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:203:17-79
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:203:25-76
-action#android.intent.action.USER_PRESENT
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:204:17-77
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:204:25-74
-action#com.igexin.sdk.action.refreshls
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:205:17-74
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:205:25-71
-action#android.intent.action.MEDIA_MOUNTED
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:207:17-78
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:207:25-75
-action#android.intent.action.ACTION_POWER_CONNECTED
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:208:17-87
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:208:25-84
-action#android.intent.action.ACTION_POWER_DISCONNECTED
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:209:17-90
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:209:25-87
-activity#com.igexin.sdk.PushActivity
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:213:9-219:75
-	android:process
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:217:13-43
-	android:excludeFromRecents
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:215:13-46
-	android:exported
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:216:13-37
-	android:theme
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:219:13-72
-	android:taskAffinity
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:218:13-67
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:214:13-55
-activity#com.igexin.sdk.GActivity
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:220:9-226:75
-	android:process
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:224:13-43
-	android:excludeFromRecents
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:222:13-46
-	android:exported
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:223:13-36
-	android:theme
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:226:13-72
-	android:taskAffinity
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:225:13-67
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:221:13-52
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:178:13-48
 activity#com.mob.tools.MobUIShell
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:229:9-259:20
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:183:9-213:20
 	android:windowSoftInputMode
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:233:13-67
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:187:13-67
 	android:configChanges
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:231:13-74
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:185:13-74
+	android:theme
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:186:13-72
+	android:name
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:184:13-52
+intent-filter#action:name:com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY+category:name:android.intent.category.DEFAULT
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:190:13-194:29
+action#com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:191:17-92
+	android:name
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:191:25-89
+category#android.intent.category.DEFAULT
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:193:17-76
+	android:name
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:193:27-73
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:line.1477692153
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:197:13-204:29
+data
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:198:17-58
+	android:scheme
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:198:23-55
+action#android.intent.action.VIEW
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:200:17-69
+	android:name
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:200:25-66
+category#android.intent.category.BROWSABLE
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:202:17-78
+	android:name
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:202:27-75
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:tencent100371282
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:207:13-212:29
+activity#cn.sharesdk.tencent.qq.ReceiveActivity
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:214:9-226:20
+	android:launchMode
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:216:13-44
+	android:noHistory
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:217:13-37
+	android:name
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:215:13-66
+activity#cn.sharesdk.demo.wxapi.WXEntryActivity
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:227:9-232:75
+	android:screenOrientation
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:231:13-49
+	android:exported
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:230:13-36
+	android:configChanges
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:229:13-74
 	android:theme
 		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:232:13-72
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:230:13-52
-intent-filter#action:name:com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY+category:name:android.intent.category.DEFAULT
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:236:13-240:29
-action#com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:237:17-92
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:237:25-89
-category#android.intent.category.DEFAULT
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:239:17-76
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:239:27-73
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:line.1477692153
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:243:13-250:29
-data
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:244:17-58
-	android:scheme
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:244:23-55
-action#android.intent.action.VIEW
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:246:17-69
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:246:25-66
-category#android.intent.category.BROWSABLE
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:248:17-78
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:248:27-75
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:tencent100371282
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:253:13-258:29
-activity#cn.sharesdk.tencent.qq.ReceiveActivity
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:260:9-272:20
-	android:launchMode
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:262:13-44
-	android:noHistory
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:263:13-37
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:261:13-66
-activity#cn.sharesdk.demo.wxapi.WXEntryActivity
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:273:9-278:75
-	android:screenOrientation
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:277:13-49
-	android:exported
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:276:13-36
-	android:configChanges
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:275:13-74
-	android:theme
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:278:13-72
-	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:274:13-66
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:228:13-66
 meta-data#Mob-AppKey
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:280:9-282:45
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:234:9-236:45
 	android:value
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:282:13-42
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:236:13-42
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:281:13-38
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:235:13-38
 meta-data#Mob-AppSecret
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:283:9-285:64
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:237:9-239:64
 	android:value
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:285:13-61
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:239:13-61
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:284:13-41
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:238:13-41
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:291:5-75
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:245:5-75
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:7:5-75
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:7:5-75
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:291:22-72
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:245:22-72
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:292:5-79
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:246:5-79
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:8:5-79
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:8:5-79
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:292:22-76
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:246:22-76
 uses-permission#android.permission.CHANGE_WIFI_STATE
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:293:5-76
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:247:5-76
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:293:22-73
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:247:22-73
 uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:294:5-76
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:248:5-76
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:9:5-76
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:9:5-76
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:294:22-73
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:248:22-73
 uses-permission#android.permission.WAKE_LOCK
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:295:5-68
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:249:5-68
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:295:22-65
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:249:22-65
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:296:5-81
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:250:5-81
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:10:5-81
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:10:5-81
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:296:22-78
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:250:22-78
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:297:5-81
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:251:5-81
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:11:5-81
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:11:5-81
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:297:22-78
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:251:22-78
 uses-permission#android.permission.VIBRATE
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:298:5-66
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:252:5-66
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:12:5-66
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:12:5-66
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:298:22-63
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:252:22-63
 uses-permission#android.permission.GET_TASKS
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:299:5-68
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:253:5-68
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:13:5-68
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:13:5-68
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:299:22-65
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:253:22-65
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:301:5-78
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:255:5-78
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:301:22-75
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:255:22-75
 uses-permission#getui.permission.GetuiService.com.cninsure.cp
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:303:5-85
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:257:5-85
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:15:5-86
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:303:22-82
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:257:22-82
 permission#getui.permission.GetuiService.com.cninsure.cp
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:305:5-308:18
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:259:5-262:18
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:17:5-19:44
 	android:protectionLevel
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:307:9-41
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:261:9-41
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:306:9-69
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:260:9-69
 uses-permission#android.permission.BLUETOOTH
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:313:5-68
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:267:5-68
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:313:22-65
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:267:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:314:5-74
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:268:5-74
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:314:22-71
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:268:22-71
+uses-permission#android.permission.ACCESS_BACKGROUND_LOCATION
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:272:5-85
+	android:name
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:272:22-82
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:316:5-79
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:273:5-79
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:316:22-76
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:273:22-76
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:317:5-81
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:274:5-81
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:317:22-78
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:274:22-78
 uses-permission#android.permission.INTERNET
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:343:5-67
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:300:5-67
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:6:5-67
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:6:5-67
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:343:22-64
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:300:22-64
 uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:345:5-346:23
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:302:5-303:23
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:345:22-81
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:302:22-81
 uses-permission#android.permission.CALL_PHONE
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:348:5-349:23
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:305:5-306:23
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:348:22-66
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:305:22-66
 uses-permission#android.permission.CAMERA
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:350:5-65
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:307:5-65
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:350:22-62
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:307:22-62
 uses-permission#android.permission.FLASHLIGHT
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:352:5-69
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:309:5-69
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:352:22-66
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:309:22-66
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:353:5-80
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:310:5-80
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:353:22-77
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:310:22-77
 uses-feature#android.hardware.autofocus
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:356:5-63
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:313:5-63
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:356:19-60
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:313:19-60
 uses-feature#android.hardware.camera
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:359:6-60
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:316:6-60
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:359:20-58
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:316:20-58
 uses-feature#android.hardware.camera.autofocus
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:361:7-71
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:318:7-71
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:361:21-69
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:318:21-69
 uses-feature#android.hardware.camera.flash
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:363:7-67
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:320:7-67
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:363:21-65
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:320:21-65
 uses-feature#android.hardware.camera.front
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:365:7-67
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:322:7-67
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:365:21-65
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:322:21-65
 uses-permission#com.android.launcher.permission.READ_SETTINGS
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:371:1-81
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:328:1-81
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:371:18-78
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:328:18-78
 uses-permission#android.permission.WRITE_SETTINGS
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:372:1-69
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:329:1-69
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:372:18-66
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:329:18-66
 uses-sdk
 INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml
@@ -703,3 +636,95 @@ ADDED from [com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidSt
 		ADDED from [com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:15:13-46
 	android:name
 		ADDED from [com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:14:13-108
+uses-permission#getui.permission.GetuiService.${applicationId}
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:15:5-86
+permission#getui.permission.GetuiService.${applicationId}
+MERGED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:17:5-19:44
+meta-data#PUSH_APPID
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:27:9-29:47
+	android:value
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:29:13-44
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:28:13-38
+meta-data#PUSH_APPKEY
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:30:9-32:48
+	android:value
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:32:13-45
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:31:13-39
+meta-data#PUSH_APPSECRET
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:33:9-35:51
+	android:value
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:35:13-48
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:34:13-42
+service#com.igexin.sdk.PushService
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:37:9-42:46
+	android:process
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:42:13-43
+	android:label
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:40:13-47
+	android:exported
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:39:13-37
+	android:permission
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:41:13-69
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:38:13-54
+receiver#com.igexin.sdk.PushReceiver
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:44:9-54:20
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:44:19-61
+intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED+action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MEDIA_MOUNTED+action:name:android.intent.action.USER_PRESENT+action:name:android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:45:13-53:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:46:17-79
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:46:25-76
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:47:17-79
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:47:25-76
+action#android.intent.action.USER_PRESENT
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:48:17-77
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:48:25-74
+action#android.intent.action.MEDIA_MOUNTED
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:50:17-78
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:50:25-75
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:51:17-87
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:51:25-84
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:52:17-90
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:52:25-87
+activity#com.igexin.sdk.PushActivity
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:56:9-62:75
+	android:process
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:60:13-43
+	android:excludeFromRecents
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:58:13-46
+	android:exported
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:59:13-37
+	android:theme
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:62:13-72
+	android:taskAffinity
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:61:13-67
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:57:13-55
+activity#com.igexin.sdk.GActivity
+ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:63:9-69:75
+	android:process
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:67:13-43
+	android:excludeFromRecents
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:65:13-46
+	android:exported
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:66:13-36
+	android:theme
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:69:13-72
+	android:taskAffinity
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:68:13-67
+	android:name
+		ADDED from [com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:64:13-52

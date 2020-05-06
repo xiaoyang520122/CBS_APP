@@ -47,7 +47,7 @@ public class PhotoUploadUtil {
 		Log.e("JsonHttpUtils", "上传图片请求地址："+uploadPath);
 		
 		RequestParams params = new RequestParams("UTF-8");
-		params.addBodyParameter("userId",  AppApplication.USER.data.userId);
+		params.addBodyParameter("userId",  AppApplication.getUSER().data.userId);
 		for (NameValuePair valuePair:httpParams) {
 			if ("FSX_UP_WORK_IMG".equals(valuePair.getName())){  //分散型的需要增加一个图片类型参数
 				params.addBodyParameter("imageType", fileUrls.get(uploadPoint).getName());
@@ -170,7 +170,7 @@ public class PhotoUploadUtil {
 		Log.e("JsonHttpUtils", "上传图片请求地址：" + uploadPath);
 
 		RequestParams params = new RequestParams("UTF-8");
-		params.addBodyParameter("userId", AppApplication.USER.data.userId);
+		params.addBodyParameter("userId", AppApplication.getUSER().data.userId);
 		params.addBodyParameter("client", "android");
 		params.addBodyParameter("timestamp", new Date().getTime() + "");
 		params.addBodyParameter("digest", MD5Test.GetMD5Code("nomessagedigest"));
@@ -403,7 +403,7 @@ public class PhotoUploadUtil {
 		Log.e("JsonHttpUtils", "OCR上传图片请求地址："+uploadPath);
 		
 		RequestParams params = new RequestParams("UTF-8");
-		params.addBodyParameter("userId",  AppApplication.USER.data.userId);
+		params.addBodyParameter("userId",  AppApplication.getUSER().data.userId);
 		params.addBodyParameter("client", "android");
 		params.addBodyParameter("timestamp", new Date().getTime()+"");
 		params.addBodyParameter("digest", MD5Test.GetMD5Code("nomessagedigest"));

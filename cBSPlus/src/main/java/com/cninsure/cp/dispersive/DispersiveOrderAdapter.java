@@ -339,7 +339,7 @@ public class DispersiveOrderAdapter extends BaseAdapter {
 //                paramsList = new ArrayList<String>(2);
                 paramsList.add(new BasicNameValuePair("uid",caseDisTemp.uid));
                 paramsList.add(new BasicNameValuePair("accept",accCode+""));
-                paramsList.add(new BasicNameValuePair("userId",AppApplication.USER.data.userId+""));
+                paramsList.add(new BasicNameValuePair("userId",AppApplication.getUSER().data.userId+""));
                 paramsList.add(new BasicNameValuePair("refuseReason",refuseReason+""));
                 HttpUtils.requestPost(URLs.FSX_GGS_ACCEPT_ORDER, paramsList, HttpRequestTool.FSX_GGS_ACCEPT_ORDER);
             }
@@ -374,7 +374,7 @@ public class DispersiveOrderAdapter extends BaseAdapter {
             public void onClick(DialogInterface arg0, int arg1) {
                 LoadDialogUtil.setMessageAndShow(context, "努力处理中……");
                 List<NameValuePair> paramsList = new ArrayList<NameValuePair>(5);
-                paramsList.add(new BasicNameValuePair("userId",AppApplication.USER.data.userId+""));
+                paramsList.add(new BasicNameValuePair("userId",AppApplication.getUSER().data.userId+""));
                 if (arrive==0){ //取消任務
                     paramsList.add(new BasicNameValuePair("uid",caseDisTemp.uid));
                     paramsList.add(new BasicNameValuePair("cancelReason",cancelReason+""));

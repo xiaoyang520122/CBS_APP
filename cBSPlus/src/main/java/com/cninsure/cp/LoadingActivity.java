@@ -38,9 +38,9 @@ public class LoadingActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.loading_page_activity);
 		// com.getui.demo.DemoPushService 为第三方自定义推送服务
-		PushManager.getInstance().initialize(this.getApplicationContext(), com.cninsure.cp.service.CbsDemoService.class);
+//		PushManager.getInstance().initialize(this.getApplicationContext(), com.cninsure.cp.service.CbsDemoService.class);
 		// com.getui.demo.DemoIntentService 为第三方自定义的推送服务事件接收类
-		PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), com.cninsure.cp.service.CbsIntentService.class);
+//		PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), com.cninsure.cp.service.CbsIntentService.class);
 		EventBus.getDefault().register(this);
 //		startService(new Intent(this, LocationService.class));
 		sleepTime();
@@ -88,7 +88,7 @@ public class LoadingActivity extends BaseActivity {
 
 	/***更具用户类型判断跳转的Activity*/
 	private void jumpActivity(String value) {
-		if ("99".equals(AppApplication.USER.data.userType)){//外部车童登录，跳转到外部车童界面
+		if ("99".equals(AppApplication.getUSER().data.userType)){//外部车童登录，跳转到外部车童界面
 			Intent intent=new Intent(this, DispersiveUserActivity.class);
 			LoadingActivity.this.startActivity(intent);
 		}else{  //非外部车童

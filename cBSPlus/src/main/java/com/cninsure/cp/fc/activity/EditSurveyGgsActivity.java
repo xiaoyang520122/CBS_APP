@@ -129,7 +129,7 @@ public class EditSurveyGgsActivity extends BaseActivity implements OnClickListen
 	private void downLoadAlldept() {
 		List<String> params = new ArrayList<String>();
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("type");
 		params.add("4");
 		params.add("grade");
@@ -288,7 +288,7 @@ public class EditSurveyGgsActivity extends BaseActivity implements OnClickListen
 		params = new ArrayList<NameValuePair>();
 		loadDialog.setMessage("努力加载中……").show();
 		APPRequestModel<Map<String, Object>> appre0 = new APPRequestModel<Map<String, Object>>();
-		appre0.userToken = AppApplication.USER.data.targetOid;
+		appre0.userToken = AppApplication.getUSER().data.targetOid;
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("caseType", caseTypeSpinner.getSelectedItemPosition() + 1);
 		map.put("devote", Mydevote);

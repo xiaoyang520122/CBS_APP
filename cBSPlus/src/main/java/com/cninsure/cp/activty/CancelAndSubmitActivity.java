@@ -152,7 +152,7 @@ public class CancelAndSubmitActivity extends BaseActivity implements OnCheckedCh
 	private void dowLoadingDataCX(int startPoint) {
 		paramsList = new ArrayList<String>(4);
 		paramsList.add("userId");
-		paramsList.add(AppApplication.USER.data.userId);
+		paramsList.add(AppApplication.getUSER().data.userId);
 		paramsList.add("size");	
 		paramsList.add(10 + "");
 		paramsList.add("orderStatus");
@@ -186,7 +186,7 @@ public class CancelAndSubmitActivity extends BaseActivity implements OnCheckedCh
 		params = new ArrayList<NameValuePair>();
 		@SuppressWarnings("rawtypes")
 		APPRequestModel<PagedRequest> appre = new APPRequestModel<PagedRequest>();
-		appre.userToken = AppApplication.USER.data.targetOid;
+		appre.userToken = AppApplication.getUSER().data.targetOid;
 		@SuppressWarnings("rawtypes")
 		PagedRequest<Map> requestData = new PagedRequest<Map>();
 		requestData.pageNo = pagePoint;

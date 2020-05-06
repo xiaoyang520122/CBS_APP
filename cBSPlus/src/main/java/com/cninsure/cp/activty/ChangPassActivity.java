@@ -127,9 +127,9 @@ public class ChangPassActivity extends BaseActivity implements OnClickListener {
 			DialogUtil.getErrDialog(this, "手机号或密码不能为空！").show();
 		}else {
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+			params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 			params.add(new BasicNameValuePair("type", "2"));
-			params.add(new BasicNameValuePair("account", AppApplication.USER.data.loginName));
+			params.add(new BasicNameValuePair("account", AppApplication.getUSER().data.loginName));
 			params.add(new BasicNameValuePair("mobile", phonenum));
 			params.add(new BasicNameValuePair("oldPassword", password));
 			HttpUtils.requestPost(URLs.ChangPhone(), params, HttpRequestTool.CHANG_PASS);
@@ -150,9 +150,9 @@ public class ChangPassActivity extends BaseActivity implements OnClickListener {
 			return;
 		}
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 //		params.add(new BasicNameValuePair("type", "1"));
-//		params.add(new BasicNameValuePair("account", AppApplication.USER.data.loginName));
+//		params.add(new BasicNameValuePair("account", AppApplication.getUSER().data.loginName));
 //		params.add(new BasicNameValuePair("mobile", ""));
 		params.add(new BasicNameValuePair("oldPassword", oldpassstr));
 		params.add(new BasicNameValuePair("newPassword", newpassstr1));

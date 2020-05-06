@@ -159,7 +159,7 @@ deputeItem 水险委托事项
 		params = new ArrayList<NameValuePair>();
 		loadDialog.setMessage("努力加载中……").show();
 		APPRequestModel<String[]> appre = new APPRequestModel<String[]>();
-		appre.userToken = AppApplication.USER.data.targetOid;
+		appre.userToken = AppApplication.getUSER().data.targetOid;
 		appre.requestData = ZDparamsStr;
 		params.add(new BasicNameValuePair("requestData", JSON.toJSONString(appre)));
 		HttpUtils.requestPost(URLs.FC_GET_DICT_LIST, params, HttpRequestTool.FC_GET_DICT_LIST);
@@ -172,7 +172,7 @@ deputeItem 水险委托事项
 		params = new ArrayList<NameValuePair>();
 		loadDialog.setMessage("努力加载中……").show();
 		APPRequestModel<String> appre=new APPRequestModel<String>();
-		appre.userToken=AppApplication.USER.data.targetOid;
+		appre.userToken=AppApplication.getUSER().data.targetOid;
 		params.add(new BasicNameValuePair("requestData", JSON.toJSONString(appre)));
 		HttpUtils.requestPost(URLs.GET_FC_DZ_DICT, params, HttpRequestTool.GET_FC_DZ_DICT);
 	}
@@ -183,7 +183,7 @@ deputeItem 水险委托事项
 		params = new ArrayList<NameValuePair>();
 		@SuppressWarnings("rawtypes")
 		APPRequestModel<PagedRequest> appre = new APPRequestModel<PagedRequest>();
-		appre.userToken = AppApplication.USER.data.targetOid;
+		appre.userToken = AppApplication.getUSER().data.targetOid;
 		@SuppressWarnings("rawtypes")
 		PagedRequest<Map> requestData = new PagedRequest<Map>();
 		requestData.pageNo = 1;
@@ -200,14 +200,14 @@ deputeItem 水险委托事项
 	private void downloadDeptInfo() {
 		List<String> params=new ArrayList<String>();
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("type");
 		params.add("4");
 		params.add("grade");
 		params.add("4");//type=4&grade=4
 		downLoadAlldept();
 		params.add("organizationLoginId");
-		params.add(AppApplication.USER.data.organizationLoginId+"");
+		params.add(AppApplication.getUSER().data.organizationLoginId+"");
 		HttpUtils.requestGet(URLs.DOWNLOAD_DEPT_YYB, params, HttpRequestTool.DOWNLOAD_DEPT_YYB);
 	}
 	
@@ -215,7 +215,7 @@ deputeItem 水险委托事项
 	private void downLoadAlldept(){
 		List<String> params=new ArrayList<String>();
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("type");
 		params.add("4");
 		params.add("grade");
@@ -609,7 +609,7 @@ deputeItem 水险委托事项
 		/**险种大类： 1财险，2水险,spinner选中0是财险，1是水险**/
 //		((Spinner)creatCaseView.findViewById(R.id.CaseINPUT_SPINN1)).setAdapter(new ArrayAdapter<String>
 //		(this, R.layout.spinner_item, dictEntity.getDictArr(dictEntity.data.risk_type)));
-		((TextView)creatCaseView.findViewById(R.id.CaseINPUT_text3)).setText(AppApplication.USER.data.name);
+		((TextView)creatCaseView.findViewById(R.id.CaseINPUT_text3)).setText(AppApplication.getUSER().data.name);
 		((Spinner)creatCaseView.findViewById(R.id.CaseINPUT_SPINN1)).setAdapter(new ArrayAdapter<String>
 		(this, R.layout.spinner_item,new String[]{"财险","水险"}));
 		setonXZclick((Spinner)creatCaseView.findViewById(R.id.CaseINPUT_SPINN1));
@@ -655,7 +655,7 @@ deputeItem 水险委托事项
 			params = new ArrayList<NameValuePair>();
 			loadDialog.setMessage("努力加载中……").show();
 			APPRequestModel<Map<String, Long>> appre0 = new APPRequestModel<Map<String, Long>>();
-			appre0.userToken = AppApplication.USER.data.targetOid;
+			appre0.userToken = AppApplication.getUSER().data.targetOid;
 			Map<String, Long> map=new HashMap<String, Long>();
 			map.put("id", id);
 			appre0.requestData = map;
@@ -770,7 +770,7 @@ deputeItem 水险委托事项
 
 	/**提交接报案信息**/
 	private void SubmitCase(int submitCode) {
-		appRequestData.userToken=AppApplication.USER.data.targetOid;
+		appRequestData.userToken=AppApplication.getUSER().data.targetOid;
 		CaseManage casem;
 		if (caseBeanEntity!=null && caseBeanEntity.data!=null && caseBeanEntity.data.casem!=null) {
 			casem=caseBeanEntity.data.casem;
@@ -813,8 +813,8 @@ deputeItem 水险委托事项
 		casem.caseIndustry=dictEntity.data.case_industry.get(((Spinner)creatCaseView.findViewById(R.id.CaseINPUT_SPINN8))
 						.getSelectedItemPosition()).value+""; //所属行业
 		
-		casem.recCasePer= AppApplication.USER.data.name;//接案人
-		casem.reciverPhone=AppApplication.USER.data.mobile;//接案人电话
+		casem.recCasePer= AppApplication.getUSER().data.name;//接案人
+		casem.reciverPhone=AppApplication.getUSER().data.mobile;//接案人电话
 		
 		casem.revCaseDate=((TextView)creatCaseView.findViewById(R.id.CaseINPUT_text4)).getText().toString(); //接案日期
 		casem.checkAdd=((EditText)creatCaseView.findViewById(R.id.CaseINPUT_edit3)).getText().toString(); //查勘地点

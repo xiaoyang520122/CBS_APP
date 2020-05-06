@@ -225,7 +225,7 @@ public class YjxCaseBaoanAdapter extends BaseAdapter {
 	
 	/**跳转到调度界面*/
 	private void jumpTDispatchActivtity(int point){
-		String roleIds = AppApplication.USER.data.roleIds;
+		String roleIds = AppApplication.getUSER().data.roleIds;
 		if (roleIds.indexOf(URLs.getDispatchId()+"")>-1) {
 			Intent intent = new Intent(context, YjxDispatchActivity.class);
 			intent.putExtra("YjxCaseBaoanEntity", listDate.get(point));

@@ -61,6 +61,7 @@ import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.PopupWindowUtils;
 import com.cninsure.cp.utils.ToastUtil;
+import com.cninsure.cp.utils.permission_util.FloatingWindowPermissionUtil;
 import com.cninsure.cp.utils.permission_util.PermissionApplicationUtil;
 import com.cninsure.cp.view.LoadingDialog;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -94,6 +95,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 		instance = this;
 		initView();
 		new PermissionApplicationUtil(this); //申请读写权限和拍照权限
+		FloatingWindowPermissionUtil.isAppOps(this);  //悬浮弹框权限检查
 	}
 
 	private void initView() {
@@ -251,7 +253,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 	
 	/**判断用户是否有医健险案件录入权限，有就进入录入界面*/
 	private void jumpToYjxActivty(){
-		String roleIds = AppApplication.USER.data.roleIds;
+		String roleIds = AppApplication.getUSER().data.roleIds;
 		if (roleIds.indexOf(URLs.getRoleId()+"")>-1 || roleIds.indexOf(URLs.getDispatchId()+"")>-1) {
 			startActivity(new Intent(this, YjxTempStorageActivity.class));
 		}else {
@@ -435,13 +437,13 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 	private void excetAlert() {
 		if (f3==null) 
 			f3 = new MyCenterFragment();
-		DialogUtil.getAlertOnelistener(this, "确认退出当前用户“" + AppApplication.USER.data.name + "”吗？", new DialogInterface.OnClickListener() {
+		DialogUtil.getAlertOnelistener(this, "确认退出当前用户“" + AppApplication.getUSER().data.name + "”吗？", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				loadDialog.setMessage("努力加载中……！").show();
 				List<NameValuePair> NVparames = new ArrayList<NameValuePair>(1);
 				NVparames.add(new BasicNameValuePair("clientId", "0"));
-				NVparames.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+				NVparames.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 				HttpUtils.requestPost(URLs.UpCid(), NVparames, HttpRequestTool.CLEAN_CID);
 			}
 		}).show();
@@ -456,7 +458,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 		editor.putString("password", "");
 		editor.commit();
 		editor.clear();
-		AppApplication.USER = new User();
+		AppApplication.emptyUSER();
 		startActivity(new Intent(this, LoginActivity.class));
 		this.finish();
 	}
@@ -465,7 +467,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 		try {
 			List<String> params = new ArrayList<String>();
 			params.add("userId");
-			params.add(AppApplication.USER.data.userId);
+			params.add(AppApplication.getUSER().data.userId);
 			params.add("type");
 			params.add("1");
 			HttpUtils.requestGet(URLs.GetVersionInfo(), params, HttpRequestTool.GET_VERSION_INFO);
@@ -539,7 +541,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		String uid = content.substring(content.indexOf("&uid=") + 5, content.length());
 		params.add(new BasicNameValuePair("uid", uid));
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 		params.add(new BasicNameValuePair("status", "2"));
 		HttpUtils.requestPost(URLs.SCANNER_LOGIN, params, HttpRequestTool.SCANNER_SUCCESS);
 		Intent intent = new Intent(this, ScannerLoginActivity.class);
@@ -659,8 +661,8 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 		if (view!=null) {
 			TextView name=(TextView) view.findViewById(R.id.leftmenu_name);
 			try {
-				if (!TextUtils.isEmpty(AppApplication.USER.data.name)) {
-					name.setText(AppApplication.USER.data.name);
+				if (!TextUtils.isEmpty(AppApplication.getUSER().data.name)) {
+					name.setText(AppApplication.getUSER().data.name);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

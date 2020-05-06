@@ -109,7 +109,7 @@ public class CaseInfoActivty extends BaseActivity implements OnClickListener, On
 	private void loadCaseInfo() {
 		List<String> params = new ArrayList<String>(2);
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("uid");
 		params.add(getIntent().getStringExtra("caseBaoanUid"));
 		HttpUtils.requestGet(URLs.GetOrderInfo(), params, HttpRequestTool.GET_ORDER_INFO);

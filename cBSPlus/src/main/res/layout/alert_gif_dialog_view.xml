@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00ffffff"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corners_white_4_5dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:drawableLeft="@drawable/ordernow"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="5dp"
+                android:text="查勘任务确认！"
+                android:textColor="@color/bule_text_h"
+                android:textSize="17sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/hui_line" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="案件类型："
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="@dimen/text_15" />
+
+            <com.cninsure.cp.view.MarqueeTextView
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:id="@+id/ALERT_GIF_DIALOG_VIEW_insuranceSmallType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:hint="无信息！"
+                android:textColor="@color/hui_line"
+                android:textColorHint="@color/hui_text_xxh"
+                android:textSize="@dimen/text_15" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp" >
+
+                <TextView
+                    android:id="@+id/ALERT_GIF_DIALOG_VIEW_bddzTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="佣金："
+                    android:textColor="@android:color/holo_blue_light"
+                    android:textSize="@dimen/text_15" />
+
+                <com.cninsure.cp.view.MarqueeTextView
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                    android:id="@+id/ALERT_GIF_DIALOG_VIEW_commissionFee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@id/ALERT_GIF_DIALOG_VIEW_bddzTitle"
+                    android:hint="无信息！"
+                    android:textColor="@color/hui_text_xxh"
+                    android:textColorHint="@color/hui_line"
+                    android:textSize="@dimen/text_15" />
+
+                
+            </RelativeLayout>
+        </LinearLayout>
+ki
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="查勘地点："
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="@dimen/text_15" />
+
+            <com.cninsure.cp.view.MarqueeTextView
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:id="@+id/ALERT_GIF_DIALOG_VIEW_exploreAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:hint="无信息！"
+                android:textColor="@color/hui_text_xxh"
+                android:textColorHint="@color/hui_line"
+                android:textSize="@dimen/text_15" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="受损基本情况："
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="@dimen/text_15" />
+
+            <com.cninsure.cp.view.MarqueeTextView
+                android:id="@+id/ALERT_GIF_DIALOG_VIEW_damagedState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:hint="无信息！"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:textColor="@color/hui_text_xxh"
+                android:textColorHint="@color/hui_line"
+                android:textSize="@dimen/text_15" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="查勘重点要求："
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="@dimen/text_15" />
+
+            <com.cninsure.cp.view.MarqueeTextView
+                android:id="@+id/ALERT_GIF_DIALOG_VIEW_keyPoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:hint="无信息！"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:textColor="@color/hui_text_xxh"
+                android:textColorHint="@color/hui_line"
+                android:textSize="@dimen/text_15" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="@color/hui_line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/hint_yellow_sj_38"
+            android:lineSpacingExtra="5dp"
+            android:text="请务必在五分钟内确认是否接受任务，五分钟之后任务会自动退回！"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="@dimen/text_15" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/hui_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="20dp" >
+
+            <TextView
+                android:id="@+id/ALERT_GIF_DIALOG_VIEW_callCotact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="暂时不管"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="@dimen/text_15"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="10dp"
+                android:background="@color/hui_line" />
+
+            <TextView
+                android:id="@+id/ALERT_GIF_DIALOG_VIEW_NaviMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="马上处理"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="@dimen/text_15"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

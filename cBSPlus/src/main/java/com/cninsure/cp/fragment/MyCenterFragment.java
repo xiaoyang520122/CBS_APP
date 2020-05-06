@@ -78,7 +78,7 @@ public class MyCenterFragment extends Fragment {
 	
 	/**判断用户是否有医健险审核权限，有就显示审核界面*/
 	private void displaySHView(){
-		String roleIds = AppApplication.USER.data.roleIds;
+		String roleIds = AppApplication.getUSER().data.roleIds;
 		if (roleIds.indexOf(URLs.getSHId()+"")>-1) { //
 			contentView.findViewById(R.id.my_menu_yjxShenhe).setVisibility(View.VISIBLE);
 			contentView.findViewById(R.id.my_menu_yjxShenhe).setOnClickListener(new OnClickListener() {
@@ -107,7 +107,7 @@ public class MyCenterFragment extends Fragment {
 	}
 
 	private void setToggleButton() {
-		if (AppApplication.sp.getString("setLoginName", "").equals(AppApplication.USER.data.loginName)) {
+		if (AppApplication.sp.getString("setLoginName", "").equals(AppApplication.getUSER().data.loginName)) {
 			togMusic.setToggleOn(AppApplication.sp.getBoolean("isPlayMusic", true));
 			togWifiSet.setToggleOn(AppApplication.sp.getBoolean("isWifiUp", false));
 		} else {
@@ -119,7 +119,7 @@ public class MyCenterFragment extends Fragment {
 			@Override
 			public void onToggle(boolean on) {
 				Editor editor = AppApplication.sp.edit();
-				editor.putString("setLoginName", AppApplication.USER.data.loginName);
+				editor.putString("setLoginName", AppApplication.getUSER().data.loginName);
 				editor.putBoolean("isPlayMusic", on);
 				editor.commit();
 				editor.clear();
@@ -130,7 +130,7 @@ public class MyCenterFragment extends Fragment {
 			@Override
 			public void onToggle(boolean on) {
 				Editor editor = AppApplication.sp.edit();
-				editor.putString("setLoginName", AppApplication.USER.data.loginName);
+				editor.putString("setLoginName", AppApplication.getUSER().data.loginName);
 				editor.putBoolean("isWifiUp", on);
 				editor.commit();
 				editor.clear();
@@ -141,9 +141,9 @@ public class MyCenterFragment extends Fragment {
 	private void downLoadUserInfo() {
 		paramsList = new ArrayList<String>();
 		paramsList.add("userId");
-		paramsList.add(AppApplication.USER.data.userId);
+		paramsList.add(AppApplication.getUSER().data.userId);
 		paramsList.add("targetUserId");
-		paramsList.add(AppApplication.USER.data.userId);
+		paramsList.add(AppApplication.getUSER().data.userId);
 		HttpUtils.requestGet(URLs.GetUserInfo(), paramsList, HttpRequestTool.GET_USER_INFO);
 		loadDialog.setMessage("数据加载中……").show();
 	}

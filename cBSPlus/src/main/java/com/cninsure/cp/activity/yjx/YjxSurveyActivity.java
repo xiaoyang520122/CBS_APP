@@ -297,7 +297,7 @@ public class YjxSurveyActivity extends BaseActivity implements OnCheckedChangeLi
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		params.add(new BasicNameValuePair("userId",AppApplication.USER.data.userId+""));
+		params.add(new BasicNameValuePair("userId",AppApplication.getUSER().data.userId+""));
 		params.add(new BasicNameValuePair("dispatchId",dispatchEn.id+""));
 		params.add(new BasicNameValuePair("dispatchUid",dispatchEn.uid));
 		params.add(new BasicNameValuePair("surveyTime",getTextInfo((TextView)workView.findViewById(R.id.YJXWV_lookTime),true)));
@@ -314,7 +314,7 @@ public class YjxSurveyActivity extends BaseActivity implements OnCheckedChangeLi
 		}
 		//委托信息
 		wtparams=new ArrayList<NameValuePair>();
-		wtparams.add(new BasicNameValuePair("userId",AppApplication.USER.data.userId+""));
+		wtparams.add(new BasicNameValuePair("userId",AppApplication.getUSER().data.userId+""));
 		String typeName = getTextInfo(TypeSp,true,"未选择险种方式！");
 		String typeId = InsuranceTypeUtil.getTypeIdByName(typeName);
 		String SmallType = getTextInfo(smallTypeSp,true,"未选择险种细类方式！");

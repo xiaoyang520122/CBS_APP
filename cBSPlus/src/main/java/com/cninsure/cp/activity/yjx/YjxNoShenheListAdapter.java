@@ -153,7 +153,7 @@ public class YjxNoShenheListAdapter extends BaseAdapter {
 			public void onClick(DialogInterface arg0, int arg1) {
 //				LoadDialogUtil.setMessageAndShow(context, "努力处理中……");
 //				final List<NameValuePair> params = new ArrayList<NameValuePair>();
-//				params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId + ""));
+//				params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId + ""));
 //				params.add(new BasicNameValuePair("orderUid", caseDisTemp.uid));
 //				params.add(new BasicNameValuePair("id", caseDisTemp.id+""));
 //				params.add(new BasicNameValuePair("surveyDescription", caseDisTemp.surveyDescription));

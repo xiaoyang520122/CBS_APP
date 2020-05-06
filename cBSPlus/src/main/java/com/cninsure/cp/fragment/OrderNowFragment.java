@@ -153,7 +153,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			@SuppressWarnings("rawtypes")
 			APPRequestModel<PagedRequest> appre = new APPRequestModel<PagedRequest>();
 			try {
-				appre.userToken = AppApplication.USER.data.targetOid; 
+				appre.userToken = AppApplication.getUSER().data.targetOid;
 			} catch (Exception e) {
 				startActivity(new Intent(AppApplication.mInstance, LoadingActivity.class)); //获取信息为空时就重新登录
 				e.printStackTrace();
@@ -168,7 +168,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		} else if (downType == 2) {
 			paramsList = new ArrayList<String>(2);
 			paramsList.add("userId");
-			paramsList.add(AppApplication.USER.data.userId);
+			paramsList.add(AppApplication.getUSER().data.userId);
 			paramsList.add("size");
 			paramsList.add(50 + "");
 			paramsList.add("orderStatus");
@@ -177,9 +177,9 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		} else if (downType == 3) {
 			paramsList = new ArrayList<String>(2);
 			paramsList.add("userId");
-			paramsList.add(AppApplication.USER.data.userId);
+			paramsList.add(AppApplication.getUSER().data.userId);
 			paramsList.add("ggsId");
-			paramsList.add(AppApplication.USER.data.userId);
+			paramsList.add(AppApplication.getUSER().data.userId);
 			paramsList.add("size");
 			paramsList.add("20");
 			paramsList.add("start");
@@ -767,7 +767,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 					@Override
 					public void onClick(View arg0) {//提交审核
 						List<NameValuePair> params = new ArrayList<NameValuePair>();
-						params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+						params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 						params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
 						HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
 						loadDialog.setMessage("操作中……").show();
@@ -787,7 +787,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 					@Override
 					public void onClick(View arg0) {//提交审核
 						List<NameValuePair> params = new ArrayList<NameValuePair>();
-						params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+						params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 						params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
 						HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
 						loadDialog.setMessage("操作中……").show();
@@ -857,7 +857,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 						DialogUtil.getErrDialog(getActivity(), "开发中！").show();
 						return;
 //						List<NameValuePair> params = new ArrayList<NameValuePair>();
-//						params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+//						params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 //						params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
 //						HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
 //						loadDialog.setMessage("操作中……").show();
@@ -977,7 +977,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		loadDialog.setMessage("信息读取中……").show();
 		List<String> params2 = new ArrayList<String>();
 		params2.add("userId");
-		params2.add(AppApplication.USER.data.userId);
+		params2.add(AppApplication.getUSER().data.userId);
 		params2.add("orderUid");
 		params2.add(uid);
 		HttpUtils.requestGet(URLs.GET_ORDER_STATUS, params2, HttpRequestTool.GET_ORDER_STATUS);
@@ -1093,7 +1093,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				public void onClick(DialogInterface arg0, int lspoint) {
 					if (lspoint == 0) {
 						List<NameValuePair> params = new ArrayList<NameValuePair>();
-						params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+						params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 						params.add(new BasicNameValuePair("orderUid", data.get(itemId).uid));
 						HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
 						loadDialog.setMessage("操作中……").show();
@@ -1117,7 +1117,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				public void onClick(DialogInterface arg0, int lspoint) {
 					if (lspoint == 0) {
 						List<NameValuePair> params = new ArrayList<NameValuePair>();
-						params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+						params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 						params.add(new BasicNameValuePair("orderUid", data.get(itemId).uid));
 						HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
 						loadDialog.setMessage("操作中……").show();
@@ -1142,7 +1142,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 	 */
 	public void reciveOrder(int itemId) {
 		params = new ArrayList<NameValuePair>(2);
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 		params.add(new BasicNameValuePair("orderUid", data.get(itemId).uid + ""));
 		HttpUtils.requestPost(URLs.ReceiveOrder(), params, HttpRequestTool.RECEIVE_ORDER);
 		loadDialog.setMessage("确定中……").show();
@@ -1150,7 +1150,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 
 	public void cancelOrder(int itemId) {
 		params = new ArrayList<NameValuePair>(2);
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 		params.add(new BasicNameValuePair("orderUid", data.get(itemId).uid + ""));
 		HttpUtils.requestPost(URLs.CancelOrder(), params, HttpRequestTool.CANCEL_ORDER);
 		loadDialog.setMessage("取消中……").show();

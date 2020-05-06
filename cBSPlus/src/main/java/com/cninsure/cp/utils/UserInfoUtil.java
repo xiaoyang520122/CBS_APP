@@ -27,7 +27,7 @@ public class UserInfoUtil {
 	@SuppressWarnings("null")
 	public static boolean USERIsNull(Context context0){
 		context = context0;
-		User USER = AppApplication.USER;
+		User USER = AppApplication.getUSER();
 		if (USER!=null && USER.data!=null && USER.data.userId!=null) {
 			return false;
 		}else {

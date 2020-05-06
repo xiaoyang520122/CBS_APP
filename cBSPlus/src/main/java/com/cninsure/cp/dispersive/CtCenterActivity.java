@@ -34,6 +34,7 @@ import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.ToastUtil;
+import com.cninsure.cp.utils.permission_util.FloatingWindowPermissionUtil;
 import com.cninsure.cp.view.LoadingDialog;
 import com.zcw.togglebutton.ToggleButton;
 
@@ -64,6 +65,7 @@ public class CtCenterActivity extends BaseActivity {
         EventBus.getDefault().register(this);
         initView();
         downLoadUserInfo();
+        FloatingWindowPermissionUtil.isAppOps(this);  //悬浮弹框权限检查
     }
 
     @Override
@@ -83,7 +85,7 @@ public class CtCenterActivity extends BaseActivity {
 
     /**判断用户是否有医健险审核权限，有就显示审核界面*/
     private void displaySHView(){
-        String roleIds = AppApplication.USER.data.roleIds;
+        String roleIds = AppApplication.getUSER().data.roleIds;
         if (roleIds.indexOf(URLs.getSHId()+"")>-1) { //
             findViewById(R.id.my_menu_yjxShenhe).setVisibility(View.VISIBLE);
             findViewById(R.id.my_menu_yjxShenhe).setOnClickListener(new View.OnClickListener() {
@@ -112,7 +114,7 @@ public class CtCenterActivity extends BaseActivity {
     }
 
     private void setToggleButton() {
-        if (AppApplication.sp.getString("setLoginName", "").equals(AppApplication.USER.data.loginName)) {
+        if (AppApplication.sp.getString("setLoginName", "").equals(AppApplication.getUSER().data.loginName)) {
             togMusic.setToggleOn(AppApplication.sp.getBoolean("isPlayMusic", true));
             togWifiSet.setToggleOn(AppApplication.sp.getBoolean("isWifiUp", false));
         } else {
@@ -124,7 +126,7 @@ public class CtCenterActivity extends BaseActivity {
             @Override
             public void onToggle(boolean on) {
                 SharedPreferences.Editor editor = AppApplication.sp.edit();
-                editor.putString("setLoginName", AppApplication.USER.data.loginName);
+                editor.putString("setLoginName", AppApplication.getUSER().data.loginName);
                 editor.putBoolean("isPlayMusic", on);
                 editor.commit();
                 editor.clear();
@@ -135,7 +137,7 @@ public class CtCenterActivity extends BaseActivity {
             @Override
             public void onToggle(boolean on) {
                 SharedPreferences.Editor editor = AppApplication.sp.edit();
-                editor.putString("setLoginName", AppApplication.USER.data.loginName);
+                editor.putString("setLoginName", AppApplication.getUSER().data.loginName);
                 editor.putBoolean("isWifiUp", on);
                 editor.commit();
                 editor.clear();
@@ -146,9 +148,9 @@ public class CtCenterActivity extends BaseActivity {
     private void downLoadUserInfo() {
         paramsList = new ArrayList<String>();
         paramsList.add("userId");
-        paramsList.add(AppApplication.USER.data.userId);
+        paramsList.add(AppApplication.getUSER().data.userId);
         paramsList.add("targetUserId");
-        paramsList.add(AppApplication.USER.data.userId);
+        paramsList.add(AppApplication.getUSER().data.userId);
         HttpUtils.requestGet(URLs.GetUserInfo(), paramsList, HttpRequestTool.GET_USER_INFO);
         loadDialog.setMessage("数据加载中……").show();
     }
@@ -190,7 +192,7 @@ public class CtCenterActivity extends BaseActivity {
         editor.putString("password", "");
         editor.commit();
         editor.clear();
-        AppApplication.USER = new User();
+        AppApplication.emptyUSER();
         startActivity(new Intent(this, LoginActivity.class));
         this.finish();
     }
@@ -286,13 +288,13 @@ public class CtCenterActivity extends BaseActivity {
     }
 
     private void excetAlert() {
-        DialogUtil.getAlertOnelistener(this, "确认退出当前用户“" + AppApplication.USER.data.name + "”吗？", new DialogInterface.OnClickListener() {
+        DialogUtil.getAlertOnelistener(this, "确认退出当前用户“" + AppApplication.getUSER().data.name + "”吗？", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
                 loadDialog.setMessage("努力加载中……！").show();
                 List<NameValuePair> NVparames = new ArrayList<NameValuePair>(1);
                 NVparames.add(new BasicNameValuePair("clientId", "0"));
-                NVparames.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+                NVparames.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
                 HttpUtils.requestPost(URLs.UpCid(), NVparames, HttpRequestTool.CLEAN_CID);
             }
         }).show();
@@ -302,7 +304,7 @@ public class CtCenterActivity extends BaseActivity {
         try {
             List<String> params = new ArrayList<String>();
             params.add("userId");
-            params.add(AppApplication.USER.data.userId);
+            params.add(AppApplication.getUSER().data.userId);
             params.add("type");
             params.add("1");
             HttpUtils.requestGet(URLs.GetVersionInfo(), params, HttpRequestTool.GET_VERSION_INFO);

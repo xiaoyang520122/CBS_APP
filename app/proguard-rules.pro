@@ -19,3 +19,7 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+#个推混淆配置文件中添加如下配置
+-dontwarn com.igexin.**
+-keep class com.igexin.** { *; }
+

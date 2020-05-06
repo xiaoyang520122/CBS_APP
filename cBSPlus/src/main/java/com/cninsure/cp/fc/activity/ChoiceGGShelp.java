@@ -118,7 +118,7 @@ public class ChoiceGGShelp  {
 	private void getGGSInfo(){
 		List<String> params=new ArrayList<String>();
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("organizationId");
 		params.add(deptid+"");
 		params.add("name");
@@ -135,7 +135,7 @@ public class ChoiceGGShelp  {
 			int countcu=-1;
 			yybNameList=new ArrayList<String>();
 			yybNameList.add("");/**增加一个空字符串，避免一定会选中营业部，减低可操作性，记得在取ID的时候加一（+1）*/
-			int deputId=AppApplication.USER.data.organizationId;
+			int deputId=AppApplication.getUSER().data.organizationId;
 			for (int i = 0; i < YYBAllList.size(); i++) {
 				yybNameList.add(YYBAllList.get(i).name);
 				if (YYBAllList.get(i).id==deputId) {

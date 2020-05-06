@@ -14,18 +14,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.baidu.location.BDLocation;
 import com.baidu.mapapi.SDKInitializer;
 import com.cninsure.cp.entity.PersistentCookieStore;
+import com.cninsure.cp.entity.PushType;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.User;
 import com.cninsure.cp.service.LocationService;
+import com.cninsure.cp.service.Music;
 import com.cninsure.cp.utils.CrashHandler;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LogcatHelper;
+import com.cninsure.cp.utils.UserInfoUtil;
+import com.igexin.sdk.IUserLoggerInterface;
 
 public class AppApplication extends Application {
 
@@ -35,7 +40,7 @@ public class AppApplication extends Application {
 	public static AppApplication mInstance = null;
 	public boolean m_bKeyRight = true;
 	public static String CID = "";
-	public static User USER = new User();
+	private static User USER = new User();
 	public static SharedPreferences sp;
 	public static BDLocation LOCATION;
 
@@ -51,11 +56,30 @@ public class AppApplication extends Application {
 		getCID();
 		startService(new Intent(this, LocationService.class));
 		CrashHandler.getInstance().init(this); //全局捕获崩溃异常记录日志保存至本地
+		com.igexin.sdk.PushManager.getInstance().initialize(this); //个推进行 SDK 的初始化
 	}
 
 	private void getCID() {
 		CID = sp.getString("clientID", "nomsg");
 		uploadCid();
+	}
+
+	public static User getUSER(){
+		if (USER==null || USER.data==null || USER.data.userId==null){
+			UserInfoUtil.USERIsNull(mInstance);
+			try {
+				Thread.sleep(6*1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			return USER;
+		}else{
+			return USER;
+		}
+	}
+
+	public static void emptyUSER(){
+		USER = new User();
 	}
 
 	@Override
@@ -107,6 +131,16 @@ public class AppApplication extends Application {
 
 		default:
 			break;
+		}
+	}
+
+
+	/**分散型新订单透传悬浮弹框提示用户*/
+	@Subscribe(threadMode=ThreadMode.MAIN)
+	public void eventThing(NameValuePair value){
+		String type=value.getName();
+		if (type.equals(PushType.FSX_NEW_ORDER)) {
+			BaseActivity.disPlayAlertMessage(value.getValue());
 		}
 	}
 

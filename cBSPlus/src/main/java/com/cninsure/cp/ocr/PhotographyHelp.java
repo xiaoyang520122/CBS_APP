@@ -163,7 +163,7 @@ public class PhotographyHelp implements OnClickListener {
 		View view=inflater.inflate(R.layout.banc_dilog_view, null);
 		ImageView img=(ImageView)view.findViewById(R.id.bancdialog_img);
 		//车险 上传OCR图片路径,上传成功后返回图片名称及后缀 例如："picture-20180310151556-69210-E2638.jpg"，访问是需要加上登录时获取的头部分
-		String imgPath=AppApplication.USER.data.qiniuUrl+getOCREntity(event).url;
+		String imgPath=AppApplication.getUSER().data.qiniuUrl+getOCREntity(event).url;
 		Glide.with(activity).load(imgPath).into(img);
 		((TextView)view.findViewById(R.id.bancdialog_info)).setText(info);
 		view.findViewById(R.id.bancdialog_submit).setVisibility(View.INVISIBLE);

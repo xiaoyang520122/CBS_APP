@@ -95,7 +95,7 @@ public class YjxTempStorageActivity extends BaseActivity implements OnCheckedCha
 		params.add(status);
 
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		HttpUtils.requestGet(URLs.GET_YJX_BAOAN_LIST, params, HttpRequestTool.GET_YJX_BAOAN_LIST);
 	}
 
@@ -108,7 +108,7 @@ public class YjxTempStorageActivity extends BaseActivity implements OnCheckedCha
 		LoadDialogUtil.setMessageAndShow(YjxTempStorageActivity.this, "操作中……");
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("id", id + ""));
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 		HttpUtils.requestPost(URLs.DELETE_YJX_BAOAN_CASE, params, HttpRequestTool.DELETE_YJX_BAOAN_CASE);
 	}
 
@@ -122,7 +122,7 @@ public class YjxTempStorageActivity extends BaseActivity implements OnCheckedCha
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("id", id + ""));
 		params.add(new BasicNameValuePair("status", "0"));
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 		HttpUtils.requestPost(URLs.BACK_YJX_BAOAN_CASE, params, HttpRequestTool.BACK_YJX_BAOAN_CASE);
 	}
 
@@ -475,7 +475,7 @@ public class YjxTempStorageActivity extends BaseActivity implements OnCheckedCha
 		actionTV3.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				String roleIds = AppApplication.USER.data.roleIds;
+				String roleIds = AppApplication.getUSER().data.roleIds;
 				if (roleIds.indexOf(URLs.getRoleId()+"")>-1) { 	//有接报案录入权限才能录入接报案
 					startActivity(new Intent(YjxTempStorageActivity.this, YjxBaoanInputActivity.class));
 				}else {

@@ -440,7 +440,7 @@ public class WorkOrderActivty extends BaseActivity implements OnClickListener, O
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				popupWindow.dismiss();
 				List<NameValuePair> params=new ArrayList<NameValuePair>();
-				params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+				params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 				params.add(new BasicNameValuePair("fromOrderUid",QorderUid ));
 				
 				switch (arg2) {
@@ -566,7 +566,7 @@ public class WorkOrderActivty extends BaseActivity implements OnClickListener, O
 		}
 		showLoadingDialog();
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 		params.add(new BasicNameValuePair("workUid", getIntent().getStringExtra("orderUid")));
 		params.add(new BasicNameValuePair("message", leavingText.getText().toString()));
 //		if (leavingMsgObj!=null && !TextUtils.isEmpty(leavingMsgObj.optString("id", "")) ) {//修改留言
@@ -681,7 +681,7 @@ public class WorkOrderActivty extends BaseActivity implements OnClickListener, O
 	private void downloadWorkPhotos() {
 		List<String> params = new ArrayList<String>(2);
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("workId");
 		params.add(getIntent().getStringExtra("orderUid"));
 		HttpUtils.requestGet(URLs.GetWorkPhoto(), params, HttpRequestTool.GET_WORK_PHOTO);
@@ -831,7 +831,7 @@ public class WorkOrderActivty extends BaseActivity implements OnClickListener, O
 			return;
 		}
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 		params.add(new BasicNameValuePair("orderUid", QorderUid));
 		// if ("SAVE_EVENT".equals(head)) {
 //		ToastUtil.showToastShort(getApplicationContext(), data);
@@ -879,7 +879,7 @@ public class WorkOrderActivty extends BaseActivity implements OnClickListener, O
 	public void getDefaulMessage(int code) {
 		List<String> params = new ArrayList<String>();
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("orderUid");
 		params.add(getIntent().getStringExtra("orderUid"));
 		showLoadingDialog();
@@ -924,7 +924,7 @@ public class WorkOrderActivty extends BaseActivity implements OnClickListener, O
 		case HttpRequestTool.GET_WORK_MESSAGES:
 			tempstr="javascript:getMobileWeb(\'{\"headMessage\":" + headMessage +"," +
 					"\"contentMessage\":" + values.get(0).getValue() + "," +
-					"\"userInfo\":" + JSON.toJSONString(AppApplication.USER) + ",\"orderStatus\":"+status+"}\')";
+					"\"userInfo\":" + JSON.toJSONString(AppApplication.getUSER()) + ",\"orderStatus\":"+status+"}\')";
 			contentMessage=JSON.parseObject(values.get(0).getValue(), WorkMessageEntity.class);
 			getOCREntity();
 			Log.e("JsonHttpUtils", "3********************************=="+tempstr);
@@ -1074,7 +1074,7 @@ public class WorkOrderActivty extends BaseActivity implements OnClickListener, O
 	private void downloadLeavingMsg(){
 		List<String> params = new ArrayList<String>();
 		params.add("userId");
-		params.add(AppApplication.USER.data.userId);
+		params.add(AppApplication.getUSER().data.userId);
 		params.add("workUid");
 		params.add(getIntent().getStringExtra("orderUid"));
 		showLoadingDialog();//可以不显示等待界面
@@ -1094,7 +1094,7 @@ public class WorkOrderActivty extends BaseActivity implements OnClickListener, O
 			isAudit = false;
 			showLoadingDialog();
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId));
+			params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 			params.add(new BasicNameValuePair("orderUid", QorderUid));
 			HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
 		}else {

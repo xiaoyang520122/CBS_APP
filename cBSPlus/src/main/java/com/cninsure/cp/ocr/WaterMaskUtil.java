@@ -52,7 +52,7 @@ public class WaterMaskUtil {
 			}
 			// 将文件转化为bitmap以便添加日期水印
 			bitmap = ImageUtil.drawTextToRightBottom(context, bitmap,
-					AppApplication.USER.data.name+" "+sf.format(new Date()), 10, Color.parseColor("#FF0000"), 5, 5);
+					AppApplication.getUSER().data.name+" "+sf.format(new Date()), 10, Color.parseColor("#FF0000"), 5, 5);
 			Bitmap watermark=BitmapFactory.decodeResource(context.getResources(), R.drawable.logo_water_mask);
 			//为bitmap以便添加图片水印
 			bitmap=ImageUtil.createWaterMaskLeftBottom(context, bitmap, watermark, 5, 5);

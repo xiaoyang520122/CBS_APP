@@ -51,7 +51,7 @@ public class LinePathActivity extends BaseActivity implements OnClickListener {
 	private void initView() {
 		if (null!=getIntent().getSerializableExtra("ocrEntity5")) { //获取已上传的签名地址
 			OCREntity ocrEntity=(OCREntity) getIntent().getSerializableExtra("ocrEntity5");
-			httpSignPath=AppApplication.USER.data.qiniuUrl+ocrEntity.url;
+			httpSignPath=AppApplication.getUSER().data.qiniuUrl+ocrEntity.url;
 		}
 		mPathView=(SignView) findViewById(R.id.LinePath_view);
 

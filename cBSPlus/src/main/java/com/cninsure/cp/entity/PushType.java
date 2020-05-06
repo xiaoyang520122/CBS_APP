@@ -3,10 +3,14 @@ package com.cninsure.cp.entity;
 public class PushType {
 
 	/**
+	 * 分散型调度推送
+	 */
+	public static String FSX_NEW_ORDER 	= "FSX_NEW_ORDER";
+	/**
 	 * 调度调度推送
 	 */
 	public static String NEW_ORDER 	= "NEW_ORDER";
-	
+
 	/**
 	 * 后台主动调度取消推送
 	 */
