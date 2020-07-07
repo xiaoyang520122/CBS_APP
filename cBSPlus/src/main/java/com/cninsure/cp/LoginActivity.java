@@ -64,6 +64,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		pass = (EditText) findViewById(R.id.login_pass);
 		submitBt = (Button) findViewById(R.id.login_button);
 		submitBt.setOnClickListener(this);
+		name.setError("请手动输入用户名密码，勿使用系统自带回填功能！",getResources().getDrawable(R.drawable.c));
 	}
 
 	@Subscribe(threadMode = ThreadMode.MAIN)

@@ -124,7 +124,7 @@ dependencies {
     compileOnly files('libs/ShareSDK-Wechat-3.1.2.jar')
     compileOnly files('libs/ShareSDK-Wechat-Core-3.1.2.jar')
     compileOnly files('libs/ShareSDK-Wechat-Moments-3.1.2.jar')
-    compileOnly files('libs/slidingmenulibary.jar')
+    implementation files('libs/slidingmenulibary.jar')
     implementation files('libs/xUtils-2.6.14.jar')
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.5.3'
     implementation 'org.apache.httpcomponents:httpcore:4.4.1'

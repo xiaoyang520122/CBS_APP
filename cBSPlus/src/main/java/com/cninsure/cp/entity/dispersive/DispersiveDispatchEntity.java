@@ -1,5 +1,7 @@
 package com.cninsure.cp.entity.dispersive;
 
+import com.cninsure.cp.entity.yjx.YjxCaseBaoanEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -11,24 +13,62 @@ public class DispersiveDispatchEntity implements Serializable {
     public boolean success;  //true
 
     public static class DispersiveDispatchData{
-        public Integer endRow; //":10,
-        public Integer firstPage; //1,
-        public boolean hasNextPage; //true,
-        public boolean hasPreviousPage; //false,
-        public boolean isFirstPage; //false,
-        public boolean isLastPage; //false,
-        public int lastPage; //1,
-        public int navigatePages; //8,
+//        public Integer endRow; //":10,
+//        public Integer firstPage; //1,
+//        public boolean hasNextPage; //true,
+//        public boolean hasPreviousPage; //false,
+//        public boolean isFirstPage; //false,
+//        public boolean isLastPage; //false,
+//        public int lastPage; //1,
+//        public int navigatePages; //8,
         public List<Integer> navigatepageNums; //[1],
-        public int nextPage; //1,
-        public int pageNum; //0,
-        public int pageSize; //10,
-        public int pages; //1,
-        public int prePage; //0,
-        public int size; //10,
-        public int startRow; //1,
-        public int total; //10
+//        public int nextPage; //1,
+//        public int pageNum; //0,
+//        public int pageSize; //10,
+//        public int pages; //1,
+//        public int prePage; //0,
+//        public int size; //10,
+//        public int startRow; //1,
+//        public int total; //10
 
+        //当前页
+        public int pageNum;
+        //每页的数量
+        public int pageSize;
+        //当前页的数量
+        public int size;
+        //由于startRow和endRow不常用，这里说个具体的用法
+        //可以在页面中"显示startRow到endRow 共size条数据"
+
+        //当前页面第一个元素在数据库中的行号
+        public int startRow;
+        //当前页面最后一个元素在数据库中的行号
+        public int endRow;
+        //总记录数
+        public long total;
+        //总页数
+        public int pages;
+
+        //第一页
+        public int firstPage;
+        //前一页
+        public int prePage;
+        //下一页
+        public int nextPage;
+        //最后一页
+        public int lastPage;
+
+        //是否为第一页
+        public boolean isFirstPage = false;
+        //是否为最后一页
+        public boolean isLastPage = false;
+        //是否有前一页
+        public boolean hasPreviousPage = false;
+        //是否有下一页
+        public boolean hasNextPage = false;
+        //导航页码数
+        public int navigatePages;
+        //结果集
         public List<DispersiveDispatchItem> list;
     }
 
@@ -173,7 +213,7 @@ public class DispersiveDispatchEntity implements Serializable {
         /**
          * 查勘员佣金
          */
-        public Double commissionFee;
+//        public Double commissionFee;
 
         /**
          0暂存  0;

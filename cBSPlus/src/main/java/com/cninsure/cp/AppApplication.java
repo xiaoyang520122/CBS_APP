@@ -40,7 +40,7 @@ public class AppApplication extends Application {
 	public static AppApplication mInstance = null;
 	public boolean m_bKeyRight = true;
 	public static String CID = "";
-	private static User USER = new User();
+	public static User USER = new User();
 	public static SharedPreferences sp;
 	public static BDLocation LOCATION;
 
@@ -65,13 +65,14 @@ public class AppApplication extends Application {
 	}
 
 	public static User getUSER(){
-		if (USER==null || USER.data==null || USER.data.userId==null){
-			UserInfoUtil.USERIsNull(mInstance);
-			try {
-				Thread.sleep(6*1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+//		if (USER==null || USER.data==null || USER.data.userId==null){
+		if (UserInfoUtil.USERIsNull(mInstance)){
+//			UserInfoUtil.USERIsNull(mInstance);
+//			try {
+//				Thread.sleep(6*1000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
 			return USER;
 		}else{
 			return USER;

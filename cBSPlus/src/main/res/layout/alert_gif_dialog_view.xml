@@ -2,39 +2,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#00ffffff"
+    android:background="@drawable/corners_white_5dp"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/corners_white_4_5dp"
+        android:background="@drawable/corners_white_5dp"
         android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
+            android:padding="20dp"
+            android:background="@color/bulue_main"
+            android:gravity="center"
             android:orientation="vertical" >
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="5dp"
-                android:drawableLeft="@drawable/ordernow"
                 android:gravity="center_vertical"
                 android:lineSpacingExtra="5dp"
-                android:text="查勘任务确认！"
-                android:textColor="@color/bule_text_h"
-                android:textSize="17sp"/>
+                android:text="泛华-调度任务确认！"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/hui_line" />
 
         </LinearLayout>
 
@@ -208,7 +201,7 @@ ki
             android:drawableLeft="@drawable/hint_yellow_sj_38"
             android:lineSpacingExtra="5dp"
             android:text="请务必在五分钟内确认是否接受任务，五分钟之后任务会自动退回！"
-            android:textColor="@android:color/holo_blue_light"
+            android:textColor="@color/yellow_baner"
             android:textSize="@dimen/text_15" />
 
         <View
@@ -231,7 +224,7 @@ ki
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="暂时不管"
-                android:textColor="@android:color/holo_blue_light"
+                android:textColor="@color/yellow_baner"
                 android:textSize="@dimen/text_15"
                 android:textStyle="bold" />
 

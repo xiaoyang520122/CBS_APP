@@ -7,7 +7,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -555,6 +558,7 @@ public class DispersiveWorkActivity extends BaseActivity {
         private List<NameValuePair> titlesArr;
         /**图片合集*/
         private List<List<DisWorkImageEntity.DisWorkImgData>> imgEnList;
+        private Handler handler;
 
         private MyDisExpandablelistAdapter(){}
         public MyDisExpandablelistAdapter(int checkImgGroupPstion){
@@ -566,6 +570,19 @@ public class DispersiveWorkActivity extends BaseActivity {
                 this.titlesArr = new DispersiveImgTypeUtil().getDocumentsImgTypes();//运输单证
                 imgEnList = documentImgEnList;
             }
+
+            handler = new Handler(){
+
+                @Override
+                public void handleMessage(Message msg) {
+                    notifyDataSetChanged();
+                    super.handleMessage(msg);
+                }
+            };
+        }
+
+        public void refresh() {
+            handler.sendMessage(new Message());
         }
 
         private LayoutInflater inflater = LayoutInflater.from(DispersiveWorkActivity.this);
@@ -599,6 +616,7 @@ public class DispersiveWorkActivity extends BaseActivity {
             gAdapter = new DispersiveGalleryAdapter(DispersiveWorkActivity.this, imgEnList.get(arg0), Integer.parseInt(titlesArr.get(arg0).getValue()));
             gridAdapterArr.put(key, gAdapter);
             gridView.setAdapter(gAdapter);
+            int testnum=Integer.parseInt("d");
             return contentview;
         }
 
@@ -624,6 +642,7 @@ public class DispersiveWorkActivity extends BaseActivity {
 
         @Override
         public int getGroupCount() {
+            Log.e("titlesArr","getGroupCount()="+titlesArr.size());
             return titlesArr.size();
         }
 
@@ -635,13 +654,16 @@ public class DispersiveWorkActivity extends BaseActivity {
         @Override
         public View getGroupView(int groupPostion, boolean arg1, View contentview, ViewGroup arg3) {
             contentview=inflater.inflate(R.layout.item_expandablelistview_photo_upload, null);
-            ((TextView) contentview.findViewById(R.id.item_for_exlist_photoup_title)).setText(titlesArr.get(groupPostion).getName()); //分组标题
-            TextView photoSum=(TextView) contentview.findViewById(R.id.item_for_exlist_photoup_sum);
-            TextView photoDemand=(TextView) contentview.findViewById(R.id.item_for_exlist_photoup_demand);
-            int groupPhotoSize = imgEnList.get(groupPostion).size();
-            photoSum.setText(groupPhotoSize+"");
-            if (checkImgGroupPstion==0) {
-                ((TextView) contentview.findViewById(R.id.item_for_exlist_photoup_demand)).setText("1"); //分组标题必拍数量
+            Log.e("titlesArr","getGroupView(）==="+groupPostion);
+            if (groupPostion<titlesArr.size()){
+                ((TextView) contentview.findViewById(R.id.item_for_exlist_photoup_title)).setText(titlesArr.get(groupPostion).getName()); //分组标题
+                TextView photoSum=(TextView) contentview.findViewById(R.id.item_for_exlist_photoup_sum);
+                TextView photoDemand=(TextView) contentview.findViewById(R.id.item_for_exlist_photoup_demand);
+                int groupPhotoSize = imgEnList.get(groupPostion).size();
+                photoSum.setText(groupPhotoSize+"");
+                if (checkImgGroupPstion==0) {
+                    ((TextView) contentview.findViewById(R.id.item_for_exlist_photoup_demand)).setText("1"); //分组标题必拍数量
+                }
             }
             return contentview;
         }
@@ -687,8 +709,9 @@ public class DispersiveWorkActivity extends BaseActivity {
                 disWorkEnty.setImageUrl(woekEnty.location);
                 siteImgEnList.get(imgType).add(disWorkEnty);
             }
-            photoListView1.collapseGroup(imgType);
-            photoListView1.expandGroup(imgType);
+//            photoListView1.collapseGroup(imgType);
+//            photoListView1.expandGroup(imgType);
+            adapter1.refresh();
             changeCountNum(); //刷新照片小类对应数量信息
         }else if (imgType<17){//运输单证图片结合*/
             for (WorkPhotos.TableData.WorkPhotoEntitiy woekEnty:temPhotoEntitiys){  //事故单证
@@ -697,8 +720,9 @@ public class DispersiveWorkActivity extends BaseActivity {
                 disWorkEnty.setImageUrl(woekEnty.location);
                 documentImgEnList.get(imgType-3).add(disWorkEnty);
             }
-            photoListView2.collapseGroup(imgType);
-            photoListView2.expandGroup(imgType);
+//            photoListView2.collapseGroup(imgType);
+//            photoListView2.expandGroup(imgType);
+            adapter2.refresh();
             changeCountNum(); //刷新照片小类对应数量信息
         }
         adapter1.notifyDataSetChanged();
@@ -707,5 +731,9 @@ public class DispersiveWorkActivity extends BaseActivity {
             gridAdapterArr.get(key).notifyDataSetChanged();
         }
     }
-
+/**外部车童用户退出时调用*/
+    public static void stopActivity(){
+        if (instence!=null)
+            instence.finish();
+    }
 }

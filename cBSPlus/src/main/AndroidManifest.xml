@@ -149,7 +149,8 @@
         </activity> 
         <activity android:name="com.cninsure.cp.activity.yjx.YjxNoShenheOrderActivity" >
         </activity>
-        <activity android:name="com.cninsure.cp.dispersive.DispersiveUserActivity" >
+        <activity android:name="com.cninsure.cp.dispersive.DispersiveUserActivity"
+            android:launchMode="singleTask">
         </activity>
         <activity android:name="com.cninsure.cp.dispersive.CtCenterActivity" >
         </activity>

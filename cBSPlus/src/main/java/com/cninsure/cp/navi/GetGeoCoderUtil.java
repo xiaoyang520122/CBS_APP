@@ -35,7 +35,7 @@ public class GetGeoCoderUtil {
 			}
 			
 			String url = "http://api.map.baidu.com/geocoder/v2/?address=" + address + "&output=json&ak=" + AK 
-					+"&callback=showLocation&mcode=5B:B0:60:3D:65:16:A8:87:5F:6A:56:82:C7:56:7B:B5:E4:67:E9:2A;com.cninsure.cp";
+					+"&callback=showLocation&mcode=3D:E8:24:04:C8:CF:ED:9D:BF:F1:AC:5E:5C:DA:3E:0A:A4:E9:1E:AD;com.cninsure.cp";
 			String json = loadJSON(url);
 			if (json != null && !"".equals(json)) {
 				int indexOf=json.indexOf("(");

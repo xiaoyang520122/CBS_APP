@@ -194,6 +194,12 @@ public class CtCenterActivity extends BaseActivity {
         editor.clear();
         AppApplication.emptyUSER();
         startActivity(new Intent(this, LoginActivity.class));
+        DispersiveUserActivity.instence.finish();
+        try {
+            DispersiveWorkActivity.stopActivity();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         this.finish();
     }
 

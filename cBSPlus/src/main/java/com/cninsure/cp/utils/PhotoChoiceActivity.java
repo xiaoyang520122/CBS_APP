@@ -148,7 +148,8 @@ public class PhotoChoiceActivity extends Activity {
 	}
 
 	public void getAndShowImg() {
-		Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
+		Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+				null, null, null, android.provider.ContactsContract.Contacts._ID + " DESC");
 		while (cursor.moveToNext()) {
 			// 获取图片的名称
 			String name = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME));

@@ -20,6 +20,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.cninsure.cp.AppApplication;
+import com.cninsure.cp.LoadingActivity;
 
 import android.annotation.SuppressLint;  
 import android.content.Context;  
@@ -116,16 +117,17 @@ public class CrashHandler implements UncaughtExceptionHandler {
                 @Override  
                 public void run() {  
                     Looper.prepare();  
-                    Toast.makeText(mContext, "很抱歉,程序出现异常,即将重启.",  
-                            Toast.LENGTH_LONG).show();  
-                    Looper.loop();  
+                    Toast.makeText(mContext, "很抱歉,程序出现异常,即将重启.", Toast.LENGTH_LONG).show();
+                    Looper.loop();
                 }  
             }.start();  
             // 收集设备参数信息  
             collectDeviceInfo(mContext);  
-            // 保存日志文件  
-            saveCrashInfoFile(ex);  
-            SystemClock.sleep(3000);  
+            // 保存日志文件
+            saveCrashInfoFile(ex);
+            SystemClock.sleep(3000);
+//            ActivityCollector.finishAll();//有时候异常抛出后重启会进入之前的activity，这样部分数据报空，如用户信息，为了避免直接全部杀死，然后重新登录。
+            mContext.startActivity(new Intent(mContext,LoadingActivity.class));
         } catch (Exception e) {  
             e.printStackTrace();  
         }  
@@ -258,7 +260,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
       
     /** 
      * 文件删除 
-     * @param day 文件保存天数 
+     * @param autoClearDay 文件保存天数
      */  
     public void autoClear(final int autoClearDay) {  
 //        FileUtil.delete(getGlobalpath(), new FilenameFilter() {  

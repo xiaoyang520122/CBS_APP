@@ -107,7 +107,7 @@ public class DemoIntentService extends GTIntentService {
             }else if (type.equals(PushType.FSX_NEW_ORDER)) {
                 Intent intent=new Intent(getApplicationContext(), Music.class);//鸣响音乐
                 startService(intent);//鸣响音乐
-                EventBus.getDefault().post(new BasicNameValuePair(type, jObject.getString("data")));//分散型新订单
+                EventBus.getDefault().post(new BasicNameValuePair(type, jObject.optString("data","")));//分散型新订单
             }
         } catch (JSONException e) {
             e.printStackTrace();

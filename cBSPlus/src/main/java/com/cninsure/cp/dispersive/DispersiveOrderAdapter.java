@@ -115,8 +115,9 @@ public class DispersiveOrderAdapter extends BaseAdapter {
                 CopyUtils.setCopyOnclickListener(context, conView.findViewById(R.id.FSXDSPListI_taskAddress), caseDisTemp.surveyAddr);//复制地址
                 CopyUtils.setCopyOnclickListener(context, conView.findViewById(R.id.FSXDSPListI_uid), caseDisTemp.uid);//复制任务编号
 //                CopyUtils.setCopyOnclickListener(context, conView.findViewById(R.id.FSXDSPListI_copy_taskAddress), caseDisTemp.surveyAddr);//线路规划*************************
+               String naviAddress = caseDisTemp.province+caseDisTemp.city+caseDisTemp.surveyAddr;
                 NaviHelper.setNaviOnclick(conView.findViewById(R.id.FSXDSPListI_copy_taskAddress),
-                        context,caseDisTemp.latitude,caseDisTemp.longitude,caseDisTemp.surveyAddr, caseDisTemp. sceneTel);//线路规划
+                        context,caseDisTemp.latitude,caseDisTemp.longitude,naviAddress, caseDisTemp. sceneTel);//线路规划
                 CopyUtils.setCopyOnclickListener(context, conView.findViewById(R.id.FSXDSPListI_copy_uid), caseDisTemp.uid);//复制任务编号
                 CopyUtils.setCopyOnclickListener(context, conView.findViewById(R.id.FSXDSPListI_copy_wtName), caseDisTemp.wtName);//复制委托人信息
                 CopyUtils.setCopyOnclickListener(context, conView.findViewById(R.id.FSXDSPListI_wtName), caseDisTemp.wtName);//复制委托人信息

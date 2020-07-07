@@ -182,4 +182,14 @@ public class DialogUtil {
 		}
 	}
 
+	public void show() {
+		if (defuldialog!=null) {
+			try {
+				defuldialog.show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 }

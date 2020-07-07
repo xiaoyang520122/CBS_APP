@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -59,13 +60,13 @@ public class DispersiveGalleryAdapter extends BaseAdapter{
 
 		@Override
 		public int getCount() {
+			Log.e("titlesArr","resousePathList.size="+resousePathList.size());
 			if (DispersiveWorkActivity.instence.caseDisTemp!=null &&
-					(DispersiveWorkActivity.instence.caseDisTemp.status==11 || DispersiveWorkActivity.instence.caseDisTemp.status==5)) { //驳回和已到达现场的才能提交审核
+					(DispersiveWorkActivity.instence.caseDisTemp.status==11 || DispersiveWorkActivity.instence.caseDisTemp.status==5)) { //驳回和已到达现场的才能继续添加照片
 				return resousePathList.size()+1;
 			} else{
 				return resousePathList.size();
 			}
-
 		}
 
 		@Override
