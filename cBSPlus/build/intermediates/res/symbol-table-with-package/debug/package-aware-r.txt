@@ -825,6 +825,7 @@ drawable delete_red40
 drawable delete_white110
 drawable dispatch_end_hui48
 drawable dispatch_hui48
+drawable dispersive_icon48
 drawable dispersive_type
 drawable display_white110
 drawable docx
@@ -1997,6 +1998,7 @@ id more_img
 id multiply
 id my_menu_aboutus
 id my_menu_backcard
+id my_menu_disperdive
 id my_menu_dqbb
 id my_menu_excetUser
 id my_menu_help

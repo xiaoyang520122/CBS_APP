@@ -376,6 +376,10 @@
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\112d6f1c733314fe0b032419405989a4\\appcompat-1.0.0-alpha1\\res\\drawable-xhdpi-v4\\abc_ic_star_black_48dp.png"
     },
     {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_dispersive_icon48.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\dispersive_icon48.png"
+    },
+    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_place_blue_yellow_48.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\place_blue_yellow_48.png"
     },

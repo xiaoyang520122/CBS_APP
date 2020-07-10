@@ -109,6 +109,8 @@ public class CtCenterActivity extends BaseActivity {
         deptTv = (TextView) findViewById(R.id.my_menu_usDept);
         editionTv = (TextView) findViewById(R.id.my_menu_dqbb);
 
+        findViewById(R.id.my_menu_disperdive).setVisibility(View.GONE);
+
         editionTv.setText("当前版本：" + getAppVersion(1));
         setToggleButton();
     }

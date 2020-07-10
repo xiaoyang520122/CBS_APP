@@ -127,11 +127,11 @@ public class DispersiveWorkActivity extends BaseActivity {
         infoData.add("出险险种：\t"+caseDisTemp.insuranceBigType +"/"+caseDisTemp.insuranceSmallType);
         infoData.add("案件对接人：\t"+caseDisTemp.takerName +"/"+caseDisTemp.takerTel);
         infoData.add("保险公司：\t"+caseDisTemp.wtName);
-        infoData.add("报案号：\t"+caseDisTemp.baoanNo);
+//        infoData.add("报案号：\t"+caseDisTemp.baoanNo);
         infoData.add("现场联系人：\t"+caseDisTemp.sceneName+"/"+caseDisTemp.sceneTel);
         infoData.add("查勘地点：\t"+caseDisTemp.surveyAddr);
         infoData.add("受损基本情况：\t"+caseDisTemp.damagedState);
-        infoData.add("查勘重点要求：\t"+caseDisTemp.keyPoint);
+        infoData.add("查勘重点要求：\t"+caseDisTemp.majorClaims);
         ArrayAdapter<String> infoAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,infoData);
         listView.setAdapter(infoAdapter);
     }
@@ -616,7 +616,6 @@ public class DispersiveWorkActivity extends BaseActivity {
             gAdapter = new DispersiveGalleryAdapter(DispersiveWorkActivity.this, imgEnList.get(arg0), Integer.parseInt(titlesArr.get(arg0).getValue()));
             gridAdapterArr.put(key, gAdapter);
             gridView.setAdapter(gAdapter);
-            int testnum=Integer.parseInt("d");
             return contentview;
         }
 

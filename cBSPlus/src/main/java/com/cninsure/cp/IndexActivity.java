@@ -45,6 +45,7 @@ import com.cninsure.cp.activty.HelpCenterActivity;
 import com.cninsure.cp.activty.MessageCenterActivity;
 import com.cninsure.cp.activty.ScoreActivity;
 import com.cninsure.cp.activty.SecurityCenterActivity;
+import com.cninsure.cp.dispersive.DispersiveUserActivity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.fc.activity.CaseInputActivity;
 import com.cninsure.cp.fc.activity.DispersiveCaseInputActivity;
@@ -425,6 +426,10 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 
 		case R.id.my_menu_excetUser:/** 退出用户**/
 			excetAlert();
+			break;
+
+		case R.id.my_menu_disperdive:// 分散型-派单模式 界面
+			startActivity(new Intent(this, DispersiveUserActivity.class));
 			break;
 
 		default:

@@ -54,21 +54,21 @@ public final class R {
 
         public static final int default_ptr_flip = 0x7f0700ca;
         public static final int default_ptr_rotate = 0x7f0700cb;
-        public static final int indicator_arrow = 0x7f0700f1;
-        public static final int indicator_bg_bottom = 0x7f0700f2;
-        public static final int indicator_bg_top = 0x7f0700f3;
+        public static final int indicator_arrow = 0x7f0700f2;
+        public static final int indicator_bg_bottom = 0x7f0700f3;
+        public static final int indicator_bg_top = 0x7f0700f4;
     }
     public static final class id {
         private id() {}
 
         public static final int fl_inner = 0x7f0802fb;
         public static final int gridview = 0x7f080339;
-        public static final int pull_to_refresh_image = 0x7f0803a6;
-        public static final int pull_to_refresh_progress = 0x7f0803a7;
-        public static final int pull_to_refresh_sub_text = 0x7f0803a8;
-        public static final int pull_to_refresh_text = 0x7f0803a9;
-        public static final int scrollview = 0x7f0803bf;
-        public static final int webview = 0x7f08040a;
+        public static final int pull_to_refresh_image = 0x7f0803a7;
+        public static final int pull_to_refresh_progress = 0x7f0803a8;
+        public static final int pull_to_refresh_sub_text = 0x7f0803a9;
+        public static final int pull_to_refresh_text = 0x7f0803aa;
+        public static final int scrollview = 0x7f0803c0;
+        public static final int webview = 0x7f08040b;
     }
     public static final class layout {
         private layout() {}

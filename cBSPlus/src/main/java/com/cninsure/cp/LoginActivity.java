@@ -21,6 +21,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+
 import com.bumptech.glide.Glide;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.dispersive.DispersiveUserActivity;
@@ -29,10 +31,11 @@ import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.ToastUtil;
 import com.cninsure.cp.utils.permission_util.PermissionApplicationUtil;
+import com.cninsure.cp.utils.permission_util.PermissionsUtilX;
 import com.cninsure.cp.view.LoadingDialog;
 import com.igexin.sdk.PushManager;
 
-public class LoginActivity extends BaseActivity implements OnClickListener {
+public class LoginActivity extends BaseActivity implements OnClickListener, PermissionsUtilX.IPermissionsCallback {
 
 	private EditText plat, name, pass;
 	private Button submitBt;
@@ -53,6 +56,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		EventBus.getDefault().register(this);
 		initView();
 		new PermissionApplicationUtil(this); //申请读写权限和拍照权限
+//		getPermission();
 	}
 
 	private void initView() {
@@ -143,4 +147,33 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		super.onPause();
 		this.finish();
 	}
+
+	private PermissionsUtilX permissionsUtil;
+	private void getPermission() {
+              permissionsUtil = PermissionsUtilX.with(this)
+				                 .requestCode(0)
+				                 .isDebug(true)
+				                 .permissions(PermissionsUtilX.Permission.Storage.WRITE_EXTERNAL_STORAGE)
+				                 .request();
+
+          }
+
+//			 当前Activity需要实现PermissionsUtilX.IPermissionsCallback接口
+      @Override
+          public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+              //需要调用onRequestPermissionsResult
+              permissionsUtil.onRequestPermissionsResult(requestCode, permissions, grantResults);
+              super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+          }
+
+			      @Override
+          public void onPermissionsGranted(int requestCode, String... permission) {
+              //权限获取回调
+              Log.e("555", "456" );
+          }
+
+			      @Override
+          public void onPermissionsDenied(int requestCode, String... permission) {
+              //权限被拒绝回调
+          }
 }
