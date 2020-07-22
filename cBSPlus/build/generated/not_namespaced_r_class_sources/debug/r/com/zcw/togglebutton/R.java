@@ -12,18 +12,18 @@ public final class R {
     public static final class attr {
         private attr() {}
 
-        public static final int animate = 0x7f030029;
-        public static final int borderWidth = 0x7f030038;
-        public static final int isDefaultOn = 0x7f03008d;
-        public static final int offBorderColor = 0x7f0300ae;
-        public static final int offColor = 0x7f0300af;
-        public static final int onColor = 0x7f0300b0;
-        public static final int spotColor = 0x7f0300e7;
+        public static final int animate = 0x7f040029;
+        public static final int borderWidth = 0x7f04003e;
+        public static final int isDefaultOn = 0x7f0400fa;
+        public static final int offBorderColor = 0x7f040134;
+        public static final int offColor = 0x7f040135;
+        public static final int onColor = 0x7f040136;
+        public static final int spotColor = 0x7f04017e;
     }
     public static final class styleable {
         private styleable() {}
 
-        public static final int[] ToggleButton = { 0x7f030029, 0x7f030038, 0x7f03008d, 0x7f0300ae, 0x7f0300af, 0x7f0300b0, 0x7f0300e7 };
+        public static final int[] ToggleButton = { 0x7f040029, 0x7f04003e, 0x7f0400fa, 0x7f040134, 0x7f040135, 0x7f040136, 0x7f04017e };
         public static final int ToggleButton_animate = 0;
         public static final int ToggleButton_borderWidth = 1;
         public static final int ToggleButton_isDefaultOn = 2;

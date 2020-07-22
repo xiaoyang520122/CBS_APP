@@ -3,21 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/hui_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/corners_white2_4_10dp"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/ONLI_title_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp" >
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/ONLI_time"
@@ -58,20 +61,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/ONLI_timeOut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/corners_bule_30dp"
-                android:paddingBottom="2dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingLeft="5dp"
                 android:paddingTop="2dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="2dp"
                 android:text="剩余时间："
                 android:textColor="@color/bule_text_h"
                 android:textSize="@dimen/order_list_defaul" />
@@ -96,21 +99,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingRight="10dp" >
+            android:paddingRight="10dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:orientation="vertical" >
+                android:gravity="right"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center_vertical|left"
-                    android:paddingBottom="1dp"
                     android:paddingTop="1dp"
                     android:text="@string/baoan_no"
                     android:textColor="@color/hui_text_xh"
@@ -120,8 +122,8 @@
                     android:id="@+id/ONLI_mcORcNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center_vertical|left"
                     android:text="案件名称"
                     android:textColor="@color/hui_text_xh"
@@ -131,8 +133,8 @@
                     android:id="@+id/ONLI_mcWtren"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center_vertical|left"
                     android:text="@string/wtren"
                     android:textColor="@color/hui_text_xh"
@@ -142,8 +144,8 @@
                     android:id="@+id/ONLI_mcContect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center_vertical|left"
                     android:text="联系人"
                     android:textColor="@color/hui_text_xh"
@@ -152,8 +154,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="6dp"
                     android:gravity="center_vertical|left"
                     android:text="案件状态"
                     android:textColor="@color/hui_text_xh"
@@ -162,8 +164,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="22dp"
                     android:gravity="center_vertical|left"
                     android:text="地址"
                     android:textColor="@color/hui_text_xh"
@@ -174,13 +176,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="horizontal" >
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -206,10 +209,9 @@
                         android:layout_marginLeft="5dp"
                         android:background="@drawable/corners_hui_line5"
                         android:drawableLeft="@drawable/copy_somshing_yellow35"
-                        android:paddingBottom="1dp"
                         android:paddingLeft="3dp"
-                        android:paddingRight="3dp"
                         android:paddingTop="1dp"
+                        android:paddingRight="3dp"
                         android:text="@string/copytext"
                         android:textColor="@color/hui_text_xh"
                         android:textSize="@dimen/order_list_defaul" />
@@ -237,7 +239,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:orientation="horizontal" >
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -251,7 +254,6 @@
                         android:id="@+id/ONLI_mcORcNoTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
                         android:layout_marginLeft="5dp"
                         android:ellipsize="marquee"
                         android:gravity="center_vertical|left"
@@ -267,7 +269,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:orientation="horizontal" >
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -281,11 +284,10 @@
                         android:id="@+id/ONLI_wtren"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
                         android:layout_marginLeft="5dp"
+                        android:ellipsize="marquee"
                         android:gravity="center_vertical|left"
                         android:marqueeRepeatLimit="marquee_forever"
-                        android:ellipsize="marquee"
                         android:singleLine="true"
                         android:text="无"
                         android:textColor="@color/hui_text_xxxxh"
@@ -296,7 +298,8 @@
                     android:id="@+id/ONLI_mcContectLO"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -308,26 +311,31 @@
 
                     <com.cninsure.cp.view.MarqueeTextView
                         android:id="@+id/ONLI_cxUintLink"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
+                        android:layout_marginRight="5dp"
                         android:gravity="center_vertical|left"
-                        android:text="无"
+                        android:text="无姓名"
                         android:textColor="@color/hui_text_xxxxh"
+                        android:textSize="@dimen/order_list_defaul" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="/"
+                        android:textColor="@color/hui_text_xh"
                         android:textSize="@dimen/order_list_defaul" />
 
                     <TextView
                         android:id="@+id/ONLI_lxPhone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
                         android:layout_marginLeft="5dp"
                         android:drawablePadding="5dp"
                         android:gravity="center_vertical|right"
-                        android:text="无"
+                        android:text="无号码"
                         android:textColor="@color/hui_text_xxxxh"
                         android:textSize="@dimen/order_list_defaul" />
 
@@ -338,20 +346,20 @@
                         android:layout_marginLeft="5dp"
                         android:background="@drawable/corners_hui_line5"
                         android:drawableLeft="@drawable/serve_tel_yellow35"
-                        android:paddingBottom="1dp"
                         android:paddingLeft="3dp"
-                        android:paddingRight="3dp"
                         android:paddingTop="1dp"
+                        android:paddingRight="3dp"
                         android:text="@string/callPhone"
                         android:textColor="@color/hui_text_xh"
-                        android:textSize="@dimen/order_list_defaul" />
+                        android:textSize="@dimen/text_l" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:orientation="horizontal" >
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -365,27 +373,26 @@
                         android:id="@+id/ONLI_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
                         android:layout_marginLeft="5dp"
                         android:background="@drawable/corners_hui_line5"
                         android:ellipsize="marquee"
                         android:gravity="center_vertical|left"
                         android:marqueeRepeatLimit="marquee_forever"
-                        android:paddingBottom="1dp"
                         android:paddingLeft="3dp"
-                        android:paddingRight="3dp"
                         android:paddingTop="1dp"
+                        android:paddingBottom="1dp"
+                        android:paddingRight="3dp"
                         android:singleLine="true"
                         android:text="未知状态"
                         android:textColor="@color/yellow_baner"
-                        android:textSize="@dimen/order_list_defaul" />
+                        android:textSize="@dimen/text_l" />
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/ONLI_addressdiandian"
@@ -431,7 +438,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="10dp" >
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/ONLI_cancel_order"

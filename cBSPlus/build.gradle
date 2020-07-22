@@ -140,6 +140,7 @@ dependencies {
     //noinspection DuplicatePlatformClasses
     implementation 'org.apache.httpcomponents:httpclient:4.5.11'
     implementation 'com.getui:sdk:2.14.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
 }
 
 

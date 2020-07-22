@@ -84,6 +84,8 @@ public class PublicOrderEntity implements Serializable {
 	public long timeOutHours;
 	/**订单调度时间**/
 	public String dispatchDate;
+/**处理时长 公估师接单开始计算。*/
+	public String detailTime;//处理时长 公估师接单开始计算。
 	/**显示超时的textView**/
 	public TextView outTimView;
 	/**出险地点**/

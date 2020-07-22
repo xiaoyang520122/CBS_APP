@@ -213,7 +213,10 @@ public class HttpRequestTool {
 	/**作业提交审核 --POST**/
 	public final static int  FSX_WORK_SUBMIT_RIVIEW=1086;
 
+	/**********************************车险新全流程*************************************/
 
+	/**作业提交审核 --POST**/
+	public final static int  CX_NEW_GET_GGS_ORDER=1087;
 
 
 

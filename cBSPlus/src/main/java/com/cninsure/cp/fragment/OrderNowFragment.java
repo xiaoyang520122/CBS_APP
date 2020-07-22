@@ -50,12 +50,14 @@ import com.cninsure.cp.LoadingActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.activity.yjx.YjxSurveyActivity;
 import com.cninsure.cp.activty.WorkOrderActivty;
+import com.cninsure.cp.cx.CxWorkActivity;
 import com.cninsure.cp.entity.CaseOrder;
 import com.cninsure.cp.entity.FCOrderEntity;
 import com.cninsure.cp.entity.PagedRequest;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.YjxStatus;
+import com.cninsure.cp.entity.cx.CxOrderEntity;
 import com.cninsure.cp.entity.fc.APPRequestModel;
 import com.cninsure.cp.entity.fc.ShenheMsgEntity;
 import com.cninsure.cp.entity.yjx.YjxCaseDispatchTable;
@@ -119,7 +121,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 
 	private void initView() {
 		loadDialog = new LoadingDialog(getActivity());
-		listTitleTv = (TextView) fragmentView.findViewById(R.id.orderNF_listTitle);
+		listTitleTv =  fragmentView.findViewById(R.id.orderNF_listTitle);
 		listView = (ListView) fragmentView.findViewById(R.id.orderNF_list);
 		listView.setEmptyView(fragmentView.findViewById(R.id.orderNF_emptyText));
 		radgrup = (RadioGroup) fragmentView.findViewById(R.id.OTCI_btnG);
@@ -147,8 +149,12 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		EventBus.getDefault().unregister(this);
 	}
 
+	/**
+	 *
+	 * @param downType 1非车；2车险；3医健险
+	 */
 	public void downloadOrderData(int downType) {
-		if (downType == 1) {
+		if (downType == 1) {  //1非车
 			params = new ArrayList<NameValuePair>();
 			@SuppressWarnings("rawtypes")
 			APPRequestModel<PagedRequest> appre = new APPRequestModel<PagedRequest>();
@@ -165,15 +171,19 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			appre.requestData = requestData;
 			params.add(new BasicNameValuePair("requestData", JSON.toJSONString(appre)));
 			HttpUtils.requestPost(URLs.FC_GET_WORK_CASE_LIST, params, HttpRequestTool.FC_GET_WORK_CASE_LIST);
-		} else if (downType == 2) {
+		} else if (downType == 2) {  //2车险
 			paramsList = new ArrayList<String>(2);
 			paramsList.add("userId");
 			paramsList.add(AppApplication.getUSER().data.userId);
+			paramsList.add("ggsUid");
+			paramsList.add(AppApplication.getUSER().data.userId);
+			paramsList.add("start");
+			paramsList.add("0");
 			paramsList.add("size");
-			paramsList.add(50 + "");
-			paramsList.add("orderStatus");
-			paramsList.add(",0,2,5,7,");
-			HttpUtils.requestGet(URLs.GetStatuSelforder(), paramsList, HttpRequestTool.GET_STATU_SELFORDER);
+			paramsList.add("2");
+			paramsList.add("bussTypeIdArr");
+			paramsList.add(",4,2,6,10");
+			HttpUtils.requestGet(URLs.CX_NEW_GET_GGS_ORDER, paramsList, HttpRequestTool.CX_NEW_GET_GGS_ORDER);
 		} else if (downType == 3) {
 			paramsList = new ArrayList<String>(2);
 			paramsList.add("userId");
@@ -293,7 +303,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 	public void eventSelfdata(List<NameValuePair> value) {
 		int rcode = Integer.valueOf(value.get(0).getName());
 		if (rcode == HttpRequestTool.RECEIVE_ORDER || rcode == HttpRequestTool.CANCEL_ORDER || rcode == HttpRequestTool.FC_GET_WORK_CASE_LIST
-				|| rcode == HttpRequestTool.GET_STATU_SELFORDER || rcode == HttpRequestTool.SUBMIT_WORK || rcode == HttpRequestTool.GET_VERSION_INFO
+				|| rcode == HttpRequestTool.CX_NEW_GET_GGS_ORDER || rcode == HttpRequestTool.SUBMIT_WORK || rcode == HttpRequestTool.GET_VERSION_INFO
 				|| rcode == HttpRequestTool.GET_ORDER_STATUS || rcode == HttpRequestTool.YJX_GGS_ORDER_LIST) {
 			loadDialog.dismiss();
 		}
@@ -310,7 +320,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		}
 
 		switch (CheckHttpResult.checkList(value, getActivity())) {
-		case HttpRequestTool.GET_STATU_SELFORDER:
+		case HttpRequestTool.CX_NEW_GET_GGS_ORDER:
 			downloadOrderData(3);
 			jiexiDate(value.get(0).getValue());
 			break;
@@ -460,14 +470,14 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 	}
 
 	private void jiexiDate(String value) {
-		CaseOrder tempdata1=JSON.parseObject(value, CaseOrder.class);
+		CxOrderEntity tempdata1=JSON.parseObject(value, CxOrderEntity.class);
 		if (DataALL == null) {//当非车数据请求失败的时候为DataALL空，需要初始化
 			DataALL = new ArrayList<PublicOrderEntity>();
 		}
-		for (int i = 0; i < tempdata1.tableData.data.size(); i++) {
-			if (tempdata1.tableData.data.get(i).status == 0 || tempdata1.tableData.data.get(i).status == 2 || tempdata1.tableData.data.get(i).status == 5 || tempdata1.tableData.data.get(i).status == 7) {
-				data.add(tempdata1.tableData.data.get(i));
-				DataALL.add(tempdata1.tableData.data.get(i));// 添加车险信息到所有订单列表中
+		for (int i = 0; i < tempdata1.list.size(); i++) {
+			if (tempdata1.list.get(i).status == 2 || tempdata1.list.get(i).status == 4 || tempdata1.list.get(i).status == 6 || tempdata1.list.get(i).status == 10) {
+				data.add(tempdata1.list.get(i).getStandardOrderEnt());
+				DataALL.add(tempdata1.list.get(i).getStandardOrderEnt());// 添加车险信息到所有订单列表中
 			}
 		}
 	}
@@ -728,7 +738,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			}
 			
 			/***到了这里就是车险的案件了***/
-			if (data.get(itemPostion).status == 0) {
+			if (data.get(itemPostion).status == 2) {  //未接单状态 可以选择取消订单或接受
 				firstTv.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View arg0) {
@@ -742,7 +752,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 					}
 				});
 				return;
-			} else if (data.get(itemPostion).status == 2) {//案件也接单，只显示蓝色按钮，修改文本并设置点击事件（直接跳转到作业界面）
+			} else if (data.get(itemPostion).status == 4) {//案件也接单，只显示蓝色按钮，修改文本并设置点击事件（直接跳转到作业界面）
 				firstTv.setText("线路规划");
 				secendTv.setText("去作业");
 				firstTv.setOnClickListener(new OnClickListener() {
@@ -759,7 +769,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 								data.get(itemPostion).bussTypeId + "", data.get(itemPostion).status + "");
 					}
 				});
-			}  else if (data.get(itemPostion).status == 7) {
+			}  else if (data.get(itemPostion).status == 6) { /**案件作业中*/
 				firstTv.setText("提交审核");
 				secendTv.setText("去作业");
 				
@@ -780,7 +790,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 								data.get(itemPostion).bussTypeId + "", data.get(itemPostion).status + "");
 					}
 				});
-			} else if (data.get(itemPostion).status == 5) {
+			} else if (data.get(itemPostion).status == 10) { /**审核退回*/
 				firstTv.setText("提交审核");
 				secendTv.setText("去作业");
 				firstTv.setOnClickListener(new OnClickListener() {
@@ -1158,7 +1168,8 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 
 	public void jumpToWorkActivity(boolean jumpflag, String uid, String type, String statu) {
 		if (jumpflag) {
-			Intent intent = new Intent(getActivity(), WorkOrderActivty.class);
+//			Intent intent = new Intent(getActivity(), WorkOrderActivty.class);
+			Intent intent = new Intent(getActivity(), CxWorkActivity.class);
 			intent.putExtra("orderUid", uid);
 			intent.putExtra("taskType", type);
 			intent.putExtra("status", statu);

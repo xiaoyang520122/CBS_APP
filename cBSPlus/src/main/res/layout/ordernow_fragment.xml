@@ -90,8 +90,8 @@
             android:layout_weight="1"
             android:background="@color/hui_bg"
             android:divider="#00000000"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:scrollbars="none" >
         </ListView>
 

@@ -8,23 +8,18 @@
     <uses-sdk
         android:minSdkVersion="18"
         android:targetSdkVersion="28" />
+
     <!-- 版本号必须是版本名称中数字部分，不能死其他，如版本号为V1.0.1时，版本号为101 -->
-
-
     <!-- <uses-sdk -->
     <!-- android:minSdkVersion="8" -->
     <!-- android:targetSdkVersion="19" /> -->
-
-
     <!-- 加上解决全面屏手机不能全屏的问题 -->
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="false"
         android:resizeable="true"
-        android:smallScreens="true" />
-
-    <!-- 解决Android L上通知显示异常问题，targetSdkVersion需要设置成22 -->
+        android:smallScreens="true" /> <!-- 解决Android L上通知显示异常问题，targetSdkVersion需要设置成22 -->
     <!-- 个推SDK权限配置开始 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -34,76 +29,43 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <!-- 浮动通知权限 -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <!-- 自定义权限 -->
-    <uses-permission android:name="getui.permission.GetuiService.com.cninsure.cp" />
-    <!-- 替换为第三方应用的包名 -->
+    <uses-permission android:name="android.permission.GET_TASKS" /> <!-- 浮动通知权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 自定义权限 -->
+    <uses-permission android:name="getui.permission.GetuiService.com.cninsure.cp" /> <!-- 替换为第三方应用的包名 -->
     <permission
         android:name="getui.permission.GetuiService.com.cninsure.cp"
-        android:protectionLevel="normal" >
-    </permission> <!-- 替换为第三方应用的包名 -->
+        android:protectionLevel="normal" /> <!-- 替换为第三方应用的包名 -->
     <!--
     iBeancon功能所需权限    
     配置以下可选权限，以便使用个推3.0提供的电子围栏功能。请在AndroidManifest.xml的<manifest>根标签下添加如下配置
     -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <!-- 个推3.0电子围栏功能所需权限 -->
-
-
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- 个推3.0电子围栏功能所需权限 -->
     <!-- 个推电子围栏功能所需权限 -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- 个推SDK权限配置结束 -->
-
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 个推SDK权限配置结束 -->
     <!-- 这个权限用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
-    </uses-permission>
-    <!-- 这个权限用于访问GPS定位 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
-    </uses-permission>
-    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
-    </uses-permission>
-    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
-    </uses-permission>
-    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" >
-    </uses-permission>
-    <!-- 用于读取手机当前的状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" >
-    </uses-permission>
-    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
-    </uses-permission>
-    <!-- 访问网络，网络定位需要上网 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- SD卡读取权限，用户写入离线定位数据 -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" >
-    </uses-permission>
-    <!-- 拨号权限 -->
-    <uses-permission android:name="android.permission.CALL_PHONE" >
-    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- SD卡读取权限，用户写入离线定位数据 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /> <!-- 拨号权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <uses-feature android:name="android.hardware.autofocus" />
-
-    <!-- 使用摄像头硬件功能 -->
-    <uses-feature android:name="android.hardware.camera" />
-    <!-- 自动对焦功能 -->
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <!-- 闪光灯功能 -->
-    <uses-feature android:name="android.hardware.camera.flash" />
-    <!-- 前置摄像头 -->
+    <uses-feature android:name="android.hardware.autofocus" /> <!-- 使用摄像头硬件功能 -->
+    <uses-feature android:name="android.hardware.camera" /> <!-- 自动对焦功能 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 闪光灯功能 -->
+    <uses-feature android:name="android.hardware.camera.flash" /> <!-- 前置摄像头 -->
     <uses-feature android:name="android.hardware.camera.front" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -128,9 +90,7 @@
         <!-- 下面这句解决错误：java.lang.NoClassDefFoundError: Failed resolution of: Lorg/apache/http/client/methods/HttpPost; -->
         <uses-library
             android:name="org.apache.http.legacy"
-            android:required="false" />
-
-        <!-- 加上解决全面屏手机不能全屏的问题 -->
+            android:required="false" /> <!-- 加上解决全面屏手机不能全屏的问题 -->
         <meta-data
             android:name="android.max_aspect"
             android:value="2.2" />
@@ -146,13 +106,10 @@
         </activity>
         <activity
             android:name="com.cninsure.cp.IndexActivity"
-            android:launchMode="singleTask" >
-        </activity>
+            android:launchMode="singleTask" />
 
-        <service android:name="com.cninsure.cp.service.LocationService" >
-        </service>
-        <service android:name="com.cninsure.cp.service.Music" >
-        </service>
+        <service android:name="com.cninsure.cp.service.LocationService" />
+        <service android:name="com.cninsure.cp.service.Music" />
 
         <activity
             android:name="com.cninsure.cp.activty.WorkOrderActivty"
@@ -162,110 +119,74 @@
         </activity>
         <activity
             android:name="com.cninsure.cp.activty.CaseInfoActivty"
-            android:launchMode="singleTask" >
-        </activity>
+            android:launchMode="singleTask" />
         <activity
             android:name="com.cninsure.cp.activty.AboutUsAvtivity"
-            android:launchMode="singleTask" >
-        </activity>
+            android:launchMode="singleTask" />
         <activity
             android:name="com.cninsure.cp.activty.SecurityCenterActivity"
-            android:launchMode="singleTask" >
-        </activity>
+            android:launchMode="singleTask" />
         <activity
             android:name="com.cninsure.cp.activty.ChangPassActivity"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
-        <activity android:name="com.cninsure.cp.activty.MessageCenterActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.activty.HelpCenterActivity" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name="com.cninsure.cp.activty.MessageCenterActivity" />
+        <activity android:name="com.cninsure.cp.activty.HelpCenterActivity" />
         <activity
             android:name="com.cninsure.cp.fc.activity.SurveyActivity"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustPan|stateHidden" >
-        </activity>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name="com.karics.library.zxing.android.CaptureActivity"
-            android:launchMode="singleTask" >
-        </activity>
+            android:launchMode="singleTask" />
         <activity
             android:name="com.cninsure.cp.ScannerLoginActivity"
-            android:launchMode="singleTask" >
-        </activity>
-        <activity android:name="com.cninsure.cp.fc.activity.CaseInputActivity" >
-        </activity>
+            android:launchMode="singleTask" />
+        <activity android:name="com.cninsure.cp.fc.activity.CaseInputActivity" />
         <activity
             android:name="com.cninsure.cp.activty.DisplayPictureActivity"
-            android:launchMode="singleTask" >
-        </activity>
+            android:launchMode="singleTask" />
         <activity
             android:name="com.cninsure.cp.activty.CancelAndSubmitActivity"
-            android:launchMode="singleTask" >
-        </activity>
+            android:launchMode="singleTask" />
         <activity
             android:name="com.cninsure.cp.activty.ScoreActivity"
-            android:launchMode="singleTask" >
-        </activity>
+            android:launchMode="singleTask" />
         <activity
             android:name="com.cninsure.cp.LoginActivity"
-            android:launchMode="singleTask" >
-        </activity>
+            android:launchMode="singleTask" />
         <activity
             android:name="com.cninsure.cp.activty.DisplayOrderActivity"
-            android:launchMode="singleTask" >
-        </activity>
-        <activity android:name="com.cninsure.cp.ocr.CameraActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.ocr.LinePathActivity" >
-        </activity>
+            android:launchMode="singleTask" />
+        <activity android:name="com.cninsure.cp.ocr.CameraActivity" />
+        <activity android:name="com.cninsure.cp.ocr.LinePathActivity" />
         <activity
             android:name="com.cninsure.cp.fc.activity.WaterCaseInputActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity android:name="com.cninsure.cp.photo.CXPhotoActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.navi.NavigationActivtity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.utils.PhotoChoiceActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.activty.BankCardActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.activty.AddBanckCardActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.fc.activity.EditSurveyGgsActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.fc.activity.CaseReportActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.utils.PhotoChoiceActivityFc" >
-        </activity>
-        <activity android:name="com.cninsure.cp.fc.activity.DispersiveCaseInputActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.activity.yjx.YjxSurveyActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.photo.DisplayPhotoActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.activity.yjx.YjxBaoanInputActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.activity.yjx.YjxTempStorageActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.activity.yjx.YjxDispatchActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.activity.yjx.YjxDispatchShenheActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.activity.yjx.YjxNoShenheOrderActivity" >
-        </activity>
+            android:screenOrientation="portrait" />
+        <activity android:name="com.cninsure.cp.photo.CXPhotoActivity" />
+        <activity android:name="com.cninsure.cp.navi.NavigationActivtity" />
+        <activity android:name="com.cninsure.cp.utils.PhotoChoiceActivity" />
+        <activity android:name="com.cninsure.cp.activty.BankCardActivity" />
+        <activity android:name="com.cninsure.cp.activty.AddBanckCardActivity" />
+        <activity android:name="com.cninsure.cp.fc.activity.EditSurveyGgsActivity" />
+        <activity android:name="com.cninsure.cp.fc.activity.CaseReportActivity" />
+        <activity android:name="com.cninsure.cp.utils.PhotoChoiceActivityFc" />
+        <activity android:name="com.cninsure.cp.fc.activity.DispersiveCaseInputActivity" />
+        <activity android:name="com.cninsure.cp.activity.yjx.YjxSurveyActivity" />
+        <activity android:name="com.cninsure.cp.photo.DisplayPhotoActivity" />
+        <activity android:name="com.cninsure.cp.activity.yjx.YjxBaoanInputActivity" />
+        <activity android:name="com.cninsure.cp.activity.yjx.YjxTempStorageActivity" />
+        <activity android:name="com.cninsure.cp.activity.yjx.YjxDispatchActivity" />
+        <activity android:name="com.cninsure.cp.activity.yjx.YjxDispatchShenheActivity" />
+        <activity android:name="com.cninsure.cp.activity.yjx.YjxNoShenheOrderActivity" />
+        <activity
+            android:name="com.cninsure.cp.cx.CxWorkActivity"
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name="com.cninsure.cp.dispersive.DispersiveUserActivity"
-            android:launchMode="singleTask" >
-        </activity>
-        <activity android:name="com.cninsure.cp.dispersive.CtCenterActivity" >
-        </activity>
-        <activity android:name="com.cninsure.cp.dispersive.DispersiveWorkActivity" >
-        </activity>
-
-        <!-- 个推 -->
+            android:launchMode="singleTask" />
+        <activity android:name="com.cninsure.cp.dispersive.CtCenterActivity" />
+        <activity android:name="com.cninsure.cp.dispersive.DispersiveWorkActivity" /> <!-- 个推 -->
         <!-- 请根据您当前自定义的 PushService 名称路径进行配置 -->
         <service
             android:name="com.cninsure.cp.service.DemoPushService"
@@ -274,19 +195,15 @@
             android:process=":pushservice" />
         <service
             android:name="com.cninsure.cp.service.DemoIntentService"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-
-        <!-- 百度地图配置开始 -->
+            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- 百度地图配置开始 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="q4qVT2D0Lhykff5LWwg6js2ISag2Hq3F" >
-        </meta-data>
+            android:value="q4qVT2D0Lhykff5LWwg6js2ISag2Hq3F" />
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote" >
-        </service>
+            android:process=":remote" />
 
         <activity
             android:name="com.mob.tools.MobUIShell"
@@ -339,8 +256,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
         <meta-data
             android:name="Mob-AppKey"
             android:value="23316a1818ea0" />

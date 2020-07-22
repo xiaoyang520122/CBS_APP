@@ -87,7 +87,7 @@ public class URLs implements Serializable {
 	private final static String SAVE_WORK_INFO=IPHOME+"/works";
 	/**查勘作业提交审核 post**/
 	private final static String SUBMIT_WORK=IPHOME+"/dispatchs/app/finishDispath";
-	
+
 	/**获取非车任务列表 post**/
 	public final static String FC_GET_WORK_CASE_LIST=FCIPHOME+"/case/listWorkCase";
 	/**获取非作业所需字典库数据 post**/
@@ -134,7 +134,7 @@ public class URLs implements Serializable {
 	public final static String UP_OCR_PHOTO=IPHOME+"/uploads/picture/upload?client=android&timestamp="+new Date().getTime()+"&digest="+MD5Test.GetMD5Code("nomessagedigest");
 
 	/**案件自调度 POST  请求参数：userId用户id，bussTypeId作业类型id，bussTypeName作业类型名称，fromOrderUid订单uid**/
-	public final static String ADD_NEW_ORDER_SELF=IPHOME+"/dispatchs/selfdo"; 
+	public final static String ADD_NEW_ORDER_SELF=IPHOME+"/dispatchs/selfdo";
 	/**APP下载路径
 	 * http://sys.cnsurvey.cn:8008/file_app/pz_plus/android/product/zd/ZDCBS.apk //正达
 	   http://sys.cnsurvey.cn:8008/file_app/pz_plus/android/product/cninsure/CBSPlus.apk //公估正式环境
@@ -217,8 +217,9 @@ public class URLs implements Serializable {
 	/**作业提交审核 --POST**/
 	public final static String FSX_WORK_SUBMIT_RIVIEW = IPHOME +"/other/audit/submit";
 	
-	
-	
+	/**********************************************车险新全流程*************************************************/
+	/**车险公估师任务订单查询 --GET**/
+	public final static String CX_NEW_GET_GGS_ORDER = IPHOME +"/cx/order/listPage";
 	
 	
 	

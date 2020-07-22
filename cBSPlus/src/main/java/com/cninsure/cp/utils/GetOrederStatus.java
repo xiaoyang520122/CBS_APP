@@ -5,41 +5,50 @@ public class GetOrederStatus {
 	public static String fromStatuId (int i){
 		String results="未知状态";
 		switch (i) {
-		case 0:
+			
+		case 1:
+			results= "待调度";
+			break;
+			
+		case 2:   //已调度
 			results= "待接单";
 			break;
 			
-		case 1:
-			results= "已结调度";
-			break;
-			
-		case 2:
-			results= "作业中";
-			break;
-			
 		case 3:
-			results= "公估师取消";
+			results= "调度受阻";
 			break;
 			
 		case 4:
-			results= "系统取消";
+			results= "已接单";
 			break;
 			
 			
 		case 5:
-			results= "作业完成";
+			results= "拒绝";
 			break;
 			
 		case 6:
-			results= "提交审核";
+			results= "作业中";
 			break;
 			
 		case 7:
-			results= "审核驳回";
+			results= "作业待审核";
 			break;
 			
 		case 8:
-			results= "审核通过";
+			results= "作业待审核-未找到审核人";
+			break;
+
+		case 9:
+			results= "作业审核通过";
+			break;
+
+		case 10:
+			results= "作业审核退回";
+			break;
+
+		case 99:
+			results= "删除";
 			break;
 
 		default:
