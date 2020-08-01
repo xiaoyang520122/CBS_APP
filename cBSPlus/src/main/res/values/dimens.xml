@@ -27,4 +27,6 @@
 	<dimen name="slidingmenu_offset_two">100dp</dimen>
 	
 	<dimen name="order_list_defaul">14sp</dimen>
+	<dimen name="work_line_defaul_hight">30sp</dimen>
+
 </resources>

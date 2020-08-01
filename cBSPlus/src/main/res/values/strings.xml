@@ -66,6 +66,9 @@
     <string name="day">日</string>
     <string name="hour">时</string>
     <string name="minute">分</string>
-     
+
+    <string name="camera_xsz">拍摄行驶证</string>
+    <string name="camera_jsz">拍摄驾驶证</string>
+
 
 </resources>

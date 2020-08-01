@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/hui_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/my_menu_ico_size"
+                    android:layout_height="@dimen/my_menu_ico_size"
+                    android:src="@drawable/yuanshipass_bulue48" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="双证被扣"
+                    android:textColor="@color/hui_text_xxh" />
+
+                <com.zcw.togglebutton.ToggleButton
+                    android:id="@+id/cs_isLicenseKou"
+                    android:layout_width="48dp"
+                    android:layout_height="20dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/jxzheng_cameraLin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/cs_pathMoveLicense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners_hui_4_10dp"
+                    android:drawableLeft="@drawable/xing_white32"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="30dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/camera_xsz"
+                    android:textColor="@android:color/white" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/cs_pathDriverLicense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners_hui_4_10dp"
+                    android:drawableLeft="@drawable/xing_white32"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="30dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/camera_jsz"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车牌号："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cs_bdCarNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="识别或手动录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车架号："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cs_bdCarVin"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="识别或手动录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发动机号："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cs_bdEngineNo"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="识别或手动录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="初登日期："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/cs_bdCarRegisterDate"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/check_date_hui32"
+                    android:gravity="right|center"
+                    android:drawablePadding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="行驶证有效期至："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/cs_bdCarEffectiveDate"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/check_date_hui32"
+                    android:gravity="right|center"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="准驾车型："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cs_bdDrivingType"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="识别或手动录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="号牌种类："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/cs_bdCarNumberType"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="使用性质："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/cs_bdCarUseType"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="驾驶员姓名："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cs_bdDriverName"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="识别或手动录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="驾驶员电话："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cs_bdDriverPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="驾驶证："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cs_bdDriverNo"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="识别或手动录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="初次领证日期："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/cs_bdDriverRegisterDate"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/check_date_hui32"
+                    android:gravity="right|center"
+                    android:drawablePadding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="有效起始日期："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/cs_bdDriverEffectiveStar"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/check_date_hui32"
+                    android:gravity="right|center"
+                    android:drawablePadding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="驾驶证有效期至："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/cs_bdDriverEffectiveEnd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/check_date_hui32"
+                    android:gravity="right|center"
+                    android:drawablePadding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车架号："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/cs_bdCarVinIsAgreement_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/cs_bdCarVinIsAgreement_RB1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="未检"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/cs_bdCarVinIsAgreement_RB2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="相符"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/cs_bdCarVinIsAgreement_RB3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="不符"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="行驶证："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/cs_bdCardIsEffective_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/cs_bdCardIsEffective_RB1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="未检"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/cs_bdCardIsEffective_RB2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="有效"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/cs_bdCardIsEffective_RB3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="无效"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="驾驶证："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/cs_bdDriverIsEffective_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/cs_bdDriverIsEffective_RB1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="未检"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/cs_bdDriverIsEffective_RB2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="有效"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/cs_bdDriverIsEffective_RB3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="无效"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="准驾车型："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/cs_bdDrivingIsAgreement_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/cs_bdDrivingIsAgreement_RB1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="未检"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/cs_bdDrivingIsAgreement_RB2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="相符"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/cs_bdDrivingIsAgreement_RB3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="不符"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="持卡人姓名："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cs_insuredPersonName"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开户行："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cs_insuredBankDeposit"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="卡号："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cs_insuredBankNo"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+                <ImageView
+                    android:id="@+id/cs_bankCarLicense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/camera_blue38" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

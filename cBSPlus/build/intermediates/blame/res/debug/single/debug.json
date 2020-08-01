@@ -1,11 +1,11 @@
 [
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_back_white_48.png.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\back_white_48.png"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_fc_take_case_creatinfo_d.xml.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\fc_take_case_creatinfo_d.xml"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_back_white_48.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\back_white_48.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ssdk_oks_classic_whatsapp.png.flat",
@@ -32,16 +32,16 @@
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\anim\\abc_slide_out_top.xml"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
-        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_tempstorage_hui48.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xxhdpi\\tempstorage_hui48.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_reson_blue_yellow2_48.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\reson_blue_yellow2_48.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_tempstorage_hui48.png.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xxhdpi\\tempstorage_hui48.png"
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
+        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_zip.png.flat",
@@ -88,20 +88,20 @@
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\layout\\abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_mycenter.png.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-hdpi\\mycenter.png"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_white_bg_bule_line.9.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\white_bg_bule_line.9.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
-        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_mycenter.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-hdpi\\mycenter.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-mdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
+        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -124,12 +124,12 @@
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\246153fc0686d4ff78c8961ca91329b7\\core-1.0.0\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_default_ptr_flip.png.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\library\\build\\intermediates\\packaged_res\\debug\\drawable-mdpi-v4\\default_ptr_flip.png"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ssdk_oks_classic_facebook.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\ssdk_oks_classic_facebook.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_default_ptr_flip.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\library\\build\\intermediates\\packaged_res\\debug\\drawable-mdpi-v4\\default_ptr_flip.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_logo_3.png.flat",
@@ -140,20 +140,20 @@
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\c7eb9cd3508ac3959447c14fd76c9fb9\\material-1.0.0\\res\\color\\mtrl_tabs_icon_color_selector.xml"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
-        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-mdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
-    },
-    {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_black_16dp.png.flat",
-        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_mp4.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\mp4.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_mp4.png.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\mp4.png"
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_black_16dp.png.flat",
+        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
+        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-mdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable_corners_greenblue_4_30dp.xml.flat",
@@ -202,6 +202,10 @@
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_bus_yellow100.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xxhdpi\\bus_yellow100.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_line_bg.9.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\line_bg.9.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_caseinfo_listview_item.xml.flat",
@@ -264,12 +268,12 @@
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable_corners_white_right_30dp.xml.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable\\corners_white_right_30dp.xml"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\color_mtrl_chip_close_icon_tint.xml.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\c7eb9cd3508ac3959447c14fd76c9fb9\\material-1.0.0\\res\\color\\mtrl_chip_close_icon_tint.xml"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable_corners_white_right_30dp.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable\\corners_white_right_30dp.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_activty_fc_case_input.xml.flat",
@@ -312,12 +316,12 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\yjx_baoan_input_fee_info_view.xml"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_waitcase.png.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xxhdpi\\waitcase.png"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_yjx_baoan_input_activity.xml.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\yjx_baoan_input_activity.xml"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_waitcase.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xxhdpi\\waitcase.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_litlelogo_nongye.png.flat",
@@ -328,12 +332,16 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-mdpi\\push_small.png"
     },
     {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_camera_blue_yellow2_64.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\camera_blue_yellow2_64.png"
+    },
+    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_back_white32.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\back_white32.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_camera_blue_yellow2_64.png.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\camera_blue_yellow2_64.png"
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_left_jt_hui_short.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xxhdpi\\left_jt_hui_short.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_part_time.xml.flat",
@@ -348,16 +356,24 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\push.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_item_exlist_title_tv.xml.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\item_exlist_title_tv.xml"
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_cx_third_fragment_item.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\cx_third_fragment_item.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_logo_water_mask_alph.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-hdpi\\logo_water_mask_alph.png"
     },
     {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_item_exlist_title_tv.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\item_exlist_title_tv.xml"
+    },
+    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_btn_back_press.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-hdpi\\btn_back_press.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_cx_damage_fragment.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\cx_damage_fragment.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_serche_hui32.png.flat",
@@ -372,12 +388,12 @@
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
-        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_default.xml.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\color-v23\\abc_tint_default.xml"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
+        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable_radiobutton_taxi.xml.flat",
@@ -420,12 +436,12 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\place_blue_yellow_48.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ssdk_back_arr.png.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\ssdk_back_arr.png"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xxhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ssdk_back_arr.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\ssdk_back_arr.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_searchorder.png.flat",
@@ -492,12 +508,12 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable\\check_photo_button.xml"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_16dp.png.flat",
-        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_16dp.png"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_focused_holo.9.png.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xxhdpi-v4\\abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_16dp.png.flat",
+        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -540,12 +556,12 @@
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_fc_basic_info.xml.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\fc_basic_info.xml"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-hdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-ldrtl-hdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_fc_basic_info.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\fc_basic_info.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ssdk_oks_classic_renren.png.flat",
@@ -572,12 +588,12 @@
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\c7eb9cd3508ac3959447c14fd76c9fb9\\material-1.0.0\\res\\color\\mtrl_text_btn_text_color_selector.xml"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_dispersive_work_info_view.xml.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\dispersive_work_info_view.xml"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_pdf.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\pdf.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_dispersive_work_info_view.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\dispersive_work_info_view.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable_shape_main_edit.xml.flat",
@@ -704,12 +720,12 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\waitcase_hui.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable_notification_bg_low.xml.flat",
-        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\246153fc0686d4ff78c8961ca91329b7\\core-1.0.0\\res\\drawable\\notification_bg_low.xml"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_renshang_hui48.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\renshang_hui48.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable_notification_bg_low.xml.flat",
+        "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\246153fc0686d4ff78c8961ca91329b7\\core-1.0.0\\res\\drawable\\notification_bg_low.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_end_point60.png.flat",
@@ -760,12 +776,12 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable\\corners_red_30dp.xml"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_yjx_dispatch_list_item.xml.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\yjx_dispatch_list_item.xml"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ssdk_oks_classic_check_default.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\ssdk_oks_classic_check_default.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_yjx_dispatch_list_item.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\yjx_dispatch_list_item.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ssdk_oks_classic_wechatmoments.png.flat",
@@ -784,12 +800,12 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xxhdpi\\local_blue48_2.png"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_bank_nonghang.png.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-hdpi\\bank_nonghang.png"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_cx_work_activity.xml.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\cx_work_activity.xml"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_bank_nonghang.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-hdpi\\bank_nonghang.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_reson_blue_yellow_64.png.flat",
@@ -798,6 +814,10 @@
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_cx_third_fragment.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\cx_third_fragment.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ssdk_oks_classic_tencentweibo.png.flat",
@@ -832,12 +852,12 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\choice_wtper_item.xml"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_leaving_message_head_view.xml.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\leaving_message_head_view.xml"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_score_activity.xml.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\score_activity.xml"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_leaving_message_head_view.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\leaving_message_head_view.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
@@ -1246,6 +1266,10 @@
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable_indicator_bg_bottom.xml.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\library\\build\\intermediates\\packaged_res\\debug\\drawable\\indicator_bg_bottom.xml"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_cx_subject_fragment.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\cx_subject_fragment.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13_design_layout_snackbar.xml.flat",
@@ -1960,6 +1984,10 @@
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\c7eb9cd3508ac3959447c14fd76c9fb9\\material-1.0.0\\res\\drawable\\design_snackbar_background.xml"
     },
     {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_cx_survey_fragment.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\cx_survey_fragment.xml"
+    },
+    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_leftmenu.xml.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\leftmenu.xml"
     },
@@ -2054,6 +2082,10 @@
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-hdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_xing_white32.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\xing_white32.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_listview_layout.xml.flat",
@@ -2228,6 +2260,10 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable\\corners_bule_4_30dp.xml"
     },
     {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_cx_injured_fragment_item.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\cx_injured_fragment_item.xml"
+    },
+    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_pressed_holo_light.9.png.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-mdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
@@ -2328,6 +2364,10 @@
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_cx_injured_fragment.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\cx_injured_fragment.xml"
+    },
+    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_display_worder_activity.xml.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\display_worder_activity.xml"
     },
@@ -2414,6 +2454,10 @@
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_delete_order_bule36.png.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\delete_order_bule36.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_delete_hui32.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\delete_hui32.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_abc_alert_dialog_material.xml.flat",
@@ -2530,6 +2574,10 @@
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_xing_white48.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\xing_white48.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\anim_abc_tooltip_exit.xml.flat",
@@ -3316,6 +3364,10 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\mycenter_hui.png"
     },
     {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_cx_damage_fragment_item.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\cx_damage_fragment_item.xml"
+    },
+    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_design_bottom_navigation_item.xml.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\c7eb9cd3508ac3959447c14fd76c9fb9\\material-1.0.0\\res\\layout\\design_bottom_navigation_item.xml"
     },
@@ -3480,12 +3532,12 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable\\title_bana_bg.xml"
     },
     {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ssdk_oks_classic_twitter.png.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\ssdk_oks_classic_twitter.png"
-    },
-    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\anim_activity_alpha_out.xml.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\anim\\activity_alpha_out.xml"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ssdk_oks_classic_twitter.png.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-xhdpi\\ssdk_oks_classic_twitter.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_xb_amount_item.xml.flat",
@@ -3534,10 +3586,6 @@
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\anim_design_snackbar_in.xml.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\c7eb9cd3508ac3959447c14fd76c9fb9\\material-1.0.0\\res\\anim\\design_snackbar_in.xml"
-    },
-    {
-        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_left_jt_hui_short.png.flat",
-        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable-hdpi\\left_jt_hui_short.png"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable_custom_progress_draw.xml.flat",
@@ -3630,6 +3678,10 @@
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_fc_take_case_event_info_d.xml.flat",
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\fc_take_case_event_info_d.xml"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable_corners_yellow_low_5dp.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable\\corners_yellow_low_5dp.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_right_jt_bule.png.flat",
@@ -3784,6 +3836,10 @@
         "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\ggs_list_item.xml"
     },
     {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\layout_add_view_buttom.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\layout\\add_view_buttom.xml"
+    },
+    {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-v21_abc_edit_text_material.xml.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\7df26908078c74ff4eeaf46e7b6b476c\\appcompat-1.0.0\\res\\drawable-v21\\abc_edit_text_material.xml"
     },
@@ -3926,6 +3982,10 @@
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
         "source": "D:\\Users\\xy-wm\\AndroidStudioFile\\.gradle\\caches\\transforms-2\\files-2.1\\246153fc0686d4ff78c8961ca91329b7\\core-1.0.0\\res\\drawable-mdpi-v4\\notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable_radio_true_false_blue.xml.flat",
+        "source": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\src\\main\\res\\drawable\\radio_true_false_blue.xml"
     },
     {
         "merged": "E:\\AndroidProject\\CBS_APP\\cBSPlus\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_upload_yellow48.png.flat",

@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/hui_bg"
+    android:orientation="vertical">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/cxworkA_tablayout"
-        app:tabTextColor="@color/hui_text_xxxxh"
-        app:tabSelectedTextColor="@color/bulue_main"
-        app:tabIndicatorColor="@color/hui_text_xxxxh"
-        app:tabMode="fixed"
-        app:tabMaxWidth="0dp"
-        app:tabGravity="fill"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </com.google.android.material.tabs.TabLayout>
-
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/hui_text_xxxxh"
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed"
+        app:tabIndicatorFullWidth="false"
+        app:tabTextAppearance="@style/tablayoutTitle"
+        app:tabSelectedTextColor="@color/bulue_main"
+        app:tabTextColor="@color/hui_text_xxxxh"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/cxworkA_viewpager"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:background="@android:color/white" >
-    </androidx.viewpager.widget.ViewPager>
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"/>
 </LinearLayout>

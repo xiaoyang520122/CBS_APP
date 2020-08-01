@@ -116,7 +116,7 @@ public class PhotographyHelp implements OnClickListener {
 			if (activity.ocrEntity3 == null) {
 				return false;
 			} else {
-				String displayInfo="驾驶证号码："+ activity.ocrEntity3.bdDriverLincense+"\n准驾车型："+activity.ocrEntity3.bdDrivingType+"\n驾驶员："+activity.ocrEntity3.bdDriverName;
+				String displayInfo="驾驶证号码："+ activity.ocrEntity3.bdDriverNo+"\n准驾车型："+activity.ocrEntity3.bdDrivingType+"\n驾驶员："+activity.ocrEntity3.bdDriverName;
 				sendmessage(displayInfo,event);
 				return true;
 			}
@@ -385,10 +385,10 @@ private void jiexieXSZ(String filePath) {
 		try {
 			JSONObject object=new JSONObject(result.getJsonRes());
 			JSONObject jsonDate=object.getJSONObject("words_result");
-			ocrEntityTemp.bdDriverLincense=jsonDate.getJSONObject("证号").optString("words");
+			ocrEntityTemp.bdDriverNo=jsonDate.getJSONObject("证号").optString("words");
 			ocrEntityTemp.bdDrivingType=jsonDate.getJSONObject("准驾车型").optString("words");
 			ocrEntityTemp.bdDriverName=jsonDate.getJSONObject("姓名").optString("words");
-			displayInfo="驾驶证号码："+ ocrEntityTemp.bdDriverLincense+"\n准驾车型："+ocrEntityTemp.bdDrivingType+"\n驾驶员："+ocrEntityTemp.bdDriverName;
+			displayInfo="驾驶证号码："+ ocrEntityTemp.bdDriverNo+"\n准驾车型："+ocrEntityTemp.bdDrivingType+"\n驾驶员："+ocrEntityTemp.bdDriverName;
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

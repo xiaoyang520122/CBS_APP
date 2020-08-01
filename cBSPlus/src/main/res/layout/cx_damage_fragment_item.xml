@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cd_damageNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="物损1"
+                android:layout_marginLeft="12dp"
+                android:textSize="@dimen/text_sl"
+                android:textColor="@color/hui_text_xh" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:background="@null"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/cd_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="移除"
+                android:gravity="right"
+                android:drawableRight="@drawable/delete_hui32"
+                android:textColor="@color/hui_text_h" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/line_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="归属人："
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/cd_damageOwner"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/work_line_defaul_hight"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right|center"
+                android:hint="识别或手动录入"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/line_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="物损名称："
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/cd_damageObjectName"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/work_line_defaul_hight"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right|center"
+                android:hint="识别或手动录入"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/line_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="物主电话："
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/cd_damageOwnerPhone"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/work_line_defaul_hight"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right|center"
+                android:hint="识别或手动录入"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="损失类型："
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:id="@+id/cd_damageType"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/work_line_defaul_hight"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableRight="@drawable/left_jt_hui_short"
+                android:drawablePadding="10dp"
+                android:gravity="right|center"
+                android:hint="请选择"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -67,7 +67,7 @@ public class User implements Serializable {
 		public Integer quyuId;
 		/** 区域名称 （字典表中获取） */
 		public String quyuName;
-		/**APP中部分接口获取到的图片地址需要加上次前缀方可访问**/
+		/**APP中部分接口获取到的图片地址需要加上前缀方可访问**/
 		public String qiniuUrl;
 		
 		

@@ -217,6 +217,8 @@ public class HttpRequestTool {
 
 	/**作业提交审核 --POST**/
 	public final static int  CX_NEW_GET_GGS_ORDER=1087;
+	/**作业提交审核 --POST**/
+	public final static int  CX_NEW_GET_IMG_TYPE_DICT=1088;
 
 
 

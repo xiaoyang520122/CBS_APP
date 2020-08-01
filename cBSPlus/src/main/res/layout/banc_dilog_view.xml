@@ -48,7 +48,7 @@
             android:layout_weight="1"
             android:gravity="right"
             android:text="取消"
-            android:textColor="@color/hui_text_xxh" />
+            android:textColor="@color/hui_text_xxxxh" />
 
         <TextView
             android:id="@+id/bancdialog_submit"

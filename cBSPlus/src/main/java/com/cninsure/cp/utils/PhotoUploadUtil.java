@@ -432,10 +432,11 @@ public class PhotoUploadUtil {
 				} else {
 					uploadPoint = 0;
 					progressDialog.dismiss();
-					DialogUtil.getAlertOneButton(context, "上传成功!",new DialogInterface.OnClickListener() {
-						
+
+					Dialog dialog = DialogUtil.getAlertOneButton(context, "上传成功!",null);
+					dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
 						@Override
-						public void onClick(DialogInterface arg0, int arg1) {
+						public void onDismiss(DialogInterface dialog) {
 							String result=resultinfo.substring(1, resultinfo.length()-1);
 							Log.e("JsonHttpUtils", "车险上传图片成功返回数据："+resultinfo);
 							List<NameValuePair> responsePrams=new ArrayList<NameValuePair>();
@@ -443,7 +444,8 @@ public class PhotoUploadUtil {
 							responsePrams.add(new BasicNameValuePair("UPLOAD_SUCCESS",result));//返回上传成功后的图片名称（不包含完整路径只有文件名称）
 							EventBus.getDefault().post(responsePrams);
 						}
-					}).show();
+					});
+					dialog.show();
 				}
 			}
 

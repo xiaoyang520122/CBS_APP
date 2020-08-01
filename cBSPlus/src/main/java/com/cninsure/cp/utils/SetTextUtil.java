@@ -28,6 +28,15 @@ public class SetTextUtil {
 			}
 		});
 	}
+
+	public static void setTvTextForArr(TextView Tv , String[] strArr, int position) {
+		if (position > -1 && strArr != null && strArr.length > position) {
+			String msg = strArr[position];
+			if (Tv != null && msg != null && !"null".equals(msg)) {
+				Tv.setText(msg);
+			}
+		}
+	}
 	
 	/**为textView添加一个listener，如果内容有变化就修改对应保存对象中去*/
 //	public static void setETVChangedListener(final EditText ETv ,  final String msg){

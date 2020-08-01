@@ -707,7 +707,7 @@ public class DisplayOrderActivity extends BaseActivity implements OnClickListene
 		}
 		if (!TextUtils.isEmpty(contentMessage.data.pathDriverLicense)) { //驾驶证照片路径不能为空
 			ocrEntity3=new OCREntity();
-			ocrEntity3.bdDriverLincense=contentMessage.data.pathDriverLicense;
+			ocrEntity3.bdDriverNo=contentMessage.data.pathDriverLicense;
 			ocrEntity3.bdDrivingType=contentMessage.data.bdDrivingType;
 			ocrEntity3.bdDriverName=contentMessage.data.bdDriverName;
 			ocrEntity3.url=contentMessage.data.pathDriverLicense;

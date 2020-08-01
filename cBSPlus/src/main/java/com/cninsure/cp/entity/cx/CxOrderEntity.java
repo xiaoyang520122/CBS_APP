@@ -98,6 +98,9 @@ public class CxOrderEntity {
         public Date workSubmitTime;//提交审核时间
         public Long overTime;//时间(min) 创建开始计算
         public String detailTime;//处理时长 公估师接单开始计算。
+        public String isArrive; //是否到达现场
+        public String arriveTime;//到达现场时间。
+
 
         public PublicOrderEntity getStandardOrderEnt() {
             PublicOrderEntity stdEnt = new PublicOrderEntity();

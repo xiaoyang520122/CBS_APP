@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+//nox_adb.exe connect 127.0.0.1:62001
 
 android {
     signingConfigs {

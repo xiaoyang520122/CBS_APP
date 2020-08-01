@@ -39,6 +39,11 @@
   </style>
 
     <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert" />
-     
+
+    <!--   设置Tablayout字体大小 -->
+    <style name="tablayoutTitle">
+        <item name="android:textSize">@dimen/login_size</item>
+    </style>
+
 
 </resources>

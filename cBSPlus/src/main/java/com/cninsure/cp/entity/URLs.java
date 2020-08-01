@@ -220,6 +220,8 @@ public class URLs implements Serializable {
 	/**********************************************车险新全流程*************************************************/
 	/**车险公估师任务订单查询 --GET**/
 	public final static String CX_NEW_GET_GGS_ORDER = IPHOME +"/cx/order/listPage";
+	/**拍照类型字典表 type=cxOrderWorkImageType --GET**/
+	public final static String CX_NEW_GET_IMG_TYPE_DICT = IPHOME +"/dict/listByType";
 	
 	
 	

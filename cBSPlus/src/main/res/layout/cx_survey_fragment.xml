@@ -1,0 +1,1282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/hui_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查勘时间："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/csu_ckDate"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/check_date_hui32"
+                    android:gravity="right|center"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="事故类型："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/csu_ckAccidentType"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="事故详细类型："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/csu_ckAccidentSmallType"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="出险原因："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/csu_ckAccidentReason"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查勘类型："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/csu_surveyType"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="事故责任："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/csu_ckAccidentLiability"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="责任比例："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:inputType="number"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/csu_liabilityRatio"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入责任比例"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="损失类型："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cs_lossType1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:checked="false"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="三者"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <CheckBox
+                        android:id="@+id/cs_lossType2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="人伤"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <CheckBox
+                        android:id="@+id/cs_lossType3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="物损"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="损失情况："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/csu_lossObjectType"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择损失情况"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="报案驾驶员："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/csu_baoanDriverName"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="默认现场联系人"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车辆能否正常行驶："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/csu_canDriveNormally_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/csu_canDriveNormally_RBT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="是"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/csu_canDriveNormally_RBF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="否"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="赔付方式："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/csu_CompensationMethod"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否属于保险责任："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/csu_ckIsInsuranceLiability_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/csu_ckIsInsuranceLiability_RBT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="是"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/csu_ckIsInsuranceLiability_RBF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="否"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否代位："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/csu_isDaiwei_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/csu_isDaiwei_RBT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="是"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/csu_isDaiwei_RBF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="否"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="估损金额："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/csu_lossAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否现场案件："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/csu_isScene_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/csu_isScene_RBT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="是"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/csu_isScene_RBF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="否"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否再高速公路："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/csu_isHsLoad_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/csu_isHsLoad_RBT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="是"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/csu_isHsLoad_RBF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="否"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:gravity="center"
+                    android:text="查勘地点："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/csu_surveyAddress_equal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/corners_blue_line5"
+                    android:gravity="right|center"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="同派单地点"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/text_l" />
+
+                <TextView
+                    android:id="@+id/csu_surveyAddress_local"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners_blue_line5"
+                    android:gravity="right|center"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="定位当前地点"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/text_l" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/csu_surveyAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@null"
+                android:gravity="right|center"
+                android:hint="请输入查勘地点"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查勘结论："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/csu_surveyConclusion"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/csu_surveySummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@null"
+                android:gravity="left|center"
+                android:hint="请输入查勘结论(最多300字符)"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否标记为重大案件："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/csu_ckIsMajorCase_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/csu_ckIsMajorCase_RBT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="是"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/csu_ckIsMajorCase_RBF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="否"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+                </RadioGroup>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ALERT_GIF_DIALOG_VIEW_NaviMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="▍客户签名"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="@dimen/text_15"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <TextView
+                        android:id="@+id/csu_customerNotice1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/searchorder_hui"
+                        android:drawablePadding="5dp"
+                        android:text="保险索赔须知"
+                        android:textColor="@color/hui_text_xxxxh"
+                        android:textSize="@dimen/text_defaul" />
+
+                    <TextView
+                        android:id="@+id/csu_customerNotice2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:drawableLeft="@drawable/searchorder_hui"
+                        android:drawablePadding="5dp"
+                        android:text="公估业务客户告知书"
+                        android:textColor="@color/hui_text_xxxxh"
+                        android:textSize="@dimen/text_defaul" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:drawableLeft="@drawable/searchorder"
+                        android:drawablePadding="5dp"
+                        android:text="“查勘结果”"
+                        android:textColor="@color/bulue_main"
+                        android:textSize="@dimen/text_defaul" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/hui_line" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <ImageView
+                        android:id="@+id/csu_signLicense_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/csu_signLicense"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:drawablePadding="5dp"
+                        android:text="+添加签名"
+                        android:textColor="@color/bulue_main"
+                        android:textSize="@dimen/text_defaul" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:text="▍附件信息"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="@dimen/text_15"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="（现场草稿图在此上传）"
+                android:textColor="@color/hui_text_h"
+                android:textSize="@dimen/text_s" />
+
+            <TextView
+                android:id="@+id/csu_enclosureList_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/corners_blue_5"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:text="+上传附件"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_l" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/corners_yellow_low_5dp"
+            android:padding="5dp"
+            android:text="单个文件最大不超过20M。"
+            android:textColor="@color/yellow_m"
+            android:textSize="@dimen/text_defaul" />
+
+        <ListView
+            android:id="@+id/csu_enclosureList_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"/>
+    </LinearLayout>
+</ScrollView>

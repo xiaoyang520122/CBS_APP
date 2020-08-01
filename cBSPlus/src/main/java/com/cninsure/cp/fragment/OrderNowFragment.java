@@ -217,7 +217,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		switch (bid) {
 		case R.id.OTCI_btn_0:
 			showOrderType = 0;
-			checkOrderList(0,1, 2, 3, 4, 5, 7);
+			checkOrderList(0,1, 2, 3, 4, 5 ,6, 7);
 			listTitleTv.setText(String.format(getResources().getString(R.string.order_listTitle), "全部"));
 			break;
 
@@ -269,6 +269,10 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 
 			case 4:
 				checkData(4);
+				break;
+
+			case 6:
+				checkData(6);
 				break;
 
 			case 7:
@@ -332,7 +336,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		case HttpRequestTool.RECEIVE_ORDER:
 			ToastUtil.showToastLong(getActivity(), value.get(0).getValue());
 			if (isJumpToWork) {
-				jumpToWorkActivity(isJumpToWork, jumpOrderUid, jumpType, jumpstatu);
+				jumpToWorkActivity(isJumpToWork, jumpOrderUid, jumpType, jumpstatu,null);
 			}
 			downloadOrderData(1);
 			break;
@@ -404,7 +408,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		
 		switch (showOrderType) {//加载选中的类别
 		case 0:
-			checkOrderList(0,1, 2, 3, 4, 5, 7);
+			checkOrderList(0,1, 2, 3, 4, 5, 6, 7);
 			break;
 
 		case 1:
@@ -766,7 +770,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 					@Override
 					public void onClick(View arg0) {
 						jumpToWorkActivity(true, data.get(itemPostion).uid, 
-								data.get(itemPostion).bussTypeId + "", data.get(itemPostion).status + "");
+								data.get(itemPostion).bussTypeId + "", data.get(itemPostion).status + "",data.get(itemPostion));
 					}
 				});
 			}  else if (data.get(itemPostion).status == 6) { /**案件作业中*/
@@ -787,7 +791,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 					@Override
 					public void onClick(View arg0) {
 						jumpToWorkActivity(true, data.get(itemPostion).uid, 
-								data.get(itemPostion).bussTypeId + "", data.get(itemPostion).status + "");
+								data.get(itemPostion).bussTypeId + "", data.get(itemPostion).status + "",data.get(itemPostion));
 					}
 				});
 			} else if (data.get(itemPostion).status == 10) { /**审核退回*/
@@ -807,7 +811,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 					@Override
 					public void onClick(View arg0) {
 						jumpToWorkActivity(true, data.get(itemPostion).uid, 
-								data.get(itemPostion).bussTypeId + "", data.get(itemPostion).status + "");
+								data.get(itemPostion).bussTypeId + "", data.get(itemPostion).status + "",data.get(itemPostion));
 					}
 				});
 			}
@@ -1084,7 +1088,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 //				@Override
 //				public void onClick(DialogInterface arg0, int lspoint) {
 //					if (lspoint == 0) {
-						jumpToWorkActivity(true, data.get(itemId).uid, data.get(itemId).bussTypeId + "", data.get(itemId).status + "");
+						jumpToWorkActivity(true, data.get(itemId).uid, data.get(itemId).bussTypeId + "", data.get(itemId).status + "",data.get(itemId));
 //					} else if (lspoint == 1) {
 //						PublicOrderEntity temp=data.get(itemId);
 //						Intent intent = new Intent(getActivity(), CaseInfoActivty.class);
@@ -1108,7 +1112,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 						HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
 						loadDialog.setMessage("操作中……").show();
 					} else if (lspoint == 1) {
-						jumpToWorkActivity(true, data.get(itemId).uid, data.get(itemId).bussTypeId + "", data.get(itemId).status + "");
+						jumpToWorkActivity(true, data.get(itemId).uid, data.get(itemId).bussTypeId + "", data.get(itemId).status + "",data.get(itemId));
 					} 
 //					else if (lspoint == 2) {//查看案件详情
 //						Intent intent = new Intent(getActivity(), CaseInfoActivty.class);
@@ -1132,7 +1136,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 						HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
 						loadDialog.setMessage("操作中……").show();
 					} else if (lspoint == 1) {
-						jumpToWorkActivity(true, data.get(itemId).uid, data.get(itemId).bussTypeId + "", data.get(itemId).status + "");
+						jumpToWorkActivity(true, data.get(itemId).uid, data.get(itemId).bussTypeId + "", data.get(itemId).status + "",data.get(itemId));
 					}
 //					else if (lspoint == 2) {//, "查看案件详情"
 //						Intent intent = new Intent(getActivity(), CaseInfoActivty.class);
@@ -1166,13 +1170,14 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		loadDialog.setMessage("取消中……").show();
 	}
 
-	public void jumpToWorkActivity(boolean jumpflag, String uid, String type, String statu) {
+	public void jumpToWorkActivity(boolean jumpflag, String uid, String type, String statu,PublicOrderEntity dataEn) {
 		if (jumpflag) {
 //			Intent intent = new Intent(getActivity(), WorkOrderActivty.class);
 			Intent intent = new Intent(getActivity(), CxWorkActivity.class);
 			intent.putExtra("orderUid", uid);
 			intent.putExtra("taskType", type);
 			intent.putExtra("status", statu);
+			intent.putExtra("PublicOrderEntity", dataEn);
 			Log.i("JsonHttpUtils", "调用JS传递字符串status=" + statu);
 			getActivity().startActivity(intent);
 		}

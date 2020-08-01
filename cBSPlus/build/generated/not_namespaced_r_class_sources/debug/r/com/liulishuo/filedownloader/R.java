@@ -12,7 +12,7 @@ public final class R {
     public static final class string {
         private string() {}
 
-        public static final int default_filedownloader_notification_content = 0x7f0f003e;
-        public static final int default_filedownloader_notification_title = 0x7f0f003f;
+        public static final int default_filedownloader_notification_content = 0x7f0f0040;
+        public static final int default_filedownloader_notification_title = 0x7f0f0041;
     }
 }
