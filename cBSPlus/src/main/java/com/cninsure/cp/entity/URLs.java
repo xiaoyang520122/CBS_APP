@@ -222,6 +222,11 @@ public class URLs implements Serializable {
 	public final static String CX_NEW_GET_GGS_ORDER = IPHOME +"/cx/order/listPage";
 	/**拍照类型字典表 type=cxOrderWorkImageType --GET**/
 	public final static String CX_NEW_GET_IMG_TYPE_DICT = IPHOME +"/dict/listByType";
+	/**POST 作业保存 userId:User-20180103101603-687B671A  ,orderUid:ORDER--20200706105235-30E90
+	 content{“key”:"value"}作业内容，保存为JSON对象 ,status 0：暂存；1：提交（送审）**/
+	public final static String CX_NEW_WORK_SAVE = IPHOME +"/cx/order/work/save";
+	/**GET 查看订单作业详情 userId:User-20180103101603-687B671A    orderUid:ORDER--20200706105235-30E90**/
+	public final static String CX_NEW_GET_ORDER_VIEW_BY_UID = IPHOME +"/cx/order/work/viewByOrderUid";
 	
 	
 	

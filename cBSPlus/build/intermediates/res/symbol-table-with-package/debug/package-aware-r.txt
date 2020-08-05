@@ -1581,6 +1581,9 @@ id CXPA_lightt
 id CXPA_surfaceview
 id CXPA_takepicture
 id CXPA_viewpager
+id CXWA_Back_Tv
+id CXWA_More_Tv
+id CXWA_Title_Tv
 id CaseINPUT_GGSAdd
 id CaseINPUT_GGSAdd_D
 id CaseINPUT_SPINN1
@@ -2300,7 +2303,7 @@ id csu_ckIsMajorCase_RG
 id csu_customerNotice1
 id csu_customerNotice2
 id csu_enclosureList_add
-id csu_enclosureList_listView
+id csu_enclosureList_line
 id csu_isDaiwei_RBF
 id csu_isDaiwei_RBT
 id csu_isDaiwei_RG
@@ -2486,6 +2489,7 @@ id item_gridviewForExlist_photoup_img
 id item_gridviewForExlist_rePhoto_img
 id item_touch_helper_previous_elevation
 id jxzheng_cameraLin
+id jxzheng_cameraLinThid
 id labeled
 id largeLabel
 id launch_product_query

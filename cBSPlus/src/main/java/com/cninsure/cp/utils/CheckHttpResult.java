@@ -32,7 +32,13 @@ public class CheckHttpResult {
  * 如果调用接口返回码为400或401需要退出当前界面或者跳到登录界面的调用该接口
  */
 	public static int checkList(List<NameValuePair> values,final Activity context,final int... code){
-		int rcode=Integer.valueOf(values.get(1).getValue());
+		int rcode= 0;
+		try {
+			rcode = Integer.valueOf(values.get(1).getValue());
+		} catch (NumberFormatException e) {
+			rcode =200;
+			e.printStackTrace();
+		}
 		final int typecode=Integer.valueOf(values.get(0).getName());
 		if (rcode==200) {
 			return typecode;

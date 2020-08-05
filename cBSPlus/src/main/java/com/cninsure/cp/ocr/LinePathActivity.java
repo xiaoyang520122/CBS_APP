@@ -110,7 +110,6 @@ public class LinePathActivity extends BaseActivity implements OnClickListener {
 //		        mPathView.saveImageToFile(filePath);
 		    	
 		    	savaSignPhoto();
-		    	
 		        Intent intent=new Intent();
 		        intent.putExtra("LinePathFilePath", filePath);
 		        setResult(HttpRequestTool.LINEPATH, intent);

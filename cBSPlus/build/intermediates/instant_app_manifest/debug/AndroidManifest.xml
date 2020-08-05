@@ -181,7 +181,8 @@
         <activity android:name="com.cninsure.cp.activity.yjx.YjxNoShenheOrderActivity" />
         <activity
             android:name="com.cninsure.cp.cx.CxWorkActivity"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.cninsure.cp.dispersive.DispersiveUserActivity"
             android:launchMode="singleTask" />

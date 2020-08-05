@@ -64,7 +64,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/jxzheng_cameraLin"
+            android:id="@+id/jxzheng_cameraLinThid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"

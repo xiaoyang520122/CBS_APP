@@ -16,21 +16,19 @@ import androidx.fragment.app.Fragment;
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.CxWorkActivity;
 import com.cninsure.cp.entity.cx.CxWorkEntity;
+import com.cninsure.cp.utils.SetTextUtil;
 import com.cninsure.cp.utils.cx.TypePickeUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
-import com.zcw.togglebutton.ToggleButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class CxDamageFragment extends Fragment {
+public class CxDamageFragment extends BaseFragment {
 
     private View contentView ,footerView;
     private LayoutInflater inflater;
     private ListView mlistView;
     private MyAdapter adapter;
-    public List<CxWorkEntity.DamageInfosEntity> DamageInfos; //物损信息
     private CxWorkActivity activity;
 
 
@@ -47,8 +45,10 @@ public class CxDamageFragment extends Fragment {
 
     /**初始化数据*/
     private void initData() {
-        DamageInfos  = new ArrayList<>();
-        DamageInfos.add(new CxWorkEntity.DamageInfosEntity());
+        if (activity.cxWorkEntity.damageInfos == null) {
+            activity.cxWorkEntity.damageInfos = new ArrayList<>();
+            activity.cxWorkEntity.damageInfos.add(new CxWorkEntity.DamageInfosEntity());
+        }
     }
 
     private void initView() {
@@ -64,23 +64,50 @@ public class CxDamageFragment extends Fragment {
         footerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DamageInfos.add(new CxWorkEntity.DamageInfosEntity());
+                SaveDataToEntity(); //先把已经填写好的数据存起来
+                activity.cxWorkEntity.damageInfos.add(new CxWorkEntity.DamageInfosEntity());
                 adapter.notifyDataSetChanged();
             }
         });
         return footerView;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        SaveDataToEntity();
+    }
+
+
+    /**保存数据到实体类*/
+    @Override
+    public void SaveDataToEntity() {
+        if (activity==null) return;
+        for (int i= 0;i<activity.cxWorkEntity.damageInfos.size();i++){
+            ViewHolder vHolder = (ViewHolder) mlistView.getChildAt(i).getTag();
+            getHolderDate(vHolder,i);
+        }
+    }
+
+    private void getHolderDate(ViewHolder vHolder, int position) {
+        CxWorkEntity.DamageInfosEntity tempDamage = activity.cxWorkEntity.damageInfos.get(position);
+        tempDamage.damageNo = position; //编号
+        tempDamage.damageOwner = vHolder.damageOwnerEdt.getText().toString(); //	归属人
+        tempDamage.damageObjectName = vHolder.damageObjectNameEdt.getText().toString();
+        tempDamage.damageOwnerPhone = vHolder.damageOwnerPhoneEdt.getText().toString();
+        tempDamage.damageType = TypePickeUtil.getValue(vHolder.damageTypeTv.getText().toString(),activity.cxSurveyDict,"damage_loss_type");
+    }
+
     private class MyAdapter extends BaseAdapter{
 
         @Override
         public int getCount() {
-            return DamageInfos.size();
+            return activity.cxWorkEntity.damageInfos.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return DamageInfos.get(position);
+            return activity.cxWorkEntity.damageInfos.get(position);
         }
 
         @Override
@@ -102,7 +129,16 @@ public class CxDamageFragment extends Fragment {
             vHolder.damageNoTv.setText("物损"+(position+1));
             setDeleteOnclick(position,convertView); //移除物损方法
             TypePickeUtil.setTypePickerDialog(activity,vHolder.damageTypeTv,activity.cxSurveyDict,"damage_loss_type");
+            displayInfo(vHolder,position);
             return convertView;
+        }
+
+        private void displayInfo(ViewHolder vHolder, int position) {
+            CxWorkEntity.DamageInfosEntity tempDamage = activity.cxWorkEntity.damageInfos.get(position);
+            SetTextUtil.setEditText(vHolder.damageOwnerEdt,tempDamage.damageOwner); //	归属人
+            SetTextUtil.setEditText(vHolder.damageObjectNameEdt,tempDamage.damageObjectName); //
+            SetTextUtil.setEditText(vHolder.damageOwnerPhoneEdt,tempDamage.damageOwnerPhone); //
+            SetTextUtil.setTvTextForArr(vHolder.damageTypeTv,TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("damage_loss_type")),tempDamage.damageType);
         }
 
         /***
@@ -116,7 +152,8 @@ public class CxDamageFragment extends Fragment {
                 convertView.findViewById(R.id.cd_delete).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        DamageInfos.remove(position);
+                        SaveDataToEntity(); //先把已经填写好的数据存起来
+                        activity.cxWorkEntity.damageInfos.remove(position);
                         adapter.notifyDataSetChanged();
                     }
                 });

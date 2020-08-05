@@ -15,6 +15,7 @@ public class PickPhotoUtil {
 	public final static int PHOTO_REQUEST_ALBUMPHOTO=2; //委托文件相册选择
 	public final static int PHOTO_REQUEST_CAMERAPHOTO_W=3; //作业文件拍照
 	public final static int PHOTO_REQUEST_ALBUMPHOTO_W=4; //作业文件相册选择
+	public final static int PHOTO_REQUEST_ALBUMPHOTO_CX_FILE=7; //作业文件相册选择
 
 	/** 调用系统相机拍照并储存到指定路径 */
 	public static void cameraPhotoToUrl(Activity context, String folderName,int code) {

@@ -219,6 +219,10 @@ public class HttpRequestTool {
 	public final static int  CX_NEW_GET_GGS_ORDER=1087;
 	/**作业提交审核 --POST**/
 	public final static int  CX_NEW_GET_IMG_TYPE_DICT=1088;
+	/**POST 作业保存 userId:User-20180103101603-687B671A  ,orderUid:ORDER--20200706105235-30E90  content{“key”:"value"}作业内容，保存为JSON对象 ,status 0：暂存；1：提交（送审）**/
+	public final static int  CX_NEW_WORK_SAVE=1089;
+	/**  GET 查看订单作业详情 userId:User-20180103101603-687B671A    orderUid:ORDER--20200706105235-30E90 */
+	public final static int  CX_NEW_GET_ORDER_VIEW_BY_UID=1090;
 
 
 

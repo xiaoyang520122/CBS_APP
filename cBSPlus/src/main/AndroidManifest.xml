@@ -168,6 +168,7 @@
         <activity android:name=".activity.yjx.YjxNoShenheOrderActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxWorkActivity"
             android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="adjustPan"
             ></activity>
         <activity
             android:name=".dispersive.DispersiveUserActivity"

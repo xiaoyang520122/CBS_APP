@@ -30,7 +30,7 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.zcw.togglebutton.ToggleButton;
 
-public class CxSubjectFragment extends Fragment {
+public class CxSubjectFragment extends BaseFragment {
 
     private View contentView;
     public CxWorkEntity.SubjectInfoEntity subjectInfo; //定损信息
@@ -137,7 +137,7 @@ public class CxSubjectFragment extends Fragment {
     @Override
     public void onPause() {
         LoadDialogUtil.dismissDialog();
-        saveDataToEntity();
+        SaveDataToEntity();
         super.onPause();
     }
 
@@ -158,10 +158,13 @@ public class CxSubjectFragment extends Fragment {
         isLicenseKou.setOnToggleChanged(new ToggleButton.OnToggleChanged() {
             @Override
             public void onToggle(boolean on) {
-                activity.cxWorkEntity.subjectInfo.isLicenseKou = on;
                 if (on){
+                    activity.cxWorkEntity.subjectInfo.isLicenseKou = 1;
                     jxzLineLayout.setVisibility(View.GONE);
-                }else{jxzLineLayout.setVisibility(View.VISIBLE);}
+                } else {
+                    activity.cxWorkEntity.subjectInfo.isLicenseKou = 0;
+                    jxzLineLayout.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
@@ -178,10 +181,10 @@ public class CxSubjectFragment extends Fragment {
         //驾驶证
         bdDriverNameEdt.setText(activity.ocrEntity3.bdDriverName); //驾驶员姓名
         bdDriverNoEdt.setText(activity.ocrEntity3.bdDriverNo); //驾驶证
-        bdDriverRegisterDateTv.setText(activity.ocrEntity3.bdDriverRegisterDate); //初次领证日期
-        bdDriverEffectiveStarTv.setText(activity.ocrEntity3.bdDriverEffectiveStar); //有效起始日期
-        bdDriverEffectiveEndTv.setText(activity.ocrEntity3.bdDriverEffectiveEnd); //驾驶证有效期至
-        activity.cxWorkEntity.subjectInfo.pathMoveLicense = imgName;  //照片名称
+        bdDriverRegisterDateTv.setText(activity.ocrEntity3.getBdCarRegisterDate()); //初次领证日期
+        bdDriverEffectiveStarTv.setText(activity.ocrEntity3.getBdDriverEffectiveStar()); //有效起始日期
+        bdDriverEffectiveEndTv.setText(activity.ocrEntity3.getBdDriverEffectiveEnd()); //驾驶证有效期至
+        activity.cxWorkEntity.subjectInfo.pathDriverLicense = imgName;  //照片名称
     }
 
     public void disPlayMoveLicense(String imgName) {
@@ -189,13 +192,14 @@ public class CxSubjectFragment extends Fragment {
         bdCarNumberEdt.setText(activity.ocrEntity4.bdCarNumber); //车牌号
         bdCarVinEdt.setText(activity.ocrEntity4.bdCarVin); //车架号
         bdEngineNoEdt.setText(activity.ocrEntity4.bdEngineNo); //发动机号
-        bdCarRegisterDateTv.setText(activity.ocrEntity4.bdCarRegisterDate); //初登日期
+        bdCarRegisterDateTv.setText(activity.ocrEntity4.getBdCarRegisterDate()); //初登日期
         bdDrivingTypeEdt.setText(activity.ocrEntity4.bdDrivingType); //准驾车型
         bdCarUseTypeTv.setText(activity.ocrEntity4.getBdCarUseType()); //使用性质
-        activity.cxWorkEntity.subjectInfo.pathDriverLicense = imgName;  //照片名称
+        activity.cxWorkEntity.subjectInfo.pathMoveLicense = imgName;  //照片名称
     }
 
-    private void saveDataToEntity() {
+    @Override
+    public void SaveDataToEntity() {
         //银行卡信息
         activity.cxWorkEntity.subjectInfo.insuredPersonName = insuredPersonNameEdt.getText().toString();  //持卡人
         activity.cxWorkEntity.subjectInfo.insuredBankDeposit = insuredBankDepositEdt.getText().toString();  //开户行
@@ -220,33 +224,33 @@ public class CxSubjectFragment extends Fragment {
         int CarVinIsRGCheckId = bdCarVinIsAgreementRG.getCheckedRadioButtonId();
         if (CarVinIsRGCheckId>0) //车架号是否相符
             switch (CarVinIsRGCheckId){
-                case R.id.cs_bdCarVinIsAgreement_RB1:activity.cxWorkEntity.subjectInfo.bdCarVinIsAgreement = 0;//未验
-                case R.id.cs_bdCarVinIsAgreement_RB2:activity.cxWorkEntity.subjectInfo.bdCarVinIsAgreement = 1;//相符
-                case R.id.cs_bdCarVinIsAgreement_RB3:activity.cxWorkEntity.subjectInfo.bdCarVinIsAgreement = 2;//不符
+                case R.id.cs_bdCarVinIsAgreement_RB1:activity.cxWorkEntity.subjectInfo.bdCarVinIsAgreement = 0;break;//未验
+                case R.id.cs_bdCarVinIsAgreement_RB2:activity.cxWorkEntity.subjectInfo.bdCarVinIsAgreement = 1;break;//相符
+                case R.id.cs_bdCarVinIsAgreement_RB3:activity.cxWorkEntity.subjectInfo.bdCarVinIsAgreement = 2;break;//不符
             }
         //行驶证是否有效
         int CardIsRGCheckId = bdCardIsEffectiveRG.getCheckedRadioButtonId();
         if (CardIsRGCheckId>0) //车架号是否相符
             switch (CardIsRGCheckId){
-                case R.id.cs_bdCardIsEffective_RB1:activity.cxWorkEntity.subjectInfo.bdCardIsEffective = 0;//未验
-                case R.id.cs_bdCardIsEffective_RB2:activity.cxWorkEntity.subjectInfo.bdCardIsEffective = 1;//有效
-                case R.id.cs_bdCardIsEffective_RB3:activity.cxWorkEntity.subjectInfo.bdCardIsEffective = 2;//无效
+                case R.id.cs_bdCardIsEffective_RB1:activity.cxWorkEntity.subjectInfo.bdCardIsEffective = 0;break;//未验
+                case R.id.cs_bdCardIsEffective_RB2:activity.cxWorkEntity.subjectInfo.bdCardIsEffective = 1;break;//有效
+                case R.id.cs_bdCardIsEffective_RB3:activity.cxWorkEntity.subjectInfo.bdCardIsEffective = 2;break;//无效
             }
         //驾驶证是否有效
         int DriverRGCheckId = bdDriverIsEffectiveRG.getCheckedRadioButtonId();
         if (DriverRGCheckId>0) //车架号是否相符
             switch (DriverRGCheckId){
-                case R.id.cs_bdDriverIsEffective_RB1:activity.cxWorkEntity.subjectInfo.bdDriverIsEffective = 0;//未验
-                case R.id.cs_bdDriverIsEffective_RB2:activity.cxWorkEntity.subjectInfo.bdDriverIsEffective = 1;//有效
-                case R.id.cs_bdDriverIsEffective_RB3:activity.cxWorkEntity.subjectInfo.bdDriverIsEffective = 2;//无效
+                case R.id.cs_bdDriverIsEffective_RB1:activity.cxWorkEntity.subjectInfo.bdDriverIsEffective = 0;break;//未验
+                case R.id.cs_bdDriverIsEffective_RB2:activity.cxWorkEntity.subjectInfo.bdDriverIsEffective = 1;break;//有效
+                case R.id.cs_bdDriverIsEffective_RB3:activity.cxWorkEntity.subjectInfo.bdDriverIsEffective = 2;break;//无效
             }
         //驾驶证是否相符
         int bdDrivingRGCheckId = bdDrivingIsAgreementRG.getCheckedRadioButtonId();
         if (bdDrivingRGCheckId>0) //车架号是否相符
             switch (bdDrivingRGCheckId){
-                case R.id.cs_bdDrivingIsAgreement_RB1:activity.cxWorkEntity.subjectInfo.bdDrivingIsAgreement = 0;//未验
-                case R.id.cs_bdDrivingIsAgreement_RB2:activity.cxWorkEntity.subjectInfo.bdDrivingIsAgreement = 1;//相符
-                case R.id.cs_bdDrivingIsAgreement_RB3:activity.cxWorkEntity.subjectInfo.bdDrivingIsAgreement = 2;//不符
+                case R.id.cs_bdDrivingIsAgreement_RB1:activity.cxWorkEntity.subjectInfo.bdDrivingIsAgreement = 0;break;//未验
+                case R.id.cs_bdDrivingIsAgreement_RB2:activity.cxWorkEntity.subjectInfo.bdDrivingIsAgreement = 1;break;//相符
+                case R.id.cs_bdDrivingIsAgreement_RB3:activity.cxWorkEntity.subjectInfo.bdDrivingIsAgreement = 2;break;//不符
             }
     }
 
@@ -254,8 +258,8 @@ public class CxSubjectFragment extends Fragment {
      * 显示实体类中的所有数据
      */
     private void displaySubjectData() {
-        if (activity.cxWorkEntity.subjectInfo.isLicenseKou!=null && activity.cxWorkEntity.subjectInfo.isLicenseKou){
-            isLicenseKou.setToggleOn(activity.cxWorkEntity.subjectInfo.isLicenseKou); //双证被扣
+        if (activity.cxWorkEntity.subjectInfo.isLicenseKou==1){
+            isLicenseKou.setToggleOn(true); //双证被扣
             jxzLineLayout.setVisibility(View.GONE);
         }else{jxzLineLayout.setVisibility(View.VISIBLE);}
         //银行卡信息
@@ -281,30 +285,30 @@ public class CxSubjectFragment extends Fragment {
         //车架号是否相符
         if (activity.cxWorkEntity.subjectInfo.bdCarVinIsAgreement!=null) //车架号是否相符
             switch (activity.cxWorkEntity.subjectInfo.bdCarVinIsAgreement){
-                case 0:bdCarVinIsAgreementRG.check(R.id.cs_bdCarVinIsAgreement_RB1);//未验
-                case 1:bdCarVinIsAgreementRG.check(R.id.cs_bdCarVinIsAgreement_RB2);//相符
-                case 2:bdCarVinIsAgreementRG.check(R.id.cs_bdCarVinIsAgreement_RB3);//不符
+                case 0:bdCarVinIsAgreementRG.check(R.id.cs_bdCarVinIsAgreement_RB1);break;//未验
+                case 1:bdCarVinIsAgreementRG.check(R.id.cs_bdCarVinIsAgreement_RB2);break;//相符
+                case 2:bdCarVinIsAgreementRG.check(R.id.cs_bdCarVinIsAgreement_RB3);break;//不符
             }
         //行驶证是否有效
         if (activity.cxWorkEntity.subjectInfo.bdCardIsEffective!=null) //车架号是否相符
             switch (activity.cxWorkEntity.subjectInfo.bdCardIsEffective){
-                case 0:bdCardIsEffectiveRG.check(R.id.cs_bdCardIsEffective_RB1);//未验
-                case 1:bdCardIsEffectiveRG.check(R.id.cs_bdCardIsEffective_RB2);//有效
-                case 2:bdCardIsEffectiveRG.check(R.id.cs_bdCardIsEffective_RB3);//无效
+                case 0:bdCardIsEffectiveRG.check(R.id.cs_bdCardIsEffective_RB1);break;//未验
+                case 1:bdCardIsEffectiveRG.check(R.id.cs_bdCardIsEffective_RB2);break;//有效
+                case 2:bdCardIsEffectiveRG.check(R.id.cs_bdCardIsEffective_RB3);break;//无效
             }
         //驾驶证是否有效
-        if (activity.cxWorkEntity.subjectInfo.bdDriverIsEffective!=null) //车架号是否相符
+        if (activity.cxWorkEntity.subjectInfo.bdDriverIsEffective!=null) //驾驶证是否相符
             switch (activity.cxWorkEntity.subjectInfo.bdDriverIsEffective){
-                case 0:bdCardIsEffectiveRG.check(R.id.cs_bdDriverIsEffective_RB1);//未验
-                case 1:bdCardIsEffectiveRG.check(R.id.cs_bdDriverIsEffective_RB2);//有效
-                case 2:bdCardIsEffectiveRG.check(R.id.cs_bdDriverIsEffective_RB3);//无效
+                case 0:bdCardIsEffectiveRG.check(R.id.cs_bdDriverIsEffective_RB1);break;//未验
+                case 1:bdCardIsEffectiveRG.check(R.id.cs_bdDriverIsEffective_RB2);break;//有效
+                case 2:bdCardIsEffectiveRG.check(R.id.cs_bdDriverIsEffective_RB3);break;//无效
             }
-        //驾驶证是否相符
-        if (activity.cxWorkEntity.subjectInfo.bdDrivingIsAgreement!=null) //车架号是否相符
+        //准驾车型是否相符
+        if (activity.cxWorkEntity.subjectInfo.bdDrivingIsAgreement!=null) //准驾车型是否相符
             switch (activity.cxWorkEntity.subjectInfo.bdDrivingIsAgreement){
-                case 0:bdDrivingIsAgreementRG.check(R.id.cs_bdDrivingIsAgreement_RB1);//未验
-                case 1:bdDrivingIsAgreementRG.check(R.id.cs_bdDrivingIsAgreement_RB2);//相符
-                case 2:bdDrivingIsAgreementRG.check(R.id.cs_bdDrivingIsAgreement_RB3);//不符
+                case 0:bdDrivingIsAgreementRG.check(R.id.cs_bdDrivingIsAgreement_RB1);break;//未验
+                case 1:bdDrivingIsAgreementRG.check(R.id.cs_bdDrivingIsAgreement_RB2);break;//相符
+                case 2:bdDrivingIsAgreementRG.check(R.id.cs_bdDrivingIsAgreement_RB3);break;//不符
             }
     }
 

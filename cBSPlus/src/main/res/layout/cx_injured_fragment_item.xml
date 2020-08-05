@@ -265,7 +265,6 @@
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
                     android:text="否"
-                    android:checked="true"
                     android:textColor="@drawable/radio_true_false_blue"
                     android:textSize="@dimen/text_l" />
             </RadioGroup>

@@ -32,6 +32,17 @@ public class DialogUtil {
 		defuldialog=dilog;
 		return defuldialog;
 	}
+
+	/** 错误提示！传入需要关闭Dialog时执行的事件 **/
+	public static Dialog getErrDialogAndFinish(Context context, String Msg, DialogInterface.OnDismissListener listener) {
+		Dialog dilog = new AlertDialog.Builder(context).setTitle("提示！").setIcon(R.drawable.c).setMessage(Msg).setNeutralButton("确定", null).create();
+		if (defuldialog!=null && defuldialog.isShowing()) {
+			dismiss();
+		}
+		dilog.setOnDismissListener(listener);
+		defuldialog=dilog;
+		return defuldialog;
+	}
 	
 	/** 操作成功提示！ **/
 	public static Dialog getRightDialog(Context context,String buttonStr, String Msg) {

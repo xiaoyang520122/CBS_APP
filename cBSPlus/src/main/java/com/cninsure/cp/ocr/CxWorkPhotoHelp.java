@@ -26,8 +26,10 @@ import com.bumptech.glide.Glide;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.CxWorkActivity;
+import com.cninsure.cp.cx.fragment.CxThirdFragment;
 import com.cninsure.cp.entity.OCREntity;
 import com.cninsure.cp.entity.URLs;
+import com.cninsure.cp.entity.cx.CxWorkEntity;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.PhotoUploadUtil;
@@ -99,40 +101,60 @@ public class CxWorkPhotoHelp implements OnClickListener {
 	/**如果OCR照片已存在返回true,否则返回false**/
 	private boolean exists(int event) {
 		switch (event) {
-		case 1:
-			if (activity.ocrEntity1 == null) {
-				return false;
-			} else {
+			case 1:
+				if (activity.ocrEntity1 == null) {
+					return false;
+				} else {
 //				showOcrMsg(activity.ocrEntity1,1);
-				return true;
-			}
-		case 2:
-			if (activity.ocrEntity2 == null) {
+					return true;
+				}
+			case 2:
+				if (activity.cxWorkEntity.subjectInfo.bankCarLicense == null) {
+					return false;
+				} else {
+					String displayInfo = "银行卡号：" + activity.cxWorkEntity.subjectInfo.insuredBankNo;
+					sendmessage(displayInfo, event);
+					return true;
+				}
+			case 3:
+				if (activity.cxWorkEntity.subjectInfo.pathDriverLicense == null) {
+					return false;
+				} else {
+					String displayInfo = "驾驶证号码：" + activity.cxWorkEntity.subjectInfo.bdDriverNo + "\n准驾车型：" + activity.cxWorkEntity.subjectInfo.bdDrivingType + "\n驾驶员：" + activity.cxWorkEntity.subjectInfo.bdDriverName;
+					sendmessage(displayInfo, event);
+					return true;
+				}
+			case 4:
+				if (activity.cxWorkEntity.subjectInfo.pathMoveLicense == null) {
+					return false;
+				} else {
+					String displayInfo = "车牌号码：" + activity.cxWorkEntity.subjectInfo.bdCarNumber + "\n车架号：" + activity.cxWorkEntity.subjectInfo.bdCarVin + "\n发动机号码：" + activity.cxWorkEntity.subjectInfo.bdEngineNo;
+					sendmessage(displayInfo, event);
+					return true;
+				}
+			case CxWorkActivity.THIRD_SZ_JSZ_OCR:
+				int position = ((CxThirdFragment) activity.fragmentMap.get(2)).OcrPosition;
+				CxWorkEntity.ThirdPartyEntity thirdPartyEnt = activity.cxWorkEntity.thirdPartys.get(position);
+				if (thirdPartyEnt.pathDriverLicense == null) {
+					return false;
+				} else {
+					String displayInfo = "驾驶证号码：" + thirdPartyEnt.driverLicense + "\n准驾车型：" + thirdPartyEnt.drivingMode + "\n驾驶员：" + thirdPartyEnt.carPerson;
+					sendmessage(displayInfo, event);
+					return true;
+				}
+			case CxWorkActivity.THIRD_SZ_XSZ_OCR:
+				int positionX = ((CxThirdFragment) activity.fragmentMap.get(2)).OcrPosition;
+			CxWorkEntity.ThirdPartyEntity thirdPartyEntT = activity.cxWorkEntity.thirdPartys.get(positionX);
+			if (thirdPartyEntT.pathMoveLicense == null) {
 				return false;
 			} else {
-				String displayInfo="银行卡号："+activity.ocrEntity2.insuredBankNo;
-				sendmessage(displayInfo,event);
-				return true;
-			}
-		case 3:
-			if (activity.ocrEntity3 == null) {
-				return false;
-			} else {
-				String displayInfo="驾驶证号码："+ activity.ocrEntity3.bdDriverNo+"\n准驾车型："+activity.ocrEntity3.bdDrivingType+"\n驾驶员："+activity.ocrEntity3.bdDriverName;
-				sendmessage(displayInfo,event);
-				return true;
-			}
-		case 4:
-			if (activity.ocrEntity4 == null) {
-				return false;
-			} else {
-				String displayInfo="车牌号码："+ activity.ocrEntity4.bdCarNumber+"\n车架号："+activity.ocrEntity4.bdCarVin+"\n发动机号码："+activity.ocrEntity4.bdEngineNo;
-				sendmessage(displayInfo,event);
+				String displayInfo = "车牌号码：" + thirdPartyEntT.carNumber + "\n车架号：" + thirdPartyEntT.frameNumber + "\n发动机号码：" + thirdPartyEntT.engineNumber ;
+				sendmessage(displayInfo, event);
 				return true;
 			}
 
-		default:
-			break;
+			default:
+				break;
 		}
 		return false;
 	}
@@ -165,7 +187,7 @@ public class CxWorkPhotoHelp implements OnClickListener {
 		View view=inflater.inflate(R.layout.banc_dilog_view, null);
 		ImageView img=(ImageView)view.findViewById(R.id.bancdialog_img);
 		//车险 上传OCR图片路径,上传成功后返回图片名称及后缀 例如："picture-20180310151556-69210-E2638.jpg"，访问是需要加上登录时获取的头部分
-		String imgPath=AppApplication.getUSER().data.qiniuUrl+getOCREntity(event).url;
+		String imgPath=AppApplication.getUSER().data.qiniuUrl+ getOCRUrl(event);
 		Glide.with(activity).load(imgPath).into(img);
 		((TextView)view.findViewById(R.id.bancdialog_info)).setText(info);
 		view.findViewById(R.id.bancdialog_submit).setVisibility(View.INVISIBLE);
@@ -203,6 +225,12 @@ public class CxWorkPhotoHelp implements OnClickListener {
 				jiexieJSZ(file.getPath());
 				break;
 			case 4:
+				jiexieXSZ(file.getPath());
+				break;
+			case CxWorkActivity.THIRD_SZ_JSZ_OCR:
+				jiexieJSZ(file.getPath());
+				break;
+			case CxWorkActivity.THIRD_SZ_XSZ_OCR:
 				jiexieXSZ(file.getPath());
 				break;
 
@@ -353,6 +381,12 @@ private void jiexieXSZ(String filePath) {
 				case 4:
 					showTravelDilog((OcrResponseResult) msg.obj);
 					break;
+				case CxWorkActivity.THIRD_SZ_JSZ_OCR:
+					showDriveDilog((OcrResponseResult) msg.obj);
+					break;
+				case CxWorkActivity.THIRD_SZ_XSZ_OCR:
+					showTravelDilog((OcrResponseResult) msg.obj);
+					break;
 
 				default:
 					break;
@@ -390,10 +424,10 @@ private void jiexieXSZ(String filePath) {
 			ocrEntityTemp.bdDrivingType = jsonDate.getJSONObject("准驾车型").optString("words"); //准驾车型
 			ocrEntityTemp.bdDriverName = jsonDate.getJSONObject("姓名").optString("words"); //驾驶员姓名
 			ocrEntityTemp.bdDriverNo = jsonDate.getJSONObject("证号").optString("words"); //驾驶证
-			ocrEntityTemp.bdDriverRegisterDate = jsonDate.getJSONObject("初次领证日期").optString("words"); //初次领证日期
-			ocrEntityTemp.bdDriverEffectiveStar=jsonDate.getJSONObject("有效起始日期").optString("words"); //有效起始日期
+			ocrEntityTemp.setBdDriverRegisterDate( jsonDate.getJSONObject("初次领证日期").optString("words")); //初次领证日期
+			ocrEntityTemp.setBdDriverEffectiveStar(jsonDate.getJSONObject("有效起始日期").optString("words")); //有效起始日期
 			displayInfo="驾驶证号码："+ ocrEntityTemp.bdDriverNo+"\n准驾车型："+ocrEntityTemp.bdDrivingType+"\n驾驶员："+ocrEntityTemp.bdDriverName
-					+"\n初次领证日期："+ocrEntityTemp.bdDriverRegisterDate+"\n有效起始日期："+ocrEntityTemp.bdDriverEffectiveStar;
+					+"\n初次领证日期："+ocrEntityTemp.getBdDriverRegisterDate()+"\n有效起始日期："+ocrEntityTemp.getBdDriverEffectiveStar();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -411,11 +445,11 @@ private void jiexieXSZ(String filePath) {
 			ocrEntityTemp. bdCarNumber=jsonDate.getJSONObject("号牌号码").optString("words"); //车牌号
 			ocrEntityTemp. bdCarVin=jsonDate.getJSONObject("车辆识别代号").optString("words"); //车架号
 			ocrEntityTemp. bdEngineNo=jsonDate.getJSONObject("发动机号码").optString("words"); //发动机号
-			ocrEntityTemp. bdCarRegisterDate=jsonDate.getJSONObject("注册日期").optString("words"); //初登日期
+			ocrEntityTemp. setBdCarRegisterDate(jsonDate.getJSONObject("注册日期").optString("words")); //初登日期
 			ocrEntityTemp. setBdCarUseType(jsonDate.getJSONObject("使用性质").optString("words")); //使用性质
 
 			displayInfo="车牌号码："+ ocrEntityTemp.bdCarNumber+"\n车架号："+ocrEntityTemp.bdCarVin+"\n发动机号码："+ocrEntityTemp.bdEngineNo
-					+"\n注册日期："+ocrEntityTemp.bdCarRegisterDate+"\n使用性质："+ocrEntityTemp.getBdCarUseType();
+					+"\n注册日期："+ocrEntityTemp.getBdCarRegisterDate()+"\n使用性质："+ocrEntityTemp.getBdCarUseType();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -473,32 +507,55 @@ private void jiexieXSZ(String filePath) {
 		PhotoUploadUtil.uploadOCR(activity, fileUrls, URLs.UP_OCR_PHOTO, OCR_TYPE);
 	}
 
-	public void sendMsgToBack(String url) {
-		if (url.indexOf(".j")==-1) {
-			DialogUtil.getErrDialog(activity, "图片保存失败！").show();
-		}else {
-			getOCREntity(OCR_TYPE).url=url;
-			String call = "javascript:showPhotographInfo("+OCR_TYPE+","+JSON.toJSONString(getOCREntity(OCR_TYPE))+")";
-//			activity.webview.loadUrl(call);
-		}
-	}
-	
-	public OCREntity getOCREntity(int event){
-		switch (event) {
-		case 1:
-			return activity.ocrEntity1;
-		case 2:
-			return activity.ocrEntity2;
-		case 3:
-			return activity.ocrEntity3;
-		case 4:
-			return activity.ocrEntity4;
+//	public void sendMsgToBack(String url) {
+//		if (url.indexOf(".j")==-1) {
+//			DialogUtil.getErrDialog(activity, "图片保存失败！").show();
+//		}else {
+//			getOCREntity(OCR_TYPE).url=url;
+////			String call = "javascript:showPhotographInfo("+OCR_TYPE+","+JSON.toJSONString(getOCREntity(OCR_TYPE))+")";
+////			activity.webview.loadUrl(call);
+//		}
+//	}
 
-		default:
-			break;
+	public String getOCRUrl(int event) {
+		switch (event) {
+			case 1:
+				return ""; //身份证
+			case 2:
+				return activity.cxWorkEntity.subjectInfo.bankCarLicense; //银行卡
+			case 3:
+				return activity.cxWorkEntity.subjectInfo.pathDriverLicense; //驾驶证
+			case 4:
+				return activity.cxWorkEntity.subjectInfo.pathMoveLicense;  //行驶证
+			case CxWorkActivity.THIRD_SZ_JSZ_OCR:
+				int position = ((CxThirdFragment)activity.fragmentMap.get(2)).OcrPosition;
+				return activity.cxWorkEntity.thirdPartys.get(position).pathDriverLicense;
+			case CxWorkActivity.THIRD_SZ_XSZ_OCR:
+				int positionX = ((CxThirdFragment)activity.fragmentMap.get(2)).OcrPosition;
+				return activity.cxWorkEntity.thirdPartys.get(positionX).pathMoveLicense;
+
+			default:
+				break;
 		}
 		return null;
 	}
+	
+//	public OCREntity getOCREntity(int event) {
+//		switch (event) {
+//			case 1:
+//				return activity.ocrEntity1;
+//			case 2:
+//				return activity.ocrEntity2;
+//			case 3:
+//				return activity.ocrEntity3;
+//			case 4:
+//				return activity.ocrEntity4;
+//
+//			default:
+//				break;
+//		}
+//		return null;
+//	}
 	
 	public void setOCREntity(int event,OCREntity ocrEntity ){
 		switch (event) {
@@ -514,6 +571,12 @@ private void jiexieXSZ(String filePath) {
 		case 4:
 			activity.ocrEntity4=ocrEntity;
 			break;
+			case CxWorkActivity.THIRD_SZ_JSZ_OCR: //三者中的驾驶证识别
+				CxThirdFragment.ocrEntityJsz = ocrEntity;
+				break;
+			case CxWorkActivity.THIRD_SZ_XSZ_OCR://三者中的行驶证识别
+				CxThirdFragment.ocrEntityXsz = ocrEntity;
+				break;
 
 		default:
 			break;

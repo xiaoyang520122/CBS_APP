@@ -1,14 +1,23 @@
 package com.cninsure.cp.entity;
 
-import android.widget.EditText;
-import android.widget.TextView;
-
-import com.cninsure.cp.R;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class OCREntity implements Serializable {
+
+    private SimpleDateFormat sfSimple = new SimpleDateFormat("yyyyMMdd");
+    private SimpleDateFormat sfStandard = new SimpleDateFormat("yyyy-MM-dd");
+
+    public String getStandardBySimple(String SimpleDateString){
+        try {
+            return sfStandard.format(sfSimple.parse(SimpleDateString));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return SimpleDateString;  //错误返回原字符串
+        }
+    }
 
 	private static final long serialVersionUID = 1L;
 
@@ -20,7 +29,7 @@ public class OCREntity implements Serializable {
     /**发动机号*/
     public String bdEngineNo; //发动机号
     /**初登日期*/
-    public String bdCarRegisterDate; //初登日期
+    private String bdCarRegisterDate; //初登日期
 //    /**行驶证有效期至*/
 //    public String bdCarEffectiveDate; //行驶证有效期至
     /**准驾车型*/
@@ -39,11 +48,11 @@ public class OCREntity implements Serializable {
     /**驾驶证*/
     public String bdDriverNo; //驾驶证
     /**初次领证日期*/
-    public String bdDriverRegisterDate; //初次领证日期
+    private String bdDriverRegisterDate; //初次领证日期
     /**有效起始日期*/
-    public String bdDriverEffectiveStar; //有效起始日期
+    private String bdDriverEffectiveStar; //有效起始日期
     /**驾驶证有效期至*/
-    public String bdDriverEffectiveEnd; //驾驶证有效期至
+    private String bdDriverEffectiveEnd; //驾驶证有效期至
 //    /**车架号是否相符*/
 //    public String bdCarVinIsAgreement; //车架号是否相符
 //    /**行驶证是否相符*/
@@ -78,5 +87,41 @@ public class OCREntity implements Serializable {
             default: return "未知";
         }
     }
+    public Integer getBdCarUseTypeValue() {
+        return bdCarUseType;
+    }
 
+    /**设置初登日期*/
+    public void setBdCarRegisterDate(String bdCarRegisterDate) {
+        this.bdCarRegisterDate = getStandardBySimple(bdCarRegisterDate);
+    }
+    /**获取初登日期*/
+    public String getBdCarRegisterDate() {
+        return bdCarRegisterDate;
+    }
+
+    /**初次领证日期*/
+    public void setBdDriverRegisterDate(String bdDriverRegisterDate) {
+        this.bdDriverRegisterDate = getStandardBySimple(bdDriverRegisterDate);
+    }
+    /**有效起始日期*/
+    public void setBdDriverEffectiveStar(String bdDriverEffectiveStar) {
+        this.bdDriverEffectiveStar = getStandardBySimple(bdDriverEffectiveStar);
+    }
+    /**驾驶证有效期至*/
+    public void setBdDriverEffectiveEnd(String bdDriverEffectiveEnd) {
+        this.bdDriverEffectiveEnd = getStandardBySimple(bdDriverEffectiveEnd);
+    }
+    /**初次领证日期*/
+    public String getBdDriverRegisterDate() {
+        return bdDriverRegisterDate;
+    }
+    /**有效起始日期*/
+    public String getBdDriverEffectiveStar() {
+        return bdDriverEffectiveStar;
+    }
+    /**驾驶证有效期至*/
+    public String getBdDriverEffectiveEnd() {
+        return bdDriverEffectiveEnd;
+    }
 }

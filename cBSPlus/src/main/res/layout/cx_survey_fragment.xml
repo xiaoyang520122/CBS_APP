@@ -289,6 +289,7 @@
                     android:background="@null"
                     android:gravity="right|center"
                     android:hint="请录入责任比例"
+                    android:inputType="number"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -405,7 +406,8 @@
                 <TextView
                     android:id="@+id/csu_lossObjectType"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
                     android:layout_weight="1"
                     android:background="@null"
                     android:drawableRight="@drawable/left_jt_hui_short"
@@ -948,10 +950,10 @@
                 android:id="@+id/csu_surveyAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:background="@null"
                 android:gravity="right|center"
                 android:hint="请输入查勘地点"
+                android:padding="5dp"
                 android:textColor="@android:color/black"
                 android:textColorHint="@color/hui_text_h"
                 android:textSize="@dimen/text_defaul" />
@@ -1137,7 +1139,7 @@
 
                 <LinearLayout
 
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@null"
@@ -1185,7 +1187,7 @@
                     android:background="@color/hui_line" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@null"
@@ -1196,8 +1198,10 @@
 
                     <ImageView
                         android:id="@+id/csu_signLicense_img"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:scaleType="centerInside"
                         android:visibility="gone" />
 
                     <TextView
@@ -1273,10 +1277,15 @@
             android:textColor="@color/yellow_m"
             android:textSize="@dimen/text_defaul" />
 
-        <ListView
-            android:id="@+id/csu_enclosureList_listView"
+        <LinearLayout
+            android:id="@+id/csu_enclosureList_line"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="15dp"/>
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:background="@color/white"
+            android:layout_marginBottom="15dp">
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -1,36 +1,56 @@
 package com.cninsure.cp.cx;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.JsonReader;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.fastjson.JSON;
+import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.adapter.MyFragmentPagerAdapter;
+import com.cninsure.cp.cx.fragment.BaseFragment;
 import com.cninsure.cp.cx.fragment.CxDamageFragment;
 import com.cninsure.cp.cx.fragment.CxInjuredFragment;
 import com.cninsure.cp.cx.fragment.CxSubjectFragment;
 import com.cninsure.cp.cx.fragment.CxSurveyFragment;
 import com.cninsure.cp.cx.fragment.CxThirdFragment;
+import com.cninsure.cp.entity.BaseEntity;
 import com.cninsure.cp.entity.OCREntity;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
+import com.cninsure.cp.entity.cx.CxTaskWorkEntity;
 import com.cninsure.cp.entity.cx.CxWorkEntity;
 import com.cninsure.cp.ocr.CxWorkPhotoHelp;
+import com.cninsure.cp.photo.PickPhotoUtil;
+import com.cninsure.cp.utils.ActivityFinishUtil;
 import com.cninsure.cp.utils.CheckHttpResult;
+import com.cninsure.cp.utils.DialogUtil;
+import com.cninsure.cp.utils.FileChooseUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.PhotoUploadUtil;
+import com.cninsure.cp.utils.ToastUtil;
 import com.google.android.material.tabs.TabLayout;
 
 import org.apache.http.NameValuePair;
@@ -46,20 +66,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class CxWorkActivity extends BaseActivity {
+public class CxWorkActivity extends BaseActivity implements View.OnClickListener {
 
     private TabLayout mTabLayout;
-    private ViewPager mViewPager;
-    private String[] mainTitlesArray = {"定损信息", "查勘信息" ,"三者信息","人伤信息","物损信息"};
+    public ViewPager mViewPager;
+    private String[] mainTitlesArray = {"标的信息", "查勘信息" ,"三者信息","人伤信息","物损信息"};
     private MyFragmentPagerAdapter adapter;
     private CxSubjectFragment fg0;
     private CxSurveyFragment fg1;
-    private Map<Integer, Fragment> fragmentMap;
+    public Map<Integer, BaseFragment> fragmentMap;
     private FragmentManager fm;
     public CxWorkPhotoHelp cameraHelp; //调用摄像头拍照的帮助类**/
     /**OCR解析信息及图片路径1,身份证，2银行卡，3驾驶证，4行驶证，5签名**/
     public OCREntity ocrEntity1,ocrEntity2,ocrEntity3,ocrEntity4,ocrEntity5;
     public CxWorkEntity cxWorkEntity;
+    public CxTaskWorkEntity cxTaskWorkEntity; //包含作业信息的任务信息
     /**拍摄照片路径**/
     private File file;
     public String QorderUid;
@@ -68,28 +89,76 @@ public class CxWorkActivity extends BaseActivity {
     public PublicOrderEntity orderInfoEn; //任务信息
     public CxDictEntity cxSurveyDict = new CxDictEntity(); //拍照类型字典数据
 
+    public static final int THIRD_SZ_XSZ_OCR = 8,THIRD_SZ_JSZ_OCR = 9;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.cx_work_activity);
         EventBus.getDefault().register(this);
+        QorderUid = getIntent().getStringExtra("orderUid");
+        orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
         dowloadDictType();
-        initView();
     }
 
     private void initView() {
         uploadView = LayoutInflater.from(this).inflate(R.layout.imageupload_view, null);
-        QorderUid = getIntent().getStringExtra("orderUid");
-        orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
         fm = getSupportFragmentManager();
         fragmentMap = new TreeMap<>();
         mViewPager = findViewById(R.id.cxworkA_viewpager);
         mTabLayout = findViewById(R.id.cxworkA_tablayout);
+        if (cxWorkEntity==null)
         cxWorkEntity = new CxWorkEntity();
         initFragment();
         initViewPager();
         initTab();
+        setBackOnclick();
+    }
+
+    private void setBackOnclick() {
+        findViewById(R.id.CXWA_Back_Tv).setOnClickListener(this);
+        findViewById(R.id.CXWA_More_Tv).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.CXWA_Back_Tv: ActivityFinishUtil.showFinishAlert(CxWorkActivity.this); break; //点击返回键
+            case R.id.CXWA_More_Tv: showSaveDialog(); break; //点击保存或暂存键
+        }
+    }
+
+    /**弹框选择是1保存还是0暂存*/
+    private void showSaveDialog() {
+        new AlertDialog.Builder(this).setTitle("请选择")
+                .setItems(new String[]{"保存", "提交"}, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SaveWorkInfo(which);
+                    }
+                }).setNegativeButton("取消", null).create().show();
+    }
+
+    /**保存作业信息*/
+    private void SaveWorkInfo(int status) {
+       for (int i=0;i<fragmentMap.size();i++){
+           fragmentMap.get(i).SaveDataToEntity();
+       }
+        submitWorkInfo(status);
+    }
+
+    /**作业暂存或提交审核*/
+    private void submitWorkInfo(int status) {
+        List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
+        paramsList.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
+        paramsList.add(new BasicNameValuePair("orderUid", QorderUid));  //订单uid
+        paramsList.add(new BasicNameValuePair("content", JSON.toJSONString(cxWorkEntity)));  //作业内容，保存为JSON对象
+        paramsList.add(new BasicNameValuePair("status", status + ""));  //0：暂存；1：提交（送审）
+        if (cxTaskWorkEntity.data.id != null && cxTaskWorkEntity.data.id > 0)
+            paramsList.add(new BasicNameValuePair("id", cxTaskWorkEntity.data.id+""));  //作业id
+        HttpUtils.requestPost(URLs.CX_NEW_WORK_SAVE, paramsList, HttpRequestTool.CX_NEW_WORK_SAVE);
+        LoadDialogUtil.setMessageAndShow(this, "处理中……");
     }
 
     private void initFragment() {
@@ -111,6 +180,14 @@ public class CxWorkActivity extends BaseActivity {
         displayTabText();  //TabLayout关联ViewPager后才设置标题文字，标题个数是根据Fragment个数来确定的
     }
 
+    public Handler refreshHandler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            refreshContent(msg.what,(Boolean)msg.obj);
+        }
+    };
+
     /**
      * 如果添加了“三者、物损、人伤”就刷新界面
      * @param tabCode 添加或者移除的 内容代码，2三者，3人伤，4物损
@@ -126,9 +203,18 @@ public class CxWorkActivity extends BaseActivity {
             }
         }else{  //移除
             switch (tabCode) {
-                case 2: fragmentMap.remove(2); break;
-                case 3: fragmentMap.remove(3); break;
-                case 4: fragmentMap.remove(4); break;
+                case 2:
+                    fragmentMap.remove(2);
+                    cxWorkEntity.thirdPartys = new ArrayList<>(); //移除对应的数据
+                    break;
+                case 3:
+                    fragmentMap.remove(3);
+                    cxWorkEntity.injuredInfos = new ArrayList<>();//移除对应的数据
+                    break;
+                case 4:
+                    fragmentMap.remove(4);
+                    cxWorkEntity.damageInfos = new ArrayList<>();//移除对应的数据
+                    break;
             }
         }
         notifyChange();
@@ -143,7 +229,7 @@ public class CxWorkActivity extends BaseActivity {
     /**刷新显示TabLayout菜单*/
     private void displayTabText() {
         int i = 0;
-        for (Map.Entry<Integer, Fragment> mapEn: fragmentMap.entrySet()) {
+        for (Map.Entry<Integer, BaseFragment> mapEn: fragmentMap.entrySet()) {
             mTabLayout.getTabAt(i).setText(mainTitlesArray[mapEn.getKey()]);
             i++;
         }
@@ -153,9 +239,19 @@ public class CxWorkActivity extends BaseActivity {
         LoadDialogUtil.setMessageAndShow(this,"载入中……");
         List<String> params = new ArrayList<String>(2);
         params.add("type");
-        params.add("cxOrderWorkImageType,accident_type,accident_small_type,accident_reason,accident_small_reason,survey_type," +
-                "accident_liability,loss_type,loss_object_type,compensation_method,survey_conclusion,carno_type,car_usetype");
+        params.add("cxOrderWorkImageType,accident_type,accident_small_type,accident_reason,accident_small_reason,survey_type,damage_loss_type," +
+                "accident_liability,loss_type,loss_object_type,compensation_method,survey_conclusion,carno_type,car_usetype,injured_type");
         HttpUtils.requestGet(URLs.CX_NEW_GET_IMG_TYPE_DICT, params, HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT);
+    }
+
+    private void dowloadOderView() {
+        LoadDialogUtil.setMessageAndShow(this,"载入中……");
+        List<String> params = new ArrayList<String>(2);
+        params.add("userId");
+        params.add(AppApplication.getUSER().data.userId);
+        params.add("orderUid");
+        params.add(QorderUid);
+        HttpUtils.requestGet(URLs.CX_NEW_GET_ORDER_VIEW_BY_UID, params, HttpRequestTool.CX_NEW_GET_ORDER_VIEW_BY_UID);
     }
 
     /**初始化**/
@@ -170,16 +266,19 @@ public class CxWorkActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode==1 || requestCode==2 || requestCode==3 || requestCode==4) {
+        if (requestCode==1 || requestCode==2 || requestCode==3 || requestCode==4
+                || requestCode==THIRD_SZ_XSZ_OCR || requestCode==THIRD_SZ_JSZ_OCR) {
             if (data!=null) {
                 file=(File)data.getSerializableExtra("FilePath");
                 cameraHelp.forString(requestCode,file);
             }
-        }else if (requestCode== HttpRequestTool.LINEPATH) { //签字返回图片
+        }else if (resultCode== HttpRequestTool.LINEPATH) { //签字返回图片
             upSignPhoto(data,5);
+        }else if (requestCode == PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE){  //上传附件选择的文件。
+            fg1.inspectFileSize(data); //判断文件大小是否小于20M
         }else if (resultCode != RESULT_OK) { // 此处的 RESULT_OK 是系统自定义得一个常量
             Log.e("getphotos", "ActivityResult resultCode error");
-//			ToastUtil.showToastLong(this, "操作失败！");
+			ToastUtil.showToastLong(this, "操作失败！");
             return;
         }else {
             workhelp.eventresultcode(requestCode, resultCode, data);
@@ -199,35 +298,90 @@ public class CxWorkActivity extends BaseActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void evnetH5(List<NameValuePair> values) {
         int responsecode = Integer.parseInt(values.get(0).getName());
-        switch (CheckHttpResult.checkList(values, this,HttpRequestTool.GET_WORK_MESSAGES)) {
+        switch (responsecode) {
             case HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT:
+                dowloadOderView();
                 LoadDialogUtil.dismissDialog();
                 cxSurveyDict.list = JSON.parseArray(values.get(0).getValue(), CxDictEntity.DictData.class);
                 workhelp = new CxWorkhelp(this, uploadView, cxSurveyDict.getDictByType("cxOrderWorkImageType"), null);
+                break;
+            case HttpRequestTool.UPLOAD_FILE_PHOTO: //上传附件成功
+                fg1.getUploadFileInfo(values);
+                break;
+            case HttpRequestTool.CX_NEW_GET_ORDER_VIEW_BY_UID: //获取订单信息
+                LoadDialogUtil.dismissDialog();
+                getTaskWorkInfo(values.get(0).getValue());
+                break;
+            case HttpRequestTool.CX_NEW_WORK_SAVE: // 保存或提交审核返回数据
+                LoadDialogUtil.dismissDialog();
+                getTaskWorkSavaInfo(values.get(0).getValue());
                 break;
             default:
                 break;
         }
     }
 
-    /**上传OCR图片和签字后返回成功、图片名称及后缀 * 1 身份证识别 * 2 银行卡识别* 3 驾驶证识别* 4 行驶证识别 * **/
-    @Subscribe(threadMode=ThreadMode.MAIN)
-    public void eventmeth(NameValuePair valuePair){
-        if ("UPLOAD_SUCCESS".equals(valuePair.getName())) {
-            cameraHelp.sendMsgToBack(valuePair.getValue());
+    /**保存或提交审核返回数据*/
+    private void getTaskWorkSavaInfo(String value) {
+        BaseEntity baseEntity = JSON.parseObject(value,BaseEntity.class);
+        if (baseEntity.success) DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！").show();
+    }
+
+    /**解析获取的到的任务作业信息
+     * @param value*/
+    private void getTaskWorkInfo(String value) {
+        try {
+            cxTaskWorkEntity = JSON.parseObject(value,CxTaskWorkEntity.class);
+        } catch (Exception e) {  //解析失败，关闭界面
+           disPlayErrorDialog();
+            e.printStackTrace();
+        }
+        if (cxTaskWorkEntity != null && cxTaskWorkEntity.data != null && cxTaskWorkEntity.data.contentJson != null) {  //作业信息不为空就赋值，并显示
+            cxWorkEntity = cxTaskWorkEntity.data.contentJson;
+            handler.sendMessage(new Message());
+        }else{  //返回信息解析失败，不能继续作业
+            disPlayErrorDialog();
         }
     }
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            initView();
+        }
+    };
+
+    /**提示错误后，并在关闭dialog的时候结束*/
+    private void disPlayErrorDialog() {
+        DialogUtil.getErrDialogAndFinish(this, "获取任务信息失败，请联系管理员！", new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                CxWorkActivity.this.finish();
+            }
+        }).show();
+    }
+
+    /**上传OCR图片和签字后返回成功、图片名称及后缀 * 1 身份证识别 * 2 银行卡识别* 3 驾驶证识别* 4 行驶证识别 * **/
+//    @Subscribe(threadMode=ThreadMode.MAIN)
+//    public void eventmeth(NameValuePair valuePair){
+//        if ("UPLOAD_SUCCESS".equals(valuePair.getName())) {
+////            cameraHelp.sendMsgToBack(valuePair.getValue());
+//        }
+//    }
     /**上传签字后返回成功与图片名称及后缀 * 1 身份证识别 * 2 银行卡识别* 3 驾驶证识别* 4 行驶证识别 * **/
     @Subscribe(threadMode=ThreadMode.MAIN)
     public void eventmeth(List<NameValuePair> responseValue){
         int type=Integer.parseInt(responseValue.get(0).getValue());
-        if (type==5) {
+        if (type==5) {  //签字返回信息
             if ("UPLOAD_SUCCESS".equals(responseValue.get(1).getName())) {
                 signMeath(responseValue.get(1).getValue());
             }
         }else  if (type==4||type==3||type==2||type==1) {
             disPlayOcrInfo(type,responseValue.get(1).getValue());
-            cameraHelp.sendMsgToBack(responseValue.get(1).getValue());
+//            cameraHelp.sendMsgToBack(responseValue.get(1).getValue());
+        }else if ( type==THIRD_SZ_XSZ_OCR || type==THIRD_SZ_JSZ_OCR){  //上传成功以后，要将图片名称保存到三者对应的集合中
+            ((CxThirdFragment)fragmentMap.get(2)).disPlayOcrInfo(type,responseValue.get(1).getValue());
         }
     }
 
@@ -256,5 +410,15 @@ public class CxWorkActivity extends BaseActivity {
     protected void onDestroy() {
         EventBus.getDefault().unregister(this);
         super.onDestroy();
+    }
+
+    /**返回键提示是否退出*/
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==KeyEvent.KEYCODE_BACK) {
+            ActivityFinishUtil.showFinishAlert(this);
+            return false;//拦截事件
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

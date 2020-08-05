@@ -28,11 +28,11 @@
 
     <TextView
         android:id="@+id/UPPHOTO_LI_statu"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
-        android:layout_weight="1"
         android:gravity="right"
+        android:layout_marginLeft="10dp"
         android:hint="已上传"
         android:textColor="@color/bule_text_m" />
 

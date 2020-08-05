@@ -1,6 +1,7 @@
 package com.cninsure.cp.entity.cx;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CxWorkEntity implements Serializable {
@@ -22,15 +23,15 @@ public class CxWorkEntity implements Serializable {
     public static class SurveyInfoEntity {
         public String orderUid; //	作业标识(任务订单号码)
         public String ckDate; //	查勘时间	yyyy-mm-dd HH:mm:ss）
-        public Integer ckAccidentType=-1; //	事故类型	0、单方；1、多方
+        public Integer ckAccidentType=-1; //	事故类型	0、单方；1、injuredInfos
         public Integer ckAccidentSmallType=-1; //	事故详细类型	0碰撞、1火烧、2自然灾害
         public String ckAccidentReason; //	出险原因	行使受损、停放受损、水淹、火灾、车身人为划痕、玻璃单独损坏、车辆盗抢、重大自然灾害、其他
         public String ckAccidentSmallReason; //	出险详细原因
         public Integer surveyType=-1; //	查勘类型	0现场查勘、1非现场查勘、2补勘现场
         public Integer ckAccidentLiability=-1; //	事故责任	0全责（固定100%），1主责（默认70%，准许录入在5-100）、2同责（固定50%）、3次责（30%，0-50）、4无责（固定0%）
-        public Float liabilityRatio; //	事故责任比例	比例是数值（0 ~ 100）【 0全责（固定100%），1主责（默认70%，准许录入在5-100）、2同责（固定50%）、3次责（30%，0-50）、4无责（固定0%）】
+        public String liabilityRatio; //	事故责任比例	比例是数值（0 ~ 100）【 0全责（固定100%），1主责（默认70%，准许录入在5-100）、2同责（固定50%）、3次责（30%，0-50）、4无责（固定0%）】
         public Integer [] lossType; //	损失类型	0三者、1物损、2人伤
-        public Integer lossObjectType=-1; //	损失情况	三者：0三者车损；物损：1标的车物品、2三者车内物、3三者车外物；人伤：4本车司机、5本车乘客、6三者车内人，7其他三者人伤
+        public Integer []lossObjectType; //	损失情况	三者：0三者车损；物损：1标的车物品、2三者车内物、3三者车外物；人伤：4本车司机、5本车乘客、6三者车内人，7其他三者人伤
         public String baoanDriverName; //	报案驾驶员
         public Integer canDriveNormally=-1; //	车辆能否正常行驶	1是，0否
         public Integer compensationMethod=-1; //	赔付方式	0按责赔付、1互碰自赔
@@ -45,11 +46,13 @@ public class CxWorkEntity implements Serializable {
         public String surveySummary; //	查勘概述
         public String signLicense; //	签字照片链接	保存作业图片接口返回字段fileUrl
         public String signPhotoId; //	签字照片id	保存作业图片接口返回字段id
+        public List<String> enclosureList = new ArrayList<>(); //附件集合
+        public boolean customerNotice; //客户告知书阅读状态
     }
 
     /***标的信息*/
     public static class SubjectInfoEntity {
-        public Boolean isLicenseKou=null; //	双证被扣	1是，0否
+        public Integer isLicenseKou=0; //	双证被扣	1是，0否
         public String bdCarNumber; //	车牌号
         public String bdCarVin; //	车架号
         public String bdEngineNo; //	发动机号
@@ -67,10 +70,10 @@ public class CxWorkEntity implements Serializable {
         public String insuredBankNo; //	银行卡号
         public Integer bdCarNumberType=-1; //	号牌种类	0小型家用车、1客车、2货车、3特种车、4其他
         public Integer bdCarUseType=-1; //	使用性质	0运营、1非运营
-        public Integer bdCarVinIsAgreement=-1; //	车架号是否相符	0未验、1相符、2不符
-        public Integer bdCardIsEffective=-1; //	行驶证是否有效	0未验、1有效、2无效
-        public Integer bdDrivingIsAgreement=-1; //	准驾车型是否相符	0未验、1相符、2不符
-        public Integer bdDriverIsEffective=-1; //	驾驶证是否有效	0未验、1有效、2无效
+        public Integer bdCarVinIsAgreement=0; //	车架号是否相符	0未验、1相符、2不符
+        public Integer bdCardIsEffective=0; //	行驶证是否有效	0未验、1有效、2无效
+        public Integer bdDrivingIsAgreement=0; //	准驾车型是否相符	0未验、1相符、2不符
+        public Integer bdDriverIsEffective=0; //	驾驶证是否有效	0未验、1有效、2无效
         public String pathDriverLicense; //	驾驶证链接	保存作业图片接口返回字段fileUrl
         public String pathDriverPhotoId; //	驾驶证图像Id	保存作业图片接口返回字段id
         public String pathMoveLicense; //	行驶证链接	保存作业图片接口返回字段fileUrl
@@ -84,7 +87,7 @@ public class CxWorkEntity implements Serializable {
      * 三者信息 thirdPartys（集合）
      */
     public static class ThirdPartyEntity {
-        public String thirdPartysNo; //	序号	从1开始
+        public Integer thirdPartysNo; //	序号	从1开始
         public String carNumber; //	车牌号
         public String frameNumber; //	车架号
         public String engineNumber; //	发动机号
@@ -103,7 +106,7 @@ public class CxWorkEntity implements Serializable {
         public String pathDriverId; //	驾驶证图像ID	保存作业图片接口返回字段id
         public String pathMoveLicense; //	行驶证链接	保存作业图片接口返回字段fileUrl
         public String pathMoverId; //	行驶证图像ID	保存作业图片接口返回字段id
-        public Integer szisLicenseKou=-1; //	是否双证被扣	1是，0否
+        public Integer szisLicenseKou=0; //	是否双证被扣	1是，0否
 
     }
 
@@ -112,7 +115,7 @@ public class CxWorkEntity implements Serializable {
      */
 
     public static class InjuredInfosEntity{
-        public	String	injuredInfoNo	; //	序号	从1开始
+        public	Integer	injuredInfoNo	; //	序号	从1开始
         public	String	injuredName	; //	姓名
         public	String	injuredCarNo	; //	身份证号
         public	Integer	injuredType=-1	; //	伤者类型	0本车司机、1本车乘客、2三者车内人伤、3其他三者人员
@@ -126,7 +129,7 @@ public class CxWorkEntity implements Serializable {
      * 物损信息
      */
     public static class DamageInfosEntity{
-        public	String	damageNo	; //	序号	从1开始
+        public	Integer	damageNo	; //	序号	从1开始
         public	String	damageOwner	; //	归属人
         public	String	damageObjectName	; //	物损名称
         public	Integer	damageType	=-1; //	损失类型	0标的车物品、1三者车内物、2三者车外物
