@@ -49,7 +49,7 @@ public class PublicOrderEntity implements Serializable {
 	/**报案号**/
 	public String baoanNo;
 	/**业务品种id**/
-    public long bussTypeId;
+    public Integer bussTypeId;
 	/**业务品种名称**/
     public String bussTypeName;
     

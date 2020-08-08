@@ -11,11 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.CxWorkActivity;
-import com.cninsure.cp.entity.cx.CxWorkEntity;
+import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.utils.SetTextUtil;
 import com.cninsure.cp.utils.cx.TypePickeUtil;
 import com.lidroid.xutils.ViewUtils;
@@ -47,7 +46,7 @@ public class CxDamageFragment extends BaseFragment {
     private void initData() {
         if (activity.cxWorkEntity.damageInfos == null) {
             activity.cxWorkEntity.damageInfos = new ArrayList<>();
-            activity.cxWorkEntity.damageInfos.add(new CxWorkEntity.DamageInfosEntity());
+            activity.cxWorkEntity.damageInfos.add(new CxSurveyWorkEntity.DamageInfosEntity());
         }
     }
 
@@ -65,7 +64,7 @@ public class CxDamageFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 SaveDataToEntity(); //先把已经填写好的数据存起来
-                activity.cxWorkEntity.damageInfos.add(new CxWorkEntity.DamageInfosEntity());
+                activity.cxWorkEntity.damageInfos.add(new CxSurveyWorkEntity.DamageInfosEntity());
                 adapter.notifyDataSetChanged();
             }
         });
@@ -90,7 +89,7 @@ public class CxDamageFragment extends BaseFragment {
     }
 
     private void getHolderDate(ViewHolder vHolder, int position) {
-        CxWorkEntity.DamageInfosEntity tempDamage = activity.cxWorkEntity.damageInfos.get(position);
+        CxSurveyWorkEntity.DamageInfosEntity tempDamage = activity.cxWorkEntity.damageInfos.get(position);
         tempDamage.damageNo = position; //编号
         tempDamage.damageOwner = vHolder.damageOwnerEdt.getText().toString(); //	归属人
         tempDamage.damageObjectName = vHolder.damageObjectNameEdt.getText().toString();
@@ -134,7 +133,7 @@ public class CxDamageFragment extends BaseFragment {
         }
 
         private void displayInfo(ViewHolder vHolder, int position) {
-            CxWorkEntity.DamageInfosEntity tempDamage = activity.cxWorkEntity.damageInfos.get(position);
+            CxSurveyWorkEntity.DamageInfosEntity tempDamage = activity.cxWorkEntity.damageInfos.get(position);
             SetTextUtil.setEditText(vHolder.damageOwnerEdt,tempDamage.damageOwner); //	归属人
             SetTextUtil.setEditText(vHolder.damageObjectNameEdt,tempDamage.damageObjectName); //
             SetTextUtil.setEditText(vHolder.damageOwnerPhoneEdt,tempDamage.damageOwnerPhone); //

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bule_text_h"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp" >
+
+            <TextView
+                android:id="@+id/CXWA_Damage_LTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/back_white_48"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/hui_text_xxxh"
+                android:textSize="@dimen/text_xh" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="物损"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/title_h" />
+
+            <TextView
+                android:id="@+id/CXWA_Damage_RTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:textColor="@color/white"
+                android:text="保存/提交"
+                android:textSize="@dimen/text_xh" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="▍物损信息"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="@dimen/text_15"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="归属人："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CxDamgWM_belongPerson"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="物损名称："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CxDamgWM_damageName"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="索赔险别："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/CxDamgWM_damageType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/CxDamgWM_damag_linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:background="@color/hui_bg"
+            android:layout_marginBottom="5dp">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/CxDamgWM_add_damag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/corners_white_5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:paddingRight="5dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加项目"
+                android:textColor="@color/bulue_main"
+                android:textSize="@dimen/text_m" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:visibility="invisible"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总计"
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:inputType="number"
+                    android:text="合计：￥"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/CxDamgWM_dsTotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:inputType="number"
+                    android:text="0.00"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:visibility="invisible"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="施救费"
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CxDamgWM_dsRescueAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:visibility="visible"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="定损说明"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:inputType="number"
+                    android:text=""
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+            <EditText
+                android:id="@+id/CxDamgWM_dsInstructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="left|center"
+                android:hint="请填写至少300字定损说明"
+                android:padding="5dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

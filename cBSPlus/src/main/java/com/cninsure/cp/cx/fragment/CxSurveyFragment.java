@@ -19,33 +19,27 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.R;
-import com.cninsure.cp.activity.yjx.YjxSurveyActivity;
-import com.cninsure.cp.activty.WorkOrderActivty;
 import com.cninsure.cp.cx.CxWorkActivity;
 import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.entity.URLs;
-import com.cninsure.cp.entity.cx.CxWorkEntity;
+import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.ocr.LinePathActivity;
 import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.DateChoiceUtil;
 import com.cninsure.cp.utils.FileChooseUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.LoadDialogUtil;
-import com.cninsure.cp.utils.PhotoUploadUtil;
 import com.cninsure.cp.utils.SetTextUtil;
 import com.cninsure.cp.utils.cx.TypePickeUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
-import com.zcw.togglebutton.ToggleButton;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -54,7 +48,7 @@ import java.util.List;
 public class CxSurveyFragment extends BaseFragment {
 
     private View contentView;
-    public CxWorkEntity.SurveyInfoEntity surveyInfo;
+//    public CxSurveyWorkEntity.SurveyInfoEntity surveyInfo;
     private CxWorkActivity activity;
     private LayoutInflater inflater;
 
@@ -102,9 +96,9 @@ public class CxSurveyFragment extends BaseFragment {
 
     private void initView() {
         if (activity.cxWorkEntity.surveyInfo==null)
-            activity.cxWorkEntity.surveyInfo = surveyInfo = new CxWorkEntity.SurveyInfoEntity();
+            activity.cxWorkEntity.surveyInfo = new CxSurveyWorkEntity.SurveyInfoEntity();
         else
-            surveyInfo = activity.cxWorkEntity.surveyInfo;
+            activity.cxWorkEntity.surveyInfo = activity.cxWorkEntity.surveyInfo;
         lossType1 = contentView.findViewById(R.id.cs_lossType1);
         lossType2 = contentView.findViewById(R.id.cs_lossType2);
         lossType3 = contentView.findViewById(R.id.cs_lossType3);
@@ -144,21 +138,21 @@ public class CxSurveyFragment extends BaseFragment {
     public void getUploadFileInfo(List<NameValuePair> values) {
         String UpedFileName = values.get(0).getValue();
         String oldFileName = values.get(1).getValue();
-        surveyInfo.enclosureList.add(UpedFileName);
+        activity.cxWorkEntity.surveyInfo.enclosureList.add(UpedFileName);
         displayFileToList();
     }
 
     private void displayFileToList() {
         enclosureListLine.removeAllViews();  //添加前清空，避免重复加载
-        for (int i = 0; i < surveyInfo.enclosureList.size(); i++) {
+        for (int i = 0; i < activity.cxWorkEntity.surveyInfo.enclosureList.size(); i++) {
             View view = inflater.inflate(R.layout.expandable_child_item, null);
-            SetTextUtil.setTextViewText(view.findViewById(R.id.UPPHOTO_LI_name),surveyInfo.enclosureList.get(i)); //文件名称
+            SetTextUtil.setTextViewText(view.findViewById(R.id.UPPHOTO_LI_name),activity.cxWorkEntity.surveyInfo.enclosureList.get(i)); //文件名称
             enclosureListLine.addView(view);  //添加到LineLayout
             int finalI = i;
             view.findViewById(R.id.UPPHOTO_LI_delete).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    surveyInfo.enclosureList.remove(finalI); //移除名称集合
+                    activity.cxWorkEntity.surveyInfo.enclosureList.remove(finalI); //移除名称集合
                     enclosureListLine.removeView(view);  //移除LineLayout，不在显示
                 }
             });
@@ -178,7 +172,7 @@ public class CxSurveyFragment extends BaseFragment {
     private void startSign(){
 //		if (ocrEntity5!=null) {
         Intent intent=new Intent(activity, LinePathActivity.class);
-        intent.putExtra("ocrEntity5", activity.ocrEntity5);
+//        intent.putExtra("ocrEntity5", activity.ocrEntity5);
         intent.putExtra("orderUid", activity.getIntent().getStringExtra("orderUid"));
         startActivityForResult(intent, HttpRequestTool.LINEPATH);
 //		}
@@ -249,7 +243,7 @@ public class CxSurveyFragment extends BaseFragment {
                                 lossList.add(i);
                         }
                         Integer lossTmp[] = lossList.toArray( new Integer[lossList.size()]);
-                        surveyInfo.lossObjectType = lossTmp; //损失类型
+                        activity.cxWorkEntity.surveyInfo.lossObjectType = lossTmp; //损失类型
                         displayLossTypeText();
                     }
                 }).create().show();
@@ -258,13 +252,13 @@ public class CxSurveyFragment extends BaseFragment {
     }
 
     private void displayLossTypeText() {
-        if (surveyInfo.lossObjectType==null || surveyInfo.lossObjectType.length==0)
+        if (activity.cxWorkEntity.surveyInfo.lossObjectType==null || activity.cxWorkEntity.surveyInfo.lossObjectType.length==0)
             return;
         String labelList = "";
         String tempArr[] = TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("loss_object_type"));
         for (int i = 0; i < tempArr.length; i++) {
-            for (int j = 0; j < surveyInfo.lossObjectType.length; j++) {
-                if (surveyInfo.lossObjectType[j] == i) {
+            for (int j = 0; j < activity.cxWorkEntity.surveyInfo.lossObjectType.length; j++) {
+                if (activity.cxWorkEntity.surveyInfo.lossObjectType[j] == i) {
                     labelList = labelList + "," + tempArr[i];
                 }
             }
@@ -312,9 +306,9 @@ public class CxSurveyFragment extends BaseFragment {
 
     /***显示签字图片*/
     public void disPlaySign() {
-        if (surveyInfo!=null && !TextUtils.isEmpty(surveyInfo.signLicense)){
+        if (activity.cxWorkEntity.surveyInfo!=null && !TextUtils.isEmpty(activity.cxWorkEntity.surveyInfo.signLicense)){
             //车险 上传OCR图片路径,上传成功后返回图片名称及后缀 例如："picture-20180310151556-69210-E2638.jpg"，访问是需要加上登录时获取的头部分
-            String imgPath=AppApplication.getUSER().data.qiniuUrl+surveyInfo.signLicense;
+            String imgPath=AppApplication.getUSER().data.qiniuUrl+activity.cxWorkEntity.surveyInfo.signLicense;
             Glide.with(getActivity()).load( imgPath).into( signLicenseImg);
             signLicenseImg.setVisibility(View.VISIBLE);
 //            showQRcode();  //展示报告二维码-待开发
@@ -341,6 +335,7 @@ public class CxSurveyFragment extends BaseFragment {
             lossTypeList.add(1);
         if (lossType3.isChecked())
             lossTypeList.add(2);
+        CxSurveyWorkEntity.SurveyInfoEntity surveyInfo = activity.cxWorkEntity.surveyInfo;
         surveyInfo.lossType = lossTypeList.toArray(new Integer[lossTypeList.size()]);  //损失类型
 
 //        @ViewInject(R.id.csu_signLicense_img)  private ImageView signLicenseImg;  //签字图片
@@ -394,6 +389,7 @@ public class CxSurveyFragment extends BaseFragment {
     }
 
     private void displaySurveyData() {
+        CxSurveyWorkEntity.SurveyInfoEntity surveyInfo = activity.cxWorkEntity.surveyInfo;
         //损失类型
         if (null!=surveyInfo.lossType)
         for (int i=0 ;i<surveyInfo.lossType.length;i++){

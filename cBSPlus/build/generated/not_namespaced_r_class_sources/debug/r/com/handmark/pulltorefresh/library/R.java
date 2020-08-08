@@ -54,27 +54,27 @@ public final class R {
 
         public static final int default_ptr_flip = 0x7f0800d3;
         public static final int default_ptr_rotate = 0x7f0800d4;
-        public static final int indicator_arrow = 0x7f080105;
-        public static final int indicator_bg_bottom = 0x7f080106;
-        public static final int indicator_bg_top = 0x7f080107;
+        public static final int indicator_arrow = 0x7f080106;
+        public static final int indicator_bg_bottom = 0x7f080107;
+        public static final int indicator_bg_top = 0x7f080108;
     }
     public static final class id {
         private id() {}
 
-        public static final int fl_inner = 0x7f090382;
-        public static final int gridview = 0x7f0903c1;
-        public static final int pull_to_refresh_image = 0x7f09043d;
-        public static final int pull_to_refresh_progress = 0x7f09043e;
-        public static final int pull_to_refresh_sub_text = 0x7f09043f;
-        public static final int pull_to_refresh_text = 0x7f090440;
-        public static final int scrollview = 0x7f09045b;
-        public static final int webview = 0x7f0904bd;
+        public static final int fl_inner = 0x7f0903b6;
+        public static final int gridview = 0x7f0903f5;
+        public static final int pull_to_refresh_image = 0x7f090471;
+        public static final int pull_to_refresh_progress = 0x7f090472;
+        public static final int pull_to_refresh_sub_text = 0x7f090473;
+        public static final int pull_to_refresh_text = 0x7f090474;
+        public static final int scrollview = 0x7f09048f;
+        public static final int webview = 0x7f0904f1;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int pull_to_refresh_header_horizontal = 0x7f0c00a1;
-        public static final int pull_to_refresh_header_vertical = 0x7f0c00a2;
+        public static final int pull_to_refresh_header_horizontal = 0x7f0c00a5;
+        public static final int pull_to_refresh_header_vertical = 0x7f0c00a6;
     }
     public static final class string {
         private string() {}

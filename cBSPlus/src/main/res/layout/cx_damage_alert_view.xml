@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/CxDamAlert_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/line_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="项目名称："
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/CxDamAlert_name"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/work_line_defaul_hight"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right|center"
+                android:hint="识别或手动录入"
+                android:drawableRight="@drawable/edit_simple_hui32"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@drawable/line_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="物损类别："
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:id="@+id/CxDamAlert_smallType"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/work_line_defaul_hight"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableRight="@drawable/left_jt_hui_short"
+                android:drawablePadding="10dp"
+                android:gravity="right|center"
+                android:hint="请选择"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="定"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:visibility="gone"
+                android:background="@drawable/corners_hui_4_10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_l" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="*单价"
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="*数量"
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="残值  "
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/line_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="定"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:background="@drawable/corners_hui_4_10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_l" />
+
+            <EditText
+                android:background="@null"
+                android:id="@+id/CxDamAlert_dsUnitPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="0.00"
+                android:inputType="number"
+                android:drawableRight="@drawable/edit_simple_hui32"
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+            <EditText
+                android:background="@null"
+                android:id="@+id/CxDamAlert_dsUnitCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="0"
+                android:inputType="number"
+                android:drawableRight="@drawable/edit_simple_hui32"
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:background="@null"
+                android:id="@+id/CxDamAlert_dsSalvageValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:drawableRight="@drawable/edit_simple_hui32"
+                android:gravity="center"
+                android:hint="0.00"
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/survey_marginTop"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="备注："
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_defaul" />
+
+            <EditText
+                android:id="@+id/CxDamAlert_dsRemark"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right|center"
+                android:padding="5dp"
+                android:hint="请录入"
+                android:drawableRight="@drawable/edit_simple_hui32"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

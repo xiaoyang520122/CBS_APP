@@ -22,6 +22,10 @@ import java.util.Map;
  * car_usetype	//	使用性质	0运营、1非运营
  * injured_type     //伤者类型 0本车司机、1本车乘客、2三者车内人伤、3其他三者人员
  *  damage_loss_type    //损失类型 0标的车物品、1三者车内物、2三者车外物
+ *
+ *  物损定损任务：
+ *  damage_loss_type ：损失类型
+ *  damage_type ：物损类别
  */
 
 public class CxDictEntity implements Serializable {

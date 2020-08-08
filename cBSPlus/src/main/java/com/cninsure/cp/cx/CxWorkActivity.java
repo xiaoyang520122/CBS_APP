@@ -1,24 +1,18 @@
 package com.cninsure.cp.cx;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.JsonReader;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
@@ -34,18 +28,15 @@ import com.cninsure.cp.cx.fragment.CxSubjectFragment;
 import com.cninsure.cp.cx.fragment.CxSurveyFragment;
 import com.cninsure.cp.cx.fragment.CxThirdFragment;
 import com.cninsure.cp.entity.BaseEntity;
-import com.cninsure.cp.entity.OCREntity;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
-import com.cninsure.cp.entity.cx.CxTaskWorkEntity;
-import com.cninsure.cp.entity.cx.CxWorkEntity;
+import com.cninsure.cp.entity.cx.CxSurveyTaskEntity;
+import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.ocr.CxWorkPhotoHelp;
 import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.ActivityFinishUtil;
-import com.cninsure.cp.utils.CheckHttpResult;
 import com.cninsure.cp.utils.DialogUtil;
-import com.cninsure.cp.utils.FileChooseUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
@@ -61,7 +52,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -78,9 +68,9 @@ public class CxWorkActivity extends BaseActivity implements View.OnClickListener
     private FragmentManager fm;
     public CxWorkPhotoHelp cameraHelp; //调用摄像头拍照的帮助类**/
     /**OCR解析信息及图片路径1,身份证，2银行卡，3驾驶证，4行驶证，5签名**/
-    public OCREntity ocrEntity1,ocrEntity2,ocrEntity3,ocrEntity4,ocrEntity5;
-    public CxWorkEntity cxWorkEntity;
-    public CxTaskWorkEntity cxTaskWorkEntity; //包含作业信息的任务信息
+//    public OCREntity ocrEntity1,ocrEntity2,ocrEntity3,ocrEntity4,ocrEntity5;
+    public CxSurveyWorkEntity cxWorkEntity;
+    public CxSurveyTaskEntity cxTaskWorkEntity; //包含作业信息的任务信息
     /**拍摄照片路径**/
     private File file;
     public String QorderUid;
@@ -109,7 +99,7 @@ public class CxWorkActivity extends BaseActivity implements View.OnClickListener
         mViewPager = findViewById(R.id.cxworkA_viewpager);
         mTabLayout = findViewById(R.id.cxworkA_tablayout);
         if (cxWorkEntity==null)
-        cxWorkEntity = new CxWorkEntity();
+        cxWorkEntity = new CxSurveyWorkEntity();
         initFragment();
         initViewPager();
         initTab();
@@ -331,7 +321,7 @@ public class CxWorkActivity extends BaseActivity implements View.OnClickListener
      * @param value*/
     private void getTaskWorkInfo(String value) {
         try {
-            cxTaskWorkEntity = JSON.parseObject(value,CxTaskWorkEntity.class);
+            cxTaskWorkEntity = JSON.parseObject(value, CxSurveyTaskEntity.class);
         } catch (Exception e) {  //解析失败，关闭界面
            disPlayErrorDialog();
             e.printStackTrace();
@@ -388,9 +378,7 @@ public class CxWorkActivity extends BaseActivity implements View.OnClickListener
     /**处理签字图片*/
     private void signMeath(String url){
         if (url!=null) {
-            ocrEntity5=new OCREntity();
-            fg1.surveyInfo.signLicense = url;
-            ocrEntity5.url=url;//签字图片名称，不包含完整路径
+            cxWorkEntity.surveyInfo.signLicense = url;//签字图片名称，不包含完整路径
             fg1.disPlaySign(); //显示签名
         }
     }
@@ -399,7 +387,7 @@ public class CxWorkActivity extends BaseActivity implements View.OnClickListener
     private void disPlayOcrInfo(int type, String value) {
         switch (type){
             case 1:  //disPlayIdCard();
-            case 2:  fg0.disBankCardInfo(ocrEntity2,value); //银行卡识别
+            case 2:  fg0.disBankCardInfo(value); //银行卡识别
             case 3:  fg0.disPlayDriverLicense(value); //驾驶证识别
             case 4:  fg0.disPlayMoveLicense(value); //行驶证识别
 

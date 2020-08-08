@@ -29,7 +29,7 @@ import com.cninsure.cp.cx.CxWorkActivity;
 import com.cninsure.cp.cx.fragment.CxThirdFragment;
 import com.cninsure.cp.entity.OCREntity;
 import com.cninsure.cp.entity.URLs;
-import com.cninsure.cp.entity.cx.CxWorkEntity;
+import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.PhotoUploadUtil;
@@ -102,7 +102,7 @@ public class CxWorkPhotoHelp implements OnClickListener {
 	private boolean exists(int event) {
 		switch (event) {
 			case 1:
-				if (activity.ocrEntity1 == null) {
+				if (activity == null) {
 					return false;
 				} else {
 //				showOcrMsg(activity.ocrEntity1,1);
@@ -134,7 +134,7 @@ public class CxWorkPhotoHelp implements OnClickListener {
 				}
 			case CxWorkActivity.THIRD_SZ_JSZ_OCR:
 				int position = ((CxThirdFragment) activity.fragmentMap.get(2)).OcrPosition;
-				CxWorkEntity.ThirdPartyEntity thirdPartyEnt = activity.cxWorkEntity.thirdPartys.get(position);
+				CxSurveyWorkEntity.ThirdPartyEntity thirdPartyEnt = activity.cxWorkEntity.thirdPartys.get(position);
 				if (thirdPartyEnt.pathDriverLicense == null) {
 					return false;
 				} else {
@@ -144,7 +144,7 @@ public class CxWorkPhotoHelp implements OnClickListener {
 				}
 			case CxWorkActivity.THIRD_SZ_XSZ_OCR:
 				int positionX = ((CxThirdFragment) activity.fragmentMap.get(2)).OcrPosition;
-			CxWorkEntity.ThirdPartyEntity thirdPartyEntT = activity.cxWorkEntity.thirdPartys.get(positionX);
+			CxSurveyWorkEntity.ThirdPartyEntity thirdPartyEntT = activity.cxWorkEntity.thirdPartys.get(positionX);
 			if (thirdPartyEntT.pathMoveLicense == null) {
 				return false;
 			} else {
@@ -560,16 +560,24 @@ private void jiexieXSZ(String filePath) {
 	public void setOCREntity(int event,OCREntity ocrEntity ){
 		switch (event) {
 		case 1:
-			activity.ocrEntity1=ocrEntity;
+//			activity.ocrEntity1=ocrEntity;
 			break;
 		case 2:
-			activity.ocrEntity2=ocrEntity;
+			activity.cxWorkEntity.subjectInfo.insuredBankNo = ocrEntityTemp.insuredBankNo; //银行卡号
 			break;
 		case 3:
-			activity.ocrEntity3=ocrEntity;
+			activity.cxWorkEntity.subjectInfo.bdDrivingType = ocrEntityTemp.bdDrivingType ; //准驾车型
+			activity.cxWorkEntity.subjectInfo.bdDriverName = ocrEntityTemp.bdDriverName ; //驾驶员姓名
+			activity.cxWorkEntity.subjectInfo.bdDriverNo = ocrEntityTemp.bdDriverNo ; //驾驶证
+			activity.cxWorkEntity.subjectInfo.bdDriverRegisterDate = ocrEntityTemp.getBdDriverRegisterDate(); //初次领证日期
+			activity.cxWorkEntity.subjectInfo.bdDriverEffectiveStar = ocrEntityTemp.getBdDriverEffectiveStar(); //有效起始日期
 			break;
 		case 4:
-			activity.ocrEntity4=ocrEntity;
+			activity.cxWorkEntity.subjectInfo.bdCarNumber = ocrEntityTemp. bdCarNumber; //车牌号
+			activity.cxWorkEntity.subjectInfo.bdCarVin = ocrEntityTemp. bdCarVin; //车架号
+			activity.cxWorkEntity.subjectInfo.bdEngineNo = ocrEntityTemp. bdEngineNo; //发动机号
+			activity.cxWorkEntity.subjectInfo.bdCarRegisterDate = ocrEntityTemp. getBdCarRegisterDate(); //初登日期
+			activity.cxWorkEntity.subjectInfo.bdCarUseType = ocrEntityTemp.getBdCarUseTypeValue(); //使用性质
 			break;
 			case CxWorkActivity.THIRD_SZ_JSZ_OCR: //三者中的驾驶证识别
 				CxThirdFragment.ocrEntityJsz = ocrEntity;
@@ -577,7 +585,6 @@ private void jiexieXSZ(String filePath) {
 			case CxWorkActivity.THIRD_SZ_XSZ_OCR://三者中的行驶证识别
 				CxThirdFragment.ocrEntityXsz = ocrEntity;
 				break;
-
 		default:
 			break;
 		}

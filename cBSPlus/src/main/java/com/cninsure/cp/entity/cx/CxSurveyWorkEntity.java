@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CxWorkEntity implements Serializable {
+public class CxSurveyWorkEntity implements Serializable {
 
 
     public String creatDate; //添加时间

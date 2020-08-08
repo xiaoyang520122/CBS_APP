@@ -12,12 +12,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.CxWorkActivity;
 import com.cninsure.cp.entity.OCREntity;
-import com.cninsure.cp.entity.cx.CxWorkEntity;
+import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.utils.DateChoiceUtil;
 import com.cninsure.cp.utils.SetTextUtil;
 import com.cninsure.cp.utils.cx.TypePickeUtil;
@@ -26,7 +25,6 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.zcw.togglebutton.ToggleButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CxThirdFragment extends BaseFragment {
 
@@ -58,7 +56,7 @@ public class CxThirdFragment extends BaseFragment {
 
         }else{
             activity.cxWorkEntity.thirdPartys  = new ArrayList<>();
-            activity.cxWorkEntity.thirdPartys.add(new CxWorkEntity.ThirdPartyEntity());
+            activity.cxWorkEntity.thirdPartys.add(new CxSurveyWorkEntity.ThirdPartyEntity());
         }
     }
 
@@ -75,7 +73,7 @@ public class CxThirdFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 SaveDataToEntity(); //先把已经填写好的数据存起来
-                activity.cxWorkEntity.thirdPartys.add(new CxWorkEntity.ThirdPartyEntity());
+                activity.cxWorkEntity.thirdPartys.add(new CxSurveyWorkEntity.ThirdPartyEntity());
                 myAdapter.notifyDataSetChanged();
             }
         });
@@ -128,7 +126,7 @@ public class CxThirdFragment extends BaseFragment {
 
     /**获取ViewHolder中控件上的数据，封装到ThirdPartyEntity对象中*/
     private void getHolderDate(ViewHolder vHolder,int position) {
-        CxWorkEntity.ThirdPartyEntity tempThirdEnty = activity.cxWorkEntity.thirdPartys.get(position);
+        CxSurveyWorkEntity.ThirdPartyEntity tempThirdEnty = activity.cxWorkEntity.thirdPartys.get(position);
         tempThirdEnty.thirdPartysNo = position; //三者编号
         tempThirdEnty.carNumber = vHolder.carNumberEdt.getText().toString(); //车牌号
         tempThirdEnty.frameNumber = vHolder.frameNumberEdt.getText().toString(); //车架号
@@ -187,7 +185,7 @@ public class CxThirdFragment extends BaseFragment {
         private void displayInfo(ViewHolder vHolder, int position) {
             if (!(activity.cxWorkEntity.thirdPartys!=null && activity.cxWorkEntity.thirdPartys.size()>0))  //没有数据就跳过，以免报错
                 return;
-            CxWorkEntity.ThirdPartyEntity thirdPart= activity.cxWorkEntity.thirdPartys.get(position);  //取出需要加载的数据
+            CxSurveyWorkEntity.ThirdPartyEntity thirdPart= activity.cxWorkEntity.thirdPartys.get(position);  //取出需要加载的数据
             if (thirdPart.szisLicenseKou!=null && thirdPart.szisLicenseKou==1){
                 vHolder.szisLicenseKouTg.setToggleOn(true); //双证被扣
                 vHolder.jxzhengcameraLin.setVisibility(View.GONE);

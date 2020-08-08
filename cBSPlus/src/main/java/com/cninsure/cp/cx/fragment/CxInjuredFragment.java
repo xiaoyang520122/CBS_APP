@@ -12,11 +12,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.CxWorkActivity;
-import com.cninsure.cp.entity.cx.CxWorkEntity;
+import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.utils.SetTextUtil;
 import com.cninsure.cp.utils.cx.TypePickeUtil;
 import com.lidroid.xutils.ViewUtils;
@@ -48,7 +47,7 @@ public class CxInjuredFragment extends BaseFragment {
     private void initData() {
         if (activity.cxWorkEntity.injuredInfos == null) {
             activity.cxWorkEntity.injuredInfos = new ArrayList<>();
-            activity.cxWorkEntity.injuredInfos.add(new CxWorkEntity.InjuredInfosEntity());
+            activity.cxWorkEntity.injuredInfos.add(new CxSurveyWorkEntity.InjuredInfosEntity());
         }
     }
 
@@ -66,7 +65,7 @@ public class CxInjuredFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 SaveDataToEntity(); //先把已经填写好的数据存起来
-                activity.cxWorkEntity.injuredInfos.add(new CxWorkEntity.InjuredInfosEntity());
+                activity.cxWorkEntity.injuredInfos.add(new CxSurveyWorkEntity.InjuredInfosEntity());
                 myAdapter.notifyDataSetChanged();
             }
         });
@@ -91,7 +90,7 @@ public class CxInjuredFragment extends BaseFragment {
 
     /**获取ViewHolder中控件上的数据，封装到ThirdPartyEntity对象中*/
     private void getHolderDate(ViewHolder vHolder, int position) {
-        CxWorkEntity.InjuredInfosEntity tempinjured = activity.cxWorkEntity.injuredInfos.get(position);
+        CxSurveyWorkEntity.InjuredInfosEntity tempinjured = activity.cxWorkEntity.injuredInfos.get(position);
         tempinjured.injuredInfoNo = position;
         tempinjured.injuredName = vHolder.injuredNameEdt.getText().toString();//	姓名
         tempinjured.injuredCarNo = vHolder.injuredCarNoEdt.getText().toString();//	身份证号
@@ -143,7 +142,7 @@ public class CxInjuredFragment extends BaseFragment {
         private void displayInfo(ViewHolder vHolder, int position) {
             if (!(activity.cxWorkEntity.injuredInfos!=null && activity.cxWorkEntity.injuredInfos.size()>0))  //没有数据就跳过，以免报错
                 return;
-            CxWorkEntity.InjuredInfosEntity injuredEnt = activity.cxWorkEntity.injuredInfos.get(position);
+            CxSurveyWorkEntity.InjuredInfosEntity injuredEnt = activity.cxWorkEntity.injuredInfos.get(position);
             SetTextUtil.setEditText(vHolder.injuredNameEdt,injuredEnt.injuredName);
             SetTextUtil.setEditText(vHolder.injuredCarNoEdt,injuredEnt.injuredCarNo);
             SetTextUtil.setEditText(vHolder.injuredPhoneEdt,injuredEnt.injuredPhone);
