@@ -5,45 +5,11 @@
     android:layout_height="match_parent"
     android:background="@color/hui_bg"
     android:orientation="vertical">
-    <LinearLayout
+
+    <include
+        layout="@layout/cx_action_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bule_text_h"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="12dp" >
-
-        <TextView
-            android:id="@+id/CXWA_Back_Tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/back_white_48"
-            android:gravity="center_vertical|left"
-            android:textColor="@color/hui_text_xxxh"
-            android:textSize="@dimen/text_xh" />
-
-        <TextView
-            android:id="@+id/CXWA_Title_Tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:text="查勘作业"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/title_h" />
-
-        <TextView
-            android:id="@+id/CXWA_More_Tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical|right"
-            android:textColor="@color/white"
-            android:text="提交/暂存"
-            android:textSize="@dimen/text_xh" />
-    </LinearLayout>
+        android:layout_height="wrap_content"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/cxworkA_tablayout"

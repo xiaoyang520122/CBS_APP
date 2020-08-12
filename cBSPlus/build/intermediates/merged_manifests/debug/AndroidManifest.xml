@@ -179,6 +179,8 @@
         <activity android:name="com.cninsure.cp.activity.yjx.YjxDispatchShenheActivity" />
         <activity android:name="com.cninsure.cp.activity.yjx.YjxNoShenheOrderActivity" />
         <activity android:name="com.cninsure.cp.cx.CxDamageActivity" />
+        <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity" />
+        <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity" />
         <activity
             android:name="com.cninsure.cp.cx.CxWorkActivity"
             android:theme="@style/Theme.AppCompat"

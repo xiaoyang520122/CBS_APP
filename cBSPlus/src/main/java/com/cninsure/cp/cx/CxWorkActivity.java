@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -107,15 +108,17 @@ public class CxWorkActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void setBackOnclick() {
-        findViewById(R.id.CXWA_Back_Tv).setOnClickListener(this);
-        findViewById(R.id.CXWA_More_Tv).setOnClickListener(this);
+        findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
+        findViewById(R.id.CX_Act_More_Tv).setOnClickListener(this);
+        ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText("现场查勘");
+        ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.CXWA_Back_Tv: ActivityFinishUtil.showFinishAlert(CxWorkActivity.this); break; //点击返回键
-            case R.id.CXWA_More_Tv: showSaveDialog(); break; //点击保存或暂存键
+            case R.id.CX_Act_Back_Tv: ActivityFinishUtil.showFinishAlert(CxWorkActivity.this); break; //点击返回键
+            case R.id.CX_Act_More_Tv: showSaveDialog(); break; //点击保存或暂存键
         }
     }
 

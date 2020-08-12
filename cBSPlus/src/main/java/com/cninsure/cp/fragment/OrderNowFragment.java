@@ -51,6 +51,8 @@ import com.cninsure.cp.R;
 import com.cninsure.cp.activity.yjx.YjxSurveyActivity;
 import com.cninsure.cp.activty.WorkOrderActivty;
 import com.cninsure.cp.cx.CxDamageActivity;
+import com.cninsure.cp.cx.CxDisabyIdentifyActivity;
+import com.cninsure.cp.cx.CxInjuryTrackActivity;
 import com.cninsure.cp.cx.CxWorkActivity;
 import com.cninsure.cp.entity.CaseOrder;
 import com.cninsure.cp.entity.FCOrderEntity;
@@ -1158,7 +1160,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 	public void reciveOrder(int itemId) {
 		params = new ArrayList<NameValuePair>(2);
 		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
-		params.add(new BasicNameValuePair("orderUid", data.get(itemId).uid + ""));
+		params.add(new BasicNameValuePair("id", data.get(itemId).id + ""));
 		HttpUtils.requestPost(URLs.ReceiveOrder(), params, HttpRequestTool.RECEIVE_ORDER);
 		loadDialog.setMessage("确定中……").show();
 	}
@@ -1178,6 +1180,8 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			switch (type){
 				case 2 :  intent.setClass(getActivity(),CxWorkActivity.class);break;  //现场查勘
 				case 42 :  intent.setClass(getActivity(), CxDamageActivity.class);break;  //物损定损
+				case 392 :  intent.setClass(getActivity(), CxInjuryTrackActivity.class);break;  //人伤跟踪
+				case 394 :  intent.setClass(getActivity(), CxDisabyIdentifyActivity.class);break;
 
 					default: intent.setClass(getActivity(),CxWorkActivity.class);  //默认现场查勘
 			}

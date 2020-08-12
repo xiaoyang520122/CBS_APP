@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="▍事故信息"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="@dimen/text_15"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="事故时间："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/check_date_hui32"
+                    android:drawablePadding="5dp"
+                    android:gravity="right|center"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="事故地点："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入事故地点"
+                    android:padding="4dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="▍甲方信息"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="@dimen/text_15"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="甲(受害方)："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="未填写"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/hui_line" />
+
+                <TextView
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="5dp"
+                    android:gravity="right|center"
+                    android:hint="性别"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="身份证号："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入伤者电话"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="电话："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入作业地点"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="事故责任："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入作业地点"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="职业："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入作业地点"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="收入(月薪)："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入作业地点"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="工作单位："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入作业地点"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="现居地址："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入作业地点"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="居住时间："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/check_date_hui32"
+                    android:drawablePadding="5dp"
+                    android:gravity="right|center"
+                    android:hint="开始日期"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="right|center"
+                    android:text="至"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/check_date_hui32"
+                    android:drawablePadding="5dp"
+                    android:gravity="right|center"
+                    android:hint="结束日期"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="户籍地："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="未填写"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/hui_line" />
+
+                <TextView
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="5dp"
+                    android:gravity="right|center"
+                    android:hint="户籍性质"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="▍乙方信息"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="@dimen/text_15"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="乙(标的方)："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="未填写"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/hui_line" />
+
+                <TextView
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="5dp"
+                    android:gravity="right|center"
+                    android:hint="性别"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="身份证号："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入作业地点"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="电话："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入作业地点"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="事故责任："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入作业地点"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="事故认定书编号："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入作业地点"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="签署日期："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/cxInMe_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请输入作业地点"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/ALERT_GIF_DIALOG_VIEW_NaviMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="▍客户签名"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="@dimen/text_15"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
+            android:padding="10dp">
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <ImageView
+                        android:id="@+id/cxInMe_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:scaleType="centerInside"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/cxInMe_"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:drawablePadding="5dp"
+                        android:text="+甲方签字"
+                        android:textColor="@color/bulue_main"
+                        android:textSize="@dimen/text_defaul" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/hui_line" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <ImageView
+                        android:id="@+id/cxInMe_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:scaleType="centerInside"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/cxInMe_"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:drawablePadding="5dp"
+                        android:text="+乙方签字"
+                        android:textColor="@color/bulue_main"
+                        android:textSize="@dimen/text_defaul" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

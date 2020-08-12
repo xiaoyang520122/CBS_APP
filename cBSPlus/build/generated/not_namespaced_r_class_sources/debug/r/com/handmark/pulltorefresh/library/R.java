@@ -61,20 +61,20 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int fl_inner = 0x7f0903b6;
-        public static final int gridview = 0x7f0903f5;
-        public static final int pull_to_refresh_image = 0x7f090471;
-        public static final int pull_to_refresh_progress = 0x7f090472;
-        public static final int pull_to_refresh_sub_text = 0x7f090473;
-        public static final int pull_to_refresh_text = 0x7f090474;
-        public static final int scrollview = 0x7f09048f;
-        public static final int webview = 0x7f0904f1;
+        public static final int fl_inner = 0x7f0903e1;
+        public static final int gridview = 0x7f090420;
+        public static final int pull_to_refresh_image = 0x7f09049c;
+        public static final int pull_to_refresh_progress = 0x7f09049d;
+        public static final int pull_to_refresh_sub_text = 0x7f09049e;
+        public static final int pull_to_refresh_text = 0x7f09049f;
+        public static final int scrollview = 0x7f0904ba;
+        public static final int webview = 0x7f09051c;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int pull_to_refresh_header_horizontal = 0x7f0c00a5;
-        public static final int pull_to_refresh_header_vertical = 0x7f0c00a6;
+        public static final int pull_to_refresh_header_horizontal = 0x7f0c00ad;
+        public static final int pull_to_refresh_header_vertical = 0x7f0c00ae;
     }
     public static final class string {
         private string() {}

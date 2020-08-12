@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bule_text_h"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp" >
+
+        <TextView
+            android:id="@+id/CX_Act_Back_Tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/back_white_48"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_xh" />
+
+        <TextView
+            android:id="@+id/CX_Act_Title_Tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text=""
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/title_h" />
+
+        <TextView
+            android:id="@+id/CX_Act_More_Tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/white"
+            android:text=""
+            android:textSize="@dimen/text_xh" />
+    </LinearLayout>
+
+</LinearLayout>

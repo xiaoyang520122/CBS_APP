@@ -167,6 +167,8 @@
         <activity android:name=".activity.yjx.YjxDispatchShenheActivity"></activity>
         <activity android:name=".activity.yjx.YjxNoShenheOrderActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxDamageActivity"></activity>
+        <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity"></activity>
+        <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxWorkActivity"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="adjustPan"

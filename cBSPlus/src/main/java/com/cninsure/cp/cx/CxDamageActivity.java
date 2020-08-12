@@ -49,7 +49,6 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
     private LayoutInflater inflater ;
 
 
-    @ViewInject(R.id.CXWA_Damage_LTv) private TextView backTv; //返回键
     @ViewInject(R.id.CxDamgWM_belongPerson) private EditText belongPerson;  //归属人
     @ViewInject(R.id.CxDamgWM_damageName) private EditText damageName; //物损名称
     @ViewInject(R.id.CxDamgWM_damageType) private TextView damageType; //损失类型
@@ -302,18 +301,20 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void initView() {
-        backTv.setOnClickListener(this);
         TypePickeUtil.setTypePickerDialog(this,damageType,cxDict,"damage_loss_type");//损失类型 绑定点击事件
         addLinear.setOnClickListener(this);
         //保存或提交单击事件
-        findViewById(R.id.CXWA_Damage_RTv).setOnClickListener(this);
+        findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
+        findViewById(R.id.CX_Act_More_Tv).setOnClickListener(this);
+        ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText("物损定损");
+        ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.CXWA_Damage_RTv: showSaveDialog(); break; //点击保存或暂存键
-            case R.id.CXWA_Damage_LTv: ActivityFinishUtil.showFinishAlert(CxDamageActivity.this); break; //退出
+            case R.id.CX_Act_More_Tv: showSaveDialog(); break; //点击保存或暂存键
+            case R.id.CX_Act_Back_Tv: ActivityFinishUtil.showFinishAlert(CxDamageActivity.this); break; //退出
             case R.id.CxDamgWM_add_damag:  ShowEditDialog(null); break; //传null为添加项目
         }
     }

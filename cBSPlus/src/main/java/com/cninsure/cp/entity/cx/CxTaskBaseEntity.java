@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class CxTaskBaseEntity implements Serializable {
     public String bussType;  //"现场查勘", 业务类型
-    public int bussTypeId;  // 业务类型id
+    public Integer bussTypeId;  // 业务类型id
     public String content;  //保存的作业json信息
     public String createTime;  //"2020-08-04 11:26:58",
     public Float dsAmount;  //0
@@ -16,4 +16,5 @@ public class CxTaskBaseEntity implements Serializable {
     public Integer status;  //状态
     public String updateTime;  //"2020-08-04 11:26:58"
     public String workPlatform;  //
+
 }
