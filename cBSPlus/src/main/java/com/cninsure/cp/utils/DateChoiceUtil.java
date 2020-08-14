@@ -56,7 +56,7 @@ public class DateChoiceUtil {
 	    }
 	 
 	 /**获取完整时间（yyyy-MM-dd HH:mm:ss）并赋值到对应的TextView，只能选择的时间范围2000年-2500年**/
-		public static void setLongDatePickerDialog(final Context context,final TextView textTv) {
+		public static void showLongDatePickerDialog(final Context context, final TextView textTv) {
 	        timePicker = new CustomDatePicker(context, "请选择时间", new CustomDatePicker.ResultHandler() {
 	            @Override
 	            public void handle(String time) {
@@ -73,7 +73,7 @@ public class DateChoiceUtil {
 			textTv.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
-					setLongDatePickerDialog(context, textTv);
+					showLongDatePickerDialog(context, textTv);
 				}
 			});
 		}

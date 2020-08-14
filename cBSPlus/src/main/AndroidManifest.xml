@@ -169,7 +169,10 @@
         <activity android:name="com.cninsure.cp.cx.CxDamageActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity"></activity>
-        <activity android:name="com.cninsure.cp.cx.CxWorkActivity"
+        <activity android:name="com.cninsure.cp.cx.CxInjuryMediateActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name="com.cninsure.cp.cx.CxSurveyWorkActivity"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="adjustPan"
             ></activity>

@@ -95,7 +95,15 @@ public class PublicOrderEntity implements Serializable {
 	/**经纬度*/
 	public float caseLocationLongitude;//":"114.108214",
 	public Timer timer;
-	
+
+
+	public String areaNo;
+	public String area;
+	public String province;
+	public String caseProvince;
+	public String city;
+
+
 	/*********医健险**************/
 
     /**调度人电话**/

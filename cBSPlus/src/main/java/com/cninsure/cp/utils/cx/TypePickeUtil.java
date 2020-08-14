@@ -22,15 +22,29 @@ public class TypePickeUtil {
             @Override
             public void onClick(View arg0) {
                 String tempArr[] = getDictLabelArr(dictData.getDictByType(type));
-                new AlertDialog.Builder(context).setTitle("请选择：")
-                        .setItems(tempArr, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                textTv.setText(tempArr[which]);
-                            }
-                        }).create().show();
+                showTypePickerDialog(context,textTv,tempArr);
             }
         });
+    }
+    /**获取显示可选择内容供选择，并在在选择后赋值到对应的TextView**/
+    public static void setTypePickerDialog(final Context context, final TextView textTv, String[] tempArr) {
+        textTv.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("InlinedApi")
+            @Override
+            public void onClick(View arg0) {
+                showTypePickerDialog(context,textTv,tempArr);
+            }
+        });
+    }
+
+    public static void showTypePickerDialog(final Context context, final TextView textTv, String[] tempArr){
+        new AlertDialog.Builder(context).setTitle("请选择：")
+                .setItems(tempArr, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        textTv.setText(tempArr[which]);
+                    }
+                }).create().show();
     }
 
     public static String[] getDictLabelArr(List<CxDictEntity.DictData> dictData){

@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.cninsure.cp.R;
-import com.cninsure.cp.cx.CxWorkActivity;
+import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.entity.OCREntity;
 import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.utils.DateChoiceUtil;
@@ -32,7 +32,7 @@ public class CxThirdFragment extends BaseFragment {
     private ListView mlistView;
     private LayoutInflater inflater;
     private MyAdapter myAdapter;
-    private CxWorkActivity activity;
+    private CxSurveyWorkActivity activity;
     public int OcrPosition;  //OCR拍照时点击所在的ListView Item ,以便知道OCR返回后数据显示到哪个Item上。
 
     /**OCR解析信息及图片路径，驾驶证，行驶证**/
@@ -43,7 +43,7 @@ public class CxThirdFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.inflater = inflater;
         contentView = inflater.inflate(R.layout.cx_third_fragment,null);
-        activity = (CxWorkActivity) getActivity();
+        activity = (CxSurveyWorkActivity) getActivity();
         initData();
         initView();
 
@@ -83,8 +83,8 @@ public class CxThirdFragment extends BaseFragment {
     /**保存上传的OCR图片，并显示已经识别的结果到控件*/
     public void disPlayOcrInfo(int type, String imgUrl) {
 //        OcrPosition
-        if (type== CxWorkActivity.THIRD_SZ_JSZ_OCR) saveAndDisplayJsz(imgUrl);
-        if (type== CxWorkActivity.THIRD_SZ_XSZ_OCR) saveAndDisplayXsz(imgUrl);
+        if (type== CxSurveyWorkActivity.THIRD_SZ_JSZ_OCR) saveAndDisplayJsz(imgUrl);
+        if (type== CxSurveyWorkActivity.THIRD_SZ_XSZ_OCR) saveAndDisplayXsz(imgUrl);
     }
 
     /**保存驾驶证照片，并显示识别信息*/

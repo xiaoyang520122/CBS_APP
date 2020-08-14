@@ -183,7 +183,11 @@
         <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity" />
         <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity" />
         <activity
-            android:name="com.cninsure.cp.cx.CxWorkActivity"
+            android:name="com.cninsure.cp.cx.CxInjuryMediateActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.cninsure.cp.cx.CxSurveyWorkActivity"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="adjustPan" />
         <activity

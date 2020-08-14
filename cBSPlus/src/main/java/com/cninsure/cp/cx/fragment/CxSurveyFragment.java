@@ -23,7 +23,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.bumptech.glide.Glide;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.R;
-import com.cninsure.cp.cx.CxWorkActivity;
+import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
@@ -49,7 +49,7 @@ public class CxSurveyFragment extends BaseFragment {
 
     private View contentView;
 //    public CxSurveyWorkEntity.SurveyInfoEntity surveyInfo;
-    private CxWorkActivity activity;
+    private CxSurveyWorkActivity activity;
     private LayoutInflater inflater;
 
 
@@ -87,7 +87,7 @@ public class CxSurveyFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.inflater = inflater;
         contentView = inflater.inflate(R.layout.cx_survey_fragment,null);
-        activity = (CxWorkActivity) getActivity();
+        activity = (CxSurveyWorkActivity) getActivity();
         ViewUtils.inject(this, contentView); //注入view和事件
         initView();
         displaySurveyData();

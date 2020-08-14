@@ -24,7 +24,7 @@ public class SetTextUtil {
 		Tv .setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				DateChoiceUtil.setLongDatePickerDialog(context, Tv);
+				DateChoiceUtil.showLongDatePickerDialog(context, Tv);
 			}
 		});
 	}

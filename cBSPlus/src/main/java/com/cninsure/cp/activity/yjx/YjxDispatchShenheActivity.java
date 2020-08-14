@@ -4,9 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -43,7 +41,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioGroup;
-import android.widget.SimpleAdapter;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -56,7 +53,6 @@ import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.activity.yjx.YjxAddErrorHelper.BcallSet;
 import com.cninsure.cp.entity.URLs;
-import com.cninsure.cp.entity.fc.ShenheMsgEntity;
 import com.cninsure.cp.entity.yjx.ErrorTypeEntity;
 import com.cninsure.cp.entity.yjx.ImagePathUtil;
 import com.cninsure.cp.entity.yjx.InsuranceTypeUtil;
@@ -593,7 +589,7 @@ public class YjxDispatchShenheActivity extends BaseActivity implements OnChecked
 		wtTv.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				DateChoiceUtil.setLongDatePickerDialog(YjxDispatchShenheActivity.this, wtTv);
+				DateChoiceUtil.showLongDatePickerDialog(YjxDispatchShenheActivity.this, wtTv);
 			}
 		});
 

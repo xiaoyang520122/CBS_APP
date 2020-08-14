@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.cninsure.cp.R;
-import com.cninsure.cp.cx.CxWorkActivity;
+import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.utils.DateChoiceUtil;
 import com.cninsure.cp.utils.LoadDialogUtil;
@@ -31,7 +31,7 @@ public class CxSubjectFragment extends BaseFragment {
 
     private View contentView;
     public CxSurveyWorkEntity.SubjectInfoEntity subjectInfo; //定损信息
-    private CxWorkActivity activity;
+    private CxSurveyWorkActivity activity;
 
     @ViewInject(R.id.cs_isLicenseKou)  private ToggleButton isLicenseKou;
 
@@ -73,7 +73,7 @@ public class CxSubjectFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         contentView = inflater.inflate(R.layout.cx_subject_fragment, null);
-        activity = (CxWorkActivity) getActivity();
+        activity = (CxSurveyWorkActivity) getActivity();
         ViewUtils.inject(this, contentView); //注入view和事件
         initView();
         return contentView;

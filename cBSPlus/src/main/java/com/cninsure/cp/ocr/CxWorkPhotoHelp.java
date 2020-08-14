@@ -25,7 +25,7 @@ import com.baidu.ocr.sdk.model.OcrResponseResult;
 import com.bumptech.glide.Glide;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.R;
-import com.cninsure.cp.cx.CxWorkActivity;
+import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.cx.fragment.CxThirdFragment;
 import com.cninsure.cp.entity.OCREntity;
 import com.cninsure.cp.entity.URLs;
@@ -46,7 +46,7 @@ import java.util.List;
 public class CxWorkPhotoHelp implements OnClickListener {
 	
 	private File file2;
-	private CxWorkActivity activity;
+	private CxSurveyWorkActivity activity;
 	/** * 1 身份证识别
 		 * 2 银行卡识别
 		 * 3 驾驶证识别
@@ -56,7 +56,7 @@ public class CxWorkPhotoHelp implements OnClickListener {
 	private Dialog dialog;
 	public OCREntity ocrEntityTemp;
 
-	public CxWorkPhotoHelp(CxWorkActivity activity){
+	public CxWorkPhotoHelp(CxSurveyWorkActivity activity){
 		this.activity=activity;
 		inflater=LayoutInflater.from(activity);
 		initOCR();
@@ -132,7 +132,7 @@ public class CxWorkPhotoHelp implements OnClickListener {
 					sendmessage(displayInfo, event);
 					return true;
 				}
-			case CxWorkActivity.THIRD_SZ_JSZ_OCR:
+			case CxSurveyWorkActivity.THIRD_SZ_JSZ_OCR:
 				int position = ((CxThirdFragment) activity.fragmentMap.get(2)).OcrPosition;
 				CxSurveyWorkEntity.ThirdPartyEntity thirdPartyEnt = activity.cxWorkEntity.thirdPartys.get(position);
 				if (thirdPartyEnt.pathDriverLicense == null) {
@@ -142,7 +142,7 @@ public class CxWorkPhotoHelp implements OnClickListener {
 					sendmessage(displayInfo, event);
 					return true;
 				}
-			case CxWorkActivity.THIRD_SZ_XSZ_OCR:
+			case CxSurveyWorkActivity.THIRD_SZ_XSZ_OCR:
 				int positionX = ((CxThirdFragment) activity.fragmentMap.get(2)).OcrPosition;
 			CxSurveyWorkEntity.ThirdPartyEntity thirdPartyEntT = activity.cxWorkEntity.thirdPartys.get(positionX);
 			if (thirdPartyEntT.pathMoveLicense == null) {
@@ -227,10 +227,10 @@ public class CxWorkPhotoHelp implements OnClickListener {
 			case 4:
 				jiexieXSZ(file.getPath());
 				break;
-			case CxWorkActivity.THIRD_SZ_JSZ_OCR:
+			case CxSurveyWorkActivity.THIRD_SZ_JSZ_OCR:
 				jiexieJSZ(file.getPath());
 				break;
-			case CxWorkActivity.THIRD_SZ_XSZ_OCR:
+			case CxSurveyWorkActivity.THIRD_SZ_XSZ_OCR:
 				jiexieXSZ(file.getPath());
 				break;
 
@@ -381,10 +381,10 @@ private void jiexieXSZ(String filePath) {
 				case 4:
 					showTravelDilog((OcrResponseResult) msg.obj);
 					break;
-				case CxWorkActivity.THIRD_SZ_JSZ_OCR:
+				case CxSurveyWorkActivity.THIRD_SZ_JSZ_OCR:
 					showDriveDilog((OcrResponseResult) msg.obj);
 					break;
-				case CxWorkActivity.THIRD_SZ_XSZ_OCR:
+				case CxSurveyWorkActivity.THIRD_SZ_XSZ_OCR:
 					showTravelDilog((OcrResponseResult) msg.obj);
 					break;
 
@@ -527,10 +527,10 @@ private void jiexieXSZ(String filePath) {
 				return activity.cxWorkEntity.subjectInfo.pathDriverLicense; //驾驶证
 			case 4:
 				return activity.cxWorkEntity.subjectInfo.pathMoveLicense;  //行驶证
-			case CxWorkActivity.THIRD_SZ_JSZ_OCR:
+			case CxSurveyWorkActivity.THIRD_SZ_JSZ_OCR:
 				int position = ((CxThirdFragment)activity.fragmentMap.get(2)).OcrPosition;
 				return activity.cxWorkEntity.thirdPartys.get(position).pathDriverLicense;
-			case CxWorkActivity.THIRD_SZ_XSZ_OCR:
+			case CxSurveyWorkActivity.THIRD_SZ_XSZ_OCR:
 				int positionX = ((CxThirdFragment)activity.fragmentMap.get(2)).OcrPosition;
 				return activity.cxWorkEntity.thirdPartys.get(positionX).pathMoveLicense;
 
@@ -579,10 +579,10 @@ private void jiexieXSZ(String filePath) {
 			activity.cxWorkEntity.subjectInfo.bdCarRegisterDate = ocrEntityTemp. getBdCarRegisterDate(); //初登日期
 			activity.cxWorkEntity.subjectInfo.bdCarUseType = ocrEntityTemp.getBdCarUseTypeValue(); //使用性质
 			break;
-			case CxWorkActivity.THIRD_SZ_JSZ_OCR: //三者中的驾驶证识别
+			case CxSurveyWorkActivity.THIRD_SZ_JSZ_OCR: //三者中的驾驶证识别
 				CxThirdFragment.ocrEntityJsz = ocrEntity;
 				break;
-			case CxWorkActivity.THIRD_SZ_XSZ_OCR://三者中的行驶证识别
+			case CxSurveyWorkActivity.THIRD_SZ_XSZ_OCR://三者中的行驶证识别
 				CxThirdFragment.ocrEntityXsz = ocrEntity;
 				break;
 		default:

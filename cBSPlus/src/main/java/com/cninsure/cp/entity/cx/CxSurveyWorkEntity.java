@@ -10,6 +10,11 @@ public class CxSurveyWorkEntity implements Serializable {
     public String creatDate; //添加时间
     public String updateDate;//更新时间
     public String orderUid;  //作业标识(任务订单号码)
+    public String areaNo;
+    public String area;
+    public String province;
+    public String caseProvince;
+    public String city;
 
     public SurveyInfoEntity surveyInfo; //查勘信息
     public SubjectInfoEntity subjectInfo; //定损信息

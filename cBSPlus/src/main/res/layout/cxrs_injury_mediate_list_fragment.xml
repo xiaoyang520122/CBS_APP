@@ -42,22 +42,31 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
+                    android:id="@+id/cxInMe_mFee0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    android:textColor="@android:color/black"
+                    style="@style/CustomCheckboxTheme"
                     android:text="医疗费"/>
 
                 <CheckBox
+                    android:id="@+id/cxInMe_mFee1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="诊疗费"/>
 
                 <CheckBox
+                    android:id="@+id/cxInMe_mFee2"
+                    style="@style/CustomCheckboxTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_defaul"
-                    android:text="住院费"/>
+                    android:text="住院费"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_defaul" />
 
             </LinearLayout>
 
@@ -71,15 +80,21 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
+                    android:id="@+id/cxInMe_mFee3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="整容费"/>
 
                 <CheckBox
+                    android:id="@+id/cxInMe_mFee4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="住院伙食补助费" />
 
             </LinearLayout>
@@ -92,26 +107,26 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
+                    android:id="@+id/cxInMe_mFee5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
-                    android:text="整容费"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="后续治疗费" />
 
                 <CheckBox
+                    android:id="@+id/cxInMe_mFee6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="营养费"/>
 
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/CxRsDisabyI_enclosureList_line"
+                android:id="@+id/cxInMe_medicalPaid_line"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -156,21 +171,30 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
+                    android:id="@+id/cxInMe_cFee0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="丧葬费"/>
 
                 <CheckBox
+                    android:id="@+id/cxInMe_cFee1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="死亡补偿费"/>
 
                 <CheckBox
+                    android:id="@+id/cxInMe_cFee2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="残疾赔偿金"/>
 
             </LinearLayout>
@@ -185,21 +209,30 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
+                    android:id="@+id/cxInMe_cFee3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="交通费"/>
 
                 <CheckBox
+                    android:id="@+id/cxInMe_cFee4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="护理费" />
 
                 <CheckBox
+                    android:id="@+id/cxInMe_cFee5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="康复费" />
 
             </LinearLayout>
@@ -212,21 +245,30 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
+                    android:id="@+id/cxInMe_cFee6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="残疾辅助器具费"/>
 
                 <CheckBox
+                    android:id="@+id/cxInMe_cFee7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="住宿费" />
 
                 <CheckBox
+                    android:id="@+id/cxInMe_cFee8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="误工费"/>
 
             </LinearLayout>
@@ -239,20 +281,26 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
+                    android:id="@+id/cxInMe_cFee9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="被抚养人生活费"/>
 
                 <CheckBox
+                    android:id="@+id/cxInMe_cFee10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_defaul"
+                    style="@style/CustomCheckboxTheme"
+                    android:textColor="@android:color/black"
                     android:text="受害人亲属办理丧葬事宜支出的交通费用" />
 
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/CxRsDisabyI_enclosureList_line"
+                android:id="@+id/cxInMe_casualtiesPaid_line"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -311,15 +359,16 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <EditText
-                    android:id="@+id/CxDamgWM_damageName"
+                <TextView
+                    android:id="@+id/cxInMe_medicalSubtotal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请输入作业地点"
+                    android:hint="请输入"
                     android:padding="5dp"
+                    android:inputType="number|numberDecimal"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -350,14 +399,14 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <EditText
-                    android:id="@+id/CxDamgWM_damageName"
+                <TextView
+                    android:id="@+id/cxInMe_casualtiesSubtotal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请输入作业地点"
+                    android:hint="请输入"
                     android:padding="5dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
@@ -389,14 +438,14 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <EditText
-                    android:id="@+id/CxDamgWM_damageName"
+                <TextView
+                    android:id="@+id/cxInMe_total"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请输入作业地点"
+                    android:hint="请输入"
                     android:padding="5dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
@@ -429,13 +478,13 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxDamgWM_damageName"
+                    android:id="@+id/cxInMe_DeductibleExplain"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请输入作业地点"
+                    android:hint="请输入"
                     android:padding="5dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"

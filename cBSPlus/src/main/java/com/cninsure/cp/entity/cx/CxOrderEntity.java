@@ -159,6 +159,13 @@ public class CxOrderEntity {
             stdEnt.caseLocationLatitude=0;//":"22.581202",
             /**经纬度*/
             stdEnt.caseLocationLongitude=0;//":"114.108214",
+
+            stdEnt.areaNo=areaNo;
+//            stdEnt.area=area;
+//            stdEnt.province=province;
+            stdEnt.caseProvince=caseProvince;
+//            stdEnt.city=city;
+
             return stdEnt;
         }
     }

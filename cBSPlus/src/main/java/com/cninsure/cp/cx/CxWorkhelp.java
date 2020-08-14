@@ -38,7 +38,6 @@ import com.cninsure.cp.R;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.WorkPhotos;
 import com.cninsure.cp.entity.WorkPhotos.TableData.WorkPhotoEntitiy;
-import com.cninsure.cp.entity.WorkType;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.photo.CXPhotoActivity;
 import com.cninsure.cp.utils.DialogUtil;
@@ -67,7 +66,7 @@ import java.util.Map;
 public class CxWorkhelp {
 	private ExpandableListView expandableListView;
 	public PhotoExpandablelistAdapter expanAdapter;
-	private CxWorkActivity activity;
+	private CxSurveyWorkActivity activity;
 	private View view;
 	private Dialog dialog;
 	private LayoutInflater inflater;
@@ -90,7 +89,7 @@ public class CxWorkhelp {
 	@SuppressWarnings("unused")
 	private CxWorkhelp(){}
 	
-	public CxWorkhelp(CxWorkActivity CxWorkActivity, View uploadView, List<CxDictEntity.DictData> photoType, WorkPhotos workphoto) {
+	public CxWorkhelp(CxSurveyWorkActivity CxWorkActivity, View uploadView, List<CxDictEntity.DictData> photoType, WorkPhotos workphoto) {
 		resousePathList=null;
 		activity=CxWorkActivity;
 		view=uploadView;

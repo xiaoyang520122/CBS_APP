@@ -453,7 +453,7 @@ public class YjxSurveyActivity extends BaseActivity implements OnCheckedChangeLi
 		wtTv .setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				DateChoiceUtil.setLongDatePickerDialog(YjxSurveyActivity.this, wtTv);
+				DateChoiceUtil.showLongDatePickerDialog(YjxSurveyActivity.this, wtTv);
 			}
 		});
 		

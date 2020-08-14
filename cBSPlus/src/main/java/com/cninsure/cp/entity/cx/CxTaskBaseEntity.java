@@ -17,4 +17,10 @@ public class CxTaskBaseEntity implements Serializable {
     public String updateTime;  //"2020-08-04 11:26:58"
     public String workPlatform;  //
 
+    public String areaNo;
+    public String area;
+    public String province;
+    public String caseProvince;
+    public String city;
+
 }

@@ -57,7 +57,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class CxWorkActivity extends BaseActivity implements View.OnClickListener {
+public class CxSurveyWorkActivity extends BaseActivity implements View.OnClickListener {
 
     private TabLayout mTabLayout;
     public ViewPager mViewPager;
@@ -117,7 +117,7 @@ public class CxWorkActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.CX_Act_Back_Tv: ActivityFinishUtil.showFinishAlert(CxWorkActivity.this); break; //点击返回键
+            case R.id.CX_Act_Back_Tv: ActivityFinishUtil.showFinishAlert(CxSurveyWorkActivity.this); break; //点击返回键
             case R.id.CX_Act_More_Tv: showSaveDialog(); break; //点击保存或暂存键
         }
     }
@@ -135,8 +135,13 @@ public class CxWorkActivity extends BaseActivity implements View.OnClickListener
 
     /**保存作业信息*/
     private void SaveWorkInfo(int status) {
-       for (int i=0;i<fragmentMap.size();i++){
-           fragmentMap.get(i).SaveDataToEntity();
+        cxWorkEntity.areaNo = orderInfoEn.areaNo;
+        cxWorkEntity.area = orderInfoEn.area;
+        cxWorkEntity.province = orderInfoEn.province;
+        cxWorkEntity.caseProvince = orderInfoEn.caseProvince;
+        cxWorkEntity.city = orderInfoEn.city;
+       for (Integer key:fragmentMap.keySet()){
+           fragmentMap.get(key).SaveDataToEntity();
        }
         submitWorkInfo(status);
     }
@@ -210,12 +215,14 @@ public class CxWorkActivity extends BaseActivity implements View.OnClickListener
                     break;
             }
         }
-        notifyChange();
+        notifyChange(tabCode,addBle);
     }
 
-    private void notifyChange(){
+    private void notifyChange(Integer tabCode, boolean addBle){
         adapter.notifyDataSetChanged();
         displayTabText();
+        if (mViewPager.getCurrentItem() ==1) //只有在第二个界面的时候，选中才会跳转到选中页面
+        if (addBle) mViewPager.setCurrentItem(tabCode);
     }
 
 
@@ -329,12 +336,19 @@ public class CxWorkActivity extends BaseActivity implements View.OnClickListener
            disPlayErrorDialog();
             e.printStackTrace();
         }
-        if (cxTaskWorkEntity != null && cxTaskWorkEntity.data != null && cxTaskWorkEntity.data.contentJson != null) {  //作业信息不为空就赋值，并显示
-            cxWorkEntity = cxTaskWorkEntity.data.contentJson;
-            handler.sendMessage(new Message());
-        }else{  //返回信息解析失败，不能继续作业
-            disPlayErrorDialog();
-        }
+
+        if (cxTaskWorkEntity == null )  cxTaskWorkEntity = new CxSurveyTaskEntity();
+        if (cxTaskWorkEntity.data == null  ) cxTaskWorkEntity.data = new CxSurveyTaskEntity.CxTaskSurveyEntity();
+        if (cxTaskWorkEntity.data.contentJson == null) cxTaskWorkEntity.data.contentJson = new CxSurveyWorkEntity();
+        cxWorkEntity = cxTaskWorkEntity.data.contentJson;
+        initView();
+//        if (cxTaskWorkEntity != null && cxTaskWorkEntity.data != null && cxTaskWorkEntity.data.contentJson != null) {  //作业信息不为空就赋值，并显示
+//            cxWorkEntity = cxTaskWorkEntity.data.contentJson;
+//            handler.sendMessage(new Message());
+//        }
+//        else{  //返回信息解析失败，不能继续作业
+//            disPlayErrorDialog();
+//        }
     }
 
     private Handler handler = new Handler(){
@@ -350,7 +364,7 @@ public class CxWorkActivity extends BaseActivity implements View.OnClickListener
         DialogUtil.getErrDialogAndFinish(this, "获取任务信息失败，请联系管理员！", new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                CxWorkActivity.this.finish();
+                CxSurveyWorkActivity.this.finish();
             }
         }).show();
     }

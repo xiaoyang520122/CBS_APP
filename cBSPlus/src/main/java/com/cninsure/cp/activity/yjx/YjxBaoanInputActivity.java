@@ -322,7 +322,7 @@ private void setConViewOnclick(View conView, final int itemCode) {
 		wtDTv .setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				DateChoiceUtil.setLongDatePickerDialog(YjxBaoanInputActivity.this, wtDTv);
+				DateChoiceUtil.showLongDatePickerDialog(YjxBaoanInputActivity.this, wtDTv);
 			}
 		});
 		choiceWTRhelp=new YjxChoiceWTRhelp(this,liAnView);

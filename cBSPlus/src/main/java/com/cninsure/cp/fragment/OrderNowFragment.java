@@ -49,12 +49,11 @@ import com.cninsure.cp.IndexActivity;
 import com.cninsure.cp.LoadingActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.activity.yjx.YjxSurveyActivity;
-import com.cninsure.cp.activty.WorkOrderActivty;
 import com.cninsure.cp.cx.CxDamageActivity;
 import com.cninsure.cp.cx.CxDisabyIdentifyActivity;
+import com.cninsure.cp.cx.CxInjuryMediateActivity;
 import com.cninsure.cp.cx.CxInjuryTrackActivity;
-import com.cninsure.cp.cx.CxWorkActivity;
-import com.cninsure.cp.entity.CaseOrder;
+import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.entity.FCOrderEntity;
 import com.cninsure.cp.entity.PagedRequest;
 import com.cninsure.cp.entity.PublicOrderEntity;
@@ -1178,12 +1177,13 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 //			Intent intent = new Intent(getActivity(), WorkOrderActivty.class);
 			Intent intent = new Intent();
 			switch (type){
-				case 2 :  intent.setClass(getActivity(),CxWorkActivity.class);break;  //现场查勘
+				case 2 :  intent.setClass(getActivity(), CxSurveyWorkActivity.class);break;  //现场查勘
 				case 42 :  intent.setClass(getActivity(), CxDamageActivity.class);break;  //物损定损
 				case 392 :  intent.setClass(getActivity(), CxInjuryTrackActivity.class);break;  //人伤跟踪
-				case 394 :  intent.setClass(getActivity(), CxDisabyIdentifyActivity.class);break;
+				case 394 :  intent.setClass(getActivity(), CxDisabyIdentifyActivity.class);break; //陪同残定
+				case 393 :  intent.setClass(getActivity(), CxInjuryMediateActivity.class);break; //人伤调解
 
-					default: intent.setClass(getActivity(),CxWorkActivity.class);  //默认现场查勘
+					default: intent.setClass(getActivity(), CxSurveyWorkActivity.class);  //默认现场查勘
 			}
 
 			intent.putExtra("orderUid", uid);

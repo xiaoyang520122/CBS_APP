@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.cninsure.cp.R;
-import com.cninsure.cp.cx.CxWorkActivity;
+import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.utils.SetTextUtil;
 import com.cninsure.cp.utils.cx.TypePickeUtil;
@@ -29,7 +29,7 @@ public class CxInjuredFragment extends BaseFragment {
     private ListView mlistView;
     private LayoutInflater inflater;
     private MyAdapter myAdapter;
-    private CxWorkActivity activity;
+    private CxSurveyWorkActivity activity;
 
 
     @Nullable
@@ -37,7 +37,7 @@ public class CxInjuredFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.inflater = inflater;
         contentView = inflater.inflate(R.layout.cx_injured_fragment,null);
-        activity = (CxWorkActivity) getActivity();
+        activity = (CxSurveyWorkActivity) getActivity();
         initData();
         initView();
 
