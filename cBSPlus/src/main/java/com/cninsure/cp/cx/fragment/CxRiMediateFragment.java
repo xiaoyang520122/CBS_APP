@@ -90,6 +90,7 @@ public class CxRiMediateFragment  extends BaseFragment implements View.OnClickLi
 
     @Override
     public void SaveDataToEntity() {
+        if (activity==null) return;  //activity说明没有初始化这个Fragment，也就没有任何操作，没有不要保存了，
         InjuryMediateWorkEntity tempWorkEnt = activity.taskEntity.data.contentJson;
         tempWorkEnt.accidentTime = accidentTime.getText().toString();//	事故时间
         tempWorkEnt.accidentAddress = accidentAddress.getText().toString();//	事故地点
@@ -123,7 +124,10 @@ public class CxRiMediateFragment  extends BaseFragment implements View.OnClickLi
         SetTextUtil.setTextViewText(accidentTime, tempWorkEnt.accidentTime);//	事故时间
         SetTextUtil.setEditText(accidentAddress, tempWorkEnt.accidentAddress);//	事故地点
         SetTextUtil.setEditText(partyOneName, tempWorkEnt.partyOneName);//	甲(受害方)
-        SetTextUtil.setTextViewText(poSex, tempWorkEnt.poSex == 0 ? "男" : "女");//	甲(受害方)性别
+        if (tempWorkEnt.poSex == 0)
+        SetTextUtil.setTextViewText(poSex,"男");//	甲(受害方)性别
+        if (tempWorkEnt.poSex == 1)
+            SetTextUtil.setTextViewText(poSex,"女");//	甲(受害方)性别
         SetTextUtil.setEditText(poCardNo, tempWorkEnt.poCardNo);//	身份证号
         SetTextUtil.setEditText(poTel, tempWorkEnt.poTel);//	电话
         SetTextUtil.setEditText(poDuty, tempWorkEnt.poDuty);//	事故责任
@@ -138,7 +142,10 @@ public class CxRiMediateFragment  extends BaseFragment implements View.OnClickLi
         SetTextUtil.setTvTextForArr(poNature, TypePickeUtil.getDictLabelArr(activity.cxDict.getDictByType("poNature")), tempWorkEnt.poNature);
 
         SetTextUtil.setEditText(partyBName, tempWorkEnt.partyBName);//	乙(标的方)
-        SetTextUtil.setTextViewText(pbSex, tempWorkEnt.pbSex == 0 ? "男" : "女");//	乙(标的方)性别
+        if (tempWorkEnt.pbSex == 0)
+        SetTextUtil.setTextViewText(pbSex,  "男" );//	乙(标的方)性别
+        if (tempWorkEnt.pbSex == 1)
+        SetTextUtil.setTextViewText(pbSex, "女");//	乙(标的方)性别
         SetTextUtil.setEditText(pbCardNo, tempWorkEnt.pbCardNo);//	身份证号
         SetTextUtil.setEditText(pbTel, tempWorkEnt.pbTel);//	电话
         SetTextUtil.setEditText(pbDuty, tempWorkEnt.pbDuty);//	事故责任

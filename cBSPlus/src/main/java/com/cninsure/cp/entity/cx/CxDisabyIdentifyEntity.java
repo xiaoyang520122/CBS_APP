@@ -5,6 +5,13 @@ import java.util.List;
 
 public class CxDisabyIdentifyEntity implements Serializable {
 
+
+    public String areaNo;
+    public String area;
+    public String province;
+    public String caseProvince;
+    public String city;
+
     public String injuredName;//	伤者姓名
     public String injuredTel;//	伤者电话
     public String appraisalTime;//	残定时间
@@ -23,5 +30,8 @@ public class CxDisabyIdentifyEntity implements Serializable {
     public String deliveryBill;//	快递单
 
     public List<String> enclosureList;//	附件信息
-
+    /**因后台需要字典值value传String类型，这里做转化*/
+    public String getDeliveryCompany() {
+        return deliveryCompany==null?"":deliveryCompany+"";
+    }
 }

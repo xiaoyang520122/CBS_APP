@@ -169,6 +169,8 @@
         <activity android:name="com.cninsure.cp.cx.CxDamageActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity"></activity>
+        <activity android:name="com.cninsure.cp.cx.CxDsWorkActivity"></activity>
+        <activity android:name="com.cninsure.cp.cx.DsUtilActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxInjuryMediateActivity"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="adjustPan"></activity>

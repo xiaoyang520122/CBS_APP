@@ -621,7 +621,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 						moreSpinner.setVisibility(View.GONE);
 					}
 				});
-			}else if (arg0==3)  {//跳转到已取消订单查询界面
+			}else if (arg0==3)  {//刷新
 				conView.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View arg0) {
@@ -680,6 +680,13 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 			view.findViewById(R.id.leftmenu_excit).setOnClickListener(this);
 		}
 	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		IndexActivity.this.f2.downloadOrderData(1);
+	}
+
 
 	/**
 	 * 显示侧滑菜单的方法

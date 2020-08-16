@@ -1711,12 +1711,12 @@ id CxDsM_dsTotalAmount
 id CxDsM_dsTotalFee
 id CxDsM_enclosureList_add
 id CxDsM_enclosureList_line
+id CxDsM_hjTotalFee
 id CxDsM_hj_more
 id CxDsM_hsFeeManagement
 id CxDsM_hsFeeResidual
 id CxDsM_hsRescueAmount
 id CxDsM_hsTotalAmount
-id CxDsM_hsTotalFee
 id CxDsM_intelligent_button
 id CxDsM_replaceInfos_more
 id CxDsM_timeFeeTotal
@@ -2441,6 +2441,7 @@ id cti_szisLicenseKou
 id cti_thirdPartysNo
 id custom
 id customPanel
+id cxDsUtil_linear
 id cxInMe_
 id cxInMe_DeductibleExplain
 id cxInMe_accidentAddress
@@ -2981,6 +2982,7 @@ layout cx_damage_alert_view
 layout cx_damage_fragment
 layout cx_damage_fragment_item
 layout cx_damage_work_item
+layout cx_ds_util_activity
 layout cx_ds_work_main_activity
 layout cx_injured_fragment
 layout cx_injured_fragment_item

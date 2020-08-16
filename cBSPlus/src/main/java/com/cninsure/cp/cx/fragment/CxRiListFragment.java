@@ -31,8 +31,12 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class CxRiListFragment  extends BaseFragment implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
@@ -124,14 +128,16 @@ public class CxRiListFragment  extends BaseFragment implements View.OnClickListe
 //添加或删除 医疗费用赔偿明细
     private void addMFee(int position,boolean isChecked){
         if (isChecked){
-            activity.taskEntity.data.contentJson.medicalFee.set(position,position);
+            activity.taskEntity.data.contentJson.medicalFee.add(position);
             MedicalPaid tempMp = new MedicalPaid();
             tempMp.itemValue = position;
             tempMp.itemLabel = TypePickeUtil.getDictLabelArr(activity.cxDict.getDictByType("medicalFee"))[position];
-            activity.taskEntity.data.contentJson.medicalPaid.set(position,tempMp);
+            activity.taskEntity.data.contentJson.medicalPaid.add(tempMp);
         }else{
-            activity.taskEntity.data.contentJson.medicalFee.set(position,null);
-            activity.taskEntity.data.contentJson.medicalPaid.set(position,null);
+            activity.taskEntity.data.contentJson.medicalFee.remove(Integer.valueOf(position));
+            for (MedicalPaid obj:activity.taskEntity.data.contentJson.medicalPaid){
+                if (obj.itemValue == position) activity.taskEntity.data.contentJson.medicalPaid.remove(obj);
+            }
             mFeeMapView.put(position,null);
         }
         savemFeeList();
@@ -141,14 +147,16 @@ public class CxRiListFragment  extends BaseFragment implements View.OnClickListe
     //添加或删除 死亡伤残赔偿明细
     private void addCFee(int position, boolean isChecked) {
         if (isChecked){
-            activity.taskEntity.data.contentJson.casualtiesFee.set(position,position);
+            activity.taskEntity.data.contentJson.casualtiesFee.add(position);
             MedicalPaid tempMp = new MedicalPaid();
             tempMp.itemValue = position;
             tempMp.itemLabel = TypePickeUtil.getDictLabelArr(activity.cxDict.getDictByType("casualtiesFee"))[position];
-            activity.taskEntity.data.contentJson.casualtiesPaid.set(position,tempMp);
+            activity.taskEntity.data.contentJson.casualtiesPaid.add(tempMp);
         }else{
-            activity.taskEntity.data.contentJson.casualtiesFee.set(position,null);
-            activity.taskEntity.data.contentJson.casualtiesPaid.set(position,null);
+            activity.taskEntity.data.contentJson.casualtiesFee.add(position);
+            for (MedicalPaid obj:activity.taskEntity.data.contentJson.casualtiesPaid){
+                if (obj.itemValue == position) activity.taskEntity.data.contentJson.casualtiesPaid.remove(obj);
+            }
             cFeeMapView.put(position,null);
         }
         savemFeeList();
@@ -167,22 +175,12 @@ public class CxRiListFragment  extends BaseFragment implements View.OnClickListe
     /**装如空的View*/
     private void initMap() {
         InjuryMediateWorkEntity tempImw = activity.taskEntity.data.contentJson;
-        for (int i=0;i<mFeeIdArr.length;i++){
-            if (mFeeMapView==null) mFeeMapView = new HashMap<>();
-            mFeeMapView.put(i,null);
-            if (tempImw.medicalPaid==null) tempImw.medicalPaid = new ArrayList<>();
-            tempImw.medicalPaid.add(null);
-            if (tempImw.medicalFee==null) tempImw.medicalFee = new ArrayList<>();
-            tempImw.medicalFee.add(null);
-        }
-        for (int i=0;i<cFeeIdArr.length;i++){
-            if (cFeeMapView==null) cFeeMapView = new HashMap<>();
-            cFeeMapView.put(i,null);
-            if (tempImw.casualtiesPaid==null) tempImw.casualtiesPaid = new ArrayList<>();
-            tempImw.casualtiesPaid.add(null);
-            if (tempImw.casualtiesFee==null) tempImw.casualtiesFee = new ArrayList<>();
-            tempImw.casualtiesFee.add(null);
-        }
+        if (mFeeMapView == null) mFeeMapView = new TreeMap<>();
+        if (cFeeMapView == null) cFeeMapView = new TreeMap<>();
+        if (tempImw.medicalPaid == null) tempImw.medicalPaid = new HashSet<>();
+        if (tempImw.casualtiesPaid == null) tempImw.casualtiesPaid = new HashSet<>();
+        if (tempImw.medicalFee == null) tempImw.medicalFee = new TreeSet<>();
+        if (tempImw.casualtiesFee == null) tempImw.casualtiesFee = new TreeSet<>();
         dipPlayFeeList();
     }
 
@@ -195,7 +193,7 @@ public class CxRiListFragment  extends BaseFragment implements View.OnClickListe
     }
 
     /**显示 医疗费用赔偿 明细*/
-    private void disPlayMedicalPaid(List<MedicalPaid> medicalPaid){
+    private void disPlayMedicalPaid(Set<MedicalPaid> medicalPaid){
         if (medicalPaid!=null){
             medicalPaidLine.removeAllViews();
             for (MedicalPaid temp:medicalPaid){
@@ -208,7 +206,7 @@ public class CxRiListFragment  extends BaseFragment implements View.OnClickListe
         }
     }
     /**显示 死亡伤残赔偿 明细*/
-    private void disPlayCasualtiesPaid(List<MedicalPaid> casualtiesPaid){
+    private void disPlayCasualtiesPaid(Set<MedicalPaid> casualtiesPaid){
         if (casualtiesPaid!=null){
             casualtiesPaidLine.removeAllViews();
             for (MedicalPaid temp:casualtiesPaid){
@@ -272,6 +270,7 @@ public class CxRiListFragment  extends BaseFragment implements View.OnClickListe
     /***保存数据到实体类*/
     @Override
     public void SaveDataToEntity() {
+        if (activity==null) return;  //activity说明没有初始化这个Fragment，也就没有任何操作，没有不要保存了，
         InjuryMediateWorkEntity tempImw = activity.taskEntity.data.contentJson;
         String mstStr = medicalSubtotal.getText().toString();
         tempImw.medicalSubtotal = TextUtils.isEmpty(mstStr)?null:Float.parseFloat(mstStr);//	医疗费用小计
@@ -292,25 +291,32 @@ public class CxRiListFragment  extends BaseFragment implements View.OnClickListe
         for (Integer key:cFeeMapView.keySet()){
             View view = cFeeMapView.get(key);
             if (view!=null){
-                MedicalPaid tempMp = tempImw.casualtiesPaid.get(key);
-                String itemFeeStr = ((EditText)view.findViewById(R.id.cxInMe_itemFee)).getText().toString();
-                tempMp.itemFee = TextUtils.isEmpty(itemFeeStr)?null:Float.valueOf(itemFeeStr);
-                tempMp.explain = ((EditText)view.findViewById(R.id.cxInMe_explain)).getText().toString();
-                tempMp.basis = ((EditText)view.findViewById(R.id.cxInMe_basis)).getText().toString();
+                for (MedicalPaid tMp:tempImw.casualtiesPaid){
+                    if (tMp.itemValue == key){
+                        MedicalPaid tempMp = tMp;
+                        String itemFeeStr = ((EditText)view.findViewById(R.id.cxInMe_itemFee)).getText().toString();
+                        tempMp.itemFee = TextUtils.isEmpty(itemFeeStr)?null:Float.valueOf(itemFeeStr);
+                        tempMp.explain = ((EditText)view.findViewById(R.id.cxInMe_explain)).getText().toString();
+                        tempMp.basis = ((EditText)view.findViewById(R.id.cxInMe_basis)).getText().toString();
+                    }
+                }
             }
         }
     }
-
     private void savemFeeList() {
         InjuryMediateWorkEntity tempImw = activity.taskEntity.data.contentJson;
         for (Integer key:mFeeMapView.keySet()){
             View view = mFeeMapView.get(key);
            if (view!=null){
-               MedicalPaid tempMp = tempImw.medicalPaid.get(key);
-               String itemFeeStr = ((EditText)view.findViewById(R.id.cxInMe_itemFee)).getText().toString();
-               tempMp.itemFee = TextUtils.isEmpty(itemFeeStr)?null:Float.valueOf(itemFeeStr);
-               tempMp.explain = ((EditText)view.findViewById(R.id.cxInMe_explain)).getText().toString();
-               tempMp.basis = ((EditText)view.findViewById(R.id.cxInMe_basis)).getText().toString();
+               for (MedicalPaid tMp:tempImw.medicalPaid){
+                   if (tMp.itemValue == key){
+                       MedicalPaid tempMp = tMp;
+                       String itemFeeStr = ((EditText)view.findViewById(R.id.cxInMe_itemFee)).getText().toString();
+                       tempMp.itemFee = TextUtils.isEmpty(itemFeeStr)?null:Float.valueOf(itemFeeStr);
+                       tempMp.explain = ((EditText)view.findViewById(R.id.cxInMe_explain)).getText().toString();
+                       tempMp.basis = ((EditText)view.findViewById(R.id.cxInMe_basis)).getText().toString();
+                   }
+               }
            }
         }
     }

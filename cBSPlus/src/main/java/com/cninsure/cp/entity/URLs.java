@@ -56,7 +56,7 @@ public class URLs implements Serializable {
 	/**接收订单调度post**/
 	private final static String RECEIVE_ORDER="/cx/order/accept";
 	/**取消订单调度post**/
-	private final static String CANCEL_ORDER="/dispatchs/app/cancelDispath";
+	private final static String CANCEL_ORDER="/cx/order/refuse";
 	
 	/**统计用户作业订单各个类型案件量**/
 	private final static String GET_STATUS_CONUT="/dispatchs/selfgroup/status";

@@ -2,6 +2,7 @@ package com.cninsure.cp.cx;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -18,6 +19,7 @@ import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.entity.BaseEntity;
+import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDamageTaskEntity;
 import com.cninsure.cp.entity.cx.CxDamageWorkEntity;
@@ -110,10 +112,23 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
                 break;
         }
     }
+
+    private int isSubmit;
     /**保存或提交审核返回数据*/
     private void getTaskWorkSavaInfo(String value) {
         BaseEntity baseEntity = JSON.parseObject(value,BaseEntity.class);
-        if (baseEntity.success) DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！").show();
+        if (baseEntity.success) {
+            Dialog dialog = DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！");
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    dowloadTaskView();
+                    if (isSubmit==1)
+                        CxDamageActivity.this.finish();
+                }
+            });
+            dialog.show();
+        }else DialogUtil.getErrDialog(this,"操作失败："+baseEntity.msg).show();
     }
 
     /**解析获取的到的任务作业信息
@@ -139,7 +154,7 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
         CxDamageWorkEntity damageEnt = taskEntity.data.contentJson;
         SetTextUtil.setEditText(belongPerson,damageEnt.belongPerson);  //归属人
         SetTextUtil.setEditText(damageName,damageEnt.damageName); //物损名称
-        SetTextUtil.setTvTextForArr(damageType, TypePickeUtil.getDictLabelArr(cxDict.getDictByType("damage_loss_type")),damageEnt.damageType); //损失类型
+        SetTextUtil.setTvTextForArr(damageType, TypePickeUtil.getDictLabelArr(cxDict.getDictByType("damage_loss_type")),damageEnt.damageType); //索赔类别
         SetTextUtil.setTextViewText(dsTotalAmount,damageEnt.dsTotalAmount+""); //合计
         SetTextUtil.setEditText(dsRescueAmount,damageEnt.dsRescueAmount+""); //施救费
         SetTextUtil.setEditText(dsInstructions,damageEnt.dsInstructions); //定损说明
@@ -147,10 +162,17 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void SaveDataToEntity(){
+        PublicOrderEntity orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
         CxDamageWorkEntity damageEnt = taskEntity.data.contentJson;
+        damageEnt.areaNo = orderInfoEn.areaNo;
+        damageEnt.area = orderInfoEn.area;
+        damageEnt.province = orderInfoEn.province;
+        damageEnt.caseProvince = orderInfoEn.caseProvince;
+        damageEnt.city = orderInfoEn.city;
+
         damageEnt.belongPerson = belongPerson.getText().toString();  //归属人
         damageEnt.damageName = damageName.getText().toString(); //物损名称
-        damageEnt.damageType = TypePickeUtil.getValue(damageType.getText().toString(),cxDict ,"damage_loss_type") ; //损失类型
+        damageEnt.damageType = TypePickeUtil.getValue(damageType.getText().toString(),cxDict ,"damage_loss_type") ; //索赔类别
         @SuppressLint("WrongViewCast") String tempDta = dsTotalAmount.getText().toString();
         damageEnt.dsTotalAmount = TextUtils.isEmpty(tempDta)?0:Float.parseFloat(dsTotalAmount.getText().toString()); //合计
         @SuppressLint("WrongViewCast") String tempDra = dsRescueAmount.getText().toString();
@@ -301,7 +323,7 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void initView() {
-        TypePickeUtil.setTypePickerDialog(this,damageType,cxDict,"damage_loss_type");//损失类型 绑定点击事件
+        TypePickeUtil.setTypePickerDialog(this,damageType,cxDict,"damage_loss_type");//索赔类别 绑定点击事件
         addLinear.setOnClickListener(this);
         //保存或提交单击事件
         findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
@@ -326,6 +348,7 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
                 .setItems(new String[]{"保存", "提交审核"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        isSubmit = which;
                         SaveDataToEntity();
                         submitWorkInfo(which);
                     }

@@ -15,15 +15,13 @@ import androidx.annotation.Nullable;
 
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.CxInjuryMediateActivity;
-import com.cninsure.cp.cx.CxInjuryTrackActivity;
 import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.entity.URLs;
-import com.cninsure.cp.entity.cx.CxInjuryTrackWorkEntity;
 import com.cninsure.cp.entity.cx.InjuryMediateWorkEntity;
 import com.cninsure.cp.photo.PickPhotoUtil;
-import com.cninsure.cp.utils.ActivityFinishUtil;
 import com.cninsure.cp.utils.FileChooseUtil;
 import com.cninsure.cp.utils.SetTextUtil;
+import com.cninsure.cp.utils.cx.TypePickeUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -61,14 +59,43 @@ public class CxRiDeliveryFragment  extends BaseFragment implements View.OnClickL
     }
 
     private void intView() {
+        TypePickeUtil.setTypePickerDialog(activity,deliveryCompany,activity.cxDict,"deliveryCompany");//损失类型 绑定点击事件
         enclosureAddTv.setOnClickListener(this); //上传附件按钮点击，选择文件
         deliveryBill.setOnClickListener(this); //点击上传快递单
+        displayDamageInfo();
+    }
+
+    /**显示任务信息*/
+    private void displayDamageInfo() {
+        if (activity.taskEntity!=null && activity.taskEntity.data!=null && activity.taskEntity.data.contentJson!=null);
+        else return;
+        InjuryMediateWorkEntity workEntity = activity.taskEntity.data.contentJson;
+        //快递方式  0自行送达、1到付
+        if (workEntity.deliveryMode==0) deliveryMode.check(R.id.cxInMe_deliveryMode_RBT);
+        if (workEntity.deliveryMode==1) deliveryMode.check(R.id.cxInMe_deliveryMode_RBF);
+        SetTextUtil.setTvTextForArr(deliveryCompany,TypePickeUtil.getDictLabelArr(activity.cxDict.getDictByType("deliveryCompany")),workEntity.deliveryCompany);   //快递公司  0、韵达	1、中通快递	2、宅急送	3、EMS	4、圆通快递	5、顺丰快递	6、申通快递
+        SetTextUtil.setEditText(companyNo,workEntity.deliveryNo) ; //快递单号
+        SetTextUtil.setEditText(consignee,workEntity.consignee) ; //收货人
+        SetTextUtil.setEditText(shippingAddress,workEntity.shippingAddress) ;  //收货地址
+        SetTextUtil.setTextViewText(deliveryBill,workEntity.deliveryBill);  //快递单
+        displayFileToList() ;  //附件信息列表
     }
 
     /***保存数据到实体类*/
     @Override
     public void SaveDataToEntity() {
-
+        if (activity==null) return;  //activity说明没有初始化这个Fragment，也就没有任何操作，没有不要保存了，
+        InjuryMediateWorkEntity workEntity  = activity.taskEntity.data.contentJson;
+        //快递方式  0自行送达、1到付
+        switch (deliveryMode.getCheckedRadioButtonId()){
+            case R.id.cxInMe_deliveryMode_RBT: workEntity.deliveryMode=0;break;
+            case R.id.cxInMe_deliveryMode_RBF: workEntity.deliveryMode=1;break;
+        }
+        workEntity.deliveryCompany = TypePickeUtil.getValue(deliveryCompany.getText().toString(),activity.cxDict,"deliveryCompany"); //快递公司
+        workEntity.deliveryNo = companyNo.getText().toString()  ;  //快递单号
+        workEntity.consignee = consignee.getText().toString()  ; //收货人
+        workEntity.shippingAddress = shippingAddress.getText().toString() ;  //收货地址
+        workEntity.deliveryBill = deliveryBill.getText().toString(); //快递单
     }
 
     @Override
@@ -115,6 +142,7 @@ public class CxRiDeliveryFragment  extends BaseFragment implements View.OnClickL
     private void displayFileToList() {
         enclosureLinear.removeAllViews();  //添加前清空，避免重复加载
         InjuryMediateWorkEntity workEntity = activity.taskEntity.data.contentJson;
+        if (workEntity.enclosureList==null)workEntity.enclosureList = new ArrayList<>();
         for (int i = 0; i < workEntity.enclosureList.size(); i++) {
             View view = inflater.inflate(R.layout.expandable_child_item, null);
             SetTextUtil.setTextViewText(view.findViewById(R.id.UPPHOTO_LI_name),workEntity.enclosureList.get(i)); //文件名称

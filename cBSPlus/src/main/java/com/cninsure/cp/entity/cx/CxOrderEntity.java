@@ -64,7 +64,7 @@ public class CxOrderEntity {
         public String drivePerson;//驾驶人
         public String drivePersonMobile;//驾驶人电话
         //@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        public Date riskDate;//出险时间
+        public String riskDate;//出险时间
         public String biaodiCarNo;//标的车牌
         public String caseAddress;//出险地点
         public String caseProvince;//所在省
@@ -110,7 +110,7 @@ public class CxOrderEntity {
             /** 案件状态3 作业待处理 4 作业处理中 */
             stdEnt.status=status;
             /** “FC” 代表是非车险，“YJX” 代表是医健险，其他是车险订单 **/
-            stdEnt.caseTypeAPP = "";
+            stdEnt.caseTypeAPP = "CX";
             /**险种**/
             stdEnt.caseTypeId=100;
             /**险种名称**/
@@ -143,6 +143,8 @@ public class CxOrderEntity {
             stdEnt.uid=uid;
             /**跟新时间**/
             stdEnt.updateDate=updateTime;
+            /**出险时间**/
+            stdEnt.riskDate=riskDate;
             /**出险单位联系人*/
             stdEnt.baoanPersonName =baoanPerson;
             /**出险单位联系人电话*/

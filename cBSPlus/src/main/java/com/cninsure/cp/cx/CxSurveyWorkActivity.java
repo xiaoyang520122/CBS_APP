@@ -1,5 +1,6 @@
 package com.cninsure.cp.cx;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -128,6 +129,7 @@ public class CxSurveyWorkActivity extends BaseActivity implements View.OnClickLi
                 .setItems(new String[]{"保存", "提交"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        isSubmit = which;
                         SaveWorkInfo(which);
                     }
                 }).setNegativeButton("取消", null).create().show();
@@ -321,10 +323,22 @@ public class CxSurveyWorkActivity extends BaseActivity implements View.OnClickLi
         }
     }
 
+    private int isSubmit;
     /**保存或提交审核返回数据*/
     private void getTaskWorkSavaInfo(String value) {
         BaseEntity baseEntity = JSON.parseObject(value,BaseEntity.class);
-        if (baseEntity.success) DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！").show();
+        if (baseEntity.success) {
+            Dialog dialog = DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！");
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    if (isSubmit==1)
+                        CxSurveyWorkActivity.this.finish();
+                    else dowloadOderView();
+                }
+            });
+            dialog.show();
+        }else DialogUtil.getErrDialog(this,"操作失败："+baseEntity.msg).show();
     }
 
     /**解析获取的到的任务作业信息

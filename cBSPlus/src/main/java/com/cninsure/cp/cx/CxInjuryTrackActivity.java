@@ -1,5 +1,6 @@
 package com.cninsure.cp.cx;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.cx.util.CxWorkSubmitUtil;
 import com.cninsure.cp.cx.util.ErrorDialogUtil;
 import com.cninsure.cp.entity.BaseEntity;
+import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxInjuryTrackTaskEntity;
@@ -126,10 +128,22 @@ public class CxInjuryTrackActivity extends BaseActivity implements View.OnClickL
         }
     }
 
+    private int isSubmit;
     /**保存或提交审核返回数据*/
     private void getTaskWorkSavaInfo(String value) {
         BaseEntity baseEntity = JSON.parseObject(value,BaseEntity.class);
-        if (baseEntity.success) DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！").show();
+        if (baseEntity.success) {
+            Dialog dialog = DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！");
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    if (isSubmit==1)
+                        CxInjuryTrackActivity.this.finish();
+                    else  dowloadTaskView();
+                }
+            });
+            dialog.show();
+        }else DialogUtil.getErrDialog(this,"操作失败："+baseEntity.msg).show();
     }
 
     /**解析获取的到的任务作业信息
@@ -367,6 +381,7 @@ public class CxInjuryTrackActivity extends BaseActivity implements View.OnClickL
         CxWorkSubmitUtil.showSaveDialog(this, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                isSubmit = which;
                 SaveDataToEntity();
                 CxWorkSubmitUtil.submit(CxInjuryTrackActivity.this,which,QorderUid,JSON.toJSONString(taskEntity.data.contentJson),taskEntity.data.id); //提交
             }
@@ -375,6 +390,13 @@ public class CxInjuryTrackActivity extends BaseActivity implements View.OnClickL
 
     private void SaveDataToEntity(){
         CxInjuryTrackWorkEntity workEntity  = taskEntity.data.contentJson;
+        PublicOrderEntity orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
+        workEntity.areaNo = orderInfoEn.areaNo;
+        workEntity.area = orderInfoEn.area;
+        workEntity.province = orderInfoEn.province;
+        workEntity.caseProvince = orderInfoEn.caseProvince;
+        workEntity.city = orderInfoEn.city;
+
         workEntity.injuredName = injuredName.getText().toString();    //伤者姓名
         workEntity.injuredTel = injuredTel.getText().toString() ;    //伤者电话
         workEntity.workAddress = workAddress.getText().toString()  ;    //作业地点

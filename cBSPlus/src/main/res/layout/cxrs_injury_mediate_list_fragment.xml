@@ -484,7 +484,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请输入"
+                    android:hint="请输入免赔说明"
                     android:padding="5dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"

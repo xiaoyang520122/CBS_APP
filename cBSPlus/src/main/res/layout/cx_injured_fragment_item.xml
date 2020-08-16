@@ -119,6 +119,7 @@
                 android:background="@null"
                 android:gravity="right|center"
                 android:hint="请录入"
+                android:digits="0123456789xX"
                 android:textColor="@android:color/black"
                 android:textColorHint="@color/hui_text_h"
                 android:textSize="@dimen/text_defaul" />
@@ -157,6 +158,7 @@
                 android:background="@null"
                 android:gravity="right|center"
                 android:hint="请录入"
+                android:digits="0123456789-"
                 android:textColor="@android:color/black"
                 android:textColorHint="@color/hui_text_h"
                 android:textSize="@dimen/text_defaul" />

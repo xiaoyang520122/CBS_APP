@@ -61,20 +61,20 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int fl_inner = 0x7f090424;
-        public static final int gridview = 0x7f090463;
-        public static final int pull_to_refresh_image = 0x7f0904df;
-        public static final int pull_to_refresh_progress = 0x7f0904e0;
-        public static final int pull_to_refresh_sub_text = 0x7f0904e1;
-        public static final int pull_to_refresh_text = 0x7f0904e2;
-        public static final int scrollview = 0x7f0904fd;
-        public static final int webview = 0x7f09055f;
+        public static final int fl_inner = 0x7f090425;
+        public static final int gridview = 0x7f090464;
+        public static final int pull_to_refresh_image = 0x7f0904e0;
+        public static final int pull_to_refresh_progress = 0x7f0904e1;
+        public static final int pull_to_refresh_sub_text = 0x7f0904e2;
+        public static final int pull_to_refresh_text = 0x7f0904e3;
+        public static final int scrollview = 0x7f0904fe;
+        public static final int webview = 0x7f090560;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int pull_to_refresh_header_horizontal = 0x7f0c00b2;
-        public static final int pull_to_refresh_header_vertical = 0x7f0c00b3;
+        public static final int pull_to_refresh_header_horizontal = 0x7f0c00b3;
+        public static final int pull_to_refresh_header_vertical = 0x7f0c00b4;
     }
     public static final class string {
         private string() {}

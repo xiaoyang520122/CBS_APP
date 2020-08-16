@@ -52,6 +52,7 @@ public class CxRiAgreementFragment  extends BaseFragment {
 
     @Override
     public void SaveDataToEntity() {
+        if (activity==null) return;  //activity说明没有初始化这个Fragment，也就没有任何操作，没有不要保存了，
 
     }
     }

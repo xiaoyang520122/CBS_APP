@@ -83,7 +83,6 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_config"
-        android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
 
@@ -182,6 +181,8 @@
         <activity android:name="com.cninsure.cp.cx.CxDamageActivity" />
         <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity" />
         <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity" />
+        <activity android:name="com.cninsure.cp.cx.CxDsWorkActivity" />
+        <activity android:name="com.cninsure.cp.cx.DsUtilActivity" />
         <activity
             android:name="com.cninsure.cp.cx.CxInjuryMediateActivity"
             android:theme="@style/Theme.AppCompat"

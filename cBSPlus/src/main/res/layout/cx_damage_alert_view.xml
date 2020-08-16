@@ -168,7 +168,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="0.00"
-                android:inputType="number"
+                android:inputType="number|numberDecimal"
                 android:drawableRight="@drawable/edit_simple_hui32"
                 android:textColor="@color/hui_text_xxxxh"
                 android:textSize="@dimen/text_defaul" />
@@ -180,7 +180,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="0"
-                android:inputType="number"
+                android:inputType="number|numberDecimal"
                 android:drawableRight="@drawable/edit_simple_hui32"
                 android:textColor="@color/hui_text_xxxxh"
                 android:textSize="@dimen/text_defaul" />
@@ -191,7 +191,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="number"
+                android:inputType="number|numberDecimal"
                 android:drawableRight="@drawable/edit_simple_hui32"
                 android:gravity="center"
                 android:hint="0.00"

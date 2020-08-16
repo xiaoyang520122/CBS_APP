@@ -9,6 +9,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <include
+            layout="@layout/cx_action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
         <LinearLayout
 
@@ -26,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
-                android:text="▍附件信息"
+                android:text="▍定损信息"
                 android:textColor="@android:color/holo_blue_light"
                 android:textSize="@dimen/text_15"
                 android:textStyle="bold" />
@@ -52,7 +57,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp"
-                android:text="+上传附件"
+                android:text="智能定损"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_l" />
 
@@ -99,7 +104,8 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请输入车牌号"
+                    android:hint="请输入"
+                    android:drawableRight="@drawable/edit_simple_hui32"
                     android:inputType="number"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
@@ -131,14 +137,14 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <EditText
+                <TextView
                     android:id="@+id/CxDsM_carType"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请输入车牌号"
+                    android:hint="无信息"
                     android:inputType="number"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
@@ -170,14 +176,14 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <EditText
+                <TextView
                     android:id="@+id/CxDsM_carSeries"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请输入车牌号"
+                    android:hint="无信息"
                     android:inputType="number"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
@@ -209,14 +215,14 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <EditText
+                <TextView
                     android:id="@+id/CxDsM_carTypeName"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请输入车牌号"
+                    android:hint="无信息"
                     android:inputType="number"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
@@ -248,14 +254,14 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <EditText
+                <TextView
                     android:id="@+id/CxDsM_carStructure"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请输入车牌号"
+                    android:hint="无信息"
                     android:inputType="number"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
@@ -294,7 +300,8 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请输入车牌号"
+                    android:hint="请输入"
+                    android:drawableRight="@drawable/edit_simple_hui32"
                     android:inputType="number"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
@@ -412,6 +419,7 @@
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
                     android:text="同出险地点"
+                    android:visibility="invisible"
                     android:textColor="@color/bulue_main"
                     android:textSize="@dimen/text_l" />
 
@@ -425,6 +433,7 @@
                     android:paddingTop="5dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
+                    android:visibility="invisible"
                     android:text="定位当前地址"
                     android:textColor="@color/bulue_main"
                     android:textSize="@dimen/text_l" />
@@ -436,9 +445,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/line_bg"
-                android:gravity="right|center"
+                android:gravity="left|center"
                 android:hint="请输入定损地点（32位以内）"
                 android:padding="5dp"
+                android:drawableRight="@drawable/edit_simple_hui32"
                 android:textColor="@android:color/black"
                 android:textColorHint="@color/hui_text_h"
                 android:textSize="@dimen/text_defaul" />
@@ -476,7 +486,7 @@
                     android:drawableRight="@drawable/left_jt_hui_short"
                     android:drawablePadding="10dp"
                     android:gravity="right|center"
-                    android:hint="请选择损失情况"
+                    android:hint="请选择"
                     android:padding="5dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
@@ -596,6 +606,8 @@
                     android:background="@null"
                     android:gravity="right|center"
                     android:hint="0.00"
+                    android:inputType="number|numberDecimal"
+                    android:drawableRight="@drawable/edit_simple_hui32"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -614,7 +626,7 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <TextView
+                <EditText
                     android:id="@+id/CxDsM_dsFeeResidual"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
@@ -622,6 +634,8 @@
                     android:background="@null"
                     android:gravity="right|center"
                     android:hint="0.00"
+                    android:inputType="number|numberDecimal"
+                    android:drawableRight="@drawable/edit_simple_hui32"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -654,7 +668,7 @@
                     android:textColor="@color/hui_text_xxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <EditText
+                <TextView
                     android:id="@+id/CxDsM_hsFeeManagement"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
@@ -726,7 +740,7 @@
                     android:textColor="@color/yellow_m"
                     android:textSize="@dimen/text_defaul" />
                 <TextView
-                    android:id="@+id/CxDsM_hsTotalFee"
+                    android:id="@+id/CxDsM_hjTotalFee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
@@ -882,7 +896,7 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <EditText
+                <TextView
                     android:id="@+id/CxDsM_dsTotalAmount"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
@@ -997,7 +1011,7 @@
                     android:layout_weight="4"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="0.00"
+                    android:hint="暂无核损施救费"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -1096,6 +1110,7 @@
                 android:gravity="left|center"
                 android:hint="请填写少于300字的定损说明"
                 android:padding="5dp"
+                android:drawableRight="@drawable/edit_simple_hui32"
                 android:textColor="@android:color/black"
                 android:textColorHint="@color/hui_text_h"
                 android:textSize="@dimen/text_defaul" />

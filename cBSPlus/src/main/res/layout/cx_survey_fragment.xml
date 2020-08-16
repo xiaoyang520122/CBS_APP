@@ -293,6 +293,14 @@
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="%"
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:inputType="number"
+                    android:textSize="@dimen/text_defaul" />
 
             </LinearLayout>
 
@@ -746,6 +754,7 @@
                     android:background="@null"
                     android:gravity="right|center"
                     android:hint="请输入"
+                    android:inputType="number|numberDecimal"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />

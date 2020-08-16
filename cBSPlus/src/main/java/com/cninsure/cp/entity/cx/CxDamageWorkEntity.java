@@ -3,16 +3,22 @@ package com.cninsure.cp.entity.cx;
 import java.io.Serializable;
 import java.util.List;
 
-public class CxDamageWorkEntity implements Serializable {
+public class CxDamageWorkEntity extends CxWorkAddressBaseEntity implements Serializable {
 
     public String belongPerson; // 归属人
     public String damageName; // 物损名称
-    public Integer damageType; // 损失类型
+    public Integer damageType; // 索赔类别
+
     public Float dsRescueAmount; // 定损施救费
     public Float hsRescueAmount; // 核损施救费
     public Float dsTotalAmount; // 定损总计
     public String dsInstructions; // 定损说明
     public List<MaterialsEntity> smallMaterials;
+
+    /**因后台需要字典值value传String类型，这里做转化*/
+    public String getDamageType() {
+        return damageType==null?"":damageType+"";
+    }
 
     public static class MaterialsEntity  {
         public Integer damageIndex; //序号
@@ -22,9 +28,14 @@ public class CxDamageWorkEntity implements Serializable {
         public Integer dsUnitCount;//数量
         public Float dsSalvageValue;//残值
         public String dsRemark;//备注
-        public Float hsUnitPrice;//单价
-        public Integer hsUnitCount;//数量
-        public Float hsSalvageValue;//残值
-        public String hsRemark;//备注
+        public Float hsUnitPrice;//核损单价
+        public Integer hsUnitCount;//核损数量
+        public Float hsSalvageValue;//核损残值
+        public String hsRemark;//核损备注
+
+        /**因后台需要字典值value传String类型，这里做转化*/
+        public String getSmallType() {
+            return smallType==null?"":smallType+"";
+        }
     }
 }

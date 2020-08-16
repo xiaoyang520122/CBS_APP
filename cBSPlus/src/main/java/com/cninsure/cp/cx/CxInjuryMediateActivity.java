@@ -1,5 +1,6 @@
 package com.cninsure.cp.cx;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import com.cninsure.cp.cx.fragment.CxThirdFragment;
 import com.cninsure.cp.cx.util.CxWorkSubmitUtil;
 import com.cninsure.cp.cx.util.ErrorDialogUtil;
 import com.cninsure.cp.entity.BaseEntity;
+import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxInjuryMediateTaskEntity;
@@ -85,7 +87,7 @@ public class CxInjuryMediateActivity extends BaseActivity implements View.OnClic
         LoadDialogUtil.setMessageAndShow(this,"载入中……");
         List<String> params = new ArrayList<String>(2);
         params.add("type");
-        params.add("medicalFee,casualtiesFee,poNature"); // 医疗费用赔偿MedicalFee ,死亡伤残赔偿casualtiesFee ,户籍性质poNature
+        params.add("medicalFee,casualtiesFee,poNature,deliveryCompany"); // 医疗费用赔偿MedicalFee ,死亡伤残赔偿casualtiesFee ,户籍性质poNature
 
         HttpUtils.requestGet(URLs.CX_NEW_GET_IMG_TYPE_DICT, params, HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT);
     }
@@ -166,6 +168,7 @@ public class CxInjuryMediateActivity extends BaseActivity implements View.OnClic
                 .setItems(new String[]{"保存", "提交"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        isSubmit = which;
                         SaveWorkInfo(which);
                     }
                 }).setNegativeButton("取消", null).create().show();
@@ -173,6 +176,14 @@ public class CxInjuryMediateActivity extends BaseActivity implements View.OnClic
 
     /**保存作业信息*/
     private void SaveWorkInfo(int status) {
+        PublicOrderEntity orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
+        InjuryMediateWorkEntity damageEnt = taskEntity.data.contentJson;
+        damageEnt.areaNo = orderInfoEn.areaNo;
+        damageEnt.area = orderInfoEn.area;
+        damageEnt.province = orderInfoEn.province;
+        damageEnt.caseProvince = orderInfoEn.caseProvince;
+        damageEnt.city = orderInfoEn.city;
+
         for (int i=0;i<fragmentMap.size();i++){
             fragmentMap.get(i).SaveDataToEntity();
         }
@@ -232,10 +243,22 @@ public class CxInjuryMediateActivity extends BaseActivity implements View.OnClic
         initView();
     }
 
+    private int isSubmit;
     /**保存或提交审核返回数据*/
     private void getTaskWorkSavaInfo(String value) {
         BaseEntity baseEntity = JSON.parseObject(value,BaseEntity.class);
-        if (baseEntity.success) DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！").show();
+        if (baseEntity.success) {
+            Dialog dialog = DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！");
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    if (isSubmit==1)
+                        CxInjuryMediateActivity.this.finish();
+                    else  dowloadOderView();
+                }
+            });
+            dialog.show();
+        }else DialogUtil.getErrDialog(this,"操作失败："+baseEntity.msg).show();
     }
 
     @Override

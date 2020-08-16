@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CxInjuryTrackWorkEntity implements Serializable {
+public class CxInjuryTrackWorkEntity extends CxWorkAddressBaseEntity implements Serializable {
     public String injuredName;    //伤者姓名
     public String injuredTel;    //伤者电话
     public String workAddress;    //作业地点
@@ -19,6 +19,19 @@ public class CxInjuryTrackWorkEntity implements Serializable {
     public String shippingAddress;    //收货地址
     public String deliveryBill;    //快递单
     public List<String> enclosureList;    //附件信息列表
+    /**因后台需要字典值value传String类型，这里做转化*/
+    public String getNewInjuries() {
+        return newInjuries==null?"":newInjuries+"";
+    }
+    /**因后台需要字典值value传String类型，这里做转化*/
+    public String getDeliveryMode() {
+        return deliveryMode==null?"":deliveryMode+"";
+    }
+
+    /**因后台需要字典值value传String类型，这里做转化*/
+    public String getDeliveryCompany() {
+        return deliveryCompany==null?"":deliveryCompany+"";
+    }
 
     public static class InjuryTrackAskObject implements Serializable {
         public String askObject;    //询问对象

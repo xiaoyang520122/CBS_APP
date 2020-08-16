@@ -51,6 +51,7 @@ import com.cninsure.cp.R;
 import com.cninsure.cp.activity.yjx.YjxSurveyActivity;
 import com.cninsure.cp.cx.CxDamageActivity;
 import com.cninsure.cp.cx.CxDisabyIdentifyActivity;
+import com.cninsure.cp.cx.CxDsWorkActivity;
 import com.cninsure.cp.cx.CxInjuryMediateActivity;
 import com.cninsure.cp.cx.CxInjuryTrackActivity;
 import com.cninsure.cp.cx.CxSurveyWorkActivity;
@@ -281,6 +282,10 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				checkData(7);
 				break;
 
+			case 10:
+				checkData(10);
+				break;
+
 			default:
 				break;
 			}
@@ -410,7 +415,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		
 		switch (showOrderType) {//加载选中的类别
 		case 0:
-			checkOrderList(0,1, 2, 3, 4, 5, 6, 7);
+			checkOrderList(0,1, 2, 3, 4, 5, 6, 7,10);
 			break;
 
 		case 1:
@@ -1167,7 +1172,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 	public void cancelOrder(int itemId) {
 		params = new ArrayList<NameValuePair>(2);
 		params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
-		params.add(new BasicNameValuePair("orderUid", data.get(itemId).uid + ""));
+		params.add(new BasicNameValuePair("id", data.get(itemId).id + ""));
 		HttpUtils.requestPost(URLs.CancelOrder(), params, HttpRequestTool.CANCEL_ORDER);
 		loadDialog.setMessage("取消中……").show();
 	}
@@ -1178,12 +1183,13 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			Intent intent = new Intent();
 			switch (type){
 				case 2 :  intent.setClass(getActivity(), CxSurveyWorkActivity.class);break;  //现场查勘
+				case 40 :  intent.setClass(getActivity(), CxDsWorkActivity.class);break;  //标的定损
 				case 42 :  intent.setClass(getActivity(), CxDamageActivity.class);break;  //物损定损
 				case 392 :  intent.setClass(getActivity(), CxInjuryTrackActivity.class);break;  //人伤跟踪
 				case 394 :  intent.setClass(getActivity(), CxDisabyIdentifyActivity.class);break; //陪同残定
 				case 393 :  intent.setClass(getActivity(), CxInjuryMediateActivity.class);break; //人伤调解
 
-					default: intent.setClass(getActivity(), CxSurveyWorkActivity.class);  //默认现场查勘
+					default: DialogUtil.getAlertOneButton(getActivity(),"功能开发中！",null).show();return;  //默认现场查勘
 			}
 
 			intent.putExtra("orderUid", uid);

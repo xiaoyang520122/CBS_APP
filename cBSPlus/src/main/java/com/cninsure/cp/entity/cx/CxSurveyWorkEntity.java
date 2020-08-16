@@ -10,6 +10,7 @@ public class CxSurveyWorkEntity implements Serializable {
     public String creatDate; //添加时间
     public String updateDate;//更新时间
     public String orderUid;  //作业标识(任务订单号码)
+
     public String areaNo;
     public String area;
     public String province;
@@ -53,6 +54,35 @@ public class CxSurveyWorkEntity implements Serializable {
         public String signPhotoId; //	签字照片id	保存作业图片接口返回字段id
         public List<String> enclosureList = new ArrayList<>(); //附件集合
         public boolean customerNotice; //客户告知书阅读状态
+
+        /**因后台需要字典值value传String类型，这里做转化*/
+        public String getCkAccidentLiability() {
+            return ckAccidentLiability==null?"":ckAccidentLiability+"";
+        }/**因后台需要字典值value传String类型，这里做转化*/
+        public String getCkAccidentSmallType() {
+            return ckAccidentSmallType==null?"":ckAccidentSmallType+"";
+        } /**因后台需要字典值value传String类型，这里做转化*/
+        public String getCkAccidentType() {
+            return ckAccidentType==null?"":ckAccidentType+"";
+        } /**因后台需要字典值value传String类型，这里做转化*/
+        public String getSurveyType() {
+            return surveyType==null?"":surveyType+"";
+        }/**因后台需要字典值value传String类型，这里做转化*/
+        public String[] getLossType() {
+            if (lossType==null) return new String[]{};
+            String[] lossTypeStrArr = new String[lossType.length];
+            for (int i=0;i<lossType.length;i++){lossTypeStrArr[i]=lossType[i]+"";}
+            return lossTypeStrArr;
+        }/**因后台需要字典值value传String类型，这里做转化*/
+        public String[] getLossObjectType() {
+            if (lossObjectType==null) return new String[]{};
+            String[] lossObjectStrArr = new String[lossObjectType.length];
+            for (int i=0;i<lossObjectType.length;i++){lossObjectStrArr[i]=lossObjectType[i]+"";}
+            return lossObjectStrArr;
+        }/**因后台需要字典值value传String类型，这里做转化*/
+        public String getCompensationMethod() {
+            return compensationMethod+"";
+        }
     }
 
     /***标的信息*/
@@ -85,6 +115,14 @@ public class CxSurveyWorkEntity implements Serializable {
         public String pathMovePhotoId; //	行驶证图像Id	保存作业图片接口返回字段id
         public String bankCarLicense; //	银行卡链接	保存作业图片接口返回字段fileUrl
         public String bankCarPhotoId; //	银行卡图像Id	保存作业图片接口返回字段id
+
+        /**因后台需要字典值value传String类型，这里做转化*/
+        public String getBdCarUseType() {
+            return bdCarUseType==null?"":bdCarUseType+"";
+        } /**因后台需要字典值value传String类型，这里做转化*/
+        public String getBdCarNumberType() {
+            return bdCarNumberType==null?"":bdCarNumberType+"";
+        }
     }
 
 
@@ -112,6 +150,13 @@ public class CxSurveyWorkEntity implements Serializable {
         public String pathMoveLicense; //	行驶证链接	保存作业图片接口返回字段fileUrl
         public String pathMoverId; //	行驶证图像ID	保存作业图片接口返回字段id
         public Integer szisLicenseKou=0; //	是否双证被扣	1是，0否
+        /**因后台需要字典值value传String类型，这里做转化*/
+        public String getSzCarUseType() {
+            return szCarUseType==null?"":szCarUseType+"";
+        }
+        public String getSzCarNumberType() {
+            return szCarNumberType==null?"":szCarNumberType+"";
+        }
 
     }
 
@@ -128,6 +173,9 @@ public class CxSurveyWorkEntity implements Serializable {
         public	Integer	isQuickPaid=-1	; //	是否选择快赔	1是，0否
         public	String	quickPaidResult	; //	快赔结果
 
+        public String getInjuredType() {
+            return injuredType==null?"":injuredType+"";
+        }
     }
 
     /**

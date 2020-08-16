@@ -1,5 +1,6 @@
 package com.cninsure.cp.cx;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.cx.util.CxWorkSubmitUtil;
 import com.cninsure.cp.cx.util.ErrorDialogUtil;
 import com.cninsure.cp.entity.BaseEntity;
+import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxDisabyIdentifyEntity;
@@ -123,6 +125,7 @@ public class CxDisabyIdentifyActivity extends BaseActivity implements View.OnCli
         CxWorkSubmitUtil.showSaveDialog(this, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                isSubmit = which;
                 SaveDataToEntity();
                 CxWorkSubmitUtil.submit(CxDisabyIdentifyActivity.this,which,QorderUid,JSON.toJSONString(taskEntity.data.contentJson),taskEntity.data.id); //提交
             }
@@ -152,7 +155,15 @@ public class CxDisabyIdentifyActivity extends BaseActivity implements View.OnCli
 
     /**保存控件数据到实体类*/
     private void SaveDataToEntity() {
+
+        PublicOrderEntity orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
         CxDisabyIdentifyEntity conJson = taskEntity.data.contentJson;
+        conJson.areaNo = orderInfoEn.areaNo;
+        conJson.area = orderInfoEn.area;
+        conJson.province = orderInfoEn.province;
+        conJson.caseProvince = orderInfoEn.caseProvince;
+        conJson.city = orderInfoEn.city;
+
         conJson.injuredName = injuredName.getText().toString();//	伤者姓名
         conJson.injuredTel = injuredTel.getText().toString();//	伤者电话
         conJson.appraisalTime = appraisalTime.getText().toString();//	残定时间
@@ -289,10 +300,22 @@ public class CxDisabyIdentifyActivity extends BaseActivity implements View.OnCli
         }
     }
 
+    private int isSubmit;
     /**保存或提交审核返回数据*/
     private void getTaskWorkSavaInfo(String value) {
         BaseEntity baseEntity = JSON.parseObject(value,BaseEntity.class);
-        if (baseEntity.success) DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！").show();
+        if (baseEntity.success) {
+            Dialog dialog = DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！");
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    if (isSubmit==1)
+                        CxDisabyIdentifyActivity.this.finish();
+                    else  dowloadTaskView();
+                }
+            });
+            dialog.show();
+        }else DialogUtil.getErrDialog(this,"操作失败："+baseEntity.msg).show();
     }
 
     @Override

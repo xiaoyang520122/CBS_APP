@@ -1,6 +1,7 @@
 package com.cninsure.cp.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Timer;
 
 import android.widget.TextView;
@@ -74,6 +75,8 @@ public class PublicOrderEntity implements Serializable {
     public String uid;
     /**跟新时间**/
     public String updateDate;
+    /**出险时间**/
+    public String riskDate;
 	/**出险单位联系人*/
 	public String baoanPersonName;
 	/**出险单位联系人电话*/
@@ -97,11 +100,11 @@ public class PublicOrderEntity implements Serializable {
 	public Timer timer;
 
 
-	public String areaNo;
-	public String area;
-	public String province;
-	public String caseProvince;
-	public String city;
+	public String areaNo; //作业区域编码
+	public String area;  //作业区域名称
+	public String province;  //作业区域省份
+	public String caseProvince;  //出险省份
+	public String city;  //城市
 
 
 	/*********医健险**************/
