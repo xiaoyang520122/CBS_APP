@@ -8,6 +8,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
@@ -38,7 +39,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class DsUtilActivity extends BaseActivity implements View.OnClickListener {
-    public MyWebView webview;
+    public WebView webview;
     private String tempstr;
     public CxDsWorkEntity contentJson;
     private LinearLayout cxDsUtillinear;
@@ -87,9 +88,10 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
     @SuppressLint({"SetJavaScriptEnabled", "NewApi"})
     private void initWebView() {
         // 获取webView 控件
-        webview = new MyWebView(this);
+//        webview = new MyWebView(this);
+        webview = findViewById(R.id.cxDsUtil_MyWebView);
 //		webview = new WebView(this);
-        cxDsUtillinear.addView(webview);
+//        cxDsUtillinear.addView(webview);
         //允许webview对文件的操作
         webview.getSettings().setAllowUniversalAccessFromFileURLs(true);
         webview.getSettings().setAllowFileAccess(true);
@@ -102,6 +104,22 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
         // 3、在高版本的时候我们是需要使用允许访问文件的urls：
         webview.getSettings().setAllowFileAccessFromFileURLs(true);
         webview.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE); // 不让webView从缓存中读取，每次都去网络获取
+//        ViewGroup.LayoutParams p=webview.getLayoutParams();
+//        p.height = 1000;
+//        webview.setLayoutParams(p);
+
+
+// 设置可以支持缩放
+        webview.getSettings().setSupportZoom(true);
+// 设置出现缩放工具
+        webview.getSettings().setBuiltInZoomControls(true);
+//扩大比例的缩放
+        webview.getSettings().setUseWideViewPort(true);
+//自适应屏幕
+        webview.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        webview.getSettings().setLoadWithOverviewMode(true);
+
+
 
         webview.addJavascriptInterface(new JsInteration(), "control");
         webview.setWebChromeClient(new WebChromeClient() {
@@ -109,14 +127,15 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
         webview.setWebViewClient(new WebViewClientDemo());
 
 //        String loadUrlStr = URLs.WORK_SPACE + workUrls;
-        String loadUrlStr = "http://10.80.60.14:8080/#/";
+        String loadUrlStr = "http://10.80.60.14:8080/";
+//        String loadUrlStr = "http://sysweb.cnsurvey.cn:8084/parth5";
         webview.loadUrl(loadUrlStr);
-        webview.setDf(new MyWebView.PlayFinish() {
-            @Override
-            public void After() {
-//                loadurlM();
-            }
-        });
+//        webview.setDf(new MyWebView.PlayFinish() {
+//            @Override
+//            public void After() {
+////                loadurlM();
+//            }
+//        });
     }
 
     private boolean isLoadur = false;

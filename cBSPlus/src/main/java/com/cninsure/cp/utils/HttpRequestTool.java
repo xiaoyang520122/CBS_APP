@@ -223,6 +223,10 @@ public class HttpRequestTool {
 	public final static int  CX_NEW_WORK_SAVE=1089;
 	/**  GET 查看订单作业详情 userId:User-20180103101603-687B671A    orderUid:ORDER--20200706105235-30E90 */
 	public final static int  CX_NEW_GET_ORDER_VIEW_BY_UID=1090;
+	/**GET 查看接报案详情 uid报案UID，userid用户Uid**/
+	public final static int  CX_JIE_BAOAN_INFO=1091;
+	/**GET查看委托人简称详情 **/
+	public final static int  CX_GET_WT_SHORT_INFO=1092;
 
 
 

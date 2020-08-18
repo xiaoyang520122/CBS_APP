@@ -227,6 +227,10 @@ public class URLs implements Serializable {
 	public final static String CX_NEW_WORK_SAVE = IPHOME +"/cx/order/work/save";
 	/**GET 查看订单作业详情 userId:User-20180103101603-687B671A    orderUid:ORDER--20200706105235-30E90**/
 	public final static String CX_NEW_GET_ORDER_VIEW_BY_UID = IPHOME +"/cx/order/work/viewByOrderUid";
+	/**GET 查看接报案详情 uid报案UID，userid用户Uid**/
+	public final static String CX_JIE_BAOAN_INFO = IPHOME +"/cx/baoan/view";
+	/**GET查看委托人简称详情 uid简称uid**/
+	public final static String CX_GET_WT_SHORT_INFO = IPHOME +"/entruster/shortName/cx/findByUid";
 	
 	
 	

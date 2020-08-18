@@ -3,6 +3,7 @@ package com.cninsure.cp.entity.cx;
 import android.content.Intent;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializable {
@@ -32,11 +33,11 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
 
 
     public String dsInstructions;//定损说明
-    public List<String> enclosureList;//附件信息List
-    public List<CxDsReplaceInfos> replaceInfos;//（数组）换件信息（换件信息金额 = 总计(原)+管理费-残值）
+    public List<String> enclosureList=new ArrayList<>();//附件信息List
+    public List<CxDsReplaceInfos> replaceInfos  =new ArrayList<>();//（数组）换件信息（换件信息金额 = 总计(原)+管理费-残值）
     public CxDsReplaceInfosTotal replaceInfosTotal;//残值（数组）
-    public List<CxDsTimeInfos> timeInfos;//工时信息（数组）
-    public List<CxDsRepairInfos> repairInfos;//外修配件（数组）
+    public List<CxDsTimeInfos> timeInfos =new ArrayList<>();//工时信息（数组）
+    public List<CxDsRepairInfos> repairInfos =new ArrayList<>();//外修配件（数组）
     public CxDsRepairInfosTotal repairInfosTotal;//外修小计（数组）
     /**因后台需要字典值value传String类型，这里做转化*/
     public String getClaimLevel() {
@@ -53,7 +54,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
         return total+"";
     }
 
-    public static class CxDsReplaceInfos {
+    public static class CxDsReplaceInfos  implements Serializable {
         public float unitPrice;//定损单价
         public int unitCount;//数量
         public float unitTotalPrice;//定损小计
@@ -70,7 +71,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
         public String localPrice; // 本地价格
 
     }
-    public static class CxDsReplaceInfosTotal {
+    public static class CxDsReplaceInfosTotal  implements Serializable {
         public String dsFeeResidual;//定损残值
         public float dsFeeManagement;//定损管理费
         public float dsTotalFee;//定损总计 =换件信息-合计 =换件信息金额 =总计(原)+管理费-残值
@@ -90,7 +91,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
         }
         return total+"";
     }
-    public static class CxDsTimeInfos {
+    public static class CxDsTimeInfos  implements Serializable {
         public int  timeIndex;//序号
         public String timeType;//类型
         public String timeProject;//项目
@@ -105,7 +106,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
         public String  time; // 工时时间
 
     }
-    public static class CxDsRepairInfos {
+    public static class CxDsRepairInfos  implements Serializable {
         public String repairIndex;//序号
         public float localPrice;//本地价格
         public float dsAmount;//定损金额
@@ -119,7 +120,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
         public String partCode; // 配件编码
 
     }
-    public static class CxDsRepairInfosTotal {
+    public static class CxDsRepairInfosTotal  implements Serializable {
         public float dsTotalAmount;//外修小计
         public float hsTotalAmount;//核损外修小计
     }

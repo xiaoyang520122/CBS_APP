@@ -54,6 +54,7 @@ import com.cninsure.cp.cx.CxDisabyIdentifyActivity;
 import com.cninsure.cp.cx.CxDsWorkActivity;
 import com.cninsure.cp.cx.CxInjuryMediateActivity;
 import com.cninsure.cp.cx.CxInjuryTrackActivity;
+import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
 import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.entity.FCOrderEntity;
 import com.cninsure.cp.entity.PagedRequest;
@@ -220,7 +221,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		switch (bid) {
 		case R.id.OTCI_btn_0:
 			showOrderType = 0;
-			checkOrderList(0,1, 2, 3, 4, 5 ,6, 7);
+			checkOrderList(0,1, 2, 3, 4, 5 ,6, 7,10);
 			listTitleTv.setText(String.format(getResources().getString(R.string.order_listTitle), "全部"));
 			break;
 
@@ -1182,7 +1183,8 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 //			Intent intent = new Intent(getActivity(), WorkOrderActivty.class);
 			Intent intent = new Intent();
 			switch (type){
-				case 2 :  intent.setClass(getActivity(), CxSurveyWorkActivity.class);break;  //现场查勘
+//				case 2 :  intent.setClass(getActivity(), CxSurveyWorkActivity.class);break;  //现场查勘
+				case 2 :  intent.setClass(getActivity(), CxJieBaoanInfoActivity.class);break;  //现场查勘
 				case 40 :  intent.setClass(getActivity(), CxDsWorkActivity.class);break;  //标的定损
 				case 42 :  intent.setClass(getActivity(), CxDamageActivity.class);break;  //物损定损
 				case 392 :  intent.setClass(getActivity(), CxInjuryTrackActivity.class);break;  //人伤跟踪

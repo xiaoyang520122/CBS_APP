@@ -178,6 +178,10 @@
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="adjustPan"
             ></activity>
+        <activity android:name="com.cninsure.cp.cx.CxJieBaoanInfoActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="adjustPan"
+            ></activity>
         <activity
             android:name=".dispersive.DispersiveUserActivity"
             android:launchMode="singleTask"></activity>

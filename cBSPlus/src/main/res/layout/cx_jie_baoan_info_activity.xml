@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui_bg"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/cx_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/cxJieBaoan_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/hui_text_xxxxh"
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed"
+        app:tabIndicatorFullWidth="false"
+        app:tabTextAppearance="@style/tablayoutTitle"
+        app:tabSelectedTextColor="@color/bulue_main"
+        app:tabTextColor="@color/hui_text_xxxxh"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/cxJieBaoan_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"/>
+</LinearLayout>

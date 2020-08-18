@@ -199,6 +199,8 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void initView() {
+        hjTotalFeeMore.setOnClickListener(this);//换件项目-查看
+        replaceInfosMore.setOnClickListener(this);//工时信息-查看
         intelligentButton.setOnClickListener(this);
         TypePickeUtil.setTypePickerDialog(this,claimLevel,cxDict,"claim_level_type");//索赔险别
         enclosureList.setOnClickListener(this);
@@ -322,45 +324,53 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         SetTextUtil.setTextViewText(hsFeeManagement,damageEnt.replaceInfosTotal.hsFeeManagement+"");//核价管理费
         SetTextUtil.setTextViewText(hsFeeResidual,damageEnt.replaceInfosTotal.hsFeeManagement+"");//核价残值
         SetTextUtil.setTextViewText(hjTotalFee,damageEnt.replaceInfos.size()+"");//换件项目-数量
-        hjTotalFeeMore.setOnClickListener(this);//换件项目-查看
         SetTextUtil.setTextViewText(timeFeeTotal,damageEnt.getGsTotal());//工时信息-合计
-        replaceInfosMore.setOnClickListener(this);//工时信息-查看
         SetTextUtil.setTextViewText(dsTotalAmount,damageEnt.repairInfosTotal.dsTotalAmount+"");//外修合计
         SetTextUtil.setTextViewText(hsTotalAmount,damageEnt.repairInfosTotal.hsTotalAmount+"");//外修合计-核
     }
 
+    private void showHintStr(String text){
+        TextView tv = new TextView(this);
+        tv.setLineSpacing(7.0f,1);
+        tv.setText(text);
+        tv.setPadding(20,10,10,10);
+        tv.setTextSize(16);
+        DialogUtil.getDialogByViewOnlistener(this,tv,"换件信息",null).show();
+    }
     private void showHjDialog() {
         CxDsWorkEntity damageEnt = taskEntity.data.contentJson;
         if (damageEnt.replaceInfos==null){
             ToastUtil.showToastLong(this,"无换件信息！");
+            return;
         }
         StringBuffer infoData= new StringBuffer();
         int i=1;
         for (CxDsWorkEntity.CxDsReplaceInfos items:damageEnt.replaceInfos){
             infoData.append("----换件"+(i++)+"\n");
             infoData.append("*换件名称："+ (TextUtils.isEmpty(items.partName)?"":items.partName) +"\n");
-            infoData.append("配件编码："+ (TextUtils.isEmpty(items.partCode)?"":items.partCode) +"\n");
+            infoData.append("  配件编码："+ (TextUtils.isEmpty(items.partCode)?"":items.partCode) +"\n");
             infoData.append("*定损单价："+ items.unitPrice+"\n");
             infoData.append("*定损数量："+ items.unitCount+"\n");
             infoData.append("*定损小计（元）："+ items.unitTotalPrice+"\n");
-            infoData.append("定损备注："+ items.remark+"\n");
+            infoData.append("  定损备注："+ items.remark+"\n");
         }
-        DialogUtil.getAlertOneButton(this,infoData.toString(),null).show();
+        showHintStr(infoData.toString());
     }
     private void showGsDialog() {
         CxDsWorkEntity damageEnt = taskEntity.data.contentJson;
         if (damageEnt.timeInfos==null){
             ToastUtil.showToastLong(this,"无工时信息！");
+            return;
         }
         StringBuffer infoData= new StringBuffer();
         for (CxDsWorkEntity.CxDsTimeInfos items:damageEnt.timeInfos){
             infoData.append("--工时"+items.timeIndex+"\n");
             infoData.append("*类型："+ (TextUtils.isEmpty(items.timeType)?"":items.timeType) +"\n");
             infoData.append("*工时项目："+ (TextUtils.isEmpty(items.timeProject)?"":items.timeProject) +"\n");
-            infoData.append("定损金额："+ items.dsAmount+"\n");
-            infoData.append("定损备注："+ items.dsRemark+"\n");
+            infoData.append("  定损金额："+ items.dsAmount+"\n");
+            infoData.append("  定损备注："+ items.dsRemark+"\n");
         }
-        DialogUtil.getAlertOneButton(this,infoData.toString(),null).show();
+        showHintStr(infoData.toString());
     }
 
     private void SaveDataToEntity(){

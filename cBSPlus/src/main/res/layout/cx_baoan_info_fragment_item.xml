@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui_bg"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/corners_white2_4_10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/line_bg"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/CxBaFgmtItm_bussType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="无作业类型"
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/order_list_defaul" />
+
+            <TextView
+                android:id="@+id/CxBaFgmtItm_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/left_jt_hui_short"
+                android:gravity="center_vertical|right"
+                android:text="无状态"
+                android:textColor="@color/hui_text_xh"
+                android:textSize="@dimen/order_list_defaul" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical|left"
+                    android:paddingTop="1dp"
+                    android:text="报  案  号"
+                    android:textColor="@color/hui_text_xh"
+                    android:textSize="@dimen/order_list_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical|left"
+                    android:text="委托时间"
+                    android:textColor="@color/hui_text_xh"
+                    android:textSize="@dimen/order_list_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical|left"
+                    android:text="车  牌  号"
+                    android:textColor="@color/hui_text_xh"
+                    android:textSize="@dimen/order_list_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical|left"
+                    android:text="现场联系"
+                    android:textColor="@color/hui_text_xh"
+                    android:textSize="@dimen/order_list_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center_vertical|left"
+                    android:text="出险地点"
+                    android:textColor="@color/hui_text_xh"
+                    android:textSize="@dimen/order_list_defaul" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="："
+                        android:textColor="@color/hui_text_xh"
+                        android:textSize="@dimen/order_list_defaul" />
+
+                    <TextView
+                        android:id="@+id/CxBaFgmtItm_caseBaoanNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="无"
+                        android:textColor="@color/hui_text_xxxxh"
+                        android:textSize="@dimen/order_list_defaul" />
+
+                    <TextView
+                        android:id="@+id/CxBaFgmtItm_caseBaoanNo_copy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/corners_hui_line5"
+                        android:drawableLeft="@drawable/copy_somshing_yellow35"
+                        android:paddingLeft="3dp"
+                        android:paddingTop="1dp"
+                        android:paddingRight="3dp"
+                        android:text="@string/copytext"
+                        android:textColor="@color/hui_text_xh"
+                        android:textSize="@dimen/text_sl" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="："
+                        android:textColor="@color/hui_text_xh"
+                        android:textSize="@dimen/order_list_defaul" />
+
+                    <com.cninsure.cp.view.MarqueeTextView
+                        android:id="@+id/CxBaFgmtItm_wtDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:ellipsize="marquee"
+                        android:gravity="center_vertical|left"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:singleLine="true"
+                        android:text="无"
+                        android:textColor="@color/hui_text_xxxxh"
+                        android:textSize="@dimen/order_list_defaul" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="："
+                        android:textColor="@color/hui_text_xh"
+                        android:textSize="@dimen/order_list_defaul" />
+
+                    <com.cninsure.cp.view.MarqueeTextView
+                        android:id="@+id/CxBaFgmtItm_biaodiCarNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:ellipsize="marquee"
+                        android:gravity="center_vertical|left"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:singleLine="true"
+                        android:text="无"
+                        android:textColor="@color/hui_text_xxxxh"
+                        android:textSize="@dimen/order_list_defaul" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="："
+                        android:textColor="@color/hui_text_xh"
+                        android:textSize="@dimen/order_list_defaul" />
+
+                    <com.cninsure.cp.view.MarqueeTextView
+                        android:id="@+id/CxBaFgmtItm_baoanPerson"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center_vertical|left"
+                        android:text="无姓名"
+                        android:textColor="@color/hui_text_xxxxh"
+                        android:textSize="@dimen/order_list_defaul" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="/"
+                        android:textColor="@color/hui_text_xh"
+                        android:textSize="@dimen/order_list_defaul" />
+
+                    <TextView
+                        android:id="@+id/CxBaFgmtItm_baoanPersonMobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical|right"
+                        android:text="无号码"
+                        android:textColor="@color/hui_text_xxxxh"
+                        android:textSize="@dimen/order_list_defaul" />
+
+                    <TextView
+                        android:id="@+id/CxBaFgmtItm_baoanPersonMobile_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/corners_hui_line5"
+                        android:drawableLeft="@drawable/serve_tel_yellow35"
+                        android:paddingLeft="3dp"
+                        android:paddingTop="1dp"
+                        android:paddingRight="3dp"
+                        android:text="@string/callPhone"
+                        android:textColor="@color/hui_text_xh"
+                        android:textSize="@dimen/text_sl" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="："
+                        android:textColor="@color/hui_text_xh"
+                        android:textSize="@dimen/order_list_defaul" />
+
+                    <com.cninsure.cp.view.MarqueeTextView
+                        android:id="@+id/CxBaFgmtItm_caseAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:ellipsize="marquee"
+                        android:gravity="center_vertical|left"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:singleLine="true"
+                        android:text="无"
+                        android:textColor="@color/hui_text_xxxxh"
+                        android:textSize="@dimen/order_list_defaul" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

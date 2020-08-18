@@ -114,7 +114,7 @@
                     android:layout_marginBottom="5dp"
                     android:gravity="center_vertical|left"
                     android:paddingTop="1dp"
-                    android:text="@string/baoan_no"
+                    android:text="报  案  号"
                     android:textColor="@color/hui_text_xh"
                     android:textSize="@dimen/order_list_defaul" />
 
@@ -136,7 +136,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="5dp"
                     android:gravity="center_vertical|left"
-                    android:text="@string/wtren"
+                    android:text="委  托  人"
                     android:textColor="@color/hui_text_xh"
                     android:textSize="@dimen/order_list_defaul" />
 
@@ -147,7 +147,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="5dp"
                     android:gravity="center_vertical|left"
-                    android:text="联系人"
+                    android:text="联  系  人"
                     android:textColor="@color/hui_text_xh"
                     android:textSize="@dimen/order_list_defaul" />
 
@@ -167,7 +167,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="2dp"
                     android:gravity="center_vertical|left"
-                    android:text="地址"
+                    android:text="地        址"
                     android:textColor="@color/hui_text_xh"
                     android:textSize="@dimen/order_list_defaul" />
             </LinearLayout>
