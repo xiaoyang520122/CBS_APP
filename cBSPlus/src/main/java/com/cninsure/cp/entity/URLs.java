@@ -231,6 +231,12 @@ public class URLs implements Serializable {
 	public final static String CX_JIE_BAOAN_INFO = IPHOME +"/cx/baoan/view";
 	/**GET查看委托人简称详情 uid简称uid**/
 	public final static String CX_GET_WT_SHORT_INFO = IPHOME +"/entruster/shortName/cx/findByUid";
+	/**GET 根据报案编号查询订单列表信息 userId,baoanUid**/
+	public final static String CX_GET_ORDER_LIST_BY_BAOAN_UID = IPHOME +"/cx/order/listByBaoanUid";
+	/**GET 根据订单编号查询某个订单 userId,uid**/
+	public final static String CX_GET_ORDER_VIEW= IPHOME +"/cx/order/view";
+	/**GET 作业图片查询 baoanUid：报案UID,isDelete:0否，1是**/
+	public final static String CX_GET_WORK_IMG= IPHOME +"/cx/order/work/images/list";
 	
 	
 	

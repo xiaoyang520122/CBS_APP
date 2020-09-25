@@ -51,7 +51,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,8 +63,8 @@ public class DispersiveWorkActivity extends BaseActivity {
     private ViewPager viewPager;
     private RadioGroup radioGroup;
     private View msgView,examineView;
-    private ExpandableListView photoListView1,photoListView2;
-    private MyDisExpandablelistAdapter adapter1,adapter2;
+    private ExpandableListView photoListView2;//,photoListView1;
+    private MyDisExpandablelistAdapter adapter2;//adapter1;
     private Map<String ,DispersiveGalleryAdapter> gridAdapterArr;
     private List<View> viewlist;
     public DispersiveDispatchEntity.DispersiveDispatchItem caseDisTemp;
@@ -74,7 +73,7 @@ public class DispersiveWorkActivity extends BaseActivity {
     /**作业数据实体类**/
     private DisWorkInfoEntity disWorkInfo;
     /**现场环境图片结合*/
-    private List<List<DisWorkImageEntity.DisWorkImgData>> siteImgEnList;
+//    private List<List<DisWorkImageEntity.DisWorkImgData>> siteImgEnList;
     /**运输单证图片结合*/
     private List<List<DisWorkImageEntity.DisWorkImgData>> documentImgEnList;
     /**选着的照片大类 0现场环境，1运输单证*/
@@ -164,12 +163,13 @@ public class DispersiveWorkActivity extends BaseActivity {
 
     /**弹框选择保存作业或者是提交审核**/
     private void showChoiceDialog(){
-        new AlertDialog.Builder(DispersiveWorkActivity.this).setTitle("选择操作！\n提交审核前请保证作业信息已保存！")
+        if(issubTypeIsNull()) return;
+        new AlertDialog.Builder(DispersiveWorkActivity.this).setTitle("选择操作！\n提交审核前，请先保存作业信息！")
                 .setItems(new String[]{"保存作业信息", "提交审核"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (which==0){ //选择保存作业信息
-                            submitWorkInfo(); //提交作业信息
+                            submitWorkInfo(); //保存作业信息
                         }else if (which==1){  //选择提交审核
                             submitForReview(); //提交审核
                         }
@@ -200,27 +200,27 @@ public class DispersiveWorkActivity extends BaseActivity {
             return false;
         }
         //现场环境
-        for (List<DisWorkImageEntity.DisWorkImgData> tempArr: siteImgEnList){
-            if (getUpPhotoSize(tempArr)<tempArr.size()) {  //如果有照片未上传，让客户先上传
-                DialogUtil.getAlertOneButton(this,"现场环境中有照片未上传，请先上传！",null).show();
-                return false;
-            }
-            if (tempArr.size()<1) {  //现场环境信息中，每个类型拍照不能少于1张！
-                DialogUtil.getAlertOneButton(this,"现场环境信息中，每个类型拍照不能少于1张！",null).show();
-                return false;
-            }
-        }
+//        for (List<DisWorkImageEntity.DisWorkImgData> tempArr: siteImgEnList){
+//            if (getUpPhotoSize(tempArr)<tempArr.size()) {  //如果有照片未上传，让客户先上传
+//                DialogUtil.getAlertOneButton(this,"现场环境中有照片未上传，请先上传！",null).show();
+//                return false;
+//            }
+//            if (tempArr.size()<1) {  //现场环境信息中，每个类型拍照不能少于1张！
+//                DialogUtil.getAlertOneButton(this,"现场环境信息中，每个类型拍照不能少于1张！",null).show();
+//                return false;
+//            }
+//        }
         //运输单  要求左右小类之和不少于5张即可
         int documentSize = 0;
         for (List<DisWorkImageEntity.DisWorkImgData> tempArr: documentImgEnList){
             if (getUpPhotoSize(tempArr)<tempArr.size()) {  //如果有照片未上传，让客户先上传
-                DialogUtil.getAlertOneButton(this,"运输单证中有照片未上传，请先上传！",null).show();
+                DialogUtil.getAlertOneButton(this,"有照片未上传，请先上传！",null).show();
                 return false;
             }
             documentSize = documentSize + tempArr.size();
         }
         if (documentSize<5) {  //运输单证  要求左右小类之和不少于5张即可
-            DialogUtil.getAlertOneButton(this,"运输单证信息中，拍照总和不能少于5张！",null).show();
+            DialogUtil.getAlertOneButton(this,"拍照总和不能少于5张！",null).show();
             return false;
         }
         return true;
@@ -265,15 +265,15 @@ public class DispersiveWorkActivity extends BaseActivity {
     private void initPagerView() {
         viewlist = new ArrayList<View>(4);
         msgView = LayoutInflater.from(this).inflate(R.layout.dispersive_work_info_view, null);
-        photoListView1 = (ExpandableListView) LayoutInflater.from(this).inflate(R.layout.dispersive_work_expandablelistview, null);
-        photoListView2 = (ExpandableListView) LayoutInflater.from(this).inflate(R.layout.dispersive_work_expandablelistview, null);
+//        photoListView1 = (ExpandableListView) LayoutInflater.from(this).inflate(R.layout.public_expandablelistview, null);
+        photoListView2 = (ExpandableListView) LayoutInflater.from(this).inflate(R.layout.public_expandablelistview, null);
         examineView =  LayoutInflater.from(this).inflate(R.layout.dispersive_work_examine_view, null);
 
 //        uploadActivityHelp=new ParkPhotoUploadActivityHelp3(this);
 //        uploadActivityHelp.setview(examineView);
         viewlist=new ArrayList<View>();
         viewlist.add(msgView);
-        viewlist.add(photoListView1);
+//        viewlist.add(photoListView1);
         viewlist.add(photoListView2);
         viewlist.add(examineView);
         viewPager.setAdapter(new PagerAdapter() {
@@ -301,18 +301,18 @@ public class DispersiveWorkActivity extends BaseActivity {
         });
     }
 
-    /**刷新大标题（现场环境，运输单证）中已拍照数量*/
+    /**刷新大标题（现场环境，现场状况）中已拍照数量*/
     public void changeCountNum() {
-            int countSum1 = 0;
-            for (List<DisWorkImageEntity.DisWorkImgData> tempList:siteImgEnList){
-                countSum1 = countSum1 + tempList.size();
-            }
-            ((RadioButton)findViewById(R.id.dispersive_photo1_RB)).setText("现场环境\n(" + countSum1 + "/3)");
+//            int countSum1 = 0;
+//            for (List<DisWorkImageEntity.DisWorkImgData> tempList:siteImgEnList){
+//                countSum1 = countSum1 + tempList.size();
+//            }
+//            ((RadioButton)findViewById(R.id.dispersive_photo1_RB)).setText("现场环境\n(" + countSum1 + "/3)");
             int countSum2 = 0;
             for (List<DisWorkImageEntity.DisWorkImgData> tempList:documentImgEnList){
                 countSum2 = countSum2 + tempList.size();
             }
-            ((RadioButton)findViewById(R.id.dispersive_photo2_RB)).setText("运输单证\n(" + countSum2 + "/5)");
+            ((RadioButton)findViewById(R.id.dispersive_photo2_RB)).setText("现场状况\n(" + countSum2 + "/5)");
     }
     /**设置Radiobutton点击时ViewPager的切换**/
     @SuppressWarnings("deprecation")
@@ -322,16 +322,16 @@ public class DispersiveWorkActivity extends BaseActivity {
             public void onCheckedChanged(RadioGroup arg0, int arg1) {
                 if (arg1==R.id.dispersive_disInfo_RB) {
                     viewPager.setCurrentItem(0);
-                }else if (arg1==R.id.dispersive_photo1_RB) {
-                    viewPager.setCurrentItem(1);
-                    choicePhotoLargeType = 0;
-                    changeCountNum(); //刷新照片小类对应数量信息
+//                }else if (arg1==R.id.dispersive_photo1_RB) {
+//                    viewPager.setCurrentItem(1);
+//                    choicePhotoLargeType = 0;
+//                    changeCountNum(); //刷新照片小类对应数量信息
                 }else if (arg1==R.id.dispersive_photo2_RB) {
-                    viewPager.setCurrentItem(2);
+                    viewPager.setCurrentItem(1);
                     choicePhotoLargeType = 1;
                     changeCountNum(); //刷新照片小类对应数量信息
                 }else if (arg1==R.id.dispersive_reson_RB) {
-                    viewPager.setCurrentItem(3);
+                    viewPager.setCurrentItem(2);
                 }
             }
         });
@@ -340,11 +340,11 @@ public class DispersiveWorkActivity extends BaseActivity {
             public void onPageSelected(int arg0) {
                 if (arg0==0) {
                     radioGroup.check(R.id.dispersive_disInfo_RB);
+//                }else if (arg0==1) {
+//                    radioGroup.check(R.id.dispersive_photo1_RB);
                 }else if (arg0==1) {
-                    radioGroup.check(R.id.dispersive_photo1_RB);
-                }else if (arg0==2) {
                     radioGroup.check(R.id.dispersive_photo2_RB);
-                }else if (arg0==3) {
+                }else if (arg0==2) {
                     radioGroup.check(R.id.dispersive_reson_RB);
                 }
             }
@@ -431,7 +431,7 @@ public class DispersiveWorkActivity extends BaseActivity {
         }
     }
 
-    /**上传做也图片**/
+    /**上传作业图片**/
     private void submitWorkImage(){
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
@@ -439,19 +439,19 @@ public class DispersiveWorkActivity extends BaseActivity {
 
 //        httpParams.add(new BasicNameValuePair( "id", tempImgData.id==0?"":tempImgData.id+""));  //替换图片时使用
         httpParams.add(new BasicNameValuePair( "workUid", disWorkInfo.data.uid));
-//        httpParams.add(new BasicNameValuePair( "dispatchUid", caseDisTemp.uid));
+        httpParams.add(new BasicNameValuePair( "dispatchUid", caseDisTemp.uid));
         httpParams.add(new BasicNameValuePair( "FSX_UP_WORK_IMG", ""));
 
-        for (List<DisWorkImageEntity.DisWorkImgData> tempImglist:siteImgEnList){  //现场环境照片
-            for (DisWorkImageEntity.DisWorkImgData tempImgData:tempImglist){
-                if (tempImgData!=null && tempImgData.getImageUrl()!=null && tempImgData.getImageUrl().indexOf("://")==-1){
-                    submitImgEnList.add(tempImgData);
-                    params.add(new BasicNameValuePair( tempImgData.imageType+"", tempImgData.getImageUrl()));
-                }
-            }
-        }
+//        for (List<DisWorkImageEntity.DisWorkImgData> tempImglist:siteImgEnList){  //现场环境照片
+//            for (DisWorkImageEntity.DisWorkImgData tempImgData:tempImglist){
+//                if (tempImgData!=null && tempImgData.getImageUrl()!=null && tempImgData.getImageUrl().indexOf("://")==-1){
+//                    submitImgEnList.add(tempImgData);
+//                    params.add(new BasicNameValuePair( tempImgData.imageType+"", tempImgData.getImageUrl()));
+//                }
+//            }
+//        }
 
-        for (List<DisWorkImageEntity.DisWorkImgData> tempImglist:documentImgEnList){ //运输单证照片
+        for (List<DisWorkImageEntity.DisWorkImgData> tempImglist:documentImgEnList){ //现场状况照片
             for (DisWorkImageEntity.DisWorkImgData tempImgData:tempImglist){
                 if (tempImgData!=null && tempImgData.getImageUrl()!=null && tempImgData.getImageUrl().indexOf("://")==-1){
                     submitImgEnList.add(tempImgData);
@@ -460,10 +460,23 @@ public class DispersiveWorkActivity extends BaseActivity {
             }
         }
         if (submitImgEnList.size()>0){
-            PhotoUploadUtil.upload(this,params,URLs.FSX_WORK_IMG_SAVE,httpParams);
+            PhotoUploadUtil.dispersiveUpload(this,submitImgEnList,URLs.FSX_WORK_IMG_SAVE,httpParams);
         }else{
             DialogUtil.getAlertOneButton(this,"没有需要上传的图片！",null).show();
         }
+    }
+
+    /**
+     * 如果有标的受损基本情况小类未拍摄，返回true，此时不能上传照片
+     * @return
+     */
+    private boolean issubTypeIsNull() {
+        int ac = adapter2.getMDamageSubTypeSize();
+        if (ac !=adapter2.MDamageCount){
+            DialogUtil.getAlertOneButton(this,"标的受损基本情况中有小类未拍摄，如果不需要，请删除多余小类后提交！",null).show();
+            return true;
+        }
+         return false;
     }
 
     /**上传影像资料成功后刷新界面**/
@@ -490,35 +503,36 @@ public class DispersiveWorkActivity extends BaseActivity {
         if (workEnty!=null && workEnty.data!=null && workEnty.data.size()>0){ //获取图片信息成功则整理显示
            for (DisWorkImageEntity.DisWorkImgData tempImgdata:workEnty.data){
                if (tempImgdata!=null && tempImgdata.imageType<3){
-                   siteImgEnList.get(tempImgdata.imageType).add(tempImgdata);
+//                   siteImgEnList.get(tempImgdata.imageType).add(tempImgdata);
                }else if(tempImgdata!=null && tempImgdata.imageType<17){
                    documentImgEnList.get(tempImgdata.imageType-3).add(tempImgdata);
                }
            }
-            adapter1.notifyDataSetChanged();
+//            adapter1.notifyDataSetChanged();
             adapter2.notifyDataSetChanged();
+           adapter2.getMDamageCount();
             changeCountNum(); //刷新照片小类对应数量信息
         }
     }
 
     public void notifyExAdapter(){
-        adapter1.notifyDataSetChanged();
+//        adapter1.notifyDataSetChanged();
         adapter2.notifyDataSetChanged();
     }
 
     /***初始化图片集合*/
     private void initImgEnList(){
-        siteImgEnList = new ArrayList<>(3);  //现场环境默认三个类别
-        for (int i=0;i<3;i++){
-            siteImgEnList.add(new ArrayList<>());
-        }
-        documentImgEnList = new ArrayList<>(14);  //事故单证默认类别14
-        for (int i=0;i<14;i++){
+//        siteImgEnList = new ArrayList<>(3);  //现场环境默认三个类别
+//        for (int i=0;i<3;i++){
+//            siteImgEnList.add(new ArrayList<>());
+//        }
+        documentImgEnList = new ArrayList<>(15);  //事故单证默认类别14
+        for (int i=0;i<new DispersiveImgTypeUtil().getDocumentsImgTypes().size();i++){
             documentImgEnList.add(new ArrayList<>());
         }
-        adapter1 = new MyDisExpandablelistAdapter(0);
+//        adapter1 = new MyDisExpandablelistAdapter(0);
         adapter2 = new MyDisExpandablelistAdapter(1);
-        photoListView1.setAdapter(adapter1);
+//        photoListView1.setAdapter(adapter1);
         photoListView2.setAdapter(adapter2);
     }
 
@@ -537,7 +551,7 @@ public class DispersiveWorkActivity extends BaseActivity {
        ((EditText)examineView.findViewById(R.id.dispersive_work_examine_jg)).setText(disWorkInfo.data.story);
        ((EditText)examineView.findViewById(R.id.dispersive_work_examine_yj)).setText(disWorkInfo.data.advice);
 
-        List<String> paramsList = new ArrayList<String>();
+        List<String> paramsList = new ArrayList<>();
         paramsList.add("userId");
         paramsList.add(AppApplication.getUSER().data.userId);
         paramsList.add("workUid");
@@ -554,22 +568,18 @@ public class DispersiveWorkActivity extends BaseActivity {
 
     private class MyDisExpandablelistAdapter extends BaseExpandableListAdapter {
 
-        private int checkImgGroupPstion;
+//        private int checkImgGroupPstion;
         private List<NameValuePair> titlesArr;
         /**图片合集*/
         private List<List<DisWorkImageEntity.DisWorkImgData>> imgEnList;
         private Handler handler;
+        private int MDamageCount=1;
 
         private MyDisExpandablelistAdapter(){}
         public MyDisExpandablelistAdapter(int checkImgGroupPstion){
-            this.checkImgGroupPstion = checkImgGroupPstion;
-            if (checkImgGroupPstion == 0){
-                this.titlesArr = new DispersiveImgTypeUtil().getSceneImgTypes(); //现场照片
-                imgEnList = siteImgEnList;
-            }else {
-                this.titlesArr = new DispersiveImgTypeUtil().getDocumentsImgTypes();//运输单证
+                this.titlesArr = new DispersiveImgTypeUtil().getDocumentsImgTypes();//现场状况
                 imgEnList = documentImgEnList;
-            }
+                getMDamageCount();
 
             handler = new Handler(){
 
@@ -579,6 +589,24 @@ public class DispersiveWorkActivity extends BaseActivity {
                     super.handleMessage(msg);
                 }
             };
+        }
+
+        /**
+         * 获取标的受损基本情况 小类数量
+         */
+        public int getMDamageCount() {
+            int MDSubTypeSize = getMDamageSubTypeSize();
+           if (MDSubTypeSize>0)MDamageCount = MDSubTypeSize;
+           return MDamageCount;
+        }
+
+        public int getMDamageSubTypeSize(){
+            Map<Integer,Integer> tempMap = new HashMap<>(4);
+            List<DisWorkImageEntity.DisWorkImgData> tempImageEnty = imgEnList.get(7);
+            for (DisWorkImageEntity.DisWorkImgData tempEnty:tempImageEnty){
+                tempMap.put(tempEnty.imageSubType,tempEnty.imageSubType);
+            }
+            return tempMap.size();
         }
 
         public void refresh() {
@@ -608,20 +636,85 @@ public class DispersiveWorkActivity extends BaseActivity {
 
         @Override
         public View getChildView(int arg0, int arg1, boolean arg2, View contentview, ViewGroup arg4) {
-            contentview=inflater.inflate(R.layout.dispersive_gridview_layout, null);
-
-            GridView gridView=(GridView) contentview.findViewById(R.id.item_for_exlist_photoup_gridView1);
+            contentview = inflater.inflate(R.layout.dispersive_gridview_layout, null);
+            if (arg0==7){  //标的受损基本情况
+                setMDamageInfo(imgEnList.get(arg0),contentview,arg1);
+            }
+            GridView gridView = contentview.findViewById(R.id.item_for_exlist_photoup_gridView1);
             DispersiveGalleryAdapter gAdapter;
             String key = titlesArr.get(arg0).getValue();
-            gAdapter = new DispersiveGalleryAdapter(DispersiveWorkActivity.this, imgEnList.get(arg0), Integer.parseInt(titlesArr.get(arg0).getValue()));
+            gAdapter = new DispersiveGalleryAdapter(DispersiveWorkActivity.this, getResousePathList(arg0,arg1),
+                    Integer.parseInt(titlesArr.get(arg0).getValue()),arg1,imgEnList.get(arg0));
             gridAdapterArr.put(key, gAdapter);
             gridView.setAdapter(gAdapter);
             return contentview;
         }
 
+        private List<DisWorkImageEntity.DisWorkImgData> getResousePathList (int groupPosition , int chImageSubType){
+            if (groupPosition==7) {//标的受损基本情况
+                List<DisWorkImageEntity.DisWorkImgData> MDImag = new ArrayList<>();
+                List<DisWorkImageEntity.DisWorkImgData> tempImgEnt =imgEnList.get(groupPosition);
+                for (DisWorkImageEntity.DisWorkImgData temp : tempImgEnt) {
+                    if(temp.imageSubType!=null && temp.imageSubType==chImageSubType) MDImag.add(temp);
+                    if ((temp.imageSubType==null) && chImageSubType==1)MDImag.add(temp); //可能是之前的数据，没有这个值，做一下兼容，显示到第一个小类中
+                }
+                return MDImag;
+            }else return imgEnList.get(groupPosition);
+        }
+
+        /**
+         * 设置标的基本受损情况信息
+         * @param disWorkImgData
+         * @param contentview
+         * @param arg1
+         */
+        private void setMDamageInfo(List<DisWorkImageEntity.DisWorkImgData> disWorkImgData, View contentview, int arg1){
+            contentview.findViewById(R.id.item_for_exlist_photoup_wsline).setVisibility(View.VISIBLE); //标的受损基本情况显示小类
+            ((TextView)contentview.findViewById(R.id.item_for_exlist_photoup_wstitle)).setText("损失物品类"+(arg1+1));
+            if (arg1==0) contentview.findViewById(R.id.item_for_exlist_photoup_wsDelete).setVisibility(View.GONE); //如果是第一个分类，小类不能被删除，隐藏删除按钮
+            for (DisWorkImageEntity.DisWorkImgData dwIdTemp:disWorkImgData){
+                if (dwIdTemp.imageSubType!=null && dwIdTemp.imageSubType==arg1 &&  dwIdTemp.getImageUrl().indexOf("http://qiniu.cnsurvey.cn/")!=-1 ) {  //如果是有照片已经上传的，小类不能被删除，隐藏删除按钮
+                    contentview.findViewById(R.id.item_for_exlist_photoup_wsDelete).setVisibility(View.GONE);
+                    break;
+                }
+            }
+            /**添加一个标的基本受损分类*/
+            contentview.findViewById(R.id.item_for_exlist_photoup_wsAdd).setOnClickListener(v -> {
+                MDamageCount++;
+                adapter2.notifyDataSetChanged();
+                photoListView2.collapseGroup(7); //收起
+                photoListView2.expandGroup(7); //展开
+            });
+            /**删除一个标的基本受损分类*/
+            contentview.findViewById(R.id.item_for_exlist_photoup_wsDelete).setOnClickListener(v -> {
+                MDamageCount--;
+                deleteImageSubType(disWorkImgData,arg1);//移除小类
+                adapter2.notifyDataSetChanged();
+                photoListView2.collapseGroup(7); //收起
+                photoListView2.expandGroup(7); //展开
+            });
+        }
+
+        /**
+         * 移除标的基本受损分类下面指定的小类，移除小类后面的小类编号通通减一。
+         * @param disWorkImgData
+         * @param arg1
+         */
+        private void deleteImageSubType(List<DisWorkImageEntity.DisWorkImgData> disWorkImgData, int arg1){
+            for (int i=0;i<disWorkImgData.size();i++){
+                if ((disWorkImgData.get(i).imageSubType)==arg1){  //相等就是需要删除的小类
+                    disWorkImgData.remove(disWorkImgData.get(i)); //移除该小类
+                    i--; //移除后i需要往后一位，不然取不到补位数据，导致部分数据错乱。
+                }else if ((disWorkImgData.get(i).imageSubType)>arg1){
+                    disWorkImgData.get(i).imageSubType--;
+                }
+            }
+        }
+
         @Override
         public int getChildrenCount(int arg0) {
-            return 1;
+            if (arg0==7) return MDamageCount;   //标的受损基本情况需要多个小类
+            return 1;  //标的受损基本情况 之外的只需要一个小类
         }
 
         @Override
@@ -660,9 +753,9 @@ public class DispersiveWorkActivity extends BaseActivity {
                 TextView photoDemand=(TextView) contentview.findViewById(R.id.item_for_exlist_photoup_demand);
                 int groupPhotoSize = imgEnList.get(groupPostion).size();
                 photoSum.setText(groupPhotoSize+"");
-                if (checkImgGroupPstion==0) {
-                    ((TextView) contentview.findViewById(R.id.item_for_exlist_photoup_demand)).setText("1"); //分组标题必拍数量
-                }
+//                if (checkImgGroupPstion==0) {
+//                    ((TextView) contentview.findViewById(R.id.item_for_exlist_photoup_demand)).setText("1"); //分组标题必拍数量
+//                }
             }
             return contentview;
         }
@@ -700,31 +793,32 @@ public class DispersiveWorkActivity extends BaseActivity {
     }
 
     /**相册选择照片后调用方法加载图片*/
-    public void addPhoto(List<WorkPhotos.TableData.WorkPhotoEntitiy> temPhotoEntitiys,int imgType){
+    public void addPhoto(List<WorkPhotos.TableData.WorkPhotoEntitiy> temPhotoEntitiys,int imgType,int imageSubType){
         if (imgType<3){
-            for (WorkPhotos.TableData.WorkPhotoEntitiy woekEnty:temPhotoEntitiys){  //现场照片
-               DisWorkImageEntity.DisWorkImgData disWorkEnty = new DisWorkImageEntity.DisWorkImgData();
-                disWorkEnty.imageType = imgType;
-                disWorkEnty.setImageUrl(woekEnty.location);
-                siteImgEnList.get(imgType).add(disWorkEnty);
-            }
+//            for (WorkPhotos.TableData.WorkPhotoEntitiy woekEnty:temPhotoEntitiys){  //现场照片
+//               DisWorkImageEntity.DisWorkImgData disWorkEnty = new DisWorkImageEntity.DisWorkImgData();
+//                disWorkEnty.imageType = imgType;
+//                disWorkEnty.setImageUrl(woekEnty.location);
+//                siteImgEnList.get(imgType).add(disWorkEnty);
+//            }
 //            photoListView1.collapseGroup(imgType);
 //            photoListView1.expandGroup(imgType);
-            adapter1.refresh();
-            changeCountNum(); //刷新照片小类对应数量信息
-        }else if (imgType<17){//运输单证图片结合*/
+//            adapter1.refresh();
+//            changeCountNum(); //刷新照片小类对应数量信息
+        }else if (imgType<17){//现场状况图片结合*/
             for (WorkPhotos.TableData.WorkPhotoEntitiy woekEnty:temPhotoEntitiys){  //事故单证
                 DisWorkImageEntity.DisWorkImgData disWorkEnty = new DisWorkImageEntity.DisWorkImgData();
                 disWorkEnty.imageType = imgType;
                 disWorkEnty.setImageUrl(woekEnty.location);
+                if (imgType==10)disWorkEnty.imageSubType = imageSubType; //标的受损基本情况需要多个小类
                 documentImgEnList.get(imgType-3).add(disWorkEnty);
             }
-//            photoListView2.collapseGroup(imgType);
-//            photoListView2.expandGroup(imgType);
+            photoListView2.collapseGroup(imgType);
+            photoListView2.expandGroup(imgType);
             adapter2.refresh();
             changeCountNum(); //刷新照片小类对应数量信息
         }
-        adapter1.notifyDataSetChanged();
+//        adapter1.notifyDataSetChanged();
         adapter2.notifyDataSetChanged();
         for (String key:gridAdapterArr.keySet()){
             gridAdapterArr.get(key).notifyDataSetChanged();

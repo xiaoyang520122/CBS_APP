@@ -4,11 +4,12 @@ import android.widget.TextView;
 
 import com.cninsure.cp.entity.PublicOrderEntity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 
-public class CxOrderEntity {
+public class CxOrderEntity implements Serializable {
 
     public int endRow;   //2,
     public int firstPage;   //1,
@@ -30,7 +31,7 @@ public class CxOrderEntity {
     public int total;   //左右页包含信息总数
 
 
-    public static class CxOrderTable {
+    public static class CxOrderTable implements Serializable {
 
         public Long id;
         public String uid;
@@ -100,6 +101,8 @@ public class CxOrderEntity {
         public String detailTime;//处理时长 公估师接单开始计算。
         public String isArrive; //是否到达现场
         public String arriveTime;//到达现场时间。
+        public Double balancePrice; // 机构间结算价
+        public Double bargainPrice; // 公估师议价
 
 
         public PublicOrderEntity getStandardOrderEnt() {
@@ -167,6 +170,12 @@ public class CxOrderEntity {
 //            stdEnt.province=province;
             stdEnt.caseProvince=caseProvince;
 //            stdEnt.city=city;
+
+
+            stdEnt.balancePrice = balancePrice; // 机构间结算价
+            stdEnt.bargainPrice = bargainPrice; // 公估师议价
+
+            stdEnt.orderTable = CxOrderTable.this; //任务
 
             return stdEnt;
         }

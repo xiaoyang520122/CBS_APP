@@ -3,7 +3,28 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/corners_whiteproblem"
-    android:gravity="center_vertical"
+    android:gravity="center"
     android:orientation="vertical" >
+
+    <com.cninsure.cp.view.MarqueeTextView
+        android:id="@+id/popupwindow_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:gravity="center_vertical|left"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="无"
+        android:textColor="@color/hui_text_xxxxh"
+        android:textSize="@dimen/order_list_defaul" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|left"
+        android:paddingTop="1dp"
+        android:drawableLeft="@drawable/hint_yello_24"
+        android:text="长按内容复制！"
+        android:textColor="@color/hui_text_xh"
+        android:textSize="@dimen/text_s" />
 
 </LinearLayout>

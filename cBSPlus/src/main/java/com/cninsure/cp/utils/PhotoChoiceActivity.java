@@ -32,8 +32,10 @@ import com.bumptech.glide.Glide;
 import com.cninsure.cp.R;
 import com.cninsure.cp.activty.WorkOrderActivty;
 import com.cninsure.cp.activty.WorkOrderActivtyhelp;
+import com.cninsure.cp.cx.adapter.CxImagAdapter;
 import com.cninsure.cp.dispersive.DispersiveWorkActivity;
 import com.cninsure.cp.entity.WorkPhotos.TableData.WorkPhotoEntitiy;
+import com.cninsure.cp.entity.cx.CxImagEntity;
 
 public class PhotoChoiceActivity extends Activity {
 
@@ -98,13 +100,31 @@ public class PhotoChoiceActivity extends Activity {
 			public void onClick(View arg0) {
 				if (temPhotoEntitiys != null && temPhotoEntitiys.size() > 0  && actionActivityName.equals("DispersiveWorkActivity")) { //分散型的请求
 					int imgType = getIntent().getIntExtra("photoType",0);
-					DispersiveWorkActivity.instence.addPhoto(temPhotoEntitiys,imgType);
+					int imageSubType = getIntent().getIntExtra("imageSubType",0);
+					DispersiveWorkActivity.instence.addPhoto(temPhotoEntitiys,imgType,imageSubType);
+				}else if (temPhotoEntitiys != null && temPhotoEntitiys.size() > 0  && actionActivityName.equals("NEW_CX")){ //新车险全流程
+					addCxNewImg();
 				}else if(temPhotoEntitiys != null && temPhotoEntitiys.size() > 0  ) { //其他的请求
 					WorkOrderActivtyhelp.resousePathList.get(GroupId).get(0).addAll(temPhotoEntitiys);
 				}
 				PhotoChoiceActivity.this.finish();
 			}
 		});
+	}
+
+	/**添加新车险全流程图片**/
+	private void addCxNewImg(){
+		CxImagAdapter.SaveImgCallBack addScb = (CxImagAdapter.SaveImgCallBack) getIntent().getSerializableExtra("addScb");
+		List<CxImagEntity> cieListTemp = new ArrayList<>();
+		String imgType = getIntent().getStringExtra("photoType");
+		for (WorkPhotoEntitiy wpe:temPhotoEntitiys){
+			CxImagEntity cieEn = new CxImagEntity();
+			cieEn.type = imgType;
+			cieEn.fileUrl = wpe.location;
+			cieEn.fileName = wpe.location.substring(0,wpe.location.length()-4);
+			cieListTemp.add(cieEn);
+		}
+		addScb.addImg(cieListTemp);
 	}
 
 	/** 判断是选择还是取消选择 **/

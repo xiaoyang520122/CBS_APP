@@ -1,7 +1,6 @@
 package com.cninsure.cp.dispersive;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -16,10 +15,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.cninsure.cp.R;
@@ -33,38 +30,45 @@ import com.cninsure.cp.utils.ToastUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
 
 
 public class DispersiveGalleryAdapter extends BaseAdapter{
 
 	/**图片集合*/
-	public List<DisWorkImageEntity.DisWorkImgData> resousePathList;  //图片实体合集
+	public List<DisWorkImageEntity.DisWorkImgData> resousePathList,BasicImgList;  //图片实体合集
 	private DispersiveGalleryAdapter instans;
 	private DispersiveWorkActivity context;  //上下文
 	private LayoutInflater inflater ;  //资源解析器
 	private Dialog dialog;  //图片操作弹框
 	private int gImageType;  //所在的ImageType
+	private int imgSubType;  //所在的ImageSubType
 
 	private DispersiveGalleryAdapter(){}
 
-	public DispersiveGalleryAdapter(DispersiveWorkActivity context,List<DisWorkImageEntity.DisWorkImgData> resousePathList,int imageType){
-			this.resousePathList = resousePathList;
-			instans=this;
-			inflater = LayoutInflater.from(context);
-			this.context  = context;
-			gImageType  = imageType;
-		}
+	public DispersiveGalleryAdapter(DispersiveWorkActivity context,List<DisWorkImageEntity.DisWorkImgData> resousePathList,int imageType,
+									int imgSubType, List<DisWorkImageEntity.DisWorkImgData> disWorkImgData) {
+		this.resousePathList = resousePathList;
+		this.BasicImgList = disWorkImgData;
+		instans = this;
+		inflater = LayoutInflater.from(context);
+		this.context = context;
+		gImageType = imageType;
+		this.imgSubType = imgSubType;
+	}
 
 		@Override
 		public int getCount() {
-			Log.e("titlesArr","resousePathList.size="+resousePathList.size());
-			if (DispersiveWorkActivity.instence.caseDisTemp!=null &&
-					(DispersiveWorkActivity.instence.caseDisTemp.status==11 || DispersiveWorkActivity.instence.caseDisTemp.status==5)) { //驳回和已到达现场的才能继续添加照片
-				return resousePathList.size()+1;
-			} else{
+			Log.e("titlesArr", "resousePathList.size=" + resousePathList.size());
+			if (DispersiveWorkActivity.instence.caseDisTemp != null &&
+					(DispersiveWorkActivity.instence.caseDisTemp.status == 11 || DispersiveWorkActivity.instence.caseDisTemp.status == 5)) { //驳回和已到达现场的才能继续添加照片
+				return resousePathList.size() + 1;
+			} else {
 				return resousePathList.size();
 			}
 		}
@@ -82,34 +86,30 @@ public class DispersiveGalleryAdapter extends BaseAdapter{
 		@Override
 		public View getView(final int arg0, View contentview, ViewGroup arg2) {
 			contentview=inflater.inflate(R.layout.item_gridview_for_exlistview_photoup, null);
-			ImageView img=(ImageView) contentview.findViewById(R.id.item_gridviewForExlist_photoup_img);
-			ImageView deleteimg=(ImageView) contentview.findViewById(R.id.item_gridviewForExlist_delete_img);
+			ImageView img= contentview.findViewById(R.id.item_gridviewForExlist_photoup_img);
+			ImageView deleteimg= contentview.findViewById(R.id.item_gridviewForExlist_delete_img);
 			Glide.with(context).load(R.drawable.image123).into(img);
 			if (resousePathList.size()==arg0) {
 //
 			}else {
-				String tempPath=resousePathList.get(arg0).getImageUrl();
+				String tempPath;
+				tempPath=resousePathList.get(arg0).getImageUrl();
 				if (!TextUtils.isEmpty(tempPath)) {
 					if (tempPath.indexOf("://")>-1) {
-//						Glide.with(context).load(tempPath+"?imageView2/2/w/200").placeholder(R.drawable.loadingwait_hui)
 						Glide.with(context).load(tempPath).placeholder(R.drawable.loadingwait_hui)
 						.error(R.drawable.loadingerror_).into(img);
 					}else {
 						Glide.with(context).load(tempPath).placeholder(R.drawable.loadingwait_hui).error(R.drawable.loadingerror_)
 						.centerCrop().into(img);
 						deleteimg.setVisibility(View.VISIBLE);
-						deleteimg.setOnClickListener(new OnClickListener() {
-							@Override
-							public void onClick(View v) {
-								deleteAndRemovePhoto(arg0);
-								instans.notifyDataSetChanged();
-								context.changeCountNum(); //刷新照片小类对应数量信息
-							}
+						deleteimg.setOnClickListener(v -> {
+							deleteAndRemovePhoto(arg0);
+							instans.notifyDataSetChanged();
+							context.changeCountNum(); //刷新照片小类对应数量信息
 						});
 					}
 				}else {
 					Glide.with(context).load(R.drawable.image123).placeholder(R.drawable.loadingwait_hui).centerCrop().into(img);
-//					Glide.with(context).load(imgIds[arg0]).centerCrop().into(img);
 				}
 			}
 			setgalleryOnclick(img,arg0);
@@ -118,12 +118,7 @@ public class DispersiveGalleryAdapter extends BaseAdapter{
 		}
 
 	private void setgalleryOnclick(View img, final int postion) {
-		img.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				getimg(postion);
-			}
-		});
+		img.setOnClickListener(v -> getimg(postion));
 	}
 
 	/***图片选择与显示*===============================================================================================**/
@@ -131,25 +126,24 @@ public class DispersiveGalleryAdapter extends BaseAdapter{
 	private void getimg(int postion) {
 		I = postion;
 		View view = LayoutInflater.from(context).inflate(R.layout.photograph_view, null);
-		View camera = (View) view.findViewById(R.id.photography_camera);
-		View photos = (View) view.findViewById(R.id.photography_photos);
-		View display = (View) view.findViewById(R.id.photography_display);
+		View camera = view.findViewById(R.id.photography_camera);
+		View photos =  view.findViewById(R.id.photography_photos);
+		View display = view.findViewById(R.id.photography_display);
 //		View delete = (View) view.findViewById(R.id.photography_deleteplay);
 		if (resousePathList!=null && I<resousePathList.size() && !TextUtils.isEmpty(resousePathList.get(I).getImageUrl())) {
 			display.setVisibility(View.VISIBLE);
 			if (resousePathList.get(I).getImageUrl().indexOf("://")==-1) {//删除选择未上传的，而不是已上传的，已上传的图片不能删除
 //				delete.setVisibility(View.VISIBLE);
 			}else {//已上传图片直接显示
-//				displayPictrue();
 				ImageDisplayUtil.displayByMyView(context, resousePathList.get(I).getImageUrl());
 				return;
 			}
 		}
 		dialog = DialogUtil.getDialogByView(context, view);
 		dialog.show();
-		setOnClicks(camera);
-		setOnClicks(photos);
-		setOnClicks(display);
+		setOnClicks(camera,imgSubType);
+		setOnClicks(photos,imgSubType);
+		setOnClicks(display,postion);
 //		setOnClicks(delete);
 	}
 
@@ -175,65 +169,67 @@ public class DispersiveGalleryAdapter extends BaseAdapter{
 		}
 	}
 
-	private void setOnClicks(final View butt) {
+	private void setOnClicks(final View butt, int postion) {
 
-		butt.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-
-				dialog.dismiss();
-
-				switch (butt.getId()) {
-				case R.id.photography_camera://拍照
-					cameraphoto();
-					break;
-				case R.id.photography_photos://相册选择
-					checkPhotos();
-					break;
-				case R.id.photography_display://浏览图片
-					String largeUrlList=resousePathList.get(I).getImageUrl();
-					if (largeUrlList != null) {
-						ImageDisplayUtil.displayByMyView(context, largeUrlList);
-					}
-					break;
-				case R.id.photography_deleteplay://删除选择
-					deleteAndRemovePhoto(I);
-					break;
-				default:
-					break;
-				}
+		butt.setOnClickListener(arg0 -> {
+			dialog.dismiss();
+			switch (butt.getId()) {
+			case R.id.photography_camera://拍照
+				cameraphoto(postion);
+				break;
+			case R.id.photography_photos://相册选择
+				checkPhotos(postion);
+				break;
+			case R.id.photography_display://浏览图片
+				displayImag();
+				break;
+			case R.id.photography_deleteplay://删除选择
+				deleteAndRemovePhoto(I);
+				break;
+			default:
+				break;
 			}
 		});
 	}
 
-	private void deleteAndRemovePhoto(int It){
-		String filePath=resousePathList.get(It).getImageUrl();
-		File file=new File(filePath);
-		if (file.exists()) {
-			file.delete();
+	/**
+	 * 显示图片
+	 */
+	private void displayImag(){
+		String largeUrlList = resousePathList.get(I).getImageUrl();
+		if (largeUrlList != null) {
+			ImageDisplayUtil.displayByMyView(context, largeUrlList);
 		}
-		resousePathList.remove(It);
-//		adapterNotify();
 	}
 
-	private void cameraphoto() {
+	/**
+	 * 移除操作，如果是标的受损基本情况，除了移除resousePathList内容，还需要移除MDImag，其他只移除resousePathList内容。
+	 * @param It
+	 */
+	private void deleteAndRemovePhoto(int It){
+		DisWorkImageEntity.DisWorkImgData imgData=resousePathList.get(It);
+		File file=new File(imgData.getImageUrl());
+		if (file.exists()) {file.delete();}
+		resousePathList.remove(imgData);
+		if (gImageType==10)
+		BasicImgList.remove(imgData);
+	}
+
+	private void cameraphoto(int postion) {
 //		// path为保存图片的路径，执行完拍照以后能保存到指定的路径下
 		Intent cameraIntent = new Intent(context, CXPhotoActivity.class);
 		cameraIntent.putExtra("photoType", gImageType);
+		cameraIntent.putExtra("imageSubType", postion);
 		cameraIntent.putExtra("ActivityName", "DispersiveWorkActivity");
 //		cameraIntent.putExtra("orderUid", context.getStringExtra("orderUid"));
 		context.startActivity(cameraIntent);
 	}
 
-	private void checkPhotos() {
-//		Intent getAlbum = new Intent(Intent.ACTION_GET_CONTENT);
-//		getAlbum.setType(IMAGE_TYPE);
-//		context.startActivityForResult(getAlbum, IMAGE_CODE);
+	private void checkPhotos(int postion) {
 		Intent getAlbum=new Intent(context, PhotoChoiceActivity.class);
 		getAlbum.putExtra("photoType", gImageType);
+		getAlbum.putExtra("imageSubType", postion);
 		getAlbum.putExtra("ActivityName", "DispersiveWorkActivity");
-//		getAlbum.putExtra("GroupId", G);
-//		getAlbum.putExtra("orderUid", context.getIntent().getStringExtra("orderUid"));
 		context.startActivity(getAlbum);
 	}
 

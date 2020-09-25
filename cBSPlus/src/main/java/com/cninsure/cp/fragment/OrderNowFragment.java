@@ -55,7 +55,6 @@ import com.cninsure.cp.cx.CxDsWorkActivity;
 import com.cninsure.cp.cx.CxInjuryMediateActivity;
 import com.cninsure.cp.cx.CxInjuryTrackActivity;
 import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
-import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.entity.FCOrderEntity;
 import com.cninsure.cp.entity.PagedRequest;
 import com.cninsure.cp.entity.PublicOrderEntity;
@@ -674,7 +673,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 
 					private View getpopView(final String caseLifecycle) {
 						LinearLayout addView=(LinearLayout) LayoutInflater.from(OrderNowFragment.this.getActivity())
-								.inflate(R.layout.popupwindow_text, null);
+								.inflate(R.layout.popupwindow_linearlayout, null);
 						TextView view=new TextView(OrderNowFragment.this.getActivity());
 						view.setText(caseLifecycle);
 						view.setHint("无委托信息！");
@@ -1184,7 +1183,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			Intent intent = new Intent();
 			switch (type){
 //				case 2 :  intent.setClass(getActivity(), CxSurveyWorkActivity.class);break;  //现场查勘
-				case 2 :  intent.setClass(getActivity(), CxJieBaoanInfoActivity.class);break;  //现场查勘
+				case 2 :  intent.setClass(getActivity(), CxJieBaoanInfoActivity.class);break;  //现场查勘新
 				case 40 :  intent.setClass(getActivity(), CxDsWorkActivity.class);break;  //标的定损
 				case 42 :  intent.setClass(getActivity(), CxDamageActivity.class);break;  //物损定损
 				case 392 :  intent.setClass(getActivity(), CxInjuryTrackActivity.class);break;  //人伤跟踪

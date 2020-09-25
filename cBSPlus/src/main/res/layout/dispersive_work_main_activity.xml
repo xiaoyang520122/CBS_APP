@@ -44,7 +44,7 @@
                     android:textSize="@dimen/login_size"
                     android:textColor="@drawable/radio_text_color" />
 
-                <RadioButton
+                <!--RadioButton
                     android:id="@+id/dispersive_photo1_RB"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
@@ -59,7 +59,7 @@
                     android:lines="2"
                     android:textSize="@dimen/login_size"
                     android:drawableTop="@drawable/place_blue_yellow_48"
-                    android:textColor="@drawable/radio_text_color" />
+                    android:textColor="@drawable/radio_text_color" / -->
                 <RadioButton
                     android:id="@+id/dispersive_photo2_RB"
                     android:layout_width="0dp"
@@ -71,7 +71,7 @@
                     android:gravity="center"
                     android:padding="10dp"
                     android:drawablePadding="5dp"
-                    android:text="运输单证\n（0/5）"
+                    android:text="现场状况\n（0/5）"
                     android:lines="2"
                     android:textSize="@dimen/login_size"
                     android:drawableTop="@drawable/camera_blue_yellow_48"

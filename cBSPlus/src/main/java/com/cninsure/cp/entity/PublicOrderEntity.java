@@ -6,6 +6,8 @@ import java.util.Timer;
 
 import android.widget.TextView;
 
+import com.cninsure.cp.entity.cx.CxOrderEntity;
+
 public class PublicOrderEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -105,6 +107,11 @@ public class PublicOrderEntity implements Serializable {
 	public String province;  //作业区域省份
 	public String caseProvince;  //出险省份
 	public String city;  //城市
+
+
+	public Double balancePrice; // 机构间结算价
+	public Double bargainPrice; // 公估师议价
+	public CxOrderEntity.CxOrderTable orderTable; //任务列表
 
 
 	/*********医健险**************/

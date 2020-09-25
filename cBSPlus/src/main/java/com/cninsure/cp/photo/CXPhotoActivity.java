@@ -413,8 +413,9 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 //			ImageUtil.compressBmp(this, data, PicturePath);// 压缩、水印、储存
 			List<WorkPhotos.TableData.WorkPhotoEntitiy> temPhotoEntitiys = new ArrayList<>(1);
 			int imgType = getIntent().getIntExtra("photoType",0);
+			int imageSubType = getIntent().getIntExtra("imageSubType",0);//标的受损基本情况需要多个小类
 			temPhotoEntitiys.add(photoEntitiy);
-			DispersiveWorkActivity.instence.addPhoto(temPhotoEntitiys,imgType);
+			DispersiveWorkActivity.instence.addPhoto(temPhotoEntitiys,imgType,imageSubType);
 		}else{
 			WorkOrderActivtyhelp.resousePathList.get(GroupId).get(0).add(photoEntitiy);
 		}

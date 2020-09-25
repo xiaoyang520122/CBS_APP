@@ -13,8 +13,10 @@ import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.adapter.MyFragmentPagerAdapter;
 import com.cninsure.cp.cx.fragment.BaseFragment;
+import com.cninsure.cp.cx.fragment.CxRiAgreementFragment;
 import com.cninsure.cp.cx.fragment.CxRiListFragment;
 import com.cninsure.cp.cx.jiebaoanfragment.BaoanInfoFragment;
+import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment;
 import com.cninsure.cp.cx.jiebaoanfragment.TaskBasicInfoFragment;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
@@ -53,7 +55,7 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
 
     private BaoanInfoFragment fg0;
     private TaskBasicInfoFragment fg1;
-//    private CxRiAgreementFragment fg2;
+    private CxImagFragment fg2;
 //    private CxRiDeliveryFragment fg3;
 
 
@@ -82,13 +84,13 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
     private void initFragment() {
         fg0 = new BaoanInfoFragment();
         fg1 = new TaskBasicInfoFragment();
-//        fg2 = new CxRiAgreementFragment();
+        fg2 = new CxImagFragment();
 //        fg3 = new CxRiDeliveryFragment();
 
         fragmentMap = new TreeMap<>();
         fragmentMap.put(0, fg0);
         fragmentMap.put(1, fg1);
-//        fragmentMap.put(2, fg2);
+        fragmentMap.put(2, fg2);
 //        fragmentMap.put(3, fg3);
     }
 
@@ -115,7 +117,7 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
     private void setBackOnclick() {
         findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
         findViewById(R.id.CX_Act_More_Tv).setOnClickListener(this);
-        ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText("#####");
+        ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText(orderInfoEn.bussTypeName);
         ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("");
     }
 
@@ -132,7 +134,9 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
         LoadDialogUtil.setMessageAndShow(this,"载入中……");
         List<String> params = new ArrayList<String>(2);
         params.add("type");
-        params.add("medicalFee,casualtiesFee,poNature,deliveryCompany"); // 医疗费用赔偿MedicalFee ,死亡伤残赔偿casualtiesFee ,户籍性质poNature
+//        params.add("medicalFee,casualtiesFee,poNature,deliveryCompany"); // 医疗费用赔偿MedicalFee ,死亡伤残赔偿casualtiesFee ,户籍性质poNature
+        params.add("cxOrderWorkImageType,accident_type,accident_small_type,accident_reason,accident_small_reason,survey_type,damage_loss_type," +
+                "accident_liability,loss_type,loss_object_type,compensation_method,survey_conclusion,carno_type,car_usetype,injured_type");
         HttpUtils.requestGet(URLs.CX_NEW_GET_IMG_TYPE_DICT, params, HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT);
     }
 

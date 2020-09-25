@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -13,12 +11,10 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+
 import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -40,9 +36,7 @@ import com.alibaba.fastjson.JSON;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.R;
 import com.cninsure.cp.activity.yjx.YjxBaoanInputActivity;
-import com.cninsure.cp.activity.yjx.YjxDispatchActivity;
 import com.cninsure.cp.activity.yjx.YjxDispatchShenheActivity;
-import com.cninsure.cp.activity.yjx.YjxSurveyActivity;
 import com.cninsure.cp.activty.CaseInfoActivty;
 import com.cninsure.cp.activty.DisplayOrderActivity;
 import com.cninsure.cp.entity.CaseOrder;
@@ -66,7 +60,6 @@ import com.cninsure.cp.utils.MyPullRefreshListViewAlertUtil;
 import com.cninsure.cp.utils.PopupWindowUtils;
 import com.cninsure.cp.utils.ToastUtil;
 import com.cninsure.cp.view.LoadingDialog;
-import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
@@ -503,7 +496,7 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 
 					private View getpopView(final String caseLifecycle) {
 						LinearLayout addView=(LinearLayout) LayoutInflater.from(MyOrderListFragment.this.getActivity())
-								.inflate(R.layout.popupwindow_text, null);
+								.inflate(R.layout.popupwindow_linearlayout, null);
 						TextView view=new TextView(MyOrderListFragment.this.getActivity());
 						view.setText(caseLifecycle);
 						view.setHint("无委托信息！");

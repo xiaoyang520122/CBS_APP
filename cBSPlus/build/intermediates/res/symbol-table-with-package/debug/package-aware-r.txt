@@ -1225,6 +1225,7 @@ drawable helpcenter_bule_300
 drawable helpliuyan_white64
 drawable helpphone_white64
 drawable hg
+drawable hint_yello_24
 drawable hint_yellow_sj_38
 drawable ic_launcher
 drawable ic_mtrl_chip_checked_black
@@ -1671,8 +1672,10 @@ id ChoiceWTR_lisetView
 id ChoiceWTR_name
 id ChoiceWTR_progressBar1
 id ChoiceWTR_search
+id CxBaBasicFgmt_LinearLayout
 id CxBaBasicFgmt_TexView
 id CxBaBasicFgmt_Title
+id CxBaBasicFgmt_button
 id CxBaBasicFgmt_fTitle
 id CxBaBasicFgmt_list
 id CxBaFgmtItm_baoanPerson
@@ -2560,7 +2563,6 @@ id dispersive_orderList_Relativeparent
 id dispersive_orderList_linerparent
 id dispersive_orderList_tv
 id dispersive_orderNow_tv
-id dispersive_photo1_RB
 id dispersive_photo2_RB
 id dispersive_reson_RB
 id dispersive_work_Info_listView
@@ -2671,6 +2673,10 @@ id item_for_exlist_photoup_demand
 id item_for_exlist_photoup_gridView1
 id item_for_exlist_photoup_sum
 id item_for_exlist_photoup_title
+id item_for_exlist_photoup_wsAdd
+id item_for_exlist_photoup_wsDelete
+id item_for_exlist_photoup_wsline
+id item_for_exlist_photoup_wstitle
 id item_gridviewForExlist_defaul
 id item_gridviewForExlist_delete_img
 id item_gridviewForExlist_photoup_img
@@ -2764,6 +2770,7 @@ id photography_photos
 id photoview
 id pin
 id popupwindow_listView
+id popupwindow_text
 id preview_view
 id progressBar1
 id progress_circular
@@ -3049,7 +3056,6 @@ layout dispersive_gridview_layout
 layout dispersive_navigation_bar
 layout dispersive_user_activity_view
 layout dispersive_work_examine_view
-layout dispersive_work_expandablelistview
 layout dispersive_work_info_view
 layout dispersive_work_main_activity
 layout display_orderinfo_scrollview
@@ -3111,9 +3117,11 @@ layout ordernow_list_item
 layout permission_setting_alert_view
 layout photo_choice_layout
 layout photograph_view
+layout popupwindow_linearlayout
 layout popupwindow_list
 layout popupwindow_text
 layout product_price_item
+layout public_expandablelistview
 layout pull_to_refresh_header_horizontal
 layout pull_to_refresh_header_vertical
 layout score_activity

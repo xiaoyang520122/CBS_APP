@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
 import com.cninsure.cp.AppApplication;
@@ -72,8 +76,8 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
     @ViewInject(R.id.CxDsM_dsServiceDepot)  private EditText dsServiceDepot;//维修厂**
     @ViewInject(R.id.CxDsM_dsAptitudes_RG)  private RadioGroup dsAptitudes;//资质**
     @ViewInject(R.id.CxDsM_carSeries)  private TextView carSeries;//车系**
-    @ViewInject(R.id.CxDsM_carTypeName)  private TextView carTypeName;//车品牌**
-    @ViewInject(R.id.CxDsM_carStructure)  private TextView carStructure;//车辆结构**
+    @ViewInject(R.id.CxDsM_carTypeName)  private TextView carBrand;//车品牌**
+    @ViewInject(R.id.CxDsM_carStructure)  private EditText carStructure;//车辆结构**
     @ViewInject(R.id.CxDsM_claimLevel)  private TextView claimLevel;//索赔险别**
     @ViewInject(R.id.CxDsM_dsLocation)  private EditText dsLocation;//定损地点**
 
@@ -108,6 +112,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         ViewUtils.inject(this); //注入view和事件
         EventBus.getDefault().register(this);
         instence = this;
+        inflater = LayoutInflater.from(this);
         cxDict = new CxDictEntity();
         QorderUid = getIntent().getStringExtra("orderUid");
         orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
@@ -189,11 +194,11 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         if (taskEntity.data == null  ) taskEntity.data = new CxDsTaskEntity.CxDsTaskDataEntity();
         if (taskEntity.data.contentJson == null) {
             taskEntity.data.contentJson = new CxDsWorkEntity();
-            taskEntity.data.contentJson.insuredPerson = orderInfoEn.baoanPersonName; //被保险人暂时存 出险单位联系人
-            taskEntity.data.contentJson.riskDate = orderInfoEn.riskDate; //出险时间
-            taskEntity.data.contentJson.dsCarNumber = orderInfoEn.licensePlateBiaoDi; //出险车牌
 //            taskEntity.data.contentJson.riskDate = orderInfoEn.riskDate; //车类型
         }
+        taskEntity.data.contentJson.insuredPerson = orderInfoEn.baoanPersonName; //被保险人暂时存 出险单位联系人
+        taskEntity.data.contentJson.riskDate = orderInfoEn.riskDate; //出险时间
+        taskEntity.data.contentJson.dsCarNumber = orderInfoEn.licensePlateBiaoDi; //出险车牌
         initView();
         displayWorkInfo();
     }
@@ -219,9 +224,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
             case R.id.CX_Act_Back_Tv: ActivityFinishUtil.showFinishAlert(this); break; //退出
             case R.id.CxDsM_hj_more: showHjDialog(); break; //显示换件信息
             case R.id.CxDsM_replaceInfos_more: showGsDialog(); break; //显示工时信息
-            case R.id.CxrsIjtr_enclosureList_add:
-                PickPhotoUtil.albumPhoto(CxDsWorkActivity.this, PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE);
-                break; //上传附件按钮点击，选择文件
+            case R.id.CxDsM_enclosureList_add:  PickPhotoUtil.albumPhoto(CxDsWorkActivity.this, PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE);; break; //添加附件
         }
     }
 
@@ -293,6 +296,14 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
+   public Handler handler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            displayWorkInfo();
+        }
+    };
+
     /**显示任务信息*/
     public void displayWorkInfo() {
         if (taskEntity!=null && taskEntity.data!=null && taskEntity.data.contentJson!=null);
@@ -306,15 +317,15 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         if (damageEnt.dsAptitudes.equals("0")) dsAptitudes.check(R.id.CxDsM_dsAptitudes_RB1);
         if (damageEnt.dsAptitudes.equals("1")) dsAptitudes.check(R.id.CxDsM_dsAptitudes_RB2);
         SetTextUtil.setTextViewText(carSeries,damageEnt.carSeries);//车系**
-        SetTextUtil.setTextViewText(carTypeName,damageEnt.carTypeName);//车品牌**
-        SetTextUtil.setTextViewText(carStructure,damageEnt.carStructure);//车辆结构**
+        SetTextUtil.setTextViewText(carBrand,damageEnt.carBrand);//车品牌**
+        SetTextUtil.setEditText(carStructure,damageEnt.carStructure);//车辆结构**
         SetTextUtil.setTvTextForArr(claimLevel, TypePickeUtil.getDictLabelArr(cxDict.getDictByType("claim_level_type")),damageEnt.claimLevel);
-        TypePickeUtil.setTypePickerDialog(this,claimLevel,cxDict,"claim_level_type");//索赔险别**
+
         SetTextUtil.setEditText(dsLocation,damageEnt.dsLocation);//定损地点**
 
         SetTextUtil.setEditText(dsRescueAmount,damageEnt.dsRescueAmount+"");//定损施救费
         SetTextUtil.setTextViewText(hsRescueAmount,damageEnt.hsRescueAmount+"");//核损施救费
-        SetTextUtil.setTextViewText(dsAllTotalAmount,damageEnt.dsAllTotalAmount+"");//定损总金额
+        SetTextUtil.setTextViewText(dsAllTotalAmount,damageEnt.getDsAllTotalAmount()+"");//定损总金额
         SetTextUtil.setEditText(dsInstructions,damageEnt.dsInstructions);//定损说明
         displayFileToList() ;  //附件信息列表
 
@@ -325,17 +336,25 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         SetTextUtil.setTextViewText(hsFeeResidual,damageEnt.replaceInfosTotal.hsFeeManagement+"");//核价残值
         SetTextUtil.setTextViewText(hjTotalFee,damageEnt.replaceInfos.size()+"");//换件项目-数量
         SetTextUtil.setTextViewText(timeFeeTotal,damageEnt.getGsTotal());//工时信息-合计
-        SetTextUtil.setTextViewText(dsTotalAmount,damageEnt.repairInfosTotal.dsTotalAmount+"");//外修合计
-        SetTextUtil.setTextViewText(hsTotalAmount,damageEnt.repairInfosTotal.hsTotalAmount+"");//外修合计-核
+        if (damageEnt.repairInfos!=null){
+            float dsTotalAmountTemp =0;
+            float HsTotalAmountTemp =0;
+            for (CxDsWorkEntity.CxDsRepairInfos dsrItem:damageEnt.repairInfos){
+                if (dsrItem.dsAmount!=null) dsTotalAmountTemp+=dsrItem.dsAmount;
+                if (dsrItem.hsAmount!=null) HsTotalAmountTemp+=dsrItem.hsAmount;
+            }
+            SetTextUtil.setTextViewText(dsTotalAmount,dsTotalAmountTemp+"");//外修合计
+            SetTextUtil.setTextViewText(hsTotalAmount,HsTotalAmountTemp+"");//外修合计-核
+        }
     }
 
-    private void showHintStr(String text){
+    private void showHintStr(String text,String title){
         TextView tv = new TextView(this);
         tv.setLineSpacing(7.0f,1);
         tv.setText(text);
         tv.setPadding(20,10,10,10);
         tv.setTextSize(16);
-        DialogUtil.getDialogByViewOnlistener(this,tv,"换件信息",null).show();
+        DialogUtil.getDialogByViewOnlistener(this,tv,title,null).show();
     }
     private void showHjDialog() {
         CxDsWorkEntity damageEnt = taskEntity.data.contentJson;
@@ -352,9 +371,9 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
             infoData.append("*定损单价："+ items.unitPrice+"\n");
             infoData.append("*定损数量："+ items.unitCount+"\n");
             infoData.append("*定损小计（元）："+ items.unitTotalPrice+"\n");
-            infoData.append("  定损备注："+ items.remark+"\n");
+            infoData.append("  定损备注："+ items.remark+"\n\n");
         }
-        showHintStr(infoData.toString());
+        showHintStr(infoData.toString(),"换件信息");
     }
     private void showGsDialog() {
         CxDsWorkEntity damageEnt = taskEntity.data.contentJson;
@@ -363,14 +382,15 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
             return;
         }
         StringBuffer infoData= new StringBuffer();
+        int i = 0;
         for (CxDsWorkEntity.CxDsTimeInfos items:damageEnt.timeInfos){
-            infoData.append("--工时"+items.timeIndex+"\n");
+            infoData.append("--工时"+(i++)+"\n");
             infoData.append("*类型："+ (TextUtils.isEmpty(items.timeType)?"":items.timeType) +"\n");
             infoData.append("*工时项目："+ (TextUtils.isEmpty(items.timeProject)?"":items.timeProject) +"\n");
             infoData.append("  定损金额："+ items.dsAmount+"\n");
-            infoData.append("  定损备注："+ items.dsRemark+"\n");
+            infoData.append("  定损备注："+ items.dsRemark+"\n\n");
         }
-        showHintStr(infoData.toString());
+        showHintStr(infoData.toString(),"工时信息");
     }
 
     private void SaveDataToEntity(){
@@ -391,7 +411,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         if (dsAptitudes.getCheckedRadioButtonId()==R.id.CxDsM_dsAptitudes_RB2) damageEnt.dsAptitudes = "1";
 //        SetTextUtil.setTextViewText(carSeries,damageEnt.carSeries);//车系**
 //        SetTextUtil.setTextViewText(carTypeName,damageEnt.carTypeName);//车品牌**
-//        SetTextUtil.setTextViewText(carStructure,damageEnt.carStructure);//车辆结构**
+        damageEnt.carStructure = carStructure.getText().toString();//车辆结构**
         damageEnt.claimLevel = TypePickeUtil.getValue(claimLevel.getText().toString(),cxDict,"claim_level_type");//索赔险别**
         damageEnt.dsLocation = dsLocation.getText().toString();//定损地点**
 
@@ -402,7 +422,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
 //        displayFileToList() ;  //附件信息列表
 
 //        SetTextUtil.setTextViewText(dsTotalFee,damageEnt.getHjTotal());//换件信息-合计
-//        SetTextUtil.setTextViewText(dsFeeManagement,damageEnt.replaceInfosTotal.dsFeeManagement+"");//管理费
+        damageEnt.replaceInfosTotal.dsFeeManagement = dsFeeManagement.getText().toString();//管理费
         if (damageEnt.replaceInfosTotal==null) damageEnt.replaceInfosTotal = new CxDsWorkEntity.CxDsReplaceInfosTotal();
         damageEnt.replaceInfosTotal.dsFeeResidual = dsFeeResidual.getText().toString();//残值
 //        SetTextUtil.setTextViewText(hsFeeManagement,damageEnt.replaceInfosTotal.hsFeeManagement+"");//核价管理费

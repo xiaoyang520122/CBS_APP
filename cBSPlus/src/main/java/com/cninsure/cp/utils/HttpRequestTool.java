@@ -227,6 +227,12 @@ public class HttpRequestTool {
 	public final static int  CX_JIE_BAOAN_INFO=1091;
 	/**GET查看委托人简称详情 **/
 	public final static int  CX_GET_WT_SHORT_INFO=1092;
+	/**Get 根据报案编号查询订单信息 **/
+	public final static int  CX_GET_ORDER_LIST_BY_BAOAN_UID=1093;
+	/**Get 根据报案编号查询订单信息 **/
+	public final static int  CX_GET_ORDER_VIEW=1094;
+	/**Get 作业图片查询 **/
+	public final static int  CX_GET_WORK_IMG=1095;
 
 
 

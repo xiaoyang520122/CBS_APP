@@ -35,6 +35,7 @@ import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -44,6 +45,7 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
     public CxDsWorkEntity contentJson;
     private LinearLayout cxDsUtillinear;
     private CxDsWorkActivity workActivity;
+    private boolean isSend = false; //是否传数据到后台。
 
 
     @Override
@@ -64,6 +66,7 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
     private void initData() {
         contentJson= (CxDsWorkEntity) getIntent().getSerializableExtra("contentJson");
 //        tempstr = "javascript:getMobileWeb(\'{\"contentJson\":" + JSON.toJSONString(contentJson) + "}\')";
+//        tempstr = "javascript:callJsFunction(\\'"+JSON.toJSONString(contentJson)+"\\')";//"javascript:getMobileWeb(\'{\"contentJson\":" + JSON.toJSONString(contentJson) + "}\')";
         tempstr = "javascript:callJsFunction(\\'"+JSON.toJSONString(contentJson)+"\\')";//"javascript:getMobileWeb(\'{\"contentJson\":" + JSON.toJSONString(contentJson) + "}\')";
         initWebView();
         initView();
@@ -104,9 +107,6 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
         // 3、在高版本的时候我们是需要使用允许访问文件的urls：
         webview.getSettings().setAllowFileAccessFromFileURLs(true);
         webview.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE); // 不让webView从缓存中读取，每次都去网络获取
-//        ViewGroup.LayoutParams p=webview.getLayoutParams();
-//        p.height = 1000;
-//        webview.setLayoutParams(p);
 
 
 // 设置可以支持缩放
@@ -126,46 +126,11 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
         });
         webview.setWebViewClient(new WebViewClientDemo());
 
-//        String loadUrlStr = URLs.WORK_SPACE + workUrls;
-        String loadUrlStr = "http://10.80.60.14:8080/";
-//        String loadUrlStr = "http://sysweb.cnsurvey.cn:8084/parth5";
+//        String loadUrlStr = "http://10.80.60.14:8080/";
+        String loadUrlStr = "http://sysweb.cnsurvey.cn:8084/parth5?time="+new Date().getTime();
         webview.loadUrl(loadUrlStr);
-//        webview.setDf(new MyWebView.PlayFinish() {
-//            @Override
-//            public void After() {
-////                loadurlM();
-//            }
-//        });
     }
 
-    private boolean isLoadur = false;
-    private Timer timer = new Timer();
-
-    private void loadurlM() {
-        if (!isLoadur) {
-            isLoadur = true;
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    Message msg = new Message();
-                    msg.what = 1002;
-                    handler2.sendMessage(msg);
-                }
-            }, 100, 100);
-        }
-    }
-
-    @SuppressLint("HandlerLeak")
-    private Handler handler2 = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == 1002) {
-                webview.loadUrl(tempstr);
-                Log.e("JsonHttpUtils", "handler23********************************==" + tempstr);
-            }
-        }
-    };
 
     private class WebViewClientDemo extends WebViewClient {
         @Override
@@ -177,40 +142,22 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            //在这里执行你想调用的js函数
-//            webview.loadUrl(tempstr);
-//            if (!flag_get_deviceid) {
-//                mLoadUrl();
-//            }
             //安卓调用js方法。注意需要在 onPageFinished 回调里调用
             webview.post(new Runnable() {
                 @Override
                 public void run() {
-                    webview.loadUrl(tempstr);
+//                    webview.loadUrl(tempstr);
+                    if (!isSend){
+                        String sendStr = JSON.toJSONString(contentJson);
+                        webview.loadUrl("javascript:callJsFunction('" + sendStr + "')");
+                    }
                 }
             });
         }
     }
 
-    /***测试功能**/
-    private boolean flag_get_deviceid=false;
-    @SuppressLint("NewApi")
-    private void mLoadUrl(){
-        String androidID="";
-        try{
-            androidID = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-        }catch(Exception e){
-        }finally{
-            webview.evaluateJavascript(tempstr, new ValueCallback<String>() {
-                @Override
-                public void onReceiveValue(String value) {
-                    if(value!=null){
-                        flag_get_deviceid=true;
-                    }
-                }});
-        }
-    }
 
+//    Timer temer =;
     @SuppressLint("HandlerLeak")
     private Handler handler=new Handler(){
 
@@ -231,18 +178,24 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
     /**
      * JS调用java保存或提交审核
      **/
-    public class JsInteration {
+    public class JsInteration {  //
         @JavascriptInterface
         public void requestShowData(String head, String message) {
             try {
-                if (TextUtils.isEmpty(message)) {
+                if (!TextUtils.isEmpty(message) && message.equals("loaded")){
+                    isSend = true;  //后台已获取到Android传递数据
+                }else if (!TextUtils.isEmpty(message)) {
                     workActivity.taskEntity.data.contentJson = JSON.parseObject(message, CxDsWorkEntity.class);
-                    workActivity.displayWorkInfo(); //刷新信息
+//                    workActivity.displayWorkInfo(); //刷新信息
+                    workActivity.handler.sendEmptyMessage(0); //刷新信息
+                    DsUtilActivity.this.finish();  //message为空或null就关闭activity
+                }else if (TextUtils.isEmpty(message)){
+                    DsUtilActivity.this.finish();  //message为空或null就关闭activity
                 }
             } catch (Exception e) {
+                DsUtilActivity.this.finish();  //message为空或null就关闭activity
                 e.printStackTrace();
             }
-            DsUtilActivity.this.finish();
         }
 
         @JavascriptInterface

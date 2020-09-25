@@ -19,8 +19,10 @@ public class DisWorkImageEntity  implements Serializable {
         /**调度任务编号**/
         public String dispatchUid; //":null,
         public long id; //":12,
-        /**图片分类*/
-        public int imageType; //":17,
+        /**图片大类*/
+        public int imageType; //10,
+        /**图片小类*/
+        public Integer imageSubType; //"**标的受损基本情况（10）类别下面添加子类别（新字段：imageSubType）：损失物品类1（101），可继续添加，按照顺序编号即可，如：损失物品类2（102），损失物品类3（103），等等**
         /**图片七牛云名称  http://qiniu.cnsurvey.cn/+*/
         private String imageUrl; //":"IMG-20200403164027-6797E.png",
         public String tenantId; //":null,

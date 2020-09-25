@@ -13,7 +13,7 @@ public class DispersiveImgTypeUtil  {
 
     /**现场环境照片分类*/
     private List<NameValuePair> sceneImgTypes;
-    /**运输单证照片分类*/
+    /**现场状况照片分类*/
     private List<NameValuePair> documentsImgTypes;
 
     /**获取现场环境照片分类数组
@@ -29,7 +29,7 @@ public class DispersiveImgTypeUtil  {
         sceneImgTypes.add(new BasicNameValuePair("施救现场","2"));
         return sceneImgTypes;
     }
-    /**获取运输单证照片分类数组
+    /**获取现场状况照片分类数组
      * * 现场方位标示3,
      *  * 人与标的合影4,
      *  * 标的全景5,
@@ -48,7 +48,7 @@ public class DispersiveImgTypeUtil  {
      *  * 现场货物清单18;
      *  * （17、18类型经确认需求，说归到其他 16）*/
     public List<NameValuePair> getDocumentsImgTypes(){
-        documentsImgTypes = new ArrayList<NameValuePair>(3);
+        documentsImgTypes = new ArrayList<NameValuePair>(15);
         documentsImgTypes.add(new BasicNameValuePair("现场方位标示","3"));
         documentsImgTypes.add(new BasicNameValuePair("人与标的合影","4"));
         documentsImgTypes.add(new BasicNameValuePair("标的全景","5"));
@@ -58,8 +58,8 @@ public class DispersiveImgTypeUtil  {
         documentsImgTypes.add(new BasicNameValuePair("受损标的布置全景","9"));
         documentsImgTypes.add(new BasicNameValuePair("标的受损基本情况","10"));
         documentsImgTypes.add(new BasicNameValuePair("受损标的数量","11"));
-        documentsImgTypes.add(new BasicNameValuePair("受损标的规格铭牌","12"));
-        documentsImgTypes.add(new BasicNameValuePair("发票或价值证明","13"));
+        documentsImgTypes.add(new BasicNameValuePair("受损标的规格、铭牌","12"));
+        documentsImgTypes.add(new BasicNameValuePair("发票（价值证明）","13"));
         documentsImgTypes.add(new BasicNameValuePair("购买合同","14"));
         documentsImgTypes.add(new BasicNameValuePair("维修协议","15"));
         documentsImgTypes.add(new BasicNameValuePair("其他","16"));
