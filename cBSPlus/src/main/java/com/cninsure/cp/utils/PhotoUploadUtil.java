@@ -27,6 +27,7 @@ import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.R;
 import com.cninsure.cp.activity.yjx.YjxSurveyActivity;
 import com.cninsure.cp.entity.FCBasicEntity;
+import com.cninsure.cp.entity.cx.CxImagEntity;
 import com.cninsure.cp.entity.dispersive.DisWorkImageEntity;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -97,7 +98,7 @@ public class PhotoUploadUtil {
 				} else {
 					uploadPoint = 0;
 					progressDialog.dismiss();
-					DialogUtil.getAlertOneButton(context, "上传成功!",new DialogInterface.OnClickListener() {
+					DialogUtil.getAlertOneButton(context, "上传完成!",new DialogInterface.OnClickListener() {
 						
 						@Override
 						public void onClick(DialogInterface arg0, int arg1) {
@@ -435,7 +436,7 @@ public class PhotoUploadUtil {
 					uploadPoint = 0;
 					progressDialog.dismiss();
 
-					Dialog dialog = DialogUtil.getAlertOneButton(context, "上传成功!",null);
+					Dialog dialog = DialogUtil.getAlertOneButton(context, "上传完成!",null);
 					dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
 						@Override
 						public void onDismiss(DialogInterface dialog) {
@@ -544,7 +545,7 @@ public class PhotoUploadUtil {
 				} else {
 					uploadPoint = 0;
 					progressDialog.dismiss();
-					DialogUtil.getAlertOneButton(context, "上传成功!", (arg0, arg1) -> {
+					DialogUtil.getAlertOneButton(context, "上传完成!", (arg0, arg1) -> {
 						EventBus.getDefault().post("UPLOAD_SUCCESS");
 						String result=resultinfo.substring(1, resultinfo.length()-1);
 						Log.e("JsonHttpUtils", "车险上传图片成功返回数据："+resultinfo);
@@ -571,6 +572,116 @@ public class PhotoUploadUtil {
 					uploadPoint = 0;
 					progressDialog.dismiss();
 					DialogUtil.getAlertOneButton(context, "上传完成，部分上传失败!", (arg0, arg1) -> EventBus.getDefault().post("UPLOAD_SUCCESS")).show();
+					sendEvent();
+				}
+			}
+
+			@Override
+			public void onStart() {
+
+				if (progressDialog == null || !progressDialog.isShowing()) {
+					View view = getprogressView();
+					Builder builder = new AlertDialog.Builder(context);
+					builder.setTitle("上传中……");
+					builder.setView(view);
+					progressDialog = builder.create();
+					progressDialog.setCancelable(false);
+					progressDialog.show();
+				}
+				String titleBase = context.getString(R.string.progress_current) + context.getString(R.string.progress_current2);
+				progresstitle.setText(String.format(titleBase, uploadPoint + 1, submitImgEnList.size()));
+			}
+
+			private View getprogressView() {
+				View view = (context).getLayoutInflater().inflate(R.layout.uploadprogress_dialog, null);
+				progresstitle = view.findViewById(R.id.upprogress_title);
+				progresscurrent = view.findViewById(R.id.upprogress_bfb);
+				progressBar = view.findViewById(R.id.upprogress_progress);
+				return view;
+			}
+
+			// 计算百分比进度
+			@Override
+			public void onLoading(long total, long current, boolean isUploading) {
+				if (isUploading) {
+					progressBar.setProgress((int) (((int) current / (float) total) * 100));
+					progresscurrent.setText((int) ((current / (float) total) * 100) + "%");
+				}
+			}
+		});
+	}
+
+
+	/**
+	 * f分散型图片上传
+	 * @param context
+	 * @param submitImgEnList
+	 * @param uploadPath
+	 * @param httpParams
+	 */
+	public static void newCxImgSave(final Activity context, final List<CxImagEntity> submitImgEnList,
+										final String uploadPath,final List<NameValuePair> httpParams){
+		Log.e("JsonHttpUtils", "上传图片请求地址："+uploadPath);
+		RequestParams params = new RequestParams("UTF-8");
+		params.addBodyParameter("userId",  AppApplication.getUSER().data.userId);
+		params.addBodyParameter("orderUid",  httpParams.get(0).getValue());
+		params.addBodyParameter("baoanUid",  httpParams.get(1).getValue());
+
+		String url = submitImgEnList.get(uploadPoint).fileUrl;
+		String fileUrl = url.substring(url.lastIndexOf("/")+1);
+
+		params.addBodyParameter("source",   submitImgEnList.get(uploadPoint).source);
+		params.addBodyParameter("type", submitImgEnList.get(uploadPoint).type+"");
+		params.addBodyParameter("fileUrl",fileUrl );
+		params.addBodyParameter("fileName", submitImgEnList.get(uploadPoint).fileName);
+		params.addBodyParameter("fileSuffix", submitImgEnList.get(uploadPoint).fileSuffix);
+		params.addBodyParameter("digest", MD5Test.GetMD5Code("nomessagedigest"));
+
+		HttpUtils http = new HttpUtils(60*1000);
+
+		/**设置次cookie**/
+		http.configCookieStore(HttpRequestTool.cookie);
+
+		http.send(HttpRequest.HttpMethod.POST, uploadPath, params, new RequestCallBack<String>() {
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+
+				final String resultinfo=responseInfo.result;
+				successful="success";
+				uploadPoint++;
+				Log.e("JsonHttpUtils", "车险图片信息保存成功返回数据："+resultinfo);
+				if (uploadPoint < submitImgEnList.size()) {
+                    newCxImgSave(context, submitImgEnList, uploadPath,httpParams);
+				} else {
+					uploadPoint = 0;
+					progressDialog.dismiss();
+					DialogUtil.getAlertOneButton(context, "保存完成!", (arg0, arg1) -> {
+						EventBus.getDefault().post("UPLOAD_SUCCESS");
+						String result=resultinfo.substring(1, resultinfo.length()-1);
+					}).show();
+					sendEvent();
+				}
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				try {
+					Log.e("JsonHttpUtils", "车险上传图片失败返回数据："+msg);
+					String msge = error.getMessage();
+					FCBasicEntity fcentity=JSON.parseObject(error.getMessage(), FCBasicEntity.class);
+					DialogUtil.getErrDialog(context, "保存失败!"+fcentity.message).show();
+					ToastUtil.showToastLong(context,"保存失败!"+fcentity.message);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				uploadPoint++;
+				if (uploadPoint < submitImgEnList.size()) {
+                    newCxImgSave(context, submitImgEnList, uploadPath,httpParams);
+				} else {
+					uploadPoint = 0;
+					progressDialog.dismiss();
+					DialogUtil.getAlertOneButton(context, "保存完成，部分上传失败!", (arg0, arg1) -> EventBus.getDefault().post("UPLOAD_SUCCESS")).show();
 					sendEvent();
 				}
 			}

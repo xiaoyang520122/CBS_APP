@@ -38,6 +38,7 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 
 import com.cninsure.cp.activity.yjx.YjxTempStorageActivity;
 import com.cninsure.cp.activty.AboutUsAvtivity;
+import com.cninsure.cp.activty.AccountActivity;
 import com.cninsure.cp.activty.BankCardActivity;
 import com.cninsure.cp.activty.CancelAndSubmitActivity;
 import com.cninsure.cp.activty.ChangPassActivity;
@@ -397,8 +398,8 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 			startActivity(new Intent(this, ScoreActivity.class));
 			break;
 
-		case R.id.my_menu_backcard:// 银行卡
-			Intent intent = new Intent(this, BankCardActivity.class);
+		case R.id.my_menu_account:// 我的账户
+			Intent intent = new Intent(this, AccountActivity.class);
 //			UserInfo ui=f3.userInfo;
 //			intent.putExtra("UserInfo", ui);
 			startActivity(intent);

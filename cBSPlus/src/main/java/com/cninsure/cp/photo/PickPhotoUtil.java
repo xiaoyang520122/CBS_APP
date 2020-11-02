@@ -1,13 +1,13 @@
 package com.cninsure.cp.photo;
 
-import java.io.File;
-
-import com.cninsure.cp.utils.DialogUtil;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
+
+import com.cninsure.cp.utils.DialogUtil;
+
+import java.io.File;
 
 public class PickPhotoUtil {
 

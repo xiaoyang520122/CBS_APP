@@ -1,5 +1,6 @@
 package com.cninsure.cp.cx.adapter;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.cninsure.cp.R;
+import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
 import com.cninsure.cp.dispersive.DispersiveWorkActivity;
 import com.cninsure.cp.entity.cx.CxImagEntity;
 import com.cninsure.cp.entity.dispersive.DisWorkImageEntity;
@@ -42,26 +44,28 @@ public class CxGalleryAdapter extends BaseAdapter{
 	/**图片集合*/
 	public List<CxImagEntity>  imgResources;//,BasicImgList;  //图片实体合集
 	private CxGalleryAdapter instans;
-	private Context context;  //上下文
+	private CxJieBaoanInfoActivity context;  //上下文
 	private LayoutInflater inflater ;  //资源解析器
 	private Dialog dialog;  //图片操作弹框
 	private String imageType;  //所在的ImageType
-	private CxImagAdapter.SaveImgCallBack addScb; //通过该接口的回调将数据写入到activity的图片实体类中，并刷新adapter
+	private int groupPosition;
+	private SaveImgCallBack addScb; //通过该接口的回调将数据写入到activity的图片实体类中，并刷新adapter
 
 	private CxGalleryAdapter(){}
 
-	public CxGalleryAdapter(Context context, List<CxImagEntity> imgResources , String imageType, CxImagAdapter.SaveImgCallBack addScb) {
+	public CxGalleryAdapter(CxJieBaoanInfoActivity context, List<CxImagEntity> imgResources , String imageType, int groupPosition, SaveImgCallBack addScb) {
 		this.imgResources = imgResources;
 		instans = this;
 		inflater = LayoutInflater.from(context);
 		this.context = context;
 		this.imageType = imageType;
 		this.addScb = addScb;
+		this.groupPosition = groupPosition;
 	}
 
 		@Override
 		public int getCount() {
-			return imgResources.size();
+			return imgResources.size()+1;
 		}
 
 		@Override
@@ -86,7 +90,7 @@ public class CxGalleryAdapter extends BaseAdapter{
 				String tempPath;
 				tempPath=imgResources.get(arg0).getImageUrl();
 				if (!TextUtils.isEmpty(tempPath)) {
-					if (tempPath.indexOf("://")>-1) {
+					if (imgResources.get(arg0).id!=null) {
 						Glide.with(context).load(tempPath).placeholder(R.drawable.loadingwait_hui)
 						.error(R.drawable.loadingerror_).into(img);
 					}else {
@@ -122,7 +126,7 @@ public class CxGalleryAdapter extends BaseAdapter{
 //		View delete = (View) view.findViewById(R.id.photography_deleteplay);
 		if (imgResources!=null && I<imgResources.size() && !TextUtils.isEmpty(imgResources.get(I).getImageUrl())) {
 			display.setVisibility(View.VISIBLE);
-			if (imgResources.get(I).getImageUrl().indexOf("://")==-1) {//删除选择未上传的，而不是已上传的，已上传的图片不能删除
+			if (imgResources.get(I).id==null) {//删除选择未上传的，而不是已上传的，已上传的图片不能删除
 //				delete.setVisibility(View.VISIBLE);
 			}else {//已上传图片直接显示
 				ImageDisplayUtil.displayByMyView(context, imgResources.get(I).getImageUrl());
@@ -198,6 +202,7 @@ public class CxGalleryAdapter extends BaseAdapter{
 	 */
 	private void deleteAndRemovePhoto(int It){
 		CxImagEntity imgData=imgResources.get(It);
+		addScb.deleteImg(imgData,groupPosition);
 		File file=new File(imgData.getImageUrl());
 		if (file.exists()) {file.delete();}
 		imgResources.remove(imgData);
@@ -208,7 +213,7 @@ public class CxGalleryAdapter extends BaseAdapter{
 		Intent cameraIntent = new Intent(context, CXPhotoActivity.class);
 		cameraIntent.putExtra("photoType", imageType);
 		cameraIntent.putExtra("ActivityName", "NEW_CX");
-//		cameraIntent.putExtra("orderUid", context.getStringExtra("orderUid"));
+		cameraIntent.putExtra("GroupId", groupPosition);
 		context.startActivity(cameraIntent);
 	}
 
@@ -216,7 +221,7 @@ public class CxGalleryAdapter extends BaseAdapter{
 		Intent getAlbum=new Intent(context, PhotoChoiceActivity.class);
 		getAlbum.putExtra("photoType", imageType);
 		getAlbum.putExtra("ActivityName", "NEW_CX");
-		getAlbum.putExtra("addScb", addScb);
+//		getAlbum.putExtra("groupPosition", groupPosition);
 		context.startActivity(getAlbum);
 	}
 

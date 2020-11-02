@@ -8,7 +8,6 @@ package com.cninsure.cp.entity.cx;
 * @date: 2020年7月8日 下午5:09:01
  */
 public class CxOrderStatus {
-	
 	public static final int WAIT_DISPATCH = 1;//待调度
 	public static final int DISPATCHED = 2;//已调度
 	public static final int DISPATCH_FAIL = 3;//调度受阻
@@ -20,5 +19,4 @@ public class CxOrderStatus {
 	public static final int PASS = 9;//作业审核通过
 	public static final int ADOPT = 10;//作业审核退回
 	public static final int REMOVE = 99;//移除
-
 }

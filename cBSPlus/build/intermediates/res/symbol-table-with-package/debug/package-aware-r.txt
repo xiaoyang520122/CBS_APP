@@ -648,6 +648,7 @@ color highlighted_text_material_dark
 color highlighted_text_material_light
 color holo_red_light
 color hui_bg
+color hui_chat_bg
 color hui_hint
 color hui_line
 color hui_min
@@ -965,6 +966,7 @@ dimen text_defaul
 dimen text_h
 dimen text_l
 dimen text_m
+dimen text_minminmin
 dimen text_s
 dimen text_sl
 dimen text_xh
@@ -1064,6 +1066,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable account_fill_48
 drawable add
 drawable add_new_bule
 drawable add_new_order_bule36
@@ -1071,6 +1074,7 @@ drawable add_photos_bule36
 drawable alaph_0
 drawable album_blue38
 drawable alert_ico_red86
+drawable audio_hui100
 drawable avd_hide_password
 drawable avd_show_password
 drawable back_hui_48
@@ -1095,6 +1099,7 @@ drawable bank_youzheng
 drawable bank_zhaoshang
 drawable bank_zhongxin
 drawable bank_zhongyin
+drawable baozheng_cel_64
 drawable bd_ocr_hint_align_bank_card
 drawable bd_ocr_hint_align_bg
 drawable bd_ocr_take_photo_highlight
@@ -1118,6 +1123,7 @@ drawable camera_blue38
 drawable camera_blue_yellow2_64
 drawable camera_blue_yellow_48
 drawable camera_blue_yellow_64
+drawable can_sel_64
 drawable center_add_bule_bg
 drawable chang_pass_white200
 drawable chang_pass_white64
@@ -1125,6 +1131,10 @@ drawable chang_phone_bule48
 drawable chang_phone_white190
 drawable chang_phone_white64
 drawable changpass_oreng48
+drawable chat_back_hui100
+drawable chat_bg_white
+drawable chat_bg_white_right
+drawable chat_engneer_hui100
 drawable check_date_hui32
 drawable check_photo_button
 drawable check_photo_hight
@@ -1159,6 +1169,7 @@ drawable corners_hui_4_10dp
 drawable corners_hui_line
 drawable corners_hui_line5
 drawable corners_read_4_10dp
+drawable corners_read_4_20dp
 drawable corners_read_4_30dp
 drawable corners_readlightl_4_30dp
 drawable corners_red_30dp
@@ -1227,6 +1238,7 @@ drawable helpphone_white64
 drawable hg
 drawable hint_yello_24
 drawable hint_yellow_sj_38
+drawable history_64
 drawable ic_launcher
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
@@ -1340,6 +1352,7 @@ drawable place_blue_yellow2_64
 drawable place_blue_yellow_48
 drawable place_blue_yellow_64
 drawable plat_white_64
+drawable pos_64
 drawable ppt
 drawable product_32_bule
 drawable progressbar
@@ -1857,6 +1870,7 @@ id LeavingMsg_edit
 id LeavingMsg_headView
 id LeavingMsg_listView
 id LeavingMsg_submit_button
+id LeavingMsg_text_submit_button
 id LeavingMsg_wtren
 id LinePath_cancle
 id LinePath_delete
@@ -2253,6 +2267,16 @@ id YjxSHV_surveyConclusion
 id YjxSHV_surveyDescription
 id aboutus_link
 id aboutus_phonenumber
+id account_Amount
+id account_Cardlogo
+id account_Extract_lineLayout
+id account_MSGCENTER_Back
+id account_bancCard_info_layout
+id account_banc_card_no
+id account_baozheng_amount
+id account_can_extract_amount
+id account_car_name
+id account_extract_history_lineLayout
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -2296,6 +2320,12 @@ id alertTitle
 id all
 id always
 id async
+id audiolistitem_audioImag
+id audiolistitem_audioLong
+id audiolistitem_time
+id audiolistitemy_audioImag
+id audiolistitemy_audioLong
+id audiolistitemy_time
 id auto
 id autofocus
 id back_btn
@@ -2343,6 +2373,8 @@ id changpass_newpass2
 id changpass_newphone
 id changpass_submit_button
 id changpass_yspass
+id chat_avatar1
+id chat_avatar2
 id checkBox1
 id checkbox
 id chronometer
@@ -2575,6 +2607,9 @@ id editer_setmarker_wifi
 id end
 id enterAlways
 id enterAlwaysCollapsed
+id examineMsg_empty_textView
+id examineMsg_listView
+id examine_input_Edittext
 id exitUntilCollapsed
 id expand_activities_button
 id expandablelist_item_title
@@ -2720,7 +2755,7 @@ id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
 id my_menu_aboutus
-id my_menu_backcard
+id my_menu_account
 id my_menu_disperdive
 id my_menu_dqbb
 id my_menu_excetUser
@@ -2747,6 +2782,8 @@ id mybackcard_addCardOrChange
 id mybackcard_cancleTv
 id navigation_header_container
 id never
+id newCx_ImgFragment_button
+id newCx_expandablelistview
 id none
 id normal
 id notification_background
@@ -2966,6 +3003,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout about_us
+layout account_activity
 layout action_view
 layout actionbar_layout
 layout activity_case_info
@@ -2989,6 +3027,8 @@ layout add_layout
 layout add_new_order_popup_view
 layout add_view_buttom
 layout alert_gif_dialog_view
+layout audio_list_item
+layout audio_list_item_yellow
 layout back_order_layout
 layout banc_dilog_view
 layout bottom_menu
@@ -3019,6 +3059,7 @@ layout cx_damage_fragment_item
 layout cx_damage_work_item
 layout cx_ds_util_activity
 layout cx_ds_work_main_activity
+layout cx_expandablelistview
 layout cx_injured_fragment
 layout cx_injured_fragment_item
 layout cx_jie_baoan_info_activity
@@ -3067,6 +3108,7 @@ layout empty_dispatch_view
 layout empty_view
 layout end_order_listview
 layout error_shenhe_display_view
+layout examine_layout
 layout expandable_child_item
 layout fc_baoan_info
 layout fc_baodan_info

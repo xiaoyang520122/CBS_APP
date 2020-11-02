@@ -160,8 +160,21 @@ public class BaoanInfoFragment extends BaseFragment {
             orderList = new ArrayList<>();
             e.printStackTrace();
         }
+        removeCurrentOrder();
         adapter = new MyOrderListAdapter();
         orderListView.setAdapter(adapter);
+    }
+
+    /**
+     * 移除接报案下面订单中的当前订单
+     */
+    private void removeCurrentOrder(){
+        for (int i=0;i<orderList.size();i++){
+            if (orderList.get(i).uid.equals( activity.QorderUid)){
+                orderList.remove(i);
+                return;
+            }
+        }
     }
 
     /**

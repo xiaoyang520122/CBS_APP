@@ -19,6 +19,7 @@ import com.cninsure.cp.LoadingActivity;
 import com.cninsure.cp.LoginActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.activty.AboutUsAvtivity;
+import com.cninsure.cp.activty.AccountActivity;
 import com.cninsure.cp.activty.BankCardActivity;
 import com.cninsure.cp.activty.HelpCenterActivity;
 import com.cninsure.cp.activty.MessageCenterActivity;
@@ -259,10 +260,8 @@ public class CtCenterActivity extends BaseActivity {
                 startActivity(new Intent(this, ScoreActivity.class));
                 break;
 
-            case R.id.my_menu_backcard:// 银行卡
-                Intent intent = new Intent(this, BankCardActivity.class);
-//			UserInfo ui=f3.userInfo;
-//			intent.putExtra("UserInfo", ui);
+            case R.id.my_menu_account:// 银行卡
+                Intent intent = new Intent(this, AccountActivity.class);
                 startActivity(intent);
                 break;
 

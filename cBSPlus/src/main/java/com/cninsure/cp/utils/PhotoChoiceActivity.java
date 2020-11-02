@@ -32,7 +32,10 @@ import com.bumptech.glide.Glide;
 import com.cninsure.cp.R;
 import com.cninsure.cp.activty.WorkOrderActivty;
 import com.cninsure.cp.activty.WorkOrderActivtyhelp;
+import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
 import com.cninsure.cp.cx.adapter.CxImagAdapter;
+import com.cninsure.cp.cx.adapter.SaveImgCallBack;
+import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment;
 import com.cninsure.cp.dispersive.DispersiveWorkActivity;
 import com.cninsure.cp.entity.WorkPhotos.TableData.WorkPhotoEntitiy;
 import com.cninsure.cp.entity.cx.CxImagEntity;
@@ -84,7 +87,10 @@ public class PhotoChoiceActivity extends Activity {
 		sureTv = (TextView) findViewById(R.id.PCHOICE_RTV);
 		titleTv = (TextView) findViewById(R.id.PCHOICE_CTV);
 		String actionActivityName=getIntent().getStringExtra("ActivityName");
-		if (!"DispersiveWorkActivity".equals(actionActivityName)){
+		if ("NEW_CX".equals(actionActivityName)){  //车险新全流程
+//			String title = WorkOrderActivty.photoType.tableData.data.get(GroupId).description;
+//			titleTv.setText(title);
+		}else if (!"DispersiveWorkActivity".equals(actionActivityName)){
 			String title = WorkOrderActivty.photoType.tableData.data.get(GroupId).description;
 			titleTv.setText(title);
 		}
@@ -114,17 +120,17 @@ public class PhotoChoiceActivity extends Activity {
 
 	/**添加新车险全流程图片**/
 	private void addCxNewImg(){
-		CxImagAdapter.SaveImgCallBack addScb = (CxImagAdapter.SaveImgCallBack) getIntent().getSerializableExtra("addScb");
 		List<CxImagEntity> cieListTemp = new ArrayList<>();
 		String imgType = getIntent().getStringExtra("photoType");
 		for (WorkPhotoEntitiy wpe:temPhotoEntitiys){
 			CxImagEntity cieEn = new CxImagEntity();
 			cieEn.type = imgType;
+			cieEn.source = "2";
 			cieEn.fileUrl = wpe.location;
-			cieEn.fileName = wpe.location.substring(0,wpe.location.length()-4);
+			cieEn.fileName = wpe.location.substring(wpe.location.lastIndexOf("/")+1,wpe.location.length()-4);
 			cieListTemp.add(cieEn);
 		}
-		addScb.addImg(cieListTemp);
+		CxImagFragment.adapter.addScb.addImg(cieListTemp,getIntent().getIntExtra("groupPosition",0));
 	}
 
 	/** 判断是选择还是取消选择 **/

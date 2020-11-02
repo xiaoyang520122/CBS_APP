@@ -106,7 +106,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 	/** 非车任务列表 **/
 	private FCOrderEntity FcOrders;
 	private List<PublicOrderEntity> DataALL;
-	/*医健险任务列表*/
+	/**医健险任务列表*/
 	private List<YjxCaseDispatchTable> yjxGgsOrderList;
 	@SuppressLint("SimpleDateFormat")
 	private SimpleDateFormat simpSF=new SimpleDateFormat("HH:mm:ss");
@@ -690,14 +690,8 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				});
 				
 				//设置线路规划
-				vh.naviTv.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View arg0) {
-						NaviHelper.startNavi(getActivity(), idata.caseLocationLatitude, idata.caseLocationLongitude,
-								idata.caseLocation, idata.baoanPersonPhone);
-					}
-				});
+				vh.naviTv.setOnClickListener(arg0 -> NaviHelper.startNavi(getActivity(), idata.caseLocationLatitude, idata.caseLocationLongitude,
+						idata.caseLocation, idata.baoanPersonPhone));
 				
 				/**查看审核报告*/
 				if (idata.status==7) {
@@ -707,12 +701,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				
 			}
 			/**公共部分**/
-			vh.copyTv.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-					CopyUtils.copy(OrderNowFragment.this.getActivity(), vh.baoanNo.getText().toString());
-				}
-			});
+			vh.copyTv.setOnClickListener(arg0 -> CopyUtils.copy(OrderNowFragment.this.getActivity(), vh.baoanNo.getText().toString()));
 			
 			return conview;
 		}
@@ -730,15 +719,12 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 						CallUtils.call(OrderNowFragment.this.getActivity(), idata.lxPhone);
 					}
 				});
-				secendTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
-						Intent intent = new Intent(getActivity(), SurveyActivity.class);
-						int id = Integer.parseInt(data.get(itemPostion).id + "");
-						intent.putExtra("id", id);
-						intent.putExtra("caseNo", data.get(itemPostion).caseNo);
-						startActivity(intent);
-					}
+				secendTv.setOnClickListener(arg0 -> {
+					Intent intent = new Intent(getActivity(), SurveyActivity.class);
+					int id = Integer.parseInt(data.get(itemPostion).id + "");
+					intent.putExtra("id", id);
+					intent.putExtra("caseNo", data.get(itemPostion).caseNo);
+					startActivity(intent);
 				});
 				return;
 			}
@@ -750,124 +736,76 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			
 			/***到了这里就是车险的案件了***/
 			if (data.get(itemPostion).status == 2) {  //未接单状态 可以选择取消订单或接受
-				firstTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
-						cancelOrder(itemPostion);//取消订单
-					}
+				firstTv.setOnClickListener(arg0 -> {
+					cancelOrder(itemPostion);//取消订单
 				});
-				secendTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
-						reciveOrder(itemPostion);//接受订单
-					}
+				secendTv.setOnClickListener(arg0 -> {
+					reciveOrder(itemPostion);//接受订单
 				});
 				return;
 			} else if (data.get(itemPostion).status == 4) {//案件也接单，只显示蓝色按钮，修改文本并设置点击事件（直接跳转到作业界面）
 				firstTv.setText("线路规划");
 				secendTv.setText("去作业");
-				firstTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
-						NaviHelper.startNavi(getActivity(), idata.caseLocationLatitude, idata.caseLocationLongitude,
-								idata.caseLocation, idata.baoanPersonPhone);
-					}
-				});
-				secendTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
-						jumpToWorkActivity(true, data.get(itemPostion).uid, 
-								data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion));
-					}
-				});
+				firstTv.setOnClickListener(arg0 -> NaviHelper.startNavi(getActivity(), idata.caseLocationLatitude, idata.caseLocationLongitude,
+						idata.caseLocation, idata.baoanPersonPhone));
+				secendTv.setOnClickListener(arg0 -> jumpToWorkActivity(true, data.get(itemPostion).uid,
+						data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion)));
 			}  else if (data.get(itemPostion).status == 6) { /**案件作业中*/
 				firstTv.setText("提交审核");
 				secendTv.setText("去作业");
 				
-				firstTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {//提交审核
-						List<NameValuePair> params = new ArrayList<NameValuePair>();
-						params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
-						params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
-						HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
-						loadDialog.setMessage("操作中……").show();
-					}
+				firstTv.setOnClickListener(arg0 -> {//提交审核
+					List<NameValuePair> params = new ArrayList<NameValuePair>();
+					params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
+					params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
+					HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
+					loadDialog.setMessage("操作中……").show();
 				});
-				secendTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
-						jumpToWorkActivity(true, data.get(itemPostion).uid, 
-								data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion));
-					}
-				});
+				secendTv.setOnClickListener(arg0 -> jumpToWorkActivity(true, data.get(itemPostion).uid,
+						data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion)));
 			} else if (data.get(itemPostion).status == 10) { /**审核退回*/
 				firstTv.setText("提交审核");
 				secendTv.setText("去作业");
-				firstTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {//提交审核
-						List<NameValuePair> params = new ArrayList<NameValuePair>();
-						params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
-						params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
-						HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
-						loadDialog.setMessage("操作中……").show();
-					}
+				firstTv.setOnClickListener(arg0 -> {//提交审核
+					List<NameValuePair> params = new ArrayList<NameValuePair>();
+					params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
+					params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
+					HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
+					loadDialog.setMessage("操作中……").show();
 				});
-				secendTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
-						jumpToWorkActivity(true, data.get(itemPostion).uid, 
-								data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion));
-					}
-				});
+				secendTv.setOnClickListener(arg0 -> jumpToWorkActivity(true, data.get(itemPostion).uid,
+						data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion)));
 			}
 		}
 		
 		/***医健险案件item底部按钮点击事件设置***/
 		private void setYjxButtonTvOnclick(final PublicOrderEntity idata, TextView firstTv, TextView secendTv, final PublicOrderEntity dataItem, final int itemPostion) {
 			if (dataItem.status == 1) {
-				firstTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
+				firstTv.setOnClickListener(arg0 -> {
 //						//取消订单
-						paramsList = new ArrayList<String>(2);
-						paramsList.add("id");
-						paramsList.add(dataItem.id+"");
-						paramsList.add("status");
-						paramsList.add(YjxStatus.REFUSE+"");
-						HttpUtils.requestGet(URLs.YJX_CHANGE_STATUS, paramsList, HttpRequestTool.YJX_ORDER_BACK);
-					}
+					paramsList = new ArrayList<String>(2);
+					paramsList.add("id");
+					paramsList.add(dataItem.id+"");
+					paramsList.add("status");
+					paramsList.add(YjxStatus.REFUSE+"");
+					HttpUtils.requestGet(URLs.YJX_CHANGE_STATUS, paramsList, HttpRequestTool.YJX_ORDER_BACK);
 				});
-				secendTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
+				secendTv.setOnClickListener(arg0 -> {
 //						//接受订单
-						paramsList = new ArrayList<String>(2);
-						paramsList.add("id");
-						paramsList.add(dataItem.id+"");
-						paramsList.add("status");
-						paramsList.add(YjxStatus.RECEIVE+"");
-						HttpUtils.requestGet(URLs.YJX_CHANGE_STATUS, paramsList, HttpRequestTool.YJX_ORDER_ACCEPT);
-					}
+					paramsList = new ArrayList<String>(2);
+					paramsList.add("id");
+					paramsList.add(dataItem.id+"");
+					paramsList.add("status");
+					paramsList.add(YjxStatus.RECEIVE+"");
+					HttpUtils.requestGet(URLs.YJX_CHANGE_STATUS, paramsList, HttpRequestTool.YJX_ORDER_ACCEPT);
 				});
 				return;
 			} else if (data.get(itemPostion).status == 2) {//案件也接单，只显示蓝色按钮，修改文本并设置点击事件（直接跳转到作业界面）
 				firstTv.setText("线路规划");
 				secendTv.setText("去作业");
-				firstTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
-						NaviHelper.startNavi(getActivity(), idata.caseLocationLatitude, idata.caseLocationLongitude,
-								idata.caseLocation, idata.baoanPersonPhone);
-					}
-				});
-				secendTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
-						jumpToYJXWorkActivity(true, data.get(itemPostion));
-					}
-				});
+				firstTv.setOnClickListener(arg0 -> NaviHelper.startNavi(getActivity(), idata.caseLocationLatitude, idata.caseLocationLongitude,
+						idata.caseLocation, idata.baoanPersonPhone));
+				secendTv.setOnClickListener(arg0 -> jumpToYJXWorkActivity(true, data.get(itemPostion)));
 			}  else if (data.get(itemPostion).status == 88) {
 				firstTv.setText("提交审核");
 				secendTv.setText("去作业");

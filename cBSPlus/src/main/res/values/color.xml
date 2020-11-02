@@ -6,6 +6,7 @@
     <color name="white">#ffffffff</color>
     <color name="hui_bg">#fff0eff7</color>
     <color name="hui_line">#ffd7d7d7</color>
+    <color name="hui_chat_bg">#fff6f6f5</color>
     <color name="hui_hint">#ffb5b5b5</color>
     <color name="hui_min">#ff7c7c7c</color>
     <color name="hui_text_m">#ffcdcdcd</color>

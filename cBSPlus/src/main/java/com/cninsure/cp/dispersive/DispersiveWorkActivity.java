@@ -265,15 +265,15 @@ public class DispersiveWorkActivity extends BaseActivity {
     private void initPagerView() {
         viewlist = new ArrayList<View>(4);
         msgView = LayoutInflater.from(this).inflate(R.layout.dispersive_work_info_view, null);
-//        photoListView1 = (ExpandableListView) LayoutInflater.from(this).inflate(R.layout.public_expandablelistview, null);
+//      photoListView1 = (ExpandableListView) LayoutInflater.from(this).inflate(R.layout.public_expandablelistview, null);
         photoListView2 = (ExpandableListView) LayoutInflater.from(this).inflate(R.layout.public_expandablelistview, null);
         examineView =  LayoutInflater.from(this).inflate(R.layout.dispersive_work_examine_view, null);
 
-//        uploadActivityHelp=new ParkPhotoUploadActivityHelp3(this);
-//        uploadActivityHelp.setview(examineView);
+//      uploadActivityHelp=new ParkPhotoUploadActivityHelp3(this);
+//      uploadActivityHelp.setview(examineView);
         viewlist=new ArrayList<View>();
         viewlist.add(msgView);
-//        viewlist.add(photoListView1);
+//      viewlist.add(photoListView1);
         viewlist.add(photoListView2);
         viewlist.add(examineView);
         viewPager.setAdapter(new PagerAdapter() {

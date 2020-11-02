@@ -163,10 +163,10 @@ public class LinePathActivity extends BaseActivity implements OnClickListener {
 	
 	@Override
 	protected void onStop() {
-		super.onPause();
-		  Intent intent=new Intent();
-	      intent.putExtra("LinePathFilePath", filePath);
-	      setResult(HttpRequestTool.LINEPATH, intent);
+		super.onStop();
+		Intent intent = new Intent();
+		intent.putExtra("LinePathFilePath", filePath);
+		setResult(HttpRequestTool.LINEPATH, intent);
 	}
 	
 	/**

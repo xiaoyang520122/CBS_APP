@@ -18,6 +18,7 @@
     <dimen name="text_15">15sp</dimen>
     <dimen name="text_h">17sp</dimen>
     <dimen name="text_xh">18sp</dimen>
+    <dimen name="text_minminmin">11sp</dimen>
     
     <dimen name="my_menu_ico_size">20.0sp</dimen>
      <dimen name="survey_marginTop">10sp</dimen>

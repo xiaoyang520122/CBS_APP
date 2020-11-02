@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui_chat_bg"
+    android:gravity="bottom|center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/examineMsg_empty_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:gravity="top"
+        android:layout_margin="10dp"
+        android:text="无留言信息"
+        android:textColor="@color/hui_text_xh" />
+
+    <ListView
+        android:id="@+id/examineMsg_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="10dp"
+        android:scrollbars="none" >
+    </ListView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hui_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:padding="5dp" >
+
+        <Button
+            android:id="@+id/LeavingMsg_text_submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/corners_read_4_20dp"
+            android:gravity="center"
+            android:text="发送"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_defaul" />
+
+        <EditText
+            android:id="@+id/examine_input_Edittext"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/LeavingMsg_text_submit_button"
+            android:background="@drawable/corners_hui_line5"
+            android:gravity="center_vertical"
+            android:hint="请录入信息！"
+            android:textColorHint="@color/hui_text_xh"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true"
+            android:padding="5dp" >
+
+        </EditText>
+    </RelativeLayout>
+
+</LinearLayout>

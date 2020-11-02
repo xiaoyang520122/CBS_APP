@@ -237,6 +237,15 @@ public class URLs implements Serializable {
 	public final static String CX_GET_ORDER_VIEW= IPHOME +"/cx/order/view";
 	/**GET 作业图片查询 baoanUid：报案UID,isDelete:0否，1是**/
 	public final static String CX_GET_WORK_IMG= IPHOME +"/cx/order/work/images/list";
+	/**POST 作业图片保存 userId；orderUid任务id；baoanUid接报案UId；source图片来源
+	 type图片类型；fileUrl；fileName；fileSuffix。**/
+	public final static String CX_UP_WORK_IMG= IPHOME +"/cx/order/work/images/save";
+	/**GET 查询订单留言信息 userId;orderUid*/
+	public final static String CX_GET_EXAMINE_INFO= IPHOME +"/cx/order/work/message/listByOrderUid";
+	/**POST 留言保存 userId;orderUid;content*/
+	public final static String CX_SAVE_EXAMINE_INFO= IPHOME +"/cx/order/work/message/save";
+	/**GET 获取用户账户信息 userId*/
+	public final static String CX_EXT_USER= IPHOME +"/extUser/viewByUserId";
 	
 	
 	

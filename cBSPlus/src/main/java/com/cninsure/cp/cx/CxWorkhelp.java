@@ -446,9 +446,10 @@ private class MyParkGalleryAdapter extends BaseAdapter{
 			intent.addCategory(Intent.CATEGORY_DEFAULT);
 			Glide.with(activity).load(largeUrlList).asBitmap().into(new SimpleTarget<Bitmap>() {  
                 @Override  
-                public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {  
+                public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+					String name = new DateFormat().format("yyyyMMdd_hhmmss", Calendar.getInstance(Locale.CHINA)) + ".jpg";
                 	//将bitmap转换为uri
-					Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(activity.getContentResolver(), resource, null, null));
+					Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(activity.getContentResolver(), resource, name, null));
 					intent.setDataAndType(uri, "image/*");
 					//设置intent数据和图片格式
 					activity.startActivity(intent);

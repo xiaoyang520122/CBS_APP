@@ -32,6 +32,7 @@ import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxSurveyTaskEntity;
 import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.entity.cx.JieBaoanEntity;
+import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
@@ -42,6 +43,7 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -114,7 +116,7 @@ public class TaskBasicInfoFragment extends BaseFragment {
                 cxSurveyDict.list = JSON.parseArray(values.get(0).getValue(), CxDictEntity.DictData.class);
                 break;
             case HttpRequestTool.UPLOAD_FILE_PHOTO: //上传附件成功
-//                fg1.getUploadFileInfo(values);
+                getUploadFileInfo(values);
                 break;
             case HttpRequestTool.CX_NEW_GET_ORDER_VIEW_BY_UID: //获取订单信息
                 LoadDialogUtil.dismissDialog();
@@ -123,6 +125,27 @@ public class TaskBasicInfoFragment extends BaseFragment {
             default:
                 break;
         }
+    }
+
+    /**显示上传成功的附件*/
+    public void getUploadFileInfo(List<NameValuePair> values) {
+        String UpedFileName = values.get(0).getValue();
+        String oldFileName = values.get(1).getValue();
+        workEntity.surveyInfo.enclosureList.add(UpedFileName);
+        submitWorkInfo(cxTaskWorkEntity.data.status);
+    }
+
+    /**作业暂存或提交审核*/
+    private void submitWorkInfo(int status) {
+        List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
+        paramsList.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
+        paramsList.add(new BasicNameValuePair("orderUid", activity.QorderUid));  //订单uid
+        paramsList.add(new BasicNameValuePair("content", JSON.toJSONString(workEntity)));  //作业内容，保存为JSON对象
+        paramsList.add(new BasicNameValuePair("status", status + ""));  //0：暂存；1：提交（送审）
+        if (cxTaskWorkEntity.data.id != null && cxTaskWorkEntity.data.id > 0)
+            paramsList.add(new BasicNameValuePair("id", cxTaskWorkEntity.data.id+""));  //作业id
+        HttpUtils.requestPost(URLs.CX_NEW_WORK_SAVE, paramsList, HttpRequestTool.CX_NEW_WORK_SAVE);
+        LoadDialogUtil.setMessageAndShow(activity, "处理中……");
     }
 
     /**解析获取的到的任务作业信息
@@ -144,12 +167,7 @@ public class TaskBasicInfoFragment extends BaseFragment {
     }
 
     private void setJumpOnclick(){
-        workButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setJumpToWorkActivity();
-            }
-        });
+        workButton.setOnClickListener(v -> setJumpToWorkActivity());
     }
 
     private void setJumpToWorkActivity() {
@@ -165,12 +183,7 @@ public class TaskBasicInfoFragment extends BaseFragment {
 
     /**提示错误后，并在关闭dialog的时候结束*/
     private void disPlayErrorDialog() {
-        DialogUtil.getErrDialogAndFinish(activity, "获取任务信息失败，请联系管理员！", new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                activity.finish();
-            }
-        }).show();
+        DialogUtil.getErrDialogAndFinish(activity, "获取任务信息失败，请联系管理员！", dialog -> activity.finish()).show();
     }
 
 
@@ -200,7 +213,7 @@ public class TaskBasicInfoFragment extends BaseFragment {
 
         @Override
         public int getCount() {
-            return 10;
+            return 12;
         }
 
         @Override
@@ -268,11 +281,21 @@ public class TaskBasicInfoFragment extends BaseFragment {
                 case 11:
                     vHolder.title.setText("▍附件信息:");
                     SetTextUtil.setTextViewText(vHolder.content,getEnclosureListInfoText());
+                    setEnclosureOnclick(vHolder.fTitle);
                     break;
-
             }
             return convertView;
         }
+    }
+
+    /**
+     * 点击添加附件信息
+     * @param fTitle
+     */
+    private void setEnclosureOnclick(TextView fTitle){
+        fTitle.setText("添加附件+");
+        fTitle.setGravity(View.FOCUS_RIGHT);
+        fTitle.setOnClickListener(v -> PickPhotoUtil.albumPhoto(activity, PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE));
     }
 
     /***
@@ -285,15 +308,15 @@ public class TaskBasicInfoFragment extends BaseFragment {
         CxSurveyWorkEntity.SurveyInfoEntity suInTemp = workEntity.surveyInfo;
         sb.append("赔付方式："+getTextInfo(activity.cxDict.getLabelByValue("compensation_method",suInTemp!=null?suInTemp.compensationMethod+"":""))+"\n");
        Integer ckIsInsuranceLiabilityItg = suInTemp!=null?suInTemp.ckIsInsuranceLiability:-1;
-        sb.append("是否属于保险责任：" + (ckIsInsuranceLiabilityItg==null?"--":(ckIsInsuranceLiabilityItg==1?"是":(ckIsInsuranceLiabilityItg==0?"否":"--") +"\n")));
+        sb.append("是否属于保险责任：" + (ckIsInsuranceLiabilityItg==null?"--":(ckIsInsuranceLiabilityItg==1?"是":(ckIsInsuranceLiabilityItg==0?"否":"--"))) +"\n");
         Integer isDaiweiItg = suInTemp!=null?suInTemp.isDaiwei:-1;
-        sb.append("是否代位："+ (isDaiweiItg==null?"--":(isDaiweiItg==1?"是":(isDaiweiItg==0?"否":"--" ) +"\n")));
-        sb.append("估损金额："+getTextInfo(suInTemp!=null?suInTemp.lossAmount:""+"\n"));
+        sb.append("是否代位："+ (isDaiweiItg==null?"--":(isDaiweiItg==1?"是":(isDaiweiItg==0?"否":"--" ) ))+"\n");
+        sb.append("估损金额："+getTextInfo(suInTemp!=null?suInTemp.lossAmount:"")+"\n");
         Integer isSceneItg = suInTemp!=null?suInTemp.isScene:-1;
         sb.append("是否现场报案："+(isSceneItg==null?"--":(isSceneItg==1?"是":(isSceneItg==0?"否":"--")))+"\n");
         Integer isHsLoadItg = suInTemp!=null?suInTemp.isHsLoad:-1;
         sb.append("是否在高速公路："+(isHsLoadItg==null?"--":(isHsLoadItg==1?"是":(isHsLoadItg==0?"否":"--")))+"\n");
-        sb.append("查勘结论："+getTextInfo(activity.cxDict.getLabelByValue("survey_conclusion",suInTemp!=null?suInTemp.surveyConclusion+"":"--") +"\n"));
+        sb.append("查勘结论："+getTextInfo(activity.cxDict.getLabelByValue("survey_conclusion",suInTemp!=null?suInTemp.surveyConclusion+"":"--"))+"\n");
         sb.append("查勘概述："+getTextInfo(suInTemp!=null?suInTemp.surveySummary:"")+"\n");
         Integer ckIsMajorCaseItg = suInTemp!=null?suInTemp.ckIsMajorCase:-1;
         sb.append("是否标为重大案件："+ (ckIsMajorCaseItg==null?"--":(ckIsMajorCaseItg==1?"是":(ckIsMajorCaseItg==0?"否":"--")))+"\n");
@@ -320,7 +343,7 @@ public class TaskBasicInfoFragment extends BaseFragment {
     private String getEnclosureListInfoText() {
         if (workEntity.subjectInfo==null) workEntity.surveyInfo = new CxSurveyWorkEntity.SurveyInfoEntity();
         StringBuffer sb = new StringBuffer();
-        if (workEntity.surveyInfo.enclosureList==null) return "";
+        if (workEntity.surveyInfo==null || workEntity.surveyInfo.enclosureList==null) return "";
         for (String url:workEntity.surveyInfo.enclosureList)  sb.append(url+"\n");
         return  sb.toString();
     }

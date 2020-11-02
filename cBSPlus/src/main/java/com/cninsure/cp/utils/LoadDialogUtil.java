@@ -26,6 +26,8 @@ public class LoadDialogUtil {
 			}
 			setMessage(context,Msg).show();
 		} catch (Exception e) {
+			loadDialog=null;
+			setMessage(context,Msg).show();
 			e.printStackTrace();
 		}
 		return loadDialog;

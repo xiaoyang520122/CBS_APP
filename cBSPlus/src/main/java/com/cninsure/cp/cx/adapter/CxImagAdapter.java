@@ -1,6 +1,7 @@
 package com.cninsure.cp.cx.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.os.Handler;
@@ -13,6 +14,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.cninsure.cp.R;
+import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxImagEntity;
 
@@ -24,26 +26,22 @@ import java.util.List;
     public class CxImagAdapter extends BaseExpandableListAdapter {
 
 
-        public interface SaveImgCallBack extends Serializable {
-            public void addImg(List<CxImagEntity> imgList);
-            public void deleteImg(CxImagEntity deleteImgEn);
-        }
-
         /**图片合集*/
         private List<CxImagEntity> imgEnList;
         private Handler handler;
         private LayoutInflater inflater;
-        private Context context;
-        private List<CxDictEntity.DictData> dictList;
-        private SaveImgCallBack addScb; //通过该接口的回调将数据写入到activity的图片实体类中，并刷新adapter
+        private CxJieBaoanInfoActivity context;
+        public List<CxDictEntity.DictData> dictList;
+        public SaveImgCallBack addScb; //通过该接口的回调将数据写入到activity的图片实体类中，并刷新adapter
 
         private CxImagAdapter(){}
-        public CxImagAdapter(Context context, List<CxImagEntity> documentImgEnList, List<CxDictEntity.DictData> list, SaveImgCallBack scb){
+        public CxImagAdapter(CxJieBaoanInfoActivity context, List<CxImagEntity> documentImgEnList, List<CxDictEntity.DictData> list, SaveImgCallBack scb){
             imgEnList = documentImgEnList;
             inflater = LayoutInflater.from(context);
             this.context = context;
             this.dictList = list;
             this.addScb = scb;
+
             handler = new Handler(){
                 @Override
                 public void handleMessage(Message msg) {
@@ -53,7 +51,7 @@ import java.util.List;
             };
         }
 
-        public void refresh() {
+        public void refresh(int groupPosition) {
             handler.sendMessage(new Message());
         }
 
@@ -81,8 +79,8 @@ import java.util.List;
             contentview = inflater.inflate(R.layout.dispersive_gridview_layout, null);
             GridView gridView = contentview.findViewById(R.id.item_for_exlist_photoup_gridView1);
             CxGalleryAdapter gAdapter;
-            String type = dictList.get(groupPosition).label;
-            gAdapter = new CxGalleryAdapter(context,getImgList(type),type,addScb);
+            String type = dictList.get(groupPosition).value;
+            gAdapter = new CxGalleryAdapter(context,getImgList(type),type,groupPosition,addScb);
             gridView.setAdapter(gAdapter);
             return contentview;
         }
@@ -129,14 +127,28 @@ import java.util.List;
         }
 
         @Override
-        public View getGroupView(int groupPostion, boolean arg1, View contentview, ViewGroup arg3) {
+        public View getGroupView(int groupPosition, boolean arg1, View contentview, ViewGroup arg3) {
             contentview = inflater.inflate(R.layout.item_expandablelistview_photo_upload, null);
-            ((TextView) contentview.findViewById(R.id.item_for_exlist_photoup_title)).setText(dictList.get(groupPostion).label); //分组标题
+            ((TextView) contentview.findViewById(R.id.item_for_exlist_photoup_title)).setText(dictList.get(groupPosition).label); //分组标题
             TextView photoSum =  contentview.findViewById(R.id.item_for_exlist_photoup_sum);
             TextView photoDemand =  contentview.findViewById(R.id.item_for_exlist_photoup_demand);
-            int groupPhotoSize = getImgList(dictList.get(groupPostion).label).size();
-            photoSum.setText(groupPhotoSize + "");
+            int groupPhotoSize = getImgList(dictList.get(groupPosition).value).size();
+            setSubmitSum(photoSum,photoDemand,getImgList(dictList.get(groupPosition).value));
             return contentview;
+        }
+
+        public void setSubmitSum(TextView photoSum, TextView photoDemand, List<CxImagEntity> imgList) {
+            int submitSum = 0;
+            for (CxImagEntity tempCie : imgList) {
+                if (tempCie.id != null) {
+                    submitSum++;
+                }
+            }
+            photoSum.setText("已上传" + submitSum);
+            if (submitSum != imgList.size()) {
+                photoDemand.setTextColor(context.getResources().getColor(R.color.yellow_baner));  //有未上传的图片就总数标黄色
+                photoDemand.setText("共" + imgList.size() + "张(" + (imgList.size() - submitSum) + "张未上传)");
+            } else photoDemand.setText("共" + imgList.size());
         }
 
         @Override

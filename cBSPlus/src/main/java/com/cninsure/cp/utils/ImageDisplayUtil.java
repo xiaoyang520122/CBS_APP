@@ -1,12 +1,15 @@
 package com.cninsure.cp.utils;
 
 import java.io.File;
+import java.util.Calendar;
+import java.util.Locale;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.text.format.DateFormat;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
@@ -79,7 +82,8 @@ public class ImageDisplayUtil {
 	                	@SuppressWarnings("unused")
 //						String uriString = MediaStore.Images.Media.insertImage(context.getContentResolver(), resource, null, null);
 //	                	OpenFileUtil.openFileByPath(context, uriString);
-						Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(context.getContentResolver(), resource, null, null));
+								String name = new DateFormat().format("yyyyMMdd_hhmmss", Calendar.getInstance(Locale.CHINA)) + ".jpg";
+						Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(context.getContentResolver(), resource, name, null));
 //						//设置intent数据和图片格式
 						intent.putExtra("uri", uri.toString());
 						context.startActivity(intent);

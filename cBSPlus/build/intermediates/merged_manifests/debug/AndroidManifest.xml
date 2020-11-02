@@ -167,6 +167,7 @@
         <activity android:name="com.cninsure.cp.utils.PhotoChoiceActivity" />
         <activity android:name="com.cninsure.cp.activty.BankCardActivity" />
         <activity android:name="com.cninsure.cp.activty.AddBanckCardActivity" />
+        <activity android:name="com.cninsure.cp.activty.AccountActivity" />
         <activity android:name="com.cninsure.cp.fc.activity.EditSurveyGgsActivity" />
         <activity android:name="com.cninsure.cp.fc.activity.CaseReportActivity" />
         <activity android:name="com.cninsure.cp.utils.PhotoChoiceActivityFc" />

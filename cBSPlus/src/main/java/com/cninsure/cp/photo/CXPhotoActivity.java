@@ -1,18 +1,8 @@
 package com.cninsure.cp.photo;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Point;
@@ -21,8 +11,6 @@ import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.Size;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -39,20 +27,31 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+
 import com.bumptech.glide.Glide;
 import com.cninsure.cp.R;
-import com.cninsure.cp.activty.WorkOrderActivty;
 import com.cninsure.cp.activty.WorkOrderActivtyhelp;
+import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment;
 import com.cninsure.cp.dispersive.DispersiveWorkActivity;
 import com.cninsure.cp.entity.WorkPhotos;
 import com.cninsure.cp.entity.WorkPhotos.TableData.WorkPhotoEntitiy;
 import com.cninsure.cp.entity.WorkType;
+import com.cninsure.cp.entity.cx.CxImagEntity;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.GlideCircleTransform;
 import com.cninsure.cp.utils.ImageUtil;
-import com.cninsure.cp.utils.PhotoChoiceActivity;
 import com.cninsure.cp.utils.PhotoPathUtil;
 import com.karics.library.zxing.view.VerticalViewPager;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback {
 
@@ -247,18 +246,6 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 		/**
 		 * 设置预显示
 		 */
-		// camera.setPreviewDisplay(surfaceView.getHolder());
-		// try {
-		// camera.setPreviewDisplay(holder);
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
-		// camera.setPreviewCallback(new Camera.PreviewCallback() {
-		// @Override
-		// public void onPreviewFrame(byte[] data, Camera camera) {
-		//
-		// }
-		// });
 		parameters.setPreviewSize(getScreenWH().widthPixels, getScreenWH().heightPixels);
 		parameters.setPictureSize(getScreenWH().widthPixels, getScreenWH().heightPixels);
 		/**
@@ -351,6 +338,19 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 		}
 	}
 
+	/**添加新车险全流程图片**/
+	private void addCxNewImg(String url) {
+		List<CxImagEntity> cieListTemp = new ArrayList<>();
+		String imgType = getIntent().getStringExtra("photoType");
+		CxImagEntity cieEn = new CxImagEntity();
+		cieEn.type = imgType;
+		cieEn.fileUrl = url;
+		cieEn.source = "3";
+		cieEn.fileName = url.substring(url.lastIndexOf("/")+1, url.length() - 4);
+		cieListTemp.add(cieEn);
+		CxImagFragment.adapter.addScb.addImg(cieListTemp, GroupId);
+	}
+
 	/*
 	 * 获取图片对象
 	 */
@@ -370,32 +370,14 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 				Intent intentdata=new Intent();
 				intentdata.setData(Uri.fromFile(new File(PicturePath)));
 		    	ImageUtil.compressBmp(CXPhotoActivity.this, intentdata, PicturePath);//压缩、水印、储存
-				// 将文件数据存储到文件中
-				// outStream.write(data);
-
-//				// 将文件转化为bitmap以便添加日期水印
-//				Bitmap bitmap = ImageUtil.drawTextToRightBottom(CXPhotoActivity.this, BitmapFactory.decodeByteArray(data, 0, data.length), AppApplication.getUSER().data.name + " " + sf.format(new Date()),
-//						10, Color.parseColor("#FF0000"), 5, 5);
-//				Bitmap watermark = BitmapFactory.decodeResource(getResources(), R.drawable.logo_water_mask);
-//				// 为bitmap以便添加图片水印
-//				bitmap = ImageUtil.createWaterMaskLeftBottom(CXPhotoActivity.this, bitmap, watermark, 5, 5);
-//				// 再将bitmap转化为字节数组
-//				ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//				bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);//压缩质量为50
-//				byte[] datas = baos.toByteArray();
-//
-//				// 将文件数据存储到文件中
-//				outStream.write(datas);
-//				// 关闭输出流
-//				outStream.close();
 				// 开始预览照片
-				camera.startPreview();
+				try{camera.startPreview();} catch (Exception e){e.printStackTrace();}
 				safeToTakePicture = true;
 				displayPhoto(PicturePath);
 			} catch (Exception e) {
 				intent = new Intent();
 				setResult(0, intent);
-				finish();
+//				finish();
 				e.printStackTrace();
 			}
 			// finish(); // 结束当前的activity的生命周期
@@ -409,7 +391,9 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 		.centerCrop().transform(new GlideCircleTransform(this)).into(displayimageView);
 		WorkPhotoEntitiy photoEntitiy=new WorkPhotoEntitiy();
 		photoEntitiy.location=jpgFilePath;
-		if ("DispersiveWorkActivity".equals(actionActivityName)){  //分散型拍照
+		if ("NEW_CX".equals(actionActivityName)) {  //新车险全流程
+			addCxNewImg(jpgFilePath);
+		}else if ("DispersiveWorkActivity".equals(actionActivityName)){  //分散型拍照
 //			ImageUtil.compressBmp(this, data, PicturePath);// 压缩、水印、储存
 			List<WorkPhotos.TableData.WorkPhotoEntitiy> temPhotoEntitiys = new ArrayList<>(1);
 			int imgType = getIntent().getIntExtra("photoType",0);
@@ -454,18 +438,15 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 	    public MyVpAdater() {
 			if ("DispersiveWorkActivity".equals(actionActivityName)){  //分散型拍照
 //				水电费水电费水电费胜多负少的
+			}else if ("NEW_CX".equals(actionActivityName)){  //新车险全流程
+//
 			}else{
 				CXPhotoActivity.this.photoType  = (WorkType) getIntent().getSerializableExtra("photoType");
 				if (photoType==null) {
 					Dialog dialog=DialogUtil.getAlertOneButton(CXPhotoActivity.this,
 							"无法获取拍照类型，启动拍照失败，您可以选择系统用相机拍摄，然后从相册选择！", null);
 					dialog.show();
-					dialog.setOnDismissListener(new OnDismissListener() {
-						@Override
-						public void onDismiss(DialogInterface arg0) {
-							CXPhotoActivity.this.finish();
-						}
-					});
+					dialog.setOnDismissListener(arg0 -> CXPhotoActivity.this.finish());
 				}
 			}
 
@@ -473,8 +454,11 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 	    }  
 	  
 	    @Override  
-	    public int getCount() {  
-	        return photoType.tableData.data.size();  
+	    public int getCount() {
+			if ("NEW_CX".equals(actionActivityName)){  //新车险全流程
+				return CxImagFragment.adapter.dictList.size();
+			}else{ return photoType.tableData.data.size();}
+
 	    }  
 	  
 	    @Override  
@@ -491,7 +475,11 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 	  
 	    private View getView(int position) {
 	    	TextView mView=(TextView) inflater.inflate(R.layout.vertical_text_item, null);
-	    	String tempString=photoType.tableData.data.get(position).description;
+			String tempString;
+			if ("NEW_CX".equals(actionActivityName)){  //新车险全流程
+				tempString = CxImagFragment.adapter.dictList.get(GroupId).label;
+			}else{ tempString=photoType.tableData.data.get(position).description;}
+
 	    	String valueString="";
 	    	if (TextUtils.isEmpty(tempString)) {
 	    		return mView;
@@ -505,10 +493,10 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 			return mView;
 		}
 
-		@Override  
-	    public void destroyItem(ViewGroup container, int position, Object object) {  
-	        container.removeView((View) object);  
-	    }  
+		@Override
+	    public void destroyItem(ViewGroup container, int position, Object object) {
+	        container.removeView((View) object);
+	    }
 	} 
 
 }

@@ -112,12 +112,7 @@ public class CxSurveyFragment extends BaseFragment {
 
     /**上传附件按钮点击，选择文件*/
     private void setEnclosureOnclick() {
-        enclosureListTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PickPhotoUtil.albumPhoto(activity, PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE);
-            }
-        });
+        enclosureListTv.setOnClickListener(v -> PickPhotoUtil.albumPhoto(activity, PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE));
     }
 
     /**
@@ -170,12 +165,9 @@ public class CxSurveyFragment extends BaseFragment {
     }
     /**启动签字**/
     private void startSign(){
-//		if (ocrEntity5!=null) {
         Intent intent=new Intent(activity, LinePathActivity.class);
-//        intent.putExtra("ocrEntity5", activity.ocrEntity5);
         intent.putExtra("orderUid", activity.getIntent().getStringExtra("orderUid"));
         startActivityForResult(intent, HttpRequestTool.LINEPATH);
-//		}
     }
 
     /**如果查勘时间为空，可以选择时间，如果不为空就回显**/
@@ -191,18 +183,10 @@ public class CxSurveyFragment extends BaseFragment {
 
     /**获取查勘地点*/
     private void getLocalInfoOncilck() {
-        surveyAddressEqualTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                surveyAddressEdt.setText(activity.orderInfoEn.caseLocation);
-            }
-        });
-        surveyAddressLocalTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String address = AppApplication.LOCATION.getAddrStr();
-                surveyAddressEdt.setText(address);
-            }
+        surveyAddressEqualTv.setOnClickListener(v -> surveyAddressEdt.setText(activity.orderInfoEn.caseLocation));
+        surveyAddressLocalTv.setOnClickListener(v -> {
+            String address = AppApplication.LOCATION.getAddrStr();
+            surveyAddressEdt.setText(address);
         });
     }
 
@@ -220,23 +204,15 @@ public class CxSurveyFragment extends BaseFragment {
     }
 
     private void setLossObjectTypeCheck(){
-        lossObjectTypeTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String tempArr[] = TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("loss_object_type"));
-                boolean isChoice[] = new boolean[tempArr.length];
-                for (int i = 0;i<tempArr.length;i++){
-                    isChoice[i] = false;
-                }
-                new AlertDialog.Builder(activity).setTitle("请选择")
-                        .setMultiChoiceItems(tempArr, isChoice, new DialogInterface.OnMultiChoiceClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                                isChoice[which] = isChecked;
-                            }
-                        }).setNegativeButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+        lossObjectTypeTv.setOnClickListener(v -> {
+            String tempArr[] = TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("loss_object_type"));
+            boolean isChoice[] = new boolean[tempArr.length];
+            for (int i = 0;i<tempArr.length;i++){
+                isChoice[i] = false;
+            }
+            new AlertDialog.Builder(activity).setTitle("请选择")
+                    .setMultiChoiceItems(tempArr, isChoice, (dialog, which, isChecked) -> isChoice[which] = isChecked)
+                    .setNegativeButton("确定", (dialog, which) -> {
                         List<Integer> lossList = new ArrayList<>();
                         for (int i = 0;i<isChoice.length;i++){
                             if (isChoice[i])
@@ -245,9 +221,7 @@ public class CxSurveyFragment extends BaseFragment {
                         Integer lossTmp[] = lossList.toArray( new Integer[lossList.size()]);
                         activity.cxWorkEntity.surveyInfo.lossObjectType = lossTmp; //损失类型
                         displayLossTypeText();
-                    }
-                }).create().show();
-            }
+                    }).create().show();
         });
     }
 

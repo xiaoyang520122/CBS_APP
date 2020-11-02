@@ -188,7 +188,7 @@
             android:background="#e1e1e1" />
 
         <LinearLayout
-            android:id="@+id/my_menu_backcard"
+            android:id="@+id/my_menu_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
@@ -201,13 +201,13 @@
                 android:layout_width="@dimen/my_menu_ico_size"
                 android:layout_height="@dimen/my_menu_ico_size"
                 android:layout_margin="10dp"
-                android:src="@drawable/backcard_48" />
+                android:src="@drawable/account_fill_48" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="银行卡"
+                android:text="我的账户"
                 android:textColor="@color/hui_text_xxh" />
 
             <ImageView

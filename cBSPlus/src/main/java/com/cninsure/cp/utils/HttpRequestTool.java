@@ -233,6 +233,14 @@ public class HttpRequestTool {
 	public final static int  CX_GET_ORDER_VIEW=1094;
 	/**Get 作业图片查询 **/
 	public final static int  CX_GET_WORK_IMG=1095;
+	/**作业提交审核 ImagFragment用 --POST**/
+	public final static int  CX_NEW_GET_IMG_TYPE_DICT_IF=1096;
+	/**查询订单留言信息 */
+	public final static int  CX_GET_EXAMINE_INFO=1097;
+	/**留言保存 */
+	public final static int  CX_SAVE_EXAMINE_INFO=1098;
+	/**获取用户账户信息 */
+	public final static int  CX_EXT_USER=1099;
 
 
 

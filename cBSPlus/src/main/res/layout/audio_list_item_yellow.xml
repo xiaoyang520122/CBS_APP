@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical|right"
+    android:orientation="horizontal" >
+
+    
+    <LinearLayout
+        android:id="@+id/chat_avatar2"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="1dp"
+            android:src="@drawable/chat_engneer_hui100" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="排查员"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_minminmin" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/chat_avatar2"
+        android:background="@drawable/chat_bg_white_right"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginLeft="50dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" >
+
+        <ImageView
+            android:id="@+id/audiolistitemy_audioImag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/audio_hui100"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                android:gravity="right"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/audiolistitemy_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="无日期信息0000-00-00"
+                android:gravity="right"
+                android:textColor="@color/hui_text_xxxh"
+                android:textSize="@dimen/text_l" />
+
+            <TextView
+                android:id="@+id/audiolistitemy_audioLong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:gravity="right"
+                android:textSize="@dimen/text_defaul" />
+        </LinearLayout>
+
+    </LinearLayout>
+    
+</RelativeLayout>

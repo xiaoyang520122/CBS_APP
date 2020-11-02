@@ -23,9 +23,9 @@
 
        <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">  
     <item name="android:button">@drawable/photo_choice_button</item>  
-</style>  
+</style>
 
-       <style name="popwin_anim_style">
+    <style name="popwin_anim_style">
    <item name="android:windowEnterAnimation">@anim/popup_zoom_in</item>
    <item name="android:windowExitAnimation">@anim/popup_zoom_out</item>
 </style>

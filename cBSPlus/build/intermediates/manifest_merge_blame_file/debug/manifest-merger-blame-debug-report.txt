@@ -166,7 +166,7 @@
 75-->[com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:9:22-74
 76
 77    <application
-77-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:70:5-266:19
+77-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:70:5-267:19
 78        android:name="com.cninsure.cp.AppApplication"
 78-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:71:9-39
 79        android:allowBackup="true"
@@ -352,330 +352,333 @@
 169        <activity android:name="com.cninsure.cp.activty.AddBanckCardActivity" />
 169-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:157:9-75
 169-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:157:19-63
-170        <activity android:name="com.cninsure.cp.fc.activity.EditSurveyGgsActivity" />
-170-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:158:9-80
-170-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:158:19-68
-171        <activity android:name="com.cninsure.cp.fc.activity.CaseReportActivity" />
-171-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:159:9-77
-171-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:159:19-65
-172        <activity android:name="com.cninsure.cp.utils.PhotoChoiceActivityFc" />
-172-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:160:9-74
-172-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:160:19-62
-173        <activity android:name="com.cninsure.cp.fc.activity.DispersiveCaseInputActivity" />
-173-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:161:9-86
-173-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:161:19-74
-174        <activity android:name="com.cninsure.cp.activity.yjx.YjxSurveyActivity" />
-174-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:162:9-77
-174-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:162:19-65
-175        <activity android:name="com.cninsure.cp.photo.DisplayPhotoActivity" />
-175-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:163:9-73
-175-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:163:19-61
-176        <activity android:name="com.cninsure.cp.activity.yjx.YjxBaoanInputActivity" />
-176-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:164:9-81
-176-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:164:19-69
-177        <activity android:name="com.cninsure.cp.activity.yjx.YjxTempStorageActivity" />
-177-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:165:9-82
-177-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:165:19-70
-178        <activity android:name="com.cninsure.cp.activity.yjx.YjxDispatchActivity" />
-178-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:166:9-79
-178-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:166:19-67
-179        <activity android:name="com.cninsure.cp.activity.yjx.YjxDispatchShenheActivity" />
-179-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:167:9-85
-179-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:167:19-73
-180        <activity android:name="com.cninsure.cp.activity.yjx.YjxNoShenheOrderActivity" />
-180-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:168:9-84
-180-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:168:19-72
-181        <activity android:name="com.cninsure.cp.cx.CxDamageActivity" />
-181-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:169:9-81
-181-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:169:19-69
-182        <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity" />
-182-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:170:9-86
-182-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:170:19-74
-183        <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity" />
-183-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:171:9-89
-183-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:171:19-77
-184        <activity android:name="com.cninsure.cp.cx.CxDsWorkActivity" />
-184-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:172:9-81
-184-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:172:19-69
-185        <activity android:name="com.cninsure.cp.cx.DsUtilActivity" />
-185-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:173:9-79
-185-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:173:19-67
-186        <activity
-186-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:174:9-176:64
-187            android:name="com.cninsure.cp.cx.CxInjuryMediateActivity"
-187-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:174:19-76
-188            android:theme="@style/Theme.AppCompat"
-188-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:175:13-51
-189            android:windowSoftInputMode="adjustPan" />
-189-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:176:13-52
-190        <activity
-190-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:177:9-180:25
-191            android:name="com.cninsure.cp.cx.CxSurveyWorkActivity"
-191-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:177:19-73
-192            android:theme="@style/Theme.AppCompat"
-192-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:178:13-51
-193            android:windowSoftInputMode="adjustPan" />
-193-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:179:13-52
-194        <activity
-194-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:181:9-184:25
-195            android:name="com.cninsure.cp.cx.CxJieBaoanInfoActivity"
-195-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:181:19-75
-196            android:theme="@style/Theme.AppCompat"
-196-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:182:13-51
-197            android:windowSoftInputMode="adjustPan" />
-197-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:183:13-52
-198        <activity
-198-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:185:9-187:56
-199            android:name="com.cninsure.cp.dispersive.DispersiveUserActivity"
-199-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:186:13-62
-200            android:launchMode="singleTask" />
-200-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:187:13-44
-201        <activity android:name="com.cninsure.cp.dispersive.CtCenterActivity" />
-201-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:188:9-74
-201-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:188:19-62
-202        <activity android:name="com.cninsure.cp.dispersive.DispersiveWorkActivity" /> <!-- 个推 -->
-202-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:189:9-80
-202-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:189:19-68
-203        <!-- 请根据您当前自定义的 PushService 名称路径进行配置 -->
-204        <service
-204-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:191:9-195:46
-205            android:name="com.cninsure.cp.service.DemoPushService"
-205-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:192:13-52
-206            android:exported="true"
-206-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:193:13-36
-207            android:label="PushService"
-207-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:194:13-40
-208            android:process=":pushservice" />
-208-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:195:13-43
-209        <service
-209-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:196:9-198:72
-210            android:name="com.cninsure.cp.service.DemoIntentService"
-210-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:197:13-54
-211            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- 百度地图配置开始 -->
-211-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:198:13-69
-212        <meta-data
-212-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:199:9-201:74
-213            android:name="com.baidu.lbsapi.API_KEY"
-213-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:200:13-52
-214            android:value="q4qVT2D0Lhykff5LWwg6js2ISag2Hq3F" />
-214-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:201:13-61
-215
-216        <service
-216-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:203:9-206:49
-217            android:name="com.baidu.location.f"
-217-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:204:13-48
-218            android:enabled="true"
-218-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:205:13-35
-219            android:process=":remote" />
-219-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:206:13-38
-220
-221        <activity
-221-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:208:9-240:20
-222            android:name="com.mob.tools.MobUIShell"
-222-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:209:13-52
-223            android:configChanges="keyboardHidden|orientation|screenSize"
-223-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:210:13-74
-224            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-224-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:211:13-72
-225            android:windowSoftInputMode="stateHidden|adjustResize" >
-225-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:212:13-67
-226
-227            <!-- 调用新浪原生SDK，需要注册的回调activity -->
-228            <intent-filter>
-228-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:215:13-219:29
-229                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
-229-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:216:17-92
-229-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:216:25-89
-230
-231                <category android:name="android.intent.category.DEFAULT" />
-231-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:218:17-76
-231-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:218:27-73
-232            </intent-filter>
-233
-234            <!-- 集成line客户端登录授权，需要添如下格式的过滤器 -->
-235            <intent-filter>
-235-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:222:13-229:29
-236                <data android:scheme="line.1477692153" />
-236-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:223:17-58
-236-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:223:23-55
-237
-238                <action android:name="android.intent.action.VIEW" />
-238-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:225:17-69
-238-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:225:25-66
-239
-240                <category android:name="android.intent.category.BROWSABLE" />
-240-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:227:17-78
-240-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:227:27-75
-241                <category android:name="android.intent.category.DEFAULT" />
-241-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:218:17-76
-241-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:218:27-73
-242            </intent-filter>
-243
-244            <!-- ShareSDK<strong>3.1.0版本之前</strong>才需要在MobUIShell下面注册此意图，3.1.0版本之后（包含3.1.0）不需要注册此intent -->
-245            <intent-filter>
-245-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:232:13-239:29
-246                <data android:scheme="tencent100371282" />
-246-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:223:17-58
-246-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:223:23-55
-247
-248                <action android:name="android.intent.action.VIEW" />
-248-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:225:17-69
-248-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:225:25-66
-249
-250                <category android:name="android.intent.category.BROWSABLE" />
-250-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:227:17-78
-250-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:227:27-75
-251                <category android:name="android.intent.category.DEFAULT" />
-251-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:218:17-76
-251-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:218:27-73
-252            </intent-filter>
-253        </activity>
-254        <activity
-254-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:241:9-253:20
-255            android:name="cn.sharesdk.tencent.qq.ReceiveActivity"
-255-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:242:13-66
-256            android:launchMode="singleTask"
-256-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:243:13-44
-257            android:noHistory="true" >
-257-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:244:13-37
-258            <intent-filter>
-258-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:232:13-239:29
-259                <action android:name="android.intent.action.VIEW" />
-259-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:225:17-69
-259-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:225:25-66
-260
-261                <category android:name="android.intent.category.DEFAULT" />
-261-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:218:17-76
-261-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:218:27-73
-262                <category android:name="android.intent.category.BROWSABLE" />
-262-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:227:17-78
-262-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:227:27-75
-263
-264                <data android:scheme="tencent100371282" />
-264-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:223:17-58
-264-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:223:23-55
-265            </intent-filter>
-266        </activity>
-267        <activity
-267-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:254:9-259:75
-268            android:name="cn.sharesdk.demo.wxapi.WXEntryActivity"
-268-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:255:13-66
-269            android:configChanges="keyboardHidden|orientation|screenSize"
-269-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:256:13-74
-270            android:exported="true"
-270-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:257:13-36
-271            android:screenOrientation="portrait"
-271-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:258:13-49
-272            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
-272-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:259:13-72
-273        <meta-data
-273-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:260:9-262:45
-274            android:name="Mob-AppKey"
-274-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:261:13-38
-275            android:value="23316a1818ea0" />
-275-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:262:13-42
-276        <meta-data
-276-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:263:9-265:64
-277            android:name="Mob-AppSecret"
-277-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:264:13-41
-278            android:value="e40663ecce9615e610134a8bbe7e90d0" />
-278-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:265:13-61
-279
-280        <service android:name="com.liulishuo.filedownloader.services.FileDownloadService$SharedMainProcessService" />
-280-->[com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:12:9-118
-280-->[com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:12:18-115
-281        <service
-281-->[com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:13:9-15:49
-282            android:name="com.liulishuo.filedownloader.services.FileDownloadService$SeparateProcessService"
-282-->[com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:14:13-108
-283            android:process=":filedownloader" /> <!-- 配置的第三⽅方参数属性 -->
-283-->[com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:15:13-46
-284        <meta-data
-284-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:27:9-29:47
-285            android:name="PUSH_APPID"
-285-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:28:13-38
-286            android:value="c87HGuVwhD6zGZHd37bev7" />
-286-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:29:13-44
-287        <meta-data
-287-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:30:9-32:48
-288            android:name="PUSH_APPKEY"
-288-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:31:13-39
-289            android:value="U32v5YHJvq6eXK8DBBks78" />
-289-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:32:13-45
-290        <meta-data
-290-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:33:9-35:51
-291            android:name="PUSH_APPSECRET"
-291-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:34:13-42
-292            android:value="bM2K7HoJnp9iokHbOi9od9" /> <!-- 配置SDK核⼼心服务 -->
-292-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:35:13-48
-293        <service
-293-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:37:9-42:46
-294            android:name="com.igexin.sdk.PushService"
-294-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:38:13-54
-295            android:exported="false"
-295-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:39:13-37
-296            android:label="NotificationCenter"
-296-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:40:13-47
-297            android:permission="android.permission.BIND_JOB_SERVICE"
-297-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:41:13-69
-298            android:process=":pushservice" />
-298-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:42:13-43
-299
-300        <receiver android:name="com.igexin.sdk.PushReceiver" >
-300-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:44:9-54:20
-300-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:44:19-61
-301            <intent-filter>
-301-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:45:13-53:29
-302                <action android:name="android.intent.action.BOOT_COMPLETED" />
-302-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:46:17-79
-302-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:46:25-76
-303                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-303-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:47:17-79
-303-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:47:25-76
-304                <action android:name="android.intent.action.USER_PRESENT" />
-304-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:48:17-77
-304-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:48:25-74
-305                <!-- 以下三项为可选的action声明，可⼤大⼤大提⾼高service存活率和消息到达速度 -->
-306                <action android:name="android.intent.action.MEDIA_MOUNTED" />
-306-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:50:17-78
-306-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:50:25-75
-307                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-307-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:51:17-87
-307-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:51:25-84
-308                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-308-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:52:17-90
-308-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:52:25-87
-309            </intent-filter>
-310        </receiver>
-311
-312        <activity
-312-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:56:9-62:75
-313            android:name="com.igexin.sdk.PushActivity"
-313-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:57:13-55
-314            android:excludeFromRecents="true"
-314-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:58:13-46
-315            android:exported="false"
-315-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:59:13-37
-316            android:process=":pushservice"
-316-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:60:13-43
-317            android:taskAffinity="com.igexin.sdk.PushActivityTask"
-317-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:61:13-67
-318            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-318-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:62:13-72
-319        <activity
-319-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:63:9-69:75
-320            android:name="com.igexin.sdk.GActivity"
-320-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:64:13-52
-321            android:excludeFromRecents="true"
-321-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:65:13-46
-322            android:exported="true"
-322-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:66:13-36
-323            android:process=":pushservice"
-323-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:67:13-43
-324            android:taskAffinity="com.igexin.sdk.PushActivityTask"
-324-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:68:13-67
-325            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-325-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:69:13-72
-326    </application>
-327
-328</manifest>
+170        <activity android:name="com.cninsure.cp.activty.AccountActivity" />
+170-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:158:9-70
+170-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:158:19-58
+171        <activity android:name="com.cninsure.cp.fc.activity.EditSurveyGgsActivity" />
+171-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:159:9-80
+171-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:159:19-68
+172        <activity android:name="com.cninsure.cp.fc.activity.CaseReportActivity" />
+172-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:160:9-77
+172-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:160:19-65
+173        <activity android:name="com.cninsure.cp.utils.PhotoChoiceActivityFc" />
+173-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:161:9-74
+173-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:161:19-62
+174        <activity android:name="com.cninsure.cp.fc.activity.DispersiveCaseInputActivity" />
+174-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:162:9-86
+174-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:162:19-74
+175        <activity android:name="com.cninsure.cp.activity.yjx.YjxSurveyActivity" />
+175-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:163:9-77
+175-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:163:19-65
+176        <activity android:name="com.cninsure.cp.photo.DisplayPhotoActivity" />
+176-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:164:9-73
+176-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:164:19-61
+177        <activity android:name="com.cninsure.cp.activity.yjx.YjxBaoanInputActivity" />
+177-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:165:9-81
+177-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:165:19-69
+178        <activity android:name="com.cninsure.cp.activity.yjx.YjxTempStorageActivity" />
+178-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:166:9-82
+178-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:166:19-70
+179        <activity android:name="com.cninsure.cp.activity.yjx.YjxDispatchActivity" />
+179-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:167:9-79
+179-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:167:19-67
+180        <activity android:name="com.cninsure.cp.activity.yjx.YjxDispatchShenheActivity" />
+180-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:168:9-85
+180-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:168:19-73
+181        <activity android:name="com.cninsure.cp.activity.yjx.YjxNoShenheOrderActivity" />
+181-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:169:9-84
+181-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:169:19-72
+182        <activity android:name="com.cninsure.cp.cx.CxDamageActivity" />
+182-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:170:9-81
+182-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:170:19-69
+183        <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity" />
+183-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:171:9-86
+183-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:171:19-74
+184        <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity" />
+184-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:172:9-89
+184-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:172:19-77
+185        <activity android:name="com.cninsure.cp.cx.CxDsWorkActivity" />
+185-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:173:9-81
+185-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:173:19-69
+186        <activity android:name="com.cninsure.cp.cx.DsUtilActivity" />
+186-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:174:9-79
+186-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:174:19-67
+187        <activity
+187-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:175:9-177:64
+188            android:name="com.cninsure.cp.cx.CxInjuryMediateActivity"
+188-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:175:19-76
+189            android:theme="@style/Theme.AppCompat"
+189-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:176:13-51
+190            android:windowSoftInputMode="adjustPan" />
+190-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:177:13-52
+191        <activity
+191-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:178:9-181:25
+192            android:name="com.cninsure.cp.cx.CxSurveyWorkActivity"
+192-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:178:19-73
+193            android:theme="@style/Theme.AppCompat"
+193-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:179:13-51
+194            android:windowSoftInputMode="adjustPan" />
+194-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:180:13-52
+195        <activity
+195-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:182:9-185:25
+196            android:name="com.cninsure.cp.cx.CxJieBaoanInfoActivity"
+196-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:182:19-75
+197            android:theme="@style/Theme.AppCompat"
+197-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:183:13-51
+198            android:windowSoftInputMode="adjustPan" />
+198-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:184:13-52
+199        <activity
+199-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:186:9-188:56
+200            android:name="com.cninsure.cp.dispersive.DispersiveUserActivity"
+200-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:187:13-62
+201            android:launchMode="singleTask" />
+201-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:188:13-44
+202        <activity android:name="com.cninsure.cp.dispersive.CtCenterActivity" />
+202-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:189:9-74
+202-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:189:19-62
+203        <activity android:name="com.cninsure.cp.dispersive.DispersiveWorkActivity" /> <!-- 个推 -->
+203-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:190:9-80
+203-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:190:19-68
+204        <!-- 请根据您当前自定义的 PushService 名称路径进行配置 -->
+205        <service
+205-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:192:9-196:46
+206            android:name="com.cninsure.cp.service.DemoPushService"
+206-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:193:13-52
+207            android:exported="true"
+207-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:194:13-36
+208            android:label="PushService"
+208-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:195:13-40
+209            android:process=":pushservice" />
+209-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:196:13-43
+210        <service
+210-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:197:9-199:72
+211            android:name="com.cninsure.cp.service.DemoIntentService"
+211-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:198:13-54
+212            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- 百度地图配置开始 -->
+212-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:199:13-69
+213        <meta-data
+213-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:200:9-202:74
+214            android:name="com.baidu.lbsapi.API_KEY"
+214-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:201:13-52
+215            android:value="q4qVT2D0Lhykff5LWwg6js2ISag2Hq3F" />
+215-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:202:13-61
+216
+217        <service
+217-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:204:9-207:49
+218            android:name="com.baidu.location.f"
+218-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:205:13-48
+219            android:enabled="true"
+219-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:206:13-35
+220            android:process=":remote" />
+220-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:207:13-38
+221
+222        <activity
+222-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:209:9-241:20
+223            android:name="com.mob.tools.MobUIShell"
+223-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:210:13-52
+224            android:configChanges="keyboardHidden|orientation|screenSize"
+224-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:211:13-74
+225            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+225-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:212:13-72
+226            android:windowSoftInputMode="stateHidden|adjustResize" >
+226-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:213:13-67
+227
+228            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+229            <intent-filter>
+229-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:216:13-220:29
+230                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+230-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:217:17-92
+230-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:217:25-89
+231
+232                <category android:name="android.intent.category.DEFAULT" />
+232-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:219:17-76
+232-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:219:27-73
+233            </intent-filter>
+234
+235            <!-- 集成line客户端登录授权，需要添如下格式的过滤器 -->
+236            <intent-filter>
+236-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:223:13-230:29
+237                <data android:scheme="line.1477692153" />
+237-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:224:17-58
+237-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:224:23-55
+238
+239                <action android:name="android.intent.action.VIEW" />
+239-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:226:17-69
+239-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:226:25-66
+240
+241                <category android:name="android.intent.category.BROWSABLE" />
+241-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:228:17-78
+241-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:228:27-75
+242                <category android:name="android.intent.category.DEFAULT" />
+242-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:219:17-76
+242-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:219:27-73
+243            </intent-filter>
+244
+245            <!-- ShareSDK<strong>3.1.0版本之前</strong>才需要在MobUIShell下面注册此意图，3.1.0版本之后（包含3.1.0）不需要注册此intent -->
+246            <intent-filter>
+246-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:233:13-240:29
+247                <data android:scheme="tencent100371282" />
+247-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:224:17-58
+247-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:224:23-55
+248
+249                <action android:name="android.intent.action.VIEW" />
+249-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:226:17-69
+249-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:226:25-66
+250
+251                <category android:name="android.intent.category.BROWSABLE" />
+251-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:228:17-78
+251-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:228:27-75
+252                <category android:name="android.intent.category.DEFAULT" />
+252-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:219:17-76
+252-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:219:27-73
+253            </intent-filter>
+254        </activity>
+255        <activity
+255-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:242:9-254:20
+256            android:name="cn.sharesdk.tencent.qq.ReceiveActivity"
+256-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:243:13-66
+257            android:launchMode="singleTask"
+257-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:244:13-44
+258            android:noHistory="true" >
+258-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:245:13-37
+259            <intent-filter>
+259-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:233:13-240:29
+260                <action android:name="android.intent.action.VIEW" />
+260-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:226:17-69
+260-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:226:25-66
+261
+262                <category android:name="android.intent.category.DEFAULT" />
+262-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:219:17-76
+262-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:219:27-73
+263                <category android:name="android.intent.category.BROWSABLE" />
+263-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:228:17-78
+263-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:228:27-75
+264
+265                <data android:scheme="tencent100371282" />
+265-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:224:17-58
+265-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:224:23-55
+266            </intent-filter>
+267        </activity>
+268        <activity
+268-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:255:9-260:75
+269            android:name="cn.sharesdk.demo.wxapi.WXEntryActivity"
+269-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:256:13-66
+270            android:configChanges="keyboardHidden|orientation|screenSize"
+270-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:257:13-74
+271            android:exported="true"
+271-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:258:13-36
+272            android:screenOrientation="portrait"
+272-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:259:13-49
+273            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
+273-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:260:13-72
+274        <meta-data
+274-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:261:9-263:45
+275            android:name="Mob-AppKey"
+275-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:262:13-38
+276            android:value="23316a1818ea0" />
+276-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:263:13-42
+277        <meta-data
+277-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:264:9-266:64
+278            android:name="Mob-AppSecret"
+278-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:265:13-41
+279            android:value="e40663ecce9615e610134a8bbe7e90d0" />
+279-->E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:266:13-61
+280
+281        <service android:name="com.liulishuo.filedownloader.services.FileDownloadService$SharedMainProcessService" />
+281-->[com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:12:9-118
+281-->[com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:12:18-115
+282        <service
+282-->[com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:13:9-15:49
+283            android:name="com.liulishuo.filedownloader.services.FileDownloadService$SeparateProcessService"
+283-->[com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:14:13-108
+284            android:process=":filedownloader" /> <!-- 配置的第三⽅方参数属性 -->
+284-->[com.liulishuo.filedownloader:library:1.7.7] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\f56e267462fbd27a7debb26c212565dc\library-1.7.7\AndroidManifest.xml:15:13-46
+285        <meta-data
+285-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:27:9-29:47
+286            android:name="PUSH_APPID"
+286-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:28:13-38
+287            android:value="c87HGuVwhD6zGZHd37bev7" />
+287-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:29:13-44
+288        <meta-data
+288-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:30:9-32:48
+289            android:name="PUSH_APPKEY"
+289-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:31:13-39
+290            android:value="U32v5YHJvq6eXK8DBBks78" />
+290-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:32:13-45
+291        <meta-data
+291-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:33:9-35:51
+292            android:name="PUSH_APPSECRET"
+292-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:34:13-42
+293            android:value="bM2K7HoJnp9iokHbOi9od9" /> <!-- 配置SDK核⼼心服务 -->
+293-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:35:13-48
+294        <service
+294-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:37:9-42:46
+295            android:name="com.igexin.sdk.PushService"
+295-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:38:13-54
+296            android:exported="false"
+296-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:39:13-37
+297            android:label="NotificationCenter"
+297-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:40:13-47
+298            android:permission="android.permission.BIND_JOB_SERVICE"
+298-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:41:13-69
+299            android:process=":pushservice" />
+299-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:42:13-43
+300
+301        <receiver android:name="com.igexin.sdk.PushReceiver" >
+301-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:44:9-54:20
+301-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:44:19-61
+302            <intent-filter>
+302-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:45:13-53:29
+303                <action android:name="android.intent.action.BOOT_COMPLETED" />
+303-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:46:17-79
+303-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:46:25-76
+304                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+304-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:47:17-79
+304-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:47:25-76
+305                <action android:name="android.intent.action.USER_PRESENT" />
+305-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:48:17-77
+305-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:48:25-74
+306                <!-- 以下三项为可选的action声明，可⼤大⼤大提⾼高service存活率和消息到达速度 -->
+307                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+307-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:50:17-78
+307-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:50:25-75
+308                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+308-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:51:17-87
+308-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:51:25-84
+309                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+309-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:52:17-90
+309-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:52:25-87
+310            </intent-filter>
+311        </receiver>
+312
+313        <activity
+313-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:56:9-62:75
+314            android:name="com.igexin.sdk.PushActivity"
+314-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:57:13-55
+315            android:excludeFromRecents="true"
+315-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:58:13-46
+316            android:exported="false"
+316-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:59:13-37
+317            android:process=":pushservice"
+317-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:60:13-43
+318            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+318-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:61:13-67
+319            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+319-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:62:13-72
+320        <activity
+320-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:63:9-69:75
+321            android:name="com.igexin.sdk.GActivity"
+321-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:64:13-52
+322            android:excludeFromRecents="true"
+322-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:65:13-46
+323            android:exported="true"
+323-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:66:13-36
+324            android:process=":pushservice"
+324-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:67:13-43
+325            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+325-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:68:13-67
+326            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+326-->[com.getui:sdk:2.14.0.0] D:\Users\xy-wm\AndroidStudioFile\.gradle\caches\transforms-2\files-2.1\92e42922d1b1f3371b974dbddfa2afc5\sdk-2.14.0.0\AndroidManifest.xml:69:13-72
+327    </application>
+328
+329</manifest>

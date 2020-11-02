@@ -1,6 +1,8 @@
 package com.cninsure.cp.cx;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -9,31 +11,40 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.fastjson.JSON;
+import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.adapter.MyFragmentPagerAdapter;
+import com.cninsure.cp.cx.adapter.NoRefreshFragmentPagerAdapter;
 import com.cninsure.cp.cx.fragment.BaseFragment;
 import com.cninsure.cp.cx.fragment.CxRiAgreementFragment;
 import com.cninsure.cp.cx.fragment.CxRiListFragment;
 import com.cninsure.cp.cx.jiebaoanfragment.BaoanInfoFragment;
+import com.cninsure.cp.cx.jiebaoanfragment.CxExamineFragment;
 import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment;
 import com.cninsure.cp.cx.jiebaoanfragment.TaskBasicInfoFragment;
+import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
+import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.ActivityFinishUtil;
+import com.cninsure.cp.utils.FileChooseUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
+import com.cninsure.cp.utils.ToastUtil;
 import com.google.android.material.tabs.TabLayout;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -43,9 +54,9 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
 
 
     public PublicOrderEntity orderInfoEn; //任务信息
-    private String[] mainTitlesArray = {"报案信息", "基本信息" };
+    private String[] mainTitlesArray = {"报案信息", "基本信息", "影像", "留言"};
     public Map<Integer, BaseFragment> fragmentMap;
-    private MyFragmentPagerAdapter adapter;
+    private NoRefreshFragmentPagerAdapter adapter;
     private FragmentManager fm;
     public CxDictEntity cxDict = new CxDictEntity(); //拍照类型字典数据
 
@@ -56,7 +67,7 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
     private BaoanInfoFragment fg0;
     private TaskBasicInfoFragment fg1;
     private CxImagFragment fg2;
-//    private CxRiDeliveryFragment fg3;
+    private CxExamineFragment fg3;
 
 
 
@@ -85,17 +96,17 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
         fg0 = new BaoanInfoFragment();
         fg1 = new TaskBasicInfoFragment();
         fg2 = new CxImagFragment();
-//        fg3 = new CxRiDeliveryFragment();
+        fg3 = new CxExamineFragment();
 
         fragmentMap = new TreeMap<>();
         fragmentMap.put(0, fg0);
         fragmentMap.put(1, fg1);
         fragmentMap.put(2, fg2);
-//        fragmentMap.put(3, fg3);
+        fragmentMap.put(3, fg3);
     }
 
     private void initViewPager() {
-        adapter = new MyFragmentPagerAdapter(fm, fragmentMap);
+        adapter = new NoRefreshFragmentPagerAdapter(fm, fragmentMap);
         mViewPager.setAdapter(adapter);
     }
 
@@ -135,7 +146,7 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
         List<String> params = new ArrayList<String>(2);
         params.add("type");
 //        params.add("medicalFee,casualtiesFee,poNature,deliveryCompany"); // 医疗费用赔偿MedicalFee ,死亡伤残赔偿casualtiesFee ,户籍性质poNature
-        params.add("cxOrderWorkImageType,accident_type,accident_small_type,accident_reason,accident_small_reason,survey_type,damage_loss_type," +
+        params.add("cxOrderWorkMediaType,accident_type,accident_small_type,accident_reason,accident_small_reason,survey_type,damage_loss_type," +
                 "accident_liability,loss_type,loss_object_type,compensation_method,survey_conclusion,carno_type,car_usetype,injured_type");
         HttpUtils.requestGet(URLs.CX_NEW_GET_IMG_TYPE_DICT, params, HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT);
     }
@@ -149,18 +160,47 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
                 LoadDialogUtil.dismissDialog();
                 cxDict.list = JSON.parseArray(values.get(0).getValue(), CxDictEntity.DictData.class);
                 break;
-            case HttpRequestTool.UPLOAD_FILE_PHOTO: //上传附件成功
-//                fg3.getUploadFileInfo(values);
-                break;
+//            case HttpRequestTool.UPLOAD_FILE_PHOTO: //上传附件成功
+//                dowloadOderView();
+//                break;
             default:
                 break;
         }
     }
+
+//    /***chax*/
+//    private void dowloadOderView() {
+//        LoadDialogUtil.setMessageAndShow(this,"载入中……");
+//        List<String> params = new ArrayList<String>(2);
+//        params.add("userId");
+//        params.add(AppApplication.getUSER().data.userId);
+//        params.add("orderUid");
+//        params.add(this.QorderUid);
+//        HttpUtils.requestGet(URLs.CX_NEW_GET_ORDER_VIEW_BY_UID, params, HttpRequestTool.CX_NEW_GET_ORDER_VIEW_BY_UID);
+//    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+       if (requestCode == PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE){  //上传附件选择的文件。
+            inspectFileSize(data); //判断文件大小是否小于20M
+        }
+    }
+    /**
+     * 判断文件大小是否小于20M,小于就上传。
+     * @param data
+     */
+    public void inspectFileSize(Intent data) {
+        String FilePath = FileChooseUtil.getInstance(this).getChooseFileResultPath(data.getData());
+        File fileTemp = new File(FilePath);
+        if (fileTemp!=null && fileTemp.length()>0 && (fileTemp.length() < 20971520)) { //必须小于20M（20971520 byte）
+            List<NameValuePair> fileUrls = new ArrayList<NameValuePair>();
+            fileUrls.add(new BasicNameValuePair("0", FilePath));
+            CxFileUploadUtil.uploadCxFile(this, fileUrls, URLs.UPLOAD_FILE_PHOTO,null); //上传
+        }
+    }
 }

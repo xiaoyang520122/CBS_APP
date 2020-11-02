@@ -155,6 +155,7 @@
         <activity android:name=".utils.PhotoChoiceActivity"></activity>
         <activity android:name=".activty.BankCardActivity"></activity>
         <activity android:name=".activty.AddBanckCardActivity"></activity>
+        <activity android:name=".activty.AccountActivity"></activity>
         <activity android:name=".fc.activity.EditSurveyGgsActivity"></activity>
         <activity android:name=".fc.activity.CaseReportActivity"></activity>
         <activity android:name=".utils.PhotoChoiceActivityFc"></activity>

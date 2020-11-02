@@ -1,5 +1,6 @@
 package com.cninsure.cp.photo;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
+import com.cninsure.cp.utils.BitmapUtil;
 import com.karics.library.zxing.view.PhotoView;
 
 public class DisplayPhotoActivity extends BaseActivity {
@@ -19,7 +21,7 @@ public class DisplayPhotoActivity extends BaseActivity {
 	private PhotoView img2;
 	private Uri uri;
 	private String largeUrlList;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
