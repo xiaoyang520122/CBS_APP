@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/extr_order_item_checkLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dp" >
+
+        <CheckBox
+            android:id="@+id/extr_order_item_checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/extr_order_item_orderNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ORDER-20201030125258-02F1C"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/hui_text_xxxxh"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_sl" />
+
+            <TextView
+                android:id="@+id/extr_order_item_baoanNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="报案号：1200607000500000766"
+                android:textColor="@color/hui_text_xxxh"
+                android:textSize="@dimen/text_sl" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="可提现金额"
+                android:textColor="@color/hui_text_xxxh"
+                android:textSize="@dimen/text_sl" />
+
+            <TextView
+                android:id="@+id/extr_order_item_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥00.00"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/yellow_logo"
+                android:textSize="@dimen/text_m"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

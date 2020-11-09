@@ -43,6 +43,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     @ViewInject(R.id.account_baozheng_amount) private TextView baozhengAmount; //保证金
     @ViewInject(R.id.account_Extract_lineLayout) private LinearLayout extractLayout; //提现操作布局
     @ViewInject(R.id.account_extract_history_lineLayout) private LinearLayout extractHistryLayout; //提现历史布局
+    @ViewInject(R.id.account_baozhengjin_lineLayout) private LinearLayout baozhengLayout; //保证金布局
 
 
     @Override
@@ -86,19 +87,21 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     private void disPlayViewInfo() {
         backTv.setOnClickListener(this);  //返回按钮
         extractLayout.setOnClickListener(this); //提现操作布局
+        baozhengLayout.setOnClickListener(this); //保证金布局
         extractHistryLayout.setOnClickListener(this); //提现历史布局
         CardLayout.setOnClickListener(this); //银行卡布局
         if (extUserEtity==null || extUserEtity.data==null) return;
         disPlayCardLogo(); //银行卡图片,银行名称
-        if (extUserEtity.data.accountTotalAmount!=null) totalAmount.setText(extUserEtity.data.accountTotalAmount.toString());//资产总额
-        if (extUserEtity.data.canPosAmount!=null) canExtAmount.setText(extUserEtity.data.canPosAmount.toString());//可提现额度
-        if (extUserEtity.data.bondAmount!=null) baozhengAmount.setText(extUserEtity.data.bondAmount.toString());//保证金
+        if (extUserEtity.data.accountTotalAmount!=null) totalAmount.setText("￥"+extUserEtity.data.accountTotalAmount.toString());//资产总额
+        if (extUserEtity.data.canPosAmount!=null) canExtAmount.setText("￥"+extUserEtity.data.canPosAmount.toString());//可提现额度
+        if (extUserEtity.data.bondAmount!=null) baozhengAmount.setText("￥"+extUserEtity.data.bondAmount.toString());//保证金
     }
 
     /**
      * 显示银行卡图片,银行名称
      */
     private void disPlayCardLogo() {
+        displayBankCarNo(); //显示银行卡号
         if (!TextUtils.isEmpty(extUserEtity.data.bankName)){
             CardName.setText(extUserEtity.data.bankName); //银行名称
             List<NameValuePair> bankLitleLogos= BankLogoManage.getbanklitleLogo();
@@ -110,7 +113,6 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                 }
             }
         }
-        displayBankCarNo(); //显示银行卡号
     }
 
     /**
@@ -135,10 +137,19 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.account_MSGCENTER_Back: this.finish();break; //退出
+            case R.id.account_baozhengjin_lineLayout: ;break; //保证金布局
             case R.id.account_bancCard_info_layout: startActivity(new Intent(this,BankCardActivity.class));break; //银行卡详情
-            case R.id.account_Extract_lineLayout: startActivity(new Intent(this,BankCardActivity.class));break; //提现操作
+            case R.id.account_Extract_lineLayout: jumpToextract();break; //提现操作
+            case R.id.account_extract_history_lineLayout: startActivity(new Intent(this,ExtractHistryActivity.class));break; //提现历史
 
             default:
         }
+    }
+
+    /**跳转到提现界面*/
+    private void jumpToextract(){
+        Intent intent = new Intent(this,ExtractActivity.class);
+        intent.putExtra("extUserEtity",extUserEtity);
+        startActivity(intent); //提现操作
     }
 }

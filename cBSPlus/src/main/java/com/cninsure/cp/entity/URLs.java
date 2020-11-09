@@ -218,7 +218,16 @@ public class URLs implements Serializable {
 	public final static String FSX_WORK_SUBMIT_RIVIEW = IPHOME +"/other/audit/submit";
 	
 	/**********************************************车险新全流程*************************************************/
-	/**车险公估师任务订单查询 --GET**/
+	/**车险公估师任务订单查询 --GET
+	 * posApplyUid:根据提现申请号查询订单
+	 * * posStatusArr提现状态；
+	 *      * public static final int PREPARE = 1;//可提现
+	 *      * public static final int APPLY = 2;//发起提现
+	 *      * public static final int PASS = 3;//审核通过
+	 *      * public static final int ADOPT = 4;//审核退回
+	 *      * public static final int FAIL = 5;//支付失败
+	 *      * public static final int SUCCESS = 6;//支付成功
+	 *      * public static final int CANT = 9;//不能提现(自有公估师不能提现)**/
 	public final static String CX_NEW_GET_GGS_ORDER = IPHOME +"/cx/order/listPage";
 	/**拍照类型字典表 type=cxOrderWorkImageType --GET**/
 	public final static String CX_NEW_GET_IMG_TYPE_DICT = IPHOME +"/dict/listByType";
@@ -246,6 +255,10 @@ public class URLs implements Serializable {
 	public final static String CX_SAVE_EXAMINE_INFO= IPHOME +"/cx/order/work/message/save";
 	/**GET 获取用户账户信息 userId*/
 	public final static String CX_EXT_USER= IPHOME +"/extUser/viewByUserId";
+	/**GET 提现申请 userId,orderIds(多个id用逗号分开)*/
+	public final static String POS_APPLY_SUBMIT= IPHOME +"/cx/order/posApply/submit";
+	/**GET 提现申请 userId,m(年月份，格式2020-10)、start、size*/
+	public final static String POS_APPLY_HISTORY= IPHOME +"/cx/order/posApply/listPage";
 	
 	
 	

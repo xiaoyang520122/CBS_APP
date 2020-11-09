@@ -241,6 +241,12 @@ public class HttpRequestTool {
 	public final static int  CX_SAVE_EXAMINE_INFO=1098;
 	/**获取用户账户信息 */
 	public final static int  CX_EXT_USER=1099;
+	/**获取提现列表 */
+	public final static int  CHOICE_EXTRACT_ORDER_REQUEST=1100;
+	/**提交提现申请 */
+	public final static int  POS_APPLY_SUBMIT=1101;
+	/**提现历史记录 */
+	public final static int  POS_APPLY_HISTORY=1102;
 
 
 

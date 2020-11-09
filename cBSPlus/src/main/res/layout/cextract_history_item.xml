@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corners_hui_line5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="申请时间："
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/text_m" />
+
+                <TextView
+                    android:id="@+id/extHistory_applyTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="无信息！"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/text_m" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/hui_line" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="批次号："
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/hui_text_xxxh"
+                    android:textSize="@dimen/text_m" />
+
+                <TextView
+                    android:id="@+id/extHistory_piciNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/copy_somshing_yellow35"
+                    android:hint="无信息！"
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_m"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="申请额度：￥"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/hui_text_xxxh"
+                    android:textSize="@dimen/text_m" />
+
+                <TextView
+                    android:id="@+id/extHistory_amount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="00.00"
+                    android:textColor="@color/yellow_logo"
+                    android:textSize="@dimen/text_m"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="状态："
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/hui_text_xxxh"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_m" />
+
+                <TextView
+                    android:id="@+id/extHistory_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="无信息！"
+                    android:textStyle="bold"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/text_m" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:src="@drawable/left_jt_hui" />
+
+    </LinearLayout>
+
+</LinearLayout>

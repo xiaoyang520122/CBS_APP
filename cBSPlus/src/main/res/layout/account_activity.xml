@@ -32,6 +32,15 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="我的账户"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_xh" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text=""
             android:gravity="center_vertical|right"
@@ -193,6 +202,12 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:visibility="invisible"
+            android:src="@drawable/left_jt_hui" />
+
         <TextView
             android:layout_width="1dp"
             android:layout_height="fill_parent"
@@ -207,6 +222,7 @@
             android:src="@drawable/baozheng_cel_64" />
 
         <LinearLayout
+            android:id="@+id/account_baozhengjin_lineLayout"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -233,6 +249,12 @@
                 android:textStyle="bold"
                 android:textColor="@color/bulue_main" />
         </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:src="@drawable/left_jt_hui" />
 
     </LinearLayout>
 

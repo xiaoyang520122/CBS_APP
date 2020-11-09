@@ -105,20 +105,20 @@ public class CxOrderEntity implements Serializable {
         public Double bargainPrice; // 公估师议价
 
 
-        private String investigationType;//调查类型
-        private String investigations;//调查内容
+        public String investigationType;//调查类型
+        public String investigations;//调查内容
 
-        private Double baseFee;//基础费
-        private Double extraFee;//超额附加费
-        private Double settlementBaseFee;//机构间结算基础费
-        private Double settlementExtraFee;//机构间结算超额附加费
-        private Double serviceFee;//订单服务费=基础费+超额附加费+额外奖励
-        private Double orderFee;//订单金额=机构间结算价基础费+机构间结算价超额附加费+额外奖励
-        private Double blanceFee;//机构间结算价结余=订单金额—订单服务费
-        private Double canPosAmount;//可提现金额
-        private Double bondAmount;//保证金
-        private Integer posStatus;//提现状态
-        private String posFailReason;//提现失败原因
+        public Double baseFee;//基础费
+        public Double extraFee;//超额附加费
+        public Double settlementBaseFee;//机构间结算基础费
+        public Double settlementExtraFee;//机构间结算超额附加费
+        public Double serviceFee;//订单服务费=基础费+超额附加费+额外奖励
+        public Double orderFee;//订单金额=机构间结算价基础费+机构间结算价超额附加费+额外奖励
+        public Double blanceFee;//机构间结算价结余=订单金额—订单服务费
+        public Double canPosAmount;//可提现金额
+        public Double bondAmount;//保证金
+        public Integer posStatus;//提现状态
+        public String posFailReason;//提现失败原因
 
 
         public PublicOrderEntity getStandardOrderEnt() {

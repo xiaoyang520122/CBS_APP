@@ -156,6 +156,9 @@
         <activity android:name=".activty.BankCardActivity"></activity>
         <activity android:name=".activty.AddBanckCardActivity"></activity>
         <activity android:name=".activty.AccountActivity"></activity>
+        <activity android:name=".activty.ExtractHistryActivity"></activity>
+        <activity android:name=".activty.ExtractActivity"></activity>
+        <activity android:name=".activty.ChoiceExtractOrderActivity"></activity>
         <activity android:name=".fc.activity.EditSurveyGgsActivity"></activity>
         <activity android:name=".fc.activity.CaseReportActivity"></activity>
         <activity android:name=".utils.PhotoChoiceActivityFc"></activity>
