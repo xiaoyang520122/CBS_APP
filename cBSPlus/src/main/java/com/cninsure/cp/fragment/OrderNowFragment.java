@@ -76,8 +76,10 @@ import com.cninsure.cp.utils.GetFcStatusUtil;
 import com.cninsure.cp.utils.GetOrederStatus;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
+import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.PopupWindowUtils;
 import com.cninsure.cp.utils.ToastUtil;
+import com.cninsure.cp.utils.extact.ExtactUserUtil;
 import com.cninsure.cp.view.LoadingDialog;
 import com.cninsure.cp.view.MarqueeTextView;
 
@@ -113,12 +115,15 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 	@SuppressLint("SimpleDateFormat")
 	private SimpleDateFormat SF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+	public static ExtactUserUtil extactUserUtil;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		fragmentView = inflater.inflate(R.layout.ordernow_fragment, null);
 		EventBus.getDefault().register(this);
 		initView();
 		downloadOrderData(1);
+		new ExtactUserUtil().isExtactGetInfo(getActivity(),false); //如果是外部车童，就获取车童信息
 		return fragmentView;
 	}
 
@@ -373,12 +378,17 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		case HttpRequestTool.YJX_ORDER_ACCEPT: // 接受医健险调度
 			showYjxHintMsg(HttpRequestTool.YJX_ORDER_ACCEPT,value.get(0).getValue());
 			break;
+		case HttpRequestTool.CX_EXT_USER: //外部车童信息
+			LoadDialogUtil.dismissDialog();
+			extactUserUtil = new ExtactUserUtil();
+			extactUserUtil.isSignble(getActivity(), value.get(0).getValue());
+			break;
 
 		default:
 			break;
 		}
 	}
-	
+
 	private void showYjxHintMsg(int code, String value) {
 		switch (code) {
 		case HttpRequestTool.YJX_ORDER_BACK:// 医健险调度退回

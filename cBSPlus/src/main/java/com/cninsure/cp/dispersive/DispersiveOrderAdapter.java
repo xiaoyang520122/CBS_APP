@@ -105,7 +105,7 @@ public class DispersiveOrderAdapter extends BaseAdapter {
                         SetTextUtil.setTextViewText(conView.findViewById(R.id.FSXDSPListI_wtTitle),"用时：");//委托人标签显示用时信息
 //                        conView.findViewById(R.id.FSXDSPList_UseTime).setVisibility(View.VISIBLE);
                         new TimeHelper(context).setUseTime(conView.findViewById(R.id.FSXDSPListI_wtName),"",caseDisTemp.createDate.getTime(),arg0);//委托人标签显示用时信息
-//                        new TimeHelper(context).setUseTime(conView.findViewById(R.id.FSXDSPList_UseTime),"用时：",caseDisTemp.createDate.getTime(),arg0);
+//                        new TimeHelper(context).setUseTime(conView.findViewById(R.id.FSXDSPList_UseTime),"用时：",caseBaoanTable.createDate.getTime(),arg0);
                     }else{
                         conView.findViewById(R.id.FSXDSPList_UseTime).setVisibility(View.GONE);
                     }
@@ -114,7 +114,7 @@ public class DispersiveOrderAdapter extends BaseAdapter {
                 SetTextUtil.setTextViewText(conView.findViewById(R.id.FSXDSPListI_uid),caseDisTemp.uid); //任务编号
                 CopyUtils.setCopyOnclickListener(context, conView.findViewById(R.id.FSXDSPListI_taskAddress), caseDisTemp.surveyAddr);//复制地址
                 CopyUtils.setCopyOnclickListener(context, conView.findViewById(R.id.FSXDSPListI_uid), caseDisTemp.uid);//复制任务编号
-//                CopyUtils.setCopyOnclickListener(context, conView.findViewById(R.id.FSXDSPListI_copy_taskAddress), caseDisTemp.surveyAddr);//线路规划*************************
+//                CopyUtils.setCopyOnclickListener(context, conView.findViewById(R.id.FSXDSPListI_copy_taskAddress), caseBaoanTable.surveyAddr);//线路规划*************************
                String naviAddress = caseDisTemp.province+caseDisTemp.city+caseDisTemp.surveyAddr;
                 NaviHelper.setNaviOnclick(conView.findViewById(R.id.FSXDSPListI_copy_taskAddress),
                         context,caseDisTemp.latitude,caseDisTemp.longitude,naviAddress, caseDisTemp. sceneTel);//线路规划
@@ -217,7 +217,7 @@ public class DispersiveOrderAdapter extends BaseAdapter {
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button2)).setText("任务详情"); //蓝色
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button1)).setTextColor(context.getResources().getColor(R.color.yellow_logo)); //黄色
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button2)).setTextColor(context.getResources().getColor(R.color.bulue_main)); //蓝色
-//				    setCancelOnclick(conView.findViewById(R.id.FSXDSPListI_button1),caseDisTemp); //取消操作
+//				    setCancelOnclick(conView.findViewById(R.id.FSXDSPListI_button1),caseBaoanTable); //取消操作
                     gouToDisWorkActivity(conView.findViewById(R.id.FSXDSPListI_button2),caseDisTemp);  //前往作业界面（作业或者查勘详情）
                     break;
 
@@ -228,7 +228,7 @@ public class DispersiveOrderAdapter extends BaseAdapter {
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button2)).setText("任务详情"); //蓝色
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button1)).setTextColor(context.getResources().getColor(R.color.yellow_logo)); //黄色
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button2)).setTextColor(context.getResources().getColor(R.color.bulue_main)); //蓝色
-//				    setCancelOnclick(conView.findViewById(R.id.FSXDSPListI_button1),caseDisTemp); //取消操作
+//				    setCancelOnclick(conView.findViewById(R.id.FSXDSPListI_button1),caseBaoanTable); //取消操作
                     gouToDisWorkActivity(conView.findViewById(R.id.FSXDSPListI_button2),caseDisTemp); //前往作业界面（作业或者查勘详情）
                     break;
 
@@ -239,7 +239,7 @@ public class DispersiveOrderAdapter extends BaseAdapter {
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button2)).setText("任务详情"); //蓝色
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button1)).setTextColor(context.getResources().getColor(R.color.yellow_logo)); //黄色
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button2)).setTextColor(context.getResources().getColor(R.color.bulue_main)); //蓝色
-//				    setCancelOnclick(conView.findViewById(R.id.FSXDSPListI_button1),caseDisTemp); //取消操作
+//				    setCancelOnclick(conView.findViewById(R.id.FSXDSPListI_button1),caseBaoanTable); //取消操作
                     gouToDisWorkActivity(conView.findViewById(R.id.FSXDSPListI_button2),caseDisTemp); //前往作业界面（作业或者查勘详情）
                     break;
 
@@ -259,7 +259,7 @@ public class DispersiveOrderAdapter extends BaseAdapter {
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button2)).setText("任务详情"); //蓝色
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button1)).setTextColor(context.getResources().getColor(R.color.yellow_logo)); //黄色
                     ((TextView)conView.findViewById(R.id.FSXDSPListI_button2)).setTextColor(context.getResources().getColor(R.color.bulue_main)); //蓝色
-//				    setCancelOnclick(conView.findViewById(R.id.FSXDSPListI_button1),caseDisTemp); //取消操作
+//				    setCancelOnclick(conView.findViewById(R.id.FSXDSPListI_button1),caseBaoanTable); //取消操作
                     gouToDisWorkActivity(conView.findViewById(R.id.FSXDSPListI_button2),caseDisTemp);
                     break;
             }
@@ -275,7 +275,7 @@ public class DispersiveOrderAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(context,DispersiveWorkActivity.class);
-                intent.putExtra("caseDisTemp",caseDisTemp);
+                intent.putExtra("caseBaoanTable",caseDisTemp);
                 context.startActivity(intent );  //开始作业
             }
         });

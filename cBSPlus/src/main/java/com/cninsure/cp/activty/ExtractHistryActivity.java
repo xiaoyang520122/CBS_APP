@@ -1,6 +1,7 @@
 package com.cninsure.cp.activty;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.cninsure.cp.entity.extract.CxExtApplyListEntity;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
+import com.cninsure.cp.utils.cx.EmptyViewUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -25,6 +27,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class ExtractHistryActivity extends BaseActivity {
 
@@ -48,18 +51,21 @@ public class ExtractHistryActivity extends BaseActivity {
         backTv.setOnClickListener(v -> {
          this.finish();
         });
+        new EmptyViewUtil().SetEmptyView(this,listView);
     }
 
     private void getOrderList(){
         List<String> paramsList = new ArrayList<>(6);
         paramsList.add("userId");
         paramsList.add(AppApplication.getUSER().data.userId);
+        paramsList.add("ggsUid");
+        paramsList.add(AppApplication.getUSER().data.userId);
         paramsList.add("start");
         paramsList.add("0");
         paramsList.add("size");
         paramsList.add("10000");
-//        paramsList.add("m");
-//        paramsList.add("2020-10");
+        paramsList.add("bondTypeArr");
+        paramsList.add("0");
         HttpUtils.requestGet(URLs.POS_APPLY_HISTORY, paramsList, HttpRequestTool.POS_APPLY_HISTORY);
         LoadDialogUtil.setMessageAndShow(this,"加载中……");
     }

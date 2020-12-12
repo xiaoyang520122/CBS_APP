@@ -31,4 +31,18 @@ public class CxOrderPosApplyTable {
     public String bankBranceName;//开户支行
     public Integer type;//类型；0：正常审核；1：系统自动审核
 
+    public Integer posBondType;//0绩效提现：1、保证金提到总公司账号；2、保证金提到个人账户
+
+    public String getPosBondType() {
+        if (posBondType != null) {
+            switch (posBondType) {
+                case 0: return "绩效提取";
+                case 1: return "保证金提到公司";
+                case 2: return "保证金提取";
+                default:  return "未知申请！";
+            }
+        } else {
+            return "未知申请！";
+        }
+    }
 }

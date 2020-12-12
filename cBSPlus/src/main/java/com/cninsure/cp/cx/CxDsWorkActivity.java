@@ -34,6 +34,7 @@ import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxDsTaskEntity;
 import com.cninsure.cp.entity.cx.CxDsWorkEntity;
 import com.cninsure.cp.entity.cx.CxInjuryTrackWorkEntity;
+import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.ActivityFinishUtil;
 import com.cninsure.cp.utils.DialogUtil;
@@ -145,7 +146,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
             case HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT:
                 dowloadTaskView();
                 LoadDialogUtil.dismissDialog();
-                cxDict.list = JSON.parseArray(values.get(0).getValue(), CxDictEntity.DictData.class);
+                cxDict.list = JSON.parseArray(values.get(0).getValue(), DictData.class);
                 break;
             case HttpRequestTool.CX_NEW_GET_ORDER_VIEW_BY_UID: //获取订单信息
                 LoadDialogUtil.dismissDialog();

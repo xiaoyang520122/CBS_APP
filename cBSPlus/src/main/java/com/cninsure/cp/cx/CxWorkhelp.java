@@ -39,6 +39,7 @@ import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.WorkPhotos;
 import com.cninsure.cp.entity.WorkPhotos.TableData.WorkPhotoEntitiy;
 import com.cninsure.cp.entity.cx.CxDictEntity;
+import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.photo.CXPhotoActivity;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.ImageUtil;
@@ -80,7 +81,7 @@ public class CxWorkhelp {
 	public static List<List<List<WorkPhotoEntitiy>>> resousePathList;
 	/**组是否拍齐照片的标识图标集合**/
 	private List<TextView> hintTvS;
-	public static List<CxDictEntity.DictData> photoType; //拍照类型字典数据
+	public static List<DictData> photoType; //拍照类型字典数据
 	private WorkPhotos workphotos;
 	private List<ImageView> Jimags;
 	/**显示照片的MyParkGalleryAdapter集合**/
@@ -89,7 +90,7 @@ public class CxWorkhelp {
 	@SuppressWarnings("unused")
 	private CxWorkhelp(){}
 	
-	public CxWorkhelp(CxSurveyWorkActivity CxWorkActivity, View uploadView, List<CxDictEntity.DictData> photoType, WorkPhotos workphoto) {
+	public CxWorkhelp(CxSurveyWorkActivity CxWorkActivity, View uploadView, List<DictData> photoType, WorkPhotos workphoto) {
 		resousePathList=null;
 		activity=CxWorkActivity;
 		view=uploadView;

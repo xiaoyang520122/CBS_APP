@@ -10,4 +10,6 @@ public final class BuildConfig {
   public static final String FLAVOR = "";
   public static final int VERSION_CODE = 155;
   public static final String VERSION_NAME = "V1.5.5";
+  // Fields from build type: debug
+  public static final String FSX_USER_TYPE = "153";
 }

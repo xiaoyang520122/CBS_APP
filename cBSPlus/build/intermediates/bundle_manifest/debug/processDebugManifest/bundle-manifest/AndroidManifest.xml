@@ -167,9 +167,12 @@
         <activity android:name="com.cninsure.cp.utils.PhotoChoiceActivity" />
         <activity android:name="com.cninsure.cp.activty.BankCardActivity" />
         <activity android:name="com.cninsure.cp.activty.AddBanckCardActivity" />
+        <activity android:name="com.cninsure.cp.activty.register.SignAgmentActivity" />
         <activity android:name="com.cninsure.cp.activty.AccountActivity" />
         <activity android:name="com.cninsure.cp.activty.ExtractHistryActivity" />
         <activity android:name="com.cninsure.cp.activty.ExtractActivity" />
+        <activity android:name="com.cninsure.cp.activty.ExtractBondActivity" />
+        <activity android:name="com.cninsure.cp.activty.ExtBondHistoryActivity" />
         <activity android:name="com.cninsure.cp.activty.ChoiceExtractOrderActivity" />
         <activity android:name="com.cninsure.cp.fc.activity.EditSurveyGgsActivity" />
         <activity android:name="com.cninsure.cp.fc.activity.CaseReportActivity" />
@@ -187,6 +190,10 @@
         <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity" />
         <activity android:name="com.cninsure.cp.cx.CxDsWorkActivity" />
         <activity android:name="com.cninsure.cp.cx.DsUtilActivity" />
+        <activity android:name="com.cninsure.cp.utils.PDF.DisplayBaoGaoActivity" />
+        <activity android:name="com.cninsure.cp.cargo.CargoListActivity" />
+        <activity android:name="com.cninsure.cp.cargo.CargoWorkActivity" />
+        <activity android:name="com.cninsure.cp.photo.CargoCamreaActivity" />
         <activity
             android:name="com.cninsure.cp.cx.CxInjuryMediateActivity"
             android:theme="@style/Theme.AppCompat"
@@ -280,6 +287,18 @@
         <meta-data
             android:name="Mob-AppSecret"
             android:value="e40663ecce9615e610134a8bbe7e90d0" />
+
+        <!-- 安卓7.0遇到解决办法 android.os.FileUriExposedException: file:///storage/emulated.. exposed beyond app through Intent.getData()束 -->
+        <!-- 来自https://www.cnblogs.com/netcorner/p/6542373.html -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.cninsure.cp.provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
 
         <service android:name="com.liulishuo.filedownloader.services.FileDownloadService$SharedMainProcessService" />
         <service

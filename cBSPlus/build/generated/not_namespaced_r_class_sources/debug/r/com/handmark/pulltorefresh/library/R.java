@@ -52,29 +52,29 @@ public final class R {
     public static final class drawable {
         private drawable() {}
 
-        public static final int default_ptr_flip = 0x7f0800dd;
-        public static final int default_ptr_rotate = 0x7f0800de;
-        public static final int indicator_arrow = 0x7f080113;
-        public static final int indicator_bg_bottom = 0x7f080114;
-        public static final int indicator_bg_top = 0x7f080115;
+        public static final int default_ptr_flip = 0x7f0800e0;
+        public static final int default_ptr_rotate = 0x7f0800e1;
+        public static final int indicator_arrow = 0x7f080118;
+        public static final int indicator_bg_bottom = 0x7f080119;
+        public static final int indicator_bg_top = 0x7f08011a;
     }
     public static final class id {
         private id() {}
 
-        public static final int fl_inner = 0x7f09046b;
-        public static final int gridview = 0x7f0904aa;
-        public static final int pull_to_refresh_image = 0x7f09052d;
-        public static final int pull_to_refresh_progress = 0x7f09052e;
-        public static final int pull_to_refresh_sub_text = 0x7f09052f;
-        public static final int pull_to_refresh_text = 0x7f090530;
-        public static final int scrollview = 0x7f09054b;
-        public static final int webview = 0x7f0905ad;
+        public static final int fl_inner = 0x7f0904bc;
+        public static final int gridview = 0x7f0904fb;
+        public static final int pull_to_refresh_image = 0x7f090582;
+        public static final int pull_to_refresh_progress = 0x7f090583;
+        public static final int pull_to_refresh_sub_text = 0x7f090584;
+        public static final int pull_to_refresh_text = 0x7f090585;
+        public static final int scrollview = 0x7f0905a1;
+        public static final int webview = 0x7f090608;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int pull_to_refresh_header_horizontal = 0x7f0c00c3;
-        public static final int pull_to_refresh_header_vertical = 0x7f0c00c4;
+        public static final int pull_to_refresh_header_horizontal = 0x7f0c00cb;
+        public static final int pull_to_refresh_header_vertical = 0x7f0c00cc;
     }
     public static final class string {
         private string() {}

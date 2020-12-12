@@ -102,7 +102,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="限每周三提现一次，单次提现金额需要大于100，小于10000."
+                android:text="限每周三提现一次，单次提现金额需要大于100，小于10000。"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/yellow_baner"
                 android:textSize="@dimen/text_xh" />
@@ -127,7 +127,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="可提现余额（元）"
+            android:text="可申请余额（单位：元。'可申请=可提现-审核中'）"
             android:layout_marginLeft="10dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/hui_text_xh"

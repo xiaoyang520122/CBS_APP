@@ -20,6 +20,7 @@ import com.cninsure.cp.cx.util.CxWorkImgUploadUtil;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxImagEntity;
+import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.entity.dispersive.DisWorkImageEntity;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
@@ -149,7 +150,7 @@ public class CxImagFragment extends BaseFragment {
             case HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT_IF:
                 dowloadWorkImg();
                 LoadDialogUtil.dismissDialog();
-                cxImgDict.list = JSON.parseArray(values.get(0).getValue(), CxDictEntity.DictData.class);
+                cxImgDict.list = JSON.parseArray(values.get(0).getValue(), DictData.class);
                 break;
             case HttpRequestTool.UPLOAD_FILE_PHOTO:
                 LoadDialogUtil.dismissDialog();
@@ -189,9 +190,9 @@ public class CxImagFragment extends BaseFragment {
         photoListView.setAdapter(adapter);
     }
 
-    public List<CxDictEntity.DictData>  getCxJJDict(){
-        List<CxDictEntity.DictData> list = new ArrayList<>(10);
-        for (CxDictEntity.DictData cddd:cxImgDict.list){
+    public List<DictData>  getCxJJDict(){
+        List<DictData> list = new ArrayList<>(10);
+        for (DictData cddd:cxImgDict.list){
             if ("cxOrderWorkMediaType".equals(cddd.type) && Integer.parseInt(cddd.value)<11)
                 list.add(cddd);
         }

@@ -27,6 +27,7 @@
                 android:id="@+id/expandablelist_item_title_imgl"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp" />
         </LinearLayout>
 

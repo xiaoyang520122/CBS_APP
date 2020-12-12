@@ -23,6 +23,7 @@ import com.cninsure.cp.dispersive.DispersiveUserActivity;
 import com.cninsure.cp.utils.ActivityManagerUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
+import com.cninsure.cp.utils.loginUtil.LoginUtil;
 import com.igexin.sdk.PushManager;
 
 public class LoadingActivity extends BaseActivity {
@@ -82,21 +83,21 @@ public class LoadingActivity extends BaseActivity {
 //		startActivity(intent);
 		AppApplication.saveUser(value,passstr);
 		saveLoginInfo();
-		jumpActivity(value);
+		new LoginUtil(this).jumpActivity(value);
 		finish();
 	}
 
-	/***更具用户类型判断跳转的Activity*/
-	private void jumpActivity(String value) {
-		if ("99".equals(AppApplication.getUSER().data.userType)){//外部车童登录，跳转到外部车童界面
-			Intent intent=new Intent(this, DispersiveUserActivity.class);
-			LoadingActivity.this.startActivity(intent);
-		}else{  //非外部车童
-			Intent intent=new Intent(this, IndexActivity.class);
-			intent.putExtra("loginvalue", value);
-			LoadingActivity.this.startActivity(intent);
-		}
-	}
+//	/***更具用户类型判断跳转的Activity*/
+//	private void jumpActivity(String value) {
+//		if ("99".equals(AppApplication.getUSER().data.userType)){//外部车童登录，跳转到外部车童界面
+//			Intent intent=new Intent(this, DispersiveUserActivity.class);
+//			LoadingActivity.this.startActivity(intent);
+//		}else{  //非外部车童
+//			Intent intent=new Intent(this, IndexActivity.class);
+//			intent.putExtra("loginvalue", value);
+//			LoadingActivity.this.startActivity(intent);
+//		}
+//	}
 	
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	public void eventconn(List<NameValuePair> value) {
@@ -108,7 +109,6 @@ public class LoadingActivity extends BaseActivity {
 			case 200:
 				jumpToLoging(value.get(0).getValue());
 				break;
-
 			default:
 				startActivity(new Intent(this, LoginActivity.class));
 				break;

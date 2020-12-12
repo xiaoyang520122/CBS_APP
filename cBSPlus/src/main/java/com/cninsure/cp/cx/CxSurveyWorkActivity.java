@@ -35,6 +35,7 @@ import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxSurveyTaskEntity;
 import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
+import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.ocr.CxWorkPhotoHelp;
 import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.ActivityFinishUtil;
@@ -304,7 +305,7 @@ public class CxSurveyWorkActivity extends BaseActivity implements View.OnClickLi
             case HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT:
                 dowloadOderView();
                 LoadDialogUtil.dismissDialog();
-                cxSurveyDict.list = JSON.parseArray(values.get(0).getValue(), CxDictEntity.DictData.class);
+                cxSurveyDict.list = JSON.parseArray(values.get(0).getValue(), DictData.class);
                 workhelp = new CxWorkhelp(this, uploadView, cxSurveyDict.getDictByType("cxOrderWorkImageType"), null);
                 break;
             case HttpRequestTool.UPLOAD_FILE_PHOTO: //上传附件成功

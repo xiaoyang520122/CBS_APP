@@ -159,10 +159,7 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 
 	/*** 选择最佳尺寸方法 */
 	@SuppressLint("NewApi")
-	private Point getBestCameraResolution(Camera.Parameters parameters) { // 去掉参数
-																			// ,
-																			// Point
-																			// screenResolution
+	private Point getBestCameraResolution(Camera.Parameters parameters) {
 		/**
 		 * getRealMetrics - 屏幕的原始尺寸，即包含状态栏。 version >= 4.2.2
 		 */

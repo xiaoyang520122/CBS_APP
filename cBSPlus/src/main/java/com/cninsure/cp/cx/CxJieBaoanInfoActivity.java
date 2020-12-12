@@ -27,6 +27,7 @@ import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
+import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.ActivityFinishUtil;
 import com.cninsure.cp.utils.FileChooseUtil;
@@ -158,7 +159,7 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
             case HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT:
 //                dowloadOderView();
                 LoadDialogUtil.dismissDialog();
-                cxDict.list = JSON.parseArray(values.get(0).getValue(), CxDictEntity.DictData.class);
+                cxDict.list = JSON.parseArray(values.get(0).getValue(), DictData.class);
                 break;
 //            case HttpRequestTool.UPLOAD_FILE_PHOTO: //上传附件成功
 //                dowloadOderView();

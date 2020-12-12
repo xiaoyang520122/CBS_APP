@@ -70,5 +70,7 @@
     <string name="camera_xsz">拍摄行驶证</string>
     <string name="camera_jsz">拍摄驾驶证</string>
 
+    <string name="sign_agreement">拍摄驾驶证</string>
+
 
 </resources>

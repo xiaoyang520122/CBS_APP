@@ -1,6 +1,5 @@
 package com.cninsure.cp.activty;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,7 +16,7 @@ import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.entity.BaseEntity;
 import com.cninsure.cp.entity.URLs;
-import com.cninsure.cp.entity.cx.ExtUserEtity;
+import com.cninsure.cp.entity.extract.ExtUserEtity;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
@@ -71,7 +70,7 @@ public class ExtractActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.extract_can_layout: startActivityForResult(new Intent(this,ChoiceExtractOrderActivity.class), HttpRequestTool.CHOICE_EXTRACT_ORDER_REQUEST);break;
+            case R.id.extract_can_layout: JumpToChoiceOrder();break; //选择提现订单
             case R.id.extract_submit_btn: submitApply();break;//提交申请
             case R.id.extract_act_Back: this.finish();break;//退出
 
@@ -79,10 +78,22 @@ public class ExtractActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
+    private void JumpToChoiceOrder() {
+        if ((extUserEtity==null || extUserEtity.data==null)||(extUserEtity.data.posStatus== null || extUserEtity.data.posStatus==0)){
+            DialogUtil.getAlertOneButton(this,"无提取权限！",null).show();
+            return;
+        }
+        startActivityForResult(new Intent(this,ChoiceExtractOrderActivity.class), HttpRequestTool.CHOICE_EXTRACT_ORDER_REQUEST);
+    }
+
     /**
      * 提交申请
      */
     private void submitApply() {
+        if (extUserEtity.data.posStatus== null || extUserEtity.data.posStatus==0){
+        DialogUtil.getAlertOneButton(this,"无提取权限！",null).show();
+        return;
+    }
         if (submitExtAmount!=null && submitExtAmount>0 && !TextUtils.isEmpty(orderIds)){
             if (!(submitExtAmount>100) || !(submitExtAmount<10000)) {
                 DialogUtil.getAlertOneButton(this,"提现金额需要大于100，小于10000！",null).show();

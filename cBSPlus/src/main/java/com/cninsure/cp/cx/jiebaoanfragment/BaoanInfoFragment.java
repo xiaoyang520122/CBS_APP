@@ -20,7 +20,7 @@ import com.cninsure.cp.cx.fragment.BaseFragment;
 import com.cninsure.cp.cx.util.ErrorDialogUtil;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxOrderEntity;
-import com.cninsure.cp.entity.cx.EntrusterShortNameCxTable;
+import com.cninsure.cp.entity.extract.EntrusterShortNameCxTable;
 import com.cninsure.cp.entity.cx.JieBaoanEntity;
 import com.cninsure.cp.utils.CallUtils;
 import com.cninsure.cp.utils.CopyUtils;

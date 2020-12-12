@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/hui_bg"
+        android:gravity="center"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -61,11 +62,27 @@
                     android:textSize="@dimen/text_defaul" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/hg" />
+            <LinearLayout
+                android:id="@+id/my_menu_signStatusLineaLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:onClick="goToPage"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/hg" />
+                <TextView
+                    android:id="@+id/my_menu_signStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="未签约"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_defaul" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -140,6 +157,40 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="分散型-派单模式"
+                android:textColor="@color/hui_text_xxh" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:src="@drawable/left_jt_hui" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="#e1e1e1" />
+
+        <LinearLayout
+            android:id="@+id/my_menu_cargo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:onClick="goToPage"
+            android:orientation="horizontal"
+            android:padding="8dp" >
+
+            <ImageView
+                android:layout_width="@dimen/my_menu_ico_size"
+                android:layout_height="@dimen/my_menu_ico_size"
+                android:layout_margin="10dp"
+                android:src="@drawable/dispersive_icon48" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="货运险-全流程"
                 android:textColor="@color/hui_text_xxh" />
 
             <ImageView

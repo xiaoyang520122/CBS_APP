@@ -37,6 +37,11 @@ android {
         release {
             minifyEnabled false  //true就是打开混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            buildConfigField("String", "FSX_USER_TYPE", "\"153\"")
+        }
+        debug {
+            buildConfigField("String", "FSX_USER_TYPE", "\"153\"")
+            minifyEnabled false
         }
     }
     compileOptions {
@@ -143,6 +148,7 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpclient:4.5.11'
     implementation 'com.getui:sdk:2.14.0.0'
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.bm.photoview:library:1.4.1'
 }
 
 

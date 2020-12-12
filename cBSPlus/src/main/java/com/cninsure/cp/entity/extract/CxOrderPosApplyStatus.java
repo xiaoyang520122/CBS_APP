@@ -14,12 +14,13 @@ public class CxOrderPosApplyStatus {
 	public static final int PAY_FAIL = 5;//支付失败
 	public static final int PAY_SUCCESS = 6;//支付成功
 
-	public static String getExtractApplyStatus(int code){
-		switch (code){
-			case 0: return "待审核";
-			case 1: return "完成审核";
-			case 5: return "支付失败";
-			case 6: return "支付成功";
+			public static String getExtractApplyStatus(int code){
+				switch (code){
+					case 0: return "待审核";
+					case 1: return "待支付";
+					case 2: return "审核驳回";
+					case 5: return "支付失败";
+					case 6: return "已支付";
 			default: return"未知！";
 		}
 	}

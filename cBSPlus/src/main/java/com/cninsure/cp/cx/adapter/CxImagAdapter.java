@@ -17,6 +17,7 @@ import com.cninsure.cp.R;
 import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxImagEntity;
+import com.cninsure.cp.entity.cx.DictData;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -31,11 +32,11 @@ import java.util.List;
         private Handler handler;
         private LayoutInflater inflater;
         private CxJieBaoanInfoActivity context;
-        public List<CxDictEntity.DictData> dictList;
+        public List<DictData> dictList;
         public SaveImgCallBack addScb; //通过该接口的回调将数据写入到activity的图片实体类中，并刷新adapter
 
         private CxImagAdapter(){}
-        public CxImagAdapter(CxJieBaoanInfoActivity context, List<CxImagEntity> documentImgEnList, List<CxDictEntity.DictData> list, SaveImgCallBack scb){
+        public CxImagAdapter(CxJieBaoanInfoActivity context, List<CxImagEntity> documentImgEnList, List<DictData> list, SaveImgCallBack scb){
             imgEnList = documentImgEnList;
             inflater = LayoutInflater.from(context);
             this.context = context;

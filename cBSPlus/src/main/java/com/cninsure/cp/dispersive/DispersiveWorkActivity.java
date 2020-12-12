@@ -100,7 +100,7 @@ public class DispersiveWorkActivity extends BaseActivity {
         gridAdapterArr = new HashMap<>(17);
         viewPager=(ViewPager) findViewById(R.id.parkPhotoUpload_ViewPager);
         radioGroup=(RadioGroup) findViewById(R.id.parkPhotoUpload_RadioGroup);
-        caseDisTemp = (DispersiveDispatchEntity.DispersiveDispatchItem) getIntent().getSerializableExtra("caseDisTemp");
+        caseDisTemp = (DispersiveDispatchEntity.DispersiveDispatchItem) getIntent().getSerializableExtra("caseBaoanTable");
         initPagerView();
     }
 
@@ -126,7 +126,7 @@ public class DispersiveWorkActivity extends BaseActivity {
         infoData.add("出险险种：\t"+caseDisTemp.insuranceBigType +"/"+caseDisTemp.insuranceSmallType);
         infoData.add("案件对接人：\t"+caseDisTemp.takerName +"/"+caseDisTemp.takerTel);
         infoData.add("保险公司：\t"+caseDisTemp.wtName);
-//        infoData.add("报案号：\t"+caseDisTemp.baoanNo);
+//        infoData.add("报案号：\t"+caseBaoanTable.baoanNo);
         infoData.add("现场联系人：\t"+caseDisTemp.sceneName+"/"+caseDisTemp.sceneTel);
         infoData.add("查勘地点：\t"+caseDisTemp.surveyAddr);
         infoData.add("受损基本情况：\t"+caseDisTemp.damagedState);
@@ -485,7 +485,7 @@ public class DispersiveWorkActivity extends BaseActivity {
         if ("UPLOAD_SUCCESS".equals(successCode)) {  //上传图片成功后重新加载Activity
             Intent intent = new Intent();
             intent.setClass(this,DispersiveWorkActivity.class);
-            intent.putExtra("caseDisTemp",caseDisTemp);
+            intent.putExtra("caseBaoanTable",caseDisTemp);
             this.startActivity(intent );  //开始作业
             this.finish();
         }

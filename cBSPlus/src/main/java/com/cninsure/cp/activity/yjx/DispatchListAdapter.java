@@ -113,7 +113,7 @@ public class DispatchListAdapter extends BaseAdapter {
 				((TextView)conView.findViewById(R.id.YJXDSPListI_button2)).setText("编辑"); //蓝色
 //				((TextView)conView.findViewById(R.id.YJXDSPListI_button1)).setTextColor(context.getResources().getColor(R.color.yellow_logo)); //黄色
 				((TextView)conView.findViewById(R.id.YJXDSPListI_button2)).setTextColor(context.getResources().getColor(R.color.bulue_main)); //蓝色
-//				setCancelOnclick(conView.findViewById(R.id.YJXDSPListI_button1),caseDisTemp);
+//				setCancelOnclick(conView.findViewById(R.id.YJXDSPListI_button1),caseBaoanTable);
 				setGaipaiOnclick(conView.findViewById(R.id.YJXDSPListI_button2),caseDisTemp);
 				((TextView)conView.findViewById(R.id.YJXDSPListI_button1)).setTextColor(context.getResources().getColor(R.color.hui_line)); //其他状态不能点击取消
 				((TextView)conView.findViewById(R.id.YJXDSPListI_button1)).setTextColor(context.getResources().getColor(R.color.hui_line)); //其他状态不能改派
@@ -131,7 +131,7 @@ public class DispatchListAdapter extends BaseAdapter {
 				((TextView)conView.findViewById(R.id.YJXDSPListI_button2)).setText("改派"); //蓝色
 				((TextView)conView.findViewById(R.id.YJXDSPListI_button1)).setTextColor(context.getResources().getColor(R.color.yellow_logo)); //黄色
 				((TextView)conView.findViewById(R.id.YJXDSPListI_button2)).setTextColor(context.getResources().getColor(R.color.bulue_main)); //蓝色
-//				setCancelOnclick(conView.findViewById(R.id.YJXDSPListI_button1),caseDisTemp); //拒绝的不能取消
+//				setCancelOnclick(conView.findViewById(R.id.YJXDSPListI_button1),caseBaoanTable); //拒绝的不能取消
 				setGaipaiOnclick(conView.findViewById(R.id.YJXDSPListI_button2),caseDisTemp);
 				break;
 
@@ -141,7 +141,7 @@ public class DispatchListAdapter extends BaseAdapter {
 //				conView.findViewById(R.id.YJXDSPListI_button1).setOnClickListener(new OnClickListener() {
 //					@Override
 //					public void onClick(View arg0) {
-////						DialogUtil.getErrDialog(context, "该任务状态为"+YjxDispatchStatus.getStatuString(caseDisTemp.status)+"不能取消！").show();
+////						DialogUtil.getErrDialog(context, "该任务状态为"+YjxDispatchStatus.getStatuString(caseBaoanTable.status)+"不能取消！").show();
 //					}
 //				});
 				break;

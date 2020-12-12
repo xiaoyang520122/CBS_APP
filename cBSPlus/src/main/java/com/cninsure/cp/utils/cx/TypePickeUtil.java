@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.cninsure.cp.entity.cx.CxDictEntity;
+import com.cninsure.cp.entity.cx.DictData;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class TypePickeUtil {
                 }).create().show();
     }
 
-    public static String[] getDictLabelArr(List<CxDictEntity.DictData> dictData){
+    public static String[] getDictLabelArr(List<DictData> dictData){
         String[] tempArr = new String[dictData.size()];
         for (int i=0;i<dictData.size();i++){
             tempArr[i] = dictData.get(i).label;

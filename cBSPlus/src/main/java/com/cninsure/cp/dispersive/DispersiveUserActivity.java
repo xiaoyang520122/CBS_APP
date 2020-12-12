@@ -30,6 +30,7 @@ import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.ToastUtil;
 import com.cninsure.cp.utils.UserInfoUtil;
+import com.cninsure.cp.utils.cx.EmptyViewUtil;
 import com.cninsure.cp.utils.permission_util.FloatingWindowPermissionUtil;
 import com.cninsure.cp.utils.permission_util.PermissionApplicationUtil;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
@@ -96,13 +97,10 @@ public class DispersiveUserActivity extends BaseActivity implements View.OnClick
     }
 
     private void setUserCenterTvOnclick(){
-        findViewById(R.id.dispersive_activity_V_LTV).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //外部车童登录，跳转到外部车童界面
-                Intent intent=new Intent(DispersiveUserActivity.this, CtCenterActivity.class);
-                DispersiveUserActivity.this.startActivity(intent);
-            }
+        findViewById(R.id.dispersive_activity_V_LTV).setOnClickListener(v -> {
+            //外部车童登录，跳转到外部车童界面
+            Intent intent=new Intent(DispersiveUserActivity.this, CtCenterActivity.class);
+            DispersiveUserActivity.this.startActivity(intent);
         });
     }
 
@@ -230,7 +228,8 @@ public class DispersiveUserActivity extends BaseActivity implements View.OnClick
     @SuppressLint("ResourceType")
     private void initListView(){
         dispatchListView = findViewById(R.id.dispersive_Dispatch_order_listView);
-        dispatchListView.setEmptyView(findViewById(R.layout.empty_dispatch_view));
+        new EmptyViewUtil().SetDispatchEmptyView(this,dispatchListView);
+//        dispatchListView.setEmptyView(findViewById(R.layout.empty_dispatch_view));
         dispatchListView.setMode(PullToRefreshBase.Mode.BOTH);
         ILoadingLayout startLabels = dispatchListView.getLoadingLayoutProxy(true, false);
         startLabels.setPullLabel("下拉刷新...");// 刚下拉时，显示的提示
@@ -245,7 +244,7 @@ public class DispersiveUserActivity extends BaseActivity implements View.OnClick
         setOnRefreshOnclick(); //设置下拉和上拉监听
     }
 
-    /**设置下拉刷新，上哪加载更多*/
+    /**设置下拉刷新，上拉加载更多*/
     private void setOnRefreshOnclick() {
         dispatchListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override

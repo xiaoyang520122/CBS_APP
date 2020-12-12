@@ -23,7 +23,7 @@
             android:padding="5dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
@@ -42,9 +42,19 @@
                     android:id="@+id/extHistory_applyTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:hint="无信息！"
                     android:textColor="@color/bulue_main"
                     android:textSize="@dimen/text_m" />
+
+                <TextView
+                    android:id="@+id/extHistory_applyType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="未知申请类型！"
+                    android:textStyle="bold"
+                    android:textColor="@color/hui_text_xxxh"
+                    android:textSize="@dimen/text_l" />
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -138,6 +148,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="15dp"
+            android:visibility="gone"
             android:src="@drawable/left_jt_hui" />
 
     </LinearLayout>

@@ -247,6 +247,32 @@ public class HttpRequestTool {
 	public final static int  POS_APPLY_SUBMIT=1101;
 	/**提现历史记录 */
 	public final static int  POS_APPLY_HISTORY=1102;
+	/**提现保证金 */
+	public final static int  POS_BOND_HISTORY=1103;
+	/**修改外部车童信息 */
+	public final static int  EXTACT_USER=1104;
+	/**上传成功后返回图片路径后缀 */
+	public final static int  UP_OCR_PHOTO=1105;
+	/**上传身份证正面 */
+	public final static int  UP_ID_CARD_F=1106;
+	/**上传身份证反面 */
+	public final static int  UP_ID_CARD_B=1107;
+//	/**生成协议PDF */
+//	public final static int  EXTACT_CREAT_AGREEMENT_PDF=1108;
+	/**签署协议 */
+	public final static int  EXTACT_USER_SIGN=1109;
+	/**GET 货运险接报案查询-分页*/
+	public final static int  CARGO_BAOAN_LIST=1110;
+	/**POST 查勘员接单*/
+	public final static int  CARGO_ORDER_ACCEPT=1111;
+	/**POST 查勘员拒绝*/
+	public final static int  CARGO_ORDER_REFUSE=1112;
+	/**作业详情*/
+	public final static int  CARGO_SURVEY_VIEW=1113;
+	/**作业图片*/
+	public final static int  CARGO_WORK_IMG=1114;
+	/**货运险查勘保存*/
+	public final static int  CARGO_SURVEY_SAVE=1115;
 
 
 

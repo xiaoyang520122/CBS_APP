@@ -30,6 +30,7 @@ import com.cninsure.cp.activity.yjx.YjxNoShenheOrderActivity;
 import com.cninsure.cp.activity.yjx.YjxTempStorageActivity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.UserInfo;
+import com.cninsure.cp.entity.extract.ExtUserEtity;
 import com.cninsure.cp.utils.APPDownloadUtils;
 import com.cninsure.cp.utils.CheckHttpResult;
 import com.cninsure.cp.utils.DialogUtil;
@@ -44,7 +45,7 @@ public class MyCenterFragment extends Fragment {
 
 	// private LinearLayout
 	// userinfoLin,protectLin,musicLin,wifiLin,helpLin,msgLin,editionLin,aboutLin,shareLin,excetLin;
-	private TextView ggsNameTv, ggsTypeTv, deptTv, editionTv;
+	private TextView ggsNameTv, ggsTypeTv, deptTv, editionTv,signStatusTv;
 	private List<String> paramsList;
 	private LoadingDialog loadDialog;
 	public UserInfo userInfo;
@@ -99,6 +100,7 @@ public class MyCenterFragment extends Fragment {
 
 		ggsNameTv = (TextView) contentView.findViewById(R.id.my_menu_username);
 		ggsTypeTv = (TextView) contentView.findViewById(R.id.my_menu_usertype);
+		signStatusTv = (TextView) contentView.findViewById(R.id.my_menu_signStatus);
 		deptTv = (TextView) contentView.findViewById(R.id.my_menu_usDept);
 		editionTv = (TextView) contentView.findViewById(R.id.my_menu_dqbb);
 
@@ -214,6 +216,23 @@ public class MyCenterFragment extends Fragment {
 				ggsTypeTv.setText("暂无用户角色信息！");
 			}
 			deptTv.setText("归属机构：" + userInfo.data.organizationSelfName);
+		}
+		setExtactSignStatus();
+	}
+
+	/***
+	 * 如果是外部公估师，显示签约状态
+	 */
+	private void setExtactSignStatus() {
+		ExtUserEtity extUserEtity = OrderNowFragment.extactUserUtil.extUserEtity;
+		if (extUserEtity!=null && extUserEtity.data!=null && extUserEtity.data.status!=null ){
+			if (extUserEtity.data.status == 0) signStatusTv.setText("未签约");
+			if (extUserEtity.data.status == 1) signStatusTv.setText("已签约");
+			contentView.findViewById(R.id.my_menu_signStatusLineaLayout).setOnClickListener(v -> {
+				OrderNowFragment.extactUserUtil.jumpToSignView(getActivity());
+			});
+		}else {
+			signStatusTv.setText("");
 		}
 	}
 

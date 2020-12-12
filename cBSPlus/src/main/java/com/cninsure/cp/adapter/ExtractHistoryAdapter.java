@@ -64,7 +64,9 @@ public class ExtractHistoryAdapter extends BaseAdapter {
 //        SetTextUtil.setTextViewText(vHolder.ggsInfoTv,copat.ggsName+"-"+copat.orgName); //公估师名称和归属
         SetTextUtil.setTextViewText(vHolder.applyTimeTv,copat.applyTime);//提交时间
         SetTextUtil.setTextViewText(vHolder.amountTv,copat.posAmount+""); //提现金额
+        SetTextUtil.setTextViewText(vHolder.applyTypeTv,copat.getPosBondType()); //提现类型
         SetTextUtil.setTextViewText(vHolder.statuTv, CxOrderPosApplyStatus.getExtractApplyStatus(copat.status));//申请状态
+
         return convertView;
     }
 
@@ -72,6 +74,7 @@ public class ExtractHistoryAdapter extends BaseAdapter {
         @ViewInject(R.id.extHistory_piciNum) public TextView piciNumTv; //申请批次号
 //        @ViewInject(R.id.extHistory_ggsInfo) public TextView ggsInfoTv; //公估师名称和归属
         @ViewInject(R.id.extHistory_applyTime) public TextView applyTimeTv; //提交时间
+        @ViewInject(R.id.extHistory_applyType) public TextView applyTypeTv; //申请类型
         @ViewInject(R.id.extHistory_status) public TextView statuTv; //申请状态
         @ViewInject(R.id.extHistory_amount) public TextView amountTv; //提现金额
     }

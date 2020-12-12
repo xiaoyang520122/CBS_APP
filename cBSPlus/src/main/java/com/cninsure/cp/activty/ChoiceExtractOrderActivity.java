@@ -3,6 +3,7 @@ package com.cninsure.cp.activty;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import com.cninsure.cp.entity.cx.CxOrderEntity;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
+import com.cninsure.cp.utils.cx.EmptyViewUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.zcw.togglebutton.ToggleButton;
@@ -48,6 +50,7 @@ public class ChoiceExtractOrderActivity extends BaseActivity {
         ViewUtils.inject(this);
         EventBus.getDefault().register(this);
         getOrderList();
+        new EmptyViewUtil().SetEmptyView(this,listView);
         setSubmitOnclick();
     }
 

@@ -20,7 +20,7 @@ public class URLs implements Serializable {
 	 */
 	/**===主接口(登录架构等)===**/
 //	private final static String IPHOME="http://sys.cnsurvey.cn:8008/cninsure-pz-sys-ws";//车险外网
-	private final static String IPHOME="http://193.112.173.125:8084/cninsure-pz-sys-ws";//车险外网测试 对应：http://sysweb.cnsurvey.cn:8085
+	public final static String IPHOME="http://193.112.173.125:8084/cninsure-pz-sys-ws";//车险外网测试 对应：http://sysweb.cnsurvey.cn:8085
 //	private final static String IPHOME="http://10.80.13.53:8081/cninsure-pz-sys-ws";//车险外网测试 -冬阳
 //	private final static String IPHOME="http://10.80.8.16:8081/cninsure-pz-sys-ws"; //车险外网测试 -邹工
 
@@ -255,11 +255,35 @@ public class URLs implements Serializable {
 	public final static String CX_SAVE_EXAMINE_INFO= IPHOME +"/cx/order/work/message/save";
 	/**GET 获取用户账户信息 userId*/
 	public final static String CX_EXT_USER= IPHOME +"/extUser/viewByUserId";
-	/**GET 提现申请 userId,orderIds(多个id用逗号分开)*/
+	/**POST 提现申请 userId,orderIds(多个id用逗号分开)*/
 	public final static String POS_APPLY_SUBMIT= IPHOME +"/cx/order/posApply/submit";
 	/**GET 提现申请 userId,m(年月份，格式2020-10)、start、size*/
 	public final static String POS_APPLY_HISTORY= IPHOME +"/cx/order/posApply/listPage";
-	
+	/**POST 提现保证金 userId
+	 * posBondType：0;//不是提取保证金，提取的是提成 1;//提取到公司 2;//提取到个人
+	 * ggsUid公估师UID,posAmount 提现金额 */
+	public final static String POS_BOND_HISTORY= IPHOME +"/cx/order/posApply/posBondAmount";
+	/**POST 外部车童修改  参数参考ExtUserTable类中对象 */
+	public final static String EXTACT_USER= IPHOME +"/extUser/save";
+	/**GET 外部车童生成协议接口 userId、qmtype默认"text"  */
+	public final static String EXTACT_CREAT_AGREEMENT_PDF= IPHOME +"/temple/contract/contract.html";
+	/**POST 外部车童签约  userId、id、requestUrl签字图片路径 */
+	public final static String EXTACT_USER_SIGN= IPHOME +"/extUser/sign";
+
+	/***************************************货运险接口20201207***********************************/
+	/**GET 货运险接报案查询-分页 userId start size caseNo caseName reportNo报案号 ggsUid作业公估师Uid  surveyUid查勘员UID  status状态  statusArr多状态查询如："0,1"*/
+	public final static String CARGO_BAOAN_LIST= IPHOME +"/hyx/baoan/listPage";
+	/**POST 查勘员接单 userId  id*/
+	public final static String CARGO_ORDER_ACCEPT= IPHOME +"/hyx/baoan/surveyAccept";
+	/**POST 查勘员拒单 userId  id*/
+	public final static String CARGO_ORDER_REFUSE= IPHOME +"/hyx/baoan/surveyRefuse";
+	/**GET 查勘详情 caseId*/
+	public final static String CARGO_SURVEY_VIEW= IPHOME +"/hyx/survey/view";
+	/**GET 作业图片查询 baoanUid isDelete*/
+	public final static String CARGO_WORK_IMG= IPHOME +"/hyx/work/images/list";
+	/**POST 查勘保存 caseId surveyRecords查勘记录 listRecords清点记录 askRecords问询记录 lossRecords损失清单 materialList理赔材料清单（记录和清单都是JSON字符串）*/
+	public final static String CARGO_SURVEY_SAVE= IPHOME +"/hyx/survey/save";
+
 	
 	
 	

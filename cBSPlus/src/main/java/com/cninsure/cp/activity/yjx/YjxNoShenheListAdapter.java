@@ -154,9 +154,9 @@ public class YjxNoShenheListAdapter extends BaseAdapter {
 //				LoadDialogUtil.setMessageAndShow(context, "努力处理中……");
 //				final List<NameValuePair> params = new ArrayList<NameValuePair>();
 //				params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId + ""));
-//				params.add(new BasicNameValuePair("orderUid", caseDisTemp.uid));
-//				params.add(new BasicNameValuePair("id", caseDisTemp.id+""));
-//				params.add(new BasicNameValuePair("surveyDescription", caseDisTemp.surveyDescription));
+//				params.add(new BasicNameValuePair("orderUid", caseBaoanTable.uid));
+//				params.add(new BasicNameValuePair("id", caseBaoanTable.id+""));
+//				params.add(new BasicNameValuePair("surveyDescription", caseBaoanTable.surveyDescription));
 //				params.add(new BasicNameValuePair("surveyConclusion", ));
 //				params.add(new BasicNameValuePair("analysis", ));
 //				params.add(new BasicNameValuePair("conclusion", ));

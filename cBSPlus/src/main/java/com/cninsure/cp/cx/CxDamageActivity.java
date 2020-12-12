@@ -24,6 +24,7 @@ import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDamageTaskEntity;
 import com.cninsure.cp.entity.cx.CxDamageWorkEntity;
 import com.cninsure.cp.entity.cx.CxDictEntity;
+import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.utils.ActivityFinishUtil;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
@@ -98,7 +99,7 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
             case HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT:
                 dowloadTaskView();
                 LoadDialogUtil.dismissDialog();
-                cxDict.list = JSON.parseArray(values.get(0).getValue(), CxDictEntity.DictData.class);
+                cxDict.list = JSON.parseArray(values.get(0).getValue(), DictData.class);
                 break;
             case HttpRequestTool.CX_NEW_GET_ORDER_VIEW_BY_UID: //获取订单信息
                 LoadDialogUtil.dismissDialog();

@@ -13,7 +13,7 @@ import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.entity.URLs;
-import com.cninsure.cp.entity.cx.ExtUserEtity;
+import com.cninsure.cp.entity.extract.ExtUserEtity;
 import com.cninsure.cp.utils.BankLogoManage;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
@@ -41,6 +41,10 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     @ViewInject(R.id.account_Amount) private TextView totalAmount; //资产总额
     @ViewInject(R.id.account_can_extract_amount) private TextView canExtAmount; //可提现额度
     @ViewInject(R.id.account_baozheng_amount) private TextView baozhengAmount; //保证金
+
+    @ViewInject(R.id.account_can_extract_status) private TextView canExtbaleTv; //提成可提现否
+    @ViewInject(R.id.account_baozheng_status) private TextView canExtbaozTv; //保证金可提现否
+
     @ViewInject(R.id.account_Extract_lineLayout) private LinearLayout extractLayout; //提现操作布局
     @ViewInject(R.id.account_extract_history_lineLayout) private LinearLayout extractHistryLayout; //提现历史布局
     @ViewInject(R.id.account_baozhengjin_lineLayout) private LinearLayout baozhengLayout; //保证金布局
@@ -52,6 +56,33 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.account_activity);
         ViewUtils.inject(this);
         EventBus.getDefault().register(this);
+    }
+
+    private void initView() {
+        backTv.setOnClickListener(this);  //返回按钮
+        extractLayout.setOnClickListener(this); //提现操作布局
+        baozhengLayout.setOnClickListener(this); //保证金布局
+        extractHistryLayout.setOnClickListener(this); //提现历史布局
+        CardLayout.setOnClickListener(this); //银行卡布局
+
+        int posSta = 0; //默认不可提取
+        if (extUserEtity!=null && extUserEtity.data!=null && extUserEtity.data.posStatus!=null)posSta = extUserEtity.data.posStatus;
+
+        if (posSta==0){
+            canExtbaleTv.setText("状态：不可提取");
+            canExtbaozTv.setText("状态：不可提取");
+        }else if (posSta==1){
+            canExtbaleTv.setText("状态：可提取");
+            canExtbaozTv.setText("状态：不可提取");
+        }else if (posSta==2){
+            canExtbaleTv.setText("状态：可提取");
+            canExtbaozTv.setText("状态：可提取");
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         extUser();
     }
 
@@ -80,16 +111,12 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
 
     private void analysisExtUserInfo(String value) {
         extUserEtity = JSON.parseObject(value,ExtUserEtity.class);
+        initView();
         disPlayViewInfo();
     }
 
     /**显示信息**/
     private void disPlayViewInfo() {
-        backTv.setOnClickListener(this);  //返回按钮
-        extractLayout.setOnClickListener(this); //提现操作布局
-        baozhengLayout.setOnClickListener(this); //保证金布局
-        extractHistryLayout.setOnClickListener(this); //提现历史布局
-        CardLayout.setOnClickListener(this); //银行卡布局
         if (extUserEtity==null || extUserEtity.data==null) return;
         disPlayCardLogo(); //银行卡图片,银行名称
         if (extUserEtity.data.accountTotalAmount!=null) totalAmount.setText("￥"+extUserEtity.data.accountTotalAmount.toString());//资产总额
@@ -137,8 +164,8 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.account_MSGCENTER_Back: this.finish();break; //退出
-            case R.id.account_baozhengjin_lineLayout: ;break; //保证金布局
-            case R.id.account_bancCard_info_layout: startActivity(new Intent(this,BankCardActivity.class));break; //银行卡详情
+            case R.id.account_baozhengjin_lineLayout: jumpToBaozExt();break; //保证金布局
+            case R.id.account_bancCard_info_layout: jumpToBankActivity();break; //银行卡详情
             case R.id.account_Extract_lineLayout: jumpToextract();break; //提现操作
             case R.id.account_extract_history_lineLayout: startActivity(new Intent(this,ExtractHistryActivity.class));break; //提现历史
 
@@ -146,9 +173,29 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
+    /**
+     * 可以提取保证金，就跳转到对应界面。
+     */
+    private void jumpToBaozExt() {
+//        if (extUserEtity.data.posStatus== null || extUserEtity.data.posStatus !=2){
+//            DialogUtil.getAlertOneButton(this,"不可提取！",null).show();  //由于保证金申请提交后，保证金可提现状态会变成不可提取，所以这里需要注释掉，保证能进入界面查看保证金提现历史
+//            return;
+//        }
+        Intent intent = new Intent(this,ExtractBondActivity.class);
+        intent.putExtra("extUserEtity",extUserEtity);
+        startActivity(intent); //提现操作
+    }
+
     /**跳转到提现界面*/
     private void jumpToextract(){
         Intent intent = new Intent(this,ExtractActivity.class);
+        intent.putExtra("extUserEtity",extUserEtity);
+        startActivity(intent); //提现操作
+    }
+
+    /**跳转到银行卡详情界面*/
+    private void jumpToBankActivity(){
+        Intent intent = new Intent(this,BankCardActivity.class);
         intent.putExtra("extUserEtity",extUserEtity);
         startActivity(intent); //提现操作
     }

@@ -239,7 +239,7 @@ public class CtCenterActivity extends BaseActivity {
                 if (userInfo.data.rolesName!=null) {
                     rolesName=userInfo.data.rolesName;
                 }
-                ggsTypeTv.setText(userInfo.data.allRoleNames+","+rolesName);//"用户类型：" +
+                ggsTypeTv.setText("用户类型："+userInfo.data.allRoleNames+","+rolesName);//用户类型：
             }else {
                 ggsTypeTv.setText("暂无用户角色信息！");
             }

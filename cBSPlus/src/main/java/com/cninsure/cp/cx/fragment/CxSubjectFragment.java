@@ -109,25 +109,19 @@ public class CxSubjectFragment extends BaseFragment {
      * 1 身份证识别 * 2 银行卡识别* 3 驾驶证识别* 4 行驶证识别 * **/
     private void setMoveLicenseOnclick() {
 
-        bankCarLicenseImg.setOnClickListener(new View.OnClickListener() {  //银行卡
-            @Override
-            public void onClick(View v) {
-                activity.cameraHelp.startCamera(2);
-            }
+        //银行卡
+        bankCarLicenseImg.setOnClickListener(v -> activity.cameraHelp.startCamera(2));
+
+        // 行驶证识别或展示
+        pathMoveLicenseTv.setOnClickListener(v -> {
+//       showMoveLDialog(); //相册选择或拍摄，未完待续。
+            activity.cameraHelp.startCamera(4);
         });
-        pathMoveLicenseTv.setOnClickListener(new View.OnClickListener() { // 行驶证识别或展示
-            @Override
-            public void onClick(View v) {
-//                showMoveLDialog(); //相册选择或拍摄，未完待续。
-                activity.cameraHelp.startCamera(4);
-            }
-        });
-        pathDriverLicenseTv.setOnClickListener(new View.OnClickListener() { // 驾驶证识别或展示
-            @Override
-            public void onClick(View v) {
-//                showMoveLDialog(); //相册选择或拍摄，未完待续。
-                activity.cameraHelp.startCamera(3);
-            }
+
+        // 驾驶证识别或展示
+        pathDriverLicenseTv.setOnClickListener(v -> {
+//       showMoveLDialog(); //相册选择或拍摄，未完待续。
+            activity.cameraHelp.startCamera(3);
         });
     }
 

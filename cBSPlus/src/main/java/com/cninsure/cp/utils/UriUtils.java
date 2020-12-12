@@ -1,11 +1,17 @@
 package com.cninsure.cp.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
+
+import androidx.core.content.FileProvider;
 import androidx.loader.content.CursorLoader;
 import android.util.Log;
+
+import java.io.File;
 
 
 public class UriUtils {
@@ -47,6 +53,16 @@ public class UriUtils {
 		Log.i("textPre", "获取路径=="+path);
 		return path;
 	}
-	
+
+
+	public static Uri getUri(Activity activity, File file){
+		Uri photoURI;
+		if (Build.VERSION.SDK_INT >= 24) {
+			photoURI = FileProvider.getUriForFile(activity, activity.getApplicationContext().getPackageName() + ".provider", file);
+		} else {
+			photoURI = Uri.fromFile(file);
+		}
+		return photoURI;
+	}
 	
 }

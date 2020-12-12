@@ -46,6 +46,7 @@ import com.cninsure.cp.activty.HelpCenterActivity;
 import com.cninsure.cp.activty.MessageCenterActivity;
 import com.cninsure.cp.activty.ScoreActivity;
 import com.cninsure.cp.activty.SecurityCenterActivity;
+import com.cninsure.cp.cargo.CargoListActivity;
 import com.cninsure.cp.dispersive.DispersiveUserActivity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.fc.activity.CaseInputActivity;
@@ -61,6 +62,7 @@ import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.PopupWindowUtils;
 import com.cninsure.cp.utils.ToastUtil;
+import com.cninsure.cp.utils.extact.ExtactUserUtil;
 import com.cninsure.cp.utils.permission_util.FloatingWindowPermissionUtil;
 import com.cninsure.cp.utils.permission_util.PermissionApplicationUtil;
 import com.cninsure.cp.view.LoadingDialog;
@@ -431,6 +433,10 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 
 		case R.id.my_menu_disperdive:// 分散型-派单模式 界面
 			startActivity(new Intent(this, DispersiveUserActivity.class));
+			break;
+
+		case R.id.my_menu_cargo:// 货运险-全流程
+			startActivity(new Intent(this, CargoListActivity.class));
 			break;
 
 		default:

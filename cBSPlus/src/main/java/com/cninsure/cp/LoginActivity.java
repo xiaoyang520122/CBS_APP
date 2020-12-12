@@ -30,6 +30,7 @@ import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.ToastUtil;
+import com.cninsure.cp.utils.loginUtil.LoginUtil;
 import com.cninsure.cp.utils.permission_util.PermissionApplicationUtil;
 import com.cninsure.cp.utils.permission_util.PermissionsUtilX;
 import com.cninsure.cp.view.LoadingDialog;
@@ -80,7 +81,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener, Perm
 			case 200:
 				AppApplication.saveUser(value.get(0).getValue(),passstr);
 				saveLoginInfo();
-				jumpActivity(value.get(0).getValue());
+				new LoginUtil(LoginActivity.this).jumpActivity(value.get(0).getValue());
 				break;
 			case 400:
 				String msg = value.get(0).getValue();
@@ -98,17 +99,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener, Perm
 	}
 
 	private Dialog alertDialog;
-
-	private void jumpActivity(String value) {
-		if ("99".equals(AppApplication.getUSER().data.userType)){//外部车童登录，跳转到外部车童界面
-			Intent intent=new Intent(this, DispersiveUserActivity.class);
-			LoginActivity.this.startActivity(intent);
-		}else{  //非外部车童
-			Intent intent=new Intent(this, IndexActivity.class);
-			intent.putExtra("loginvalue", value);
-			LoginActivity.this.startActivity(intent);
-		}
-	}
 
 	@Override
 	public void onClick(View arg0) {
