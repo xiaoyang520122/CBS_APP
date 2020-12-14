@@ -44,7 +44,7 @@ public class CargoOrderAdapter extends BaseAdapter {
     @SuppressWarnings("unused")
     private CargoOrderAdapter(){}
 
-    public CargoOrderAdapter(CargoListActivity context, List<CargoCaseBaoanTable> dispatchList){
+    public CargoOrderAdapter(CargoCaseListActivity context, List<CargoCaseBaoanTable> dispatchList){
         this.dispatchList = dispatchList;
         inflater = LayoutInflater.from(context);
         this.context = context;

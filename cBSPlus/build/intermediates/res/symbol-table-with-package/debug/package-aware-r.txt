@@ -1172,6 +1172,7 @@ drawable corners_greenblue_4_30dp
 drawable corners_hui5
 drawable corners_hui_4_10dp
 drawable corners_hui_4_30dp
+drawable corners_hui_hui_line5
 drawable corners_hui_line
 drawable corners_hui_line5
 drawable corners_read_4_10dp
@@ -1611,6 +1612,7 @@ id CXPA_light
 id CXPA_lightt
 id CXPA_surfaceview
 id CXPA_takepicture
+id CXPA_takepictureAuml
 id CXPA_viewpager
 id CX_Act_Back_Tv
 id CX_Act_More_Tv

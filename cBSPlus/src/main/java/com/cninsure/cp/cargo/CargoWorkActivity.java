@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,15 +34,21 @@ import com.cninsure.cp.entity.BaseEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cargo.CargoCaseBaoanTable;
 import com.cninsure.cp.entity.cargo.CargoCaseWorkImagesTable;
+import com.cninsure.cp.entity.cargo.CargoCaseWorkSurveyTable;
 import com.cninsure.cp.entity.cargo.CargoSurveyEntity;
+import com.cninsure.cp.entity.cargo.ContainerRecords;
 import com.cninsure.cp.entity.cargo.DispatchMatter;
 import com.cninsure.cp.entity.cargo.SurveyRecordsEntity;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.DictData;
+import com.cninsure.cp.fc.activity.CaseInputActivity;
+import com.cninsure.cp.ocr.LinePathActivity;
+import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
+import com.cninsure.cp.utils.PhotoUploadUtil;
 import com.cninsure.cp.utils.ToastUtil;
 import com.zcw.togglebutton.ToggleButton;
 
@@ -50,6 +58,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,14 +71,14 @@ public class CargoWorkActivity extends BaseActivity {
     private RadioGroup radioGroup;
     private View msgView,surveyView,surveyNotView,examineView;
     private ExpandableListView photoListView;
-    private CargoExpandablelistAdapter adapter2;//adapter1;
+    public static CargoExpandablelistAdapter adapter2;//adapter1;
     private Map<String , CargoExpandablelistAdapter.CargoGalleryAdapter> gridAdapterArr;
     private List<View> viewlist;
     public CargoCaseBaoanTable caseBaoanTable;
     /***照片接口返回数据*/
     private List<CargoCaseWorkImagesTable> workImgEnty;
     /**分类后的照片*/
-    private Map<Long, List<CargoCaseWorkImagesTable>> classImgMap;
+    public static Map<String, List<CargoCaseWorkImagesTable>> classImgMap;
     /**作业数据实体类**/
     private CargoSurveyEntity surveyEn;
     /**查勘记录*/
@@ -85,6 +94,7 @@ public class CargoWorkActivity extends BaseActivity {
     /**View数据加载获取帮助类*/
     private SurveyUtil surveyUtil;
 //    public static Map<Long, List<CargoCaseWorkImagesTable>> imgMap;
+    private boolean submitBle=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,9 +189,10 @@ public class CargoWorkActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (which==0){ //选择保存作业信息
-                            submitWorkInfo(); //保存作业信息
+                            submitWorkInfo(0); //保存作业信息
                         }else if (which==1){  //选择提交审核
-                            submitForReview(); //提交审核
+//                            submitForReview(); //提交审核
+                            submitWorkInfo(1); //提交审核
                         }
                     }
                 }).create().show();
@@ -206,14 +217,24 @@ public class CargoWorkActivity extends BaseActivity {
         return countSize;
     }
 
-    /**提交事故经过概述和处理意见*/
-    private void submitWorkInfo() {
+    /**
+     * 提交事故经过概述和处理意见 0暂存（保存），1提交审核
+     * @param status
+     */
+    private void submitWorkInfo(int status) {
         List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
+        if (surveyEn!=null && surveyEn.data!=null && surveyEn.data.id!=null){
+            paramsList.add(new BasicNameValuePair("id",surveyEn.data.id+""));
+        }
         paramsList.add(new BasicNameValuePair("caseId",caseBaoanTable.id+""));
+        paramsList.add(new BasicNameValuePair("status",status+""));
         surveyUtil.reflashData();
         paramsList.add(new BasicNameValuePair("surveyRecords",JSON.toJSONString(sREn)));  //参看信息
-
-        HttpUtils.requestPost(URLs.CARGO_SURVEY_SAVE, paramsList, HttpRequestTool.CARGO_SURVEY_SAVE);
+        if (status==0){ //保存
+            HttpUtils.requestPost(URLs.CARGO_SURVEY_SAVE, paramsList, HttpRequestTool.CARGO_SURVEY_SAVE);
+        }else if (status==1){  //提交
+            HttpUtils.requestPost(URLs.CARGO_SURVEY_SAVE, paramsList, HttpRequestTool.CARGO_SURVEY_SUBMIT);
+        }
         LoadDialogUtil.setMessageAndShow(this,"提交保存……");
     }
 
@@ -225,7 +246,6 @@ public class CargoWorkActivity extends BaseActivity {
         surveyNotView = LayoutInflater.from(this).inflate(R.layout.cargo_survey_records_notcontainer, null);
         photoListView = (ExpandableListView) LayoutInflater.from(this).inflate(R.layout.public_expandablelistview, null);
         examineView =  LayoutInflater.from(this).inflate(R.layout.dispersive_work_examine_view, null);
-        surveyUtil = new SurveyUtil(this,surveyView,surveyNotView,sREn);
 
 //      uploadActivityHelp=new ParkPhotoUploadActivityHelp3(this);
 //      uploadActivityHelp.setview(examineView);
@@ -235,8 +255,41 @@ public class CargoWorkActivity extends BaseActivity {
 //        viewlist.add(examineView);
         viewlist.add(photoListView);
         viewPager.setAdapter(getadapter());
+        setSignOnclick(surveyView.findViewById(R.id.CargoSR__signButton));
+        setSignOnclick(surveyNotView.findViewById(R.id.CargoSRN__signButton));
         setContainerbleChangLesenler(surveyView.findViewById(R.id.CargoSR_ckDocType));
         setContainerbleChangLesenler(surveyNotView.findViewById(R.id.CargoSRN_ckDocTypeNotC));
+    }
+
+    /**签字监听事件*/
+    private void setSignOnclick(View view) {
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSign();
+            }
+        });
+    }
+    /**启动签字**/
+    private void startSign(){
+        Intent intent=new Intent(this, LinePathActivity.class);
+        intent.putExtra("orderUid", this.getIntent().getStringExtra("orderUid"));
+        startActivityForResult(intent, HttpRequestTool.LINEPATH);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode== HttpRequestTool.LINEPATH) { //签字返回图片
+            upSignPhoto(data,5);
+        }
+    }
+    /**上传签字图片**/
+    private void upSignPhoto(Intent data,int type) {//(String)data.getStringExtra("LinePathFilePath");
+        if (null!=data&&null!=data.getStringExtra("LinePathFilePath")) {
+            List<NameValuePair> fileUrls=new ArrayList<NameValuePair>();
+            fileUrls.add(new BasicNameValuePair("0", (String)data.getStringExtra("LinePathFilePath")));
+            PhotoUploadUtil.uploadOCR(this, fileUrls, URLs.UP_OCR_PHOTO, type);
+        }
     }
 
     private PagerAdapter getadapter(){
@@ -262,18 +315,28 @@ public class CargoWorkActivity extends BaseActivity {
                 container.addView(viewlist.get(position));
                 return viewlist.get(position);
             }
+            @Override
+            public int getItemPosition(Object object) {
+                // 最简单解决 notifyDataSetChanged() 页面不刷新问题的方法
+                return POSITION_NONE;
+            }
         };
         return pagerAdapter;
     }
 
     private void setContainerbleChangLesenler(ToggleButton tgb) {
+        tgb.setToggleOn(true); //默认选中
         tgb.setOnToggleChanged(on -> {
             if (on) {
                 viewlist.set(1,surveyView);
                 sREn.ckDocType=0;
+                ((ToggleButton)surveyView.findViewById(R.id.CargoSR_ckDocType)).setToggleOn(true);
+                surveyUtil.disPlayContainerInfo(caseBaoanTable.caseNo,caseBaoanTable.insured);
             }else{
                 viewlist.set(1,surveyNotView);
                 sREn.ckDocType=1;
+                ((ToggleButton)surveyNotView.findViewById(R.id.CargoSRN_ckDocTypeNotC)).setToggleOff(true);
+                surveyUtil.disPlayNotContainerInfo(caseBaoanTable.insured,caseBaoanTable.riskTime);
             }
             pagerAdapter.notifyDataSetChanged();
         });
@@ -338,30 +401,67 @@ public class CargoWorkActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void eventuploadSuccess(List<NameValuePair> value){
-        int typecode = Integer.parseInt(value.get(0).getName());
-        if (typecode == HttpRequestTool.CARGO_SURVEY_VIEW || typecode == HttpRequestTool.FSX_WORK_IMG_DOWLOAD
-        || typecode == HttpRequestTool.CARGO_SURVEY_SAVE || typecode == HttpRequestTool.FSX_WORK_SUBMIT_RIVIEW) {
-            LoadDialogUtil.dismissDialog();
-        }
-        switch (typecode){
-            case HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT:
+
+        try {
+            int typecode = Integer.parseInt(value.get(0).getName());
+            if (typecode == HttpRequestTool.CARGO_SURVEY_VIEW || typecode == HttpRequestTool.FSX_WORK_IMG_DOWLOAD
+            || typecode == HttpRequestTool.CARGO_SURVEY_SAVE || typecode == HttpRequestTool.FSX_WORK_SUBMIT_RIVIEW) {
                 LoadDialogUtil.dismissDialog();
-                getPhotoTypeDict(value.get(0).getValue());
-                break;
-            case HttpRequestTool.CARGO_SURVEY_VIEW:
-                getWorkInfo(value.get(0).getValue());
-                break;
-            case HttpRequestTool.CARGO_WORK_IMG:  //作业图片
-                    getImageInfo(value.get(0).getValue());
-                break;
-            case HttpRequestTool.CARGO_SURVEY_SAVE:  //保存作业信息。
-                getWorkSaveResponseMsg(value.get(0).getValue());
-                break;
-            case HttpRequestTool.FSX_WORK_SUBMIT_RIVIEW:  //提交审核返回信息。
-                getSubmitReviewResponseMsg(value.get(0).getValue());
-                break;
+            }
+            switch (typecode){
+                case HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT:
+                    LoadDialogUtil.dismissDialog();
+                    getPhotoTypeDict(value.get(0).getValue());
+                    break;
+                case HttpRequestTool.CARGO_SURVEY_VIEW:
+                    getWorkInfo(value.get(0).getValue());
+                    break;
+                case HttpRequestTool.CARGO_WORK_IMG:  //作业图片
+                        getImageInfo(value.get(0).getValue());
+                    break;
+                case HttpRequestTool.CARGO_SURVEY_SAVE:  //保存作业信息。
+                    getWorkSaveResponseMsg(value.get(0).getValue());
+                    break;
+                case HttpRequestTool.CARGO_SURVEY_SUBMIT:  //提交审核。
+                    getWorkSubmitResponseMsg(value.get(0).getValue());
+                    break;
+                case HttpRequestTool.FSX_WORK_SUBMIT_RIVIEW:  //提交审核返回信息。
+                    getSubmitReviewResponseMsg(value.get(0).getValue());
+                    break;
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        try {
+            int type=Integer.parseInt(value.get(0).getValue());
+            if (type==5) {  //签字返回信息
+                if ("UPLOAD_SUCCESS".equals(value.get(1).getName())) {
+                    signMeath(value.get(1).getValue());
+                }
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
     }
+
+    private void getWorkSubmitResponseMsg(String value) {
+        BaseEntity bEn = JSON.parseObject(value, BaseEntity.class);
+        if (bEn.success){  //
+            submitBle = true;
+            submitWorkImage(); //上传图片
+        }else{  //保存失败提示用户。
+            DialogUtil.getAlertOneButton(this,"失败，"+bEn.msg,null).show();
+        }
+    }
+
+    /**处理签字图片*/
+    private void signMeath(String url){
+        if (url!=null) {
+            sREn.records.signatureUrl = url;//签字图片名称，不包含完整路径
+            surveyUtil.disPlaySign();//显示签名
+        }
+    }
+
 
     /***
      * 获取拍照分类字典值
@@ -432,105 +532,165 @@ public class CargoWorkActivity extends BaseActivity {
         List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
         List<CargoCaseWorkImagesTable> submitImgEnList = new ArrayList<>();  // 待上传图片类集合
 
-        for (Long keyStr:classImgMap.keySet()){ //现场状况照片
+        for (String keyStr:classImgMap.keySet()){ //现场状况照片
             for (CargoCaseWorkImagesTable tempImgData:classImgMap.get(keyStr)){
-                if (tempImgData!=null && tempImgData.fileUrl!=null && tempImgData.fileUrl.indexOf("://")==-1){
+                if (tempImgData!=null && tempImgData.fileUrl!=null && tempImgData.fileUrl.indexOf("/")!=-1){ //需要未上传
                     submitImgEnList.add(tempImgData);
-                    params.add(new BasicNameValuePair( tempImgData.type+"", tempImgData.fileName));
+                    params.add(new BasicNameValuePair( tempImgData.type, tempImgData.fileName));
                 }
             }
         }
         if (submitImgEnList.size()>0){
-            CargoPhotoUploadUtil.imgUpload(this,submitImgEnList,URLs.FSX_WORK_IMG_SAVE);
+            CargoPhotoUploadUtil.imgUpload(this,submitImgEnList,URLs.UP_OCR_PHOTO);
         }else{
             DialogUtil.getAlertOneButton(this,"没有需要上传的图片！",null).show();
+            submitFinish();
         }
     }
 
     /**上传影像资料成功后刷新界面**/
     @Subscribe(threadMode=ThreadMode.MAIN)
-    public void eventmeth(String successCode){
+    public void eventmeth(String successCode) {
         if ("UPLOAD_SUCCESS".equals(successCode)) {  //上传图片成功后重新加载Activity
-            Intent intent = new Intent();
-            intent.setClass(this, CargoWorkActivity.class);
-            intent.putExtra("caseBaoanTable", caseBaoanTable);
-            this.startActivity(intent );  //开始作业
+            if (!submitBle) {
+                Intent intent = new Intent();
+                intent.setClass(this, CargoWorkActivity.class);
+                intent.putExtra("caseBaoanTable", caseBaoanTable);
+                this.startActivity(intent);  //开始作业
+            }
             this.finish();
         }
     }
 
-    /***j解析图片信息*/
-    private void getImageInfo(String value) {
-        workImgEnty = JSON.parseArray(value,CargoCaseWorkImagesTable.class);
-        screenImgEnList();
+    public void submitFinish(){
+        if (submitBle)
+        DialogUtil.getAlertOneButton(this, "提交成功!", (arg0, arg1) -> {
+           CargoWorkActivity.this.finish();
+        }).show();
     }
 
-    /**获取分类图片集合*/
-    private void screenImgEnList(){
-        classImgMap = new HashMap<>();
-        if (workImgEnty !=null && workImgEnty.size()>0){ //获取图片信息成功则整理显示
-           for (CargoCaseWorkImagesTable tempImg: workImgEnty){
-               addImgToDictType(tempImg);
-           }
-        }else{
-            for (DictData dda:parentPtoTypeDict){
-                for (DictData cdda:childPtoTypeDicts.get(dda.parentId+""))
-                classImgMap.put(cdda.id,new ArrayList<>());
-            }
+        /***j解析图片信息*/
+        private void getImageInfo (String value){
+            workImgEnty = JSON.parseArray(value, CargoCaseWorkImagesTable.class);
+            screenImgEnList();
         }
-        adapter2 = new CargoExpandablelistAdapter(this,parentPtoTypeDict,childPtoTypeDicts,classImgMap,caseBaoanTable.caseNo);
-        photoListView.setAdapter(adapter2);
+
+        /**获取分类图片集合*/
+        private void screenImgEnList () {
+            classImgMap = new HashMap<>();
+            for (DictData dda : parentPtoTypeDict) {
+                for (DictData cdda : childPtoTypeDicts.get(dda.value))
+                    classImgMap.put(cdda.value, new ArrayList<>());
+            }  //默认初始化
+            if (workImgEnty != null && workImgEnty.size() > 0) { //获取图片信息成功则整理显示
+                for (CargoCaseWorkImagesTable tempImg : workImgEnty) {
+                    addImgToDictType(tempImg);
+                }
+            }
+            adapter2 = new CargoExpandablelistAdapter(this, parentPtoTypeDict, childPtoTypeDicts, classImgMap, caseBaoanTable);
+            photoListView.setAdapter(adapter2);
+        }
+
+        @Override
+        protected void onResume () {
+            super.onResume();
+            if (adapter2 != null) adapter2.notifyDataSetChanged();
+        }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LoadDialogUtil.dismissDialog();
     }
 
     /**将图片归类到字典map中去*/
-    private void addImgToDictType(CargoCaseWorkImagesTable tempImg){
-        if (classImgMap.get(tempImg.type)==null)
-            classImgMap.put(tempImg.type,new ArrayList<>());
-        classImgMap.get(tempImg.type).add(tempImg);
-    }
-
-    /**解析作业信息，并显示、下载图片信息*/
-    private void getWorkInfo(String value) {
-        surveyEn = JSON.parseObject(value,CargoSurveyEntity.class);
-        if (surveyEn==null){
-            DialogUtil.getAlertOneButton(this,"获取作业信息失败！请联系管理员。",null).show();
-        }else{
-           displaySurveyInfo();
+        private void addImgToDictType (CargoCaseWorkImagesTable tempImg){
+            if (classImgMap.get(tempImg.type) == null)
+                classImgMap.put(tempImg.type, new ArrayList<>());
+            classImgMap.get(tempImg.type).add(tempImg);
         }
-        dowloadImgInfo();
-    }
 
-    /**
-     * 显示作业信息
-     */
-    private void displaySurveyInfo() {
-        if (surveyEn.data!=null && !TextUtils.isEmpty(surveyEn.data.surveyRecords)){  //surveyView
-            sREn = JSON.parseObject(surveyEn.data.surveyRecords, SurveyRecordsEntity.class);
-            if (sREn!=null && sREn.ckDocType!=null && sREn.ckDocType==0){
-                viewlist.set(1,surveyView); //显示集装箱View 及对应数据
-                surveyUtil.disPlayContainerInfo(caseBaoanTable.caseNo,caseBaoanTable.insured);
-            }else{
-                viewlist.set(1,surveyNotView);  //显示非集装箱View 及对应数据
-                surveyUtil.disPlayNotContainerInfo(caseBaoanTable.insured,caseBaoanTable.riskTime);
+        /**解析作业信息，并显示、下载图片信息*/
+        private void getWorkInfo (String value){
+            surveyEn = JSON.parseObject(value, CargoSurveyEntity.class);
+            if (surveyEn == null) {
+                DialogUtil.getAlertOneButton(this, "获取作业信息失败！请联系管理员。", null).show();
+            } else {
+                displaySurveyInfo();
+            }
+            dowloadImgInfo();
+        }
+
+        /**
+         * 显示作业信息
+         */
+        private void displaySurveyInfo () {
+            if (surveyEn.data != null && !TextUtils.isEmpty(surveyEn.data.surveyRecords)) {  //surveyView
+                sREn = JSON.parseObject(surveyEn.data.surveyRecords, SurveyRecordsEntity.class);
+                if (sREn == null) {
+                    initSren();
+                } else {
+                    surveyUtil = new SurveyUtil(this, surveyView, surveyNotView, sREn);
+                }
+                if (sREn.ckDocType != null && sREn.ckDocType == 0) {
+                    viewlist.set(1, surveyView); //显示集装箱View 及对应数据
+                    surveyUtil.disPlayContainerInfo(caseBaoanTable.caseNo, caseBaoanTable.insured);
+                } else {
+                    viewlist.set(1, surveyNotView);  //显示非集装箱View 及对应数据
+                    surveyUtil.disPlayNotContainerInfo(caseBaoanTable.insured, caseBaoanTable.riskTime);
+                }
+            } else {
+                surveyEn = new CargoSurveyEntity();
+                surveyEn.data = new CargoCaseWorkSurveyTable();
+                initSren();
             }
         }
-    }
 
+        private void initSren () {
+            sREn = new SurveyRecordsEntity();
+            sREn.ckDocType = 0;
+            sREn.records = new ContainerRecords();
+            sREn.records.caseNo = caseBaoanTable.caseNo;
+            sREn.records.insured = caseBaoanTable.insured;
+            sREn.records.riskTime = caseBaoanTable.riskTime;
+            surveyUtil = new SurveyUtil(this, surveyView, surveyNotView, sREn);
+            surveyUtil.disPlayContainerInfo(caseBaoanTable.caseNo, caseBaoanTable.insured);
+        }
 
-    /**下载任务对应照片信息*/
-    private void dowloadImgInfo(){
-        List<String> paramsList = new ArrayList<>();
-        paramsList.add("baoanUid");
-        paramsList.add(caseBaoanTable.caseNo);
-        paramsList.add("isDelete");
-        paramsList.add("0");
-        HttpUtils.requestGet(URLs.CARGO_WORK_IMG, paramsList, HttpRequestTool.CARGO_WORK_IMG);
-        LoadDialogUtil.setMessageAndShow(this,"数据加载中……");
-    }
+        /**下载任务对应照片信息*/
+        private void dowloadImgInfo () {
+            List<String> paramsList = new ArrayList<>();
+            paramsList.add("baoanUid");
+            paramsList.add(caseBaoanTable.caseNo);
+            paramsList.add("isDelete");
+            paramsList.add("0");
+            HttpUtils.requestGet(URLs.CARGO_WORK_IMG, paramsList, HttpRequestTool.CARGO_WORK_IMG);
+            LoadDialogUtil.setMessageAndShow(this, "数据加载中……");
+        }
 
+        @Override
+        protected void onDestroy () {
+            super.onDestroy();
+            EventBus.getDefault().unregister(this);
+        }
+
+    /**监听返回键，并调用退出提示方法**/
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            HintOut();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
-}
+    /**提示用户是否真的要退出该界面，避免勿退出！**/
+    private void HintOut(){
+        Dialog  dialog=DialogUtil.getAlertOnelistener(this, "确定要退出该页面吗！", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                CargoWorkActivity.this.finish();
+            }
+        });
+        dialog.show();
+    }
+    }

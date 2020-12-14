@@ -39,14 +39,13 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 import com.cninsure.cp.activity.yjx.YjxTempStorageActivity;
 import com.cninsure.cp.activty.AboutUsAvtivity;
 import com.cninsure.cp.activty.AccountActivity;
-import com.cninsure.cp.activty.BankCardActivity;
 import com.cninsure.cp.activty.CancelAndSubmitActivity;
 import com.cninsure.cp.activty.ChangPassActivity;
 import com.cninsure.cp.activty.HelpCenterActivity;
 import com.cninsure.cp.activty.MessageCenterActivity;
 import com.cninsure.cp.activty.ScoreActivity;
 import com.cninsure.cp.activty.SecurityCenterActivity;
-import com.cninsure.cp.cargo.CargoListActivity;
+import com.cninsure.cp.cargo.CargoCaseListActivity;
 import com.cninsure.cp.dispersive.DispersiveUserActivity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.fc.activity.CaseInputActivity;
@@ -62,7 +61,6 @@ import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.PopupWindowUtils;
 import com.cninsure.cp.utils.ToastUtil;
-import com.cninsure.cp.utils.extact.ExtactUserUtil;
 import com.cninsure.cp.utils.permission_util.FloatingWindowPermissionUtil;
 import com.cninsure.cp.utils.permission_util.PermissionApplicationUtil;
 import com.cninsure.cp.view.LoadingDialog;
@@ -436,7 +434,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 			break;
 
 		case R.id.my_menu_cargo:// 货运险-全流程
-			startActivity(new Intent(this, CargoListActivity.class));
+			startActivity(new Intent(this, CargoCaseListActivity.class));
 			break;
 
 		default:

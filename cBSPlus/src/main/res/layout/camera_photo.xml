@@ -148,6 +148,7 @@
                 android:layout_weight="2" />
 
             <Button
+                android:id="@+id/CXPA_takepictureAuml"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/check_photo_button"

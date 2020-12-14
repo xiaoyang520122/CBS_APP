@@ -19,17 +19,11 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
-
 import com.bumptech.glide.Glide;
 import com.cninsure.cp.R;
-import com.cninsure.cp.activty.WorkOrderActivtyhelp;
-import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment;
-import com.cninsure.cp.dispersive.DispersiveWorkActivity;
-import com.cninsure.cp.entity.WorkPhotos.TableData.WorkPhotoEntitiy;
+import com.cninsure.cp.cargo.CargoWorkActivity;
+import com.cninsure.cp.cargo.adapter.CargoPhotoChoiceActivity;
 import com.cninsure.cp.entity.cargo.CargoCaseWorkImagesTable;
-import com.cninsure.cp.entity.cx.CxImagEntity;
-import com.cninsure.cp.entity.toolclass.SerializableMap;
 import com.cninsure.cp.utils.GlideCircleTransform;
 import com.cninsure.cp.utils.ImageUtil;
 import com.cninsure.cp.utils.PhotoPathUtil;
@@ -39,7 +33,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -57,9 +50,9 @@ public class CargoCamreaActivity extends Activity implements SurfaceHolder.Callb
 	private Camera.Parameters parameters;
 	private CheckBox flashLightCheckBox;
 	private SimpleDateFormat sf;
-	private Long typeId;
+	private String typeId;
 	private String baoanUid;
-	private Map<Long , List<CargoCaseWorkImagesTable>> imgMap;
+	private Map<String , List<CargoCaseWorkImagesTable>> classImgMap;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +71,8 @@ public class CargoCamreaActivity extends Activity implements SurfaceHolder.Callb
 	}
 
 	private void initData() {
-		SerializableMap serializableMap = (SerializableMap) getIntent().getSerializableExtra("imgMap");
-		if (serializableMap!=null) imgMap = serializableMap.getMap();
-		typeId =  getIntent().getLongExtra("typeId",-1);
+        classImgMap = CargoWorkActivity.classImgMap;
+		typeId =  getIntent().getStringExtra("typeId");
 		baoanUid = getIntent().getStringExtra("baoanUid");
 	}
 
@@ -263,10 +255,21 @@ public class CargoCamreaActivity extends Activity implements SurfaceHolder.Callb
 			case R.id.CXPA__back:
 				finish();
 				break;
+			case R.id.CXPA_takepictureAuml:  //相册选择照片
+				checkPhotos();
+				break;
 			default:
 				break;
 			}
 		}
+	}
+
+	private void checkPhotos() {
+		Intent getAlbum=new Intent(this, CargoPhotoChoiceActivity.class);
+		getAlbum.putExtra("typeId", typeId);
+		getAlbum.putExtra("baoanUid", baoanUid);
+		startActivity(getAlbum);
+		this.finish();
 	}
 
 
@@ -311,10 +314,12 @@ public class CargoCamreaActivity extends Activity implements SurfaceHolder.Callb
 		CargoCaseWorkImagesTable imgEn = new CargoCaseWorkImagesTable();
 		imgEn.fileUrl = jpgFilePath;
 		imgEn.source = 2;
-		imgEn.fileSuffix = "jpg";
-		imgEn.type = typeId.intValue();
-		imgEn.fileName = jpgFilePath.substring(jpgFilePath.lastIndexOf("/"));
-		imgMap.get(typeId).add(imgEn);
+		imgEn.fileSuffix = jpgFilePath.substring(jpgFilePath.lastIndexOf("."));
+		imgEn.type = typeId;
+		imgEn.baoanUid = baoanUid;
+		imgEn.fileName = jpgFilePath.substring(jpgFilePath.lastIndexOf("/")+1);
+		classImgMap.get(typeId).add(imgEn);
+		CargoWorkActivity.adapter2.getCameraPhoto();
 	}
 
 	@Override

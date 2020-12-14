@@ -91,7 +91,7 @@
                     android:background="@null"
                     android:gravity="right|center"
                     android:hint="无报案号信息"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/hui_text_xxh"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
 
@@ -130,7 +130,7 @@
                     android:background="@null"
                     android:gravity="right|center"
                     android:hint="无被保险人信息"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/hui_text_xxh"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
 
@@ -621,7 +621,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/survey_marginTop"
-                android:background="@drawable/line_bg"
+                android:background="@null"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="5dp"
@@ -648,7 +648,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:background="@null"
+                android:background="@drawable/corners_hui_hui_line5"
                 android:gravity="left|center"
                 android:hint="请输入（集装箱验箱情况）承运工具及包装情况(建议10000字符内)"
                 android:textColor="@android:color/black"
@@ -671,7 +671,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/survey_marginTop"
-                android:background="@drawable/line_bg"
+                android:background="@null"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="5dp"
@@ -697,7 +697,7 @@
                 android:id="@+id/CargoSR_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
+                android:background="@drawable/corners_hui_hui_line5"
                 android:gravity="left|center"
                 android:hint="请输入（货物描述、受损程度及损失情况(建议10000字符内)"
                 android:padding="5dp"
@@ -769,19 +769,18 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="center"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp">
 
                     <ImageView
                         android:id="@+id/CargoSR_signatureUrl"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_width="80dp"
+                        android:layout_height="50dp"
                         android:scaleType="centerInside"
                         android:visibility="gone" />
 

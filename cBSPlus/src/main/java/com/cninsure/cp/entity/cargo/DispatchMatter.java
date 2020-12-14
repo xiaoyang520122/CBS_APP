@@ -1,6 +1,7 @@
 package com.cninsure.cp.entity.cargo;
 
 import android.content.Intent;
+import android.text.TextUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +33,7 @@ public class DispatchMatter {
     }
 
     public String getMatterForString(String matterStrArr){
+        if (TextUtils.isEmpty(matterStrArr)) return "";
         String matterStr = "" ;
         String[] matterArr = matterStrArr.split(",");
         if (matterArr!=null){

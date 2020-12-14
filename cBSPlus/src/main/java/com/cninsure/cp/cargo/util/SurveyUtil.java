@@ -1,15 +1,18 @@
 package com.cninsure.cp.cargo.util;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.R;
 import com.cninsure.cp.entity.cargo.ContainerRecords;
 import com.cninsure.cp.entity.cargo.SurveyRecordsEntity;
+import com.cninsure.cp.utils.DateChoiceUtil;
 import com.cninsure.cp.utils.SetTextUtil;
 
 /**
@@ -49,6 +52,10 @@ public class SurveyUtil {
         SetTextUtil.setEditText(surveyView.findViewById(R.id.CargoSR_situation), sREn.records.situation); //集装箱验箱情况
         SetTextUtil.setEditText(surveyView.findViewById(R.id.CargoSR_description), sREn.records.description); //货物描述、受损程度及损失情况
         Glide.with(context).load(sREn.records.signatureUrl).into((ImageView) surveyView.findViewById(R.id.CargoSR_signatureUrl)); //签字图片
+        disPlaySign();
+        DateChoiceUtil.setLongDatePickerDialogOnClick(context,surveyView.findViewById(R.id.CargoSR_freightStartDate));
+        DateChoiceUtil.setLongDatePickerDialogOnClick(context,surveyView.findViewById(R.id.CargoSR_freightEndDate));
+        DateChoiceUtil.setLongDatePickerDialogOnClick(context,surveyView.findViewById(R.id.CargoSR_ckTime));
     }
 
     public void disPlayNotContainerInfo(String insured,String riskTime) {
@@ -65,6 +72,8 @@ public class SurveyUtil {
         SetTextUtil.setEditText(surveyNotView.findViewById(R.id.cti_ggsContactPhone), sREn.records.ggsContactPhone); //公估方代表电话
         SetTextUtil.setEditText(surveyNotView.findViewById(R.id.CargoSRN_causeAndCourse), sREn.records.causeAndCourse); //查勘内容
         Glide.with(context).load(sREn.records.signatureUrl).into((ImageView) surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)); //签字图片
+        disPlaySign();
+        DateChoiceUtil.setLongDatePickerDialogOnClick(context,surveyNotView.findViewById(R.id.CargoSRN_ckTime));
     }
 
     public SurveyRecordsEntity reflashData(){
@@ -110,5 +119,16 @@ public class SurveyUtil {
         sREn.records.ggsContactPhone = ((EditText)(surveyNotView.findViewById(R.id.cti_ggsContactPhone))).getText().toString(); //公估方代表电话
         sREn.records.causeAndCourse = ((EditText)(surveyNotView.findViewById(R.id.CargoSRN_causeAndCourse))).getText().toString(); //查勘内容
 //        Glide.with(context).load(sREn.records.signatureUrl).into((ImageView) surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)); //签字图片
+    }
+
+    public void disPlaySign() {
+        if(sREn.records ==null) sREn.records = new ContainerRecords();
+        String signPath= AppApplication.getUSER().data.qiniuUrl+sREn.records.signatureUrl;
+        if (!TextUtils.isEmpty(signPath) && sREn.ckDocType == 0){
+            Glide.with(context).load(signPath).into(((ImageView)(surveyView.findViewById(R.id.CargoSR_signatureUrl))));  //刷新界面集装箱信息到实体类
+            (surveyView.findViewById(R.id.CargoSR_signatureUrl)).setVisibility(View.VISIBLE);
+        }else if (!TextUtils.isEmpty(signPath) && sREn.ckDocType == 1)
+            Glide.with(context).load(signPath).into(((ImageView)(surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)))); ;  //刷新界面集装箱信息到实体类
+        (surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)).setVisibility(View.VISIBLE);
     }
 }

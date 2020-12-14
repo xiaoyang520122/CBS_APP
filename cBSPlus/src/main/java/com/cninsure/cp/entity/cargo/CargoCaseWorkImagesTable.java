@@ -9,7 +9,7 @@ public class CargoCaseWorkImagesTable implements Serializable {
 	public Integer id;
 	public String baoanUid;//报案编号
 	public String orderUid;//订单编号
-	public Integer type;
+	public String type;
 	public String createUid;//图片上传人UID
 	public String createName;//图片上传人名称
 	public String modifyUid;//图片更新人UID

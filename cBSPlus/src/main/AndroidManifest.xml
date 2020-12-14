@@ -153,6 +153,7 @@
         <activity android:name=".photo.CXPhotoActivity"></activity>
         <activity android:name=".navi.NavigationActivtity"></activity>
         <activity android:name=".utils.PhotoChoiceActivity"></activity>
+        <activity android:name=".cargo.adapter.CargoPhotoChoiceActivity"></activity>
         <activity android:name=".activty.BankCardActivity"></activity>
         <activity android:name=".activty.AddBanckCardActivity"></activity>
         <activity android:name="com.cninsure.cp.activty.register.SignAgmentActivity"></activity>
@@ -179,7 +180,7 @@
         <activity android:name="com.cninsure.cp.cx.CxDsWorkActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.DsUtilActivity"></activity>
         <activity android:name="com.cninsure.cp.utils.PDF.DisplayBaoGaoActivity"></activity>
-        <activity android:name="com.cninsure.cp.cargo.CargoListActivity"></activity>
+        <activity android:name="com.cninsure.cp.cargo.CargoCaseListActivity"></activity>
         <activity android:name="com.cninsure.cp.cargo.CargoWorkActivity"></activity>
         <activity android:name="com.cninsure.cp.photo.CargoCamreaActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxInjuryMediateActivity"

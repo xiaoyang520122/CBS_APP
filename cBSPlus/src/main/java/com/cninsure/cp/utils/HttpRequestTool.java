@@ -273,6 +273,8 @@ public class HttpRequestTool {
 	public final static int  CARGO_WORK_IMG=1114;
 	/**货运险查勘保存*/
 	public final static int  CARGO_SURVEY_SAVE=1115;
+	/**货运险查勘提交*/
+	public final static int  CARGO_SURVEY_SUBMIT=1116;
 
 
 
@@ -495,9 +497,13 @@ public class HttpRequestTool {
 				}
 			}else {//参数长度等于1代表非车接口需要通过字符串形式提交
 				List<String> resposnseList=doPost(url, params.get(0).getValue(),true);
-				result=resposnseList.get(1);
+				try {
+					result=resposnseList.get(1);
+					responsecode=Integer.parseInt(resposnseList.get(0));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				Log.i("JsonHttpUtils", "请求参数" + typecode + "为：url="+url+"请求参数："+params.get(0).getValue()+"返回参数：" + result);
-				responsecode=Integer.parseInt(resposnseList.get(0));
 			}
 		}
 		Log.i("JsonHttpUtils", "请求返回数据" + typecode + ",网页返回码："+responsecode+"为：" + result);

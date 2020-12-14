@@ -283,6 +283,8 @@ public class URLs implements Serializable {
 	public final static String CARGO_WORK_IMG= IPHOME +"/hyx/work/images/list";
 	/**POST 查勘保存 caseId surveyRecords查勘记录 listRecords清点记录 askRecords问询记录 lossRecords损失清单 materialList理赔材料清单（记录和清单都是JSON字符串）*/
 	public final static String CARGO_SURVEY_SAVE= IPHOME +"/hyx/survey/save";
+	/**POST 查勘保存 caseId surveyRecords查勘记录 listRecords清点记录 askRecords问询记录 lossRecords损失清单 materialList理赔材料清单（记录和清单都是JSON字符串）*/
+	public final static String CARGO_SURVEY_IMG_SAVE= IPHOME +"/hyx/work/images/save";
 
 	
 	

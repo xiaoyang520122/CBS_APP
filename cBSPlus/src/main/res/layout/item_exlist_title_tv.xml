@@ -36,8 +36,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="6"
+            android:textStyle="bold"
             android:textColor="@color/hui_text_xxh"
-            android:textSize="@dimen/text_defaul" >
+            android:textSize="@dimen/text_xh" >
         </TextView>
         <TextView
             android:id="@+id/expandablelist_item_title_hinttext"
