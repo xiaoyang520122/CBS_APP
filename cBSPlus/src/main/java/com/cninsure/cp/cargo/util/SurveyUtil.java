@@ -79,8 +79,8 @@ public class SurveyUtil {
     public SurveyRecordsEntity reflashData(){
         if (sREn==null) return null;
         if(sREn.records ==null) sREn.records = new ContainerRecords();
-        if (sREn.ckDocType == 0) getContainerInfo();  //刷新界面集装箱信息到实体类
-        if (sREn.ckDocType == 1) getNotContainerInfo();  //刷新界面集装箱信息到实体类
+        if (sREn.ckDocType.equals("0")) getContainerInfo();  //刷新界面集装箱信息到实体类
+        if (sREn.ckDocType.equals("1")) getNotContainerInfo();  //刷新界面集装箱信息到实体类
         return sREn;
     }
 
@@ -124,10 +124,10 @@ public class SurveyUtil {
     public void disPlaySign() {
         if(sREn.records ==null) sREn.records = new ContainerRecords();
         String signPath= AppApplication.getUSER().data.qiniuUrl+sREn.records.signatureUrl;
-        if (!TextUtils.isEmpty(signPath) && sREn.ckDocType == 0){
+        if (!TextUtils.isEmpty(signPath) && sREn.ckDocType.equals("0")){
             Glide.with(context).load(signPath).into(((ImageView)(surveyView.findViewById(R.id.CargoSR_signatureUrl))));  //刷新界面集装箱信息到实体类
             (surveyView.findViewById(R.id.CargoSR_signatureUrl)).setVisibility(View.VISIBLE);
-        }else if (!TextUtils.isEmpty(signPath) && sREn.ckDocType == 1)
+        }else if (!TextUtils.isEmpty(signPath) && sREn.ckDocType.equals("1"))
             Glide.with(context).load(signPath).into(((ImageView)(surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)))); ;  //刷新界面集装箱信息到实体类
         (surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)).setVisibility(View.VISIBLE);
     }

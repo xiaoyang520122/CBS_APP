@@ -228,6 +228,12 @@ public class CargoWorkActivity extends BaseActivity {
         }
         paramsList.add(new BasicNameValuePair("caseId",caseBaoanTable.id+""));
         paramsList.add(new BasicNameValuePair("status",status+""));
+
+        paramsList.add(new BasicNameValuePair("listRecords",surveyEn.data.listRecords));
+        paramsList.add(new BasicNameValuePair("askRecords",surveyEn.data.askRecords));
+        paramsList.add(new BasicNameValuePair("lossRecords",surveyEn.data.lossRecords));
+        paramsList.add(new BasicNameValuePair("materialList",surveyEn.data.materialList));
+
         surveyUtil.reflashData();
         paramsList.add(new BasicNameValuePair("surveyRecords",JSON.toJSONString(sREn)));  //参看信息
         if (status==0){ //保存
@@ -327,14 +333,14 @@ public class CargoWorkActivity extends BaseActivity {
     private void setContainerbleChangLesenler(ToggleButton tgb) {
         tgb.setToggleOn(true); //默认选中
         tgb.setOnToggleChanged(on -> {
-            if (on) {
+            if (on) {  //集装箱
                 viewlist.set(1,surveyView);
-                sREn.ckDocType=0;
+                sREn.ckDocType="0";
                 ((ToggleButton)surveyView.findViewById(R.id.CargoSR_ckDocType)).setToggleOn(true);
                 surveyUtil.disPlayContainerInfo(caseBaoanTable.caseNo,caseBaoanTable.insured);
-            }else{
+            }else{  //非集装箱
                 viewlist.set(1,surveyNotView);
-                sREn.ckDocType=1;
+                sREn.ckDocType="1";
                 ((ToggleButton)surveyNotView.findViewById(R.id.CargoSRN_ckDocTypeNotC)).setToggleOff(true);
                 surveyUtil.disPlayNotContainerInfo(caseBaoanTable.insured,caseBaoanTable.riskTime);
             }
@@ -632,13 +638,18 @@ public class CargoWorkActivity extends BaseActivity {
                 } else {
                     surveyUtil = new SurveyUtil(this, surveyView, surveyNotView, sREn);
                 }
-                if (sREn.ckDocType != null && sREn.ckDocType == 0) {
+                if (!TextUtils.isEmpty(sREn.ckDocType) && sREn.ckDocType.equals("0")) {
                     viewlist.set(1, surveyView); //显示集装箱View 及对应数据
                     surveyUtil.disPlayContainerInfo(caseBaoanTable.caseNo, caseBaoanTable.insured);
+                    ((ToggleButton)surveyView.findViewById(R.id.CargoSR_ckDocType)).setToggleOn(true);
+                    ((ToggleButton)surveyNotView.findViewById(R.id.CargoSRN_ckDocTypeNotC)).setToggleOn(true);
                 } else {
                     viewlist.set(1, surveyNotView);  //显示非集装箱View 及对应数据
                     surveyUtil.disPlayNotContainerInfo(caseBaoanTable.insured, caseBaoanTable.riskTime);
+                    ((ToggleButton)surveyView.findViewById(R.id.CargoSR_ckDocType)).setToggleOff(true);
+                    ((ToggleButton)surveyNotView.findViewById(R.id.CargoSRN_ckDocTypeNotC)).setToggleOff(true);
                 }
+                pagerAdapter.notifyDataSetChanged();
             } else {
                 surveyEn = new CargoSurveyEntity();
                 surveyEn.data = new CargoCaseWorkSurveyTable();
@@ -648,7 +659,7 @@ public class CargoWorkActivity extends BaseActivity {
 
         private void initSren () {
             sREn = new SurveyRecordsEntity();
-            sREn.ckDocType = 0;
+            sREn.ckDocType = "0";
             sREn.records = new ContainerRecords();
             sREn.records.caseNo = caseBaoanTable.caseNo;
             sREn.records.insured = caseBaoanTable.insured;
