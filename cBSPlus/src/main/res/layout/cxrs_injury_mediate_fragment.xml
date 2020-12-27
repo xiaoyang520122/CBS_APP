@@ -492,7 +492,7 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <EditText
+                <TextView
                     android:id="@+id/cxInMe_poLiveStart"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"

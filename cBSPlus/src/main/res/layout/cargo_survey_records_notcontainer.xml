@@ -50,6 +50,19 @@
                 android:layout_height="20dp"
                 />
 
+            <TextView
+                android:id="@+id/CargoSR_TemplateDownloadNOt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="50dp"
+                android:text="下载模板"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/left_jt_hui_short"
+                android:textColor="@color/bulue_main"
+                android:textSize="@dimen/text_defaul" />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -661,7 +674,7 @@
 
             </LinearLayout>
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -699,7 +712,7 @@
 
             </LinearLayout>
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"

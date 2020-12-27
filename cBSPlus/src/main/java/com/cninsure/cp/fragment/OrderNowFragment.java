@@ -1137,8 +1137,10 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				case 392 :  intent.setClass(getActivity(), CxInjuryTrackActivity.class);break;  //人伤跟踪
 				case 394 :  intent.setClass(getActivity(), CxDisabyIdentifyActivity.class);break; //陪同残定
 				case 393 :  intent.setClass(getActivity(), CxInjuryMediateActivity.class);break; //人伤调解
+//				case 395 :  intent.setClass(getActivity(), .class);break; //人伤调查
+				//人伤任务、人伤初勘（同人伤查勘<人伤任务>），人伤定损（接口不通，做不了），人伤调查
 
-					default: DialogUtil.getAlertOneButton(getActivity(),"功能开发中！",null).show();return;  //默认现场查勘
+				default: DialogUtil.getAlertOneButton(getActivity(),"功能开发中！",null).show();return;  //默认现场查勘
 			}
 
 			intent.putExtra("orderUid", uid);

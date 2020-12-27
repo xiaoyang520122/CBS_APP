@@ -99,7 +99,7 @@ public class CargoCaseListActivity extends BaseActivity implements View.OnClickL
         ((TextView)findViewById(R.id.dispersive_activity_V_LTV)).setText("返回");
         findViewById(R.id.dispersive_activity_V_LTV).setOnClickListener(v -> {
             //外部车童登录，跳转到外部车童界面
-//            Intent intent=new Intent(CargoCaseListActivity.this, CtCenterActivity.class);
+//            Intent intent=new Intent(CargoCaseListActivity.this, DiapersiveUserCenterActivity.class);
 //            CargoCaseListActivity.this.startActivity(intent);
             CargoCaseListActivity.this.finish();
         });
@@ -157,11 +157,11 @@ public class CargoCaseListActivity extends BaseActivity implements View.OnClickL
         }
     }
 
-    /**分散型新订单透传悬浮弹框提示用户*/
+    /**新订单透传悬浮弹框提示用户*/
     @Subscribe(threadMode=ThreadMode.MAIN)
     public void eventThing(NameValuePair value){
         String type=value.getName();
-        if (type.equals(PushType.FSX_NEW_ORDER)) {
+        if (type.equals(PushType.HYX_NEW_ORDER)) {
             onClickDo(WaitTv,R.drawable.waitcase,"1",0);
             getDefaulData(0); //默认重第一条开始查询
         }

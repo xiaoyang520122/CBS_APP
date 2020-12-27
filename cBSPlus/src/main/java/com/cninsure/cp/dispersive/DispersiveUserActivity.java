@@ -17,7 +17,6 @@ import com.alibaba.fastjson.JSON;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.LoadingActivity;
-import com.cninsure.cp.LoginActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.entity.PushType;
 import com.cninsure.cp.entity.URLs;
@@ -99,7 +98,7 @@ public class DispersiveUserActivity extends BaseActivity implements View.OnClick
     private void setUserCenterTvOnclick(){
         findViewById(R.id.dispersive_activity_V_LTV).setOnClickListener(v -> {
             //外部车童登录，跳转到外部车童界面
-            Intent intent=new Intent(DispersiveUserActivity.this, CtCenterActivity.class);
+            Intent intent=new Intent(DispersiveUserActivity.this, DiapersiveUserCenterActivity.class);
             DispersiveUserActivity.this.startActivity(intent);
         });
     }

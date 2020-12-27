@@ -300,6 +300,7 @@ attr hintEnabled
 attr hintTextAppearance
 attr homeAsUpIndicator
 attr homeLayout
+attr horizontalSpacing
 attr hoveredFocusedTranslationZ
 attr icon
 attr iconEndPadding
@@ -554,6 +555,7 @@ attr trackTint
 attr trackTintMode
 attr ttcIndex
 attr useCompatPadding
+attr verticalSpacing
 attr viewInflaterClass
 attr voiceIcon
 attr windowActionBar
@@ -1072,6 +1074,8 @@ drawable account_fill_48
 drawable add
 drawable add_new_bule
 drawable add_new_order_bule36
+drawable add_person_blue32
+drawable add_person_blue48
 drawable add_photos_bule36
 drawable alaph_0
 drawable album_blue38
@@ -1172,6 +1176,7 @@ drawable corners_greenblue_4_30dp
 drawable corners_hui5
 drawable corners_hui_4_10dp
 drawable corners_hui_4_30dp
+drawable corners_hui_bg_4_3dp
 drawable corners_hui_hui_line5
 drawable corners_hui_line
 drawable corners_hui_line5
@@ -1627,24 +1632,44 @@ id CargoSRN_insured
 id CargoSRN_riskTime
 id CargoSRN_signatureUrl
 id CargoSRN_surveyAddress
-id CargoSR__signButton
-id CargoSR_carNumber
+id CargoSR_TemplateDownload
+id CargoSR_TemplateDownloadNOt
+id CargoSR_addedExplain
+id CargoSR_carrierNo
 id CargoSR_caseNo
 id CargoSR_causeAndCourse
 id CargoSR_ckDocType
-id CargoSR_ckTime
+id CargoSR_ckGgsUrl
+id CargoSR_ckGgsUrl_img
+id CargoSR_comfirmDamageCount
+id CargoSR_comfirmFreightName
+id CargoSR_comfirmFreightPrice
+id CargoSR_comfirmPackage
+id CargoSR_comfirmSpecification
+id CargoSR_comfirmTransportCount
 id CargoSR_consigneed
 id CargoSR_consigneedPhone
-id CargoSR_description
-id CargoSR_freightEndAddress
-id CargoSR_freightEndDate
+id CargoSR_containerNo
+id CargoSR_damageCount
+id CargoSR_damageLinearLayout
 id CargoSR_freightName
-id CargoSR_freightStartAddress
-id CargoSR_freightStartDate
+id CargoSR_freightPrice
 id CargoSR_insured
+id CargoSR_isBrokenPackge_RBF
+id CargoSR_isBrokenPackge_RBT
+id CargoSR_isBrokenPackge_RG
+id CargoSR_packaging
+id CargoSR_pickUpPort
+id CargoSR_pickUpTime
+id CargoSR_riskAddress
+id CargoSR_riskTime
+id CargoSR_sealNo
 id CargoSR_signatureUrl
-id CargoSR_situation
-id CargoSR_surveyAddress
+id CargoSR_signatureUrl_img
+id CargoSR_silverNitrateDetection_RBF
+id CargoSR_silverNitrateDetection_RBT
+id CargoSR_silverNitrateDetection_RG
+id CargoSR_transportCount
 id CargoWM_1_RB
 id CargoWM_4_RB
 id CargoWM_RadioGroup
@@ -2436,6 +2461,9 @@ id capture_imageview_back
 id cargo_gridView_gridView1
 id cargo_gridView_wsline
 id cargo_gridView_wstitle
+id cargo_item_examination_site
+id cargo_item_inspection_results
+id cargo_item_remarks
 id casereport_emptyText
 id casereport_pull_refresh_list
 id cd_damageNo
@@ -2589,6 +2617,21 @@ id custom
 id customPanel
 id cxDsUtil_MyWebView
 id cxDsUtil_linear
+id cxInIn_CheckBoxGroup
+id cxInIn_injuredName
+id cxInIn_injuredTel
+id cxInIn_mFee0
+id cxInIn_mFee1
+id cxInIn_mFee2
+id cxInIn_mFee3
+id cxInIn_mFee4
+id cxInIn_mFee5
+id cxInIn_mFee6
+id cxInIn_medicalPaid_line
+id cxInIn_surveyReport
+id cxInIn_surveyResult_RBB
+id cxInIn_surveyResult_RBY
+id cxInIn_surveyResult_RG
 id cxInMe_
 id cxInMe_DeductibleExplain
 id cxInMe_accidentAddress
@@ -2656,9 +2699,14 @@ id cxInMe_shippingAddress
 id cxInMe_tablayout
 id cxInMe_total
 id cxInMe_viewpager
+id cxInsu_itemitem_add_ico
 id cxJieBaoan_tablayout
 id cxJieBaoan_viewpager
 id cx_damage_alert_view
+id cxrsdc_qa_item_parent
+id cxrsdc_qa_item_parent_title
+id cxrsdcqa_surveyAddress
+id cxrsdcqa_surveyTime
 id cxworkA_tablayout
 id cxworkA_viewpager
 id day_pv
@@ -3069,6 +3117,9 @@ id upprogress_progress
 id upprogress_title
 id upprogress_titleimg
 id useLogo
+id video_previ
+id video_preview_item
+id video_preview_item_tv
 id view_offset_helper
 id viewfinder_view
 id visible
@@ -3167,12 +3218,14 @@ layout capture
 layout cargo_gridview_layout
 layout cargo_survey_list_item
 layout cargo_survey_records_iscontainer
+layout cargo_survey_records_iscontainer_item
 layout cargo_survey_records_notcontainer
 layout cargo_work_main_activity
 layout case_report_order_activity
 layout caseinfo_listview_item
 layout caseinfo_listview_jindu_item
 layout cextract_history_item
+layout check_item
 layout choice_extract_order_activity
 layout choice_extract_order_item
 layout choice_ggs_activity
@@ -3206,6 +3259,8 @@ layout cx_third_fragment_item
 layout cx_work_activity
 layout cxrs_disaby_identify_activity
 layout cxrs_disaby_identify_content
+layout cxrs_injury_investigation_list_fragment
+layout cxrs_injury_investigation_list_item
 layout cxrs_injury_mediate_activity
 layout cxrs_injury_mediate_agreement_fragment
 layout cxrs_injury_mediate_fragment
@@ -3215,6 +3270,8 @@ layout cxrs_injury_mediate_scfj_fragment
 layout cxrs_injurytrack_activity
 layout cxrs_injurytrack_ask_item
 layout cxrs_injurytrack_content
+layout cxrsdc_injury_survey_list_item
+layout cxrsdc_injury_survey_list_item_item
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -4134,6 +4191,7 @@ styleable AlertDialog android_layout buttonIconDimen buttonPanelSideLayout listI
 styleable AnimatedStateListDrawableCompat android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable AnimatedStateListDrawableItem android_id android_drawable
 styleable AnimatedStateListDrawableTransition android_drawable android_toId android_fromId android_reversible
+styleable AntoLineUtil horizontalSpacing verticalSpacing
 styleable AppBarLayout android_background android_touchscreenBlocksFocus android_keyboardNavigationCluster elevation expanded liftOnScroll
 styleable AppBarLayoutStates state_collapsed state_collapsible state_liftable state_lifted
 styleable AppBarLayout_Layout layout_scrollFlags layout_scrollInterpolator

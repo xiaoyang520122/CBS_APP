@@ -45,4 +45,9 @@ public class PushType {
 	 * 公估师作业提价审核
 	 */
 	public static String GGS_WORK_AUDIT 	= "GGS_WORK_AUDIT";
+
+	/**
+	 * 公估师作业提价审核
+	 */
+	public static String HYX_NEW_ORDER 	= "HYX_NEW_ORDER";
 }

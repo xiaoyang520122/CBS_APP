@@ -163,7 +163,7 @@ public class CargoWorkActivity extends BaseActivity {
                 CargoWorkActivity.this.finish();
             }
         });
-        if (caseBaoanTable !=null && (caseBaoanTable.status==11 || caseBaoanTable.status==5)) { //驳回和已到达现场的才能提交审核
+        if (caseBaoanTable !=null && (caseBaoanTable.status==10 || caseBaoanTable.status==5)) { //驳回和已到达现场的才能提交审核
         ((TextView)findViewById(R.id.ACTION_V_RTV)).setText("提交 >");
         ((TextView)findViewById(R.id.ACTION_V_RTV)).setCompoundDrawables(null, null, null, null);
         setSubmitOclick();
@@ -261,32 +261,36 @@ public class CargoWorkActivity extends BaseActivity {
 //        viewlist.add(examineView);
         viewlist.add(photoListView);
         viewPager.setAdapter(getadapter());
-        setSignOnclick(surveyView.findViewById(R.id.CargoSR__signButton));
-        setSignOnclick(surveyNotView.findViewById(R.id.CargoSRN__signButton));
+        setSignOnclick(surveyView.findViewById(R.id.CargoSR_ckGgsUrl),5);
+        setSignOnclick(surveyView.findViewById(R.id.CargoSR_signatureUrl),6);
+        setSignOnclick(surveyNotView.findViewById(R.id.CargoSRN__signButton),7);
         setContainerbleChangLesenler(surveyView.findViewById(R.id.CargoSR_ckDocType));
         setContainerbleChangLesenler(surveyNotView.findViewById(R.id.CargoSRN_ckDocTypeNotC));
     }
 
     /**签字监听事件*/
-    private void setSignOnclick(View view) {
+    private void setSignOnclick(View view,final int position) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startSign();
+                startSign(position);
             }
         });
     }
-    /**启动签字**/
-    private void startSign(){
+    /**启动签字
+     * @param position**/
+    private void startSign(int position){
         Intent intent=new Intent(this, LinePathActivity.class);
         intent.putExtra("orderUid", this.getIntent().getStringExtra("orderUid"));
-        startActivityForResult(intent, HttpRequestTool.LINEPATH);
+        startActivityForResult(intent, position);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode== HttpRequestTool.LINEPATH) { //签字返回图片
-            upSignPhoto(data,5);
+        switch (requestCode){
+            case 5: upSignPhoto(data,5);break; //集装箱 现场查勘人 签字返回图片
+            case 6: upSignPhoto(data,6);break; //集装箱 收货人/代理人 签字返回图片
+            case 7: upSignPhoto(data,7);break; //非集装箱 签字返回图片
         }
     }
     /**上传签字图片**/
@@ -442,7 +446,15 @@ public class CargoWorkActivity extends BaseActivity {
             int type=Integer.parseInt(value.get(0).getValue());
             if (type==5) {  //签字返回信息
                 if ("UPLOAD_SUCCESS".equals(value.get(1).getName())) {
-                    signMeath(value.get(1).getValue());
+                    signMeath(value.get(1).getValue(),5);
+                }
+            }else if (type==6) {  //集装箱 收货人/代理人 签字返回图片
+                if ("UPLOAD_SUCCESS".equals(value.get(1).getName())) {
+                    signMeath(value.get(1).getValue(),6);
+                }
+            }else if (type==7) {  //非集装箱签字返回图片
+                if ("UPLOAD_SUCCESS".equals(value.get(1).getName())) {
+                    signMeath(value.get(1).getValue(),7);
                 }
             }
         } catch (NumberFormatException e) {
@@ -461,10 +473,14 @@ public class CargoWorkActivity extends BaseActivity {
     }
 
     /**处理签字图片*/
-    private void signMeath(String url){
+    private void signMeath(String url,int positi){
         if (url!=null) {
-            sREn.records.signatureUrl = url;//签字图片名称，不包含完整路径
-            surveyUtil.disPlaySign();//显示签名
+        switch (positi){
+            case 5: sREn.records.ckGgsUrl = url;break; //集装箱 现场查勘人 签字返回图片
+            case 6: sREn.records.signatureUrl = url;break; //集装箱 收货人/代理人 签字返回图片
+            case 7: sREn.records.signatureUrl = url;break; //非集装箱 签字返回图片
+        }
+           surveyUtil.disPlaySign();//显示签名
         }
     }
 
@@ -549,7 +565,7 @@ public class CargoWorkActivity extends BaseActivity {
         if (submitImgEnList.size()>0){
             CargoPhotoUploadUtil.imgUpload(this,submitImgEnList,URLs.UP_OCR_PHOTO);
         }else{
-            DialogUtil.getAlertOneButton(this,"没有需要上传的图片！",null).show();
+            DialogUtil.getAlertOneButton(this,"作业信息已保存，没有需要上传的图片！",null).show();
             submitFinish();
         }
     }

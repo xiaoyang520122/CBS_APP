@@ -48,6 +48,18 @@
                 android:layout_height="20dp"
                 />
 
+            <TextView
+                android:id="@+id/CargoSR_TemplateDownload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="50dp"
+                android:text="下载模板"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/left_jt_hui_short"
+                android:textColor="@color/bulue_main"
+                android:textSize="@dimen/text_defaul" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -144,7 +156,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:text="▊案件概要"
+            android:text="▊货物运输基本情况"
             android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
 
@@ -176,7 +188,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="收 货 人："
+                    android:text="现场人："
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
@@ -187,45 +199,27 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请录入收货人信息"
+                    android:hint="姓名"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/survey_marginTop"
-                android:background="@drawable/line_bg"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/text_defaul" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="联系方式："
-                    android:textColor="@color/hui_text_xxxxh"
-                    android:textSize="@dimen/text_defaul" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/hui_line" />
 
                 <EditText
                     android:id="@+id/CargoSR_consigneedPhone"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请录入收货人联系方式"
+                    android:hint="请输入电话"
+                    android:inputType="phone"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -252,17 +246,169 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="货物起运日期："
+                    android:text="承运车车号："
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <TextView
-                    android:id="@+id/CargoSR_freightStartDate"
+                <EditText
+                    android:id="@+id/CargoSR_carrierNo"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:hint="未选择起运日期"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="集装箱箱号："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CargoSR_containerNo"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="封条号码："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CargoSR_sealNo"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="提货港："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CargoSR_pickUpPort"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="提货日期："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/CargoSR_pickUpTime"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="未选择日期"
                     android:drawableRight="@drawable/check_date_hui32"
                     android:gravity="right|center"
                     android:textColorHint="@color/hui_text_h"
@@ -292,55 +438,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="货物起运地点："
-                    android:textColor="@color/hui_text_xxxxh"
-                    android:textSize="@dimen/text_defaul" />
-
-                <EditText
-                    android:id="@+id/CargoSR_freightStartAddress"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/work_line_defaul_hight"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="right|center"
-                    android:hint="请录入货物起运地点"
-                    android:textColor="@android:color/black"
-                    android:textColorHint="@color/hui_text_h"
-                    android:textSize="@dimen/text_defaul" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/survey_marginTop"
-                android:background="@drawable/line_bg"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/text_defaul" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="货物到达日期："
+                    android:text="出险日期："
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CargoSR_freightEndDate"
+                    android:id="@+id/CargoSR_riskTime"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:hint="未选择到达日期"
+                    android:hint="未选择日期"
                     android:drawableRight="@drawable/check_date_hui32"
                     android:gravity="right|center"
                     android:textColorHint="@color/hui_text_h"
@@ -370,23 +478,44 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="货物到达地点："
+                    android:text="出险地点："
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CargoSR_freightEndAddress"
+                    android:id="@+id/CargoSR_riskAddress"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请录入货物到达地点"
+                    android:hint="请录入地点"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
 
             </LinearLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:text="▊货物基本信息"
+            android:textColor="@color/bulue_main"
+            android:textSize="@dimen/text_defaul" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -403,8 +532,7 @@
                     android:layout_height="wrap_content"
                     android:text="*"
                     android:textColor="@color/red"
-                    android:textSize="@dimen/text_defaul"
-                    android:visibility="visible" />
+                    android:textSize="@dimen/text_defaul" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -420,7 +548,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="right|center"
-                    android:hint="请录入货物名称"
+                    android:hint="姓名"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -447,19 +575,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="集装箱号/车牌号："
+                    android:text="货物单价："
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CargoSR_carNumber"
+                    android:id="@+id/CargoSR_freightPrice"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:drawablePadding="10dp"
                     android:gravity="right|center"
-                    android:hint="请录入集装箱号/车牌号"
+                    android:hint="请录入"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -481,26 +608,23 @@
                     android:layout_height="wrap_content"
                     android:text="*"
                     android:textColor="@color/red"
-                    android:textSize="@dimen/text_defaul"
-                    android:visibility="visible" />
+                    android:textSize="@dimen/text_defaul" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="查勘日期："
+                    android:text="包装规格："
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <TextView
-                    android:id="@+id/CargoSR_ckTime"
+                <EditText
+                    android:id="@+id/CargoSR_packaging"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:drawableRight="@drawable/check_date_hui32"
-                    android:drawablePadding="5dp"
                     android:gravity="right|center"
-                    android:hint="未选择查勘日期"
+                    android:hint="请录入"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -511,40 +635,141 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="运输总件数："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CargoSR_transportCount"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="受损数量："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CargoSR_damageCount"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:text="▊箱体检查记录"
+            android:textColor="@color/bulue_main"
+            android:textSize="@dimen/text_defaul" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:visibility="invisible"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="检查部位"
+                    android:layout_weight="1"
+                    android:textColor="@color/yellow_m"
+                    android:textSize="@dimen/text_defaul" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="检查结果"
+                    android:layout_weight="3"
+                    android:gravity="right"
+                    android:textColor="@color/yellow_m"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/CargoSR_damageLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@null"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
+                android:orientation="vertical"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/text_defaul" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="查看地点："
-                    android:textColor="@color/hui_text_xxxxh"
-                    android:textSize="@dimen/text_defaul" />
-
-                <EditText
-                    android:id="@+id/CargoSR_surveyAddress"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/work_line_defaul_hight"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:drawablePadding="10dp"
-                    android:gravity="right|center"
-                    android:hint="请录入查看地点"
-                    android:textColor="@android:color/black"
-                    android:textColorHint="@color/hui_text_h"
-                    android:textSize="@dimen/text_defaul" />
-
-            </LinearLayout>
         </LinearLayout>
 
         <TextView
@@ -553,7 +778,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:text="▊事故经过及损失情况"
+            android:text="▊事故发生原因及经过"
             android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
 
@@ -587,7 +812,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="出险原因及经过："
+                    android:text="上述时间地点，经现场查勘发现事故发生原因为："
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
@@ -608,118 +833,448 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/survey_marginTop"
-                android:background="@null"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/text_defaul" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="（集装箱验箱情况）承运工具及包装情况："
-                    android:textColor="@color/hui_text_xxxxh"
-                    android:textSize="@dimen/text_defaul" />
-
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/CargoSR_situation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:background="@drawable/corners_hui_hui_line5"
-                android:gravity="left|center"
-                android:hint="请输入（集装箱验箱情况）承运工具及包装情况(建议10000字符内)"
-                android:textColor="@android:color/black"
-                android:textColorHint="@color/hui_text_h"
-                android:textSize="@dimen/text_defaul" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/survey_marginTop"
-                android:background="@null"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/text_defaul" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="货物描述、受损程度及损失情况："
-                    android:textColor="@color/hui_text_xxxxh"
-                    android:textSize="@dimen/text_defaul" />
-
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/CargoSR_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/corners_hui_hui_line5"
-                android:gravity="left|center"
-                android:hint="请输入（货物描述、受损程度及损失情况(建议10000字符内)"
-                android:padding="5dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@color/hui_text_h"
-                android:textSize="@dimen/text_defaul" />
-
-        </LinearLayout>
-
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/corners_yellow_low_5dp"
-            android:padding="5dp"
-            android:lineHeight="25dp"
-            android:text="！！以上查勘项目为本次事故的全部报损项目，并无遗漏。受损货物进行处理前，应提前通知保险公估人。已告知被保险人应积极采取必要、合理的方式对保险标的进行施救。
-保险责任及损失金额以承保公司核定为准。"
-            android:textColor="@color/yellow_m"
+            android:text="▊货物检验结果"
+            android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="※货物名称："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CargoSR_comfirmFreightName"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="姓名"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="货主申报单价："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CargoSR_comfirmFreightPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="※包装情况："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CargoSR_comfirmPackage"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="※货物规格："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CargoSR_comfirmSpecification"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="运载总数量："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CargoSR_comfirmTransportCount"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@drawable/line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="※受损数量："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <EditText
+                    android:id="@+id/CargoSR_comfirmDamageCount"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="请录入"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="硝酸银检测："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/CargoSR_silverNitrateDetection_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/CargoSR_silverNitrateDetection_RBT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="海水"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/CargoSR_silverNitrateDetection_RBF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="淡水"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="※包装是否破损："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/CargoSR_isBrokenPackge_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/CargoSR_isBrokenPackge_RBT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="是"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/CargoSR_isBrokenPackge_RBF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="否"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+                </RadioGroup>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="▊补充说明"
+            android:textColor="@color/bulue_main"
+            android:textSize="@dimen/text_defaul" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="补充说明"
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/CargoSR_addedExplain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@drawable/corners_hui_hui_line5"
+                android:gravity="left|center"
+                android:hint="请输入补充说明(建议10000字符内)"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
+
+        </LinearLayout>
+
 
 
         <TextView
@@ -728,16 +1283,18 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:text="▊查勘员签字"
+            android:text="▊签字"
             android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
+            android:layout_marginBottom="15dp"
             android:gravity="center_vertical"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
 
             <LinearLayout
@@ -751,16 +1308,39 @@
                 android:paddingRight="5dp">
 
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/searchorder"
-                    android:drawablePadding="5dp"
-                    android:text="查勘员（签名）"
-                    android:textColor="@color/hui_text_xxxh"
-                    android:textSize="@dimen/text_defaul" />
+                    <ImageView
+                        android:id="@+id/CargoSR_ckGgsUrl_img"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:scaleType="centerInside"
+                        android:visibility="invisible" />
 
+                    <TextView
+                        android:id="@+id/CargoSR_ckGgsUrl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="5dp"
+                        android:text="现场查勘人"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/bulue_main"
+                        android:textSize="@dimen/text_defaul" />
+
+                </LinearLayout>
 
                 <View
                     android:layout_width="1dp"
@@ -769,7 +1349,7 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="center"
@@ -778,124 +1358,31 @@
                     android:paddingRight="5dp">
 
                     <ImageView
-                        android:id="@+id/CargoSR_signatureUrl"
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
+                        android:id="@+id/CargoSR_signatureUrl_img"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:scaleType="centerInside"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                     <TextView
-                        android:id="@+id/CargoSR__signButton"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/CargoSR_signatureUrl"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:drawablePadding="5dp"
-                        android:text="+添加签名"
+                        android:text="收货人/代理人"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:textColor="@color/bulue_main"
                         android:textSize="@dimen/text_defaul" />
 
                 </LinearLayout>
             </LinearLayout>
 
-        </LinearLayout>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="▊特别声明/告知"
-            android:textColor="@color/bulue_main"
-            android:textSize="@dimen/text_defaul" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/survey_marginTop"
-                android:background="@drawable/line_bg"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingRight="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="公估机构特别告知："
-                    android:textColor="@color/bule_text_h"
-                    android:textSize="@dimen/text_defaul" />
-
-            </LinearLayout>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:layout_marginTop="5dp"
-                android:gravity="left|center"
-                android:text="以上现场查勘中的涉损财产是否属于保险标的，此次事故是否属于保险责任需要根据签署的保单确认。"
-                android:textColor="@color/hui_text_xxxh"
-                android:textColorHint="@color/hui_text_h"
-                android:textSize="@dimen/text_defaul" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/line_bg"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingRight="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="查勘参与人声明："
-                    android:textColor="@color/bule_text_h"
-                    android:textSize="@dimen/text_defaul" />
-
-            </LinearLayout>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:layout_marginTop="5dp"
-                android:gravity="left|center"
-                android:text="我作为本现场的共同查勘人，特此声明：以上记载和现场查勘情况相符合。"
-                android:textColor="@color/hui_text_xxxh"
-                android:textColorHint="@color/hui_text_h"
-                android:textSize="@dimen/text_defaul" />
 
         </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/csu_enclosureList_line"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="15dp"
-            android:background="@color/white"
-            android:layout_marginBottom="15dp">
-
-        </LinearLayout>
     </LinearLayout>
 </ScrollView>

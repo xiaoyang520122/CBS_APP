@@ -136,7 +136,10 @@ public class CxRiListFragment  extends BaseFragment implements View.OnClickListe
         }else{
             activity.taskEntity.data.contentJson.medicalFee.remove(Integer.valueOf(position));
             for (MedicalPaid obj:activity.taskEntity.data.contentJson.medicalPaid){
-                if (obj.itemValue == position) activity.taskEntity.data.contentJson.medicalPaid.remove(obj);
+                if (obj.itemValue == position) {
+                    activity.taskEntity.data.contentJson.medicalPaid.remove(obj);
+                    break;
+                }
             }
             mFeeMapView.put(position,null);
         }
@@ -155,7 +158,10 @@ public class CxRiListFragment  extends BaseFragment implements View.OnClickListe
         }else{
             activity.taskEntity.data.contentJson.casualtiesFee.add(position);
             for (MedicalPaid obj:activity.taskEntity.data.contentJson.casualtiesPaid){
-                if (obj.itemValue == position) activity.taskEntity.data.contentJson.casualtiesPaid.remove(obj);
+                if (obj.itemValue == position){
+                    activity.taskEntity.data.contentJson.casualtiesPaid.remove(obj);
+                    break;
+                }
             }
             cFeeMapView.put(position,null);
         }

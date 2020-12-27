@@ -553,10 +553,10 @@ ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:197:9-
 		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:199:13-44
 	android:name
 		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:198:13-62
-activity#com.cninsure.cp.dispersive.CtCenterActivity
-ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:200:9-74
+activity#com.cninsure.cp.dispersive.DiapersiveUserCenterActivity
+ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:200:9-86
 	android:name
-		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:200:19-62
+		ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:200:19-74
 activity#com.cninsure.cp.dispersive.DispersiveWorkActivity
 ADDED from E:\AndroidProject\CBS_APP\cBSPlus\src\main\AndroidManifest.xml:201:9-80
 	android:name

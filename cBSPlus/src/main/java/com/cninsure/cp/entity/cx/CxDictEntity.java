@@ -56,4 +56,21 @@ public class CxDictEntity implements Serializable {
         }
         return "";
     }
+
+    /**
+     * 通过value获取DictData
+     * @param type
+     * @param value
+     * @return
+     */
+    public DictData getDictDataByValue(String type,String value){
+        if (TextUtils.isEmpty(value)) return null;
+        if (list != null) {
+            for (DictData dEn : list) {
+                if (type.equals(dEn.type) && value.equals(dEn.value) && "0".equals(dEn.delFlag))
+                    return dEn;
+            }
+        }
+        return null;
+    }
 }

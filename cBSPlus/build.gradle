@@ -37,10 +37,10 @@ android {
         release {
             minifyEnabled false  //true就是打开混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-            buildConfigField("String", "FSX_USER_TYPE", "\"153\"")
+            buildConfigField("String", "FSX_USER_TYPE", "\"154\"")
         }
         debug {
-            buildConfigField("String", "FSX_USER_TYPE", "\"153\"")
+            buildConfigField("String", "FSX_USER_TYPE", "\"163\"")
             minifyEnabled false
         }
     }

@@ -14,21 +14,18 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
-import com.cninsure.cp.IndexActivity;
 import com.cninsure.cp.LoadingActivity;
 import com.cninsure.cp.LoginActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.activty.AboutUsAvtivity;
 import com.cninsure.cp.activty.AccountActivity;
-import com.cninsure.cp.activty.BankCardActivity;
 import com.cninsure.cp.activty.HelpCenterActivity;
 import com.cninsure.cp.activty.MessageCenterActivity;
 import com.cninsure.cp.activty.ScoreActivity;
 import com.cninsure.cp.activty.SecurityCenterActivity;
+import com.cninsure.cp.cargo.CargoCaseListActivity;
 import com.cninsure.cp.entity.URLs;
-import com.cninsure.cp.entity.User;
 import com.cninsure.cp.entity.UserInfo;
-import com.cninsure.cp.fragment.MyCenterFragment;
 import com.cninsure.cp.utils.APPDownloadUtils;
 import com.cninsure.cp.utils.CheckHttpResult;
 import com.cninsure.cp.utils.DialogUtil;
@@ -51,7 +48,7 @@ import java.util.List;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
-public class CtCenterActivity extends BaseActivity {
+public class DiapersiveUserCenterActivity extends BaseActivity {
 
     private TextView ggsNameTv, ggsTypeTv, deptTv, editionTv;
     private List<String> paramsList;
@@ -166,7 +163,7 @@ public class CtCenterActivity extends BaseActivity {
         }
         if (typecode == HttpRequestTool.CLEAN_CID && CheckHttpResult.checkList(value, this)!=HttpRequestTool.CLEAN_CID ) {
             ToastUtil.showToastLong(this, "退出用户失败!");
-            (CtCenterActivity.this).loadDialog.dismiss();
+            (DiapersiveUserCenterActivity.this).loadDialog.dismiss();
         }
         switch (CheckHttpResult.checkList(value, this)) {
             case HttpRequestTool.GET_USER_INFO:
@@ -177,7 +174,7 @@ public class CtCenterActivity extends BaseActivity {
                 handleVersion(value.get(0).getValue());
                 break;
             case HttpRequestTool.CLEAN_CID:
-                (CtCenterActivity.this).excetUser();//indexActivity中请求清空服务器端CID成功后在这里调用indexActivity中方法退出用户
+                (DiapersiveUserCenterActivity.this).excetUser();//indexActivity中请求清空服务器端CID成功后在这里调用indexActivity中方法退出用户
                 break;
 
             default:
@@ -222,7 +219,7 @@ public class CtCenterActivity extends BaseActivity {
                     public void onDismiss(DialogInterface arg0) {
 //						HttpUtils.openUrl(IndexActivity.instance,URLs.APP_DOWNLOAD_URL);
 //						this.finish();
-                        new APPDownloadUtils(CtCenterActivity.this).downloadAPK(DownloadUrl, "CBSPlus");
+                        new APPDownloadUtils(DiapersiveUserCenterActivity.this).downloadAPK(DownloadUrl, "CBSPlus");
                     }
                 });
             }
@@ -287,6 +284,8 @@ public class CtCenterActivity extends BaseActivity {
 
             case R.id.my_menu_excetUser:/** 退出用户**/
                 excetAlert();
+                break;case R.id.my_menu_cargo:     //货运险-全流程
+                startActivity(new Intent(this, CargoCaseListActivity.class));
                 break;
 
             default:

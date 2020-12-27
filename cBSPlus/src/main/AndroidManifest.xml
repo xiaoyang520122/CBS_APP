@@ -197,7 +197,7 @@
         <activity
             android:name=".dispersive.DispersiveUserActivity"
             android:launchMode="singleTask"></activity>
-        <activity android:name=".dispersive.CtCenterActivity"></activity>
+        <activity android:name=".dispersive.DiapersiveUserCenterActivity"></activity>
         <activity android:name=".dispersive.DispersiveWorkActivity"></activity> <!-- 个推 -->
         <!-- 请根据您当前自定义的 PushService 名称路径进行配置 -->
         <service
