@@ -3,11 +3,15 @@ package com.cninsure.cp.cargo.util;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -16,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.R;
@@ -23,12 +28,20 @@ import com.cninsure.cp.cargo.CargoWorkActivity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cargo.ContainerRecords;
 import com.cninsure.cp.entity.cargo.SurveyRecordsEntity;
+import com.cninsure.cp.entity.fc.WorkFile;
+import com.cninsure.cp.entity.yjx.ImagePathUtil;
+import com.cninsure.cp.fc.activity.SurveyActivityHelp;
+import com.cninsure.cp.fragment.OrderNowFragment;
 import com.cninsure.cp.utils.CopyUtils;
 import com.cninsure.cp.utils.DateChoiceUtil;
 import com.cninsure.cp.utils.DialogUtil;
+import com.cninsure.cp.utils.LoadDialogUtil;
+import com.cninsure.cp.utils.OpenFileUtil;
 import com.cninsure.cp.utils.SetTextUtil;
+import com.cninsure.cp.utils.ToastUtil;
 import com.cninsure.cp.utils.http.DownLoadFileUtil;
 import com.cninsure.cp.utils.url.URLEncodedUtil;
+import com.cninsure.cp.view.ChildClickableLinearLayout;
 
 import org.w3c.dom.Text;
 
@@ -45,6 +58,7 @@ public class SurveyUtil {
     private CargoWorkActivity context;
     private View surveyView,surveyNotView;
     private SurveyRecordsEntity sREn;
+    public static final int FILE_SELECT_CODE=10002;
 
     private SurveyUtil (){}
     public SurveyUtil (CargoWorkActivity context,View surveyView,View surveyNotView,SurveyRecordsEntity sREn){
@@ -85,10 +99,76 @@ public class SurveyUtil {
             displaySilverNitrateDetection(); //硝酸银检测/包装是否破损
             disPlaySign();
             disPlayDamageInfo();
-            setDowloadOnclick(surveyView.findViewById(R.id.CargoSR_TemplateDownload));
+            setDowloadMouldOnclick(surveyView.findViewById(R.id.CargoSR_TemplateDownload)); //下载模板单击事件绑定
+            disPlayRecordDocUrlInfo();
         }
         DateChoiceUtil.setLongDatePickerDialogOnClick(context,surveyView.findViewById(R.id.CargoSR_pickUpTime));//提货日期
         DateChoiceUtil.setLongDatePickerDialogOnClick(context,surveyView.findViewById(R.id.CargoSR_riskTime)); //出险日期
+    }
+
+    /**
+     * 显示上传报告按钮
+     * 如果有上传报告就显示*/
+    public void disPlayRecordDocUrlInfo() { //recordDocUrl
+        if(sREn.records ==null) sREn.records = new ContainerRecords();
+        if (sREn.ckDocType.equals("0")) {//集装箱
+            if (TextUtils.isEmpty(sREn.recordDocUrl)) {
+                setChioceFileOnclick(surveyView.findViewById(R.id.CargoSR_upFile));
+                SetTextUtil.setTextViewText(surveyView.findViewById(R.id.CargoSR_upFile),"上传");
+               surveyView.findViewById(R.id.CargoSR_downFile).setVisibility(View.INVISIBLE);
+            } else {
+                setChioceFileOnclick(surveyView.findViewById(R.id.CargoSR_upFile));
+                SetTextUtil.setTextViewText(surveyView.findViewById(R.id.CargoSR_upFile),"重新上传");
+                surveyView.findViewById(R.id.CargoSR_downFile).setVisibility(View.VISIBLE);
+                setDownBaogaoOnclick(surveyView.findViewById(R.id.CargoSR_downFile),sREn.recordDocUrl);
+            }
+        }else if (sREn.ckDocType.equals("1")) {  //非集装箱
+            if (TextUtils.isEmpty(sREn.recordDocUrl)) {
+                setChioceFileOnclick(surveyNotView.findViewById(R.id.CargoSR_upFileNot));
+                SetTextUtil.setTextViewText(surveyNotView.findViewById(R.id.CargoSR_upFileNot),"上传");
+                surveyNotView.findViewById(R.id.CargoSR_downFileNot).setVisibility(View.INVISIBLE);
+            } else {
+                setChioceFileOnclick(surveyNotView.findViewById(R.id.CargoSR_upFileNot));
+                SetTextUtil.setTextViewText(surveyNotView.findViewById(R.id.CargoSR_upFileNot),"重新上传");
+                surveyNotView.findViewById(R.id.CargoSR_downFileNot).setVisibility(View.VISIBLE);
+                setDownBaogaoOnclick(surveyNotView.findViewById(R.id.CargoSR_downFileNot),sREn.recordDocUrl);
+            }
+        }
+    }
+
+    /**
+     * 查看报告的单击事件
+     * @param view
+     * @param recordDocUrl
+     */
+    private void setDownBaogaoOnclick(View view, String recordDocUrl) {
+        if (TextUtils.isEmpty(recordDocUrl)) {
+            ToastUtil.showToastLong(context,"无文件！");
+            return;
+        }
+        String FilePath = ImagePathUtil.BaseUrl + recordDocUrl;
+        view.setOnClickListener(v -> {
+            new DownLoadFileUtil(context).startDownLoad(FilePath ,recordDocUrl,"下载出错!",null , filePath -> { //下载成功后可以分享文件。
+                alertFilePath(filePath);
+            });
+        });
+    }
+
+    /**
+     * 点击选择上传报告文件
+     * @param view
+     */
+    private void setChioceFileOnclick(View view) {
+        view.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("*/*");
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            try {
+                context.startActivityForResult( Intent.createChooser(intent, "选择报告！"), FILE_SELECT_CODE);
+            } catch (android.content.ActivityNotFoundException ex) {
+                DialogUtil.getAlertOneButton(context, "抱歉，无法打开文件管理器！您可以安装一个文件管理器再试一次。", null).show();
+            }
+        });
     }
 
     /**
@@ -174,6 +254,7 @@ public class SurveyUtil {
                 checkeditems[i] = false;
             }else {
                 checkeditems[i] = true;
+                valueMap.put(i,i);
             }
         }
         new AlertDialog.Builder(context).setTitle(damageName+"受损情况")
@@ -226,8 +307,9 @@ public class SurveyUtil {
         SetTextUtil.setEditText(surveyNotView.findViewById(R.id.CargoSRN_causeAndCourse), sREn.records.causeAndCourse); //查勘内容
         Glide.with(context).load(sREn.records.signatureUrl).into((ImageView) surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)); //签字图片
         disPlaySign();
-        setDowloadOnclick(surveyNotView.findViewById(R.id.CargoSR_TemplateDownloadNOt));}
+        setDowloadMouldOnclick(surveyNotView.findViewById(R.id.CargoSR_TemplateDownloadNOt));} //下载模板单击事件绑定
         DateChoiceUtil.setLongDatePickerDialogOnClick(context,surveyNotView.findViewById(R.id.CargoSRN_ckTime));
+        disPlayRecordDocUrlInfo();
     }
 
     public SurveyRecordsEntity reflashData(){
@@ -302,14 +384,15 @@ public class SurveyUtil {
         (surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)).setVisibility(View.VISIBLE);
     }
 
-    public void setDowloadOnclick(View v){ //CargoSR_TemplateDownload
+    public void setDowloadMouldOnclick(View v){ //CargoSR_TemplateDownload
         String[] nameArr = new String[]{"查勘记录(非集装箱).doc","查勘记录(集装箱).doc","清点记录.doc","询问笔录.doc"};
+        Dialog loadDialog = LoadDialogUtil.getMessageDialog(context,"下载中……");
         v.setOnClickListener(v1 -> {
             new AlertDialog.Builder(context).setTitle("选择下载模板")
                     .setItems(nameArr, (dialog, which) -> {
                         String FilePath = URLs.CARGO_TEMPLATE+ URLEncodedUtil.toURLEncoded(nameArr[which]);
                         String incod = URLEncoder.encode(FilePath);
-                        new DownLoadFileUtil(context).startDownLoad(FilePath ,nameArr[which],"下载出错!",null , filePath -> { //下载成功后可以分享文件。
+                        new DownLoadFileUtil(context).startDownLoad(FilePath ,nameArr[which],"下载出错!",loadDialog , filePath -> { //下载成功后可以分享文件。
                             alertFilePath(filePath);
                         });
                     }).create().show();
@@ -319,10 +402,11 @@ public class SurveyUtil {
     private void alertFilePath(String filePath){
         new AlertDialog.Builder(context).setTitle("下载提示!")
                 .setMessage("下载成功! 文件路径："+filePath)
-                .setNeutralButton("复制路径", new DialogInterface.OnClickListener() {
+                .setNeutralButton("打开文件", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        CopyUtils.copy(context,filePath);
+//                        CopyUtils.copy(context,filePath);
+                        OpenFileUtil.openFileByPath(context,filePath);
                     }
                 }).create().show();
 //        DialogUtil.getAlertOneButton(context,"下载成功文件路径："+filePath,null).show();

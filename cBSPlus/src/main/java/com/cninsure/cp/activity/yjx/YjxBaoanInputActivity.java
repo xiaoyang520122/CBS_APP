@@ -945,7 +945,6 @@ private void setConViewOnclick(View conView, final int itemCode) {
 
 	 private boolean IsFull = true;
 	/**如果字段为空，而且是必填就报错
-	 * @param IsFull 是否为空
 	 * @param ismust 是否必填
 	 * @param view */
  private String getTextInfo(TextView view, boolean ismust) {

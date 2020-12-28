@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,8 +29,10 @@ import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.cargo.adapter.CargoExpandablelistAdapter;
+import com.cninsure.cp.cargo.util.CargoFileUploadUtil;
 import com.cninsure.cp.cargo.util.CargoPhotoUploadUtil;
 import com.cninsure.cp.cargo.util.SurveyUtil;
+import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.entity.BaseEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cargo.CargoCaseBaoanTable;
@@ -41,15 +44,19 @@ import com.cninsure.cp.entity.cargo.DispatchMatter;
 import com.cninsure.cp.entity.cargo.SurveyRecordsEntity;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.DictData;
+import com.cninsure.cp.entity.fc.WorkFile;
 import com.cninsure.cp.fc.activity.CaseInputActivity;
+import com.cninsure.cp.fc.activity.SurveyActivityHelp;
 import com.cninsure.cp.ocr.LinePathActivity;
 import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.DialogUtil;
+import com.cninsure.cp.utils.FileChooseUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.PhotoUploadUtil;
 import com.cninsure.cp.utils.ToastUtil;
+import com.cninsure.cp.view.ChildClickableLinearLayout;
 import com.zcw.togglebutton.ToggleButton;
 
 import org.apache.http.NameValuePair;
@@ -169,6 +176,10 @@ public class CargoWorkActivity extends BaseActivity {
         setSubmitOclick();
         } else{
             findViewById(R.id.ACTION_V_RTV).setVisibility(View.GONE);
+            ChildClickableLinearLayout temp = surveyView.findViewById(R.id.CargoSR_FLinear);
+            temp.setChildClickable(false);  //集装箱不可编辑
+            ChildClickableLinearLayout tempNot = surveyNotView.findViewById(R.id.CargoSR_FLinearNot);
+            tempNot.setChildClickable(false);  //非集装箱不可编辑
         }
     }
 
@@ -291,8 +302,42 @@ public class CargoWorkActivity extends BaseActivity {
             case 5: upSignPhoto(data,5);break; //集装箱 现场查勘人 签字返回图片
             case 6: upSignPhoto(data,6);break; //集装箱 收货人/代理人 签字返回图片
             case 7: upSignPhoto(data,7);break; //非集装箱 签字返回图片
+            case SurveyUtil.FILE_SELECT_CODE: upFile(data); break;
         }
     }
+
+
+    /**获取文件路径**/
+    private void getUploadFileInfo(List<NameValuePair> value) {
+        String fileName = value.get(0).getValue();
+        if (TextUtils.isEmpty(fileName)) {
+            DialogUtil.getAlertOneButton(this, "选取文件失败！", null).show();
+        }else {
+            sREn.recordDocUrl = fileName;
+            surveyUtil.disPlayRecordDocUrlInfo();
+        }
+    }
+
+    /**
+     * 上传报告文件。
+     * @param data
+     */
+    public void upFile(Intent data) {
+        if (data != null) {
+            String FilePath = FileChooseUtil.getInstance(this).getChooseFileResultPath(data.getData());
+            File fileTemp = new File(FilePath);
+            if (fileTemp != null && fileTemp.length() > 0 && (fileTemp.length() < 20971520)) { //必须小于20M（20971520 byte）
+                List<NameValuePair> fileUrls = new ArrayList<NameValuePair>();
+                fileUrls.add(new BasicNameValuePair("0", FilePath));
+                CargoFileUploadUtil.uploadFile(this, fileUrls, URLs.UPLOAD_FILE_PHOTO, null); //上传
+            } else {
+                DialogUtil.getAlertOneButton(this, "文件大于20M，不能上传。", null).show();
+            }
+        }
+    }
+
+
+
     /**上传签字图片**/
     private void upSignPhoto(Intent data,int type) {//(String)data.getStringExtra("LinePathFilePath");
         if (null!=data&&null!=data.getStringExtra("LinePathFilePath")) {
@@ -437,6 +482,9 @@ public class CargoWorkActivity extends BaseActivity {
                     break;
                 case HttpRequestTool.FSX_WORK_SUBMIT_RIVIEW:  //提交审核返回信息。
                     getSubmitReviewResponseMsg(value.get(0).getValue());
+                    break;
+                case HttpRequestTool.UPLOAD_FILE_PHOTO: //上传报告
+                    getUploadFileInfo(value);
                     break;
             }
         } catch (NumberFormatException e) {

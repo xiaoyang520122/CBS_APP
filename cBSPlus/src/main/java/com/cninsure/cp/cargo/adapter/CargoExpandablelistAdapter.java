@@ -249,7 +249,6 @@ public class CargoExpandablelistAdapter extends BaseExpandableListAdapter {
 				if (imgList==null) return 0;
 				else return imgList.size();
 			}
-
 		}
 
 		@Override

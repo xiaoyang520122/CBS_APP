@@ -28,7 +28,7 @@ private Activity ac;
     /**
      *
      * @param url
-     * @param fileName 必须包含扩展名的文件名 如：“人保理赔结算书C2019041524341.pdf”
+     * @param fileName 必须包含扩展名的文件名 如：“某某某341.pdf”
      * @param errorMsg
      * @param progressDialog
      */
@@ -41,8 +41,8 @@ private Activity ac;
                     //等待
                     @Override
                     protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) {
-//                        if (null != progressDialog)
-//                        progressDialog.show();
+                        if (null != progressDialog)
+                        progressDialog.show();
                     }
                     //下载进度回调
                     @Override
@@ -53,8 +53,8 @@ private Activity ac;
                     //完成下载
                     @Override
                     protected void completed(BaseDownloadTask task) {
-//                        if (null != progressDialog)
-//                        progressDialog.cancel();
+                        if (null != progressDialog)
+                        progressDialog.cancel();
                         if (dlistener!=null){
                             dlistener.successDo(filePath);
                         }else{
@@ -77,15 +77,14 @@ private Activity ac;
                         }else{
                             DialogUtil.getErrDialog(ac,"下载出错！").show();
                         }
-
-//                        if (null != progressDialog)
-//                        progressDialog.cancel();
+                        if (null != progressDialog)
+                        progressDialog.cancel();
                     }
                     //已存在相同下载
                     @Override
                     protected void warn(BaseDownloadTask task) {
-//                        if (null != progressDialog)
-//                        progressDialog.cancel();
+                        if (null != progressDialog)
+                        progressDialog.cancel();
                     }
                 }).start();
     }

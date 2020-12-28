@@ -1632,6 +1632,8 @@ id CargoSRN_insured
 id CargoSRN_riskTime
 id CargoSRN_signatureUrl
 id CargoSRN_surveyAddress
+id CargoSR_FLinear
+id CargoSR_FLinearNot
 id CargoSR_TemplateDownload
 id CargoSR_TemplateDownloadNOt
 id CargoSR_addedExplain
@@ -1652,6 +1654,8 @@ id CargoSR_consigneedPhone
 id CargoSR_containerNo
 id CargoSR_damageCount
 id CargoSR_damageLinearLayout
+id CargoSR_downFile
+id CargoSR_downFileNot
 id CargoSR_freightName
 id CargoSR_freightPrice
 id CargoSR_insured
@@ -1670,6 +1674,8 @@ id CargoSR_silverNitrateDetection_RBF
 id CargoSR_silverNitrateDetection_RBT
 id CargoSR_silverNitrateDetection_RG
 id CargoSR_transportCount
+id CargoSR_upFile
+id CargoSR_upFileNot
 id CargoWM_1_RB
 id CargoWM_4_RB
 id CargoWM_RadioGroup

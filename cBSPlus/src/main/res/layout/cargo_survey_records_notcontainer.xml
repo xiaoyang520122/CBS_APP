@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="@color/hui_bg">
 
-    <LinearLayout
+    <com.cninsure.cp.view.ChildClickableLinearLayout
+        android:id="@+id/CargoSR_FLinearNot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/hui_bg"
@@ -14,12 +15,15 @@
 
 
         <TextView
+            android:id="@+id/CargoSR_TemplateDownloadNOt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:text="▊案件基本信息"
+            android:drawableRight="@drawable/left_jt_hui_short"
+            android:drawablePadding="5dp"
+            android:text="▊案件基本信息    下载模板"
             android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
         <LinearLayout
@@ -50,17 +54,31 @@
                 android:layout_height="20dp"
                 />
 
+
             <TextView
-                android:id="@+id/CargoSR_TemplateDownloadNOt"
+                android:id="@+id/CargoSR_upFileNot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="50dp"
-                android:text="下载模板"
+                android:layout_marginLeft="30dp"
+                android:text="上传"
                 android:drawablePadding="5dp"
                 android:drawableRight="@drawable/left_jt_hui_short"
                 android:textColor="@color/bulue_main"
                 android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:id="@+id/CargoSR_downFileNot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="查看"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/left_jt_hui_short"
+                android:textColor="@color/color_green"
+                android:textSize="@dimen/text_defaul" />
+
 
 
         </LinearLayout>
@@ -736,5 +754,5 @@
             android:layout_marginBottom="15dp">
 
         </LinearLayout>
-    </LinearLayout>
+    </com.cninsure.cp.view.ChildClickableLinearLayout>
 </ScrollView>

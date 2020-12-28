@@ -19,6 +19,21 @@ public class LoadDialogUtil {
 	}
 	
 	/**设置显示内容并显示*/
+	public static Dialog getMessageDialog(Context context,String Msg){
+		try {
+			if (loadDialog!=null && loadDialog.isShowing()) {
+				loadDialog.dismiss();
+			}
+			setMessage(context,Msg);
+		} catch (Exception e) {
+			loadDialog=null;
+			setMessage(context,Msg);
+			e.printStackTrace();
+		}
+		return loadDialog;
+	}
+
+	/**设置显示内容并显示*/
 	public static Dialog setMessageAndShow(Context context,String Msg){
 		try {
 			if (loadDialog!=null && loadDialog.isShowing()) {
