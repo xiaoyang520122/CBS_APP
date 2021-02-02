@@ -79,7 +79,7 @@
                     android:id="@+id/my_menu_signStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="未签约"
+                    android:text="自有员工"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/text_defaul" />
             </LinearLayout>

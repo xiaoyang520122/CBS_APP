@@ -135,7 +135,7 @@ public class OpenFileUtil {
             if (context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
                 context.startActivity(intent);
             } else {
-                Toast.makeText(context, "没有找到对应的程序", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "没有找到对应的程序，需要下载对应的编辑软件方能打开操作。", Toast.LENGTH_SHORT).show();
             }
 
         } catch (Exception e) { //当系统没有携带文件打开软件，提示

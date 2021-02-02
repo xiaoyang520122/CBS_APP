@@ -99,42 +99,13 @@ public class SurveyUtil {
             displaySilverNitrateDetection(); //硝酸银检测/包装是否破损
             disPlaySign();
             disPlayDamageInfo();
-            setDowloadMouldOnclick(surveyView.findViewById(R.id.CargoSR_TemplateDownload)); //下载模板单击事件绑定
-            disPlayRecordDocUrlInfo();
+//            setDowloadMouldOnclick(surveyView.findViewById(R.id.CargoSR_TemplateDownload)); //下载模板单击事件绑定
+//            disPlayRecordDocUrlInfo();
         }
         DateChoiceUtil.setLongDatePickerDialogOnClick(context,surveyView.findViewById(R.id.CargoSR_pickUpTime));//提货日期
         DateChoiceUtil.setLongDatePickerDialogOnClick(context,surveyView.findViewById(R.id.CargoSR_riskTime)); //出险日期
     }
 
-    /**
-     * 显示上传报告按钮
-     * 如果有上传报告就显示*/
-    public void disPlayRecordDocUrlInfo() { //recordDocUrl
-        if(sREn.records ==null) sREn.records = new ContainerRecords();
-        if (sREn.ckDocType.equals("0")) {//集装箱
-            if (TextUtils.isEmpty(sREn.recordDocUrl)) {
-                setChioceFileOnclick(surveyView.findViewById(R.id.CargoSR_upFile));
-                SetTextUtil.setTextViewText(surveyView.findViewById(R.id.CargoSR_upFile),"上传");
-               surveyView.findViewById(R.id.CargoSR_downFile).setVisibility(View.INVISIBLE);
-            } else {
-                setChioceFileOnclick(surveyView.findViewById(R.id.CargoSR_upFile));
-                SetTextUtil.setTextViewText(surveyView.findViewById(R.id.CargoSR_upFile),"重新上传");
-                surveyView.findViewById(R.id.CargoSR_downFile).setVisibility(View.VISIBLE);
-                setDownBaogaoOnclick(surveyView.findViewById(R.id.CargoSR_downFile),sREn.recordDocUrl);
-            }
-        }else if (sREn.ckDocType.equals("1")) {  //非集装箱
-            if (TextUtils.isEmpty(sREn.recordDocUrl)) {
-                setChioceFileOnclick(surveyNotView.findViewById(R.id.CargoSR_upFileNot));
-                SetTextUtil.setTextViewText(surveyNotView.findViewById(R.id.CargoSR_upFileNot),"上传");
-                surveyNotView.findViewById(R.id.CargoSR_downFileNot).setVisibility(View.INVISIBLE);
-            } else {
-                setChioceFileOnclick(surveyNotView.findViewById(R.id.CargoSR_upFileNot));
-                SetTextUtil.setTextViewText(surveyNotView.findViewById(R.id.CargoSR_upFileNot),"重新上传");
-                surveyNotView.findViewById(R.id.CargoSR_downFileNot).setVisibility(View.VISIBLE);
-                setDownBaogaoOnclick(surveyNotView.findViewById(R.id.CargoSR_downFileNot),sREn.recordDocUrl);
-            }
-        }
-    }
 
     /**
      * 查看报告的单击事件
@@ -176,7 +147,7 @@ public class SurveyUtil {
      */
     private void displaySilverNitrateDetection() {
         RadioGroup sndRgrp = surveyView.findViewById(R.id.CargoSR_silverNitrateDetection_RG);
-        if (sREn.records.silverNitrateDetection==0) sndRgrp.check(R.id.CargoSR_silverNitrateDetection_RBT);
+        if (sREn.records.silverNitrateDetection!=null && sREn.records.silverNitrateDetection==0) sndRgrp.check(R.id.CargoSR_silverNitrateDetection_RBT);
         else sndRgrp.check(R.id.CargoSR_silverNitrateDetection_RBF);
         sndRgrp.setOnCheckedChangeListener((group, checkedId) -> { //硝酸银检测
             switch (checkedId){
@@ -186,7 +157,7 @@ public class SurveyUtil {
         });
 
         RadioGroup ibpRgrp = surveyView.findViewById(R.id.CargoSR_isBrokenPackge_RG);
-        if (sREn.records.isBrokenPackge==0) ibpRgrp.check(R.id.CargoSR_isBrokenPackge_RBT);
+        if (sREn.records.isBrokenPackge!=null && sREn.records.isBrokenPackge==0) ibpRgrp.check(R.id.CargoSR_isBrokenPackge_RBT);
         else ibpRgrp.check(R.id.CargoSR_isBrokenPackge_RBF);
         ibpRgrp.setOnCheckedChangeListener((group, checkedId) -> { //包装是否破损
             switch (checkedId){
@@ -307,9 +278,10 @@ public class SurveyUtil {
         SetTextUtil.setEditText(surveyNotView.findViewById(R.id.CargoSRN_causeAndCourse), sREn.records.causeAndCourse); //查勘内容
         Glide.with(context).load(sREn.records.signatureUrl).into((ImageView) surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)); //签字图片
         disPlaySign();
-        setDowloadMouldOnclick(surveyNotView.findViewById(R.id.CargoSR_TemplateDownloadNOt));} //下载模板单击事件绑定
+//        setDowloadMouldOnclick(surveyNotView.findViewById(R.id.CargoSR_TemplateDownloadNOt));//下载模板单击事件绑定
+        }
         DateChoiceUtil.setLongDatePickerDialogOnClick(context,surveyNotView.findViewById(R.id.CargoSRN_ckTime));
-        disPlayRecordDocUrlInfo();
+//        disPlayRecordDocUrlInfo();
     }
 
     public SurveyRecordsEntity reflashData(){
@@ -400,15 +372,12 @@ public class SurveyUtil {
     }
 
     private void alertFilePath(String filePath){
+        String simplePath = null;
+        if (filePath.indexOf("/0/")!=-1) {
+            simplePath = filePath.substring(filePath.indexOf("/0/")+3);
+        }
         new AlertDialog.Builder(context).setTitle("下载提示!")
-                .setMessage("下载成功! 文件路径："+filePath)
-                .setNeutralButton("打开文件", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-//                        CopyUtils.copy(context,filePath);
-                        OpenFileUtil.openFileByPath(context,filePath);
-                    }
-                }).create().show();
-//        DialogUtil.getAlertOneButton(context,"下载成功文件路径："+filePath,null).show();
+                .setMessage("下载成功! 文件路径："+ (simplePath==null?filePath:simplePath))
+                .setNeutralButton("打开文件", (dialog, which) -> OpenFileUtil.openFileByPath(context,filePath)).create().show();
     }
 }

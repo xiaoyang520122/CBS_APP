@@ -53,6 +53,8 @@ import com.cninsure.cp.cx.CxDamageActivity;
 import com.cninsure.cp.cx.CxDisabyIdentifyActivity;
 import com.cninsure.cp.cx.CxDsWorkActivity;
 import com.cninsure.cp.cx.CxInjuryMediateActivity;
+import com.cninsure.cp.cx.CxInjuryExamineActivity;
+import com.cninsure.cp.cx.CxInjuryExamineOnlyActivity;
 import com.cninsure.cp.cx.CxInjuryTrackActivity;
 import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
 import com.cninsure.cp.entity.FCOrderEntity;
@@ -231,7 +233,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 
 		case R.id.OTCI_btn_1:
 			showOrderType = 1;
-			checkOrderList(0,1, 3);
+			checkOrderList(0,1,2,3);
 			listTitleTv.setText(String.format(getResources().getString(R.string.order_listTitle), "未接单"));
 			break;
 
@@ -493,10 +495,16 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 	private void jiexiDate(String value) {
 		CxOrderEntity tempdata1=JSON.parseObject(value, CxOrderEntity.class);
 		if (DataALL == null) {//当非车数据请求失败的时候为DataALL空，需要初始化
-			DataALL = new ArrayList<PublicOrderEntity>();
+			DataALL = new ArrayList<>();
 		}
 		for (int i = 0; i < tempdata1.list.size(); i++) {
 			if (tempdata1.list.get(i).status == 2 || tempdata1.list.get(i).status == 4 || tempdata1.list.get(i).status == 6 || tempdata1.list.get(i).status == 10) {
+				for (PublicOrderEntity tempPoe:DataALL){ //避免重复，有重复就剔除掉。
+					boolean idB = tempPoe.id.longValue()==(tempdata1.list.get(i).getStandardOrderEnt().id.longValue());
+					if ("CX".equals(tempPoe.caseTypeAPP) && idB){
+						DataALL.remove(tempPoe); break;
+					}
+				}
 				data.add(tempdata1.list.get(i).getStandardOrderEnt());
 				DataALL.add(tempdata1.list.get(i).getStandardOrderEnt());// 添加车险信息到所有订单列表中
 			}
@@ -643,7 +651,12 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				vh.NameOrCar.setText("车牌号");
 				vh.time.setText(idata.createDate);
 				vh.casetype.setText(idata.caseTypeName);
-				vh.bussType.setText(idata.bussTypeName);
+				if(idata.bussTypeId == 395){ //人伤查勘分单项和全案
+					if (idata.investigationType!=null && idata.investigationType==1)  vh.bussType.setText(idata.bussTypeName+"(全案)");   //全案
+					if (idata.investigationType!=null && idata.investigationType==0)  vh.bussType.setText(idata.bussTypeName+"(单项)");   //单项
+				}else{
+					vh.bussType.setText(idata.bussTypeName);
+				}
 				vh.baoanNo.setText(idata.baoanNo);
 				vh.caseName.setText(idata.licensePlateBiaoDi);
 				String statuss=GetOrederStatus.fromStatuId(Integer.valueOf(idata.status));
@@ -1132,14 +1145,19 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			switch (type){
 //				case 2 :  intent.setClass(getActivity(), CxSurveyWorkActivity.class);break;  //现场查勘
 				case 2 :  intent.setClass(getActivity(), CxJieBaoanInfoActivity.class);break;  //现场查勘新
+//				case 39 :  intent.setClass(getActivity(), CxInjurySurveyActivity.class);break;  //人伤查勘
 				case 40 :  intent.setClass(getActivity(), CxDsWorkActivity.class);break;  //标的定损
+				case 41 :  intent.setClass(getActivity(), CxDsWorkActivity.class);break;  //三者定损 - 界面同“标的定损”
 				case 42 :  intent.setClass(getActivity(), CxDamageActivity.class);break;  //物损定损
 				case 392 :  intent.setClass(getActivity(), CxInjuryTrackActivity.class);break;  //人伤跟踪
 				case 394 :  intent.setClass(getActivity(), CxDisabyIdentifyActivity.class);break; //陪同残定
 				case 393 :  intent.setClass(getActivity(), CxInjuryMediateActivity.class);break; //人伤调解
-//				case 395 :  intent.setClass(getActivity(), .class);break; //人伤调查
-				//人伤任务、人伤初勘（同人伤查勘<人伤任务>），人伤定损（接口不通，做不了），人伤调查
-
+				case 395 :   //人伤调查 investigationType
+					if (dataEn.investigationType!=null && dataEn.investigationType==1){ //全案
+						intent.setClass(getActivity(), CxInjuryExamineActivity.class);
+					}else{intent.setClass(getActivity(), CxInjuryExamineOnlyActivity.class);}
+					break;
+				//人伤任务、人伤初勘（同人伤查勘<人伤任务>），人伤定损（接口不通，做不了）
 				default: DialogUtil.getAlertOneButton(getActivity(),"功能开发中！",null).show();return;  //默认现场查勘
 			}
 

@@ -19,30 +19,29 @@ public class URLs implements Serializable {
 	对应的后台：http://sys.cnsurvey.cn:8007 || 193.112.173.125:8083
 	 */
 	/**===主接口(登录架构等)===**/
-//	private final static String IPHOME="http://sys.cnsurvey.cn:8008/cninsure-pz-sys-ws";//车险外网
+//	public final static String IPHOME="http://sys.cnsurvey.cn:8008/cninsure-pz-sys-ws";//车险外网
 	public final static String IPHOME="http://193.112.173.125:8084/cninsure-pz-sys-ws";//车险外网测试 对应：http://sysweb.cnsurvey.cn:8085
-//	private final static String IPHOME="http://10.80.13.53:8081/cninsure-pz-sys-ws";//车险外网测试 -冬阳
-//	private final static String IPHOME="http://10.80.8.16:8081/cninsure-pz-sys-ws"; //车险外网测试 -邹工
+//	private final static String IPHOME="http://10.80.8.16:8081/cninsure-pz-sys-ws"; //车险本地测试 -邹工
 
-	
-//	private final static String FPIPHOME="http://202.170.139.223:8037/cninsure-plus-sys-ws";
-	private final static String FPIPHOME="http://202.170.139.223:8036/cninsure-plus-sys-ws";
+
+//	private final static String FPIPHOME="http://202.170.139.223:8036/cninsure-plus-sys-ws"; //生产
+	private final static String FPIPHOME="http://202.170.139.223:8037/cninsure-plus-sys-ws"; //测试
 	
 	/**===非车主接口===**/
-	private final static String FCIPHOME="http://118.89.40.53:8080/new_cbs/app/interface";//非车测试http://cbs.cnsurvey.cn
 //	private final static String FCIPHOME="http://cbs.cnsurvey.cn/app/interface";//非车正式
-//	private final static String FCIPHOME="http://10.80.8.1:8080/new_cbs/app/interface";//非车测试 
-	
+	private final static String FCIPHOME="http://118.89.40.53:8080/new_cbs/app/interface";//非车测试http://cbs.cnsurvey.cn
+
 	/**===车险作业界面主接口===**/
 	/**订单作业界面连接 方法：goMobileTaskHandle(data) 参数data = {platName:"",userName:"",password:"",orderUid:"",taskType:'' }**/
-//	public final static String WORK_SPACE="http://10.80.13.110:8888/CBSPlusApp/#/mobile";//车险作业界面内网
-//	public final static String WORK_SPACE="http://10.80.13.110:8888/CBSPlusWeb/#/mobile";//车险作业界面内网
 //	public final static String WORK_SPACE="http://sysweb.cnsurvey.cn:8010/#/mobile";//车险作业界面外网
 //	public final static String WORK_SPACE="http://sysweb.cnsurvey.cn:8085/#/mobile";//车险作业界面外网测试 
 	public final static String WORK_SPACE="http://sysweb.cnsurvey.cn:8085/CBSPlusApp/#/mobile";//车险作业界面外网测试  
 //	public final static String WORK_SPACE="http://testweb.cnsurvey.cn:8010/#/mobile";//车险作业界面外网测试
-//	public final static String WORK_SPACE="http://10.80.13.32:2018/angulr/angular/#/access/signin";
-	
+
+	/**车险定损H5界面**/
+//	public final static String CX_DS_H5="http://sysweb.cnsurvey.cn:8010/parth5";//车险定损H5界面 生产
+	public final static String CX_DS_H5="http://sysweb.cnsurvey.cn:8084/parth5";//车险定损H5界面 测试
+
 	/**登录地址**/
 	private final static String LOGIN_BY_PASS="/authc/login";
 	/**上传CID**/
@@ -75,7 +74,7 @@ public class URLs implements Serializable {
 
 	/**车险作业界面头部回显**/
 	private final static String GET_WORK_MESSAGE=IPHOME+"/dispatchs/work/message";
-	/**获取版本信息GET ?userId=userId**/
+	/**获取App更新版本信息GET ?userId=userId**/
 	private final static String GET_VERSION_INFO=IPHOME+"/appclient/version/latest";
 	/**修改个人用户名密码 POST**/
 	private final static String CHANG_PASS=IPHOME+"/users/modify/selfpassword";

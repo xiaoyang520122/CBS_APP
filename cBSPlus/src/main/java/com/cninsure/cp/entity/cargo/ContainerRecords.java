@@ -33,8 +33,8 @@ public class ContainerRecords implements Serializable {
     public String packaging	; //包装规格
     public String transportCount	; //运输总件数
     public String damageCount	; //受损数量
-    public String forearm	; //前臂 保存格式“0,1,2"  [{ value: '0', label: '破洞' },{ value: '1', label: '外鼓' },{ value: '2', label: '内凹' },{ value: '3', label: '裂缝' },{ value: '4', label: '完好' }]
-    public String forearmRemark	; //前臂备注
+    public String forearm	; //前板 保存格式“0,1,2"  [{ value: '0', label: '破洞' },{ value: '1', label: '外鼓' },{ value: '2', label: '内凹' },{ value: '3', label: '裂缝' },{ value: '4', label: '完好' }]
+    public String forearmRemark	; //前板备注
     public String leftPlate	; //左侧板   [{ value: '0', label: '破洞' },{ value: '1', label: '外鼓' },{ value: '2', label: '内凹' },{ value: '3', label: '裂缝' },{ value: '4', label: '完好' }]
     public String leftPlateRemark	; //左侧板备注
     public String rightPlate	; //右侧板  [{ value: '0', label: '破洞' },{ value: '1', label: '外鼓' },{ value: '2', label: '内凹' },{ value: '3', label: '裂缝' },{ value: '4', label: '完好' }]
@@ -77,7 +77,7 @@ public class ContainerRecords implements Serializable {
     private Map<String, String[]> damageValues;
     public Map<String, String[]> getDamageMap(){
         damageValues = new HashMap<>(8);
-        String[] forearmArr = new String[]{"破洞","外鼓","内凹","裂缝","完好"};//前臂
+        String[] forearmArr = new String[]{"破洞","外鼓","内凹","裂缝","完好"};//前板
         String[] leftPlateArr = new String[]{"破洞","外鼓","内凹","裂缝","完好"};//左侧板
         String[] rightPlateArr = new String[]{"破洞","外鼓","内凹","裂缝","完好"};//右侧板
         String[] topPlateArr = new String[]{"破洞","外鼓","内凹","裂缝","完好"};//箱顶板
@@ -85,7 +85,7 @@ public class ContainerRecords implements Serializable {
         String[] doorAndSealArr = new String[]{"老化","透光","完好"};//箱门及密封胶条
 //        String[] silverNitrateDetectionArr = new String[]{"海水","淡水"};//箱门及密封胶条
 //        String[] isBrokenPackgeArr = new String[]{"是","否"};//包装是否破损
-        damageValues.put("前臂",forearmArr);
+        damageValues.put("前板",forearmArr);
         damageValues.put("左侧板",leftPlateArr);
         damageValues.put("右侧板",rightPlateArr);
         damageValues.put("箱顶板",topPlateArr);
@@ -128,7 +128,7 @@ public class ContainerRecords implements Serializable {
     }
 
     public void setDamageValues(String damageName,String values){
-        if (!TextUtils.isEmpty(damageName) && damageName.equals("前臂"))forearm=values;
+        if (!TextUtils.isEmpty(damageName) && damageName.equals("前板"))forearm=values;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("左侧板"))leftPlate=values;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("右侧板"))rightPlate=values;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("箱顶板"))topPlate=values;
@@ -139,7 +139,7 @@ public class ContainerRecords implements Serializable {
     }
 
     public void setDamageRemarkValue(String damageName,String values){
-        if (!TextUtils.isEmpty(damageName) && damageName.equals("前臂"))forearmRemark=values;
+        if (!TextUtils.isEmpty(damageName) && damageName.equals("前板"))forearmRemark=values;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("左侧板"))leftPlateRemark=values;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("右侧板"))rightPlateRemark=values;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("箱顶板"))topPlateRemark=values;
@@ -149,7 +149,7 @@ public class ContainerRecords implements Serializable {
 
     public String getDamageRemarkValue(String damageName){
         String ramakTemp = "";
-        if (!TextUtils.isEmpty(damageName) && damageName.equals("前臂"))ramakTemp=forearmRemark;
+        if (!TextUtils.isEmpty(damageName) && damageName.equals("前板"))ramakTemp=forearmRemark;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("左侧板"))ramakTemp=leftPlateRemark;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("右侧板"))ramakTemp=rightPlateRemark;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("箱顶板"))ramakTemp=topPlateRemark;
@@ -165,7 +165,7 @@ public class ContainerRecords implements Serializable {
      */
     public String getDamageValueByName(String damageName){
         String valueTemp = "";
-        if (!TextUtils.isEmpty(damageName) && damageName.equals("前臂")) valueTemp = forearm;
+        if (!TextUtils.isEmpty(damageName) && damageName.equals("前板")) valueTemp = forearm;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("左侧板")) valueTemp = leftPlate;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("右侧板")) valueTemp = rightPlate;
         if (!TextUtils.isEmpty(damageName) && damageName.equals("箱顶板")) valueTemp = topPlate;

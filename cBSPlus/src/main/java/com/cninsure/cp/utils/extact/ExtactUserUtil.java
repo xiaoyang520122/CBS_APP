@@ -48,6 +48,10 @@ public class ExtactUserUtil {
      * @param isShowDialog
      */
     public void isExtactGetInfo(Context context,boolean isShowDialog){
+        if (AppApplication.getUSER().data==null || AppApplication.getUSER().data.userType==null) {
+            DialogUtil.getErrDialog(context,"获取用户类型失败，请您退出重新登录！").show();
+            return;
+        }
         if ("99".equals(AppApplication.getUSER().data.userType)){  //"99"是外部车童
             getUserInfo(context,isShowDialog);
         }

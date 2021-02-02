@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cninsure.cp"
-    android:versionCode="155"
-    android:versionName="V1.5.5" >
+    android:versionCode="157"
+    android:versionName="V1.5.7" >
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -82,6 +82,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_config"
+        android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
 
@@ -165,6 +166,8 @@
         <activity android:name="com.cninsure.cp.navi.NavigationActivtity" />
         <activity android:name="com.cninsure.cp.utils.PhotoChoiceActivity" />
         <activity android:name="com.cninsure.cp.cargo.adapter.CargoPhotoChoiceActivity" />
+        <activity android:name="com.cninsure.cp.cx.publicmatch.PublicPhotoChoiceActivity" />
+        <activity android:name="com.cninsure.cp.cx.publicmatch.PublicCamreaActivity" />
         <activity android:name="com.cninsure.cp.activty.BankCardActivity" />
         <activity android:name="com.cninsure.cp.activty.AddBanckCardActivity" />
         <activity android:name="com.cninsure.cp.activty.register.SignAgmentActivity" />
@@ -200,6 +203,14 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.cninsure.cp.cx.CxSurveyWorkActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.cninsure.cp.cx.CxInjuryExamineActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.cninsure.cp.cx.CxInjuryExamineOnlyActivity"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="adjustPan" />
         <activity

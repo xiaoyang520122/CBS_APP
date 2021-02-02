@@ -71,5 +71,23 @@ public class TypePickeUtil {
         }
             return -1;
     }
+
+    /**
+     * 通过 value 获取字典库中，该类型对应的 lable
+     * @param value
+     * @param dictData
+     * @param type
+     * @return
+     */
+    public static String getLable(String value, CxDictEntity dictData,String type){
+        if (TextUtils.isEmpty(value)) return "";
+        List<DictData> dictDatas = dictData.getDictByType(type);
+        String tempArr[] = getDictLabelArr(dictData.getDictByType(type));
+        for (DictData tempDD:dictDatas){
+            if (value.equals(tempDD.value))
+            return tempDD.label;
+        }
+            return "";
+    }
 }
 

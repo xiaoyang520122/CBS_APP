@@ -19,41 +19,21 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:lineHeight="20dp"
-                android:text="基于事故事实，关于本次交通事故人身损害赔偿，甲、乙双方本着合法、公开、自愿、诚信的原则，经各方协商一致达成本协议。"
-                android:textSize="@dimen/text_15" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="05dp"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:lineHeight="20dp"
-                android:text="一、甲方充分了解自身人身损失情况，经甲、乙双方共同确认，甲方此次事故人身损失按事故责任比例计算后合计金额为"
-                android:textSize="@dimen/text_15" />
-
-            <EditText
+            <com.cninsure.cp.view.AutoLinefeedLayout
+                android:id="@+id/cxInMe_agreementAutoLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:gravity="right|center"
-                android:hint="请输入事故地点"
-                android:padding="4dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@color/hui_text_h"
-                android:textSize="@dimen/text_defaul" />
+                android:background="@color/white"/>
 
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="----------end----------"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -62,6 +42,8 @@
                 android:background="@drawable/line_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:layout_marginBottom="50dp"
+                android:visibility="gone"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp">
 
@@ -80,7 +62,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/cxInMe_"
+                    android:id="@+id/cxInMe_caseAddress"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

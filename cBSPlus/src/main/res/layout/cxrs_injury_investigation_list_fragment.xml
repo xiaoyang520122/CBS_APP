@@ -66,7 +66,6 @@
                     android:gravity="right|center"
                     android:hint="请输入"
                     android:padding="5dp"
-                    android:inputType="number|numberDecimal"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -106,6 +105,7 @@
                     android:gravity="right|center"
                     android:hint="请输入"
                     android:padding="5dp"
+                    android:inputType="phone"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -136,119 +136,27 @@
             android:padding="10dp">
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/survey_marginTop"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
-
-                <CheckBox
-                    android:id="@+id/cxInIn_mFee0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_defaul"
-                    android:textColor="@android:color/black"
-                    style="@style/CustomCheckboxTheme"
-                    android:text="工作信息调查"/>
-
-                <CheckBox
-                    android:id="@+id/cxInIn_mFee1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_defaul"
-                    style="@style/CustomCheckboxTheme"
-                    android:textColor="@android:color/black"
-                    android:text="居住信息调查"/>
 
 
 
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
-
-                <CheckBox
-                    android:id="@+id/cxInIn_mFee2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_defaul"
-                    style="@style/CustomCheckboxTheme"
-                    android:textColor="@android:color/black"
-                    android:text="护理人员信息调查"/>
-
-                <CheckBox
-                    android:id="@+id/cxInIn_mFee3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_defaul"
-                    style="@style/CustomCheckboxTheme"
-                    android:textColor="@android:color/black"
-                    android:text="医疗票据线下调阅" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
-
-                <CheckBox
-                    android:id="@+id/cxInIn_mFee4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_defaul"
-                    style="@style/CustomCheckboxTheme"
-                    android:textColor="@android:color/black"
-                    android:text="事故证明调阅" />
-
-                <CheckBox
-                    android:id="@+id/cxInIn_mFee5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_defaul"
-                    style="@style/CustomCheckboxTheme"
-                    android:textColor="@android:color/black"
-                    android:text="鉴定报告线下调阅"/>
-
-                <CheckBox
-                    android:id="@+id/cxInIn_mFee6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_defaul"
-                    style="@style/CustomCheckboxTheme"
-                    android:textColor="@android:color/black"
-                    android:text="其他"/>
-
-            </LinearLayout>
-
-            <com.inpor.fmctv.util.AntoLineUtil
+            <com.cninsure.cp.view.AntoLineUtil
                 android:id="@+id/cxInIn_CheckBoxGroup"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_marginTop="18dp"
                 android:orientation="horizontal"
-                app:horizontalSpacing="18dp"
-                app:verticalSpacing="18dp">
-            </com.inpor.fmctv.util.AntoLineUtil>
+                app:horizontalSpacing="5dp"
+                app:verticalSpacing="5dp">
+            </com.cninsure.cp.view.AntoLineUtil>
 
             <LinearLayout
                 android:id="@+id/cxInIn_medicalPaid_line"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginTop="15dp"
-                android:background="@color/white"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:background="@color/hui_bg"
                 android:layout_marginBottom="15dp">
 
             </LinearLayout>

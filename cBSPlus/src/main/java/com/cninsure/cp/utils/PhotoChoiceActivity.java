@@ -72,7 +72,7 @@ public class PhotoChoiceActivity extends Activity {
 //				Intent intent = new Intent();
 //				intent.setAction(android.content.Intent.ACTION_VIEW);
 //				intent.setDataAndType(Uri.fromFile(new File(fileNames.get(i))), "image/*");
-//				PhotoChoiceActivity.this.startActivity(intent);
+//				PublicPhotoChoiceActivity.this.startActivity(intent);
 				ImageDisplayUtil.displayByMyView(PhotoChoiceActivity.this, fileNames.get(i));
 			}
 		});

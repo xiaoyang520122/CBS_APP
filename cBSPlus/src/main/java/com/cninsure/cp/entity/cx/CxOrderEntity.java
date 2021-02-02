@@ -105,7 +105,7 @@ public class CxOrderEntity implements Serializable {
         public Double bargainPrice; // 公估师议价
 
 
-        public String investigationType;//调查类型
+        public Integer investigationType;//调查类型  全案1，单项0
         public String investigations;//调查内容
 
         public Double baseFee;//基础费
@@ -180,6 +180,7 @@ public class CxOrderEntity implements Serializable {
             stdEnt.caseLocationLatitude=0;//":"22.581202",
             /**经纬度*/
             stdEnt.caseLocationLongitude=0;//":"114.108214",
+            stdEnt.investigationType = investigationType;//调查类型  全案1，单项0
 
             stdEnt.areaNo=areaNo;
 //            stdEnt.area=area;

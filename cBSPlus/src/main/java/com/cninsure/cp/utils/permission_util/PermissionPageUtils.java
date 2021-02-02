@@ -28,7 +28,7 @@ public class PermissionPageUtils {
     private final String TAG = "PermissionPageManager";
     private Context mContext;
     //自己的项目包名
-    private String packageName="net.fanhuacn.fhfxpg";
+    private String packageName="com.cninsure.cp";
 
     public PermissionPageUtils(Context context) {
         this.mContext = context;

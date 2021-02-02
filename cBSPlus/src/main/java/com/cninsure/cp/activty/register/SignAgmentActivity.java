@@ -147,15 +147,28 @@ public class SignAgmentActivity extends BaseActivity {
     @Subscribe(threadMode= ThreadMode.MAIN)
     public void eventmeth(List<NameValuePair> responseValue){
         LoadDialogUtil.dismissDialog();
-        int type=Integer.parseInt(responseValue.get(0).getName());
-        if (type==HttpRequestTool.UP_ID_CARD_F) { //身份证正面
-            extUserEtity.data.idCardPhotoFront = ImagePathUtil.BaseUrl+responseValue.get(1).getValue();
-        }else if (HttpRequestTool.UP_ID_CARD_B == type){ //身份证反面
-            extUserEtity.data.idCardPhotoBack = ImagePathUtil.BaseUrl+responseValue.get(1).getValue();  //照片全称
-        }else if (HttpRequestTool.EXTACT_USER == type){ //保存身份证照片路径
-            getIdCardUpRequest(responseValue.get(0).getValue());
-        }else if (HttpRequestTool.EXTACT_USER_SIGN == type){ //签署协议
-            getSignRequestInfo(responseValue.get(0).getValue());
+
+        try {
+            int type=Integer.parseInt(responseValue.get(0).getValue());
+            if (type==HttpRequestTool.UP_ID_CARD_F) { //身份证正面
+                extUserEtity.data.idCardPhotoFront = ImagePathUtil.BaseUrl+responseValue.get(1).getValue();
+            }else if (HttpRequestTool.UP_ID_CARD_B == type){ //身份证反面
+                extUserEtity.data.idCardPhotoBack = ImagePathUtil.BaseUrl+responseValue.get(1).getValue();  //照片全称
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            int type2=Integer.parseInt(responseValue.get(0).getName());
+            if (HttpRequestTool.EXTACT_USER == type2){ //保存身份证照片路径
+                getIdCardUpRequest(responseValue.get(0).getValue());
+            }else if (HttpRequestTool.EXTACT_USER_SIGN == type2){ //签署协议
+                getSignRequestInfo(responseValue.get(0).getValue());
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
         displayIdCard();
     }

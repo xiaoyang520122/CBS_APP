@@ -68,7 +68,7 @@ public class User implements Serializable {
 		/** 区域名称 （字典表中获取） */
 		public String quyuName;
 		/**APP中部分接口获取到的图片地址需要加上前缀方可访问**/
-		public String qiniuUrl;
+		public String qiniuUrl="http://qiniu.cnsurvey.cn/"; //默认”http://qiniu.cnsurvey.cn/“如果有返回就用返回值
 		
 		
 		public String  productTypes; //; //,1,2,3,",

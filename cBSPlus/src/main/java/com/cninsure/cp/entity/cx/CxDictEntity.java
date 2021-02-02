@@ -57,6 +57,17 @@ public class CxDictEntity implements Serializable {
         return "";
     }
 
+    public String getValueByLabel(String type,String label){
+        if (TextUtils.isEmpty(label)) return null;
+        if (list != null) {
+            for (DictData dEn : list) {
+                if (type.equals(dEn.type) && label.equals(dEn.label) && "0".equals(dEn.delFlag))
+                   return dEn.value;
+            }
+        }
+        return "";
+    }
+
     /**
      * 通过value获取DictData
      * @param type

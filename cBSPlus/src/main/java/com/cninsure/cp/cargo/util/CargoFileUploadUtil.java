@@ -47,9 +47,9 @@ public class CargoFileUploadUtil {
      * @param uploadPath
      */
     public static void uploadFile(final Activity context, final List<NameValuePair> fileUrls, final String uploadPath
-            , final DialogInterface.OnClickListener listener) {
+            , final DialogInterface.OnClickListener listener,int typeCode) {
 
-        Log.e("JsonHttpUtils", "上传图片请求地址：" + uploadPath);
+        Log.e("JsonHttpUtils", "上传请求地址：" + uploadPath);
 
         RequestParams params = new RequestParams("UTF-8");
         params.addBodyParameter("userId", AppApplication.getUSER().data.userId);
@@ -77,13 +77,13 @@ public class CargoFileUploadUtil {
                 String result =  resultinfo;
                 Log.e("JsonHttpUtils", "车险上传图片成功返回数据：" + resultinfo);
                 List<NameValuePair> values= new ArrayList<NameValuePair>();
-                values.add(new BasicNameValuePair(""+HttpRequestTool.UPLOAD_FILE_PHOTO,result));
+                values.add(new BasicNameValuePair(""+typeCode,result));
                 values.add(new BasicNameValuePair(""+uploadPoint,fileUrls.get(uploadPoint).getValue()));
                 values.add(new BasicNameValuePair(fileUrls.get(uploadPoint).getName(),fileUrls.get(uploadPoint).getName()));
                 EventBus.getDefault().post(values);
                 uploadPoint++;
                 if (uploadPoint < fileUrls.size()) {
-                    uploadFile(context, fileUrls, uploadPath,listener);
+                    uploadFile(context, fileUrls, uploadPath,listener,typeCode);
                 } else {
                     uploadPoint = 0;
                     progressDialog.dismiss();

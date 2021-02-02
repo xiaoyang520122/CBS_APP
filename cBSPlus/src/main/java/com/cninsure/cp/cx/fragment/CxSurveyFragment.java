@@ -120,6 +120,7 @@ public class CxSurveyFragment extends BaseFragment {
      * @param data
      */
     public void inspectFileSize(Intent data) {
+        if (data==null) return;
         String FilePath = FileChooseUtil.getInstance(activity).getChooseFileResultPath(data.getData());
         File fileTemp = new File(FilePath);
         if (fileTemp!=null && fileTemp.length()>0 && (fileTemp.length() < 20971520)) { //必须小于20M（20971520 byte）

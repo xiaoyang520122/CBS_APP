@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:hint="请输入"
+    android:textColor="@color/yellow_baner"
+    android:textColorHint="@color/hui_line"
+    android:background="@drawable/line_bg">
+
+</EditText>

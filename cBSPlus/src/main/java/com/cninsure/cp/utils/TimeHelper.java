@@ -2,10 +2,16 @@ package com.cninsure.cp.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.TimePicker;
+
+import com.cninsure.cp.entity.User;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -86,5 +92,17 @@ public class TimeHelper {
         }else {
             return hourstr + ":" + minutessr + ":" + secondsstr;
         }
+    }
+
+    public static void setTimePickerDialog(Context context, TextView timeTv){
+        timeTv.setOnClickListener(v -> {
+            TimePickerDialog tpkd = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    timeTv.setText(hourOfDay+":"+minute+":00");
+                }
+            },new Date().getHours(),new Date().getMinutes(),true);
+            tpkd.show();
+        });
     }
 }

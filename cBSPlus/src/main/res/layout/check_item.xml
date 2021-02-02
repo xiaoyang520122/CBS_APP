@@ -13,11 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_defaul"
-        android:text="测试选项"
+        android:text=""
         android:textColor="@color/hui_text_xxxxh"/>
     <CheckBox
         android:id="@+id/video_previ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/hui_text_xxxxh"
         style="@style/CustomCheckboxTheme" />
 </LinearLayout>

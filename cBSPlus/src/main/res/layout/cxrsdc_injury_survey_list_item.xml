@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="0dp">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:background="@drawable/corners_hui_line5"
-        android:gravity="center_vertical"
-        android:layout_marginTop="10dp"
+        android:gravity="center_vertical|right"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="5dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/survey_marginTop"
+            android:layout_marginTop="2dp"
             android:background="@drawable/line_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -53,7 +55,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/survey_marginTop"
+            android:layout_marginTop="3dp"
             android:background="@drawable/line_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -89,7 +91,27 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/cxrsdc_qa_item_item_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="5dp" />
 
+        <TextView
+            android:id="@+id/cxrsdcqa_surveyDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableRight="@drawable/delete_hui32"
+            android:drawablePadding="2dp"
+            android:text="删除作业地址"
+            android:gravity="right|center"
+            android:textColor="@color/yellow_logo"
+            android:textSize="@dimen/text_m" />
+    </LinearLayout>
 
 </LinearLayout>

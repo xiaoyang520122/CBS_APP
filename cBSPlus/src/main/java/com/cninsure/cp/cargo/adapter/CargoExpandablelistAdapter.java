@@ -28,6 +28,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.R;
+import com.cninsure.cp.cx.publicmatch.NotifyCallBack;
 import com.cninsure.cp.entity.cargo.CargoCaseBaoanTable;
 import com.cninsure.cp.entity.cargo.CargoCaseWorkImagesTable;
 import com.cninsure.cp.entity.cx.DictData;
@@ -63,11 +64,13 @@ public class CargoExpandablelistAdapter extends BaseExpandableListAdapter {
 //	private Map<Long , List<CargoCaseWorkImagesTable>> classImgMap;
 //	private String baoanUid;
 	private CargoCaseBaoanTable caseBaoanTable;
+	public int clickGroup;
+	public static NotifyCallBack notifyCallBack;
 
 
 	private CargoExpandablelistAdapter(){}
 	public CargoExpandablelistAdapter(Activity context, List<DictData> parentPtoTypeDict, Map<String, List<DictData>> childPtoTypeDicts,
-									  Map<String, List<CargoCaseWorkImagesTable>> classImgMap, CargoCaseBaoanTable caseBaoanTable){
+									  Map<String, List<CargoCaseWorkImagesTable>> classImgMap, CargoCaseBaoanTable caseBaoanTable, NotifyCallBack notifyCallBack){
 		this.context = context;
 		this.parentPtoTypeDict = parentPtoTypeDict;
 		this.childPtoTypeDicts = childPtoTypeDicts;
@@ -75,6 +78,7 @@ public class CargoExpandablelistAdapter extends BaseExpandableListAdapter {
 		inflater = LayoutInflater.from(context);
 		gridAdapters=new HashMap<>();
 		this.caseBaoanTable = caseBaoanTable;
+		this.notifyCallBack = notifyCallBack;
 	}
 
 		
@@ -110,7 +114,7 @@ public class CargoExpandablelistAdapter extends BaseExpandableListAdapter {
 			CargoGalleryAdapter gAdapter=new CargoGalleryAdapter(arg0,arg1);
 			gridAdapters.put(arg0+"_"+arg1, gAdapter);
 			gridView.setAdapter(gAdapter);
-			
+
 			setgalleryOnclick(gridView,arg0,arg1);
 			return contentview;
 		}
@@ -138,6 +142,7 @@ public class CargoExpandablelistAdapter extends BaseExpandableListAdapter {
 						ImageDisplayUtil.displayByMyView(context, largeUrlList);
 					}else {
 						getimg(childPtoTypeDicts.get(parentPtoTypeDict.get(groupID).value).get(childID).value,arg2,gridView);
+						clickGroup = groupID;
 					}
 				}
 			});
@@ -286,6 +291,7 @@ public class CargoExpandablelistAdapter extends BaseExpandableListAdapter {
 							public void onClick(View v) {
 								deleteAndRemovePhoto(childPtoTypeDicts.get(parentPtoTypeDict.get(groupPostion).value).get(childPostion).value,arg0);
 								instans.notifyDataSetChanged();
+								notifyCallBack.notifydelete(0);
 							}
 						});
 					}
@@ -382,6 +388,7 @@ public class CargoExpandablelistAdapter extends BaseExpandableListAdapter {
 		}
 		classImgMap.get(typeId).remove(It);
 		adapterNotify();
+		notifyCallBack.notifydelete(0);
 	}
 
 	private void cameraphoto() {
@@ -443,64 +450,4 @@ public class CargoExpandablelistAdapter extends BaseExpandableListAdapter {
 		}
 	}
 
-	/**相册选择图片返回Intent ，压缩，打水印后显示**/
-//	private void getphotos(Intent data) {
-//		try {
-//			Uri originalUri = data.getData(); // 获得图片的uri
-//
-//			currPicturePath= PhotoPathUtil.getPictureCreatePath(context.getIntent().getStringExtra("orderUid"));
-//
-//			@SuppressWarnings("unused")
-//			Bitmap mBitmap= BitmapFactory.decodeFile(UriUtils.getFileUrl(context, originalUri));
-//
-//			ImageUtil.compressBitmap(context, mBitmap, currPicturePath);
-//
-//			WorkPhotos.TableData.WorkPhotoEntitiy photoEntitiy=new WorkPhotos.TableData.WorkPhotoEntitiy();
-//			photoEntitiy.location=currPicturePath;
-//			resousePathList.get(G).get(C).add(photoEntitiy) ;
-//			expanAdapter.notifyDataSetChanged();
-//			GV.setAdapter(new MyParkGalleryAdapter(G,C));
-//		} catch (Exception e) {
-//			Log.e("getphotos", e.toString());
-//		}
-//	}
-
-//	public void upload() {
-////		resousePathList;photoType
-//		final List<NameValuePair> params=new ArrayList<NameValuePair>();
-//		for (int i = 0; i < photoType.tableData.data.size(); i++) {
-//			List<List<WorkPhotos.TableData.WorkPhotoEntitiy>> list=resousePathList.get(i);
-//			for (int k = 0; k < list.size(); k++) {
-//				for (int j = 0; j < list.get(k).size(); j++) {
-//					if ( list.get(k).get(j)!=null) {
-//						String mathstr=list.get(k).get(j).location;
-//						if (mathstr.indexOf("://")==-1) {
-//							params.add(new BasicNameValuePair( photoType.tableData.data.get(i).id+"", mathstr));
-//						}
-//					}
-//				}
-//			}
-//		}
-//		Log.e("JsonHttpUtils", "10000"+JSON.toJSONString(params));
-//
-//		if (params.size()!=0) {
-//			final List<NameValuePair> httpParams=new ArrayList<NameValuePair>();
-//			httpParams.add(new BasicNameValuePair("workId", context.getIntent().getStringExtra("orderUid")));
-//			if (AppApplication.sp.getBoolean("isWifiUp", false) && !context.isWifiConnected()) {//用户设置wifi条件下才能上传时提示用户
-//				DialogUtil.getAlertOnelistener(context, "非Wifi条件下是否强制上传图片？",new DialogInterface.OnClickListener() {
-//					@Override
-//					public void onClick(DialogInterface arg0, int arg1) {
-//						PhotoUploadUtil.upload(context, params, URLs.UploadWorkPhoto(), httpParams);
-//					}
-//				}).show();
-//				return;
-//			}
-//			PhotoUploadUtil.upload(context, params, URLs.UploadWorkPhoto(), httpParams);
-//		}else {
-//			DialogUtil.getErrDialog(context, "未拍照").show();
-//		}
-//	}
-
-
-		
 	}

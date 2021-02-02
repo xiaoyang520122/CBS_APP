@@ -100,6 +100,7 @@ public class PublicOrderEntity implements Serializable {
 	/**经纬度*/
 	public float caseLocationLongitude;//":"114.108214",
 	public Timer timer;
+	public Integer investigationType;//调查类型  全案1，单项0
 
 
 	public String areaNo; //作业区域编码

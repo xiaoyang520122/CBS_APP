@@ -81,8 +81,8 @@
                 android:id="@+id/IDCAC_card_first"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
-                android:background="@drawable/idcard_f512"
-                android:scaleType="centerCrop" />
+                android:src="@drawable/idcard_f512"
+                android:scaleType="fitXY" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -102,8 +102,8 @@
                 android:id="@+id/IDCAC_card_scend"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
-                android:background="@drawable/idcard_b512"
-                android:scaleType="centerCrop" />
+                android:src="@drawable/idcard_b512"
+                android:scaleType="fitXY" />
 
             <ImageView
                 android:layout_width="match_parent"

@@ -126,8 +126,7 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
         });
         webview.setWebViewClient(new WebViewClientDemo());
 
-//        String loadUrlStr = "http://10.80.60.14:8080/";
-        String loadUrlStr = "http://sysweb.cnsurvey.cn:8084/parth5?time="+new Date().getTime();
+        String loadUrlStr = URLs.CX_DS_H5+"?time="+new Date().getTime();
         webview.loadUrl(loadUrlStr);
     }
 

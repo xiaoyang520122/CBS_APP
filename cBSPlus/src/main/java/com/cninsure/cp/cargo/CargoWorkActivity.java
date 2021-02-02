@@ -4,23 +4,23 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -32,7 +32,9 @@ import com.cninsure.cp.cargo.adapter.CargoExpandablelistAdapter;
 import com.cninsure.cp.cargo.util.CargoFileUploadUtil;
 import com.cninsure.cp.cargo.util.CargoPhotoUploadUtil;
 import com.cninsure.cp.cargo.util.SurveyUtil;
-import com.cninsure.cp.cx.util.CxFileUploadUtil;
+import com.cninsure.cp.cargo.util.ViewHeadUtil;
+import com.cninsure.cp.cx.publicmatch.NotifyCallBack;
+import com.cninsure.cp.cx.publicmatch.PublicPhotoChoiceActivity;
 import com.cninsure.cp.entity.BaseEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cargo.CargoCaseBaoanTable;
@@ -41,14 +43,14 @@ import com.cninsure.cp.entity.cargo.CargoCaseWorkSurveyTable;
 import com.cninsure.cp.entity.cargo.CargoSurveyEntity;
 import com.cninsure.cp.entity.cargo.ContainerRecords;
 import com.cninsure.cp.entity.cargo.DispatchMatter;
+import com.cninsure.cp.entity.cargo.QandAEntity;
+import com.cninsure.cp.entity.cargo.SurveyAskRecordsEntity;
+import com.cninsure.cp.entity.cargo.SurveyListRecordsEntity;
 import com.cninsure.cp.entity.cargo.SurveyRecordsEntity;
 import com.cninsure.cp.entity.cx.CxDictEntity;
+import com.cninsure.cp.entity.cx.CxImagEntity;
 import com.cninsure.cp.entity.cx.DictData;
-import com.cninsure.cp.entity.fc.WorkFile;
-import com.cninsure.cp.fc.activity.CaseInputActivity;
-import com.cninsure.cp.fc.activity.SurveyActivityHelp;
 import com.cninsure.cp.ocr.LinePathActivity;
-import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.FileChooseUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
@@ -76,7 +78,7 @@ public class CargoWorkActivity extends BaseActivity {
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
     private RadioGroup radioGroup;
-    private View msgView,surveyView,surveyNotView,examineView;
+    private View msgView,surveyView,surveyNotView,examineView,surveyHeadView,askHeadView,recordsHeadView,askView,listRecordView;
     private ExpandableListView photoListView;
     public static CargoExpandablelistAdapter adapter2;//adapter1;
     private Map<String , CargoExpandablelistAdapter.CargoGalleryAdapter> gridAdapterArr;
@@ -86,10 +88,16 @@ public class CargoWorkActivity extends BaseActivity {
     private List<CargoCaseWorkImagesTable> workImgEnty;
     /**分类后的照片*/
     public static Map<String, List<CargoCaseWorkImagesTable>> classImgMap;
+
     /**作业数据实体类**/
     private CargoSurveyEntity surveyEn;
     /**查勘记录*/
     public SurveyRecordsEntity sREn;
+    /**询问补笔录*/
+    public SurveyAskRecordsEntity RaEn;
+    /**清点记录*/
+    public SurveyListRecordsEntity LrEn;
+
     /**现场环境图片结合*/
 //    private List<List<CargoCaseWorkImagesTable>> siteImgEnList;
     /**拍照类型字典数据*/
@@ -100,6 +108,7 @@ public class CargoWorkActivity extends BaseActivity {
     private Map<String,List<DictData>> childPtoTypeDicts;
     /**View数据加载获取帮助类*/
     private SurveyUtil surveyUtil;
+    private ViewHeadUtil vHeadUtil;
 //    public static Map<Long, List<CargoCaseWorkImagesTable>> imgMap;
     private boolean submitBle=false;
 
@@ -110,6 +119,7 @@ public class CargoWorkActivity extends BaseActivity {
         setContentView(R.layout.cargo_work_main_activity);
         ((TextView)findViewById(R.id.ACTION_V_CTV)).setText("查勘作业");
         EventBus.getDefault().register(this);
+        adapter2= null;
         initview();
         setRadioOnclick();
         setAction();
@@ -240,13 +250,14 @@ public class CargoWorkActivity extends BaseActivity {
         paramsList.add(new BasicNameValuePair("caseId",caseBaoanTable.id+""));
         paramsList.add(new BasicNameValuePair("status",status+""));
 
-        paramsList.add(new BasicNameValuePair("listRecords",surveyEn.data.listRecords));
-        paramsList.add(new BasicNameValuePair("askRecords",surveyEn.data.askRecords));
         paramsList.add(new BasicNameValuePair("lossRecords",surveyEn.data.lossRecords));
         paramsList.add(new BasicNameValuePair("materialList",surveyEn.data.materialList));
 
         surveyUtil.reflashData();
-        paramsList.add(new BasicNameValuePair("surveyRecords",JSON.toJSONString(sREn)));  //参看信息
+        vHeadUtil.reflashData(RaEn,LrEn,askHeadView,recordsHeadView);
+        paramsList.add(new BasicNameValuePair("surveyRecords",JSON.toJSONString(sREn)));  //查勘记录 信息
+        paramsList.add(new BasicNameValuePair("askRecords",JSON.toJSONString(RaEn)));  //询问记录 信息
+        paramsList.add(new BasicNameValuePair("listRecords",JSON.toJSONString(LrEn)));  //清点记录 信息
         if (status==0){ //保存
             HttpUtils.requestPost(URLs.CARGO_SURVEY_SAVE, paramsList, HttpRequestTool.CARGO_SURVEY_SAVE);
         }else if (status==1){  //提交
@@ -262,19 +273,29 @@ public class CargoWorkActivity extends BaseActivity {
         surveyView = LayoutInflater.from(this).inflate(R.layout.cargo_survey_records_iscontainer, null);
         surveyNotView = LayoutInflater.from(this).inflate(R.layout.cargo_survey_records_notcontainer, null);
         photoListView = (ExpandableListView) LayoutInflater.from(this).inflate(R.layout.public_expandablelistview, null);
-        examineView =  LayoutInflater.from(this).inflate(R.layout.dispersive_work_examine_view, null);
+        examineView = LayoutInflater.from(this).inflate(R.layout.dispersive_work_examine_view, null);
+        askView = LayoutInflater.from(this).inflate(R.layout.cargo_survey_ask, null);
+        listRecordView = LayoutInflater.from(this).inflate(R.layout.cargo_survey_list_record, null); //cargo_survey_list_record
 
-//      uploadActivityHelp=new ParkPhotoUploadActivityHelp3(this);
-//      uploadActivityHelp.setview(examineView);
-        viewlist=new ArrayList<View>();
+        vHeadUtil = new ViewHeadUtil(this);
+        surveyHeadView = vHeadUtil.getHeadView(surveyView,1);  //查勘记录
+        askHeadView = vHeadUtil.getHeadView(askView,2);  //询问笔录
+        recordsHeadView = vHeadUtil.getHeadView(listRecordView,3); //清点记录
+
+        viewlist = new ArrayList<View>();
         viewlist.add(msgView);
-        viewlist.add(surveyView);
-//        viewlist.add(examineView);
+        viewlist.add(surveyHeadView);
+        viewlist.add(askHeadView);
+        viewlist.add(recordsHeadView);
         viewlist.add(photoListView);
         viewPager.setAdapter(getadapter());
-        setSignOnclick(surveyView.findViewById(R.id.CargoSR_ckGgsUrl),5);
-        setSignOnclick(surveyView.findViewById(R.id.CargoSR_signatureUrl),6);
-        setSignOnclick(surveyNotView.findViewById(R.id.CargoSRN__signButton),7);
+        setSignOnclick(surveyView.findViewById(R.id.CargoSR_ckGgsUrl), 5);
+        setSignOnclick(surveyView.findViewById(R.id.CargoSR_signatureUrl), 6);
+        setSignOnclick(surveyNotView.findViewById(R.id.CargoSRN__signButton), 7);
+
+        setSignOnclick(askHeadView.findViewById(R.id.cargoSA_signatureUrl), 8);
+        setSignOnclick(recordsHeadView.findViewById(R.id.cargoSLR_signatureUrl_sign), 9);
+
         setContainerbleChangLesenler(surveyView.findViewById(R.id.CargoSR_ckDocType));
         setContainerbleChangLesenler(surveyNotView.findViewById(R.id.CargoSRN_ckDocTypeNotC));
     }
@@ -302,19 +323,25 @@ public class CargoWorkActivity extends BaseActivity {
             case 5: upSignPhoto(data,5);break; //集装箱 现场查勘人 签字返回图片
             case 6: upSignPhoto(data,6);break; //集装箱 收货人/代理人 签字返回图片
             case 7: upSignPhoto(data,7);break; //非集装箱 签字返回图片
-            case SurveyUtil.FILE_SELECT_CODE: upFile(data); break;
+            case 8: upSignPhoto(data,8);break; //询问笔记 签字返回图片
+            case 9: upSignPhoto(data,9);break; //清点记录 签字返回图片
+            case ViewHeadUtil.FILE_SELECT_CODE: upFile(data,ViewHeadUtil.FILE_SELECT_CODE); break;
+            case ViewHeadUtil.FILE_SELECT_CODE_RA: upFile(data,ViewHeadUtil.FILE_SELECT_CODE_RA); break;
+            case ViewHeadUtil.FILE_SELECT_CODE_LR: upFile(data,ViewHeadUtil.FILE_SELECT_CODE_LR); break;
         }
     }
 
 
     /**获取文件路径**/
-    private void getUploadFileInfo(List<NameValuePair> value) {
+    private void getUploadFileInfo(List<NameValuePair> value,int TypeCode) {
         String fileName = value.get(0).getValue();
         if (TextUtils.isEmpty(fileName)) {
             DialogUtil.getAlertOneButton(this, "选取文件失败！", null).show();
         }else {
-            sREn.recordDocUrl = fileName;
-            surveyUtil.disPlayRecordDocUrlInfo();
+            if (TypeCode==ViewHeadUtil.FILE_SELECT_CODE) sREn.recordDocUrl = fileName;
+            if (TypeCode==ViewHeadUtil.FILE_SELECT_CODE_RA) RaEn.recordDocUrl = fileName;
+            if (TypeCode==ViewHeadUtil.FILE_SELECT_CODE_LR) LrEn.recordDocUrl = fileName;
+            vHeadUtil.disPlayDocInfo(sREn,RaEn,LrEn,surveyHeadView,askHeadView,recordsHeadView);
         }
     }
 
@@ -322,14 +349,14 @@ public class CargoWorkActivity extends BaseActivity {
      * 上传报告文件。
      * @param data
      */
-    public void upFile(Intent data) {
+    public void upFile(Intent data,int typeCode) {
         if (data != null) {
             String FilePath = FileChooseUtil.getInstance(this).getChooseFileResultPath(data.getData());
             File fileTemp = new File(FilePath);
-            if (fileTemp != null && fileTemp.length() > 0 && (fileTemp.length() < 20971520)) { //必须小于20M（20971520 byte）
+            if (fileTemp != null && fileTemp.length() > 0 && (fileTemp.length() < 20971520)) { //必须小于20M（20971520 byte）,报告不可能大于20M
                 List<NameValuePair> fileUrls = new ArrayList<NameValuePair>();
                 fileUrls.add(new BasicNameValuePair("0", FilePath));
-                CargoFileUploadUtil.uploadFile(this, fileUrls, URLs.UPLOAD_FILE_PHOTO, null); //上传
+                CargoFileUploadUtil.uploadFile(this, fileUrls, URLs.UPLOAD_FILE_PHOTO, null,typeCode); //上传
             } else {
                 DialogUtil.getAlertOneButton(this, "文件大于20M，不能上传。", null).show();
             }
@@ -367,11 +394,22 @@ public class CargoWorkActivity extends BaseActivity {
 
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
-                container.addView(viewlist.get(position));
+//                container.addView(viewlist.get(position));
+//                return viewlist.get(position);
+                try {
+                    if (viewlist.get(position).getParent() == null) {
+                        container.addView(viewlist.get(position));
+                    } else {
+                        ((ViewGroup) viewlist.get(position).getParent()).removeView(viewlist.get(position));
+                        container.addView(viewlist.get(position));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 return viewlist.get(position);
             }
             @Override
-            public int getItemPosition(Object object) {
+            public int getItemPosition(Object object){
                 // 最简单解决 notifyDataSetChanged() 页面不刷新问题的方法
                 return POSITION_NONE;
             }
@@ -382,13 +420,14 @@ public class CargoWorkActivity extends BaseActivity {
     private void setContainerbleChangLesenler(ToggleButton tgb) {
         tgb.setToggleOn(true); //默认选中
         tgb.setOnToggleChanged(on -> {
+            ((LinearLayout)surveyHeadView.findViewById(R.id.CargoSR_OnLineView)).removeAllViews();
             if (on) {  //集装箱
-                viewlist.set(1,surveyView);
+                ((LinearLayout)surveyHeadView.findViewById(R.id.CargoSR_OnLineView)).addView(surveyView);
                 sREn.ckDocType="0";
                 ((ToggleButton)surveyView.findViewById(R.id.CargoSR_ckDocType)).setToggleOn(true);
                 surveyUtil.disPlayContainerInfo(caseBaoanTable.caseNo,caseBaoanTable.insured);
             }else{  //非集装箱
-                viewlist.set(1,surveyNotView);
+                ((LinearLayout)surveyHeadView.findViewById(R.id.CargoSR_OnLineView)).addView(surveyNotView);
                 sREn.ckDocType="1";
                 ((ToggleButton)surveyNotView.findViewById(R.id.CargoSRN_ckDocTypeNotC)).setToggleOff(true);
                 surveyUtil.disPlayNotContainerInfo(caseBaoanTable.insured,caseBaoanTable.riskTime);
@@ -407,14 +446,14 @@ public class CargoWorkActivity extends BaseActivity {
                     viewPager.setCurrentItem(0);
                 }else if (arg1==R.id.CargoWM_1_RB) {
                     viewPager.setCurrentItem(1);
-//                }else if (arg1==R.id.CargoWM_2_RB) {
-//                    viewPager.setCurrentItem(2);
+                }else if (arg1==R.id.CargoWM_2_RB) {
+                    viewPager.setCurrentItem(2);
 //                    choicePhotoLargeType = 1;
 //                    changeCountNum(); //刷新照片小类对应数量信息
-//                }else if (arg1==R.id.CargoWM_3_RB) {
-//                    viewPager.setCurrentItem(2);
-                }else if (arg1==R.id.CargoWM_4_RB) {
+                }else if (arg1==R.id.CargoWM_3_RB) {
                     viewPager.setCurrentItem(3);
+                }else if (arg1==R.id.CargoWM_4_RB) {
+                    viewPager.setCurrentItem(4);
                 }
             }
         });
@@ -423,11 +462,13 @@ public class CargoWorkActivity extends BaseActivity {
             public void onPageSelected(int arg0) {
                 if (arg0==0) {
                     radioGroup.check(R.id.CargoWM_disInfo_RB);
-//                }else if (arg0==1) {
-//                    radioGroup.check(R.id.CargoWM_photo1_RB);
                 }else if (arg0==1) {
                     radioGroup.check(R.id.CargoWM_1_RB);
                 }else if (arg0==2) {
+                    radioGroup.check(R.id.CargoWM_2_RB);
+                }else if (arg0==3) {
+                    radioGroup.check(R.id.CargoWM_3_RB);
+                }else if (arg0==4) {
                     radioGroup.check(R.id.CargoWM_4_RB);
                 }
             }
@@ -469,7 +510,10 @@ public class CargoWorkActivity extends BaseActivity {
                     getPhotoTypeDict(value.get(0).getValue());
                     break;
                 case HttpRequestTool.CARGO_SURVEY_VIEW:
-                    getWorkInfo(value.get(0).getValue());
+                    Message msg = new Message();
+                    msg.obj =value.get(0).getValue();
+                    handler.sendMessage(msg);
+//                    getWorkInfo(value.get(0).getValue());
                     break;
                 case HttpRequestTool.CARGO_WORK_IMG:  //作业图片
                         getImageInfo(value.get(0).getValue());
@@ -483,8 +527,14 @@ public class CargoWorkActivity extends BaseActivity {
                 case HttpRequestTool.FSX_WORK_SUBMIT_RIVIEW:  //提交审核返回信息。
                     getSubmitReviewResponseMsg(value.get(0).getValue());
                     break;
-                case HttpRequestTool.UPLOAD_FILE_PHOTO: //上传报告
-                    getUploadFileInfo(value);
+                case ViewHeadUtil.FILE_SELECT_CODE: //上传查勘记录报告
+                    getUploadFileInfo(value,ViewHeadUtil.FILE_SELECT_CODE);
+                    break;
+                case ViewHeadUtil.FILE_SELECT_CODE_RA: //上传 询问笔记 报告
+                    getUploadFileInfo(value,ViewHeadUtil.FILE_SELECT_CODE_RA);
+                    break;
+                case ViewHeadUtil.FILE_SELECT_CODE_LR: //上传 清点记录 报告
+                    getUploadFileInfo(value,ViewHeadUtil.FILE_SELECT_CODE_LR);
                     break;
             }
         } catch (NumberFormatException e) {
@@ -503,6 +553,14 @@ public class CargoWorkActivity extends BaseActivity {
             }else if (type==7) {  //非集装箱签字返回图片
                 if ("UPLOAD_SUCCESS".equals(value.get(1).getName())) {
                     signMeath(value.get(1).getValue(),7);
+                }
+            }else if (type==8) {  //询问记录 签字返回图片
+                if ("UPLOAD_SUCCESS".equals(value.get(1).getName())) {
+                    signMeath(value.get(1).getValue(),8);
+                }
+            }else if (type==9) {  //清点记录 签字返回图片
+                if ("UPLOAD_SUCCESS".equals(value.get(1).getName())) {
+                    signMeath(value.get(1).getValue(),9);
                 }
             }
         } catch (NumberFormatException e) {
@@ -527,8 +585,12 @@ public class CargoWorkActivity extends BaseActivity {
             case 5: sREn.records.ckGgsUrl = url;break; //集装箱 现场查勘人 签字返回图片
             case 6: sREn.records.signatureUrl = url;break; //集装箱 收货人/代理人 签字返回图片
             case 7: sREn.records.signatureUrl = url;break; //非集装箱 签字返回图片
+            case 8: RaEn.signatureUrl = url;break; //询问记录 签字返回图片
+            case 9: LrEn.signatureUrl = url;break; //清点记录 签字返回图片
         }
            surveyUtil.disPlaySign();//显示签名
+           vHeadUtil.disPlayAskSignImg(askHeadView, RaEn);
+            vHeadUtil.disPlayLRSignImg(recordsHeadView, LrEn);
         }
     }
 
@@ -657,14 +719,20 @@ public class CargoWorkActivity extends BaseActivity {
                     addImgToDictType(tempImg);
                 }
             }
-            adapter2 = new CargoExpandablelistAdapter(this, parentPtoTypeDict, childPtoTypeDicts, classImgMap, caseBaoanTable);
+            NotifyCallBack callBack = new NotifyCallBack() {
+                @Override
+                public void notifyDo(int groupPoint, CxImagEntity imgEn) {notifyData(); }
+                @Override
+                public void notifydelete(int groupPoint) { notifyData(); }
+            };
+            adapter2 = new CargoExpandablelistAdapter(this, parentPtoTypeDict, childPtoTypeDicts, classImgMap, caseBaoanTable,callBack);
             photoListView.setAdapter(adapter2);
-        }
+}
 
         @Override
         protected void onResume () {
             super.onResume();
-            if (adapter2 != null) adapter2.notifyDataSetChanged();
+            if (adapter2 != null) notifyData();
         }
 
     @Override
@@ -691,24 +759,44 @@ public class CargoWorkActivity extends BaseActivity {
             dowloadImgInfo();
         }
 
+        private Handler handler = new Handler(){
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                getWorkInfo((String) msg.obj);
+            }
+        };
+
         /**
          * 显示作业信息
          */
         private void displaySurveyInfo () {
             if (surveyEn.data != null && !TextUtils.isEmpty(surveyEn.data.surveyRecords)) {  //surveyView
                 sREn = JSON.parseObject(surveyEn.data.surveyRecords, SurveyRecordsEntity.class);
+                try {
+                    RaEn = JSON.parseObject(surveyEn.data.askRecords, SurveyAskRecordsEntity.class);
+                    LrEn = JSON.parseObject(surveyEn.data.listRecords, SurveyListRecordsEntity.class);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (RaEn==null) RaEn = new SurveyAskRecordsEntity();
+                if (LrEn==null) LrEn = new SurveyListRecordsEntity();
                 if (sREn == null) {
                     initSren();
                 } else {
                     surveyUtil = new SurveyUtil(this, surveyView, surveyNotView, sREn);
+                    vHeadUtil.disPlayworkInfo(sREn,RaEn,LrEn,surveyHeadView,askHeadView,recordsHeadView);
                 }
+                ((LinearLayout)surveyHeadView.findViewById(R.id.CargoSR_OnLineView)).removeAllViews();
                 if (!TextUtils.isEmpty(sREn.ckDocType) && sREn.ckDocType.equals("0")) {
-                    viewlist.set(1, surveyView); //显示集装箱View 及对应数据
+//                    viewlist.set(1, surveyView); //显示集装箱View 及对应数据
+                    ((LinearLayout)surveyHeadView.findViewById(R.id.CargoSR_OnLineView)).addView(surveyView);
                     surveyUtil.disPlayContainerInfo(caseBaoanTable.caseNo, caseBaoanTable.insured);
                     ((ToggleButton)surveyView.findViewById(R.id.CargoSR_ckDocType)).setToggleOn(true);
                     ((ToggleButton)surveyNotView.findViewById(R.id.CargoSRN_ckDocTypeNotC)).setToggleOn(true);
                 } else {
-                    viewlist.set(1, surveyNotView);  //显示非集装箱View 及对应数据
+//                    viewlist.set(1, surveyNotView);  //显示非集装箱View 及对应数据
+                    ((LinearLayout)surveyHeadView.findViewById(R.id.CargoSR_OnLineView)).addView(surveyNotView);
                     surveyUtil.disPlayNotContainerInfo(caseBaoanTable.insured, caseBaoanTable.riskTime);
                     ((ToggleButton)surveyView.findViewById(R.id.CargoSR_ckDocType)).setToggleOff(true);
                     ((ToggleButton)surveyNotView.findViewById(R.id.CargoSRN_ckDocTypeNotC)).setToggleOff(true);
@@ -767,5 +855,15 @@ public class CargoWorkActivity extends BaseActivity {
             }
         });
         dialog.show();
+    }
+    private void notifyData() {
+        if (adapter2 == null) return;
+        adapter2.notifyDataSetChanged();
+        if (photoListView == null) {
+            return;
+        } else {
+            photoListView.collapseGroup(adapter2.clickGroup); //收起
+            photoListView.expandGroup(adapter2.clickGroup); //展开
+        }
     }
     }

@@ -34,6 +34,8 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
 import com.cninsure.cp.activity.yjx.YjxTempStorageActivity;
@@ -511,7 +513,12 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 		oks.setSiteUrl(URLs.APP_DOWNLOAD_URL);
 
 		// 启动分享GUI
-		oks.show(this);
+		try {
+			oks.show(this);
+		} catch (NoClassDefFoundError e) {
+			ToastUtil.showToastLong(this,"分享失败！");
+			e.printStackTrace();
+		}
 	}
 
 	/**

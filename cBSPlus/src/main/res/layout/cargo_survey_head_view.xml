@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui_bg">
+
+    <com.cninsure.cp.view.ChildClickableLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/hui_bg"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="15dp">
+
+            <RadioGroup
+                android:id="@+id/CargoSRN_editOnOrOffRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/CargoSRN_editOnline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_button_yellow_line"
+                    android:checked="true"
+                    android:text="线上填写" />
+
+                <RadioButton
+                    android:id="@+id/CargoSRN_editOffline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_button_yellow_line"
+                    android:text="下载模板填写" />
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/CargoSR_OffLineLinelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/CargoSR_TemplateDownloadNOt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:drawableRight="@drawable/left_jt_hui_short"
+                android:drawablePadding="5dp"
+                android:text="下载模板"
+                android:textColor="@color/bulue_main"
+                android:textSize="@dimen/text_defaul" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/CargoSR_upFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:drawableRight="@drawable/left_jt_hui_short"
+                android:drawablePadding="5dp"
+                android:text="上传"
+                android:textColor="@color/bulue_main"
+                android:textSize="@dimen/text_defaul" />
+
+            <TextView
+                android:id="@+id/CargoSR_downFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:drawableRight="@drawable/left_jt_hui_short"
+                android:drawablePadding="5dp"
+                android:text="查看"
+                android:textColor="@color/color_green"
+                android:textSize="@dimen/text_defaul" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/CargoSR_OnLineView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+        </LinearLayout>
+    </com.cninsure.cp.view.ChildClickableLinearLayout>
+</ScrollView>

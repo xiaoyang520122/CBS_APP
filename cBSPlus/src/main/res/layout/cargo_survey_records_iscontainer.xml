@@ -13,15 +13,13 @@
 
 
         <TextView
-            android:id="@+id/CargoSR_TemplateDownload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
-            android:drawableRight="@drawable/left_jt_hui_short"
             android:drawablePadding="5dp"
-            android:text="▊案件基本信息    下载模板"
+            android:text="▊案件基本信息"
             android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
 
@@ -52,30 +50,6 @@
                 android:layout_width="48dp"
                 android:layout_height="20dp"
                 />
-
-            <TextView
-                android:id="@+id/CargoSR_upFile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="30dp"
-                android:text="上传"
-                android:drawablePadding="5dp"
-                android:drawableRight="@drawable/left_jt_hui_short"
-                android:textColor="@color/bulue_main"
-                android:textSize="@dimen/text_defaul" />
-
-            <TextView
-                android:id="@+id/CargoSR_downFile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="查看"
-                android:drawablePadding="5dp"
-                android:drawableRight="@drawable/left_jt_hui_short"
-                android:textColor="@color/color_green"
-                android:textSize="@dimen/text_defaul" />
 
         </LinearLayout>
 
@@ -524,6 +498,7 @@
             android:layout_marginRight="10dp"
             android:text="▊货物基本信息"
             android:textColor="@color/bulue_main"
+            android:visibility="gone"
             android:textSize="@dimen/text_defaul" />
 
         <LinearLayout
@@ -532,6 +507,7 @@
             android:background="#ffffff"
             android:gravity="center_vertical"
             android:orientation="vertical"
+            android:visibility="gone"
             android:padding="10dp">
 
             <LinearLayout

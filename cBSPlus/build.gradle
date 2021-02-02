@@ -68,7 +68,8 @@ android {
     //导出APK名称
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "CbsPlus-${variant.name}-${variant.versionName}.apk"
+            def date = new Date().format('yyyy.MM.dd')
+            outputFileName = "CbsPlus-${variant.name}-${variant.versionName}-${date}.apk"
         }
     }
 }

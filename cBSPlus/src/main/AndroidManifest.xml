@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cninsure.cp"
-    android:versionCode="155"
-    android:versionName="V1.5.5">
+    android:versionCode="157"
+    android:versionName="V1.5.7">
 
     <!-- 版本号必须是版本名称中数字部分，不能死其他，如版本号为V1.0.1时，版本号为101 -->
     <!-- <uses-sdk -->
@@ -154,6 +154,8 @@
         <activity android:name=".navi.NavigationActivtity"></activity>
         <activity android:name=".utils.PhotoChoiceActivity"></activity>
         <activity android:name=".cargo.adapter.CargoPhotoChoiceActivity"></activity>
+        <activity android:name="com.cninsure.cp.cx.publicmatch.PublicPhotoChoiceActivity"></activity>
+        <activity android:name="com.cninsure.cp.cx.publicmatch.PublicCamreaActivity"></activity>
         <activity android:name=".activty.BankCardActivity"></activity>
         <activity android:name=".activty.AddBanckCardActivity"></activity>
         <activity android:name="com.cninsure.cp.activty.register.SignAgmentActivity"></activity>
@@ -187,6 +189,14 @@
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name="com.cninsure.cp.cx.CxSurveyWorkActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="adjustPan"
+            ></activity>
+        <activity android:name="com.cninsure.cp.cx.CxInjuryExamineActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="adjustPan"
+            ></activity>
+        <activity android:name="com.cninsure.cp.cx.CxInjuryExamineOnlyActivity"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="adjustPan"
             ></activity>

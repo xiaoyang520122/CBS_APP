@@ -11,28 +11,24 @@
         android:background="@color/hui_bg"
         android:orientation="vertical">
 
-
-
-
         <TextView
-            android:id="@+id/CargoSR_TemplateDownloadNOt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:drawableRight="@drawable/left_jt_hui_short"
             android:drawablePadding="5dp"
-            android:text="▊案件基本信息    下载模板"
+            android:text="▊案件基本信息"
             android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
-            android:paddingTop="15dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="15dp">
 
             <ImageView
                 android:layout_width="@dimen/my_menu_ico_size"
@@ -51,34 +47,7 @@
             <com.zcw.togglebutton.ToggleButton
                 android:id="@+id/CargoSRN_ckDocTypeNotC"
                 android:layout_width="48dp"
-                android:layout_height="20dp"
-                />
-
-
-            <TextView
-                android:id="@+id/CargoSR_upFileNot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="30dp"
-                android:text="上传"
-                android:drawablePadding="5dp"
-                android:drawableRight="@drawable/left_jt_hui_short"
-                android:textColor="@color/bulue_main"
-                android:textSize="@dimen/text_defaul" />
-
-            <TextView
-                android:id="@+id/CargoSR_downFileNot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="查看"
-                android:drawablePadding="5dp"
-                android:drawableRight="@drawable/left_jt_hui_short"
-                android:textColor="@color/color_green"
-                android:textSize="@dimen/text_defaul" />
-
+                android:layout_height="20dp" />
 
 
         </LinearLayout>
@@ -106,8 +75,8 @@
                     android:layout_height="wrap_content"
                     android:text="*"
                     android:textColor="@color/red"
-                    android:visibility="visible"
-                    android:textSize="@dimen/text_defaul" />
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="visible" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -124,8 +93,8 @@
                     android:background="@null"
                     android:gravity="right|center"
                     android:hint="请填写案件名称！"
-                    android:textColorHint="@color/hui_text_h"
                     android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
 
             </LinearLayout>
@@ -144,9 +113,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="*"
-                    android:visibility="invisible"
                     android:textColor="@color/red"
-                    android:textSize="@dimen/text_defaul" />
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -182,9 +151,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="*"
-                    android:visibility="invisible"
                     android:textColor="@color/red"
-                    android:textSize="@dimen/text_defaul" />
+                    android:textSize="@dimen/text_defaul"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -199,9 +168,9 @@
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
+                    android:drawablePadding="5dp"
                     android:gravity="right|center"
                     android:text="无出险时间信息"
-                    android:drawablePadding="5dp"
                     android:textColor="@color/hui_text_xxh"
                     android:textSize="@dimen/text_defaul" />
 
@@ -293,9 +262,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:text="▊查勘参与人"
             android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
@@ -488,9 +457,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:text="▊查勘内容"
             android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
@@ -543,21 +512,22 @@
                 android:id="@+id/CargoSRN_causeAndCourse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:background="@drawable/corners_hui_hui_line5"
                 android:gravity="left|center"
                 android:hint="请输入查勘内容(建议10000字符内)"
+                android:padding="5dp"
                 android:textColor="@android:color/black"
                 android:textColorHint="@color/hui_text_h"
                 android:textSize="@dimen/text_defaul" />
 
         </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:text="▊查勘小结"
             android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
@@ -569,8 +539,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/corners_yellow_low_5dp"
-            android:padding="5dp"
             android:lineHeight="25dp"
+            android:padding="5dp"
             android:text="         1、以上查勘项目为本次事故的全部报损项目，并无遗漏。\n
          2、需拆检、查验、检测的项目，已告知被保险人在开始拆检、查验、检测、修复前，应提前通知保险公估人。\n
          3、已告知被保险人应积极采取必要、合理的方式对保险标的进行施救。"
@@ -581,12 +551,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:text="▊查勘员签字"
             android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -605,7 +576,6 @@
                 android:orientation="horizontal"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp">
-
 
 
                 <TextView
@@ -659,12 +629,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:text="▊特别声明/告知"
             android:textColor="@color/bulue_main"
             android:textSize="@dimen/text_defaul" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -695,8 +666,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
                 android:layout_marginTop="5dp"
+                android:background="@null"
                 android:gravity="left|center"
                 android:text="以上现场查勘中的涉损财产是否属于保险标的，此次事故是否属于保险责任需要根据签署的保单确认。"
                 android:textColor="@color/hui_text_xxxh"
@@ -704,6 +675,7 @@
                 android:textSize="@dimen/text_defaul" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -733,8 +705,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
                 android:layout_marginTop="5dp"
+                android:background="@null"
                 android:gravity="left|center"
                 android:text="我作为本现场的共同查勘人，特此声明：以上记载和现场查勘情况相符合。"
                 android:textColor="@color/hui_text_xxxh"
@@ -748,10 +720,10 @@
             android:id="@+id/csu_enclosureList_line"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:background="@color/white"
-            android:layout_marginBottom="15dp">
+            android:orientation="vertical">
 
         </LinearLayout>
     </com.cninsure.cp.view.ChildClickableLinearLayout>
