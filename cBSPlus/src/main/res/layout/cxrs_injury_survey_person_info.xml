@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/hui_bg">
 
-    <!--LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -56,7 +56,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_injuredName"
+                    android:id="@+id/CxRsInSu_injuredName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -82,7 +82,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    android:id="@+id/CxRsInSu_injuredSexGroup"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -90,7 +90,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        android:id="@+id/CxRsInSu_injuredSexMen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -106,7 +106,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        android:id="@+id/CxRsInSu_injuredSexWomen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -149,7 +149,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_injuredTel"
+                    android:id="@+id/CxRsInSu_injuredAge"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="2"
@@ -176,7 +176,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_injuredTel"
+                    android:id="@+id/CxRsInSu_injuredTel"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -215,7 +215,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    android:id="@+id/CxRsInSu_idcardType"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -256,7 +256,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalOffice"
+                    android:id="@+id/CxRsInSu_idcardNo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -295,7 +295,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_appraisalTime"
+                    android:id="@+id/CxRsInSu_birthDate"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -321,7 +321,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    android:id="@+id/CxRsInSu_householdNature"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -364,7 +364,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_injuredTel"
+                    android:id="@+id/CxRsInSu_contactName"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="2"
@@ -390,7 +390,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_injuredTel"
+                    android:id="@+id/CxRsInSu_contactTel"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -430,7 +430,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalTel"
+                    android:id="@+id/CxRsInSu_contactRelationship"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -494,7 +494,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_appraisalTime"
+                    android:id="@+id/CxRsInSu_liveTimeStart"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -516,7 +516,7 @@
 
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_appraisalTime"
+                    android:id="@+id/CxRsInSu_liveTimeEnd"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -556,7 +556,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalTel"
+                    android:id="@+id/CxRsInSu_liveAddress"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -597,7 +597,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalTel"
+                    android:id="@+id/CxRsInSu_provePerson"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -661,7 +661,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalTel"
+                    android:id="@+id/CxRsInSu_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -702,7 +702,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_appraisalTime"
+                    android:id="@+id/CxRsInSu_"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -743,7 +743,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalTel"
+                    android:id="@+id/CxRsInSu_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -759,18 +759,48 @@
 
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/shadow_width_menu"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/line_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="▍工作信息"
             android:textColor="@android:color/holo_blue_light"
             android:textSize="@dimen/text_15"
             android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="有无工作"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/hui_text_xxxxh"
+            android:textSize="@dimen/text_15"  />
+        <com.zcw.togglebutton.ToggleButton
+            android:id="@+id/CxRsInSu_isHaveJob"
+            android:layout_width="48dp"
+            android:layout_height="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="无"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="@dimen/text_15"  />
+
+    </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -806,7 +836,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalOffice"
+                    android:id="@+id/CxRsInSu_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -846,7 +876,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalOffice"
+                    android:id="@+id/CxRsInSu_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -887,7 +917,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalOffice"
+                    android:id="@+id/CxRsInSu_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -927,7 +957,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    android:id="@+id/CxRsInSu_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -956,7 +986,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    android:id="@+id/CxRsInSu_"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
@@ -964,7 +994,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        android:id="@+id/CxRsInSu_"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -980,7 +1010,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        android:id="@+id/CxRsInSu_"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -1024,7 +1054,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_appraisalTime"
+                    android:id="@+id/CxRsInSu_"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -1046,7 +1076,7 @@
 
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_appraisalTime"
+                    android:id="@+id/CxRsInSu_"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -1086,7 +1116,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_injuredTel"
+                    android:id="@+id/CxRsInSu_"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="2"
@@ -1126,7 +1156,7 @@
             android:padding="10dp">
 
             <com.cninsure.cp.view.AutoLinefeedLayout
-                android:id="@+id/cxInMe_agreementAutoLine"
+                android:id="@+id/CxRsInSu_"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -1140,7 +1170,7 @@
                     android:padding="5dp">
 
                     <CheckBox
-                        android:id="@+id/video_previ"
+                        android:id="@+id/CxRsInSu_"
                         style="@style/CustomCheckboxTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1161,7 +1191,7 @@
                     android:padding="5dp">
 
                     <CheckBox
-                        android:id="@+id/video_previ"
+                        android:id="@+id/CxRsInSu_"
                         style="@style/CustomCheckboxTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1182,7 +1212,7 @@
                     android:padding="5dp">
 
                     <CheckBox
-                        android:id="@+id/video_previ"
+                        android:id="@+id/CxRsInSu_"
                         style="@style/CustomCheckboxTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1203,7 +1233,7 @@
                     android:padding="5dp">
 
                     <CheckBox
-                        android:id="@+id/video_previ"
+                        android:id="@+id/CxRsInSu_"
                         style="@style/CustomCheckboxTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1219,7 +1249,7 @@
             </com.cninsure.cp.view.AutoLinefeedLayout>
 
             <LinearLayout
-                android:id="@+id/35"
+                android:id="@+id/CxRsInSu_"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
@@ -1239,5 +1269,5 @@
 
         </LinearLayout>
 
-    </LinearLayout-->
+    </LinearLayout>
 </ScrollView>

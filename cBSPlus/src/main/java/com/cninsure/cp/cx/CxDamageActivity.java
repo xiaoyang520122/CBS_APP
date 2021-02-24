@@ -61,6 +61,10 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
     @ViewInject(R.id.CxDamgWM_damag_linear) private LinearLayout damagLinear; //定损项目LinearLayout
     @ViewInject(R.id.CxDamgWM_add_damag) private LinearLayout addLinear; //添加项目LinearLayout
 
+    @ViewInject(R.id.CxDamgWM_surveyAddress_equal)  private TextView damageAddressEqualTv;//同派单地点
+    @ViewInject(R.id.CxDamgWM_surveyAddress_local)  private TextView damageAddressLocalTv;//定位当前地点
+    @ViewInject(R.id.CxDamgWM_surveyAddress)  private EditText damageAddressEdt;//查勘地点
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +75,7 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
         cxDict = new CxDictEntity();
         QorderUid = getIntent().getStringExtra("orderUid");
         inflater = LayoutInflater.from(this);
+        getLocalInfoOncilck(); //获取查勘地点的监听事件
         dowloadDictType();
     }
 
@@ -159,6 +164,7 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
         SetTextUtil.setTextViewText(dsTotalAmount,damageEnt.dsTotalAmount+""); //合计
         SetTextUtil.setEditText(dsRescueAmount,damageEnt.dsRescueAmount+""); //施救费
         SetTextUtil.setEditText(dsInstructions,damageEnt.dsInstructions); //定损说明
+        SetTextUtil.setEditText(damageAddressEdt,damageEnt.surveyAddress); //作业地点
         disPlaySmallMaterials();
     }
 
@@ -179,6 +185,7 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
         @SuppressLint("WrongViewCast") String tempDra = dsRescueAmount.getText().toString();
         damageEnt.dsRescueAmount = TextUtils.isEmpty(tempDra)?0:Float.parseFloat(dsRescueAmount.getText().toString()); //施救费
         damageEnt.dsInstructions = dsInstructions.getText().toString(); //定损说明
+        damageEnt.surveyAddress = damageAddressEdt.getText().toString(); //作业地点
     }
 
     /**显示物损定损项目*/
@@ -243,6 +250,15 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
             public void onClick(View v) {
                 ShowEditDialog(position);
             }
+        });
+    }
+
+    /**获取查勘地点*/
+    private void getLocalInfoOncilck() {
+        damageAddressEqualTv.setOnClickListener(v -> damageAddressEdt.setText(((PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity")).caseLocation));
+        damageAddressLocalTv.setOnClickListener(v -> {
+            String address = AppApplication.LOCATION.getAddrStr();
+            damageAddressEdt.setText(address);
         });
     }
 

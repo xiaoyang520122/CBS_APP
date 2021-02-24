@@ -18,7 +18,7 @@ import com.cninsure.cp.cx.CxInjuryExamineOnlyActivity;
 import com.cninsure.cp.cx.fragment.BaseFragment;
 import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.entity.URLs;
-import com.cninsure.cp.entity.cx.injurysurvey.InjuryExamineOnlyWorkEntity;
+import com.cninsure.cp.entity.cx.injuryexamine.InjuryExamineOnlyWorkEntity;
 import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.FileChooseUtil;
 import com.cninsure.cp.utils.SetTextUtil;

@@ -1,4 +1,4 @@
-package com.cninsure.cp.entity.cx.injurysurvey;
+package com.cninsure.cp.entity.cx.injuryexamine;
 
 import android.text.TextUtils;
 

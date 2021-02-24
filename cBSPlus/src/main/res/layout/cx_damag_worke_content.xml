@@ -111,7 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/survey_marginTop"
-                android:background="@null"
+                android:background="@drawable/line_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="5dp"
@@ -147,6 +147,79 @@
                     android:textSize="@dimen/text_defaul" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:gravity="center"
+                    android:text="查勘地点："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/CxDamgWM_surveyAddress_equal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/corners_blue_line5"
+                    android:gravity="right|center"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="同派单地点"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/text_l" />
+
+                <TextView
+                    android:id="@+id/CxDamgWM_surveyAddress_local"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners_blue_line5"
+                    android:gravity="right|center"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="定位当前地点"
+                    android:textColor="@color/bulue_main"
+                    android:textSize="@dimen/text_l" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/CxDamgWM_surveyAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line_bg"
+                android:gravity="right|center"
+                android:hint="请输入查勘地点"
+                android:padding="5dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/hui_text_h"
+                android:textSize="@dimen/text_defaul" />
         </LinearLayout>
 
         <LinearLayout

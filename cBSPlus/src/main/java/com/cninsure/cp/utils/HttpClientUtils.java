@@ -337,10 +337,10 @@
 //			// 解决中文乱码问题
 //			StringEntity entity = new StringEntity(sendJSOn.toString(), "utf-8");
 //			entity.setContentEncoding("UTF-8");
-//			entity.setContentType("application/json;charset=UTF-8");
+//			entity.setContentType("application/CxInjurySurveyWorkEntity;charset=UTF-8");
 //
 //			post.setEntity(entity);
-//			post.addHeader("Content-Type", "application/json; charset=utf-8");
+//			post.addHeader("Content-Type", "application/CxInjurySurveyWorkEntity; charset=utf-8");
 //			if (!sessionID.equals(""))
 //				post.setHeader("Cookie", sessionID);
 //			HttpResponse response = httpclient.execute(post);
@@ -453,9 +453,9 @@
 //		// String cipherCode = "A98Gdgksg8763uasiPP0";
 //
 //		// 移除key,然后转换成json。 也就是获取原来的json
-//		JSONObject json = JSONObject.fromObject(requestStr);
-//		// // json.remove("key");
-//		String str = json.toString();
+//		JSONObject CxInjurySurveyWorkEntity = JSONObject.fromObject(requestStr);
+//		// // CxInjurySurveyWorkEntity.remove("key");
+//		String str = CxInjurySurveyWorkEntity.toString();
 //		// 将数据转换UTF-8，保持数据统一(数据带中文时需要特殊处理)
 //		String originStr = URLEncoder.encode(requestStr, "UTF-8");
 //
@@ -471,9 +471,9 @@
 //		// String cipherCode = "A98Gdgksg8763uasiPP0";
 //
 //		// 移除key,然后转换成json。 也就是获取原来的json
-//		JSONObject json = JSONObject.fromObject(requestStr);
-//		// // json.remove("key");
-//		String str = json.toString();
+//		JSONObject CxInjurySurveyWorkEntity = JSONObject.fromObject(requestStr);
+//		// // CxInjurySurveyWorkEntity.remove("key");
+//		String str = CxInjurySurveyWorkEntity.toString();
 //		// 将数据转换UTF-8，保持数据统一(数据带中文时需要特殊处理)
 //		String originStr = URLEncoder.encode(requestStr, "UTF-8");
 //

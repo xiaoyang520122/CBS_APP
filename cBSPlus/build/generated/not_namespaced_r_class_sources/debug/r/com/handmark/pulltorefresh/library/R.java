@@ -61,14 +61,14 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int fl_inner = 0x7f09052c;
-        public static final int gridview = 0x7f09056b;
-        public static final int pull_to_refresh_image = 0x7f0905f2;
-        public static final int pull_to_refresh_progress = 0x7f0905f3;
-        public static final int pull_to_refresh_sub_text = 0x7f0905f4;
-        public static final int pull_to_refresh_text = 0x7f0905f5;
-        public static final int scrollview = 0x7f090611;
-        public static final int webview = 0x7f09067b;
+        public static final int fl_inner = 0x7f09052f;
+        public static final int gridview = 0x7f09056e;
+        public static final int pull_to_refresh_image = 0x7f0905f5;
+        public static final int pull_to_refresh_progress = 0x7f0905f6;
+        public static final int pull_to_refresh_sub_text = 0x7f0905f7;
+        public static final int pull_to_refresh_text = 0x7f0905f8;
+        public static final int scrollview = 0x7f090614;
+        public static final int webview = 0x7f09067e;
     }
     public static final class layout {
         private layout() {}

@@ -542,10 +542,10 @@ public class HttpRequestTool {
 			// 解决中文乱码问题
 			StringEntity entity = new StringEntity(sendJSOn.toString(), "utf-8");
 			entity.setContentEncoding("UTF-8");
-			entity.setContentType("application/json;charset=UTF-8");
+			entity.setContentType("application/CxInjurySurveyWorkEntity;charset=UTF-8");
 			post.setEntity(entity);
 			
-			post.addHeader("Content-Type", "application/json; charset=utf-8");
+			post.addHeader("Content-Type", "application/CxInjurySurveyWorkEntity; charset=utf-8");
 			HttpResponse response = httpclient.execute(post);
 			resposnseList.add(""+response.getStatusLine().getStatusCode());
 			responseBody = EntityUtils.toString(response.getEntity(), "utf-8");

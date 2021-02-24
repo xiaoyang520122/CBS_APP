@@ -1,9 +1,6 @@
-package com.cninsure.cp.entity.cx.injurysurvey;
-
-import android.text.TextUtils;
+package com.cninsure.cp.entity.cx.injuryexamine;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
