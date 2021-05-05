@@ -17,6 +17,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -57,6 +58,7 @@ import com.cninsure.cp.cx.CxInjuryExamineActivity;
 import com.cninsure.cp.cx.CxInjuryExamineOnlyActivity;
 import com.cninsure.cp.cx.CxInjuryTrackActivity;
 import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
+import com.cninsure.cp.entity.BaseEntity;
 import com.cninsure.cp.entity.FCOrderEntity;
 import com.cninsure.cp.entity.PagedRequest;
 import com.cninsure.cp.entity.PublicOrderEntity;
@@ -80,6 +82,7 @@ import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.PopupWindowUtils;
+import com.cninsure.cp.utils.SetTextUtil;
 import com.cninsure.cp.utils.ToastUtil;
 import com.cninsure.cp.utils.extact.ExtactUserUtil;
 import com.cninsure.cp.view.LoadingDialog;
@@ -118,6 +121,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 	private SimpleDateFormat SF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public static ExtactUserUtil extactUserUtil;
+	private CxChoiceGGSTool cxChoiceGGSTool;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -139,7 +143,39 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		listTitleTv.setText(String.format(getResources().getString(R.string.order_listTitle), "全部"));
 		radgrup.setOnCheckedChangeListener(this);
 		data = new ArrayList<PublicOrderEntity>();
+
+		cxChoiceGGSTool = new CxChoiceGGSTool(getActivity(), (dialog, which) -> {
+			showTransferDialog();
+		});
 	}
+
+	/**
+	 * 如果选着转派公估师，提示用户是否取人转派，如果美选着转派公估师，提示用户。
+	 */
+	private void showTransferDialog() { //transfer
+		if (cxChoiceGGSTool.choiceGGS!=null && cxChoiceGGSTool.choiceGGS.userId!=null){
+			DialogUtil.getAlertOnelistener(getActivity(), "确认转派给公估师" + cxChoiceGGSTool.choiceGGS.name + "吗？",
+					(dialog, which) -> {
+						submitTransfer();
+					}).show();
+
+		}else{
+			ToastUtil.showToastShort(getActivity(),"为选着公估师");
+		}
+	}
+
+	/**
+	 * 提交转派
+	 */
+	private void submitTransfer() {
+		List<NameValuePair> paramsList = new ArrayList<>(6);
+		paramsList.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
+		paramsList.add(new BasicNameValuePair("id", cxChoiceGGSTool.orderId));
+		paramsList.add(new BasicNameValuePair("ggsUid", AppApplication.getUSER().data.userId));
+		HttpUtils.requestPost(URLs.CX_ORDER_TRANSFER, paramsList, HttpRequestTool.CX_ORDER_TRANSFER);
+		LoadDialogUtil.setMessageAndShow(getActivity(), "加载中……");
+	}
+
 
 	@Override
 	public void onResume() {
@@ -239,7 +275,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 
 		case R.id.OTCI_btn_2:
 			showOrderType = 2;
-			checkOrderList(2, 4, 5);
+			checkOrderList(4, 5);
 			listTitleTv.setText(String.format(getResources().getString(R.string.order_listTitle), "作业中"));
 			break;
 
@@ -385,10 +421,34 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			extactUserUtil = new ExtactUserUtil();
 			extactUserUtil.isSignble(getActivity(), value.get(0).getValue());
 			break;
+		case HttpRequestTool.CX_ORDER_TRANSFER: //提交转派
+			LoadDialogUtil.dismissDialog();
+			downloadOrderData(2);
+			getTransferSubmitInfo(value.get(0).getValue());
+			break;
+		case HttpRequestTool.CX_GET_USER_BY_ORGID: //转派查询车童清单
+			cxChoiceGGSTool.setGGSList(value.get(0).getValue());
+			break;
 
 		default:
 			break;
 		}
+	}
+
+	/**
+	 * 车险任务转派提交返回信息
+	 * @param value
+	 */
+	private void getTransferSubmitInfo(String value) {
+		if (value != null){
+			BaseEntity basEn = JSON.parseObject(value,BaseEntity.class);
+			if (basEn!=null && basEn.success){
+				ToastUtil.showToastLong(getActivity(),"转派成功！");
+			}else{
+				ToastUtil.showToastLong(getActivity(),"转派失败！");
+			}
+		}else{
+			ToastUtil.showToastLong(getActivity(),"转派失败！");}
 	}
 
 	private void showYjxHintMsg(int code, String value) {
@@ -760,47 +820,86 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			/***到了这里就是车险的案件了***/
 			if (data.get(itemPostion).status == 2) {  //未接单状态 可以选择取消订单或接受
 				firstTv.setOnClickListener(arg0 -> {
-					cancelOrder(itemPostion);//取消订单
+					firstTv.setText("拒绝/转派");
+					showUTChoiceDialog(itemPostion);
 				});
 				secendTv.setOnClickListener(arg0 -> {
 					reciveOrder(itemPostion);//接受订单
 				});
 				return;
 			} else if (data.get(itemPostion).status == 4) {//案件也接单，只显示蓝色按钮，修改文本并设置点击事件（直接跳转到作业界面）
-				firstTv.setText("线路规划");
+				setTVByStatus(firstTv,idata);
 				secendTv.setText("去作业");
-				firstTv.setOnClickListener(arg0 -> NaviHelper.startNavi(getActivity(), idata.caseLocationLatitude, idata.caseLocationLongitude,
-						idata.caseLocation, idata.baoanPersonPhone));
+//				firstTv.setOnClickListener(arg0 -> NaviHelper.startNavi(getActivity(), idata.caseLocationLatitude, idata.caseLocationLongitude,
+//						idata.caseLocation, idata.baoanPersonPhone));
 				secendTv.setOnClickListener(arg0 -> jumpToWorkActivity(true, data.get(itemPostion).uid,
 						data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion)));
 			}  else if (data.get(itemPostion).status == 6) { /**案件作业中*/
-				firstTv.setText("提交审核");
+//				firstTv.setText("提交审核");
+				setTVByStatus(firstTv,idata);
 				secendTv.setText("去作业");
 				
-				firstTv.setOnClickListener(arg0 -> {//提交审核
-					List<NameValuePair> params = new ArrayList<NameValuePair>();
-					params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
-					params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
-					HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
-					loadDialog.setMessage("操作中……").show();
-				});
+//				firstTv.setOnClickListener(arg0 -> {//提交审核
+//					List<NameValuePair> params = new ArrayList<NameValuePair>();
+//					params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
+//					params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
+//					HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
+//					loadDialog.setMessage("操作中……").show();
+//				});
 				secendTv.setOnClickListener(arg0 -> jumpToWorkActivity(true, data.get(itemPostion).uid,
 						data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion)));
 			} else if (data.get(itemPostion).status == 10) { /**审核退回*/
-				firstTv.setText("提交审核");
+//				firstTv.setText("提交审核");
+				setTVByStatus(firstTv,idata);
 				secendTv.setText("去作业");
-				firstTv.setOnClickListener(arg0 -> {//提交审核
-					List<NameValuePair> params = new ArrayList<NameValuePair>();
-					params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
-					params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
-					HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
-					loadDialog.setMessage("操作中……").show();
-				});
+//				firstTv.setOnClickListener(arg0 -> {//提交审核
+//					List<NameValuePair> params = new ArrayList<NameValuePair>();
+//					params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
+//					params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
+//					HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
+//					loadDialog.setMessage("操作中……").show();
+//				});
 				secendTv.setOnClickListener(arg0 -> jumpToWorkActivity(true, data.get(itemPostion).uid,
 						data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion)));
 			}
 		}
-		
+
+		/**
+		 * 车险新任务，选择拒绝或者是转派
+		 * @param itemPostion
+		 */
+		private void showUTChoiceDialog(int itemPostion) {
+			new AlertDialog.Builder(getActivity()).setTitle("选择！")
+					.setItems(new String[]{"拒绝", "转派"}, (dialog, which) -> {
+						if (which==0) cancelOrder(itemPostion);//拒绝订单
+						else {
+							cxChoiceGGSTool.showChoiceDialog(data.get(itemPostion).id + "");
+						}
+					}).create().show();
+		}
+
+		/**
+		 * 根据任务状态设置文本提示和点击事件
+		 * @param firstTv
+		 * @param idata
+		 */
+		private void setTVByStatus(TextView firstTv, PublicOrderEntity idata) { //@TODO
+			//根据转派状态显示对应的文本
+			if (idata.transferStatus == null){ //没有转派记录 可以转派
+				SetTextUtil.setTextViewText(firstTv,"转派");
+				firstTv.setOnClickListener(v -> { cxChoiceGGSTool.showChoiceDialog(idata.id+""); });
+			}else if (idata.transferStatus == 0){ //转派中
+				SetTextUtil.setTextViewText(firstTv,"转派中");
+				firstTv.setOnClickListener(null);
+			}else if (idata.transferStatus == 2){ //转派被拒绝-可转派
+				SetTextUtil.setTextViewText(firstTv,"转派被拒绝");
+				firstTv.setOnClickListener(v -> { cxChoiceGGSTool.showChoiceDialog(idata.id+""); });
+			}else if (idata.transferStatus == 1){ //已转派
+				SetTextUtil.setTextViewText(firstTv,"已转派");
+				firstTv.setOnClickListener(null);
+			}
+		}
+
 		/***医健险案件item底部按钮点击事件设置***/
 		private void setYjxButtonTvOnclick(final PublicOrderEntity idata, TextView firstTv, TextView secendTv, final PublicOrderEntity dataItem, final int itemPostion) {
 			if (dataItem.status == 1) {

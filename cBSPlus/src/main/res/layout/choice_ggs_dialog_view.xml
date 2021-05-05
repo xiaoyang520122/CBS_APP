@@ -6,6 +6,7 @@
     android:orientation="vertical" >
     
     <LinearLayout
+        android:id="@+id/ChoiceGGs_SPINNYYBLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/survey_marginTop"
@@ -99,15 +100,15 @@
             android:layout_marginBottom="10dp"
             android:background="@color/hui_text_m" />
 
-        <ProgressBar
-            android:id="@+id/ChoiceGGs_progressBar1"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="invisible" />
+    <ProgressBar
+        android:id="@+id/ChoiceGGs_progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
 
-        <ListView
+    <ListView
             android:id="@+id/ChoiceGGs_lisetView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >

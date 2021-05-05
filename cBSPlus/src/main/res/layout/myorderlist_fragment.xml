@@ -70,18 +70,6 @@
             android:textColor="@drawable/color_radiobutton"
             android:textSize="@dimen/text_m" />
     </RadioGroup>
-    
-      <TextView
-        android:id="@+id/MOLF_emptyText"
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:drawableTop="@drawable/empty_hui"
-        android:gravity="center"
-        android:layout_marginTop="50dp"
-        android:text="@string/emptyHint"
-        android:textColor="@color/hui_text_m" />
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/MOLF_pull_refresh_list"

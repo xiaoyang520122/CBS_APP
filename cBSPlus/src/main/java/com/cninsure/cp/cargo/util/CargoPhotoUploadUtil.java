@@ -79,13 +79,7 @@ public class CargoPhotoUploadUtil {
 			public void onSuccess(ResponseInfo<String> responseInfo) {
 				final String tinfo=responseInfo.result;
 				String resultinfo = JSON.parseObject(tinfo,String.class);
-//				BaseEntity baseEn = JSON.parseObject(resultinfo,BaseEntity.class);
-//				if (baseEn.success){
-//					successful="success";
-					submitUpload(context,submitImgEnList.get(uploadPoint), URLs.CARGO_SURVEY_IMG_SAVE,resultinfo);
-//				}else{
-//					successful="error";
-//				}
+				submitUpload(context,submitImgEnList.get(uploadPoint), URLs.CARGO_SURVEY_IMG_SAVE,resultinfo);
 
 				uploadPoint++;
 				if (uploadPoint < submitImgEnList.size()) {

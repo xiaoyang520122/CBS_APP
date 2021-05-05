@@ -107,6 +107,8 @@ public class CxOrderEntity implements Serializable {
 
         public Integer investigationType;//调查类型  全案1，单项0
         public String investigations;//调查内容
+        /**转派状态(0：转派待接收；1：已转派；2：拒绝转派)*/
+        public Integer transferStatus;//转派状态(0：转派待接收；1：已转派；2：拒绝转派)
 
         public Double baseFee;//基础费
         public Double extraFee;//超额附加费
@@ -131,11 +133,11 @@ public class CxOrderEntity implements Serializable {
             /** “FC” 代表是非车险，“YJX” 代表是医健险，其他是车险订单 **/
             stdEnt.caseTypeAPP = "CX";
             /**险种**/
-            stdEnt.caseTypeId=100;
+            stdEnt.caseTypeId = 100;
             /**险种名称**/
             stdEnt.caseTypeName = "车险";
             /**报案号**/
-            stdEnt.baoanNo=caseBaoanNo;
+            stdEnt.baoanNo = caseBaoanNo;
             /**业务品种id**/
             stdEnt.bussTypeId=bussTypeId;
             /**业务品种名称**/
@@ -181,6 +183,8 @@ public class CxOrderEntity implements Serializable {
             /**经纬度*/
             stdEnt.caseLocationLongitude=0;//":"114.108214",
             stdEnt.investigationType = investigationType;//调查类型  全案1，单项0
+            /**转派状态(0：转派待接收；1：已转派；2：拒绝转派)*/
+            stdEnt.transferStatus = transferStatus;//转派状态(0：转派待接收；1：已转派；2：拒绝转派)
 
             stdEnt.areaNo=areaNo;
 //            stdEnt.area=area;

@@ -1,5 +1,6 @@
 package com.cninsure.cp.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -15,7 +16,11 @@ public class HttpUtils {
 			@Override
 			public void run() {
 				super.run();
-				HttpRequestTool.sendPost(minterface, params, typecode);
+				try {
+					HttpRequestTool.sendPost(minterface, params, typecode);
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
 			}
 		}.start();
 	}

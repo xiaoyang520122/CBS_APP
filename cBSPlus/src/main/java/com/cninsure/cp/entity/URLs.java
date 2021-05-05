@@ -268,6 +268,10 @@ public class URLs implements Serializable {
 	public final static String EXTACT_CREAT_AGREEMENT_PDF= IPHOME +"/temple/contract/contract.html";
 	/**POST 外部车童签约  userId、id、requestUrl签字图片路径 */
 	public final static String EXTACT_USER_SIGN= IPHOME +"/extUser/sign";
+	/**POST 订单转转派（转移） userId，id，ggsUid*/
+	public final static String CX_ORDER_TRANSFER= IPHOME +"/cx/order/transfer";
+	/**POST 车险获取用户列表（公估师归属分公司下面的用户，如果是总部人员就查全部） useryType 用户类型，传99，因为要求是车童，还有userId，name*/
+	public final static String CX_GET_USER_BY_ORGID= IPHOME +"/users/listByOrgId";
 
 	/***************************************货运险接口20201207***********************************/
 	/**GET 货运险接报案查询-分页 userId start size caseNo caseName reportNo报案号 ggsUid作业公估师Uid  surveyUid查勘员UID  status状态  statusArr多状态查询如："0,1"*/
@@ -285,6 +289,30 @@ public class URLs implements Serializable {
 	/**POST 查勘保存 caseId surveyRecords查勘记录 listRecords清点记录 askRecords问询记录 lossRecords损失清单 materialList理赔材料清单（记录和清单都是JSON字符串）*/
 	public final static String CARGO_SURVEY_IMG_SAVE= IPHOME +"/hyx/work/images/save";
 	public final static String CARGO_TEMPLATE= IPHOME +"/temple/hyx/surveyFile/";
+
+
+	/***************************************医健险新全流程V1 2021-04-19***********************************/
+	/**get 医健险新全流程V1任务查询*/
+	public final static String YJXNEW_ORDER_LIST = IPHOME +"/new/yjx/dispatch/list";
+	/**post 医健险新全流程V1 单个任务接受  userId  id*/
+	public final static String YJXNEW_ACCEPT_BY_ORDER = IPHOME +"/new/yjx/dispatch/accept";
+	/**post 医健险新全流程V1 接受全部任务  userId  ids*/
+	public final static String YJXNEW_ACCEPT_ALL = IPHOME +"/new/yjx/dispatch/acceptAll";
+	/**get 医健险新全流程V1 GET 报案所有任务  userId  caseBaoanUid status*/
+	public final static String YJXNEW_ALL_DISPARCH = IPHOME +"/new/yjx/dispatch/view";
+	/**get 医健险新全流程V1 GET 报案详情  userId  uid*/
+	public final static String YJXNEW_JIEBAOAN_VIEW = IPHOME +"/new/yjx/baoan/view";
+	/**get 医健险新全流程V1 GET 字典值 type*/
+	public final static String YJXNEW_GET_DICT = IPHOME +"/dict/listByTypes";
+	/**get 医健险新全流程V1 GET 接报案和作业图片获取，orderUid isDelete(0是未删除；1是已删除)*/
+	public final static String YJXNEW_GET_WORK_IMAGES = IPHOME +"/new/yjx/work/images/list";
+	/**get 医健险新全流程V1 GET 任务的作业信息 dispatchUid*/
+	public final static String YJXNEW_GET_WORK_VIEW = IPHOME +"/new/yjx/work/view";
+	/**get 医健险新全流程V1 POST 作业信息新增 userId*/
+	public final static String YJXNEW_WORK_SAVE = IPHOME +"/new/yjx/work/save";
+	/**get 医健险新全流程V1 POST 图片保存*/
+	public final static String YJXNEW_WORK_IMG_SAVE = IPHOME +"/new/yjx/work/images/save";
+
 
 	
 	

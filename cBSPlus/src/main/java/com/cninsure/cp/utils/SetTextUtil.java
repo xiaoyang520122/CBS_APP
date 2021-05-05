@@ -11,12 +11,16 @@ public class SetTextUtil {
 	public static void setTextViewText(TextView Tv , String msg){
 		if (Tv!=null && msg!=null && !"null".equals(msg)) {
 			Tv.setText(msg);
+		}else if (Tv!=null){
+			Tv.setText("");
 		}
 	}
 	
 	public static void setEditText(EditText ETv , String msg){
 		if (ETv!=null && msg!=null) {
 			ETv.setText(msg);
+		}else if (ETv!=null){
+			ETv.setText("");
 		}
 	}
 	

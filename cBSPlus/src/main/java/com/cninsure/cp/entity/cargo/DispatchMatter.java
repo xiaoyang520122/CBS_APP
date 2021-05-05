@@ -38,7 +38,11 @@ public class DispatchMatter {
         String[] matterArr = matterStrArr.split(",");
         if (matterArr!=null){
             for (String code:matterArr)
-            matterStr += (matterMap.get(Integer.valueOf(code))+",");
+                try {
+                    matterStr += (matterMap.get(Integer.valueOf(code))+",");
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
         }
         return matterStr;
     }

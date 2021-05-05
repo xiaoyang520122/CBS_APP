@@ -207,7 +207,7 @@ public class CxWorkPhotoHelp implements OnClickListener {
 	}
 
 	public void forString(int event, File file) {
-		if (!file.exists()) {
+		if (file==null || !file.exists()) {
 			DialogUtil.getAlertOneButton(activity, "拍摄照片失败，请重新拍照！", null).show();
 		} else {
 			LoadDialogUtil.setMessageAndShow(activity,"识别中……");

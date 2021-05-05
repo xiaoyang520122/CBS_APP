@@ -213,7 +213,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         //保存或提交单击事件
         findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
         findViewById(R.id.CX_Act_More_Tv).setOnClickListener(this);
-        ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText("标的定损");
+        ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText("定损");
         ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
     }
 
@@ -423,6 +423,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
 //        displayFileToList() ;  //附件信息列表
 
 //        SetTextUtil.setTextViewText(dsTotalFee,damageEnt.getHjTotal());//换件信息-合计
+        if (damageEnt.replaceInfosTotal == null) damageEnt.replaceInfosTotal = new CxDsWorkEntity.CxDsReplaceInfosTotal();
         damageEnt.replaceInfosTotal.dsFeeManagement = dsFeeManagement.getText().toString();//管理费
         if (damageEnt.replaceInfosTotal==null) damageEnt.replaceInfosTotal = new CxDsWorkEntity.CxDsReplaceInfosTotal();
         damageEnt.replaceInfosTotal.dsFeeResidual = dsFeeResidual.getText().toString();//残值

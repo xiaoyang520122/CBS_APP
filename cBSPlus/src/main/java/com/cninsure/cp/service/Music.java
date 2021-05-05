@@ -37,6 +37,7 @@ public class Music extends Service {
         IS_BELL=AppApplication.sp.getBoolean("isPlayMusic", true);
         Log.d("GTIntentService", "开始播放提示音-******************************");
         creatMusic();
+        if (mp==null) return;
         mp.start();
         vibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);  
         long [] pattern = {100,500,300,500};   // 停止 开启 停止 开启   

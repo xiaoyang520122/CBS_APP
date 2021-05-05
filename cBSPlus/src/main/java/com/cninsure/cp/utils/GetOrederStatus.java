@@ -36,7 +36,7 @@ public class GetOrederStatus {
 			break;
 			
 		case 8:
-			results= "作业待审核-未找到审核人";
+			results= "待审核-待认领";
 			break;
 
 		case 9:

@@ -63,4 +63,18 @@ public class EmptyViewUtil {
         ((ViewGroup)listView.getParent()).addView(emptyView);
         listView.setEmptyView(emptyView);
     }
+
+
+    /**
+     * 盲僧版本空提示
+     * @param context
+     * @param listView
+     */
+    public void SetEmptyView(Context context, PullToRefreshListView listView){
+        View emptyView = LayoutInflater.from(context).inflate(R.layout.empty_view,null);
+        emptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
+        emptyView.setVisibility(View.GONE);
+        ((ViewGroup)listView.getParent()).addView(emptyView);
+        listView.setEmptyView(emptyView);
+    }
 }

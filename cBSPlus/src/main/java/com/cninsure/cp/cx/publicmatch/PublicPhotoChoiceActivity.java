@@ -153,7 +153,7 @@ public class PublicPhotoChoiceActivity extends Activity {
 	/** 压缩，打水印并储存照片到制定路径，然后存入照片列表对象中 **/
 	private void handleAndSaveImag(int postion) {
 		// 将文件存储在SD卡的根目录，并以系统时间将文件命名
-		String PicturePath = PhotoPathUtil.getPictureCreatePath(getIntent().getStringExtra("orderUid"));
+		String PicturePath = PhotoPathUtil.getPictureCreatePath(getIntent().getStringExtra("orderUid"),PublicPhotoChoiceActivity.this);
 		choiceImgs.put(postion, PicturePath);
 
 		Intent data = new Intent();

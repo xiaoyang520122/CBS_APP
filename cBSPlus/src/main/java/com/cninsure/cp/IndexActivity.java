@@ -39,6 +39,7 @@ import android.widget.Toast;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
 import com.cninsure.cp.activity.yjx.YjxTempStorageActivity;
+import com.cninsure.cp.activity.yjxnew.YjxNewIndexActivity;
 import com.cninsure.cp.activty.AboutUsAvtivity;
 import com.cninsure.cp.activty.AccountActivity;
 import com.cninsure.cp.activty.CancelAndSubmitActivity;
@@ -437,6 +438,10 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 
 		case R.id.my_menu_cargo:// 货运险-全流程
 			startActivity(new Intent(this, CargoCaseListActivity.class));
+			break;
+
+		case R.id.my_menu_yjxnew:// 医健险-（新）全流程
+			startActivity(new Intent(this, YjxNewIndexActivity.class));
 			break;
 
 		default:

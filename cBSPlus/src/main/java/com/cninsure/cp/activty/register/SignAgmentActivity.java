@@ -37,6 +37,7 @@ import com.cninsure.cp.utils.PDF.PDFShowUtil;
 import com.cninsure.cp.utils.PhotoChoiceActivity;
 import com.cninsure.cp.utils.PhotoUploadUtil;
 import com.cninsure.cp.utils.SetTextUtil;
+import com.cninsure.cp.utils.ToastUtil;
 import com.cninsure.cp.utils.UriUtils;
 import com.cninsure.cp.utils.photo.OutputTool;
 import com.lidroid.xutils.ViewUtils;
@@ -115,14 +116,19 @@ public class SignAgmentActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK ) {  //拍照返回
-            if (requestCode == CAMERA_F){
-                String url = OutputTool.getInstance().getmCurrentPhotoPath();
-                Uri imgUrl = UriUtils.getUri(this,new File(url));
-                uploadPhoto(OutputTool.getInstance().getmCurrentPhotoPath(),HttpRequestTool.UP_ID_CARD_F); //上传身份证正面
-            }else if (requestCode == CAMERA_B){
-                String url = OutputTool.getInstance().getmCurrentPhotoPath();
-                Uri imgUrl = UriUtils.getUri(this,new File(url));
-                uploadPhoto(OutputTool.getInstance().getmCurrentPhotoPath(),HttpRequestTool.UP_ID_CARD_B); //上传身份证反面
+            try {
+                if (requestCode == CAMERA_F){
+                    String url = OutputTool.getInstance().getmCurrentPhotoPath();
+                    Uri imgUrl = UriUtils.getUri(this,new File(url));
+                    uploadPhoto(OutputTool.getInstance().getmCurrentPhotoPath(),HttpRequestTool.UP_ID_CARD_F); //上传身份证正面
+                }else if (requestCode == CAMERA_B){
+                    String url = OutputTool.getInstance().getmCurrentPhotoPath();
+                    Uri imgUrl = UriUtils.getUri(this,new File(url));
+                    uploadPhoto(OutputTool.getInstance().getmCurrentPhotoPath(),HttpRequestTool.UP_ID_CARD_B); //上传身份证反面
+                }
+            } catch (Exception e) {
+                ToastUtil.showToastLong(this,"拍照失败！"); //有时候 Uri imgUrl = UriUtils.getUri(this,new File(url));会报空指针异常。
+                e.printStackTrace();
             }
         }
     }

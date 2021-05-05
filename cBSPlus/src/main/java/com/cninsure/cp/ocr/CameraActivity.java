@@ -302,7 +302,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 		public void onPictureTaken(byte[] data, Camera camera) {
 			try {
 				// 将文件存储在SD卡的根目录，并以系统时间将文件命名
-				File jpgFile = new File(PhotoPathUtil.getPictureCreatePath(getIntent().getStringExtra("orderUid")));
+				File jpgFile = new File(PhotoPathUtil.getPictureCreatePath(getIntent().getStringExtra("orderUid"),CameraActivity.this));
 				// 文件输出流对象
 				FileOutputStream outStream = new FileOutputStream(jpgFile);
 				// 将文件数据存储到文件中

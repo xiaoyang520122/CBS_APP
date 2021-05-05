@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 
+import com.bumptech.glide.util.Util;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.LoginActivity;
 import com.cninsure.cp.entity.User;
@@ -49,7 +50,12 @@ public class UserInfoUtil {
 	private static Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
-			context.startActivity(new Intent(context, LoginActivity.class));
+			try {
+				if (Util.isOnMainThread())
+				context.startActivity(new Intent(context, LoginActivity.class));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			super.handleMessage(msg);
 		}
 	};

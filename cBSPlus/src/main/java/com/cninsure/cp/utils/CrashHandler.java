@@ -4,8 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;  
 import java.io.FilenameFilter;  
 import java.io.PrintWriter;  
-import java.io.StringWriter;  
-import java.io.Writer;  
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.lang.Thread.UncaughtExceptionHandler;  
 import java.lang.reflect.Field;  
 import java.text.DateFormat;  
@@ -127,7 +128,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             saveCrashInfoFile(ex);
             SystemClock.sleep(3000);
 //            ActivityCollector.finishAll();//有时候异常抛出后重启会进入之前的activity，这样部分数据报空，如用户信息，为了避免直接全部杀死，然后重新登录。
-            mContext.startActivity(new Intent(mContext,LoadingActivity.class));
+//            mContext.startActivity(new Intent(mContext,LoadingActivity.class));
         } catch (Exception e) {  
             e.printStackTrace();  
         }  
@@ -281,8 +282,12 @@ public class CrashHandler implements UncaughtExceptionHandler {
 			@Override
 			public void run() {
 				super.run();
-				HttpRequestTool.sendPost(minterface, params, typecode);
-			}
+                try {
+                    HttpRequestTool.sendPost(minterface, params, typecode);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
 		}.start();
 	}
   

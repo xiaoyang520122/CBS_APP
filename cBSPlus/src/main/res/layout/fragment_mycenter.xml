@@ -178,7 +178,7 @@
             android:gravity="center_vertical"
             android:onClick="goToPage"
             android:orientation="horizontal"
-            android:padding="8dp" >
+            android:padding="8dp">
 
             <ImageView
                 android:layout_width="@dimen/my_menu_ico_size"
@@ -191,6 +191,40 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="货运险-全流程"
+                android:textColor="@color/hui_text_xxh" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:src="@drawable/left_jt_hui" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="#e1e1e1" />
+
+        <LinearLayout
+            android:id="@+id/my_menu_yjxnew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:onClick="goToPage"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/my_menu_ico_size"
+                android:layout_height="@dimen/my_menu_ico_size"
+                android:layout_margin="10dp"
+                android:src="@drawable/yjxnew_ico_yellow48" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="医健险-(新)全流程"
                 android:textColor="@color/hui_text_xxh" />
 
             <ImageView

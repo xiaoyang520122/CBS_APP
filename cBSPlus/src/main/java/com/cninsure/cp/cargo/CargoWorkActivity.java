@@ -292,6 +292,7 @@ public class CargoWorkActivity extends BaseActivity {
         setSignOnclick(surveyView.findViewById(R.id.CargoSR_ckGgsUrl), 5);
         setSignOnclick(surveyView.findViewById(R.id.CargoSR_signatureUrl), 6);
         setSignOnclick(surveyNotView.findViewById(R.id.CargoSRN__signButton), 7);
+        setSignOnclick(surveyNotView.findViewById(R.id.CargoSRN__signrpButton), 10);
 
         setSignOnclick(askHeadView.findViewById(R.id.cargoSA_signatureUrl), 8);
         setSignOnclick(recordsHeadView.findViewById(R.id.cargoSLR_signatureUrl_sign), 9);
@@ -325,6 +326,7 @@ public class CargoWorkActivity extends BaseActivity {
             case 7: upSignPhoto(data,7);break; //非集装箱 签字返回图片
             case 8: upSignPhoto(data,8);break; //询问笔记 签字返回图片
             case 9: upSignPhoto(data,9);break; //清点记录 签字返回图片
+            case 10: upSignPhoto(data,10);break; //非集装箱 被保人签字返回图片
             case ViewHeadUtil.FILE_SELECT_CODE: upFile(data,ViewHeadUtil.FILE_SELECT_CODE); break;
             case ViewHeadUtil.FILE_SELECT_CODE_RA: upFile(data,ViewHeadUtil.FILE_SELECT_CODE_RA); break;
             case ViewHeadUtil.FILE_SELECT_CODE_LR: upFile(data,ViewHeadUtil.FILE_SELECT_CODE_LR); break;
@@ -424,11 +426,13 @@ public class CargoWorkActivity extends BaseActivity {
             if (on) {  //集装箱
                 ((LinearLayout)surveyHeadView.findViewById(R.id.CargoSR_OnLineView)).addView(surveyView);
                 sREn.ckDocType="0";
+                sREn.records.signatureUrl = ""; //收货/代理人 签名
                 ((ToggleButton)surveyView.findViewById(R.id.CargoSR_ckDocType)).setToggleOn(true);
                 surveyUtil.disPlayContainerInfo(caseBaoanTable.caseNo,caseBaoanTable.insured);
             }else{  //非集装箱
                 ((LinearLayout)surveyHeadView.findViewById(R.id.CargoSR_OnLineView)).addView(surveyNotView);
                 sREn.ckDocType="1";
+                sREn.records.signatureUrl = ""; //清空一下被保人签名
                 ((ToggleButton)surveyNotView.findViewById(R.id.CargoSRN_ckDocTypeNotC)).setToggleOff(true);
                 surveyUtil.disPlayNotContainerInfo(caseBaoanTable.insured,caseBaoanTable.riskTime);
             }
@@ -562,6 +566,10 @@ public class CargoWorkActivity extends BaseActivity {
                 if ("UPLOAD_SUCCESS".equals(value.get(1).getName())) {
                     signMeath(value.get(1).getValue(),9);
                 }
+            }else if (type==10) {  //非集装箱签字返回图片
+                if ("UPLOAD_SUCCESS".equals(value.get(1).getName())) {
+                    signMeath(value.get(1).getValue(),10);
+                }
             }
         } catch (NumberFormatException e) {
             e.printStackTrace();
@@ -584,9 +592,10 @@ public class CargoWorkActivity extends BaseActivity {
         switch (positi){
             case 5: sREn.records.ckGgsUrl = url;break; //集装箱 现场查勘人 签字返回图片
             case 6: sREn.records.signatureUrl = url;break; //集装箱 收货人/代理人 签字返回图片
-            case 7: sREn.records.signatureUrl = url;break; //非集装箱 签字返回图片
+            case 7: sREn.records.ckGgsUrl = url;break; //非集装箱 查勘员 签字返回图片
             case 8: RaEn.signatureUrl = url;break; //询问记录 签字返回图片
             case 9: LrEn.signatureUrl = url;break; //清点记录 签字返回图片
+            case 10: sREn.records.signatureUrl = url;break; //非集装箱 被保险人 签字返回图片
         }
            surveyUtil.disPlaySign();//显示签名
            vHeadUtil.disPlayAskSignImg(askHeadView, RaEn);
@@ -661,7 +670,7 @@ public class CargoWorkActivity extends BaseActivity {
     /**上传作业图片**/
     private void submitWorkImage(){
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
+//        List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
         List<CargoCaseWorkImagesTable> submitImgEnList = new ArrayList<>();  // 待上传图片类集合
 
         for (String keyStr:classImgMap.keySet()){ //现场状况照片

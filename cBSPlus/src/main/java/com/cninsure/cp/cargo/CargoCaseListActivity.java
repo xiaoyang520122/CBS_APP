@@ -70,7 +70,7 @@ public class CargoCaseListActivity extends BaseActivity implements View.OnClickL
         initView();
         setUserCenterTvOnclick();
         getDefaulList(); //加载空数据
-        getDefaulData(0); //默认重第一条开始查询
+//        getDefaulData(0); //默认重第一条开始查询
         new PermissionApplicationUtil(this); //申请读写权限和拍照权限
         FloatingWindowPermissionUtil.isAppOps(this);  //悬浮弹框权限检查
     }
@@ -109,6 +109,8 @@ public class CargoCaseListActivity extends BaseActivity implements View.OnClickL
     protected void onResume() {
         super.onResume();
         UserInfoUtil.USERIsNull(this);  //判断用户信息是否为空
+        if (dDadapter.size()>2)
+            getDefaulData(0); //默认重第一条开始查询
     }
 
     /**获取分散型调度列表*/

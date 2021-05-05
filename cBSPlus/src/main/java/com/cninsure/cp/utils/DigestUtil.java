@@ -15,7 +15,7 @@ public class DigestUtil {
 
 		Map<String, String> map1 = new HashMap<String, String>();
 		for (NameValuePair nv : value) {
-			map1.put(nv.getName(), nv.getValue());
+			if (nv!=null)map1.put(nv.getName(), nv.getValue());
 		}
 
 		Map<String, String> map = new TreeMap<String, String>(map1);

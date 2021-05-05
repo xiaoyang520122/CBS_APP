@@ -224,13 +224,17 @@ public class MyCenterFragment extends Fragment {
 	 * 如果是外部公估师，显示签约状态
 	 */
 	private void setExtactSignStatus() {
-		ExtUserEtity extUserEtity = OrderNowFragment.extactUserUtil.extUserEtity;
-		if (extUserEtity!=null && extUserEtity.data!=null && extUserEtity.data.status!=null ){
-			if (extUserEtity.data.status == 0) signStatusTv.setText("未签约");
-			if (extUserEtity.data.status == 1) signStatusTv.setText("已签约");
-			contentView.findViewById(R.id.my_menu_signStatusLineaLayout).setOnClickListener(v -> {
-				OrderNowFragment.extactUserUtil.jumpToSignView(getActivity());
-			});
+		if (OrderNowFragment.extactUserUtil!=null) {
+			ExtUserEtity extUserEtity = OrderNowFragment.extactUserUtil.extUserEtity;
+			if (extUserEtity != null && extUserEtity.data != null && extUserEtity.data.status != null) {
+				if (extUserEtity.data.status == 0) signStatusTv.setText("未签约");
+				if (extUserEtity.data.status == 1) signStatusTv.setText("已签约");
+				contentView.findViewById(R.id.my_menu_signStatusLineaLayout).setOnClickListener(v -> {
+					OrderNowFragment.extactUserUtil.jumpToSignView(getActivity());
+				});
+			} else {
+				signStatusTv.setText("");
+			}
 		}else {
 			signStatusTv.setText("");
 		}

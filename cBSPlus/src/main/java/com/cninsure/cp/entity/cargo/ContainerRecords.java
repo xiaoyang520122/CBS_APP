@@ -55,7 +55,7 @@ public class ContainerRecords implements Serializable {
     public Integer silverNitrateDetection	; //硝酸银检测  [{ value: 0, label: '海水' },{ value: 1, label: '淡水' }]
     public Integer isBrokenPackge	; //包装是否破损  [{ value: 0, label: '是' },{ value: 1, label: '否' }]
     public String ckGgsUrl	; //现场查勘人
-    public String signatureUrl	; //现场负责人/代理人
+    public String signatureUrl	; //现场负责人/代理人 签名
     public String addedExplain;//补充说明
 
 

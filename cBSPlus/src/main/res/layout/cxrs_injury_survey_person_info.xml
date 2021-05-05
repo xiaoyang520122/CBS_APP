@@ -661,7 +661,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsInSu_"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -702,7 +702,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsInSu_"
+                    
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -743,7 +743,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsInSu_"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -836,7 +836,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsInSu_"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -876,7 +876,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsInSu_"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -917,7 +917,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsInSu_"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -957,7 +957,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsInSu_"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -986,7 +986,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <RadioGroup
-                    android:id="@+id/CxRsInSu_"
+                    
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
@@ -994,7 +994,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsInSu_"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -1010,7 +1010,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsInSu_"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -1054,7 +1054,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsInSu_"
+                    
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -1076,7 +1076,7 @@
 
 
                 <TextView
-                    android:id="@+id/CxRsInSu_"
+                    
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -1116,7 +1116,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsInSu_"
+                    
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="2"
@@ -1156,7 +1156,7 @@
             android:padding="10dp">
 
             <com.cninsure.cp.view.AutoLinefeedLayout
-                android:id="@+id/CxRsInSu_"
+                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -1170,7 +1170,7 @@
                     android:padding="5dp">
 
                     <CheckBox
-                        android:id="@+id/CxRsInSu_"
+                        
                         style="@style/CustomCheckboxTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1191,7 +1191,7 @@
                     android:padding="5dp">
 
                     <CheckBox
-                        android:id="@+id/CxRsInSu_"
+                        
                         style="@style/CustomCheckboxTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1212,7 +1212,7 @@
                     android:padding="5dp">
 
                     <CheckBox
-                        android:id="@+id/CxRsInSu_"
+                        
                         style="@style/CustomCheckboxTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1233,7 +1233,7 @@
                     android:padding="5dp">
 
                     <CheckBox
-                        android:id="@+id/CxRsInSu_"
+                        
                         style="@style/CustomCheckboxTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1249,7 +1249,7 @@
             </com.cninsure.cp.view.AutoLinefeedLayout>
 
             <LinearLayout
-                android:id="@+id/CxRsInSu_"
+                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"

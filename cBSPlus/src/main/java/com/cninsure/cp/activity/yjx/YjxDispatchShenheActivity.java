@@ -203,7 +203,7 @@ public class YjxDispatchShenheActivity extends BaseActivity implements OnChecked
 		workView.findViewById(R.id.YJXWV_chocieBycamera).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				FilePath = PhotoPathUtil.getPictureCreatePath(baoanDataEn.uid);
+				FilePath = PhotoPathUtil.getPictureCreatePath(baoanDataEn.uid,YjxDispatchShenheActivity.this);
 				PickPhotoUtil.cameraPhotoToUrl(YjxDispatchShenheActivity.this, FilePath, PickPhotoUtil.PHOTO_REQUEST_CAMERAPHOTO_W);
 			}
 		});
@@ -575,7 +575,7 @@ public class YjxDispatchShenheActivity extends BaseActivity implements OnChecked
 		wtInfoView.findViewById(R.id.YJXWWV_chocieBycamera).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				FilePath = PhotoPathUtil.getPictureCreatePath(baoanDataEn.uid);
+				FilePath = PhotoPathUtil.getPictureCreatePath(baoanDataEn.uid,YjxDispatchShenheActivity.this);
 				PickPhotoUtil.cameraPhotoToUrl(YjxDispatchShenheActivity.this, FilePath, PickPhotoUtil.PHOTO_REQUEST_CAMERAPHOTO);
 			}
 		});

@@ -38,6 +38,7 @@ import com.cninsure.cp.utils.ActivityCollector;
 import com.cninsure.cp.utils.AppStartUtil;
 import com.cninsure.cp.utils.AppUtil;
 import com.cninsure.cp.utils.DialogUtil;
+import com.cninsure.cp.utils.HttpRequestTool;
 
 public class BaseActivity extends FragmentActivity {
 
@@ -94,7 +95,9 @@ public class BaseActivity extends FragmentActivity {
 	protected void onResume() {
 		super.onResume();
 		isNetWork();
-		StarFlag = true; //表示APP在前端了
+		StarFlag = true; 					//表示APP在前端了
+		if (HttpRequestTool.cookie!=null)
+			AppApplication.getUSER();		//验证登录信息是否为空
 	}
 
 	@Override

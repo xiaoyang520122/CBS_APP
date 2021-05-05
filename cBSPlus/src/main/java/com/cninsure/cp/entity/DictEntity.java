@@ -66,6 +66,10 @@ public class DictEntity extends FCBasicEntity {
 		public List<publicData> mainLoss_type; 
 		/**上传文件类型*/
 		public List<publicData> file_type_id;
+		/**医健险V1 申请人与被保人关系*/
+		public List<publicData> relationship;
+		/**医健险V1 委托资料分类*/
+		public List<publicData> yjxCaseWorkMediaType;
 
 		
 		
@@ -101,5 +105,13 @@ public class DictEntity extends FCBasicEntity {
 			tempdata.add(data.label);
 		}
 		return tempdata;
+	}
+	/**通过value获取label*/
+	public String getLableByValue(List<publicData> dictList,int value){
+		List<String> tempdata=new ArrayList<String>();
+		for (publicData data:dictList) {
+			if (value==data.value) return data.label;
+		}
+		return "";
 	}
 }

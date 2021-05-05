@@ -367,7 +367,7 @@ public class TaskBasicInfoFragment extends BaseFragment {
         sb.append("损失类型："+getTextInfo(suInTemp!=null?getLossTypeText(suInTemp.lossType):"")+"\n");
         sb.append("损失情况："+getTextInfo(getLossObjectTypeText())+"\n");
         sb.append("报案驾驶员："+getTextInfo(suInTemp!=null?suInTemp.baoanDriverName:"")+"\n");
-        sb.append("车辆能否正常行驶："+getTextInfo(suInTemp!=null?(suInTemp.canDriveNormally==1?"是":(suInTemp.canDriveNormally==0?"否":"--")):""+"\n"));
+        sb.append("车辆能否正常行驶："+getTextInfo(suInTemp!=null?(suInTemp.canDriveNormally==null?""+"\n":(suInTemp.canDriveNormally==1?"是":(suInTemp.canDriveNormally==0?"否":"--"))) :""+"\n"));
         return sb.toString();
     }
 

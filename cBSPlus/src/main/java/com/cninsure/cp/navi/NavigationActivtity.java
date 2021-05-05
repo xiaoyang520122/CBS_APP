@@ -42,6 +42,7 @@ import com.baidu.mapapi.search.route.TransitRoutePlanOption;
 import com.baidu.mapapi.search.route.TransitRouteResult;
 import com.baidu.mapapi.search.route.WalkingRoutePlanOption;
 import com.baidu.mapapi.search.route.WalkingRouteResult;
+import com.bumptech.glide.util.Util;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.utils.CallUtils;
@@ -218,8 +219,13 @@ public class NavigationActivtity extends BaseActivity {
 	}
 	
 	/**如果地理编码失败，就提示用户*/
-	private void showErrorMsg() {
-		DialogUtil.getErrDialog(NavigationActivtity.this, "通过该地址无法进行线路规划！\n地址："+getIntent().getStringExtra("biaodiAddress")).show();
+	private void showErrorMsg() { //在主线程就显示。
+		if (Util.isOnMainThread())
+			try {
+				DialogUtil.getErrDialog(NavigationActivtity.this, "通过该地址无法进行线路规划！\n地址："+getIntent().getStringExtra("biaodiAddress")).show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 	
 	

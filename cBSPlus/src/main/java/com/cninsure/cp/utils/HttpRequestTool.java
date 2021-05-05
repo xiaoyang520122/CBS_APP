@@ -20,10 +20,13 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.cookie.Cookie;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.AbstractHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.greenrobot.eventbus.EventBus;
 
@@ -276,6 +279,42 @@ public class HttpRequestTool {
 	/**货运险查勘提交*/
 	public final static int  CARGO_SURVEY_SUBMIT=1116;
 
+	/***********************医健险新全流程V1********************************/
+	/**医健险新全流程V1 获取任务列表**/
+	public final static int YJXNEW_ORDER_LIST = 1117;
+	/**医健险全流程V1 通过任务id接受订单*/
+	public final static int YJXNEW_ACCEPT_BY_ORDER = 1118;
+	/**医健险全流程V1 接受全部任务*/
+	public final static int YJXNEW_ACCEPT_ALL = 1119;
+	/**医健险新全流程V1 获取任务列表**/
+	public final static int YJXNEW_ORDER_LIST_ACCEPT = 1120;
+	/**医健险新全流程V1 GET 报案所有任务**/
+	public final static int YJXNEW_ALL_DISPARCH = 1121;
+	/**医健险新全流程V1 GET 报案详情**/
+	public final static int YJXNEW_JIEBAOAN_VIEW = 1122;
+	/**医健险新全流程V1 GET 获取字典值**/
+	public final static int GET_DICT = 1123;
+	/**医健险新全流程V1 GET 获取医健险接报案委托资料**/
+	public final static int YJXNEW_GET_WORK_IMAGES = 1124;
+	/**POST 订单转转派（转移） userId，id，ggsUid**/
+	public final static int CX_ORDER_TRANSFER = 1125;
+	/**POST 车险获取用户列表（公估师归属分公司下面的用户，如果是总部人员就查全部） useryType 用户类型，传99，因为要求是车童，还有userId，name**/
+	public final static int CX_GET_USER_BY_ORGID = 1126;
+	/**get 医健险新全流程V1 GET 任务的作业信息 dispatchUid*/
+	public final static int YJXNEW_GET_WORK_VIEW = 1127;
+	/**get 医健险新全流程V1 POST 作业信息新增 userId*/
+	public final static int YJXNEW_WORK_SAVE_TEMP = 1128;
+	/**get 医健险新全流程V1 POST 作业信息新增 userId*/
+	public final static int YJXNEW_WORK_SAVE_SUBMIT = 1129;
+	/**get 医健险新全流程V1 POST 上传作业图片到服务器*/
+	public final static int YJXNEW_UPLOAD_FILE_PHOTO = 1130;
+	/**get 医健险新全流程V1 POST 保存图片路径*/
+	public final static int YJXNEW_WORK_IMG_SAVE = 1131;
+	/**医健险新全流程V1 获取任务列表**/
+	public final static int YJXNEW_ORDER_LIST_PASS = 1132;
+	/**医健险新全流程V1 获取任务列表**/
+	public final static int YJXNEW_ORDER_LIST_UNPASS = 1133;
+
 
 
 
@@ -368,28 +407,56 @@ public class HttpRequestTool {
 	
 	
 	@SuppressLint("NewApi")
-	public static String sendPost(String url, List<NameValuePair> params, int typecode) {
+	public static String sendPost(String url, List<NameValuePair> params, int typecode) throws UnsupportedEncodingException {
 		
 		String result = "{'doStatu':'false','doMsg':'请求失败'}";
 		int responsecode = 0;
-		
+		HttpParams httpParams = new BasicHttpParams();
+		StringEntity stringEntity = null;
+		String str1 = "";
+
+		for (NameValuePair nv : params) {
+			if(nv!=null && !"JSON_ENTITY".equals(nv.getName())){
+				str1 += nv.getName() + "=" + nv.getValue() + ":";
+			} else if ("JSON_ENTITY".equals(nv.getName())) {
+				stringEntity = new StringEntity(nv.getValue(), "UTF-8");	//推荐的方法
+				stringEntity.setContentEncoding("UTF-8");
+				stringEntity.setContentType("application/json");
+				params.remove(nv);
+				break;
+			}
+		}
+
 		if (url.indexOf("app/interface")==-1) {//非车接口不用加密
 			params.add(new BasicNameValuePair("client", "android"));
 			params.add(new BasicNameValuePair("timestamp", new Date().getTime()+""));
 			params.add(new BasicNameValuePair("digest", DigestUtil.getDigestByNamevaluepairList(params)));
-		
-		HttpPost httpPost = new HttpPost(url);
-		DefaultHttpClient httpClient= new DefaultHttpClient();
 
-		String str = "";
-		for (NameValuePair nv : params) {
-			str += nv.getName() + "=" + nv.getValue() + ":";
-		}
+			for (NameValuePair nv : params) {
+				httpParams.setParameter(nv.getName(), nv.getClass());
+			}
 		Log.i("JsonHttpUtils", "请求网址" + typecode + "为：" + url);
-		Log.i("JsonHttpUtils", "请求参数" + typecode + "为：" + str);
+		Log.i("JsonHttpUtils", "请求参数" + typecode + "为：" + str1);
 
+			HttpPost httpPost=null;
+			DefaultHttpClient httpClient= new DefaultHttpClient();
 		try {
-			httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+			if (stringEntity==null){
+				httpPost = new HttpPost(url);
+				httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+			}else{ //"application/json"请求
+				if (params.size()>0) url += "?";
+				for (NameValuePair nv : params){
+					if (nv!=null){
+						url += nv.getName()+"="+nv.getValue()+"&";
+					}
+				}
+				if (url.indexOf("&")>-1) url = url.substring(0,url.length()-2);
+				httpPost = new HttpPost(url);
+//				httpPost.setParams(httpParams);
+				//设置表单的Entity对象到Post请求中
+				httpPost.setEntity(stringEntity);
+			}
 			HttpResponse httpResp;
 			if (typecode != LOGIN_BY_PASS) {
 				PersistentCookieStore cookieStore = new PersistentCookieStore(AppApplication.getInstance().getApplicationContext());
@@ -409,7 +476,7 @@ public class HttpRequestTool {
 				try {
 					result = "{success:false,msg:'请求失败1'"+EntityUtils.toString(httpResp.getEntity(), "UTF-8")+"}";
 				} catch (Exception e) {
-					result = "{success:false,msg:'请求失败1'}";
+					result = "{success:false,msg:'请求失败1:"+responsecode+"'}";
 					e.printStackTrace();
 				}
 			}
@@ -439,7 +506,7 @@ public class HttpRequestTool {
 			httpClient.getConnectionManager().shutdown();
 		}
 		}else {//非车接口调用指定请求获取数据
-			if (params.size()>1) {//参数长度大于1代表非车接口需要通过form表单的形式提交
+			if (params.size()>0) {//参数长度大于1代表非车接口需要通过form表单的形式提交
 				HttpPost httpPost = new HttpPost(url);
 				DefaultHttpClient httpClient= new DefaultHttpClient();
 

@@ -24,16 +24,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cninsure.cp.R;
-import com.cninsure.cp.activty.WorkOrderActivty;
-import com.cninsure.cp.activty.WorkOrderActivtyhelp;
 import com.cninsure.cp.cargo.CargoWorkActivity;
-import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment;
-import com.cninsure.cp.dispersive.DispersiveWorkActivity;
 import com.cninsure.cp.entity.WorkPhotos.TableData.WorkPhotoEntitiy;
 import com.cninsure.cp.entity.cargo.CargoCaseWorkImagesTable;
-import com.cninsure.cp.entity.cx.CxImagEntity;
-import com.cninsure.cp.entity.fc.WorkFile;
-import com.cninsure.cp.utils.GlideCircleTransform;
 import com.cninsure.cp.utils.ImageDisplayUtil;
 import com.cninsure.cp.utils.ImageUtil;
 import com.cninsure.cp.utils.PhotoPathUtil;
@@ -159,7 +152,7 @@ public class CargoPhotoChoiceActivity extends Activity {
 	/** 压缩，打水印并储存照片到制定路径，然后存入照片列表对象中 **/
 	private void handleAndSaveImag(int postion) {
 		// 将文件存储在SD卡的根目录，并以系统时间将文件命名
-		String PicturePath = PhotoPathUtil.getPictureCreatePath(getIntent().getStringExtra("orderUid"));
+		String PicturePath = PhotoPathUtil.getPictureCreatePath(getIntent().getStringExtra("orderUid"),CargoPhotoChoiceActivity.this);
 		choiceImgs.put(postion, PicturePath);
 
 		Intent data = new Intent();

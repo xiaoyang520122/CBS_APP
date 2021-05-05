@@ -60,7 +60,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
         if (replaceInfos==null) return "0";
         float total = 0f;
         for (CxDsReplaceInfos items : replaceInfos){
-            total += items.unitTotalPrice;
+            if(items.unitTotalPrice!=null) total += items.unitTotalPrice;
         }
         return total+"";
     }
@@ -98,7 +98,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
         if (timeInfos==null) return "0";
         float total = 0f;
         for (CxDsTimeInfos items:timeInfos){
-            total+= items.dsAmount;
+            if (items.dsAmount!=null) total+= items.dsAmount;
         }
         return total+"";
     }
@@ -145,7 +145,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
         if (repairInfos==null) return "0";
         float total = 0f;
         for (CxDsRepairInfos items:repairInfos){
-            total+= items.dsAmount;
+            if (items.dsAmount!=null)total+= items.dsAmount;
         }
         return total+"";
     }

@@ -96,7 +96,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -125,7 +125,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -141,7 +141,7 @@
 
             </LinearLayout>
             <EditText
-                android:id="@+id/CxRsDisabyI_appraisalOffice"
+                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/line_bg"
@@ -177,7 +177,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -218,7 +218,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalOffice"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -257,7 +257,7 @@
 
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -286,7 +286,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -294,7 +294,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -310,7 +310,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -352,7 +352,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalOffice"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -391,7 +391,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalOffice"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -459,7 +459,7 @@
 
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -601,7 +601,7 @@
 
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -609,7 +609,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -625,7 +625,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -670,7 +670,7 @@
 
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -678,7 +678,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -694,7 +694,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -739,7 +739,7 @@
 
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -747,7 +747,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -763,7 +763,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -806,7 +806,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -848,7 +848,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -890,7 +890,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -934,7 +934,7 @@
 
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -942,7 +942,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -958,7 +958,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -1003,7 +1003,7 @@
 
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="3"
@@ -1011,7 +1011,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -1027,7 +1027,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -1071,7 +1071,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalTel"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -1134,7 +1134,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -1163,7 +1163,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -1206,7 +1206,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalTel"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -1248,7 +1248,7 @@
 
 
                 <TextView
-                    android:id="@+id/CxRsDisabyI_deliveryCompany"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -1292,7 +1292,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalTel"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -1454,7 +1454,7 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <EditText
-                    android:id="@+id/CxRsDisabyI_appraisalTel"
+                    
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -1522,14 +1522,14 @@
 
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:gravity="right"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -1545,7 +1545,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -1591,14 +1591,14 @@
 
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:gravity="right"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -1614,7 +1614,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -1659,14 +1659,14 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:gravity="right"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -1682,7 +1682,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -1727,14 +1727,14 @@
 
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:gravity="right"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -1750,7 +1750,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"
@@ -1794,14 +1794,14 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <RadioGroup
-                    android:id="@+id/CxRsDisabyI_deliveryMode_RG"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:gravity="right"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBT"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
@@ -1817,7 +1817,7 @@
                         android:textSize="@dimen/text_l" />
 
                     <RadioButton
-                        android:id="@+id/CxRsDisabyI_deliveryMode_RBF"
+                        
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_true_false_blue"

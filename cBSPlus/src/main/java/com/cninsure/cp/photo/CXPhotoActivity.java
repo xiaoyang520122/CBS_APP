@@ -355,7 +355,7 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 		public void onPictureTaken(byte[] data, Camera camera) {
 			try {
 				// 将文件存储在SD卡的根目录，并以系统时间将文件命名
-				String PicturePath=PhotoPathUtil.getPictureCreatePath(getIntent().getStringExtra("orderUid"));
+				String PicturePath=PhotoPathUtil.getPictureCreatePath(getIntent().getStringExtra("orderUid"),CXPhotoActivity.this);
 				File jpgFile = new File(PicturePath);
 				// 文件输出流对象
 				FileOutputStream outStream = new FileOutputStream(jpgFile);

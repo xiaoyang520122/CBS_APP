@@ -308,7 +308,7 @@ private void setConViewOnclick(View conView, final int itemCode) {
 		liAnView.findViewById(R.id.YJXBAINP_chocieBycamera).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				FilePath = PhotoPathUtil.getPictureCreatePath("CBS_Yjx_JieBaoAn");
+				FilePath = PhotoPathUtil.getPictureCreatePath("CBS_Yjx_JieBaoAn",YjxBaoanInputActivity.this);
 				PickPhotoUtil.cameraPhotoToUrl(YjxBaoanInputActivity.this,FilePath,PickPhotoUtil.PHOTO_REQUEST_CAMERAPHOTO);
 			}
 		});
@@ -379,7 +379,7 @@ private void setConViewOnclick(View conView, final int itemCode) {
 		liAnView.findViewById(R.id.YJXBAINP_chocieBycamera).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				FilePath = PhotoPathUtil.getPictureCreatePath("YJX-Input-Case");
+				FilePath = PhotoPathUtil.getPictureCreatePath("YJX-Input-Case",YjxBaoanInputActivity.this);
 				PickPhotoUtil.cameraPhotoToUrl(YjxBaoanInputActivity.this,FilePath,PickPhotoUtil.PHOTO_REQUEST_CAMERAPHOTO);
 			}
 		});

@@ -1,8 +1,10 @@
 package com.cninsure.cp.utils;
 
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -15,6 +17,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -27,8 +30,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.core.content.FileProvider;
+
 import com.cninsure.cp.IndexActivity;
 import com.cninsure.cp.R;
+import com.tamsiree.rxkit.RxAppTool;
 
 public class APPDownloadUtils {
 
@@ -73,7 +79,7 @@ public class APPDownloadUtils {
 	        new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 	    showDownloadDialog();//显示展示下载进度信息的Dialog
 	  }
-	  
+
 	  /**进度信息*/
 	  private TextView downloadProgressTv;
 	  private ProgressBar progressBar;
@@ -157,7 +163,7 @@ public class APPDownloadUtils {
 	  
 	 
 	  //广播监听下载的各个状态
-	  private BroadcastReceiver receiver = new BroadcastReceiver() {
+	  public BroadcastReceiver receiver = new BroadcastReceiver() {
 	    @SuppressLint("NewApi")
 		@Override
 	    public void onReceive(Context context, Intent intent) {
@@ -173,7 +179,7 @@ public class APPDownloadUtils {
 	    //通过下载的id查找
 	    query.setFilterById(downloadId);
 	    Cursor c = downloadManager.query(query);
-	    if (c.moveToFirst()) {
+	    if (c!=null && c.moveToFirst()) {
 //	    	upDataDownloadMsg(c);
 	    	int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
 	      switch (status) {
@@ -189,9 +195,11 @@ public class APPDownloadUtils {
 	        //下载完成
 	        case DownloadManager.STATUS_SUCCESSFUL:
 	        	downdialog.dismiss();
-	        	mContext.finish();
+//				mContext.finish();
+				mContext.unregisterReceiver(receiver); //下载完成注销广播，避免报错。
 	          //下载完成安装APK
 	          installAPK();
+				mContext.finish();
 	          break;
 	        //下载失败
 	        case DownloadManager.STATUS_FAILED:
@@ -218,30 +226,73 @@ public class APPDownloadUtils {
 	  //下载到本地后执行安装
 	  @SuppressLint("NewApi")
 	private void installAPK() {
-		  
+//		  File imagePath = new File(Context.getFilesDir(), "images");
+//		  File newFile = new File(imagePath, "default_image.jpg");
+//		  Uri contentUri = getUriForFile(mContext, "com.cninsure.cp.fileprovider", newFile); //包名.fileprovider
+
+
 	    //获取下载文件的Uri
 	    Uri downloadFileUri = downloadManager.getUriForDownloadedFile(downloadId);
 	    if (downloadFileUri != null) {
-//	      Intent intent= new Intent(Intent.ACTION_VIEW);
 	      String filePath=UriUtils.getFileUrl(mContext, downloadFileUri);
-//	      File apkfile=new File(filePath);
+			if(!isGrantExternalRW(mContext)){
+				ToastUtil.showToastLong(mContext,"没有读写权限！");
+			}else {
+				try {
+					Intent install = new Intent(Intent.ACTION_VIEW);
+					if (Build.VERSION.SDK_INT >= 24) {//判读版本是否在7.0以上
+						File file = new File(filePath);
+						Intent intent = new Intent(Intent.ACTION_VIEW);
+						int flags = Intent.FLAG_GRANT_READ_URI_PERMISSION;
+						intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						//        Uri uri = Uri.fromFile(file);7.0以前版本可以用这种方式 获取uri
+						Uri uri = FileProvider.getUriForFile(mContext, mContext.getApplicationContext().getPackageName() + ".provider", file);//7.0以后 就要使用fileprovider来封装Uri
+						intent.setFlags(flags);
+						intent.setDataAndType(uri, "application/vnd.android.package-archive");
+						mContext.startActivity(intent);
+					} else {
+						install.setDataAndType(Uri.parse("file://" + filePath), "application/vnd.android.package-archive");
+						install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						mContext.startActivity(install);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+
+//			Intent install = new Intent(Intent.ACTION_VIEW);
+//			if (Build.VERSION.SDK_INT >= 24) {//判读版本是否在7.0以上
+//				install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//				install.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);//添加这一句表示对目标应用临时授权该Uri所代表的文件
+//				install.setDataAndType(downloadFileUri, "application/vnd.android.package-archive");
+//				mContext.startActivity(install);
+//			} else {
+//				install.setDataAndType(Uri.parse("file://" + filePath), "application/vnd.android.package-archive");
+//				install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//				mContext.startActivity(install);
+//			}
 	      
-	      
-	      Intent install = new Intent(Intent.ACTION_VIEW);
-	      if(Build.VERSION.SDK_INT>=24) {//判读版本是否在7.0以上
-	    	    install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	    	    install.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);//添加这一句表示对目标应用临时授权该Uri所代表的文件
-	    	    install.setDataAndType(downloadFileUri, "application/vnd.android.package-archive");
-	    	    mContext.startActivity(install);
-	    	}else {
-	    		install.setDataAndType(Uri.parse("file://"+filePath), "application/vnd.android.package-archive");
-	    		install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	    	    mContext.startActivity(install);
-	    	}
-	      
-//	      intent.setDataAndType(downloadFileUri, "application/vnd.android.package-archive");
-//	      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//	      mContext.startActivity(intent);
 	    }
 	  }
+
+	/**
+	 * 获取储存权限
+	 * @return
+	 */
+
+	public static boolean isGrantExternalRW(Activity mContext) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && mContext.checkSelfPermission(
+				Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+			mContext.requestPermissions(new String[]{
+					Manifest.permission.READ_EXTERNAL_STORAGE,
+					Manifest.permission.WRITE_EXTERNAL_STORAGE
+			}, 1);
+
+			return false;
+		}
+		return true;
+	}
+
 }

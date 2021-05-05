@@ -89,7 +89,7 @@ public class CxImagFragment extends BaseFragment {
             DialogUtil.getAlertOneButton(activity, "没有需要上传的图片！", null).show();
         }
     }
-    /**上传作业图片**/
+    /**上传作业图片路径**/
     private void saveImg() {
         List<NameValuePair> httpParams = new ArrayList<>();
 //        httpParams.add(new BasicNameValuePair( "id", tempImgData.id==0?"":tempImgData.id+""));  //替换图片时使用
@@ -162,6 +162,14 @@ public class CxImagFragment extends BaseFragment {
                 break;
             default:
                 break;
+        }
+    }
+
+    /**上传影像资料成功后刷新界面**/
+    @Subscribe(threadMode=ThreadMode.MAIN)
+    public void eventmeth(String successCode){
+        if ("UPLOAD_SUCCESS".equals(successCode)) {
+            photoListView.deferNotifyDataSetChanged();
         }
     }
 

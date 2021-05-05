@@ -44,6 +44,7 @@ import com.cninsure.cp.entity.FCOrderEntity;
 import com.cninsure.cp.entity.PagedRequest;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
+import com.cninsure.cp.entity.cx.CxOrderEntity;
 import com.cninsure.cp.entity.fc.APPRequestModel;
 import com.cninsure.cp.entity.fc.ShenheMsgEntity;
 import com.cninsure.cp.entity.yjx.YjxOrderListEntity;
@@ -59,6 +60,7 @@ import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.MyPullRefreshListViewAlertUtil;
 import com.cninsure.cp.utils.PopupWindowUtils;
 import com.cninsure.cp.utils.ToastUtil;
+import com.cninsure.cp.utils.cx.EmptyViewUtil;
 import com.cninsure.cp.view.LoadingDialog;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -83,7 +85,7 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 	private int checkType=0;
 	private RadioGroup radgrup;
 	/**listView数据为空时显示的提示*/
-	private TextView emptyTv;
+//	private TextView emptyTv;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -110,45 +112,53 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 
 	private void initView() {
 		mPullRefreshListView = (PullToRefreshListView) contentView.findViewById(R.id.MOLF_pull_refresh_list);
-		mPullRefreshListView.setEmptyView(contentView.findViewById(R.id.orderNF_emptyText));
+		new EmptyViewUtil().SetEmptyView(getActivity(),mPullRefreshListView);
 		radgrup = (RadioGroup) contentView.findViewById(R.id.ENDORDER_btnG);
-		emptyTv = (TextView) contentView.findViewById(R.id.MOLF_emptyText);
-		
+
 		mPullRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
-//		mPullRefreshListView.setOnItemClickListener(this);
 		radgrup.setOnCheckedChangeListener(this);
 		loadDialog = new LoadingDialog(MyOrderListFragment.this.getActivity());
-//		data = new ArrayList<List<PublicOrderEntity>>(4);
-//		for (int i = 0; i < 4; i++) {
-//			data.add(new ArrayList<PublicOrderEntity>());
-//		}
 	}
 
 	private void dowLoadingDataCX(int startPoint) {
 		paramsList = new ArrayList<String>(4);
+//		paramsList.add("userId");
+//		paramsList.add(AppApplication.getUSER().data.userId);
+//		paramsList.add("size");
+//		paramsList.add(10 + "");
+//		paramsList.add("orderStatus");
+//		paramsList.add(",3,8,"); //审核通过
+//		paramsList.add("start");
+//		if (caseorders==null) {
+//			paramsList.add("0");
+//		}else {
+//			paramsList.add(startPoint+"");
+//		}
+//		paramsList.add("caseTypeId");
+//		if (checkType==1) {
+//			paramsList.add("100");
+//		}else if(checkType==2) {
+//			paramsList.add("400");
+//		}else if(checkType==3){
+//			paramsList.add("200");
+//		}
+////		HttpUtils.requestGet(URLs.GetSelforder(), paramsList, HttpRequestTool.GET_SELFORDER_END);
+//		loadDialog.setMessage("加载中……").show();
+//		HttpUtils.requestGet(URLs.GetStatuSelforder(), paramsList, HttpRequestTool.GET_SELFORDER_END);
+
+		paramsList = new ArrayList<String>(2);
 		paramsList.add("userId");
 		paramsList.add(AppApplication.getUSER().data.userId);
-		paramsList.add("size");
-		paramsList.add(10 + "");
-		paramsList.add("orderStatus");
-		paramsList.add(",3,8,"); //审核通过
+		paramsList.add("ggsUid");
+		paramsList.add(AppApplication.getUSER().data.userId);
 		paramsList.add("start");
-		if (caseorders==null) {
-			paramsList.add("0");
-		}else {
-			paramsList.add(startPoint+"");
-		}
-		paramsList.add("caseTypeId");
-		if (checkType==1) {
-			paramsList.add("100");
-		}else if(checkType==2) {
-			paramsList.add("400");
-		}else if(checkType==3){
-			paramsList.add("200");
-		}
-//		HttpUtils.requestGet(URLs.GetSelforder(), paramsList, HttpRequestTool.GET_SELFORDER_END);
-		loadDialog.setMessage("加载中……").show();
-		HttpUtils.requestGet(URLs.GetStatuSelforder(), paramsList, HttpRequestTool.GET_SELFORDER_END);
+		paramsList.add("0");
+		paramsList.add("size");
+		paramsList.add("50");
+		paramsList.add("statusArr");
+		paramsList.add(",7,8,9");
+		HttpUtils.requestGet(URLs.CX_NEW_GET_GGS_ORDER, paramsList, HttpRequestTool.CX_NEW_GET_GGS_ORDER);
+
 		if (adapter==null) {
 			loadDialog.setMessage("信息读取中……").show();
 		}
@@ -192,12 +202,12 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 	public void eventDownLoadMyorderList(List<NameValuePair> value) {
 
 		int requestType = Integer.parseInt(value.get(0).getName());
-		if (requestType == HttpRequestTool.GET_SELFORDER_END || requestType ==  HttpRequestTool.GET_FC_WORKED_LIST
+		if (requestType == HttpRequestTool.CX_NEW_GET_GGS_ORDER || requestType ==  HttpRequestTool.GET_FC_WORKED_LIST
 				|| requestType == HttpRequestTool.GET_ORDER_STATUS|| requestType == HttpRequestTool.YJX_GGS_ORDER_LIST) { 
 			loadDialog.dismiss();
 		}
 		switch (CheckHttpResult.checkList(value, MyOrderListFragment.this.getActivity())) {
-		case HttpRequestTool.GET_SELFORDER_END:
+		case HttpRequestTool.CX_NEW_GET_GGS_ORDER:
 			getOrderDataCX(value.get(0).getValue());
 			break;
 
@@ -233,11 +243,17 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 	}
 
 	private void getOrderDataCX(String value) {
-		caseorders = JSON.parseObject(value, CaseOrder.class);
-		if (caseorders != null && caseorders.tableData.start==0) {
-			cxDate = caseorders.tableData.data ;
-		} else if (caseorders != null && caseorders.tableData.start!=0 && cxDate!=null) {
-			cxDate.addAll(caseorders.tableData.data);
+		CxOrderEntity tempdata1 = JSON.parseObject(value, CxOrderEntity.class);
+		List<PublicOrderEntity> publicOrderEn = new ArrayList<>();
+		if (tempdata1 !=null && tempdata1.list!=null ){
+			for (int i = 0; i < tempdata1.list.size(); i++) {
+				publicOrderEn.add(tempdata1.list.get(i).getStandardOrderEnt());
+			}
+//		caseorders = JSON.parseObject(value, CaseOrder.class);
+			if (tempdata1.startRow == 1) {
+				cxDate.clear();
+			}
+				cxDate.addAll(publicOrderEn);
 		}
 		showDataList();
 	}
@@ -262,7 +278,6 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 			adapter.notifyDataSetChanged();
 			mPullRefreshListView.onRefreshComplete();
 		}
-		sheEmptyView();
 	}
 	
 	private void checkShowData() {
@@ -271,16 +286,8 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 		}
 		mPullRefreshListView.setAdapter(adapter);
 		setOnLisner();
-		sheEmptyView();
 	}
 	
-	private void sheEmptyView(){
-		if (adapterDate.size()==0) {
-			emptyTv.setVisibility(View.VISIBLE);
-		}else {
-			emptyTv.setVisibility(View.GONE);
-		}
-	}
 
 	private void setOnLisner() {
 		
@@ -341,11 +348,15 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
             	if (checkType==0) {//
 					dowloadingFc(fcCaseorders.data.pageNo+1);
 				}else {
-					if ((caseorders.tableData.start+10)>caseorders.tableData.recordsFiltered) {
+					if (caseorders!=null && caseorders.tableData!=null && (caseorders.tableData.start+10)>caseorders.tableData.recordsFiltered) {
 	            		ToastUtil.showToastShort(getActivity(), "没有更多数据了！");
 	            		MyPullRefreshListViewAlertUtil.setAlertInfo(mPullRefreshListView, "----我也是有底线的----", 2*1000); //提示没有更多信息可以加载
 					}
-            		dowLoadingDataCX(caseorders.tableData.start+10);
+					if (caseorders!=null && caseorders.tableData!=null){
+						dowLoadingDataCX(0); //如果为空就重新加载
+					}else{
+						dowLoadingDataCX(caseorders.tableData.start+10);
+					}
 				}
             }
 		});
@@ -768,7 +779,7 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 				adapterDate = fcDate;
 //				checkShowData();
 			}
-		} if (checkType==3) { //医键险已完成任务列表
+		}else if (checkType==3) { //医键险已完成任务列表
 			if (null==yjxDate || yjxDate.size()==0) {
 				adapterDate = new ArrayList<PublicOrderEntity>() ;
 				getYjxFinishOrder(0);
@@ -776,14 +787,16 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 				adapterDate = yjxDate;
 //				checkShowData();
 			}
-		} else {
-//			 if(adapterDate.size()==0){
+		} else if (checkType==1){
+			 if(null==cxDate || cxDate.size()==0){
+				 adapterDate = cxDate = new ArrayList<PublicOrderEntity>() ;
+				 dowLoadingDataCX(0);
+			 }else {
+				 adapterDate = cxDate;
+//				 checkShowData();
+			}
+		} else{
 				 adapterDate = new ArrayList<PublicOrderEntity>() ;
-//				 dowLoadingDataCX(0);
-//			 }else {
-//				 adapterDate = yjxDate;
-////				 checkShowData();
-//			}
 		}
 		checkShowData();
 	}

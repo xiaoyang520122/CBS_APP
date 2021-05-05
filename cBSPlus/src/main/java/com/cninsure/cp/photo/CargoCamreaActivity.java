@@ -280,7 +280,7 @@ public class CargoCamreaActivity extends Activity implements SurfaceHolder.Callb
 		public void onPictureTaken(byte[] data, Camera camera) {
 			try {
 				// 将文件存储在SD卡的根目录，并以系统时间将文件命名
-				String PicturePath=PhotoPathUtil.getPictureCreatePath(baoanUid);
+				String PicturePath=PhotoPathUtil.getPictureCreatePath(baoanUid,CargoCamreaActivity.this);
 				File jpgFile = new File(PicturePath);
 				// 文件输出流对象
 				FileOutputStream outStream = new FileOutputStream(jpgFile);

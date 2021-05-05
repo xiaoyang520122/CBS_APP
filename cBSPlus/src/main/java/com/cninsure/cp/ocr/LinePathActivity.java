@@ -106,7 +106,7 @@ public class LinePathActivity extends BaseActivity implements OnClickListener {
 	private void saveLinePath(){
 		if (mPathView.getTouched()) {
 		    try {
-		    	filePath=PhotoPathUtil.getPictureCreatePath(getIntent().getStringExtra("orderUid"));
+		    	filePath=PhotoPathUtil.getPictureCreatePath(getIntent().getStringExtra("orderUid"),LinePathActivity.this);
 //		        mPathView.saveImageToFile(filePath);
 		    	
 		    	savaSignPhoto();

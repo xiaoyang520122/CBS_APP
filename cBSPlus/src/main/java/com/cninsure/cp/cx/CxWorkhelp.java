@@ -620,7 +620,7 @@ private class MyParkGalleryAdapter extends BaseAdapter{
 		try {
 			Uri originalUri = data.getData(); // 获得图片的uri
 			
-			currPicturePath=PhotoPathUtil.getPictureCreatePath(activity.getIntent().getStringExtra("orderUid"));
+			currPicturePath=PhotoPathUtil.getPictureCreatePath(activity.getIntent().getStringExtra("orderUid"),activity);
 			
 			 @SuppressWarnings("unused")
 			Bitmap mBitmap= BitmapFactory.decodeFile(UriUtils.getFileUrl(activity, originalUri));

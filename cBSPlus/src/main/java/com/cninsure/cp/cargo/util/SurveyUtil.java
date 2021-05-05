@@ -276,7 +276,8 @@ public class SurveyUtil {
         SetTextUtil.setEditText(surveyNotView.findViewById(R.id.cti_ggsContact), sREn.records.ggsContact); //公估方代表
         SetTextUtil.setEditText(surveyNotView.findViewById(R.id.cti_ggsContactPhone), sREn.records.ggsContactPhone); //公估方代表电话
         SetTextUtil.setEditText(surveyNotView.findViewById(R.id.CargoSRN_causeAndCourse), sREn.records.causeAndCourse); //查勘内容
-        Glide.with(context).load(sREn.records.signatureUrl).into((ImageView) surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)); //签字图片
+        Glide.with(context).load(sREn.records.ckGgsUrl).into((ImageView) surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)); //非集装箱 查勘员 签字图片
+        Glide.with(context).load(sREn.records.signatureUrl).into((ImageView) surveyNotView.findViewById(R.id.CargoSRN_rp_signatureUrl)); //非集装箱 被保人 签字图片
         disPlaySign();
 //        setDowloadMouldOnclick(surveyNotView.findViewById(R.id.CargoSR_TemplateDownloadNOt));//下载模板单击事件绑定
         }
@@ -351,9 +352,14 @@ public class SurveyUtil {
                 Glide.with(context).load(ggsSignPath).into(((ImageView)(surveyView.findViewById(R.id.CargoSR_ckGgsUrl_img)))); //刷新界面集装箱现场查勘人
                 (surveyView.findViewById(R.id.CargoSR_ckGgsUrl_img)).setVisibility(View.VISIBLE);
         }
-        if (!TextUtils.isEmpty(ggsSignPath) && sREn.ckDocType.equals("1"))
-            Glide.with(context).load(AppApplication.getUSER().data.qiniuUrl+ggsSignPath).into(((ImageView)(surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)))); ;  //刷新界面非集装箱信息到实体类
-        (surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)).setVisibility(View.VISIBLE);
+        if (!TextUtils.isEmpty(ggsSignPath) && sREn.ckDocType.equals("1")) {
+            Glide.with(context).load(AppApplication.getUSER().data.qiniuUrl + ggsSignPath).into(((ImageView) (surveyNotView.findViewById(R.id.CargoSRN_signatureUrl))));;  //刷新界面非集装箱信息到实体类
+            (surveyNotView.findViewById(R.id.CargoSRN_signatureUrl)).setVisibility(View.VISIBLE);
+        }
+        if (!TextUtils.isEmpty(signPath) && sREn.ckDocType.equals("1")) {
+            Glide.with(context).load(AppApplication.getUSER().data.qiniuUrl + signPath).into(((ImageView) (surveyNotView.findViewById(R.id.CargoSRN_rp_signatureUrl))));;  //刷新界面非集装箱信息到实体类
+            (surveyNotView.findViewById(R.id.CargoSRN_rp_signatureUrl)).setVisibility(View.VISIBLE);
+        }
     }
 
     public void setDowloadMouldOnclick(View v){ //CargoSR_TemplateDownload

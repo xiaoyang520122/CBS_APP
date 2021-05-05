@@ -2,7 +2,6 @@ package com.cninsure.cp.cx;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -11,14 +10,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.fastjson.JSON;
-import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
-import com.cninsure.cp.cx.adapter.MyFragmentPagerAdapter;
 import com.cninsure.cp.cx.adapter.NoRefreshFragmentPagerAdapter;
 import com.cninsure.cp.cx.fragment.BaseFragment;
-import com.cninsure.cp.cx.fragment.CxRiAgreementFragment;
-import com.cninsure.cp.cx.fragment.CxRiListFragment;
 import com.cninsure.cp.cx.jiebaoanfragment.BaoanInfoFragment;
 import com.cninsure.cp.cx.jiebaoanfragment.CxExamineFragment;
 import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment;
@@ -34,7 +29,6 @@ import com.cninsure.cp.utils.FileChooseUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
-import com.cninsure.cp.utils.ToastUtil;
 import com.google.android.material.tabs.TabLayout;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -76,7 +70,7 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.cx_jie_baoan_info_activity);
+        setContentView(R.layout.yjxnew_index_activity);
         orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
         QorderUid = getIntent().getStringExtra("orderUid");
         ViewUtils.inject(this);

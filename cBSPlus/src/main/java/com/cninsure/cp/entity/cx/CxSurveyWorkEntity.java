@@ -54,6 +54,7 @@ public class CxSurveyWorkEntity implements Serializable {
         public String signPhotoId; //	签字照片id	保存作业图片接口返回字段id
         public List<String> enclosureList = new ArrayList<>(); //附件集合
         public boolean customerNotice; //客户告知书阅读状态
+        //接案时间取接报案创建时间-童寅。
 
         /**因后台需要字典值value传String类型，这里做转化*/
         public String getCkAccidentLiability() {

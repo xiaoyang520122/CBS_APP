@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.cninsure.cp"
-    android:versionCode="157"
-    android:versionName="V1.5.7">
+    android:versionCode="159"
+    android:versionName="V1.5.9">
 
     <!-- 版本号必须是版本名称中数字部分，不能死其他，如版本号为V1.0.1时，版本号为101 -->
     <!-- <uses-sdk -->
@@ -72,6 +73,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_config"
         android:theme="@style/AppTheme">
         <!-- 下面这句解决错误：java.lang.NoClassDefFoundError: Failed resolution of: Lorg/apache/http/client/methods/HttpPost; -->
@@ -183,8 +187,16 @@
         <activity android:name="com.cninsure.cp.cx.DsUtilActivity"></activity>
         <activity android:name="com.cninsure.cp.utils.PDF.DisplayBaoGaoActivity"></activity>
         <activity android:name="com.cninsure.cp.cargo.CargoCaseListActivity"></activity>
+        <activity android:name=".activity.yjxnew.YjxNewIndexActivity"
+            android:theme="@style/AppTheme"></activity>
         <activity android:name="com.cninsure.cp.cargo.CargoWorkActivity"></activity>
+        <activity android:name=".activity.yjxnew.survey.YjxNewWorkActivity"></activity>
+        <activity android:name=".activity.yjxnew.YjxNewDetailsActivity"></activity>
         <activity android:name="com.cninsure.cp.photo.CargoCamreaActivity"></activity>
+        <activity android:name=".utils.camera.CameraXActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".activity.yjxnew.survey.YjxNewChoicePhotoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name="com.cninsure.cp.cx.CxInjuryMediateActivity"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="adjustPan"></activity>
@@ -290,12 +302,14 @@
         <!-- 来自https://www.cnblogs.com/netcorner/p/6542373.html -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.cninsure.cp.provider"
+            android:authorities="${applicationId}.provider"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities" >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths" />
+                android:resource="@xml/provider_paths"
+                tools:replace="android:resource" />
         </provider>
     </application>
 
