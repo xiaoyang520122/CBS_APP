@@ -162,7 +162,7 @@ public class CxSubjectFragment extends BaseFragment {
 
     /**显示OCR识别的 银行卡信息*/
     public void disBankCardInfo(String imgName) {
-        insuredBankNoEdt.setText(activity.cxWorkEntity.subjectInfo.insuredBankNo); //账号
+        SetTextUtil.setEditText(insuredBankNoEdt,activity.cxWorkEntity.subjectInfo.insuredBankNo,SetTextUtil.BANK_CARD); //账号
         activity.cxWorkEntity.subjectInfo.bankCarLicense = imgName;  //照片名称
     }
 
@@ -178,9 +178,9 @@ public class CxSubjectFragment extends BaseFragment {
 
     public void disPlayMoveLicense(String imgName) {
         //行驶证
-        bdCarNumberEdt.setText(activity.cxWorkEntity.subjectInfo.bdCarNumber); //车牌号
-        bdCarVinEdt.setText(activity.cxWorkEntity.subjectInfo.bdCarVin); //车架号
-        bdEngineNoEdt.setText(activity.cxWorkEntity.subjectInfo.bdEngineNo); //发动机号
+        SetTextUtil.setEditText(bdCarNumberEdt,activity.cxWorkEntity.subjectInfo.bdCarNumber,SetTextUtil.CAR_NO);//车牌号
+        SetTextUtil.setEditText(bdCarVinEdt ,activity.cxWorkEntity.subjectInfo.bdCarVin,SetTextUtil.VIN); //车架号
+        SetTextUtil.setEditText(bdEngineNoEdt,activity.cxWorkEntity.subjectInfo.bdEngineNo,SetTextUtil.ENGIN); //发动机号
         bdCarRegisterDateTv.setText(activity.cxWorkEntity.subjectInfo.bdCarRegisterDate); //初登日期
         bdDrivingTypeEdt.setText(activity.cxWorkEntity.subjectInfo.bdDrivingType); //准驾车型
         SetTextUtil.setTvTextForArr(bdCarUseTypeTv,TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("car_usetype")),activity.cxWorkEntity.subjectInfo.bdCarUseType);  //使用性质
@@ -255,11 +255,11 @@ public class CxSubjectFragment extends BaseFragment {
         //银行卡信息
         SetTextUtil.setEditText(insuredPersonNameEdt,subjectInfoEnt.insuredPersonName);  //持卡人
         SetTextUtil.setEditText(insuredBankDepositEdt,subjectInfoEnt.insuredBankDeposit);  //开户行
-        SetTextUtil.setEditText(insuredBankNoEdt,subjectInfoEnt.insuredBankNo); //账号
+        SetTextUtil.setEditText(insuredBankNoEdt,subjectInfoEnt.insuredBankNo,SetTextUtil.BANK_CARD); //账号
         //行驶证
-        SetTextUtil.setEditText(bdCarNumberEdt,subjectInfoEnt.bdCarNumber);//车牌号
-        SetTextUtil.setEditText(bdCarVinEdt ,subjectInfoEnt.bdCarVin); //车架号
-        SetTextUtil.setEditText(bdEngineNoEdt,subjectInfoEnt.bdEngineNo); //发动机号
+        SetTextUtil.setEditText(bdCarNumberEdt,subjectInfoEnt.bdCarNumber,SetTextUtil.CAR_NO);//车牌号
+        SetTextUtil.setEditText(bdCarVinEdt ,subjectInfoEnt.bdCarVin,SetTextUtil.VIN); //车架号
+        SetTextUtil.setEditText(bdEngineNoEdt,subjectInfoEnt.bdEngineNo,SetTextUtil.ENGIN); //发动机号
         SetTextUtil.setTextViewText(bdCarRegisterDateTv,subjectInfoEnt.bdCarRegisterDate);//初登日期
         SetTextUtil.setTextViewText(bdCarEffectiveDateTv,subjectInfoEnt.bdCarEffectiveDate); //行驶证有效期至
         SetTextUtil.setEditText(bdDrivingTypeEdt,subjectInfoEnt.bdDrivingType); //准驾车型
@@ -267,7 +267,7 @@ public class CxSubjectFragment extends BaseFragment {
         SetTextUtil.setTvTextForArr(bdCarUseTypeTv,TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("car_usetype")),subjectInfoEnt.bdCarUseType);  //使用性质
         //驾驶证
         SetTextUtil.setEditText(bdDriverNameEdt,subjectInfoEnt.bdDriverName);//驾驶员姓名
-        SetTextUtil.setEditText(bdDriverPhoneEdt,subjectInfoEnt.bdDriverPhone);//驾驶员电话
+        SetTextUtil.setEditText(bdDriverPhoneEdt,subjectInfoEnt.bdDriverPhone,SetTextUtil.MOBILE);//驾驶员电话
         SetTextUtil.setEditText(bdDriverNoEdt,subjectInfoEnt.bdDriverNo);//驾驶证
         SetTextUtil.setTextViewText(bdDriverRegisterDateTv,subjectInfoEnt.bdDriverRegisterDate);//初次领证日期
         SetTextUtil.setTextViewText(bdDriverEffectiveStarTv,subjectInfoEnt.bdDriverEffectiveStar);//有效起始日期

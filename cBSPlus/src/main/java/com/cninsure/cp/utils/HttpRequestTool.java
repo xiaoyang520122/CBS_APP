@@ -314,6 +314,10 @@ public class HttpRequestTool {
 	public final static int YJXNEW_ORDER_LIST_PASS = 1132;
 	/**医健险新全流程V1 获取任务列表**/
 	public final static int YJXNEW_ORDER_LIST_UNPASS = 1133;
+	/**get 医健险新全流程V1 POST 作业信息新增 userId*/
+	public final static int YJXNEW_WORK_Add = 1134;
+	/**get 医健险新全流程V1 POST 作业删除*/
+	public final static int YJXNEW_WORK_REMOVE = 1135;
 
 
 

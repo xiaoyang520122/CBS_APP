@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -42,6 +43,54 @@
                     android:layout_width="48dp"
                     android:layout_height="20dp"
                     />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="证件查验"
+                    android:textColor="@color/hui_text_xxh" />
+
+                <TextView
+                    android:id="@+id/cs_papersType"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="请选择"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:id="@+id/cs_papers_defect_reason"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:layout_marginLeft="10dp"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawableLeft="@drawable/icon_vertical_line"
+                    android:drawablePadding="10dp"
+                    android:gravity="right|center"
+                    android:hint="选择缺失原因"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+
 
             </LinearLayout>
 
