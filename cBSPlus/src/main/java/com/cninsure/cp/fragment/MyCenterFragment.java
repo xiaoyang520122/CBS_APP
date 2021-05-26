@@ -109,7 +109,8 @@ public class MyCenterFragment extends Fragment {
 	}
 
 	private void setToggleButton() {
-		if (AppApplication.sp.getString("setLoginName", "").equals(AppApplication.getUSER().data.loginName)) {
+		if (AppApplication.getUSER()!=null && AppApplication.getUSER().data!=null && AppApplication.getUSER().data.loginName!=null &&
+				AppApplication.sp.getString("setLoginName", "").equals(AppApplication.getUSER().data.loginName)) {
 			togMusic.setToggleOn(AppApplication.sp.getBoolean("isPlayMusic", true));
 			togWifiSet.setToggleOn(AppApplication.sp.getBoolean("isWifiUp", false));
 		} else {

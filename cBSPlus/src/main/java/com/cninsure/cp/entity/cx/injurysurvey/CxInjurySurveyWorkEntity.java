@@ -13,6 +13,7 @@ import java.util.List;
 public class CxInjurySurveyWorkEntity extends BaseEntity {
 
 //个人信息
+    public String	injuredType	;//	伤者类型
     public String	injuredName	;//	伤者姓名
     public String	injuredSex	;//	伤者性别
     public String	injuredAge	;//	伤者年龄

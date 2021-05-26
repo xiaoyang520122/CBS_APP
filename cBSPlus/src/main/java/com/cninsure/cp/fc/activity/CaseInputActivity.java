@@ -606,6 +606,11 @@ deputeItem 水险委托事项
 	}
 
 	private void displayDictValue() {
+		if (dictEntity==null){
+			Dialog dialog = DialogUtil.getAlertOneButton(this,"无法获取字典信息，请联系管理员！",null);
+			dialog.setOnDismissListener(dialog1 -> CaseInputActivity.this.finish());
+			dialog.show();
+		}
 		/**险种大类： 1财险，2水险,spinner选中0是财险，1是水险**/
 //		((Spinner)creatCaseView.findViewById(R.id.CaseINPUT_SPINN1)).setAdapter(new ArrayAdapter<String>
 //		(this, R.layout.spinner_item, dictEntity.getDictArr(dictEntity.data.risk_type)));

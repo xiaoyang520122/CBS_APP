@@ -126,7 +126,8 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
         });
         webview.setWebViewClient(new WebViewClientDemo());
 
-        String loadUrlStr = URLs.CX_DS_H5+"?time="+new Date().getTime();
+        String loadUrlStr = URLs.CX_DS_H5+"?time="+new Date().getTime(); //调用
+//        String loadUrlStr = "file:///android_asset/cxh5/index.html?file="+"?time="+new Date().getTime();
         webview.loadUrl(loadUrlStr);
     }
 

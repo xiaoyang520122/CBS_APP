@@ -42,6 +42,11 @@ public class URLs implements Serializable {
 //	public final static String CX_DS_H5="http://sysweb.cnsurvey.cn:8010/parth5";//车险定损H5界面 生产
 	public final static String CX_DS_H5="http://sysweb.cnsurvey.cn:8084/parth5";//车险定损H5界面 测试
 
+
+//	public final static String CX_DS_H5="http://10.80.60.3:8081";//车险定损H5界面 测试
+
+	private final static String PARTIPHOME="http://part.cnsurvey.cn:8011/cninsure-part-ws"; //车型配件 测试+生产
+
 	/**登录地址**/
 	private final static String LOGIN_BY_PASS="/authc/login";
 	/**上传CID**/
@@ -272,6 +277,8 @@ public class URLs implements Serializable {
 	public final static String CX_ORDER_TRANSFER= IPHOME +"/cx/order/transfer";
 	/**POST 车险获取用户列表（公估师归属分公司下面的用户，如果是总部人员就查全部） useryType 用户类型，传99，因为要求是车童，还有userId，name*/
 	public final static String CX_GET_USER_BY_ORGID= IPHOME +"/users/listByOrgId";
+	/**GET根据订单查询订单影像分类*/
+	public final static String CX_GET_ORDER_MEDIATYPE = IPHOME +"/cx/order/work/mediaType/listByOrder";
 
 	/***************************************货运险接口20201207***********************************/
 	/**GET 货运险接报案查询-分页 userId start size caseNo caseName reportNo报案号 ggsUid作业公估师Uid  surveyUid查勘员UID  status状态  statusArr多状态查询如："0,1"*/
@@ -314,6 +321,16 @@ public class URLs implements Serializable {
 	public final static String YJXNEW_WORK_IMG_SAVE = IPHOME +"/new/yjx/work/images/save";
 	/**医健险新全流程V1 POST 作业删除 userId workId*/
 	public final static String YJXNEW_WORK_REMOVE = IPHOME +"/new/yjx/work/remove";
+
+	/*****************车险全流程*******************/
+	/**车险 GET厂家、品牌、车系查询 （cateParentId1：厂家；2：品牌；3：车系；  cateCountry生产类型；0：全部；21：国产；20：进口；22：合资）*/
+	public final static String CX_GET_CAR_FACTORY_LIST = PARTIPHOME +"/categorys/list_category";
+	/**车险 GET车型查询 modelCateId 车系id ；cateCountry生产类型；0：全部；21：国产；20：进口；22：合资*/
+	public final static String CX_GET_CAR_MODELS_LIST = PARTIPHOME +"/models/list_models";
+	/**车险 GET 获取配件部位*/
+	public final static String CX_GET_CAR_PEIJIAN_LIST = PARTIPHOME +"/position/position_tree_children";
+	/**车险 GET 根据报案信息查询作业信息*/
+	public final static String CX_GET_WORK_BY_BAOANUID = IPHOME +"/cx/order/work/listByBaoan";
 
 
 	

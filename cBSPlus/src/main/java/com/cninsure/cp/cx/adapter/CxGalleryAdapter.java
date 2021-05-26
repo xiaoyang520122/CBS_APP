@@ -44,16 +44,17 @@ public class CxGalleryAdapter extends BaseAdapter{
 	/**图片集合*/
 	public List<CxImagEntity>  imgResources;//,BasicImgList;  //图片实体合集
 	private CxGalleryAdapter instans;
-	private CxJieBaoanInfoActivity context;  //上下文
+	private Activity context;  //上下文
 	private LayoutInflater inflater ;  //资源解析器
 	private Dialog dialog;  //图片操作弹框
 	private String imageType;  //所在的ImageType
 	private int groupPosition;
 	private SaveImgCallBack addScb; //通过该接口的回调将数据写入到activity的图片实体类中，并刷新adapter
+	private String orderUid; //订单编号，用来生成本地文件夹存拍照和选择的照片。
 
 	private CxGalleryAdapter(){}
 
-	public CxGalleryAdapter(CxJieBaoanInfoActivity context, List<CxImagEntity> imgResources , String imageType, int groupPosition, SaveImgCallBack addScb) {
+	public CxGalleryAdapter(Activity context, List<CxImagEntity> imgResources , String imageType, int groupPosition, SaveImgCallBack addScb,String orderUid) {
 		this.imgResources = imgResources;
 		instans = this;
 		inflater = LayoutInflater.from(context);
@@ -61,6 +62,7 @@ public class CxGalleryAdapter extends BaseAdapter{
 		this.imageType = imageType;
 		this.addScb = addScb;
 		this.groupPosition = groupPosition;
+		this.orderUid = orderUid;
 	}
 
 		@Override
@@ -214,6 +216,7 @@ public class CxGalleryAdapter extends BaseAdapter{
 		cameraIntent.putExtra("photoType", imageType);
 		cameraIntent.putExtra("ActivityName", "NEW_CX");
 		cameraIntent.putExtra("GroupId", groupPosition);
+		cameraIntent.putExtra("orderUid", orderUid);
 		context.startActivity(cameraIntent);
 	}
 
@@ -221,7 +224,7 @@ public class CxGalleryAdapter extends BaseAdapter{
 		Intent getAlbum=new Intent(context, PhotoChoiceActivity.class);
 		getAlbum.putExtra("photoType", imageType);
 		getAlbum.putExtra("ActivityName", "NEW_CX");
-//		getAlbum.putExtra("groupPosition", groupPosition);
+		getAlbum.putExtra("orderUid", orderUid);
 		context.startActivity(getAlbum);
 	}
 

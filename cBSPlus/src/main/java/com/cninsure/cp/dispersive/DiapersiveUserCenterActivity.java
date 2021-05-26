@@ -329,11 +329,11 @@ public class DiapersiveUserCenterActivity extends BaseActivity {
         // oks.setNotification(R.drawable.ic_launcher,
         // getString(R.string.app_name));
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-        oks.setTitle("千县万店");
+        oks.setTitle("e公估");
         // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
         oks.setTitleUrl(URLs.APP_DOWNLOAD_URL);
         // text是分享文本，所有平台都需要这个字段
-        oks.setText("下载泛华公估掌上作业平台-千县万店");
+        oks.setText("下载泛华公估掌上作业平台-e公估");
         // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
         oks.setImagePath("/sdcard/test.jpg");// 确保SDcard下面存在此张图片
         // url仅在微信（包括好友和朋友圈）中使用

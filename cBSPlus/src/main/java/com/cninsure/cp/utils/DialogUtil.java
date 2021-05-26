@@ -48,7 +48,7 @@ public class DialogUtil {
 
 
 	/** 错误提示！传入需要关闭Dialog时执行的事件 **/
-	public static Dialog getRightDialogAndFinish(Context context, String Msg, DialogInterface.OnDismissListener listener) {
+	public static Dialog getRightDialogOnDismiss(Context context, String Msg, DialogInterface.OnDismissListener listener) {
 		Dialog dilog = new AlertDialog.Builder(context).setTitle("提示！").setIcon(R.drawable.choice_green48).setMessage(Msg).setNeutralButton("确定", null).create();
 		if (defuldialog!=null && defuldialog.isShowing()) {
 			dismiss();

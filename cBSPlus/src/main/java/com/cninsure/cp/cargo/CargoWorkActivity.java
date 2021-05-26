@@ -624,7 +624,7 @@ public class CargoWorkActivity extends BaseActivity {
         parentPtoTypeDict = new ArrayList<>(7);
         childPtoTypeDicts = new HashMap<>(7);
         for (DictData dd:photoTypeDict.list){
-            if (dd.parentId == 300){  //parentId=300的是父类拍照类型
+            if ("300".equals(dd.parentId)){  //parentId=300的是父类拍照类型
                 parentPtoTypeDict.add(dd);
             }else{
                 addChild(dd);

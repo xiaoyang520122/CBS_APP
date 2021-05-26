@@ -1,15 +1,10 @@
 package com.cninsure.cp.activty.register;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -21,20 +16,17 @@ import com.bumptech.glide.Glide;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
-import com.cninsure.cp.activty.AddBanckCardActivity;
 import com.cninsure.cp.entity.BaseEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.ctagreement.SignAgreementRequest;
 import com.cninsure.cp.entity.extract.ExtUserEtity;
 import com.cninsure.cp.entity.yjx.ImagePathUtil;
-import com.cninsure.cp.ocr.LinePathActivity;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.ImageDisplayUtil;
 import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.PDF.PDFShowUtil;
-import com.cninsure.cp.utils.PhotoChoiceActivity;
 import com.cninsure.cp.utils.PhotoUploadUtil;
 import com.cninsure.cp.utils.SetTextUtil;
 import com.cninsure.cp.utils.ToastUtil;
@@ -50,7 +42,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -182,7 +173,7 @@ public class SignAgmentActivity extends BaseActivity {
     private void getSignRequestInfo(String value) {
         SignAgreementRequest saEn = JSON.parseObject(value,SignAgreementRequest.class);
         if (saEn.success){  //签署协议成功提示用户后关闭该界面
-            DialogUtil.getRightDialogAndFinish(this, "成功签署协议！", dialog -> SignAgmentActivity.this.finish()).show();
+            DialogUtil.getRightDialogOnDismiss(this, "成功签署协议！", dialog -> SignAgmentActivity.this.finish()).show();
         }else{ //签署失败提示用户
             DialogUtil.getAlertOneButton(this,"签署失败！！",null).show();
         }
@@ -214,7 +205,7 @@ public class SignAgmentActivity extends BaseActivity {
         if (ben.success){ //修改身份证路径上传成功
             alertAgreement();  //去签约界面
         }else{ //修改路径失败提示用户
-            DialogUtil.getAlertOneButton(this,"提交身份证信息失败，请重试！",null).show();
+            DialogUtil.getAlertOneButton(this,"提交身份证信息失败，请重试！"+ben.msg +"---"+value,null).show();
         }
     }
 

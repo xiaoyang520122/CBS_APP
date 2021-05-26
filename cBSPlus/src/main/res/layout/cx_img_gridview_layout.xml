@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/item_for_exlist_photoup_wsline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:background="@drawable/white_bg_hui_line"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/item_for_exlist_photoup_wstitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:ellipsize="marquee"
+            android:gravity="right"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="无小类名称"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_m"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <com.cninsure.cp.view.MyGridView
+        android:id="@+id/item_for_exlist_photoup_gridView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:horizontalSpacing="2dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="4"
+        android:verticalSpacing="10dp"></com.cninsure.cp.view.MyGridView>
+
+
+</LinearLayout>

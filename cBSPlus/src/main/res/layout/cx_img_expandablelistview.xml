@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <com.cninsure.cp.view.AutoLinefeedLayout
+        android:id="@+id/cx_img_expandablellistview_HView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_bg_hui_line"
+        android:scrollbars="none" >
+
+        <com.cninsure.cp.view.MyRadioGroup
+            android:id="@+id/cx_img_expandablellistview_RDGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/cx_img_expandablellistview_RDButton0"
+                android:layout_width="1000dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/table_radiobutton_bg"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="left"
+                android:padding="15dp"
+                android:text="加载中……"
+                android:textColor="@color/hui_line" />
+
+        </com.cninsure.cp.view.MyRadioGroup>
+    </com.cninsure.cp.view.AutoLinefeedLayout>
+
+    <ExpandableListView
+        android:id="@+id/newCximg_expandablelistview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:childDivider="@color/white" >
+    </ExpandableListView>
+
+
+    <Button
+        android:id="@+id/newCximg_ImgFragment_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bulue_main"
+        android:textColor="@color/white"
+        android:text="提交" />
+</LinearLayout>

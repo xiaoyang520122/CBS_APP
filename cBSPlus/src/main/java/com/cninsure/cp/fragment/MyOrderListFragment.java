@@ -102,6 +102,7 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 		if (!EventBus.getDefault().isRegistered(this)) {
 			EventBus.getDefault().register(this);
 		}
+		dowLoadingDataCX(0);
 	}
 
 	@Override
@@ -345,7 +346,7 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 					getYjxFinishOrder(0);
 				}
             	
-            	if (checkType==0) {//
+            	if (fcCaseorders!=null && fcCaseorders.data!=null && checkType==0) {//
 					dowloadingFc(fcCaseorders.data.pageNo+1);
 				}else {
 					if (caseorders!=null && caseorders.tableData!=null && (caseorders.tableData.start+10)>caseorders.tableData.recordsFiltered) {

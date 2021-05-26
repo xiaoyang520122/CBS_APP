@@ -33,7 +33,7 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.bumptech.glide.Glide;
 import com.cninsure.cp.R;
 import com.cninsure.cp.activty.WorkOrderActivtyhelp;
-import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment;
+import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment2;
 import com.cninsure.cp.dispersive.DispersiveWorkActivity;
 import com.cninsure.cp.entity.WorkPhotos;
 import com.cninsure.cp.entity.WorkPhotos.TableData.WorkPhotoEntitiy;
@@ -345,7 +345,7 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 		cieEn.source = "3";
 		cieEn.fileName = url.substring(url.lastIndexOf("/")+1, url.length() - 4);
 		cieListTemp.add(cieEn);
-		CxImagFragment.adapter.addScb.addImg(cieListTemp, GroupId);
+		CxImagFragment2.adapter.addScb.addImg(cieListTemp, GroupId);
 	}
 
 	/*
@@ -453,7 +453,7 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 	    @Override  
 	    public int getCount() {
 			if ("NEW_CX".equals(actionActivityName)){  //新车险全流程
-				return CxImagFragment.adapter.dictList.size();
+				return CxImagFragment2.adapter.cxMediaTypes.data.size();
 			}else{ return photoType.tableData.data.size();}
 
 	    }  
@@ -474,7 +474,7 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 	    	TextView mView=(TextView) inflater.inflate(R.layout.vertical_text_item, null);
 			String tempString;
 			if ("NEW_CX".equals(actionActivityName)){  //新车险全流程
-				tempString = CxImagFragment.adapter.dictList.get(GroupId).label;
+				tempString = CxImagFragment2.adapter.cxMediaTypes.data.get(GroupId).label;
 			}else{ tempString=photoType.tableData.data.get(position).description;}
 
 	    	String valueString="";

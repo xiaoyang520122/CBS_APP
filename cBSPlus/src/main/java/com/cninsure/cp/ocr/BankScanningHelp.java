@@ -2,6 +2,7 @@ package com.cninsure.cp.ocr;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
@@ -70,7 +71,7 @@ public class BankScanningHelp implements OnClickListener {
 	
 	
 	private void initOCR() {
-		OCR.getInstance().initAccessToken(new OnResultListener<AccessToken>() {
+		OCR.getInstance(activity).initAccessToken(new OnResultListener<AccessToken>() {
 			@Override
 			public void onResult(AccessToken result) {
 				// 调用成功，返回AccessToken对象
@@ -130,7 +131,7 @@ public class BankScanningHelp implements OnClickListener {
 		param.setImageFile(new File(filePath));
 
 		// 调用银行卡识别服务
-		OCR.getInstance().recognizeBankCard(param, new OnResultListener<BankCardResult>() {
+		OCR.getInstance(activity).recognizeBankCard(param, new OnResultListener<BankCardResult>() {
 		    @Override
 		    public void onResult(BankCardResult result) {
 				LoadDialogUtil.dismissDialog();
@@ -163,7 +164,7 @@ public class BankScanningHelp implements OnClickListener {
 		// 设置方向检测
 		param.setDetectDirection(true);
 		// 调用身份证识别服务
-		OCR.getInstance().recognizeIDCard(param, new OnResultListener<IDCardResult>() {
+		OCR.getInstance(activity).recognizeIDCard(param, new OnResultListener<IDCardResult>() {
 			@Override
 			public void onResult(IDCardResult result) {
 				// 调用成功，返回IDCardResult对象

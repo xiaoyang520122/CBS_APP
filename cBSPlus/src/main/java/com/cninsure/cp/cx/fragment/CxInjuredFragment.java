@@ -81,8 +81,9 @@ public class CxInjuredFragment extends BaseFragment {
     /**保存数据到实体类*/
     @Override
     public void SaveDataToEntity() {
-        if (activity==null) return;
+        if (activity==null || mlistView==null) return;
         for (int i= 0;i<activity.cxWorkEntity.injuredInfos.size();i++){
+            if (mlistView.getChildAt(i) == null) continue;
             ViewHolder vHolder = (ViewHolder) mlistView.getChildAt(i).getTag();
             getHolderDate(vHolder,i);
         }

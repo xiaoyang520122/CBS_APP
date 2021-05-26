@@ -53,9 +53,16 @@ android {
     }
 
     sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//            jni.srcDirs = []
+//        }
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//        }
         main {
-            jniLibs.srcDirs = ['libs']
-            jni.srcDirs = []
+            jni.srcDirs = ['libs']
+            jniLibs.srcDirs = ['src/main/jniLibs']
         }
     }
     packagingOptions {

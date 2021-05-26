@@ -2,83 +2,96 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="10dp"
-        android:gravity="center_vertical">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:src="@drawable/camera_blue38">
+        android:padding="10dp">
 
-        </ImageView>
+        <com.cninsure.cp.view.AutoLinefeedLayout
+            android:id="@+id/cxInMe_agreementAutoLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
-        <TextView
-            android:id="@+id/item_for_exlist_photoup_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="无拍照类别"
-            android:textSize="@dimen/activity_vertical_margin"
-            android:textStyle="bold"
-            android:textColor="@color/hui_text_xxxxh" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:layout_marginLeft="5dp"
-            android:text="（"
-            android:textSize="@dimen/login_size"
-            android:textColor="@color/hui_text_xxxh" />
-        <TextView
-            android:id="@+id/item_for_exlist_photoup_sum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:layout_marginLeft="5dp"
-            android:text="0"
-            android:textSize="@dimen/login_size"
-            android:textColor="@color/bule_text_h" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:layout_marginLeft="2dp"
-            android:text="/"
-            android:textSize="@dimen/login_size"
-            android:textColor="@color/hui_text_xxxh" />
-        <TextView
-            android:id="@+id/item_for_exlist_photoup_demand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:textSize="@dimen/login_size"
-            android:layout_marginLeft="2dp"
-            android:text="0"
-            android:textColor="@color/hui_text_xxxxh" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:textSize="@dimen/login_size"
-            android:layout_marginLeft="5dp"
-            android:text="）"
-            android:textColor="@color/hui_text_xxxh" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/camera_blue38">
 
+            </ImageView>
+
+            <TextView
+                android:id="@+id/item_for_exlist_photoup_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="无拍照类别"
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/login_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="left"
+                android:text="("
+                android:textColor="@color/hui_text_xxxh"
+                android:textSize="@dimen/text_l" />
+
+            <TextView
+                android:id="@+id/item_for_exlist_photoup_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="left"
+                android:text="0"
+                android:textColor="@color/bule_text_h"
+                android:textSize="@dimen/text_l" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:gravity="left"
+                android:text="/"
+                android:textColor="@color/hui_text_xxxh"
+                android:textSize="@dimen/text_l" />
+
+            <TextView
+                android:id="@+id/item_for_exlist_photoup_demand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:gravity="left"
+                android:text="0"
+                android:textColor="@color/hui_text_xxxxh"
+                android:textSize="@dimen/text_l" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="left"
+                android:text=")"
+                android:textColor="@color/hui_text_xxxh"
+                android:textSize="@dimen/text_l" />
+
+        </com.cninsure.cp.view.AutoLinefeedLayout>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
         android:background="@color/hui_line" />
 

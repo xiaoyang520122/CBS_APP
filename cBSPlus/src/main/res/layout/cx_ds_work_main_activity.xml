@@ -137,6 +137,45 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="VIN码："
+                        android:textColor="@color/hui_text_xxxxh"
+                        android:textSize="@dimen/text_defaul" />
+
+                    <EditText
+                        android:id="@+id/CxDsM_carVinNo"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/work_line_defaul_hight"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:drawableRight="@drawable/edit_simple_hui32"
+                        android:gravity="right|center"
+                        android:hint="请输入"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/hui_text_h"
+                        android:textSize="@dimen/text_defaul" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/survey_marginTop"
+                    android:background="@drawable/line_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/text_defaul" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="车型："
                         android:textColor="@color/hui_text_xxxxh"
                         android:textSize="@dimen/text_defaul" />
@@ -258,15 +297,16 @@
                         android:textColor="@color/hui_text_xxxxh"
                         android:textSize="@dimen/text_defaul" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/CxDsM_carStructure"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/work_line_defaul_hight"
                         android:layout_weight="1"
                         android:background="@null"
+                        android:drawablePadding="5dp"
                         android:gravity="right|center"
-                        android:hint="无信息"
-                        android:drawableRight="@drawable/edit_simple_hui32"
+                        android:hint="请选择"
+                        android:drawableRight="@drawable/left_jt_hui_short"
                         android:textColor="@android:color/black"
                         android:textColorHint="@color/hui_text_h"
                         android:textSize="@dimen/text_defaul" />
@@ -439,7 +479,7 @@
                         android:text="定位当前地址"
                         android:textColor="@color/bulue_main"
                         android:textSize="@dimen/text_l"
-                        android:visibility="invisible" />
+                        android:visibility="visible" />
 
                 </LinearLayout>
 
@@ -980,7 +1020,7 @@
                         android:text="*"
                         android:textColor="@color/red"
                         android:textSize="@dimen/text_defaul"
-                        android:visibility="invisible" />
+                        android:visibility="visible" />
 
                     <TextView
                         android:layout_width="0dp"

@@ -312,7 +312,7 @@ public class TaskBasicInfoFragment extends BaseFragment {
         sb.append("是否属于保险责任：" + (ckIsInsuranceLiabilityItg==null?"--":(ckIsInsuranceLiabilityItg==1?"是":(ckIsInsuranceLiabilityItg==0?"否":"--"))) +"\n");
         Integer isDaiweiItg = suInTemp!=null?suInTemp.isDaiwei:-1;
         sb.append("是否代位："+ (isDaiweiItg==null?"--":(isDaiweiItg==1?"是":(isDaiweiItg==0?"否":"--" ) ))+"\n");
-        sb.append("估损金额："+getTextInfo(suInTemp!=null?suInTemp.lossAmount:"")+"\n");
+        sb.append("估损金额："+getTextInfo(suInTemp!=null?suInTemp.lossAmount+"":"")+"\n");
         Integer isSceneItg = suInTemp!=null?suInTemp.isScene:-1;
         sb.append("是否现场报案："+(isSceneItg==null?"--":(isSceneItg==1?"是":(isSceneItg==0?"否":"--")))+"\n");
         Integer isHsLoadItg = suInTemp!=null?suInTemp.isHsLoad:-1;
@@ -363,7 +363,7 @@ public class TaskBasicInfoFragment extends BaseFragment {
         sb.append("出险原因："+getTextInfo(activity.cxDict.getLabelByValue("accident_reason",suInTemp!=null?suInTemp.ckAccidentReason+"":""))+"\n");
         sb.append("查勘类型："+getTextInfo(activity.cxDict.getLabelByValue("survey_type",suInTemp!=null?suInTemp.surveyType+"":""))+"\n");
         sb.append("事故责任："+getTextInfo(activity.cxDict.getLabelByValue("accident_liability",suInTemp!=null?suInTemp.ckAccidentLiability+"":""))+"\n");
-        sb.append("责任比例（%）："+getTextInfo(suInTemp!=null?suInTemp.liabilityRatio:"")+"\n");
+        sb.append("责任比例（%）："+getTextInfo(suInTemp!=null?suInTemp.liabilityRatio+"":"")+"\n");
         sb.append("损失类型："+getTextInfo(suInTemp!=null?getLossTypeText(suInTemp.lossType):"")+"\n");
         sb.append("损失情况："+getTextInfo(getLossObjectTypeText())+"\n");
         sb.append("报案驾驶员："+getTextInfo(suInTemp!=null?suInTemp.baoanDriverName:"")+"\n");
@@ -396,8 +396,8 @@ public class TaskBasicInfoFragment extends BaseFragment {
     private String getLossObjectTypeText(){
         StringBuffer sb = new StringBuffer();
         if (workEntity.surveyInfo==null || workEntity.surveyInfo.lossObjectType==null) return "";
-        for (int i:workEntity.surveyInfo.lossObjectType){
-            sb.append(activity.cxDict.getLabelByValue("loss_object_type",i+"")+"\n");
+        for (String value:workEntity.surveyInfo.lossObjectType){
+            sb.append(activity.cxDict.getLabelByValue("loss_object_type",value));
         }
         return sb.toString();
     }

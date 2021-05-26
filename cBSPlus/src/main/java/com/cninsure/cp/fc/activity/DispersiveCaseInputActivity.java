@@ -1169,6 +1169,7 @@ deputeItem 水险委托事项
 			chickGGS = new GGSEntity();
 			chickGGS.tableData=new GGSTableData();
 			chickGGS.tableData.data=new ArrayList<GGSEntity.GGSTableData.GGSData>();
+			if(choiceGGS!=null && choiceGGS.tableData!=null)
 			for (GGSData ggs:choiceGGS.tableData.data) {
 				chickGGS.tableData.data.add(ggs);
 			}

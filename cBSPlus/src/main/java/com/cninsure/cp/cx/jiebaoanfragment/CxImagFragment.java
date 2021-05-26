@@ -20,6 +20,7 @@ import com.cninsure.cp.cx.util.CxWorkImgUploadUtil;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxImagEntity;
+import com.cninsure.cp.entity.cx.CxOrderMediaTypeEntity;
 import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.entity.dispersive.DisWorkImageEntity;
 import com.cninsure.cp.utils.DialogUtil;
@@ -97,7 +98,7 @@ public class CxImagFragment extends BaseFragment {
         httpParams.add(new BasicNameValuePair("baoanUid", activity.orderInfoEn.caseBaoanUid));
 
         if (submitImgEnList.size() > 0) {
-            PhotoUploadUtil.newCxImgSave(activity, submitImgEnList, URLs.CX_UP_WORK_IMG, httpParams);
+            PhotoUploadUtil.newCxImgSave(activity, submitImgEnList, URLs.CX_UP_WORK_IMG, httpParams, null);
         } else {
             DialogUtil.getAlertOneButton(activity, "没有需要上传的图片！", null).show();
         }
@@ -194,7 +195,7 @@ public class CxImagFragment extends BaseFragment {
                 photoListView.collapseGroup(position); //收起
                 photoListView.expandGroup(position); //展开
             }
-        });
+        },activity.orderInfoEn.uid);
         photoListView.setAdapter(adapter);
     }
 

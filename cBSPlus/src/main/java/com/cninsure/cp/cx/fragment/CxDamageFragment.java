@@ -81,8 +81,9 @@ public class CxDamageFragment extends BaseFragment {
     /**保存数据到实体类*/
     @Override
     public void SaveDataToEntity() {
-        if (activity==null) return;
+        if (activity==null || mlistView==null) return;
         for (int i= 0;i<activity.cxWorkEntity.damageInfos.size();i++){
+            if (mlistView.getChildAt(i)==null) continue;
             ViewHolder vHolder = (ViewHolder) mlistView.getChildAt(i).getTag();
             getHolderDate(vHolder,i);
         }
@@ -95,6 +96,7 @@ public class CxDamageFragment extends BaseFragment {
         tempDamage.damageObjectName = vHolder.damageObjectNameEdt.getText().toString();
         tempDamage.damageOwnerPhone = vHolder.damageOwnerPhoneEdt.getText().toString();
         tempDamage.damageType = TypePickeUtil.getValue(vHolder.damageTypeTv.getText().toString(),activity.cxSurveyDict,"damage_loss_type");
+        tempDamage.damageTypeName = vHolder.damageTypeTv.getText().toString();
     }
 
     private class MyAdapter extends BaseAdapter{

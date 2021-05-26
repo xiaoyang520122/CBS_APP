@@ -34,14 +34,16 @@ import java.util.List;
         private CxJieBaoanInfoActivity context;
         public List<DictData> dictList;
         public SaveImgCallBack addScb; //通过该接口的回调将数据写入到activity的图片实体类中，并刷新adapter
+        private String orderUid;
 
         private CxImagAdapter(){}
-        public CxImagAdapter(CxJieBaoanInfoActivity context, List<CxImagEntity> documentImgEnList, List<DictData> list, SaveImgCallBack scb){
+        public CxImagAdapter(CxJieBaoanInfoActivity context, List<CxImagEntity> documentImgEnList, List<DictData> list, SaveImgCallBack scb,String orderUid){
             imgEnList = documentImgEnList;
             inflater = LayoutInflater.from(context);
             this.context = context;
             this.dictList = list;
             this.addScb = scb;
+            this.orderUid = orderUid;
 
             handler = new Handler(){
                 @Override
@@ -81,7 +83,7 @@ import java.util.List;
             GridView gridView = contentview.findViewById(R.id.item_for_exlist_photoup_gridView1);
             CxGalleryAdapter gAdapter;
             String type = dictList.get(groupPosition).value;
-            gAdapter = new CxGalleryAdapter(context,getImgList(type),type,groupPosition,addScb);
+            gAdapter = new CxGalleryAdapter(context,getImgList(type),type,groupPosition,addScb,orderUid);
             gridView.setAdapter(gAdapter);
             return contentview;
         }

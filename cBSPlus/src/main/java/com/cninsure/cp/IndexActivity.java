@@ -266,8 +266,14 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 
 	/**设置十字图标旋转动画**/
 	private void showChoiceAddTypePopup() {
-		popupWindow=PopupWindowUtils.showPopupWindowUp(getPopupView(), addOrderImg, IndexActivity.this,handler);
-		showImageAnimation();
+		if (AppApplication.USER!=null && AppApplication.USER.data!=null){
+			if ("99".equals(AppApplication.USER.data.userType)){  //如果是玩不车童就不让操作
+				DialogUtil.getAlertOneButton(this,"外部车童，无法操作！",null).show();
+			}else{
+				popupWindow=PopupWindowUtils.showPopupWindowUp(getPopupView(), addOrderImg, IndexActivity.this,handler);
+				showImageAnimation();
+			}
+		}
 	}
 	
 	@SuppressLint("HandlerLeak")
@@ -332,9 +338,14 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 				break;
 			case 2:
 				recoverView(ordernowTV, R.drawable.ordernow);
-				if (f2 == null){
-				f2 = new OrderNowFragment();
-				ft.add(R.id.index_fragment, f2);}
+				if (f2 == null) {
+					f2 = new OrderNowFragment();
+					ft.add(R.id.index_fragment, f2);
+				}else{
+					ft.remove(f2);
+					f2 = new OrderNowFragment();
+					ft.add(R.id.index_fragment, f2);
+				}
 				ft.show(f2);
 				break;
 			case 3:
@@ -501,11 +512,11 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 		// oks.setNotification(R.drawable.ic_launcher,
 		// getString(R.string.app_name));
 		// title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-		oks.setTitle("千县万店");
+		oks.setTitle("e公估");
 		// titleUrl是标题的网络链接，仅在人人网和QQ空间使用
 		oks.setTitleUrl(URLs.APP_DOWNLOAD_URL);
 		// text是分享文本，所有平台都需要这个字段
-		oks.setText("下载泛华公估掌上作业平台-千县万店");
+		oks.setText("下载泛华公估掌上作业平台-e公估");
 		// imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
 		oks.setImagePath("/sdcard/test.jpg");// 确保SDcard下面存在此张图片
 		// url仅在微信（包括好友和朋友圈）中使用
@@ -701,7 +712,8 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		IndexActivity.this.f2.downloadOrderData(1);
+//		IndexActivity.this.f2.downloadOrderData(1);
+		displayFragment(2);
 	}
 
 

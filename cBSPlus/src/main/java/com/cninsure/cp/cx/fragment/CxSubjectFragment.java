@@ -4,6 +4,8 @@ package com.cninsure.cp.cx.fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import androidx.annotation.Nullable;
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
+import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.utils.DateChoiceUtil;
 import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.SetTextUtil;
@@ -27,20 +30,23 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.zcw.togglebutton.ToggleButton;
 
+import java.util.List;
+
 public class CxSubjectFragment extends BaseFragment {
 
     private View contentView;
     public CxSurveyWorkEntity.SubjectInfoEntity subjectInfo; //定损信息
     private CxSurveyWorkActivity activity;
 
-    @ViewInject(R.id.cs_isLicenseKou)  private ToggleButton isLicenseKou;
+    @ViewInject(R.id.cs_isLicenseKou)  private TextView isLicenseKouTv; //证件查验
+    @ViewInject(R.id.cs_licenseMissingResult)  private TextView licenseMissingResultTv; //证件缺失原因
 
     @ViewInject(R.id.jxzheng_cameraLin)  private LinearLayout jxzLineLayout;
     @ViewInject(R.id.cs_pathMoveLicense)  private TextView pathMoveLicenseTv;  //行驶证拍照
     @ViewInject(R.id.cs_pathDriverLicense)  private TextView pathDriverLicenseTv;  //驾驶证拍照
 
     //银行卡信息
-    @ViewInject(R.id.cs_insuredPersonName)  private EditText insuredPersonNameEdt; //持卡人
+    @ViewInject(R.id.cs_insuredPersonName)  private EditText insuredPersonNameEdt; //收款人姓名-持卡人
     @ViewInject(R.id.cs_insuredBankDeposit)  private EditText insuredBankDepositEdt;  //开户行
     @ViewInject(R.id.cs_insuredBankNo)  private EditText insuredBankNoEdt; //开户行
     @ViewInject(R.id.cs_bankCarLicense)  private ImageView bankCarLicenseImg; //银行卡图片
@@ -51,7 +57,7 @@ public class CxSubjectFragment extends BaseFragment {
     @ViewInject(R.id.cs_bdEngineNo)  private EditText bdEngineNoEdt; //发动机号
     @ViewInject(R.id.cs_bdCarRegisterDate)  private TextView bdCarRegisterDateTv; //初登日期
     @ViewInject(R.id.cs_bdCarEffectiveDate)  private TextView bdCarEffectiveDateTv; //行驶证有效期至
-    @ViewInject(R.id.cs_bdDrivingType)  private EditText bdDrivingTypeEdt; //准驾车型
+    @ViewInject(R.id.cs_bdDrivingType)  private TextView bdDrivingTypeTv; //准驾车型
     @ViewInject(R.id.cs_bdCarNumberType)  private TextView bdCarNumberTypeTv; //号牌种类
     @ViewInject(R.id.cs_bdCarUseType)  private TextView bdCarUseTypeTv; //使用性质
 
@@ -65,7 +71,7 @@ public class CxSubjectFragment extends BaseFragment {
     @ViewInject(R.id.cs_bdCarVinIsAgreement_RG)  private RadioGroup bdCarVinIsAgreementRG; //车架号是否相符
     @ViewInject(R.id.cs_bdCardIsEffective_RG)  private RadioGroup bdCardIsEffectiveRG; //行驶证是否相符
     @ViewInject(R.id.cs_bdDriverIsEffective_RG)  private RadioGroup bdDriverIsEffectiveRG; //驾驶证是否相符
-    @ViewInject(R.id.cs_bdDrivingIsAgreement_RG)  private RadioGroup bdDrivingIsAgreementRG; //准驾车型是否相符
+    @ViewInject(R.id.cs_bdDrivingIsAgreement_RG)  private RadioGroup bdDrivingIsAgreementRG; //驾驶资格-准驾车型是否相符
 
 
 
@@ -82,7 +88,7 @@ public class CxSubjectFragment extends BaseFragment {
     private void initView() {
         if ( activity.cxWorkEntity.subjectInfo == null)
             activity.cxWorkEntity.subjectInfo = new CxSurveyWorkEntity.SubjectInfoEntity();
-        setLicenseKouOnclick();  //设置双证被扣单击事件
+//        setLicenseKouOnclick();  //设置双证被扣单击事件
         setMoveLicenseOnclick(); //行驶证点击事件
         setShortDatePick(); //选择时间单击事件绑定
         setTypePickeOclick() ;// 绑定类型选择
@@ -94,6 +100,52 @@ public class CxSubjectFragment extends BaseFragment {
     private void setTypePickeOclick() {
         TypePickeUtil.setTypePickerDialog(activity,bdCarNumberTypeTv,activity.cxSurveyDict,"carno_type");
         TypePickeUtil.setTypePickerDialog(activity,bdCarUseTypeTv,activity.cxSurveyDict,"car_usetype");
+        TypePickeUtil.setTypePickerDialog(activity,bdDrivingTypeTv,activity.cxSurveyDict,"quasiDrivingType"); //准驾车型
+        TypePickeUtil.setTypePickerDialog(activity, isLicenseKouTv,activity.cxSurveyDict,"isLicenseKou");
+        TypePickeUtil.setTypePickerDialog(activity, licenseMissingResultTv,activity.cxSurveyDict,"licenseMissingResult"); //证件缺失原因
+        isLicenseKouTv.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                activity.cxWorkEntity.subjectInfo.isLicenseKou = activity.cxSurveyDict.getValueByLabel("isLicenseKou",s.toString());   //证件查验
+                setlicenseMissingResultTvVisibility(s.toString());
+            }
+            @Override public void afterTextChanged(Editable s) {}
+        });
+    }
+
+    /**
+     * 如果证件查验类型选择了“缺少驾驶证”“缺少行驶证”“缺少行驶证和驾驶证”时，显示“证件缺失原因”选择项目，供用户选择
+     * @param value
+     */
+    private void setlicenseMissingResultTvVisibility(String value) {
+        List<DictData> dictListTemp = activity.cxSurveyDict.getDictByType("isLicenseKou");
+        if (dictListTemp!=null && value!=null) {
+            for (DictData dictTemp:dictListTemp){
+                if (value.equals(dictTemp.label)) {
+
+                    //先全部显示出来
+                    jxzLineLayout.setVisibility(View.VISIBLE);
+                    pathMoveLicenseTv.setVisibility(View.VISIBLE);
+                    pathDriverLicenseTv.setVisibility(View.VISIBLE);
+
+                    if ("01".equals(dictTemp.value)) { //两证齐全有效
+                        licenseMissingResultTv.setVisibility(View.GONE); //隐藏 证件缺失原因 选择项目
+                        licenseMissingResultTv.setText("");  //两证齐全，清空选择的 证件缺失原因
+                    }else{
+                        licenseMissingResultTv.setVisibility(View.VISIBLE); //显示 证件缺失原因 选择项目
+                        if ("02".equals(dictTemp.value)) { //缺少驾驶证
+                            pathDriverLicenseTv.setVisibility(View.GONE);
+                        }else if ("03".equals(dictTemp.value)) { //缺少行驶证
+                            pathMoveLicenseTv.setVisibility(View.GONE);
+                        } else if ("04".equals(dictTemp.value)) { //缺少驾驶证和行驶证
+                            jxzLineLayout.setVisibility(View.GONE);
+                        }
+                    }
+                    break;
+                }
+            }
+        }
     }
 
     private void setShortDatePick() {
@@ -101,7 +153,7 @@ public class CxSubjectFragment extends BaseFragment {
         DateChoiceUtil.setShortDatePickerDialog(activity,bdCarEffectiveDateTv);
         DateChoiceUtil.setShortDatePickerDialog(activity,bdDriverRegisterDateTv);
         DateChoiceUtil.setShortDatePickerDialog(activity,bdDriverEffectiveStarTv);
-        DateChoiceUtil.setShortDatePickerDialog(activity,bdDriverEffectiveEndTv);
+        DateChoiceUtil.setMYDatePickerDialog(activity,bdDriverEffectiveEndTv);
     }
 
     /**行驶证点击事件
@@ -142,23 +194,23 @@ public class CxSubjectFragment extends BaseFragment {
 
     }
 
-    /**
-     * 设置双证被扣单击事件
-     */
-    private void setLicenseKouOnclick() {
-        isLicenseKou.setOnToggleChanged(new ToggleButton.OnToggleChanged() {
-            @Override
-            public void onToggle(boolean on) {
-                if (on){
-                    activity.cxWorkEntity.subjectInfo.isLicenseKou = 1;
-                    jxzLineLayout.setVisibility(View.GONE);
-                } else {
-                    activity.cxWorkEntity.subjectInfo.isLicenseKou = 0;
-                    jxzLineLayout.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-    }
+//    /**
+//     * 设置双证被扣单击事件
+//     */
+//    private void setLicenseKouOnclick() {
+//        isLicenseKouTv.setOnToggleChanged(new ToggleButton.OnToggleChanged() {
+//            @Override
+//            public void onToggle(boolean on) {
+//                if (on){
+//                    activity.cxWorkEntity.subjectInfo.isLicenseKou = 1;
+//                    jxzLineLayout.setVisibility(View.GONE);
+//                } else {
+//                    activity.cxWorkEntity.subjectInfo.isLicenseKou = 0;
+//                    jxzLineLayout.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        });
+//    }
 
     /**显示OCR识别的 银行卡信息*/
     public void disBankCardInfo(String imgName) {
@@ -182,15 +234,16 @@ public class CxSubjectFragment extends BaseFragment {
         SetTextUtil.setEditText(bdCarVinEdt ,activity.cxWorkEntity.subjectInfo.bdCarVin,SetTextUtil.VIN); //车架号
         SetTextUtil.setEditText(bdEngineNoEdt,activity.cxWorkEntity.subjectInfo.bdEngineNo,SetTextUtil.ENGIN); //发动机号
         bdCarRegisterDateTv.setText(activity.cxWorkEntity.subjectInfo.bdCarRegisterDate); //初登日期
-        bdDrivingTypeEdt.setText(activity.cxWorkEntity.subjectInfo.bdDrivingType); //准驾车型
+        SetTextUtil.setTextViewText(bdDrivingTypeTv,activity.cxSurveyDict.getLabelByValue("quasiDrivingType",activity.cxWorkEntity.subjectInfo.bdDrivingType)); //准驾车型
         SetTextUtil.setTvTextForArr(bdCarUseTypeTv,TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("car_usetype")),activity.cxWorkEntity.subjectInfo.bdCarUseType);  //使用性质
         activity.cxWorkEntity.subjectInfo.pathMoveLicense = imgName;  //照片名称
     }
 
     @Override
     public void SaveDataToEntity() {
+        activity.cxWorkEntity.subjectInfo.licenseMissingResult = activity.cxSurveyDict.getValueByLabel("licenseMissingResult",licenseMissingResultTv.getText().toString());   //证件缺失原因
         //银行卡信息
-        activity.cxWorkEntity.subjectInfo.insuredPersonName = insuredPersonNameEdt.getText().toString();  //持卡人
+        activity.cxWorkEntity.subjectInfo.insuredPersonName = insuredPersonNameEdt.getText().toString();  //收款人姓名-持卡人
         activity.cxWorkEntity.subjectInfo.insuredBankDeposit = insuredBankDepositEdt.getText().toString();  //开户行
         activity.cxWorkEntity.subjectInfo.insuredBankNo = insuredBankNoEdt.getText().toString(); //账号
         //行驶证
@@ -199,7 +252,7 @@ public class CxSubjectFragment extends BaseFragment {
         activity.cxWorkEntity.subjectInfo.bdEngineNo = bdEngineNoEdt.getText().toString(); //发动机号
         activity.cxWorkEntity.subjectInfo.bdCarRegisterDate = bdCarRegisterDateTv.getText().toString();//初登日期
         activity.cxWorkEntity.subjectInfo.bdCarEffectiveDate = bdCarEffectiveDateTv.getText().toString(); //行驶证有效期至
-        activity.cxWorkEntity.subjectInfo.bdDrivingType = bdDrivingTypeEdt.getText().toString(); //准驾车型
+        activity.cxWorkEntity.subjectInfo.bdDrivingType = activity.cxSurveyDict.getValueByLabel("quasiDrivingType",bdDrivingTypeTv.getText().toString()); //准驾车型
         activity.cxWorkEntity.subjectInfo.bdCarNumberType =  TypePickeUtil.getValue(bdCarNumberTypeTv.getText().toString(),activity.cxSurveyDict,"carno_type");   //号牌种类
         activity.cxWorkEntity.subjectInfo.bdCarUseType =  TypePickeUtil.getValue(bdCarUseTypeTv.getText().toString(),activity.cxSurveyDict,"car_usetype");   //使用性质
         //驾驶证
@@ -248,12 +301,10 @@ public class CxSubjectFragment extends BaseFragment {
      */
     private void displaySubjectData() {
         CxSurveyWorkEntity.SubjectInfoEntity subjectInfoEnt = activity.cxWorkEntity.subjectInfo;
-        if (activity.cxWorkEntity.subjectInfo.isLicenseKou==1){
-            isLicenseKou.setToggleOn(true); //双证被扣
-            jxzLineLayout.setVisibility(View.GONE);
-        }else{jxzLineLayout.setVisibility(View.VISIBLE);}
+        SetTextUtil.setTextViewText(isLicenseKouTv,activity.cxSurveyDict.getLabelByValue("isLicenseKou",subjectInfoEnt.isLicenseKou+""));//证件查验
+        SetTextUtil.setTextViewText(licenseMissingResultTv,activity.cxSurveyDict.getLabelByValue("licenseMissingResult",subjectInfoEnt.licenseMissingResult+""));//证件缺失原因
         //银行卡信息
-        SetTextUtil.setEditText(insuredPersonNameEdt,subjectInfoEnt.insuredPersonName);  //持卡人
+        SetTextUtil.setEditText(insuredPersonNameEdt,subjectInfoEnt.insuredPersonName);  //收款人姓名-持卡人
         SetTextUtil.setEditText(insuredBankDepositEdt,subjectInfoEnt.insuredBankDeposit);  //开户行
         SetTextUtil.setEditText(insuredBankNoEdt,subjectInfoEnt.insuredBankNo,SetTextUtil.BANK_CARD); //账号
         //行驶证
@@ -262,13 +313,13 @@ public class CxSubjectFragment extends BaseFragment {
         SetTextUtil.setEditText(bdEngineNoEdt,subjectInfoEnt.bdEngineNo,SetTextUtil.ENGIN); //发动机号
         SetTextUtil.setTextViewText(bdCarRegisterDateTv,subjectInfoEnt.bdCarRegisterDate);//初登日期
         SetTextUtil.setTextViewText(bdCarEffectiveDateTv,subjectInfoEnt.bdCarEffectiveDate); //行驶证有效期至
-        SetTextUtil.setEditText(bdDrivingTypeEdt,subjectInfoEnt.bdDrivingType); //准驾车型
+        SetTextUtil.setTextViewText(bdDrivingTypeTv,activity.cxSurveyDict.getLabelByValue("quasiDrivingType",subjectInfoEnt.bdDrivingType)); //准驾车型
         SetTextUtil.setTvTextForArr(bdCarNumberTypeTv,TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("carno_type")),subjectInfoEnt.bdCarNumberType);  //号牌种类
         SetTextUtil.setTvTextForArr(bdCarUseTypeTv,TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("car_usetype")),subjectInfoEnt.bdCarUseType);  //使用性质
         //驾驶证
         SetTextUtil.setEditText(bdDriverNameEdt,subjectInfoEnt.bdDriverName);//驾驶员姓名
         SetTextUtil.setEditText(bdDriverPhoneEdt,subjectInfoEnt.bdDriverPhone,SetTextUtil.MOBILE);//驾驶员电话
-        SetTextUtil.setEditText(bdDriverNoEdt,subjectInfoEnt.bdDriverNo);//驾驶证
+        SetTextUtil.setEditText(bdDriverNoEdt,subjectInfoEnt.bdDriverNo,SetTextUtil.ID_CARD);//驾驶证
         SetTextUtil.setTextViewText(bdDriverRegisterDateTv,subjectInfoEnt.bdDriverRegisterDate);//初次领证日期
         SetTextUtil.setTextViewText(bdDriverEffectiveStarTv,subjectInfoEnt.bdDriverEffectiveStar);//有效起始日期
         SetTextUtil.setTextViewText(bdDriverEffectiveEndTv,subjectInfoEnt.bdDriverEffectiveEnd);//驾驶证有效期至

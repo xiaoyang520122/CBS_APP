@@ -1,5 +1,6 @@
 package com.cninsure.cp.cx.jiebaoanfragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.cninsure.cp.R;
 import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
 import com.cninsure.cp.cx.adapter.RemarkAdapter;
 import com.cninsure.cp.cx.fragment.BaseFragment;
+import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxExamineEntity;
@@ -39,8 +41,11 @@ import java.util.List;
 
 public class CxExamineFragment extends BaseFragment {
     private LayoutInflater inflater;
-    private CxJieBaoanInfoActivity activity;
+    private Activity activity;
     private View contentView;
+
+    public String QorderUid;
+    public PublicOrderEntity orderInfoEn; //任务信息
 
     @ViewInject(R.id.examineMsg_listView) private ListView examineListView;
     @ViewInject(R.id.LeavingMsg_text_submit_button) private Button submitButton;
@@ -54,8 +59,10 @@ public class CxExamineFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.inflater = inflater;
         contentView = inflater.inflate(R.layout.examine_layout, null);
-        activity = (CxJieBaoanInfoActivity) getActivity();
+        activity = getActivity();
         ViewUtils.inject(this, contentView);
+        orderInfoEn = (PublicOrderEntity) activity.getIntent().getSerializableExtra("PublicOrderEntity");
+        QorderUid = activity.getIntent().getStringExtra("orderUid");
         initView();
         getExamineInfo();
         return contentView;
@@ -80,7 +87,7 @@ public class CxExamineFragment extends BaseFragment {
             params.add("userId");
             params.add(AppApplication.getInstance().USER.data.id+"");
             params.add("orderUid");
-            params.add(activity.orderInfoEn.uid);
+            params.add(orderInfoEn.uid);
             HttpUtils.requestGet(URLs.CX_GET_EXAMINE_INFO, params, HttpRequestTool.CX_GET_EXAMINE_INFO);
     }
 
@@ -105,7 +112,7 @@ public class CxExamineFragment extends BaseFragment {
     private void submitTextExamine(String msg) {
         List<NameValuePair> httpParams = new ArrayList<>();
         httpParams.add(new BasicNameValuePair("userId", AppApplication.USER.data.userId+""));
-        httpParams.add(new BasicNameValuePair("orderUid", activity.orderInfoEn.uid));
+        httpParams.add(new BasicNameValuePair("orderUid", orderInfoEn.uid));
         httpParams.add(new BasicNameValuePair("content", msg));
         HttpUtils.requestPost(URLs.CX_SAVE_EXAMINE_INFO, httpParams, HttpRequestTool.CX_SAVE_EXAMINE_INFO);
     }

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.cninsure.cp"
-    android:versionCode="159"
-    android:versionName="V1.5.9">
+    android:versionCode="164"
+    android:versionName="V1.6.4">
 
     <!-- 版本号必须是版本名称中数字部分，不能死其他，如版本号为V1.0.1时，版本号为101 -->
     <!-- <uses-sdk -->
@@ -182,6 +182,8 @@
         <activity android:name=".activity.yjx.YjxNoShenheOrderActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxDamageActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity"></activity>
+        <activity android:name=".cx.autoloss.AutoLossMainActivity"></activity>
+        <activity android:name=".cx.autoloss.ChoiceFactoryActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxDsWorkActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.DsUtilActivity"></activity>
@@ -213,6 +215,10 @@
             android:windowSoftInputMode="adjustPan"
             ></activity>
         <activity android:name="com.cninsure.cp.cx.CxJieBaoanInfoActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="adjustPan"
+            ></activity>
+        <activity android:name="com.cninsure.cp.cx.CxDsBaoanInfoActivity"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="adjustPan"
             ></activity>

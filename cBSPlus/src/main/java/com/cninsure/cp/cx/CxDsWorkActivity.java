@@ -23,6 +23,7 @@ import com.alibaba.fastjson.JSON;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
+import com.cninsure.cp.cx.autoloss.AutoLossMainActivity;
 import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.cx.util.CxWorkSubmitUtil;
 import com.cninsure.cp.entity.BaseEntity;
@@ -59,6 +60,7 @@ import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class CxDsWorkActivity extends BaseActivity implements View.OnClickListener {
 
@@ -68,19 +70,21 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
     private CxDictEntity cxDict; //拍照类型字典数据
     private LayoutInflater inflater ; //
     public final int DS_REQUEST_CODE = 1; //请求定损界面code
-    PublicOrderEntity orderInfoEn ; //任务信息
+    public PublicOrderEntity orderInfoEn ; //任务信息
     private static CxDsWorkActivity instence;
 
     @ViewInject(R.id.CxDsM_intelligent_button) private TextView intelligentButton;  //智能定损**
     @ViewInject(R.id.CxDsM_dsCarNumber) private EditText dsCarNumber;  //车牌号**
+    @ViewInject(R.id.CxDsM_carVinNo) private EditText carVinNoEdt;  //VIN码**
     @ViewInject(R.id.CxDsM_carType) private TextView carType;  //车型**
     @ViewInject(R.id.CxDsM_dsServiceDepot)  private EditText dsServiceDepot;//维修厂**
     @ViewInject(R.id.CxDsM_dsAptitudes_RG)  private RadioGroup dsAptitudes;//资质**
     @ViewInject(R.id.CxDsM_carSeries)  private TextView carSeries;//车系**
     @ViewInject(R.id.CxDsM_carTypeName)  private TextView carBrand;//车品牌**
-    @ViewInject(R.id.CxDsM_carStructure)  private EditText carStructure;//车辆结构**
+    @ViewInject(R.id.CxDsM_carStructure)  private TextView carStructure;//车辆结构**
     @ViewInject(R.id.CxDsM_claimLevel)  private TextView claimLevel;//索赔险别**
     @ViewInject(R.id.CxDsM_dsLocation)  private EditText dsLocation;//定损地点**
+    @ViewInject(R.id.CxDsM_dsLocation_local)  private TextView dsLocationLocal;//定损地点**
 
     @ViewInject(R.id.CxDsM_dsRescueAmount)  private EditText dsRescueAmount;//定损施救费
     @ViewInject(R.id.CxDsM_hsRescueAmount)  private TextView hsRescueAmount;//核损施救费
@@ -118,6 +122,15 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         QorderUid = getIntent().getStringExtra("orderUid");
         orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
         dowloadDictType();
+        setdsLocationLocalOnclick(); //获取当前地点的赋值到定损地点的点击事件
+    }
+
+    private void setdsLocationLocalOnclick() {
+        dsLocationLocal.setOnClickListener(v -> {
+            if (AppApplication.LOCATION!=null){
+                SetTextUtil.setEditText(dsLocation,AppApplication.LOCATION.getAddrStr());
+            }
+        });
     }
 
     /**先下载字典库*/
@@ -125,7 +138,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         LoadDialogUtil.setMessageAndShow(this,"载入中……");
         List<String> params = new ArrayList<String>(2);
         params.add("type");
-        params.add("ds_aptitudes,claim_level_type");
+        params.add("ds_aptitudes,claim_level_type,carStructure");
         HttpUtils.requestGet(URLs.CX_NEW_GET_IMG_TYPE_DICT, params, HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT);
     }
 
@@ -147,6 +160,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
                 dowloadTaskView();
                 LoadDialogUtil.dismissDialog();
                 cxDict.list = JSON.parseArray(values.get(0).getValue(), DictData.class);
+                setCarStructureCheck(); //绑定车辆结构选择内容
                 break;
             case HttpRequestTool.CX_NEW_GET_ORDER_VIEW_BY_UID: //获取订单信息
                 LoadDialogUtil.dismissDialog();
@@ -164,12 +178,19 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
+    /**
+     * 绑定车辆结构选择内容
+     */
+    private void setCarStructureCheck() {
+        TypePickeUtil.setTypePickerDialog(this,carStructure,cxDict,"carStructure");
+    }
+
     private int isSubmit;
     /**保存或提交审核返回数据*/
     private void getTaskWorkSavaInfo(String value) {
         BaseEntity baseEntity = JSON.parseObject(value,BaseEntity.class);
         if (baseEntity.success) {
-            Dialog dialog = DialogUtil.getAlertDialog(this,baseEntity.msg,"提示！");
+            Dialog dialog = DialogUtil.getAlertDialog(this,(isSubmit==1?"提交成功！":"保存成功！"),"提示！");
             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
@@ -199,16 +220,32 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         }
         taskEntity.data.contentJson.insuredPerson = orderInfoEn.baoanPersonName; //被保险人暂时存 出险单位联系人
         taskEntity.data.contentJson.riskDate = orderInfoEn.riskDate; //出险时间
-        taskEntity.data.contentJson.dsCarNumber = orderInfoEn.licensePlateBiaoDi; //出险车牌
+        if (40==(getIntent().getIntExtra("bussTypeId",0))) //标的定损回显车牌号
+            taskEntity.data.contentJson.dsCarNumber = orderInfoEn.licensePlateBiaoDi; //出险车牌
         initView();
         displayWorkInfo();
     }
 
+    /**
+     * 索赔险别：必填，点选项//这里的定损任务是不是表示“三者定损”只能选择06和07，其他只能在“标的定损”里面选择//是的
+     * 编码	定损任务	索赔险别
+     * 01	标的定损	交强险
+     * 02	标的定损	机动车损失保险
+     * 03	标的定损	附加车轮单独损失险
+     * 04	标的定损	附加新增设备损失险
+     * 05	标的定损	附加车身划痕损失险
+     * 06	三者定损	交强险
+     * 07	三者定损	机动车第三者责任保险
+     */
     private void initView() {
         hjTotalFeeMore.setOnClickListener(this);//换件项目-查看
         replaceInfosMore.setOnClickListener(this);//工时信息-查看
         intelligentButton.setOnClickListener(this);
-        TypePickeUtil.setTypePickerDialog(this,claimLevel,cxDict,"claim_level_type");//索赔险别
+        if (getIntent().getIntExtra("bussTypeId",0) == 40) {
+            TypePickeUtil.setTypePickerDialogByValus(this, claimLevel, cxDict, "claim_level_type", "01,02,03,04,05");//索赔险别
+        }else if (getIntent().getIntExtra("bussTypeId",0) == 41){
+            TypePickeUtil.setTypePickerDialogByValus(this, claimLevel, cxDict, "claim_level_type", "06,07");//索赔险别
+        }
         enclosureList.setOnClickListener(this);
         //保存或提交单击事件
         findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
@@ -234,7 +271,9 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
      */
     private void jumpTointelligentActivity() {
         Intent intent = new Intent(this,DsUtilActivity.class);
+//        Intent intent = new Intent(this, AutoLossMainActivity.class);
         intent.putExtra("contentJson",taskEntity.data.contentJson);
+        intent.putExtra("CxDsWorkEntity",taskEntity.data.contentJson);
         startActivityForResult(intent,DS_REQUEST_CODE);
     }
 
@@ -251,7 +290,8 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE & data!=null){  //上传附件选择的文件。
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE & data != null) {  //上传附件选择的文件。
             inspectFileSize(data); //判断文件大小是否小于20M
         }
     }
@@ -312,6 +352,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         CxDsWorkEntity damageEnt = taskEntity.data.contentJson;
 //        SetTextUtil.setEditText(intelligentButton;  //智能定损 页面吊起，不能放到这里，因为这里不一定能进入
         SetTextUtil.setEditText(dsCarNumber,damageEnt.dsCarNumber);  //车牌号**
+        SetTextUtil.setEditText(carVinNoEdt,damageEnt.carVinNo);  //VIN码**
         SetTextUtil.setTextViewText(carType,damageEnt.carType);  //车型**
         SetTextUtil.setEditText(dsServiceDepot,damageEnt.dsServiceDepot);//维修厂**
         //资质**
@@ -319,8 +360,8 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         if (damageEnt.dsAptitudes.equals("1")) dsAptitudes.check(R.id.CxDsM_dsAptitudes_RB2);
         SetTextUtil.setTextViewText(carSeries,damageEnt.carSeries);//车系**
         SetTextUtil.setTextViewText(carBrand,damageEnt.carBrand);//车品牌**
-        SetTextUtil.setEditText(carStructure,damageEnt.carStructure);//车辆结构**
-        SetTextUtil.setTvTextForArr(claimLevel, TypePickeUtil.getDictLabelArr(cxDict.getDictByType("claim_level_type")),damageEnt.claimLevel);
+        SetTextUtil.setTextViewText(carStructure,cxDict.getLabelByValue("carStructure",damageEnt.carStructure));//车辆结构**
+        SetTextUtil.setTextViewText(claimLevel, cxDict.getLabelByValue("claim_level_type",damageEnt.claimLevel));
 
         SetTextUtil.setEditText(dsLocation,damageEnt.dsLocation);//定损地点**
 
@@ -405,6 +446,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
 
 //        SetTextUtil.setEditText(intelligentButton;  //智能定损 页面吊起，不能放到这里，因为这里不一定能进入
         damageEnt.dsCarNumber = dsCarNumber.getText().toString();  //车牌号**
+        damageEnt.carVinNo = carVinNoEdt.getText().toString();  //VIN码**
         damageEnt.carType =carType.getText().toString();  //车型**
         damageEnt.dsServiceDepot = dsServiceDepot.getText().toString();//维修厂**
         //资质**
@@ -412,8 +454,8 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         if (dsAptitudes.getCheckedRadioButtonId()==R.id.CxDsM_dsAptitudes_RB2) damageEnt.dsAptitudes = "1";
 //        SetTextUtil.setTextViewText(carSeries,damageEnt.carSeries);//车系**
 //        SetTextUtil.setTextViewText(carTypeName,damageEnt.carTypeName);//车品牌**
-        damageEnt.carStructure = carStructure.getText().toString();//车辆结构**
-        damageEnt.claimLevel = TypePickeUtil.getValue(claimLevel.getText().toString(),cxDict,"claim_level_type");//索赔险别**
+        damageEnt.carStructure = cxDict.getValueByLabel("carStructure",carStructure.getText().toString());//车辆结构**
+        damageEnt.claimLevel = cxDict.getValueByLabel("claim_level_type",claimLevel.getText().toString());//索赔险别**
         damageEnt.dsLocation = dsLocation.getText().toString();//定损地点**
 
         damageEnt.dsRescueAmount = dsRescueAmount.getText().toString();//定损施救费
@@ -452,4 +494,10 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         EventBus.getDefault().unregister(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (taskEntity!=null){
+        String tt = taskEntity.data.contentJson.carFacturer;}
+    }
 }

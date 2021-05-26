@@ -45,6 +45,16 @@ public class CxDictEntity implements Serializable {
         }
         return tempList;
     }
+    public List<DictData> getDictByTypeAndParentId(String type,String parentId) {
+        List<DictData> tempList = new ArrayList<>();
+        if (list != null) {
+            for (DictData dEn : list) {
+                if (type.equals(dEn.type) && "0".equals(dEn.delFlag) && dEn.parentId.equals(parentId))
+                    tempList.add(dEn);
+            }
+        }
+        return tempList;
+    }
 
     public String getLabelByValue(String type,String value){
         if (TextUtils.isEmpty(value)) return "";

@@ -67,7 +67,7 @@ public class CxWorkPhotoHelp implements OnClickListener {
 	
 	
 	private void initOCR() {
-		OCR.getInstance().initAccessToken(new OnResultListener<AccessToken>() {
+		OCR.getInstance(activity).initAccessToken(new OnResultListener<AccessToken>() {
 			@Override
 			public void onResult(AccessToken result) {
 				// 调用成功，返回AccessToken对象
@@ -247,7 +247,7 @@ public class CxWorkPhotoHelp implements OnClickListener {
 		param.setImageFile(new File(filePath));
 
 		// 调用银行卡识别服务
-		OCR.getInstance().recognizeBankCard(param, new OnResultListener<BankCardResult>() {
+		OCR.getInstance(activity).recognizeBankCard(param, new OnResultListener<BankCardResult>() {
 		    @Override
 		    public void onResult(BankCardResult result) {
 		        // 调用成功，返回BankCardResult对象
@@ -278,7 +278,7 @@ private void jiexieXSZ(String filePath) {
 	// 设置其他参数
 	param.putParam("detect_direction", true);
 	// 调用行驶证识别服务
-	OCR.getInstance().recognizeVehicleLicense(param, new OnResultListener<OcrResponseResult>() {
+	OCR.getInstance(activity).recognizeVehicleLicense(param, new OnResultListener<OcrResponseResult>() {
 	    @Override
 	    public void onResult(OcrResponseResult result) {
 	        // 调用成功，返回OcrResponseResult对象
@@ -309,7 +309,7 @@ private void jiexieXSZ(String filePath) {
 		// 设置其他参数
 		param.putParam("detect_direction", true);
 		// 调用驾驶证识别服务
-		OCR.getInstance().recognizeDrivingLicense(param, new OnResultListener<OcrResponseResult>() {
+		OCR.getInstance(activity).recognizeDrivingLicense(param, new OnResultListener<OcrResponseResult>() {
 		    @Override
 		    public void onResult(OcrResponseResult result) {
 		        // 调用成功，返回OcrResponseResult对象
@@ -339,7 +339,7 @@ private void jiexieXSZ(String filePath) {
 		// 设置方向检测
 		param.setDetectDirection(true);
 		// 调用身份证识别服务
-		OCR.getInstance().recognizeIDCard(param, new OnResultListener<IDCardResult>() {
+		OCR.getInstance(activity).recognizeIDCard(param, new OnResultListener<IDCardResult>() {
 			@Override
 			public void onResult(IDCardResult result) {
 				// 调用成功，返回IDCardResult对象

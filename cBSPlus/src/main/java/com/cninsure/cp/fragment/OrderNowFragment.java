@@ -52,6 +52,7 @@ import com.cninsure.cp.R;
 import com.cninsure.cp.activity.yjx.YjxSurveyActivity;
 import com.cninsure.cp.cx.CxDamageActivity;
 import com.cninsure.cp.cx.CxDisabyIdentifyActivity;
+import com.cninsure.cp.cx.CxDsBaoanInfoActivity;
 import com.cninsure.cp.cx.CxDsWorkActivity;
 import com.cninsure.cp.cx.CxInjuryMediateActivity;
 import com.cninsure.cp.cx.CxInjuryExamineActivity;
@@ -160,7 +161,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 					}).show();
 
 		}else{
-			ToastUtil.showToastShort(getActivity(),"为选着公估师");
+			ToastUtil.showToastShort(getActivity(),"未选择公估师");
 		}
 	}
 
@@ -182,7 +183,8 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		super.onResume();
 		if (isJumpToWork) {
 			isJumpToWork = false;
-			downloadOrderData(FCorCX);
+//			downloadOrderData(FCorCX);
+			downloadOrderData(2);
 		}
 		if (!EventBus.getDefault().isRegistered(this)) {
 			EventBus.getDefault().register(this);
@@ -192,7 +194,9 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 	@Override
 	public void onPause() {
 		super.onPause();
+		isJumpToWork = true;
 		EventBus.getDefault().unregister(this);
+		if (loadDialog!=null && loadDialog.isShowing()) loadDialog.dismiss();
 	}
 
 	/**
@@ -1244,22 +1248,23 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			switch (type){
 //				case 2 :  intent.setClass(getActivity(), CxSurveyWorkActivity.class);break;  //现场查勘
 				case 2 :  intent.setClass(getActivity(), CxJieBaoanInfoActivity.class);break;  //现场查勘新
-//				case 39 :  intent.setClass(getActivity(), CxInjurySurveyActivity.class);break;  //人伤查勘
-				case 40 :  intent.setClass(getActivity(), CxDsWorkActivity.class);break;  //标的定损
-				case 41 :  intent.setClass(getActivity(), CxDsWorkActivity.class);break;  //三者定损 - 界面同“标的定损”
-				case 42 :  intent.setClass(getActivity(), CxDamageActivity.class);break;  //物损定损
-				case 392 :  intent.setClass(getActivity(), CxInjuryTrackActivity.class);break;  //人伤跟踪
-				case 394 :  intent.setClass(getActivity(), CxDisabyIdentifyActivity.class);break; //陪同残定
-				case 393 :  intent.setClass(getActivity(), CxInjuryMediateActivity.class);break; //人伤调解
-				case 395 :   //人伤调查 investigationType
-					if (dataEn.investigationType!=null && dataEn.investigationType==1){ //全案
-						intent.setClass(getActivity(), CxInjuryExamineActivity.class);
-					}else{intent.setClass(getActivity(), CxInjuryExamineOnlyActivity.class);}
-					break;
-				//人伤任务、人伤初勘（同人伤查勘<人伤任务>），人伤定损（接口不通，做不了）
-				default: DialogUtil.getAlertOneButton(getActivity(),"功能开发中！",null).show();return;  //默认现场查勘
+////				case 39 :  intent.setClass(getActivity(), CxInjurySurveyActivity.class);break;  //人伤查勘
+//				case 40 :  intent.setClass(getActivity(), CxDsBaoanInfoActivity.class);break;  //标的定损 //CxDsWorkActivity
+//				case 41 :  intent.setClass(getActivity(), CxDsWorkActivity.class);break;  //三者定损 - 界面同“标的定损” //CxDsWorkActivity
+//				case 42 :  intent.setClass(getActivity(), CxDamageActivity.class);break;  //物损定损
+//				case 392 :  intent.setClass(getActivity(), CxInjuryTrackActivity.class);break;  //人伤跟踪
+//				case 394 :  intent.setClass(getActivity(), CxDisabyIdentifyActivity.class);break; //陪同残定
+//				case 393 :  intent.setClass(getActivity(), CxInjuryMediateActivity.class);break; //人伤调解
+//				case 395 :   //人伤调查 investigationType
+//					if (dataEn.investigationType!=null && dataEn.investigationType==1){ //全案
+//						intent.setClass(getActivity(), CxInjuryExamineActivity.class);
+//					}else{intent.setClass(getActivity(), CxInjuryExamineOnlyActivity.class);}
+//					break;
+//				//人伤任务、人伤初勘（同人伤查勘<人伤任务>），人伤定损（接口不通，做不了）
+//				default: DialogUtil.getAlertOneButton(getActivity(),"功能开发中！",null).show();return;  //默认现场查勘
+				default: intent.setClass(getActivity(), CxDsBaoanInfoActivity.class);break;  //默认现场查勘
 			}
-
+			intent.putExtra("bussTypeId", type);
 			intent.putExtra("orderUid", uid);
 			intent.putExtra("taskType", type);
 			intent.putExtra("status", statu);

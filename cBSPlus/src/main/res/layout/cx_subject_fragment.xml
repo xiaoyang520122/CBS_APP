@@ -39,7 +39,7 @@
                     android:textColor="@color/hui_text_xxh" />
 
                 <com.zcw.togglebutton.ToggleButton
-                    android:id="@+id/cs_isLicenseKou"
+                    android:id="@+id/cs_isLicenseKou______"
                     android:layout_width="48dp"
                     android:layout_height="20dp"
                     />
@@ -62,11 +62,12 @@
                     android:textColor="@color/hui_text_xxh" />
 
                 <TextView
-                    android:id="@+id/cs_papersType"
+                    android:id="@+id/cs_isLicenseKou"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
-                    android:layout_weight="1"
+                    android:layout_weight="4"
                     android:background="@null"
+                    android:lines="1"
                     android:drawableRight="@drawable/left_jt_hui_short"
                     android:drawablePadding="10dp"
                     android:gravity="right|center"
@@ -76,17 +77,18 @@
                     android:textSize="@dimen/text_defaul" />
 
                 <TextView
-                    android:id="@+id/cs_papers_defect_reason"
+                    android:id="@+id/cs_licenseMissingResult"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
+                    android:lines="1"
                     android:background="@null"
                     android:layout_marginLeft="10dp"
                     android:drawableRight="@drawable/left_jt_hui_short"
-                    android:drawableLeft="@drawable/icon_vertical_line"
                     android:drawablePadding="10dp"
                     android:gravity="right|center"
                     android:hint="选择缺失原因"
+                    android:visibility="gone"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -308,7 +310,7 @@
                     android:text="*"
                     android:textColor="@color/red"
                     android:textSize="@dimen/text_defaul"
-                    android:visibility="invisible" />
+                    android:visibility="visible" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -347,7 +349,7 @@
                     android:text="*"
                     android:textColor="@color/red"
                     android:textSize="@dimen/text_defaul"
-                    android:visibility="invisible" />
+                    android:visibility="visible" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -356,14 +358,16 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <EditText
+                <TextView
                     android:id="@+id/cs_bdDrivingType"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
+                    android:drawableRight="@drawable/left_jt_hui_short"
+                    android:drawablePadding="10dp"
                     android:gravity="right|center"
-                    android:hint="识别或手动录入"
+                    android:hint="请选择"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />
@@ -669,7 +673,7 @@
                     android:text="*"
                     android:textColor="@color/red"
                     android:textSize="@dimen/text_defaul"
-                    android:visibility="invisible" />
+                    android:visibility="visible" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -866,6 +870,89 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/survey_marginTop"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_defaul" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="驾驶资格："
+                    android:textColor="@color/hui_text_xxxxh"
+                    android:textSize="@dimen/text_defaul" />
+
+                <RadioGroup
+                    android:id="@+id/cs_bdDrivingIsAgreement_RG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/cs_bdDrivingIsAgreement_RB1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="未检"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/cs_bdDrivingIsAgreement_RB2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="相符"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                    <RadioButton
+                        android:id="@+id/cs_bdDrivingIsAgreement_RB3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_true_false_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="不符"
+                        android:textColor="@drawable/radio_true_false_blue"
+                        android:textSize="@dimen/text_l" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/survey_marginTop"
                 android:background="@drawable/line_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -945,89 +1032,6 @@
                 </RadioGroup>
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/survey_marginTop"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/text_defaul" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="准驾车型："
-                    android:textColor="@color/hui_text_xxxxh"
-                    android:textSize="@dimen/text_defaul" />
-
-                <RadioGroup
-                    android:id="@+id/cs_bdDrivingIsAgreement_RG"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/work_line_defaul_hight"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/cs_bdDrivingIsAgreement_RB1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:background="@drawable/radio_true_false_blue"
-                        android:button="@null"
-                        android:checked="true"
-                        android:gravity="center"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:text="未检"
-                        android:textColor="@drawable/radio_true_false_blue"
-                        android:textSize="@dimen/text_l" />
-
-                    <RadioButton
-                        android:id="@+id/cs_bdDrivingIsAgreement_RB2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:background="@drawable/radio_true_false_blue"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:text="相符"
-                        android:textColor="@drawable/radio_true_false_blue"
-                        android:textSize="@dimen/text_l" />
-
-                    <RadioButton
-                        android:id="@+id/cs_bdDrivingIsAgreement_RB3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/radio_true_false_blue"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="5dp"
-                        android:text="不符"
-                        android:textColor="@drawable/radio_true_false_blue"
-                        android:textSize="@dimen/text_l" />
-
-                </RadioGroup>
-
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -1057,12 +1061,12 @@
                     android:text="*"
                     android:textColor="@color/red"
                     android:textSize="@dimen/text_defaul"
-                    android:visibility="invisible" />
+                    android:visibility="visible" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="持卡人姓名："
+                    android:text="收款人姓名："
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 

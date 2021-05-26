@@ -28,6 +28,7 @@ import com.cninsure.cp.R;
 import com.cninsure.cp.activity.yjx.YjxSurveyActivity;
 import com.cninsure.cp.entity.FCBasicEntity;
 import com.cninsure.cp.entity.cx.CxImagEntity;
+import com.cninsure.cp.entity.cx.CxOrderMediaTypeEntity;
 import com.cninsure.cp.entity.dispersive.DisWorkImageEntity;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -620,12 +621,13 @@ public class PhotoUploadUtil {
 	 * @param httpParams
 	 */
 	public static void newCxImgSave(final Activity context, final List<CxImagEntity> submitImgEnList,
-										final String uploadPath,final List<NameValuePair> httpParams){
+									final String uploadPath, final List<NameValuePair> httpParams, CxOrderMediaTypeEntity cxMediaTypes){
 		Log.e("JsonHttpUtils", "上传图片请求地址："+uploadPath);
 		RequestParams params = new RequestParams("UTF-8");
 		params.addBodyParameter("userId",  AppApplication.getUSER().data.userId);
 		params.addBodyParameter("orderUid",  httpParams.get(0).getValue());
 		params.addBodyParameter("baoanUid",  httpParams.get(1).getValue());
+		params.addBodyParameter("fullPath", cxMediaTypes==null?"默认分类":cxMediaTypes.getFullPathByValue(submitImgEnList.get(uploadPoint).type));
 
 		String url = submitImgEnList.get(uploadPoint).fileUrl;
 		String fileUrl = url.substring(url.lastIndexOf("/")+1);
@@ -651,7 +653,7 @@ public class PhotoUploadUtil {
 				uploadPoint++;
 				Log.e("JsonHttpUtils", "车险图片信息保存成功返回数据："+resultinfo);
 				if (uploadPoint < submitImgEnList.size()) {
-                    newCxImgSave(context, submitImgEnList, uploadPath,httpParams);
+                    newCxImgSave(context, submitImgEnList, uploadPath,httpParams,cxMediaTypes);
 				} else {
 					uploadPoint = 0;
 					progressDialog.dismiss();
@@ -677,7 +679,7 @@ public class PhotoUploadUtil {
 
 				uploadPoint++;
 				if (uploadPoint < submitImgEnList.size()) {
-                    newCxImgSave(context, submitImgEnList, uploadPath,httpParams);
+                    newCxImgSave(context, submitImgEnList, uploadPath,httpParams,cxMediaTypes);
 				} else {
 					uploadPoint = 0;
 					progressDialog.dismiss();

@@ -9,9 +9,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.DictData;
+import com.cninsure.cp.fragment.OrderNowFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TypePickeUtil {
@@ -23,6 +26,18 @@ public class TypePickeUtil {
             @Override
             public void onClick(View arg0) {
                 String tempArr[] = getDictLabelArr(dictData.getDictByType(type));
+                showTypePickerDialog(context,textTv,tempArr);
+            }
+        });
+    }
+
+    /**获取显示可选择内容供选择，并在在选择后赋值到对应的TextView**/
+    public static void setTypePickerDialogByValus(final Context context, final TextView textTv, CxDictEntity dictData,String type,String values) {
+        textTv.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("InlinedApi")
+            @Override
+            public void onClick(View arg0) {
+                String tempArr[] = getDictLabelArrByValues(dictData.getDictByType(type),values);
                 showTypePickerDialog(context,textTv,tempArr);
             }
         });
@@ -48,11 +63,31 @@ public class TypePickeUtil {
                 }).create().show();
     }
 
+    public static void showTypePickerDialogByOnclick(final Context context, final TextView textTv, String[] tempArr){
+       textTv.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               showTypePickerDialog(context,textTv, tempArr);
+           }
+       });
+    }
+
     public static String[] getDictLabelArr(List<DictData> dictData){
         String[] tempArr = new String[dictData.size()];
         for (int i=0;i<dictData.size();i++){
             tempArr[i] = dictData.get(i).label;
         }
+        return tempArr;
+    }
+
+    public static String[] getDictLabelArrByValues(List<DictData> dictData,String values){
+        List<String> temLpist = new ArrayList<>();
+        for (int i=0;i<dictData.size();i++){
+           if(values.contains(dictData.get(i).value)){
+               temLpist.add(dictData.get(i).label);
+           }
+        }
+        String[] tempArr = temLpist.toArray(new String[temLpist.size()]);
         return tempArr;
     }
 
@@ -73,6 +108,21 @@ public class TypePickeUtil {
     }
 
     /**
+     * 通过 label 名称获取字典库中，该类型对应的 value
+     * @param labelStr
+     * @param dictData
+     * @param type
+     * @return
+     */
+    public static String getValueByLabel(String labelStr, CxDictEntity dictData,String type){
+        for (DictData dict:dictData.list){
+            if (!TextUtils.isEmpty(labelStr) && labelStr.equals(dict.label))
+            return dict.value;
+        }
+            return null;
+    }
+
+    /**
      * 通过 value 获取字典库中，该类型对应的 lable
      * @param value
      * @param dictData
@@ -88,6 +138,17 @@ public class TypePickeUtil {
             return tempDD.label;
         }
             return "";
+    }
+
+    public static void setTypePickerDialogByParentId(CxSurveyWorkActivity context, TextView textTv, CxDictEntity dictData, String type, String parentId) {
+        textTv.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("InlinedApi")
+            @Override
+            public void onClick(View arg0) {
+                String tempArr[] = getDictLabelArr(dictData.getDictByTypeAndParentId(type,parentId));
+                showTypePickerDialog(context,textTv,tempArr);
+            }
+        });
     }
 }
 

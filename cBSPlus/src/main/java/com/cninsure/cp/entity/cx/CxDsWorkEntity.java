@@ -12,17 +12,19 @@ import java.util.List;
 public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializable {
     public String dsCarNumber;//车牌号
     public String carType;//车型
-    public String carTypeId;
+    public String carVinNo;//VIN码
+    public String carTypeId; //车型id
     public String carTypeCountry;  //车型生产类型
     public String dsServiceDepot;//维修厂
-    public String dsAptitudes;//资质
+    public String dsAptitudes;//维修厂资质
     public String carSeries;//车系
     public String carStructure;//车辆结构
-    public Integer claimLevel=-1;//索赔险别
+    public String claimLevel;//索赔险别
     public String dsLocation;//定损地点
     public String dsRescueAmount;//定损施救费
     public Float hsRescueAmount;//核损施救费
     private Float dsAllTotalAmount;//定损总金额
+    public List<String> lossPosition ;//损失部位
 
     public Float getDsAllTotalAmount() {
         float DsAllTotalAmountTemp = Float.parseFloat(getHjTotal())+Float.parseFloat(getGsTotal())+Float.parseFloat(getWxTotal());
@@ -31,7 +33,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
 
     public String insuredPerson; //  被保险人
     public String riskDate; // 出险时间
-    public String carnoType; // 车类型
+    public String carnoType; // 车类型-车牌种类
 
     public String carFacturerId; // 厂商id
     public String carFacturer; // 厂商
@@ -80,6 +82,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
         public String partName; // 配件名称 -换件项目
         public String  partCode; // 配件编码
         public String localPrice; // 本地价格
+        public Integer isCustom;  //是否自定义配件
 
     }
     public static class CxDsReplaceInfosTotal  implements Serializable {
@@ -117,6 +120,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
         public String   timeTypeCode; // 工时类型编码
         public String   timeTypeName; // 工时类型名称
         public String  time; // 工时时间
+        public Integer isCustom;  //是否自定义配件
 
     }
 

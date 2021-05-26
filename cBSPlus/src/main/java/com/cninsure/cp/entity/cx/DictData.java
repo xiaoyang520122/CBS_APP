@@ -14,7 +14,7 @@ public class DictData implements Serializable {
     public String description;  //"车险订单作业资料类型",
     public long id;  //5,
     public String label;  //"人车合影",
-    public long parentId;  //null,
+    public String parentId;  //null,
     public String remarks;  //null,
     public int sort;  //1,
     public String type;  //"cxOrderWorkImageType",

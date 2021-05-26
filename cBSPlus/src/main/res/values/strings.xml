@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">千县万店</string>
+    <string name="app_name">e公估</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="loginPlat">登录平台主体</string>
@@ -11,9 +11,9 @@
     <string name="suer">确 定</string>
     <string name="add">添 加</string>
     <string name="addInjured">添加伤者</string>
-    <string name="cName">版权归深圳市伟华联合科技有限公司所有\nCopyright©cnsurvey.cn</string>
-    <string name="cName1">深圳市伟华联合科技有限公司所有\nCopyright©cnsurvey.cn</string>
-    <string name="systemName">千县万店</string>
+    <string name="cName">版权归泛华保险公估股份有限公司\nCopyright©cnsurvey.cn</string>
+    <string name="cName1">泛华保险公估股份有限公司\nCopyright©cnsurvey.cn</string>
+    <string name="systemName">e公估</string>
     
     <string name="ordersearch">完成订单</string>
     <string name="ordernow">当前任务</string>

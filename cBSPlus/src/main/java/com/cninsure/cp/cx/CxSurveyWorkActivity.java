@@ -224,8 +224,8 @@ public class CxSurveyWorkActivity extends BaseActivity implements View.OnClickLi
     private void notifyChange(Integer tabCode, boolean addBle){
         adapter.notifyDataSetChanged();
         displayTabText();
-        if (mViewPager.getCurrentItem() ==1) //只有在第二个界面的时候，选中才会跳转到选中页面
-        if (addBle) mViewPager.setCurrentItem(tabCode);
+//        if (mViewPager.getCurrentItem() ==1) //只有在第二个界面的时候，选中才会跳转到选中页面
+//        if (addBle) mViewPager.setCurrentItem(tabCode);
     }
 
 
@@ -243,7 +243,8 @@ public class CxSurveyWorkActivity extends BaseActivity implements View.OnClickLi
         List<String> params = new ArrayList<String>(2);
         params.add("type");
         params.add("cxOrderWorkImageType,accident_type,accident_small_type,accident_reason,accident_small_reason,survey_type,damage_loss_type," +
-                "accident_liability,loss_type,loss_object_type,compensation_method,survey_conclusion,carno_type,car_usetype,injured_type");
+                "accident_liability,loss_type,loss_object_type,compensation_method,survey_conclusion,carno_type,car_usetype,injured_type" +
+                ",isLicenseKou,licenseMissingResult,quasiDrivingType,comfirmLiabilityType,waterLevel,fraudTag,fraudType");
         HttpUtils.requestGet(URLs.CX_NEW_GET_IMG_TYPE_DICT, params, HttpRequestTool.CX_NEW_GET_IMG_TYPE_DICT);
     }
 

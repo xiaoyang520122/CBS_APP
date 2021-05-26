@@ -16,7 +16,7 @@ import com.cninsure.cp.cx.adapter.NoRefreshFragmentPagerAdapter;
 import com.cninsure.cp.cx.fragment.BaseFragment;
 import com.cninsure.cp.cx.jiebaoanfragment.BaoanInfoFragment;
 import com.cninsure.cp.cx.jiebaoanfragment.CxExamineFragment;
-import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment;
+import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment2;
 import com.cninsure.cp.cx.jiebaoanfragment.TaskBasicInfoFragment;
 import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.entity.PublicOrderEntity;
@@ -59,9 +59,9 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
         @ViewInject(R.id.cxJieBaoan_tablayout) private TabLayout mTabLayout;
         @ViewInject(R.id.cxJieBaoan_viewpager) public ViewPager mViewPager;
 
-    private BaoanInfoFragment fg0;
+    public BaoanInfoFragment fg0;
     private TaskBasicInfoFragment fg1;
-    private CxImagFragment fg2;
+    private CxImagFragment2 fg2;
     private CxExamineFragment fg3;
 
 
@@ -90,7 +90,7 @@ public class CxJieBaoanInfoActivity extends BaseActivity implements View.OnClick
     private void initFragment() {
         fg0 = new BaoanInfoFragment();
         fg1 = new TaskBasicInfoFragment();
-        fg2 = new CxImagFragment();
+        fg2 = new CxImagFragment2();
         fg3 = new CxExamineFragment();
 
         fragmentMap = new TreeMap<>();

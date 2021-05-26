@@ -42,6 +42,26 @@ public class DateChoiceUtil {
 			}
 		});
 	}
+
+	/**获取时间（yyyy-MM）并赋值到对应的TextView**/
+	public static void setMYDatePickerDialog(final Context context,final TextView textTv) {
+		final Calendar cal = Calendar.getInstance();
+		textTv.setOnClickListener(new OnClickListener() {
+			@SuppressLint("InlinedApi")
+			@Override
+			public void onClick(View arg0) {
+				DatePickerDialog pickerDialog=new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT
+						, new OnDateSetListener() {
+							@Override
+							public void onDateSet(DatePicker arg0, int y, int m, int d) {
+								String checkDate=y+"-"+(m+1);
+								textTv.setText(checkDate);
+							}
+				}, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
+				pickerDialog.show();
+			}
+		});
+	}
 	
 	 public  void getTimeByCalendar(){
 	        Calendar cal = Calendar.getInstance();

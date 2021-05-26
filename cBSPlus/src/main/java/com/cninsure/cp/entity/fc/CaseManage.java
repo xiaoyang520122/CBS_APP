@@ -15,7 +15,7 @@ public class CaseManage extends DataEntity{
 	public String dangerPeriod;//出险日期
 	public String caseNo="";//案件编号
 	public String filed6="";
-	public String preLossAmount="";//预计损失金额
+	public Double preLossAmount;//预计损失金额
 	public Integer goodsUnit;//货物单位
 	public String revCaseType="";//接案方式
 	public String filed4="";

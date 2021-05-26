@@ -30,13 +30,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cninsure.cp.R;
-import com.cninsure.cp.activity.yjxnew.entity.YjxNewCaseDispatchTable;
 import com.cninsure.cp.activty.WorkOrderActivty;
 import com.cninsure.cp.activty.WorkOrderActivtyhelp;
-import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
-import com.cninsure.cp.cx.adapter.CxImagAdapter;
-import com.cninsure.cp.cx.adapter.SaveImgCallBack;
-import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment;
+import com.cninsure.cp.cx.jiebaoanfragment.CxImagFragment2;
 import com.cninsure.cp.dispersive.DispersiveWorkActivity;
 import com.cninsure.cp.entity.WorkPhotos.TableData.WorkPhotoEntitiy;
 import com.cninsure.cp.entity.cx.CxImagEntity;
@@ -70,10 +66,6 @@ public class PhotoChoiceActivity extends Activity {
 		show_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//				Intent intent = new Intent();
-//				intent.setAction(android.content.Intent.ACTION_VIEW);
-//				intent.setDataAndType(Uri.fromFile(new File(fileNames.get(i))), "image/*");
-//				PublicPhotoChoiceActivity.this.startActivity(intent);
 				ImageDisplayUtil.displayByMyView(PhotoChoiceActivity.this, fileNames.get(i));
 			}
 		});
@@ -131,7 +123,7 @@ public class PhotoChoiceActivity extends Activity {
 			cieEn.fileName = wpe.location.substring(wpe.location.lastIndexOf("/")+1,wpe.location.length()-4);
 			cieListTemp.add(cieEn);
 		}
-		CxImagFragment.adapter.addScb.addImg(cieListTemp,getIntent().getIntExtra("groupPosition",0));
+		CxImagFragment2.adapter.addScb.addImg(cieListTemp,getIntent().getIntExtra("groupPosition",0));
 	}
 
 	/** 判断是选择还是取消选择 **/

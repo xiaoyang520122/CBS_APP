@@ -7,8 +7,8 @@ public final class BuildConfig {
   public static final boolean DEBUG = Boolean.parseBoolean("true");
   public static final String APPLICATION_ID = "com.cninsure.cp";
   public static final String BUILD_TYPE = "debug";
-  public static final int VERSION_CODE = 159;
-  public static final String VERSION_NAME = "V1.5.9";
+  public static final int VERSION_CODE = 164;
+  public static final String VERSION_NAME = "V1.6.4";
   // Field from build type: debug
   public static final String FSX_USER_TYPE = "163";
 }

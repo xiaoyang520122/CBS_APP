@@ -1,5 +1,6 @@
 package com.cninsure.cp.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -52,14 +53,19 @@ public class UserInfoUtil {
 		public void handleMessage(Message msg) {
 			try {
 				if (Util.isOnMainThread())
-				context.startActivity(new Intent(context, LoginActivity.class));
+					startLogin();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			super.handleMessage(msg);
 		}
 	};
-	
+
+	public static void startLogin(){
+		Intent intent = new Intent(context, LoginActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
+		context.startActivity(new Intent(context, LoginActivity.class));
+	}
 	private static void showDialog(){
 		try {
 			dialog = DialogUtil.getAlertOneButton(context, "登录已经失效，即将重新登录!", null);

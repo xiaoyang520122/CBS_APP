@@ -318,6 +318,28 @@ public class HttpRequestTool {
 	public final static int YJXNEW_WORK_Add = 1134;
 	/**get 医健险新全流程V1 POST 作业删除*/
 	public final static int YJXNEW_WORK_REMOVE = 1135;
+	/**GET根据订单查询订单影像分类*/
+	public final static int CX_GET_ORDER_MEDIATYPE = 1136;
+	/**车险 GET厂家、品牌、车系查询*/
+	public final static int CX_GET_CAR_FACTORY_LIST = 1137;
+	/**车险 GET 车型查询*/
+	public final static int CX_GET_CAR_MODELS_LIST = 1138;
+	/**车险 GET 配件部位信息*/
+	public final static int CX_GET_CAR_PEIJIAN_LIST = 1139;
+	/**Get 根据报案编号查询订单信息 **/
+	public final static int  CX_GET_ORDER_LIST_BY_BAOAN_UID_IMG=1140;
+	/**Get 根据订单号查作业信息 **/
+	public final static int  CX_NEW_GET_ORDER_VIEW_BY_UID_SURVEY=1141;
+	/**Get 根据订单号查作业信息 **/
+	public final static int  CX_NEW_GET_ORDER_VIEW_BY_UID_BDDS=1142;
+	/**Get 根据订单号查作业信息 **/
+	public final static int  CX_NEW_GET_ORDER_VIEW_BY_UID_THDS=1143;
+	/**Get 根据订单号查作业信息 **/
+	public final static int  CX_NEW_GET_ORDER_VIEW_BY_UID_DAMAGE=1144;
+	/**Get 根据订单号查作业信息 **/
+	public final static int  CX_NEW_GET_ORDER_VIEW_BY_UID_INJU=1145;
+	/**Get 根据报案信息查询作业信息 **/
+	public final static int  CX_GET_WORK_BY_BAOANUID=1146;
 
 
 
@@ -419,27 +441,32 @@ public class HttpRequestTool {
 		StringEntity stringEntity = null;
 		String str1 = "";
 
+		NameValuePair tempNv = null;
 		for (NameValuePair nv : params) {
 			if(nv!=null && !"JSON_ENTITY".equals(nv.getName())){
 				str1 += nv.getName() + "=" + nv.getValue() + ":";
-			} else if ("JSON_ENTITY".equals(nv.getName())) {
+			} else if (nv!=null && "JSON_ENTITY".equals(nv.getName())) {
 				stringEntity = new StringEntity(nv.getValue(), "UTF-8");	//推荐的方法
 				stringEntity.setContentEncoding("UTF-8");
 				stringEntity.setContentType("application/json");
-				params.remove(nv);
+				tempNv = nv;
 				break;
 			}
 		}
-
+		if (tempNv!=null) params.remove(tempNv);
 		if (url.indexOf("app/interface")==-1) {//非车接口不用加密
 			params.add(new BasicNameValuePair("client", "android"));
 			params.add(new BasicNameValuePair("timestamp", new Date().getTime()+""));
 			params.add(new BasicNameValuePair("digest", DigestUtil.getDigestByNamevaluepairList(params)));
 
-			for (NameValuePair nv : params) {
-				httpParams.setParameter(nv.getName(), nv.getClass());
+			try {
+				for (NameValuePair nv : params) {
+					if (nv!=null) httpParams.setParameter(nv.getName(), nv.getClass());
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		Log.i("JsonHttpUtils", "请求网址" + typecode + "为：" + url);
+			Log.i("JsonHttpUtils", "请求网址" + typecode + "为：" + url);
 		Log.i("JsonHttpUtils", "请求参数" + typecode + "为：" + str1);
 
 			HttpPost httpPost=null;
@@ -516,7 +543,7 @@ public class HttpRequestTool {
 
 				String str = "";
 				for (NameValuePair nv : params) {
-					str += nv.getName() + "=" + nv.getValue() + ":";
+					if (nv!=null)str += nv.getName() + "=" + nv.getValue() + ":";
 				}
 				Log.i("JsonHttpUtils", "请求网址" + typecode + "为：" + url);
 				Log.i("JsonHttpUtils", "请求参数" + typecode + "为：" + str);

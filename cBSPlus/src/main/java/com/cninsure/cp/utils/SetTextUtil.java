@@ -1,6 +1,9 @@
 package com.cninsure.cp.utils;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -37,18 +40,18 @@ public class SetTextUtil {
 
 	/**显示文本，并判断是否为指定类型**/
 	public static void setTextViewText(TextView Tv , String msg,int type){
+		if (Tv!=null)setAddTextChangedListener(Tv,type);
 		if (Tv!=null && msg!=null && !"null".equals(msg)) {
 			Tv.setText(msg);
-			if (isAppointType(msg,type)) Tv.setError("格式错误，请验证！");
 		}else if (Tv!=null){
 			Tv.setText("");
 		}
 	}
 
 	public static void setEditText(EditText ETv , String msg,int type){
+		if (ETv!=null){ setAddTextChangedListener(ETv,type); }
 		if (ETv!=null && msg!=null) {
 			ETv.setText(msg);
-			if (isAppointType(msg,type)) ETv.setError("格式错误，请验证！");
 		}else if (ETv!=null){
 			ETv.setText("");
 		}
@@ -70,6 +73,26 @@ public class SetTextUtil {
 				Tv.setText(msg);
 			}
 		}
+	}
+
+
+	/**
+	 * 设置
+	 * @param tv
+	 * @param type
+	 */
+	private static void setAddTextChangedListener(TextView tv, int type) {
+		tv.addTextChangedListener(new TextWatcher() {
+			@Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				if (TextUtils.isEmpty(s.toString())){
+
+				}else if (!isAppointType(s.toString(), type))
+					tv.setError("格式错误，请验证！");
+			}
+			@Override public void afterTextChanged(Editable s) {}
+		});
 	}
 
 	/**

@@ -1,10 +1,13 @@
 package com.cninsure.cp.cx.jiebaoanfragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,21 +18,33 @@ import androidx.annotation.Nullable;
 import com.alibaba.fastjson.JSON;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.R;
+import com.cninsure.cp.cx.CxDamageActivity;
+import com.cninsure.cp.cx.CxDisabyIdentifyActivity;
+import com.cninsure.cp.cx.CxDsBaoanInfoActivity;
+import com.cninsure.cp.cx.CxDsWorkActivity;
+import com.cninsure.cp.cx.CxInjuryExamineActivity;
+import com.cninsure.cp.cx.CxInjuryExamineOnlyActivity;
+import com.cninsure.cp.cx.CxInjuryMediateActivity;
+import com.cninsure.cp.cx.CxInjuryTrackActivity;
 import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
+import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.cx.fragment.BaseFragment;
 import com.cninsure.cp.cx.util.ErrorDialogUtil;
+import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxOrderEntity;
 import com.cninsure.cp.entity.extract.EntrusterShortNameCxTable;
 import com.cninsure.cp.entity.cx.JieBaoanEntity;
 import com.cninsure.cp.utils.CallUtils;
 import com.cninsure.cp.utils.CopyUtils;
+import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.GetOrederStatus;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.PopupWindowUtils;
 import com.cninsure.cp.utils.SetTextUtil;
+import com.cninsure.cp.utils.cx.TypePickeUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -46,12 +61,14 @@ public class BaoanInfoFragment extends BaseFragment {
     private View contentView ,footerView;
     private LayoutInflater inflater;
 //    private MyAdapter myAdapter;
-    private CxJieBaoanInfoActivity activity;
+    private Activity activity;
     private MyOrderListAdapter adapter;
 
+    public String QorderUid;
+    public PublicOrderEntity orderInfoEn; //任务信息
     private JieBaoanEntity baoanInfo; //接报案信息
     private EntrusterShortNameCxTable wtShotEntity; //接报案信息
-    private List<CxOrderEntity.CxOrderTable> orderList; //接报案对应任务列表
+    public List<CxOrderEntity.CxOrderTable> orderList; //接报案对应任务列表
 
     @ViewInject(R.id.CxBaFgmt_workRequirements)  TextView workRequirements;  //作业要求
     @ViewInject(R.id.CxBaFgmt_caseBaoanNo)  TextView caseBaoanNo;  //报案号
@@ -60,6 +77,7 @@ public class BaoanInfoFragment extends BaseFragment {
     @ViewInject(R.id.CxBaFgmt_caseLifecycle)  TextView caseLifecycle;  //委托信息
     @ViewInject(R.id.CxBaFgmt_listTitle)  TextView orderListTitle;  //任务列表ListView标题
     @ViewInject(R.id.CxBaFgmt_list)  ListView orderListView;  //任务列表ListView
+    @ViewInject(R.id.CxDsBaBasicFgmt_button) Button workButton;  //作业按钮
 
 
     @Nullable
@@ -67,8 +85,10 @@ public class BaoanInfoFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.inflater = inflater;
         contentView = inflater.inflate(R.layout.cx_baoan_info_fragment,null);
-        activity = (CxJieBaoanInfoActivity) getActivity();
+        activity = getActivity();
         ViewUtils.inject(this,contentView);
+        orderInfoEn = (PublicOrderEntity) activity.getIntent().getSerializableExtra("PublicOrderEntity");
+        QorderUid = activity.getIntent().getStringExtra("orderUid");
         downloadBaoanInfo();
         initView();
 
@@ -79,9 +99,59 @@ public class BaoanInfoFragment extends BaseFragment {
         workRequirements.setOnClickListener(new View.OnClickListener() {  //查看作业要求
             @Override
             public void onClick(View arg0) {
-                PopupWindowUtils.showPopupWindow(getpopView(wtShotEntity.workRequirements), workRequirements, activity);
+                String wtRequirements ;
+                if (wtShotEntity!=null && wtShotEntity.workRequirements!=null){
+                    wtRequirements = wtShotEntity.workRequirements;
+                }else{
+                    wtRequirements = "无";
+                }
+                PopupWindowUtils.showPopupWindow(getpopView(wtRequirements), workRequirements, activity);
             }
         });
+        setJumpOnclick();//跳转到作业界面
+    }
+
+    /**
+     * 跳转到作业界面
+     * 只有标的和三者定损需要
+     */
+    private void setJumpOnclick(){
+        if (activity.getIntent().getIntExtra("bussTypeId",0) == 2) {
+            workButton.setVisibility(View.GONE); //查勘作业的跳转在另外一个Fragment，这里就隐藏掉了。
+        }
+        workButton.setOnClickListener(v -> setJumpToWorkActivity());
+
+    }
+
+    private void setJumpToWorkActivity() {
+        int typeId = activity.getIntent().getIntExtra("bussTypeId",0);
+        Intent intent = new Intent();
+
+        switch (typeId){
+            case 2 :  intent.setClass(getActivity(), CxSurveyWorkActivity.class);break;  //现场查勘
+//				case 39 :  intent.setClass(getActivity(), CxInjurySurveyActivity.class);break;  //人伤查勘
+            case 40 :  intent.setClass(getActivity(), CxDsWorkActivity.class);break;  //标的定损 //
+            case 41 :  intent.setClass(getActivity(), CxDsWorkActivity.class);break;  //三者定损 - 界面同“标的定损” //CxDsWorkActivity
+            case 42 :  intent.setClass(getActivity(), CxDamageActivity.class);break;  //物损定损
+            case 392 :  intent.setClass(getActivity(), CxInjuryTrackActivity.class);break;  //人伤跟踪
+            case 394 :  intent.setClass(getActivity(), CxDisabyIdentifyActivity.class);break; //陪同残定
+            case 393 :  intent.setClass(getActivity(), CxInjuryMediateActivity.class);break; //人伤调解
+            case 395 :   //人伤调查 investigationType
+                if (orderInfoEn.investigationType!=null && orderInfoEn.investigationType==1){ //全案
+                    intent.setClass(getActivity(), CxInjuryExamineActivity.class);
+                }else{intent.setClass(getActivity(), CxInjuryExamineOnlyActivity.class);}
+                break;
+            //人伤任务、人伤初勘（同人伤查勘<人伤任务>），人伤定损（接口不通，做不了）
+            default: DialogUtil.getAlertOneButton(getActivity(),"功能开发中！",null).show();return;  //默认现场查勘
+        }
+
+
+        intent.putExtra("bussTypeId",activity.getIntent().getIntExtra("bussTypeId",0));
+        intent.putExtra("orderUid",activity.getIntent().getStringExtra("orderUid"));
+        intent.putExtra("taskType", activity.getIntent().getStringExtra("taskType"));
+        intent.putExtra("status", activity.getIntent().getStringExtra("status"));
+        intent.putExtra("PublicOrderEntity", activity.getIntent().getSerializableExtra("PublicOrderEntity"));
+        getActivity().startActivity(intent);
     }
 
     private View getpopView(final String caseLifecycle) {
@@ -106,7 +176,7 @@ public class BaoanInfoFragment extends BaseFragment {
         params.add("userId");
         params.add(AppApplication.getUSER().data.userId);
         params.add("uid");
-        params.add(activity.orderInfoEn.caseBaoanUid);
+        params.add(orderInfoEn.caseBaoanUid);
         HttpUtils.requestGet(URLs.CX_JIE_BAOAN_INFO, params, HttpRequestTool.CX_JIE_BAOAN_INFO);
     }
     /**下载委托人简称信息，获取作业要求*/
@@ -170,7 +240,7 @@ public class BaoanInfoFragment extends BaseFragment {
      */
     private void removeCurrentOrder(){
         for (int i=0;i<orderList.size();i++){
-            if (orderList.get(i).uid.equals( activity.QorderUid)){
+            if (orderList.get(i).uid.equals( QorderUid)){
                 orderList.remove(i);
                 return;
             }
@@ -204,7 +274,7 @@ public class BaoanInfoFragment extends BaseFragment {
         if (baoanInfo!=null && baoanInfo.data!=null){
             SetTextUtil.setTextViewText(caseBaoanNo,baoanInfo.data.caseBaoanNo);  //报案号
             SetTextUtil.setTextViewText(wtDate,baoanInfo.data.wtDate);  //委托时间
-            SetTextUtil.setTextViewText(caseLifecycle,activity.orderInfoEn.caseLifecycle);  //委托信息
+            SetTextUtil.setTextViewText(caseLifecycle,orderInfoEn.caseLifecycle);  //委托信息
             CopyUtils.setCopyOnclickListener(activity,caseBaoanNo,baoanInfo.data.caseBaoanNo);  //复制报案号
         }
     }
