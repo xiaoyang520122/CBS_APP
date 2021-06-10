@@ -37,7 +37,7 @@ public class OCREntity implements Serializable {
     /**号牌种类*/
 //    public String bdCarNumberType; //号牌种类
     /**使用性质 0运营、1非运营*/
-    private Integer bdCarUseType; //使用性质 0运营、1非运营
+    public String bdCarUseType; //使用性质 0运营、1非运营
 
 
     //驾驶证
@@ -69,27 +69,27 @@ public class OCREntity implements Serializable {
   /**"图片路径，包括驾驶证、行驶证、银行卡、身份证和签字图片"**/
   public String  url;
 
-    public void setBdCarUseType(String TypeStr) {
-        if ("营运".equals(TypeStr)){
-            bdCarUseType = 0;
-        }else if("非营运".equals(TypeStr)){
-            bdCarUseType = 1;
-        }else{
-            bdCarUseType = -1;
-        }
-    }
+//    public void setBdCarUseType(String TypeStr) {
+//        if ("营运".equals(TypeStr)){
+//            bdCarUseType = 0;
+//        }else if("非营运".equals(TypeStr)){
+//            bdCarUseType = 1;
+//        }else{
+//            bdCarUseType = -1;
+//        }
+//    }
 
-    public String getBdCarUseType() {
-        switch (bdCarUseType){
-            case 0:  return "营运";
-            case 1:  return "非营运";
-
-            default: return "未知";
-        }
-    }
-    public Integer getBdCarUseTypeValue() {
-        return bdCarUseType;
-    }
+//    public String getBdCarUseType() {
+//        switch (bdCarUseType){
+//            case 0:  return "营运";
+//            case 1:  return "非营运";
+//
+//            default: return "未知";
+//        }
+//    }
+//    public String getBdCarUseTypeValue() {
+//        return bdCarUseType;
+//    }
 
     /**设置初登日期*/
     public void setBdCarRegisterDate(String bdCarRegisterDate) {

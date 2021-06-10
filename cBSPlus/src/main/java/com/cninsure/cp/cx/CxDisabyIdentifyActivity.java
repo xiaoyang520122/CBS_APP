@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -53,6 +54,7 @@ import java.util.List;
 public class CxDisabyIdentifyActivity extends BaseActivity implements View.OnClickListener {
     private CxDisabyIdentTaskEntity taskEntity; //物损任务信息
     private String QorderUid;
+    public PublicOrderEntity orderInfoEn; //任务信息
     private CxDictEntity cxDict; //拍照类型字典数据
     private LayoutInflater inflater ;
     private boolean isDeliveryBill=false;  //是否选择的文件是快递单  true是，false否
@@ -83,11 +85,13 @@ public class CxDisabyIdentifyActivity extends BaseActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //官方推荐使用这种方式保持亮屏
         setContentView(R.layout.cxrs_disaby_identify_activity);
         ViewUtils.inject(this);
         EventBus.getDefault().register(this);
         cxDict = new CxDictEntity();
         QorderUid = getIntent().getStringExtra("orderUid");
+        orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
         inflater = LayoutInflater.from(this);
         dowloadDictType();
     }
@@ -99,7 +103,14 @@ public class CxDisabyIdentifyActivity extends BaseActivity implements View.OnCli
         findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
         findViewById(R.id.CX_Act_More_Tv).setOnClickListener(this);
         ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText("陪同残定");
-        ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+
+        if (orderInfoEn.status==4 || orderInfoEn.status==6 || orderInfoEn.status==10 ){ //4已接单，6作业中、10审核退回 状态可以提交。
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+        }else{
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setVisibility(View.INVISIBLE);
+            DialogUtil.getErrDialog(this,"当前任务状态只可查看，不能提交或暂存！").show();
+        }
+
         findViewById(R.id.CxRsDisabyI__add).setOnClickListener(this); //上传附件按钮点击，选择文件
         findViewById(R.id.CxRsDisabyI_deliveryBill).setOnClickListener(this); //点击上传快递单isDeliveryBill
     }

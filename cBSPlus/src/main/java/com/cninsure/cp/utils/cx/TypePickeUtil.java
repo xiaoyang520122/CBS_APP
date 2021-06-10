@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.cninsure.cp.cx.CxSurveyWorkActivity;
@@ -27,6 +28,17 @@ public class TypePickeUtil {
             public void onClick(View arg0) {
                 String tempArr[] = getDictLabelArr(dictData.getDictByType(type));
                 showTypePickerDialog(context,textTv,tempArr);
+            }
+        });
+    }
+    /**获取显示可选择内容供选择，并在在选择后赋值到对应的TextView**/
+    public static void setTypePickerDialogByOther(final Context context, final EditText Edit, CxDictEntity dictData, String type,View view) {
+        view.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("InlinedApi")
+            @Override
+            public void onClick(View arg0) {
+                String tempArr[] = getDictLabelArr(dictData.getDictByType(type));
+                showTypePickerDialog(context,Edit,tempArr);
             }
         });
     }

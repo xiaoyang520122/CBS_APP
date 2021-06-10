@@ -9,6 +9,8 @@
     android:checked="false"
     android:gravity="center"
     android:padding="15dp"
+    android:textSize="@dimen/text_defaul"
+    android:textStyle="bold"
     android:textColor="@drawable/radiobutton_textcolor"
     android:text="No titl" />
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -78,6 +79,7 @@ public class CxInjuryExamineOnlyActivity extends BaseActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //官方推荐使用这种方式保持亮屏
         setContentView(R.layout.cxrs_injury_mediate_activity);
         QorderUid = getIntent().getStringExtra("orderUid");
         dataEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
@@ -152,7 +154,13 @@ public class CxInjuryExamineOnlyActivity extends BaseActivity implements View.On
         findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
         findViewById(R.id.CX_Act_More_Tv).setOnClickListener(this);
         ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText("人伤调查（单项）");
-        ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+
+        if (dataEn.status==4 || dataEn.status==6 || dataEn.status==10 ){ //4已接单，6作业中、10审核退回 状态可以提交。
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+        }else{
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setVisibility(View.INVISIBLE);
+            DialogUtil.getErrDialog(this,"当前任务状态只可查看，不能提交或暂存！").show();
+        }
     }
 
     @Override
@@ -253,9 +261,10 @@ public class CxInjuryExamineOnlyActivity extends BaseActivity implements View.On
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode== HttpRequestTool.LINEPATH) { //签字返回图片
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == HttpRequestTool.LINEPATH) { //签字返回图片
 //            upSignPhoto(data,5);
-        }else if (requestCode == PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE){  //上传附件或者单据选择的文件。
+        } else if (requestCode == PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE) {  //上传附件或者单据选择的文件。
             fg2.inspectFileSize(data); //判断文件大小是否小于20M
         }
     }

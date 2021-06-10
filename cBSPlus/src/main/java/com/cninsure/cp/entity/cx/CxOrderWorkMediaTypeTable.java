@@ -12,7 +12,7 @@ public class CxOrderWorkMediaTypeTable {
     public String label;//显示值
     public String value;//字典值
     public Integer level;//级别
-    public Integer uploadType;//上传类型 0:不能上传；1:非必传；2:满足一定条件为必传；3:满足一定条件为非必传；
+    public Integer uploadType;//上传类型 0:必传；1:非必传；2:满足一定条件为必传；3:满足一定条件为非必传；
     public String uploadCondition;//上传控制条件
     public Integer showType;//显示类型 0:正常显示；1:按车牌名称动态生成；2:按物损名称动态生成；3:按伤者名称动态生成；
     public String dynamicLabel;//动态名称

@@ -340,6 +340,10 @@ public class HttpRequestTool {
 	public final static int  CX_NEW_GET_ORDER_VIEW_BY_UID_INJU=1145;
 	/**Get 根据报案信息查询作业信息 **/
 	public final static int  CX_GET_WORK_BY_BAOANUID=1146;
+	/**作业提交审核 --POST**/
+	public final static int  CX_NEW_GET_GGS_ORDER_COMPLATED=1147;
+	/**医健险新全流程V1 GET 获取 mediaTypeGroup**/
+	public final static int  YJXNEW_GET_MEDIA_TYPE=1148;
 
 
 

@@ -127,7 +127,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="索赔险别："
+                    android:text="损失类型："
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 

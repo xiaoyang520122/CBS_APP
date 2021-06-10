@@ -484,6 +484,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 		editor.putString("password", "");
 		editor.commit();
 		editor.clear();
+		HttpRequestTool.cookie=null;
 		AppApplication.emptyUSER();
 		startActivity(new Intent(this, LoginActivity.class));
 		this.finish();

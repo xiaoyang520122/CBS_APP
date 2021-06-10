@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,12 +19,14 @@ import com.alibaba.fastjson.JSON;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
+import com.cninsure.cp.cx.jiebaoanfragment.DoesPhotosMustPassTool;
 import com.cninsure.cp.entity.BaseEntity;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDamageTaskEntity;
 import com.cninsure.cp.entity.cx.CxDamageWorkEntity;
 import com.cninsure.cp.entity.cx.CxDictEntity;
+import com.cninsure.cp.entity.cx.CxImagEntity;
 import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.utils.ActivityFinishUtil;
 import com.cninsure.cp.utils.DialogUtil;
@@ -50,6 +53,8 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
     private String QorderUid;
     private CxDictEntity cxDict; //拍照类型字典数据
     private LayoutInflater inflater ;
+    public PublicOrderEntity orderInfoEn; //任务信息
+    private List<CxImagEntity> imgEnList;/**图片合集*/
 
 
     @ViewInject(R.id.CxDamgWM_belongPerson) private EditText belongPerson;  //归属人
@@ -69,14 +74,32 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //官方推荐使用这种方式保持亮屏
         setContentView(R.layout.cx_damag_worke_activity);
         ViewUtils.inject(this); //注入view和事件
         EventBus.getDefault().register(this);
         cxDict = new CxDictEntity();
         QorderUid = getIntent().getStringExtra("orderUid");
+        orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
         inflater = LayoutInflater.from(this);
         getLocalInfoOncilck(); //获取查勘地点的监听事件
         dowloadDictType();
+        dowloadImg(); //下载影像信息
+    }
+
+
+
+    /**
+     * 下载接报案对应作业图片
+     */
+    private void dowloadImg() {
+        LoadDialogUtil.setMessageAndShow(this,"载入中……");
+        List<String> params = new ArrayList<String>(2);
+        params.add("baoanUid");
+        params.add(orderInfoEn.caseBaoanUid);
+        params.add("isDelete");
+        params.add("0");
+        HttpUtils.requestGet(URLs.CX_GET_WORK_IMG, params, HttpRequestTool.CX_GET_WORK_IMG);
     }
 
     /**先下载字典库*/
@@ -113,6 +136,10 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
             case HttpRequestTool.CX_NEW_WORK_SAVE: // 保存或提交审核返回数据
                 LoadDialogUtil.dismissDialog();
                 getTaskWorkSavaInfo(values.get(0).getValue());
+                break;
+            case HttpRequestTool.CX_GET_WORK_IMG: //获取案件图片列表
+                LoadDialogUtil.dismissDialog();
+                imgEnList = JSON.parseArray(values.get(0).getValue(), CxImagEntity.class);
                 break;
             default:
                 break;
@@ -160,9 +187,9 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
         CxDamageWorkEntity damageEnt = taskEntity.data.contentJson;
         SetTextUtil.setEditText(belongPerson,damageEnt.belongPerson);  //归属人
         SetTextUtil.setEditText(damageName,damageEnt.damageName); //物损名称
-        SetTextUtil.setTvTextForArr(damageType, TypePickeUtil.getDictLabelArr(cxDict.getDictByType("damage_loss_type")),damageEnt.damageType); //索赔类别
+        SetTextUtil.setTextViewText(damageType, cxDict.getLabelByValue("damage_loss_type",damageEnt.damageType)); //损失类型
         SetTextUtil.setTextViewText(dsTotalAmount,damageEnt.dsTotalAmount+""); //合计
-        SetTextUtil.setEditText(dsRescueAmount,damageEnt.dsRescueAmount+""); //施救费
+        SetTextUtil.setEditText(dsRescueAmount,damageEnt.dsRescueAmount!=null?(damageEnt.dsRescueAmount+""):""); //施救费
         SetTextUtil.setEditText(dsInstructions,damageEnt.dsInstructions); //定损说明
         SetTextUtil.setEditText(damageAddressEdt,damageEnt.surveyAddress); //作业地点
         disPlaySmallMaterials();
@@ -179,11 +206,12 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
 
         damageEnt.belongPerson = belongPerson.getText().toString();  //归属人
         damageEnt.damageName = damageName.getText().toString(); //物损名称
-        damageEnt.damageType = TypePickeUtil.getValue(damageType.getText().toString(),cxDict ,"damage_loss_type") ; //索赔类别
+        damageEnt.damageType = cxDict.getValueByLabel("damage_loss_type",damageType.getText().toString()) ; //损失类型
+        damageEnt.damageTypeName = damageType.getText().toString() ; //损失类型名称
         @SuppressLint("WrongViewCast") String tempDta = dsTotalAmount.getText().toString();
-        damageEnt.dsTotalAmount = TextUtils.isEmpty(tempDta)?0:Float.parseFloat(dsTotalAmount.getText().toString()); //合计
+        damageEnt.dsTotalAmount = TextUtils.isEmpty(tempDta)?null:Float.parseFloat(dsTotalAmount.getText().toString()); //合计
         @SuppressLint("WrongViewCast") String tempDra = dsRescueAmount.getText().toString();
-        damageEnt.dsRescueAmount = TextUtils.isEmpty(tempDra)?0:Float.parseFloat(dsRescueAmount.getText().toString()); //施救费
+        damageEnt.dsRescueAmount = TextUtils.isEmpty(tempDra)?null:Float.parseFloat(dsRescueAmount.getText().toString()); //施救费
         damageEnt.dsInstructions = dsInstructions.getText().toString(); //定损说明
         damageEnt.surveyAddress = damageAddressEdt.getText().toString(); //作业地点
     }
@@ -219,7 +247,7 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
                 TypePickeUtil.getDictLabelArr(cxDict.getDictByType("damage_type")),materialsEntity.smallType);  //物损类别
         SetTextUtil.setEditText(view.findViewById(R.id.CxDamAlert_dsUnitPrice),materialsEntity.dsUnitPrice+"");//单价
         SetTextUtil.setEditText(view.findViewById(R.id.CxDamAlert_dsUnitCount),materialsEntity.dsUnitCount+"");//数量
-        SetTextUtil.setEditText(view.findViewById(R.id.CxDamAlert_dsSalvageValue),materialsEntity.dsSalvageValue+"");//残值
+        SetTextUtil.setEditText(view.findViewById(R.id.CxDamAlert_dsSalvageValue),(materialsEntity.dsSalvageValue==null?"":(materialsEntity.dsSalvageValue+"")));//残值
         SetTextUtil.setEditText(view.findViewById(R.id.CxDamAlert_dsRemark),materialsEntity.dsRemark); //备注
         SetTextUtil.setTextViewText(view.findViewById(R.id.CxDamIt_damageIndex),"项目"+(position+1)); //编号
         setDeleteOnclick(view.findViewById(R.id.CxDamIt__delete),position);
@@ -290,13 +318,13 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
         CxDamageWorkEntity.MaterialsEntity addM = new CxDamageWorkEntity.MaterialsEntity();
         addM.name =((EditText)alertView.findViewById(R.id.CxDamAlert_name)).getText().toString(); //项目名称
         @SuppressLint("WrongViewCast") String tempDup = ((EditText)alertView.findViewById(R.id.CxDamAlert_dsUnitPrice)).getText().toString();
-        addM.dsUnitPrice = TextUtils.isEmpty(tempDup) ? 0 : Float.parseFloat(tempDup); //单价
+        addM.dsUnitPrice = TextUtils.isEmpty(tempDup) ? null : Float.parseFloat(tempDup); //单价
 
         @SuppressLint("WrongViewCast") String tempDuc = ((EditText)alertView.findViewById(R.id.CxDamAlert_dsUnitCount)).getText().toString();
-        addM.dsUnitCount =TextUtils.isEmpty(tempDuc) ? 0 : Integer.parseInt(tempDuc); //数量
+        addM.dsUnitCount =TextUtils.isEmpty(tempDuc) ?null : Integer.parseInt(tempDuc); //数量
 
         @SuppressLint("WrongViewCast") String tempDsv = ((EditText)alertView.findViewById(R.id.CxDamAlert_dsSalvageValue)).getText().toString();
-        addM.dsSalvageValue =TextUtils.isEmpty(tempDsv) ? 0 : Float.parseFloat(tempDsv); //残值
+        addM.dsSalvageValue =TextUtils.isEmpty(tempDsv) ? null : Float.parseFloat(tempDsv); //残值
         addM.dsRemark =((EditText)alertView.findViewById(R.id.CxDamAlert_dsRemark)).getText().toString(); //备注
         @SuppressLint("WrongViewCast") String tempSmt = ((TextView)alertView.findViewById(R.id.CxDamAlert_smallType)).getText().toString();
         addM.smallType = TypePickeUtil.getValue(tempSmt,cxDict ,"damage_type"); //物损类别
@@ -340,13 +368,19 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void initView() {
-        TypePickeUtil.setTypePickerDialog(this,damageType,cxDict,"damage_loss_type");//索赔类别 绑定点击事件
+        TypePickeUtil.setTypePickerDialog(this,damageType,cxDict,"damage_loss_type");//损失类型 绑定点击事件
         addLinear.setOnClickListener(this);
         //保存或提交单击事件
         findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
         findViewById(R.id.CX_Act_More_Tv).setOnClickListener(this);
         ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText("物损定损");
-        ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+
+        if (orderInfoEn.status==4 || orderInfoEn.status==6 || orderInfoEn.status==10 ){ //4已接单，6作业中、10审核退回 状态可以提交。
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+        }else{
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setVisibility(View.INVISIBLE);
+            DialogUtil.getErrDialog(this,"当前任务状态只可查看，不能提交或暂存！").show();
+        }
     }
 
     @Override
@@ -367,6 +401,7 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
                     public void onClick(DialogInterface dialog, int which) {
                         isSubmit = which;
                         SaveDataToEntity();
+                        if (which==0 || new DoesPhotosMustPassTool(CxDamageActivity.this,imgEnList,QorderUid).isDamagePass(taskEntity.data.contentJson))
                         submitWorkInfo(which);
                     }
                 }).setNeutralButton("取消", null).create().show();

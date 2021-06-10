@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.cninsure.cp"
-    android:versionCode="164"
-    android:versionName="V1.6.4">
+    android:versionCode="166"
+    android:versionName="V1.6.6">
 
     <!-- 版本号必须是版本名称中数字部分，不能死其他，如版本号为V1.0.1时，版本号为101 -->
     <!-- <uses-sdk -->

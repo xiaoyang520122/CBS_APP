@@ -321,6 +321,8 @@ public class URLs implements Serializable {
 	public final static String YJXNEW_WORK_IMG_SAVE = IPHOME +"/new/yjx/work/images/save";
 	/**医健险新全流程V1 POST 作业删除 userId workId*/
 	public final static String YJXNEW_WORK_REMOVE = IPHOME +"/new/yjx/work/remove";
+	/**医健险新全流程V1 GET 获取 mediaTypeGroup*/
+	public final static String YJXNEW_GET_MEDIA_TYPE = IPHOME +"/dict/sys/listPage";
 
 	/*****************车险全流程*******************/
 	/**车险 GET厂家、品牌、车系查询 （cateParentId1：厂家；2：品牌；3：车系；  cateCountry生产类型；0：全部；21：国产；20：进口；22：合资）*/

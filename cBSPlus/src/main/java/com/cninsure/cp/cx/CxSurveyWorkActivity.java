@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,10 +30,12 @@ import com.cninsure.cp.cx.fragment.CxInjuredFragment;
 import com.cninsure.cp.cx.fragment.CxSubjectFragment;
 import com.cninsure.cp.cx.fragment.CxSurveyFragment;
 import com.cninsure.cp.cx.fragment.CxThirdFragment;
+import com.cninsure.cp.cx.jiebaoanfragment.DoesPhotosMustPassTool;
 import com.cninsure.cp.entity.BaseEntity;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDictEntity;
+import com.cninsure.cp.entity.cx.CxImagEntity;
 import com.cninsure.cp.entity.cx.CxSurveyTaskEntity;
 import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.entity.cx.DictData;
@@ -82,17 +85,21 @@ public class CxSurveyWorkActivity extends BaseActivity implements View.OnClickLi
     public PublicOrderEntity orderInfoEn; //任务信息
     public CxDictEntity cxSurveyDict = new CxDictEntity(); //拍照类型字典数据
 
+    private List<CxImagEntity> imgEnList;/**图片合集*/
+
     public static final int THIRD_SZ_XSZ_OCR = 8,THIRD_SZ_JSZ_OCR = 9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //官方推荐使用这种方式保持亮屏
         setContentView(R.layout.cx_work_activity);
         EventBus.getDefault().register(this);
         QorderUid = getIntent().getStringExtra("orderUid");
         orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
         dowloadDictType();
+        dowloadImg(); //下载影像信息
     }
 
     private void initView() {
@@ -113,7 +120,26 @@ public class CxSurveyWorkActivity extends BaseActivity implements View.OnClickLi
         findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
         findViewById(R.id.CX_Act_More_Tv).setOnClickListener(this);
         ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText("现场查勘");
-        ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+
+        if (orderInfoEn.status==4 || orderInfoEn.status==6 || orderInfoEn.status==10 ){ //4已接单，6作业中、10审核退回 状态可以提交。
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+        }else{
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setVisibility(View.INVISIBLE);
+            DialogUtil.getErrDialog(this,"当前任务状态只可查看，不能提交或暂存！").show();
+        }
+    }
+
+    /**
+     * 下载接报案对应作业图片
+     */
+    private void dowloadImg() {
+        LoadDialogUtil.setMessageAndShow(this,"载入中……");
+        List<String> params = new ArrayList<String>(2);
+        params.add("baoanUid");
+        params.add(orderInfoEn.caseBaoanUid);
+        params.add("isDelete");
+        params.add("0");
+        HttpUtils.requestGet(URLs.CX_GET_WORK_IMG, params, HttpRequestTool.CX_GET_WORK_IMG);
     }
 
     @Override
@@ -146,7 +172,10 @@ public class CxSurveyWorkActivity extends BaseActivity implements View.OnClickLi
        for (Integer key:fragmentMap.keySet()){
            fragmentMap.get(key).SaveDataToEntity();
        }
-        submitWorkInfo(status);
+       if (status==0 || new DoesPhotosMustPassTool(this,imgEnList,QorderUid).isSurveyPass(cxTaskWorkEntity.data.contentJson)){ //暂存或者拍照齐全可以提交。
+           submitWorkInfo(status);
+       }
+
     }
 
     /**作业暂存或提交审核*/
@@ -270,21 +299,22 @@ public class CxSurveyWorkActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode==1 || requestCode==2 || requestCode==3 || requestCode==4
-                || requestCode==THIRD_SZ_XSZ_OCR || requestCode==THIRD_SZ_JSZ_OCR) {
-            if (data!=null) {
-                file=(File)data.getSerializableExtra("FilePath");
-                cameraHelp.forString(requestCode,file);
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 || requestCode == 2 || requestCode == 3 || requestCode == 4
+                || requestCode == THIRD_SZ_XSZ_OCR || requestCode == THIRD_SZ_JSZ_OCR) {
+            if (data != null) {
+                file = (File) data.getSerializableExtra("FilePath");
+                cameraHelp.forString(requestCode, file);
             }
-        }else if (resultCode== HttpRequestTool.LINEPATH) { //签字返回图片
-            upSignPhoto(data,5);
-        }else if (requestCode == PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE){  //上传附件选择的文件。
+        } else if (resultCode == HttpRequestTool.LINEPATH) { //签字返回图片
+            upSignPhoto(data, 5);
+        } else if (requestCode == PickPhotoUtil.PHOTO_REQUEST_ALBUMPHOTO_CX_FILE) {  //上传附件选择的文件。
             fg1.inspectFileSize(data); //判断文件大小是否小于20M
-        }else if (resultCode != RESULT_OK) { // 此处的 RESULT_OK 是系统自定义得一个常量
+        } else if (resultCode != RESULT_OK) { // 此处的 RESULT_OK 是系统自定义得一个常量
             Log.e("getphotos", "ActivityResult resultCode error");
-			ToastUtil.showToastLong(this, "操作失败！");
+            ToastUtil.showToastLong(this, "操作失败！");
             return;
-        }else {
+        } else {
             workhelp.eventresultcode(requestCode, resultCode, data);
             EventBus.getDefault().post(resultCode);
         }
@@ -316,9 +346,13 @@ public class CxSurveyWorkActivity extends BaseActivity implements View.OnClickLi
                 LoadDialogUtil.dismissDialog();
                 getTaskWorkInfo(values.get(0).getValue());
                 break;
-            case HttpRequestTool.CX_NEW_WORK_SAVE: // 保存或提交审核返回数据
+            case HttpRequestTool.CX_NEW_WORK_SAVE: //保存或提交审核返回数据
                 LoadDialogUtil.dismissDialog();
                 getTaskWorkSavaInfo(values.get(0).getValue());
+                break;
+            case HttpRequestTool.CX_GET_WORK_IMG: //获取案件图片列表
+                LoadDialogUtil.dismissDialog();
+                imgEnList = JSON.parseArray(values.get(0).getValue(), CxImagEntity.class);
                 break;
             default:
                 break;

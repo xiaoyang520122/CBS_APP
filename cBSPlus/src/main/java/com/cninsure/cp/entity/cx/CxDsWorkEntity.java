@@ -21,7 +21,7 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
     public String carStructure;//车辆结构
     public String claimLevel;//索赔险别
     public String dsLocation;//定损地点
-    public String dsRescueAmount;//定损施救费
+    public Float dsRescueAmount;//定损施救费
     public Float hsRescueAmount;//核损施救费
     private Float dsAllTotalAmount;//定损总金额
     public List<String> lossPosition ;//损失部位

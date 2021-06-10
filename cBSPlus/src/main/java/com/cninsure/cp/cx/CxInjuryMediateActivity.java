@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -66,6 +67,7 @@ public class CxInjuryMediateActivity extends BaseActivity implements View.OnClic
     private MyFragmentPagerAdapter adapter;
     private FragmentManager fm;
     public String QorderUid;
+    public PublicOrderEntity orderInfoEn; //任务信息
     public CxDictEntity cxDict = new CxDictEntity(); //拍照类型字典数据
 
     private CxRiMediateFragment fg0;
@@ -77,8 +79,10 @@ public class CxInjuryMediateActivity extends BaseActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //官方推荐使用这种方式保持亮屏
         setContentView(R.layout.cxrs_injury_mediate_activity);
         QorderUid = getIntent().getStringExtra("orderUid");
+        orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
 //        ViewUtils.inject(this);
         EventBus.getDefault().register(this);
         dowloadDictType();
@@ -152,7 +156,13 @@ public class CxInjuryMediateActivity extends BaseActivity implements View.OnClic
         findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
         findViewById(R.id.CX_Act_More_Tv).setOnClickListener(this);
         ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText("人伤调解");
-        ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+
+        if (orderInfoEn.status==4 || orderInfoEn.status==6 || orderInfoEn.status==10 ){ //4已接单，6作业中、10审核退回 状态可以提交。
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+        }else{
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setVisibility(View.INVISIBLE);
+            DialogUtil.getErrDialog(this,"当前任务状态只可查看，不能提交或暂存！").show();
+        }
     }
 
     @Override

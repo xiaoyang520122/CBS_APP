@@ -9,7 +9,7 @@
         android:id="@+id/cx_img_expandablellistview_HView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/white_bg_hui_line"
+        android:background="@color/white"
         android:scrollbars="none" >
 
         <com.cninsure.cp.view.MyRadioGroup

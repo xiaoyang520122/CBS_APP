@@ -91,6 +91,7 @@ public class CxInjuredFragment extends BaseFragment {
 
     /**获取ViewHolder中控件上的数据，封装到ThirdPartyEntity对象中*/
     private void getHolderDate(ViewHolder vHolder, int position) {
+        if (vHolder==null)return;
         CxSurveyWorkEntity.InjuredInfosEntity tempinjured = activity.cxWorkEntity.injuredInfos.get(position);
         tempinjured.injuredInfoNo = position;
         tempinjured.injuredName = vHolder.injuredNameEdt.getText().toString();//	姓名

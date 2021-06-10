@@ -5,7 +5,7 @@ import com.cninsure.cp.entity.yjx.ImagePathUtil;
 import java.io.Serializable;
 
 public class CxImagEntity implements Serializable {
-    public String source; //图片来源  //来自电脑 1,来自手机相册(安卓) 2,    来自手机拍照(安卓) 3,    来自手机相册(iOS) 4,    来自手机拍照(iOS) 5
+    public String source; //图片来源  //来自电脑1；来自手机相册(安卓) 2；   来自手机拍照(安卓)3；   来自手机相册(iOS) 4；    来自手机拍照(iOS) 5；
     public String type; //图片类型
     public String fileUrl;// 6167201900000288130033.jpg_172459_file-20190506144338-52724-49A9C.jpg
     public String fileName;  // test32

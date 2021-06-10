@@ -129,7 +129,11 @@ public class WaitCaseFragment  extends Fragment {
 		params = new ArrayList<NameValuePair>();
 		@SuppressWarnings("rawtypes")
 		APPRequestModel<PagedRequest> appre = new APPRequestModel<PagedRequest>();
-		appre.userToken = AppApplication.getUSER().data.targetOid;
+		if (AppApplication.getUSER().data.targetOid!=null){
+			appre.userToken = AppApplication.getUSER().data.targetOid;
+		}else{
+			appre.userToken = AppApplication.getUSER().data.id+"";
+		}
 		@SuppressWarnings("rawtypes")
 		PagedRequest<Map> requestData = new PagedRequest<Map>();
 		requestData.pageSize = 500;

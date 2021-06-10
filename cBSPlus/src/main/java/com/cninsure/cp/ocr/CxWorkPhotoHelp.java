@@ -446,10 +446,10 @@ private void jiexieXSZ(String filePath) {
 			ocrEntityTemp. bdCarVin=jsonDate.getJSONObject("车辆识别代号").optString("words"); //车架号
 			ocrEntityTemp. bdEngineNo=jsonDate.getJSONObject("发动机号码").optString("words"); //发动机号
 			ocrEntityTemp. setBdCarRegisterDate(jsonDate.getJSONObject("注册日期").optString("words")); //初登日期
-			ocrEntityTemp. setBdCarUseType(jsonDate.getJSONObject("使用性质").optString("words")); //使用性质
+//			ocrEntityTemp. setBdCarUseType(jsonDate.getJSONObject("使用性质").optString("words")); //使用性质
 
 			displayInfo="车牌号码："+ ocrEntityTemp.bdCarNumber+"\n车架号："+ocrEntityTemp.bdCarVin+"\n发动机号码："+ocrEntityTemp.bdEngineNo
-					+"\n注册日期："+ocrEntityTemp.getBdCarRegisterDate()+"\n使用性质："+ocrEntityTemp.getBdCarUseType();
+					+"\n注册日期："+ocrEntityTemp.getBdCarRegisterDate(); //+"\n使用性质："+ocrEntityTemp.bdCarUseType00000;
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -577,7 +577,7 @@ private void jiexieXSZ(String filePath) {
 			activity.cxWorkEntity.subjectInfo.bdCarVin = ocrEntityTemp. bdCarVin; //车架号
 			activity.cxWorkEntity.subjectInfo.bdEngineNo = ocrEntityTemp. bdEngineNo; //发动机号
 			activity.cxWorkEntity.subjectInfo.bdCarRegisterDate = ocrEntityTemp. getBdCarRegisterDate(); //初登日期
-			activity.cxWorkEntity.subjectInfo.bdCarUseType = ocrEntityTemp.getBdCarUseTypeValue(); //使用性质
+//			activity.cxWorkEntity.subjectInfo.bdCarUseType = ocrEntityTemp.getBdCarUseTypeValue(); //使用性质
 			break;
 			case CxSurveyWorkActivity.THIRD_SZ_JSZ_OCR: //三者中的驾驶证识别
 				CxThirdFragment.ocrEntityJsz = ocrEntity;

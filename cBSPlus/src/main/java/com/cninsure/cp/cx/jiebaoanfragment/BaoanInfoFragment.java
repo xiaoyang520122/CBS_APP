@@ -121,6 +121,11 @@ public class BaoanInfoFragment extends BaseFragment {
         }
         workButton.setOnClickListener(v -> setJumpToWorkActivity());
 
+        if (orderInfoEn.status==4 || orderInfoEn.status==6 || orderInfoEn.status==10 ) { //4已接单，6作业中、10审核退回 按钮显示编辑作业。
+            workButton.setText("编辑作业");
+        }else{
+            workButton.setText("查看作业信息");
+        }
     }
 
     private void setJumpToWorkActivity() {
@@ -145,7 +150,7 @@ public class BaoanInfoFragment extends BaseFragment {
             default: DialogUtil.getAlertOneButton(getActivity(),"功能开发中！",null).show();return;  //默认现场查勘
         }
 
-
+        CxImagFragment2.fistLoad = false;
         intent.putExtra("bussTypeId",activity.getIntent().getIntExtra("bussTypeId",0));
         intent.putExtra("orderUid",activity.getIntent().getStringExtra("orderUid"));
         intent.putExtra("taskType", activity.getIntent().getStringExtra("taskType"));

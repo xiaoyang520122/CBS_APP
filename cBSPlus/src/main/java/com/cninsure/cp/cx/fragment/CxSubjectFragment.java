@@ -235,7 +235,7 @@ public class CxSubjectFragment extends BaseFragment {
         SetTextUtil.setEditText(bdEngineNoEdt,activity.cxWorkEntity.subjectInfo.bdEngineNo,SetTextUtil.ENGIN); //发动机号
         bdCarRegisterDateTv.setText(activity.cxWorkEntity.subjectInfo.bdCarRegisterDate); //初登日期
         SetTextUtil.setTextViewText(bdDrivingTypeTv,activity.cxSurveyDict.getLabelByValue("quasiDrivingType",activity.cxWorkEntity.subjectInfo.bdDrivingType)); //准驾车型
-        SetTextUtil.setTvTextForArr(bdCarUseTypeTv,TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("car_usetype")),activity.cxWorkEntity.subjectInfo.bdCarUseType);  //使用性质
+        SetTextUtil.setTextViewText(bdCarUseTypeTv,activity.cxSurveyDict.getLabelByValue("car_usetype",activity.cxWorkEntity.subjectInfo.bdCarUseType));  //使用性质
         activity.cxWorkEntity.subjectInfo.pathMoveLicense = imgName;  //照片名称
     }
 
@@ -253,8 +253,8 @@ public class CxSubjectFragment extends BaseFragment {
         activity.cxWorkEntity.subjectInfo.bdCarRegisterDate = bdCarRegisterDateTv.getText().toString();//初登日期
         activity.cxWorkEntity.subjectInfo.bdCarEffectiveDate = bdCarEffectiveDateTv.getText().toString(); //行驶证有效期至
         activity.cxWorkEntity.subjectInfo.bdDrivingType = activity.cxSurveyDict.getValueByLabel("quasiDrivingType",bdDrivingTypeTv.getText().toString()); //准驾车型
-        activity.cxWorkEntity.subjectInfo.bdCarNumberType =  TypePickeUtil.getValue(bdCarNumberTypeTv.getText().toString(),activity.cxSurveyDict,"carno_type");   //号牌种类
-        activity.cxWorkEntity.subjectInfo.bdCarUseType =  TypePickeUtil.getValue(bdCarUseTypeTv.getText().toString(),activity.cxSurveyDict,"car_usetype");   //使用性质
+        activity.cxWorkEntity.subjectInfo.bdCarNumberType =  activity.cxSurveyDict.getValueByLabel("carno_type",bdCarNumberTypeTv.getText().toString());   //号牌种类
+        activity.cxWorkEntity.subjectInfo.bdCarUseType =  activity.cxSurveyDict.getValueByLabel("car_usetype",bdCarUseTypeTv.getText().toString());   //使用性质
         //驾驶证
         activity.cxWorkEntity.subjectInfo.bdDriverName = bdDriverNameEdt.getText().toString();//驾驶员姓名
         activity.cxWorkEntity.subjectInfo.bdDriverPhone = bdDriverPhoneEdt.getText().toString();//驾驶员电话
@@ -314,8 +314,8 @@ public class CxSubjectFragment extends BaseFragment {
         SetTextUtil.setTextViewText(bdCarRegisterDateTv,subjectInfoEnt.bdCarRegisterDate);//初登日期
         SetTextUtil.setTextViewText(bdCarEffectiveDateTv,subjectInfoEnt.bdCarEffectiveDate); //行驶证有效期至
         SetTextUtil.setTextViewText(bdDrivingTypeTv,activity.cxSurveyDict.getLabelByValue("quasiDrivingType",subjectInfoEnt.bdDrivingType)); //准驾车型
-        SetTextUtil.setTvTextForArr(bdCarNumberTypeTv,TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("carno_type")),subjectInfoEnt.bdCarNumberType);  //号牌种类
-        SetTextUtil.setTvTextForArr(bdCarUseTypeTv,TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("car_usetype")),subjectInfoEnt.bdCarUseType);  //使用性质
+        SetTextUtil.setTextViewText(bdCarNumberTypeTv,activity.cxSurveyDict.getLabelByValue("carno_type",subjectInfoEnt.bdCarNumberType));  //号牌种类
+        SetTextUtil.setTextViewText(bdCarUseTypeTv,activity.cxSurveyDict.getLabelByValue("car_usetype",subjectInfoEnt.bdCarUseType));  //使用性质
         //驾驶证
         SetTextUtil.setEditText(bdDriverNameEdt,subjectInfoEnt.bdDriverName);//驾驶员姓名
         SetTextUtil.setEditText(bdDriverPhoneEdt,subjectInfoEnt.bdDriverPhone,SetTextUtil.MOBILE);//驾驶员电话

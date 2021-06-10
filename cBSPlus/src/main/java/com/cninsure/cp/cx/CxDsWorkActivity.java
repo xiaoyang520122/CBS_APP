@@ -1,5 +1,6 @@
 package com.cninsure.cp.cx;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -24,6 +26,7 @@ import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.autoloss.AutoLossMainActivity;
+import com.cninsure.cp.cx.jiebaoanfragment.DoesPhotosMustPassTool;
 import com.cninsure.cp.cx.util.CxFileUploadUtil;
 import com.cninsure.cp.cx.util.CxWorkSubmitUtil;
 import com.cninsure.cp.entity.BaseEntity;
@@ -34,6 +37,7 @@ import com.cninsure.cp.entity.cx.CxDamageWorkEntity;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxDsTaskEntity;
 import com.cninsure.cp.entity.cx.CxDsWorkEntity;
+import com.cninsure.cp.entity.cx.CxImagEntity;
 import com.cninsure.cp.entity.cx.CxInjuryTrackWorkEntity;
 import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.photo.PickPhotoUtil;
@@ -72,6 +76,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
     public final int DS_REQUEST_CODE = 1; //请求定损界面code
     public PublicOrderEntity orderInfoEn ; //任务信息
     private static CxDsWorkActivity instence;
+    private List<CxImagEntity> imgEnList;/**图片合集*/
 
     @ViewInject(R.id.CxDsM_intelligent_button) private TextView intelligentButton;  //智能定损**
     @ViewInject(R.id.CxDsM_dsCarNumber) private EditText dsCarNumber;  //车牌号**
@@ -113,6 +118,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //官方推荐使用这种方式保持亮屏
         setContentView(R.layout.cx_ds_work_main_activity);
         ViewUtils.inject(this); //注入view和事件
         EventBus.getDefault().register(this);
@@ -123,6 +129,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         orderInfoEn = (PublicOrderEntity) getIntent().getSerializableExtra("PublicOrderEntity");
         dowloadDictType();
         setdsLocationLocalOnclick(); //获取当前地点的赋值到定损地点的点击事件
+        dowloadImg(); //下载影像信息
     }
 
     private void setdsLocationLocalOnclick() {
@@ -131,6 +138,20 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
                 SetTextUtil.setEditText(dsLocation,AppApplication.LOCATION.getAddrStr());
             }
         });
+    }
+
+
+    /**
+     * 下载接报案对应作业图片
+     */
+    private void dowloadImg() {
+        LoadDialogUtil.setMessageAndShow(this,"载入中……");
+        List<String> params = new ArrayList<String>(2);
+        params.add("baoanUid");
+        params.add(orderInfoEn.caseBaoanUid);
+        params.add("isDelete");
+        params.add("0");
+        HttpUtils.requestGet(URLs.CX_GET_WORK_IMG, params, HttpRequestTool.CX_GET_WORK_IMG);
     }
 
     /**先下载字典库*/
@@ -172,6 +193,10 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
                 break;
             case HttpRequestTool.UPLOAD_FILE_PHOTO: //上传附件成功
                 getUploadFileInfo(values);
+                break;
+            case HttpRequestTool.CX_GET_WORK_IMG: //获取案件图片列表
+                LoadDialogUtil.dismissDialog();
+                imgEnList = JSON.parseArray(values.get(0).getValue(), CxImagEntity.class);
                 break;
             default:
                 break;
@@ -220,7 +245,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         }
         taskEntity.data.contentJson.insuredPerson = orderInfoEn.baoanPersonName; //被保险人暂时存 出险单位联系人
         taskEntity.data.contentJson.riskDate = orderInfoEn.riskDate; //出险时间
-        if (40==(getIntent().getIntExtra("bussTypeId",0))) //标的定损回显车牌号
+        if (40==(getIntent().getIntExtra("bussTypeId",0)) && TextUtils.isEmpty(taskEntity.data.contentJson.dsCarNumber)) //标的定损回显车牌号
             taskEntity.data.contentJson.dsCarNumber = orderInfoEn.licensePlateBiaoDi; //出险车牌
         initView();
         displayWorkInfo();
@@ -251,7 +276,13 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         findViewById(R.id.CX_Act_Back_Tv).setOnClickListener(this);
         findViewById(R.id.CX_Act_More_Tv).setOnClickListener(this);
         ((TextView)findViewById(R.id.CX_Act_Title_Tv)).setText("定损");
-        ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+
+        if (orderInfoEn.status==4 || orderInfoEn.status==6 || orderInfoEn.status==10 ){ //4已接单，6作业中、10审核退回 状态可以提交。
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setText("保存/提交");
+        }else{
+            ((TextView)findViewById(R.id.CX_Act_More_Tv)).setVisibility(View.INVISIBLE);
+            DialogUtil.getErrDialog(this,"当前任务状态只可查看，不能提交或暂存！").show();
+        }
     }
 
     @Override
@@ -283,7 +314,9 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
             public void onClick(DialogInterface dialog, int which) {
                 isSubmit = which;
                 SaveDataToEntity();
-                CxWorkSubmitUtil.submit(CxDsWorkActivity.this,which,QorderUid,JSON.toJSONString(taskEntity.data.contentJson),taskEntity.data.id); //提交
+                if (which == 0 || new DoesPhotosMustPassTool(CxDsWorkActivity.this,imgEnList,QorderUid).isDsPass(taskEntity.data.contentJson)){ //暂存或者拍照齐全可以提交。
+                    CxWorkSubmitUtil.submit(CxDsWorkActivity.this,which,QorderUid,JSON.toJSONString(taskEntity.data.contentJson),taskEntity.data.id);
+                }
             }
         });
     }
@@ -365,7 +398,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
 
         SetTextUtil.setEditText(dsLocation,damageEnt.dsLocation);//定损地点**
 
-        SetTextUtil.setEditText(dsRescueAmount,damageEnt.dsRescueAmount+"");//定损施救费
+        SetTextUtil.setEditText(dsRescueAmount,(damageEnt.dsRescueAmount==null?"":damageEnt.dsRescueAmount+""));//定损施救费
         SetTextUtil.setTextViewText(hsRescueAmount,damageEnt.hsRescueAmount+"");//核损施救费
         SetTextUtil.setTextViewText(dsAllTotalAmount,damageEnt.getDsAllTotalAmount()+"");//定损总金额
         SetTextUtil.setEditText(dsInstructions,damageEnt.dsInstructions);//定损说明
@@ -458,7 +491,11 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         damageEnt.claimLevel = cxDict.getValueByLabel("claim_level_type",claimLevel.getText().toString());//索赔险别**
         damageEnt.dsLocation = dsLocation.getText().toString();//定损地点**
 
-        damageEnt.dsRescueAmount = dsRescueAmount.getText().toString();//定损施救费
+
+        @SuppressLint("WrongViewCast") String tempDra = dsRescueAmount.getText().toString();
+        damageEnt.dsRescueAmount = TextUtils.isEmpty(tempDra)?null:Float.parseFloat(tempDra); //施救费
+
+//        damageEnt.dsRescueAmount = dsRescueAmount.getText().toString();//定损施救费
 //        SetTextUtil.setTextViewText(hsRescueAmount,damageEnt.hsRescueAmount+"");//核损施救费
 //        SetTextUtil.setTextViewText(dsAllTotalAmount,damageEnt.dsAllTotalAmount+"");//定损总金额
         damageEnt.dsInstructions = dsInstructions.getText().toString();//定损说明

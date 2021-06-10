@@ -17,6 +17,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,6 +40,8 @@ import com.cninsure.cp.activity.yjx.YjxBaoanInputActivity;
 import com.cninsure.cp.activity.yjx.YjxDispatchShenheActivity;
 import com.cninsure.cp.activty.CaseInfoActivty;
 import com.cninsure.cp.activty.DisplayOrderActivity;
+import com.cninsure.cp.cx.CxDsBaoanInfoActivity;
+import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
 import com.cninsure.cp.entity.CaseOrder;
 import com.cninsure.cp.entity.FCOrderEntity;
 import com.cninsure.cp.entity.PagedRequest;
@@ -158,7 +161,7 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 		paramsList.add("50");
 		paramsList.add("statusArr");
 		paramsList.add(",7,8,9");
-		HttpUtils.requestGet(URLs.CX_NEW_GET_GGS_ORDER, paramsList, HttpRequestTool.CX_NEW_GET_GGS_ORDER);
+		HttpUtils.requestGet(URLs.CX_NEW_GET_GGS_ORDER, paramsList, HttpRequestTool.CX_NEW_GET_GGS_ORDER_COMPLATED);
 
 		if (adapter==null) {
 			loadDialog.setMessage("信息读取中……").show();
@@ -203,12 +206,12 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 	public void eventDownLoadMyorderList(List<NameValuePair> value) {
 
 		int requestType = Integer.parseInt(value.get(0).getName());
-		if (requestType == HttpRequestTool.CX_NEW_GET_GGS_ORDER || requestType ==  HttpRequestTool.GET_FC_WORKED_LIST
+		if (requestType == HttpRequestTool.CX_NEW_GET_GGS_ORDER_COMPLATED || requestType ==  HttpRequestTool.GET_FC_WORKED_LIST
 				|| requestType == HttpRequestTool.GET_ORDER_STATUS|| requestType == HttpRequestTool.YJX_GGS_ORDER_LIST) { 
 			loadDialog.dismiss();
 		}
 		switch (CheckHttpResult.checkList(value, MyOrderListFragment.this.getActivity())) {
-		case HttpRequestTool.CX_NEW_GET_GGS_ORDER:
+		case HttpRequestTool.CX_NEW_GET_GGS_ORDER_COMPLATED:
 			getOrderDataCX(value.get(0).getValue());
 			break;
 
@@ -354,9 +357,9 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 	            		MyPullRefreshListViewAlertUtil.setAlertInfo(mPullRefreshListView, "----我也是有底线的----", 2*1000); //提示没有更多信息可以加载
 					}
 					if (caseorders!=null && caseorders.tableData!=null){
-						dowLoadingDataCX(0); //如果为空就重新加载
-					}else{
 						dowLoadingDataCX(caseorders.tableData.start+10);
+					}else{
+						dowLoadingDataCX(0); //如果为空就重新加载
 					}
 				}
             }
@@ -567,8 +570,8 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 			secendTv.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
-					jumpToWorkActivity(true, adapterDate.get(itemPostion).uid, 
-					adapterDate.get(itemPostion).bussTypeId + "", adapterDate.get(itemPostion).status + "");
+					jumpToWorkActivity(true, adapterDate.get(itemPostion).uid,
+							adapterDate.get(itemPostion).bussTypeId , adapterDate.get(itemPostion).status + "",adapterDate.get(itemPostion));
 				}
 			});
 			
@@ -712,11 +715,13 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 		DialogUtil.getItemDialog(getActivity(), new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int choicePoint) {
-				if (choicePoint==0) {
-					jumpToBaoanInfo(itemId);
-				}else {
-					jumpToWorkActivity(true, adapterDate.get(itemId).uid, adapterDate.get(itemId).bussTypeId + "",adapterDate.get(itemId).status + "");
-				}
+//				if (choicePoint==0) {
+//					jumpToBaoanInfo(itemId);
+//				}else {
+//					jumpToWorkActivity(true, adapterDate.get(itemId).uid, adapterDate.get(itemId).bussTypeId + "",adapterDate.get(itemId).status + "");
+//				}
+				jumpToWorkActivity(true, adapterDate.get(itemId).uid,
+						adapterDate.get(itemId).bussTypeId , adapterDate.get(itemId).status + "",adapterDate.get(itemId));
 			}
 		}, new String[]{"查看接报案信息","查看订单作业信息"}).show();
 	}
@@ -732,12 +737,26 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 	}
 	
 	/**跳转到车险作业查看界面*/
-	public void jumpToWorkActivity(boolean jumpflag, String uid, String type, String statu) {
+	public void jumpToWorkActivity(boolean jumpflag, String uid, Integer type, String statu,PublicOrderEntity dataEn) {
+//		if (jumpflag) {
+//			Intent intent = new Intent(getActivity(), DisplayOrderActivity.class);
+//			intent.putExtra("orderUid", uid);
+//			intent.putExtra("taskType", type);
+//			intent.putExtra("status", statu);
+//			getActivity().startActivity(intent);
+//		}
 		if (jumpflag) {
-			Intent intent = new Intent(getActivity(), DisplayOrderActivity.class);
+			Intent intent = new Intent();
+			switch (type){
+				case 2 :  intent.setClass(getActivity(), CxJieBaoanInfoActivity.class);break;  //现场查勘新
+				default: intent.setClass(getActivity(), CxDsBaoanInfoActivity.class);break;  //默认现场查勘
+			}
+			intent.putExtra("bussTypeId", type);
 			intent.putExtra("orderUid", uid);
 			intent.putExtra("taskType", type);
 			intent.putExtra("status", statu);
+			intent.putExtra("PublicOrderEntity", dataEn);
+			Log.i("JsonHttpUtils", "调用JS传递字符串status=" + statu);
 			getActivity().startActivity(intent);
 		}
 	}

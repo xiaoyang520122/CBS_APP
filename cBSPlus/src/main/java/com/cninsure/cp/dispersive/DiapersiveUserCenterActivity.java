@@ -192,6 +192,7 @@ public class DiapersiveUserCenterActivity extends BaseActivity {
         editor.putString("password", "");
         editor.commit();
         editor.clear();
+        HttpRequestTool.cookie=null;
         AppApplication.emptyUSER();
         startActivity(new Intent(this, LoginActivity.class));
         DispersiveUserActivity.instence.finish();

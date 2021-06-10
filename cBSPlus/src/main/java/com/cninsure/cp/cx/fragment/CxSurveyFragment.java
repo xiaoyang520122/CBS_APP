@@ -1,6 +1,5 @@
 package com.cninsure.cp.cx.fragment;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -89,7 +88,8 @@ public class CxSurveyFragment extends BaseFragment {
     @ViewInject(R.id.csu_surveyAddress_equal)  private TextView surveyAddressEqualTv;//同派单地点
     @ViewInject(R.id.csu_surveyAddress_local)  private TextView surveyAddressLocalTv;//定位当前地点
     @ViewInject(R.id.csu_surveyAddress)  private EditText surveyAddressEdt;//查勘地点
-    @ViewInject(R.id.csu_surveyConclusion)  private TextView surveyConclusionTv;//查勘结论
+    @ViewInject(R.id.csu_surveyConclusion)  private EditText surveyConclusionEdt;//查勘结论
+    @ViewInject(R.id.csu_surveyConclusionChoice)  private TextView surveyConclusionChoice;//查勘结论选择器
     @ViewInject(R.id.csu_ckIsMajorCase_RG)  private RadioGroup ckIsMajorCaseRg;//是否重大案件
     @ViewInject(R.id.csu_signLicense)  private TextView signLicenseTv;//签字按钮
     @ViewInject(R.id.csu_enclosureList_add)  private TextView enclosureListTv;//上传附件
@@ -131,9 +131,14 @@ public class CxSurveyFragment extends BaseFragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!TextUtils.isEmpty(lossAmountEdt.getText().toString())){
-                    Float lossAmountNumber = Float.parseFloat(lossAmountEdt.getText().toString());
-                    if (lossAmountNumber!=null && lossAmountNumber>10000f && ckIsMajorCaseRg!=null){
-                        ckIsMajorCaseRg.check(R.id.csu_ckIsMajorCase_RBT);
+                    try {
+//                        Float lossAmountNumber = Float.parseFloat(lossAmountEdt.getText().toString());
+                        Double lossAmountNumber = !RegexUtils.checkDecimals(lossAmountEdt.getText().toString()) ?null: Double.parseDouble(lossAmountEdt.getText().toString()); //估损金额
+                        if (lossAmountNumber != null && lossAmountNumber > 10000f && ckIsMajorCaseRg != null) {
+                            ckIsMajorCaseRg.check(R.id.csu_ckIsMajorCase_RBT);
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
                     }
                 }
             }
@@ -246,7 +251,7 @@ public class CxSurveyFragment extends BaseFragment {
         setAccidentLiabilityType();
         TypePickeUtil.setTypePickerDialog(activity,surveyTypeTv,activity.cxSurveyDict,"survey_type");
         TypePickeUtil.setTypePickerDialog(activity,comfirmLiabilityTypeTv,activity.cxSurveyDict,"comfirmLiabilityType"); //责任认定类型
-        TypePickeUtil.setTypePickerDialog(activity,surveyConclusionTv,activity.cxSurveyDict,"survey_conclusion");
+        TypePickeUtil.setTypePickerDialogByOther(activity, surveyConclusionEdt,activity.cxSurveyDict,"survey_conclusion",surveyConclusionChoice);
         TypePickeUtil.setTypePickerDialog(activity,compensationMethodTv,activity.cxSurveyDict,"compensation_method");
         setLossObjectTypeCheck(); //损失详情
     }
@@ -329,6 +334,7 @@ public class CxSurveyFragment extends BaseFragment {
      * 2、水淹等级：新增项，当“是否水淹”选择为“是”时必填
      */
     private void setIsWater() { //accident_reason
+        TypePickeUtil.showTypePickerDialogByOnclick(activity,isInsuredCaseTv,new String[]{"是","否"}); //是否人伤
         TypePickeUtil.showTypePickerDialogByOnclick(activity,isWaterTv,new String[]{"是","否"}); //是否水淹
         isWaterTv.addTextChangedListener(new TextWatcher() {
             @Override
@@ -443,7 +449,7 @@ public class CxSurveyFragment extends BaseFragment {
             new AlertDialog.Builder(activity).setTitle("请选择")
                     .setMultiChoiceItems(tempArr, isChoice, (dialog, which, isChecked) -> isChoice[which] = isChecked)
                     .setNegativeButton("确定", (dialog, which) -> {
-                        clearLossTypeChecked();
+//                        clearLossTypeChecked();
                         String lableStr = "";
                         List<String> lossObjectTypeList = new ArrayList<>();
                         for (int i = 0;i<isChoice.length;i++){
@@ -575,75 +581,95 @@ public class CxSurveyFragment extends BaseFragment {
         if (lossType4.isChecked())
             lossTypeList.add(3);
         CxSurveyWorkEntity.SurveyInfoEntity surveyInfo = activity.cxWorkEntity.surveyInfo;
-        surveyInfo.lossType = lossTypeList.toArray(new Integer[lossTypeList.size()]);  //损失类型
+        if (surveyInfo!=null) {
+            surveyInfo.lossType = lossTypeList.toArray(new Integer[lossTypeList.size()]);  //损失类型
 
 //        @ViewInject(R.id.csu_signLicense_img)  private ImageView signLicenseImg;  //签字图片
-        surveyInfo.ckDate = ckDateTv.getText().toString(); //查勘时间
-        surveyInfo.ckAccidentType = activity.cxSurveyDict.getValueByLabel("accident_small_type",ckAccidentTypeTv.getText().toString());//; //事故类型
-        surveyInfo.ckAccidentSmallType = activity.cxSurveyDict.getValueByLabel("accident_small_type",ckAccidentSmallTypeTv.getText().toString());//; //事故详细类型
+            surveyInfo.ckDate = ckDateTv.getText().toString(); //查勘时间
+            surveyInfo.ckAccidentType = activity.cxSurveyDict.getValueByLabel("accident_small_type", ckAccidentTypeTv.getText().toString());//; //事故类型
+            surveyInfo.ckAccidentSmallType = activity.cxSurveyDict.getValueByLabel("accident_small_type", ckAccidentSmallTypeTv.getText().toString());//; //事故详细类型
 //        surveyInfo.ckAccidentReason = activity.cxSurveyDict.getValueByLabel("accident_reason",ckAccidentReasonTv.getText().toString()); //出险原因
-        surveyInfo.ckAccidentSmallReason = activity.cxSurveyDict.getValueByLabel("accident_reason",ckAccidentSmallReasonTv.getText().toString()) ; //出险详细原因
-        surveyInfo.waterLevel = activity.cxSurveyDict.getValueByLabel("waterLevel",waterLevelTv.getText().toString()) ; //水淹类型
-        surveyInfo.surveyType = TypePickeUtil.getValue(surveyTypeTv.getText().toString(),activity.cxSurveyDict,"survey_type");//; //查勘类型
-        surveyInfo.comfirmLiabilityType = activity.cxSurveyDict.getValueByLabel("comfirmLiabilityType",comfirmLiabilityTypeTv.getText().toString());//; //责任认定类型
-        surveyInfo.fraudTag = activity.cxSurveyDict.getValueByLabel("fraudTag",fraudTagTv.getText().toString());//; //欺诈标识
+            surveyInfo.ckAccidentSmallReason = activity.cxSurveyDict.getValueByLabel("accident_reason", ckAccidentSmallReasonTv.getText().toString()); //出险详细原因
+            surveyInfo.waterLevel = activity.cxSurveyDict.getValueByLabel("waterLevel", waterLevelTv.getText().toString()); //水淹类型
+            surveyInfo.surveyType = TypePickeUtil.getValue(surveyTypeTv.getText().toString(), activity.cxSurveyDict, "survey_type");//; //查勘类型
+            surveyInfo.comfirmLiabilityType = activity.cxSurveyDict.getValueByLabel("comfirmLiabilityType", comfirmLiabilityTypeTv.getText().toString());//; //责任认定类型
+            surveyInfo.fraudTag = activity.cxSurveyDict.getValueByLabel("fraudTag", fraudTagTv.getText().toString());//; //欺诈标识
 
-        surveyInfo.ckAccidentLiability = TypePickeUtil.getValue(ckAccidentLiabilityTv.getText().toString(),activity.cxSurveyDict,"accident_liability"); //事故责任
-        String temstr = liabilityRatioEdt.getText().toString();
-        surveyInfo.liabilityRatio = !RegexUtils.checkDecimals(liabilityRatioEdt.getText().toString())?null:Double.parseDouble(liabilityRatioEdt.getText().toString()); //责任比例
+            surveyInfo.ckAccidentLiability = TypePickeUtil.getValue(ckAccidentLiabilityTv.getText().toString(), activity.cxSurveyDict, "accident_liability"); //事故责任
+            String temstr = liabilityRatioEdt.getText().toString();
+            surveyInfo.liabilityRatio = !RegexUtils.checkDecimals(liabilityRatioEdt.getText().toString()) ? null : Double.parseDouble(liabilityRatioEdt.getText().toString()); //责任比例
 //        @ViewInject(R.id.csu_lossObjectType)  private TextView lossObjectTypeTv;//损失详情
 
-        surveyInfo.baoanDriverName = baoanDriverNameEdit.getText().toString(); //报案驾驶员
-        surveyInfo.lossAmount = !RegexUtils.checkDecimals(lossAmountEdt.getText().toString()) ?null: Double.parseDouble(lossAmountEdt.getText().toString()); //估损金额
-        surveyInfo.surveySummary = surveySummaryEdt.getText().toString(); //查勘概述
-        //能否正常行驶
-        switch (canDriveNormallyRg.getCheckedRadioButtonId()){
-            case R.id.csu_canDriveNormally_RBT: surveyInfo.canDriveNormally = 1;break;
-            case R.id.csu_canDriveNormally_RBF: surveyInfo.canDriveNormally = 0;
-        }
-        surveyInfo.compensationMethod = TypePickeUtil.getValue(compensationMethodTv.getText().toString(),activity.cxSurveyDict,"compensation_method"); //赔付方式
-        //是否属于保险责任
+            surveyInfo.baoanDriverName = baoanDriverNameEdit.getText().toString(); //报案驾驶员
+            String lossAmountStr = lossAmountEdt.getText().toString();
+            surveyInfo.lossAmount = (RegexUtils.checkDecimals(lossAmountStr)) ?Float.valueOf(lossAmountStr) : null; //估损金额
+            surveyInfo.surveySummary = surveySummaryEdt.getText().toString(); //查勘概述
+            //能否正常行驶
+            switch (canDriveNormallyRg.getCheckedRadioButtonId()) {
+                case R.id.csu_canDriveNormally_RBT:
+                    surveyInfo.canDriveNormally = 1;
+                    break;
+                case R.id.csu_canDriveNormally_RBF:
+                    surveyInfo.canDriveNormally = 0;
+            }
+            surveyInfo.compensationMethod = TypePickeUtil.getValue(compensationMethodTv.getText().toString(), activity.cxSurveyDict, "compensation_method"); //赔付方式
+            //是否属于保险责任
 //        switch (ckIsInsuranceLiabilityRg.getCheckedRadioButtonId()){
 //            case R.id.csu_ckIsInsuranceLiability_RBT: surveyInfo.ckIsInsuranceLiability = 1;break;
 //            case R.id.csu_ckIsInsuranceLiability_RBF: surveyInfo.ckIsInsuranceLiability = 0;
 //        }
-        //是否代位
-        switch (isDaiweiRg.getCheckedRadioButtonId()){
-            case R.id.csu_isDaiwei_RBT: surveyInfo.isDaiwei = 1;break;
-            case R.id.csu_isDaiwei_RBF: surveyInfo.isDaiwei = 0;
-        }
-        //是否现场案件
-        switch (isSceneRg.getCheckedRadioButtonId()){
-            case R.id.csu_isScene_RBT: surveyInfo.isScene = 1;break;
-            case R.id.csu_isScene_RBF: surveyInfo.isScene = 0;
-        }
-        //是否高速公路
-        switch (isHsLoadRg.getCheckedRadioButtonId()){
-            case R.id.csu_isHsLoad_RBT: surveyInfo.isHsLoad = 1;break;
-            case R.id.csu_isHsLoad_RBF: surveyInfo.isHsLoad = 0;
-        }
-        //是否人伤案件
-        if (isInsuredCaseTv==null && TextUtils.isEmpty(isInsuredCaseTv.getText().toString())){
-            surveyInfo.isInsuredCase = null;
-        }else if ("是".equals(isInsuredCaseTv.getText().toString())){
-            surveyInfo.isInsuredCase = 1; //是-是否人伤案件
-        }else if ("否".equals(isInsuredCaseTv.getText().toString())){
-            surveyInfo.isInsuredCase = 0;//否-是否人伤案件
-        }
-        surveyInfo.surveyAddress = surveyAddressEdt.getText().toString(); //查勘地点
-        surveyInfo.surveyConclusion = TypePickeUtil.getValue(surveyConclusionTv.getText().toString(),activity.cxSurveyDict,"survey_conclusion"); //查勘结论
+            //是否代位
+            switch (isDaiweiRg.getCheckedRadioButtonId()) {
+                case R.id.csu_isDaiwei_RBT:
+                    surveyInfo.isDaiwei = 1;
+                    break;
+                case R.id.csu_isDaiwei_RBF:
+                    surveyInfo.isDaiwei = 0;
+            }
+            //是否现场案件
+            switch (isSceneRg.getCheckedRadioButtonId()) {
+                case R.id.csu_isScene_RBT:
+                    surveyInfo.isScene = 1;
+                    break;
+                case R.id.csu_isScene_RBF:
+                    surveyInfo.isScene = 0;
+            }
+            //是否高速公路
+            switch (isHsLoadRg.getCheckedRadioButtonId()) {
+                case R.id.csu_isHsLoad_RBT:
+                    surveyInfo.isHsLoad = 1;
+                    break;
+                case R.id.csu_isHsLoad_RBF:
+                    surveyInfo.isHsLoad = 0;
+            }
+            //是否人伤案件
+            if (isInsuredCaseTv == null && TextUtils.isEmpty(isInsuredCaseTv.getText().toString())) {
+                surveyInfo.isInsuredCase = null;
+            } else if ("是".equals(isInsuredCaseTv.getText().toString())) {
+                surveyInfo.isInsuredCase = 1; //是-是否人伤案件
+            } else if ("否".equals(isInsuredCaseTv.getText().toString())) {
+                surveyInfo.isInsuredCase = 0;//否-是否人伤案件
+            }
+            surveyInfo.surveyAddress = surveyAddressEdt.getText().toString(); //查勘地点
+            surveyInfo.surveyConclusion = surveyConclusionEdt.getText().toString(); //查勘结论
 
-        //是否重大案件
-        switch (ckIsMajorCaseRg.getCheckedRadioButtonId()){
-            case R.id.csu_ckIsMajorCase_RBT: surveyInfo.ckIsMajorCase = 1;break;
-            case R.id.csu_ckIsMajorCase_RBF: surveyInfo.ckIsMajorCase = 0;
+            //是否重大案件
+            switch (ckIsMajorCaseRg.getCheckedRadioButtonId()) {
+                case R.id.csu_ckIsMajorCase_RBT:
+                    surveyInfo.ckIsMajorCase = 1;
+                    break;
+                case R.id.csu_ckIsMajorCase_RBF:
+                    surveyInfo.ckIsMajorCase = 0;
+            }
         }
     }
 
     private void displaySurveyData() {
         CxSurveyWorkEntity.SurveyInfoEntity surveyInfo = activity.cxWorkEntity.surveyInfo;
         //损失类型
-        if (null!=surveyInfo.lossType)
+        if (null==surveyInfo.lossType) {
+            return;
+        }
         for (int i=0 ;i<surveyInfo.lossType.length;i++){
             switch (surveyInfo.lossType[i]){
             case 0:lossType1.setChecked(true); break;
@@ -665,10 +691,10 @@ public class CxSurveyFragment extends BaseFragment {
         SetTextUtil.setTextViewText(fraudTagTv,activity.cxSurveyDict.getLabelByValue("fraudTag", surveyInfo.fraudTag));//欺诈标识
         displayfraudTypeText(); //欺诈类型
         SetTextUtil.setTvTextForArr(ckAccidentLiabilityTv,TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("accident_liability")), surveyInfo.ckAccidentLiability);//事故责任
-        SetTextUtil.setEditText(liabilityRatioEdt,surveyInfo.liabilityRatio+"");//责任比例
+        SetTextUtil.setEditText(liabilityRatioEdt,surveyInfo.liabilityRatio!=null?(surveyInfo.liabilityRatio+""):"");//责任比例
         displayLossTypeText();//损失详情
         SetTextUtil.setEditText(baoanDriverNameEdit,surveyInfo.baoanDriverName);//报案驾驶员
-        SetTextUtil.setEditText(lossAmountEdt,surveyInfo.lossAmount+"");//估损金额
+        SetTextUtil.setEditText(lossAmountEdt,surveyInfo.lossAmount!=null?(surveyInfo.lossAmount+""):"");//估损金额
         SetTextUtil.setEditText(surveySummaryEdt,surveyInfo.surveySummary);//查勘概述
         //能否正常行驶
         if (surveyInfo.canDriveNormally==1) canDriveNormallyRg.check(R.id.csu_canDriveNormally_RBT);
@@ -689,7 +715,7 @@ public class CxSurveyFragment extends BaseFragment {
         if (surveyInfo.isInsuredCase!=null && surveyInfo.isInsuredCase==1) SetTextUtil.setTextViewText(isInsuredCaseTv,"是"); //是否人伤案件
         if (surveyInfo.isInsuredCase!=null && surveyInfo.isInsuredCase==0) SetTextUtil.setTextViewText(isInsuredCaseTv,"否"); //是否人伤案件
         SetTextUtil.setEditText(surveyAddressEdt,surveyInfo.surveyAddress); //查勘地点
-        SetTextUtil.setTvTextForArr(surveyConclusionTv,TypePickeUtil.getDictLabelArr(activity.cxSurveyDict.getDictByType("survey_conclusion")),surveyInfo.surveyConclusion);//查勘结论
+        SetTextUtil.setEditText(surveyConclusionEdt,surveyInfo.surveyConclusion);//查勘结论
 
         //是否重大案件
         if (surveyInfo.ckIsMajorCase==1) ckIsMajorCaseRg.check(R.id.csu_ckIsMajorCase_RBT);

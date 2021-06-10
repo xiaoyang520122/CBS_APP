@@ -90,6 +90,7 @@ public class CxDamageFragment extends BaseFragment {
     }
 
     private void getHolderDate(ViewHolder vHolder, int position) {
+        if (vHolder==null)return;
         CxSurveyWorkEntity.DamageInfosEntity tempDamage = activity.cxWorkEntity.damageInfos.get(position);
         tempDamage.damageNo = position; //编号
         tempDamage.damageOwner = vHolder.damageOwnerEdt.getText().toString(); //	归属人

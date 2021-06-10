@@ -169,6 +169,11 @@ public class TaskBasicInfoFragment extends BaseFragment {
 
     private void setJumpOnclick(){
         workButton.setOnClickListener(v -> setJumpToWorkActivity());
+        if (activity.orderInfoEn.status==4 || activity.orderInfoEn.status==6 || activity.orderInfoEn.status==10 ) { //4已接单，6作业中、10审核退回 按钮显示编辑作业。
+            workButton.setText("编辑作业");
+        }else{
+            workButton.setText("查看作业信息");
+        }
     }
 
     private void setJumpToWorkActivity() {
@@ -317,8 +322,9 @@ public class TaskBasicInfoFragment extends BaseFragment {
         sb.append("是否现场报案："+(isSceneItg==null?"--":(isSceneItg==1?"是":(isSceneItg==0?"否":"--")))+"\n");
         Integer isHsLoadItg = suInTemp!=null?suInTemp.isHsLoad:-1;
         sb.append("是否在高速公路："+(isHsLoadItg==null?"--":(isHsLoadItg==1?"是":(isHsLoadItg==0?"否":"--")))+"\n");
-        sb.append("查勘结论："+getTextInfo(activity.cxDict.getLabelByValue("survey_conclusion",suInTemp!=null?suInTemp.surveyConclusion+"":"--"))+"\n");
-        sb.append("查勘概述："+getTextInfo(suInTemp!=null?suInTemp.surveySummary:"")+"\n");
+        String surveyConclusionStr = suInTemp==null?"--":(TextUtils.isEmpty(suInTemp.surveyConclusion)?"--":suInTemp.surveyConclusion)+"\n";
+        sb.append("查勘结论："+(surveyConclusionStr));
+        sb.append("查勘概述："+getTextInfo(suInTemp!=null?(suInTemp.surveySummary==null?"--":suInTemp.surveySummary):"")+"\n");
         Integer ckIsMajorCaseItg = suInTemp!=null?suInTemp.ckIsMajorCase:-1;
         sb.append("是否标为重大案件："+ (ckIsMajorCaseItg==null?"--":(ckIsMajorCaseItg==1?"是":(ckIsMajorCaseItg==0?"否":"--")))+"\n");
         return sb.toString();

@@ -32,6 +32,7 @@ import android.widget.TextView;
 
 import androidx.core.content.FileProvider;
 
+import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.IndexActivity;
 import com.cninsure.cp.R;
 import com.tamsiree.rxkit.RxAppTool;
@@ -70,7 +71,11 @@ public class APPDownloadUtils {
 	    request.setDestinationInExternalPublicDir(Environment.getExternalStorageDirectory().getAbsolutePath() , name);
 	 
 	    //获取DownloadManager
-	    downloadManager = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
+		  if (mContext!=null){
+			  downloadManager = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
+		  }else{
+			  downloadManager = (DownloadManager) AppApplication.getInstance().getSystemService(Context.DOWNLOAD_SERVICE);
+		  }
 	    //将下载请求加入下载队列，加入下载队列后会给该任务返回一个long型的id，通过该id可以取消任务，重启任务、获取下载的文件等等
 	    downloadId = downloadManager.enqueue(request);
 	 

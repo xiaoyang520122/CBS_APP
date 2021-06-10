@@ -224,6 +224,7 @@ public class CxGalleryAdapter extends BaseAdapter{
 		Intent getAlbum=new Intent(context, PhotoChoiceActivity.class);
 		getAlbum.putExtra("photoType", imageType);
 		getAlbum.putExtra("ActivityName", "NEW_CX");
+		getAlbum.putExtra("GroupId", groupPosition);
 		getAlbum.putExtra("orderUid", orderUid);
 		context.startActivity(getAlbum);
 	}

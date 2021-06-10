@@ -106,7 +106,7 @@ public class CxThirdFragment extends BaseFragment {
         activity.cxWorkEntity.thirdPartys.get(OcrPosition).frameNumber= ocrEntityXsz.bdCarVin;  //车架号
         activity.cxWorkEntity.thirdPartys.get(OcrPosition).engineNumber= ocrEntityXsz.bdEngineNo;//发动机号
         activity.cxWorkEntity.thirdPartys.get(OcrPosition).szCarRegisterDate= ocrEntityXsz.getBdCarRegisterDate(); //初登日期
-        activity.cxWorkEntity.thirdPartys.get(OcrPosition).szCarUseType= ocrEntityXsz.getBdCarUseTypeValue();  //使用性质
+//        activity.cxWorkEntity.thirdPartys.get(OcrPosition).szCarUseType= ocrEntityXsz.CarUseType;  //使用性质
         activity.cxWorkEntity.thirdPartys.get(OcrPosition).pathMoveLicense= imgUrl;  //行驶证链接	保存作业图片接口返回字段fileUrl
         myAdapter.notifyDataSetChanged();
     }
@@ -130,6 +130,7 @@ public class CxThirdFragment extends BaseFragment {
 
     /**获取ViewHolder中控件上的数据，封装到ThirdPartyEntity对象中*/
     private void getHolderDate(ViewHolder vHolder,int position) {
+        if (vHolder==null) return;
         CxSurveyWorkEntity.ThirdPartyEntity tempThirdEnty = activity.cxWorkEntity.thirdPartys.get(position);
         tempThirdEnty.licenseMissingResult = activity.cxSurveyDict.getValueByLabel("licenseMissingResult",vHolder.licenseMissingResultTv.getText().toString()); //证件缺失原因
         tempThirdEnty.thirdPartysNo = position; //三者编号

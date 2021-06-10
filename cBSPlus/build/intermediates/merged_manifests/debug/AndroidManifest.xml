@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cninsure.cp"
-    android:versionCode="164"
-    android:versionName="V1.6.4" >
+    android:versionCode="166"
+    android:versionName="V1.6.6" >
 
     <uses-sdk
         android:minSdkVersion="21"
@@ -86,7 +86,6 @@
         android:networkSecurityConfig="@xml/network_config"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
 

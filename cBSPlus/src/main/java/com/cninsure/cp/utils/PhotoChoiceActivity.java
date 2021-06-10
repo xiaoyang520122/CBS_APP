@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
@@ -54,6 +55,7 @@ public class PhotoChoiceActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //官方推荐使用这种方式保持亮屏
 		setContentView(R.layout.photo_choice_layout);
 		initView();
 		names = new ArrayList<String>();
@@ -123,7 +125,7 @@ public class PhotoChoiceActivity extends Activity {
 			cieEn.fileName = wpe.location.substring(wpe.location.lastIndexOf("/")+1,wpe.location.length()-4);
 			cieListTemp.add(cieEn);
 		}
-		CxImagFragment2.adapter.addScb.addImg(cieListTemp,getIntent().getIntExtra("groupPosition",0));
+		CxImagFragment2.adapter.addScb.addImg(cieListTemp,getIntent().getIntExtra("GroupId",0));
 	}
 
 	/** 判断是选择还是取消选择 **/

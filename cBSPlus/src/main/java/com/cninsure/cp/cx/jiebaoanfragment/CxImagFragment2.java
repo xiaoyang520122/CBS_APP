@@ -1,7 +1,6 @@
 package com.cninsure.cp.cx.jiebaoanfragment;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -18,9 +17,6 @@ import androidx.annotation.Nullable;
 import com.alibaba.fastjson.JSON;
 import com.cninsure.cp.AppApplication;
 import com.cninsure.cp.R;
-import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
-import com.cninsure.cp.cx.CxSurveyWorkActivity;
-import com.cninsure.cp.cx.adapter.CxImagAdapter;
 import com.cninsure.cp.cx.adapter.CxImagAdapter2;
 import com.cninsure.cp.cx.adapter.SaveImgCallBack;
 import com.cninsure.cp.cx.fragment.BaseFragment;
@@ -29,16 +25,12 @@ import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxBaoanTaskEntity;
 import com.cninsure.cp.entity.cx.CxDamageTaskEntity;
-import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxDsTaskEntity;
 import com.cninsure.cp.entity.cx.CxImagEntity;
-import com.cninsure.cp.entity.cx.CxOrderEntity;
 import com.cninsure.cp.entity.cx.CxOrderMediaTypeEntity;
 import com.cninsure.cp.entity.cx.CxOrderWorkMediaTypeTable;
 import com.cninsure.cp.entity.cx.CxSurveyTaskEntity;
-import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.entity.cx.CxTaskModelEntity;
-import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.entity.cx.injurysurvey.CxInjurySurveyWorkEntity;
 import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
@@ -69,17 +61,20 @@ public class CxImagFragment2 extends BaseFragment {
     public String QorderUid;
     public PublicOrderEntity orderInfoEn; //任务信息
 //    public List<CxOrderEntity.CxOrderTable> orderList; //接报案对应任务列表
-//    public CxSurveyTaskEntity surveyEn; //查勘-作业信息
-//    public CxDsTaskEntity bdDsEn; //标的定损-任务信息
-//    public List<CxDsTaskEntity> thDsEn; //三者定损-任务信息
-//    public List<CxDamageTaskEntity> damageEn; //物损任务-任务信息
+
+    public CxSurveyTaskEntity surveyEn; //查勘-作业信息
+    public CxDsTaskEntity bdDsEn; //标的定损-任务信息
+    public List<CxDsTaskEntity> thDsEn; //三者定损-任务信息
+    public List<CxDamageTaskEntity> damageEn; //物损任务-任务信息
     public List<CxInjurySurveyWorkEntity> injuEn; //人伤任务-任务信息
+
     public CxBaoanTaskEntity baoanTaskEntity; //接报案下面所有任务的作业数据
 
 
     @ViewInject(R.id.newCximg_expandablelistview) private ExpandableListView photoListView;
     @ViewInject(R.id.newCximg_ImgFragment_button) private Button submitImgBut;
     @ViewInject(R.id.cx_img_expandablellistview_RDGroup) private RadioGroup radgroup;
+
     /**图片合集*/
     private List<CxImagEntity> imgEnList;
     public static CxImagAdapter2 adapter;
@@ -114,10 +109,12 @@ public class CxImagFragment2 extends BaseFragment {
     private void uploadImg() {
         params = new ArrayList<>();
         submitImgEnList = new ArrayList<>();  // 待上传图片类集合
-        for (CxImagEntity tempImglist : imgEnList) {
-            if (tempImglist != null && tempImglist.getImageUrl() != null && tempImglist.getImageUrl().indexOf("://") == -1) {
-                params.add(new BasicNameValuePair(tempImglist.type + "", tempImglist.getImageUrl()));
-                submitImgEnList.add(tempImglist);
+        if (imgEnList!=null){
+            for (CxImagEntity tempImglist : imgEnList) {
+                if (tempImglist != null && tempImglist.getImageUrl() != null && tempImglist.getImageUrl().indexOf("://") == -1) {
+                    params.add(new BasicNameValuePair(tempImglist.type + "", tempImglist.getImageUrl()));
+                    submitImgEnList.add(tempImglist);
+                }
             }
         }
         if (submitImgEnList.size() > 0) {
@@ -410,9 +407,9 @@ public class CxImagFragment2 extends BaseFragment {
             for (CxTaskModelEntity modelItem : baoanTaskEntity.data) {
                 if (modelItem != null && modelItem.bussTypeId != null && modelItem.bussTypeId == 39 && !TextUtils.isEmpty(modelItem.content)) {
                     CxInjurySurveyWorkEntity injuTastItem = JSON.parseObject(modelItem.content, CxInjurySurveyWorkEntity.class);
-                    if (injuTastItem != null && !TextUtils.isEmpty(injuTastItem.injuredType) && !TextUtils.isEmpty(injuTastItem.injuredName)) {
+                    if (injuTastItem != null && !TextUtils.isEmpty(injuTastItem.injuredTypeName) && !TextUtils.isEmpty(injuTastItem.injuredName)) {
                         injuTable.add(mtTem.copyNewMediaType(mtTem.value+"_"+(injuTable.size()+1),
-                                injuTastItem.injuredType+":"+injuTastItem.injuredName ));
+                                injuTastItem.injuredTypeName+":"+injuTastItem.injuredName ));
                     }
                 }
             }
@@ -445,11 +442,11 @@ public class CxImagFragment2 extends BaseFragment {
      * @return
      */
     public boolean hasBussTypeBle(String value){
-        if ("14".equals(value) ||"16".equals(value)) return true;
+        if ("10".equals(value) ||"14".equals(value) ||"16".equals(value)) return true;
         if (baoanTaskEntity!=null && baoanTaskEntity.data!=null){
             for ( CxTaskModelEntity model:baoanTaskEntity.data){
                 if (model!=null && model.bussTypeId!=null && model.bussTypeId==40 && (value.equals("11") ||value.equals("15"))) return true; //标的定损
-                else if (model!=null && model.bussTypeId!=null && model.bussTypeId==2 && (value.equals("10"))) return true;  //现场查勘
+//                else if (model!=null && model.bussTypeId!=null && model.bussTypeId==2 && (value.equals("10"))) return true;  //现场查勘
                 else if (model!=null && model.bussTypeId!=null && model.bussTypeId==41 && (value.equals("11") ||value.equals("15"))) return true;  //三者定损
                 else if (model!=null && model.bussTypeId!=null && model.bussTypeId==42 && value.equals("12")) return true; //物损定损
 //                else if (model!=null && model.bussTypeId!=null && model.bussTypeId==39 && value.equals("13")) return true; //人伤查勘
@@ -517,24 +514,34 @@ public class CxImagFragment2 extends BaseFragment {
                 photoListView.collapseGroup(position); //收起
                 photoListView.expandGroup(position); //展开
             }
-        },parentId,QorderUid,CxImagFragment2.this);
+        },parentId,QorderUid,baoanTaskEntity);
         photoListView.setAdapter(adapter);
     }
 
     @Override
     public void SaveDataToEntity() {
     }
+
     @Override
     public void onDestroy() {
         EventBus.getDefault().unregister(this);
-        super.onDestroy();  }
+        super.onDestroy();
+    }
+
     @Override
     public void onResume() {
         super.onResume();
         displayTable();
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
-        }  }
+        }
+        if (!fistLoad){ //这里达成刷新的效果。
+            fistLoad = true;
+            downloadOrderList();
+        }
+    }
+    public static boolean fistLoad = true;
+
     @Override
     public void onPause() {
         super.onPause();

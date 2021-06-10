@@ -137,10 +137,12 @@ public class CxWorkhelp {
 			childList = new ArrayList<List<WorkPhotoEntitiy>>();
 			for (int k = 0; k < 1; k++) {
 				resourseMap = new ArrayList<WorkPhotoEntitiy>();
-				List<WorkPhotoEntitiy> dataEntitiy = workphotos.getByTypeId(photoType.get(i).id+"");
+				if (workphotos!=null){
+					List<WorkPhotoEntitiy> dataEntitiy = workphotos.getByTypeId(photoType.get(i).id+"");
 					for (int j = 0; j < dataEntitiy.size(); j++) {
 						resourseMap.add(dataEntitiy.get(j));
 					}
+				}
 				childList.add(resourseMap);
 			}
 			resousePathList.add(childList);

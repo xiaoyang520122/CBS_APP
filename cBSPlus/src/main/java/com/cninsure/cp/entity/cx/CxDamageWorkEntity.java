@@ -7,7 +7,8 @@ public class CxDamageWorkEntity extends CxWorkAddressBaseEntity implements Seria
 
     public String belongPerson; // 归属人
     public String damageName; // 物损名称
-    public Integer damageType; // 索赔类别
+    public String damageType; // 损失类型-编码value
+    public String damageTypeName; // 损失类型-名称label
 
     public Float dsRescueAmount; // 定损施救费
     public Float hsRescueAmount; // 核损施救费

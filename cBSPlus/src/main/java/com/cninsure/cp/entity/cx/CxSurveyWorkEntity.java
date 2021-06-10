@@ -38,18 +38,18 @@ public class CxSurveyWorkEntity implements Serializable {
         public Integer surveyType=-1; //	查勘类型	0现场查勘、1非现场查勘、2补勘现场
         public Integer ckAccidentLiability=-1; //	事故责任	0全责（固定100%），1主责（默认70%，准许录入在5-100）、2同责（固定50%）、3次责（30%，0-50）、4无责（固定0%）
         public Double liabilityRatio; //	事故责任比例	比例是数值（0 ~ 100）【 0全责（固定100%），1主责（默认70%，准许录入在5-100）、2同责（固定50%）、3次责（30%，0-50）、4无责（固定0%）】
-        public Integer [] lossType; //	损失类型	0三者、1物损、2人伤
+        public Integer [] lossType; //	损失类型	0三者、1物损、2人伤,3标的车损
         public String []lossObjectType; //	损失情况	三者：0三者车损；物损：1标的车物品、2三者车内物、3三者车外物；人伤：4本车司机、5本车乘客、6三者车内人，7其他三者人伤
         public String baoanDriverName; //	报案驾驶员
         public Integer canDriveNormally=-1; //	车辆能否正常行驶	1是，0否
         public Integer compensationMethod=-1; //	赔付方式	0按责赔付、1互碰自赔
         public Integer ckIsInsuranceLiability=-1; //	是否属于保险责任	1是，0否
         public Integer isDaiwei=-1; //	是否代位	1是，0否
-        public Double lossAmount; //	估损金额
+        public Float lossAmount; //	估损金额
         public Integer ckIsMajorCase=-1; //	是否重大案件	1是，0否
         public Integer isScene=-1; //	是否现场报案	1是，0否
         public Integer isHsLoad=-1; //	是否在高速公路	1是，0否
-        public Integer surveyConclusion=-1; //	查勘结论	……
+        public String surveyConclusion; //	查勘结论	……
         public String surveyAddress; //	查勘地点
         public String surveySummary; //	查勘概述
         public String signLicense; //	签字照片链接	保存作业图片接口返回字段fileUrl
@@ -112,8 +112,8 @@ public class CxSurveyWorkEntity implements Serializable {
         public String insuredPersonName; //	持卡人姓名
         public String insuredBankDeposit; //	开户行
         public String insuredBankNo; //	银行卡号
-        public Integer bdCarNumberType=-1; //	号牌种类	0小型家用车、1客车、2货车、3特种车、4其他
-        public Integer bdCarUseType=-1; //	使用性质	0运营、1非运营
+        public String bdCarNumberType; //	号牌种类	0小型家用车、1客车、2货车、3特种车、4其他
+        public String bdCarUseType; //	使用性质	0运营、1非运营
         public Integer bdCarVinIsAgreement=0; //	车架号是否相符	0未验、1相符、2不符
         public Integer bdCardIsEffective=0; //	行驶证是否有效	0未验、1有效、2无效
         public Integer bdDrivingIsAgreement=0; //驾驶资格----准驾车型是否相符	0未验、1相符、2不符

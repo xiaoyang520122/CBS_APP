@@ -1185,16 +1185,26 @@
                     android:textColor="@color/hui_text_xxxxh"
                     android:textSize="@dimen/text_defaul" />
 
-                <TextView
+                <EditText
                     android:id="@+id/csu_surveyConclusion"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/work_line_defaul_hight"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:drawableRight="@drawable/left_jt_hui_short"
                     android:drawablePadding="10dp"
                     android:gravity="right|center"
-                    android:hint="请选择"
+                    android:hint="请选择或填写"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/hui_text_h"
+                    android:textSize="@dimen/text_defaul" />
+                <TextView
+                    android:id="@+id/csu_surveyConclusionChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/work_line_defaul_hight"
+                    android:drawableRight="@drawable/serche_hui32"
+                    android:drawablePadding="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="right|center"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/hui_text_h"
                     android:textSize="@dimen/text_defaul" />

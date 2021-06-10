@@ -47,7 +47,7 @@ public class MyFragmentPagerAdapter extends FragmentStatePagerAdapter {
      */
     @Override
     public int getItemPosition(Object object) {
-//        return PagerAdapter.POSITION_NONE;//清空，重新加载
+        //return PagerAdapter.POSITION_NONE;//清空，重新加载
         if (mCurrentFragment==fragmentMap.get(0) || mCurrentFragment==fragmentMap.get(1)) { //清空，重新加载
             return PagerAdapter.POSITION_UNCHANGED;
         }else{//不清空

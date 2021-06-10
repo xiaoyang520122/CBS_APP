@@ -83,6 +83,7 @@ public class CXPhotoActivity extends Activity implements SurfaceHolder.Callback 
 		super.onCreate(savedInstanceState);
 		/* 隐藏标题栏 */
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //官方推荐使用这种方式保持亮屏
 		/* 全屏 */
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		/* 设定屏幕显示为横向 */

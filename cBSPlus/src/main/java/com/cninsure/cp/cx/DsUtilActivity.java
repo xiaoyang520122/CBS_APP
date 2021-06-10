@@ -51,6 +51,7 @@ public class DsUtilActivity extends BaseActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //官方推荐使用这种方式保持亮屏
         super.onCreate(savedInstanceState);
         workActivity = CxDsWorkActivity.getContext();
         /**WebView使用中的那些坑之软键盘遮挡输入框，下面的方法刚获得焦点的时候，还是会被覆盖。但是软键盘一输入，会上升和滚动*/
