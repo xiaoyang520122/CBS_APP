@@ -267,7 +267,7 @@
         private void showBackAlertDialog(final CargoCaseBaoanTable caseDisTemp){
             View bacView = LayoutInflater.from(context).inflate(R.layout.back_order_layout,null);
 
-            DialogUtil.getDialogByViewOnlistener(context,bacView,"填写拒绝原因！", (dialog, which) -> {
+            DialogUtil.getDialogByViewTwoButton(context,bacView,"填写拒绝原因！", (dialog, which) -> {
                 if (TextUtils.isEmpty(((EditText)bacView.findViewById(R.id.Back_Order_EditText)).getText().toString())){  //未填写拒绝原因
                     DialogUtil.getAlertOneButton(context,"拒绝原因不能为空！",null).show();
                 }else{
@@ -301,7 +301,7 @@
         private void showCancelAlertDialog(final CargoCaseBaoanTable caseDisTemp){
             View bacView = LayoutInflater.from(context).inflate(R.layout.back_order_layout,null);
 
-            DialogUtil.getDialogByViewOnlistener(context,bacView,"任务提示！", new DialogInterface.OnClickListener() {
+            DialogUtil.getDialogByViewTwoButton(context,bacView,"任务提示！", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     if (TextUtils.isEmpty(((EditText)bacView.findViewById(R.id.Back_Order_EditText)).getText().toString())){  //未填写拒绝原因

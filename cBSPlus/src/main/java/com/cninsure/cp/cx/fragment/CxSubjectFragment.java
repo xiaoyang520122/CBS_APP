@@ -23,6 +23,7 @@ import com.cninsure.cp.cx.CxSurveyWorkActivity;
 import com.cninsure.cp.entity.cx.CxSurveyWorkEntity;
 import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.utils.DateChoiceUtil;
+import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.LoadDialogUtil;
 import com.cninsure.cp.utils.SetTextUtil;
 import com.cninsure.cp.utils.cx.TypePickeUtil;
@@ -86,6 +87,9 @@ public class CxSubjectFragment extends BaseFragment {
     }
 
     private void initView() {
+        if ( activity.cxWorkEntity == null){
+            DialogUtil.getErrDialogAndFinish(activity, "无法获取作业信息，请联系管理员！", dialog -> activity.finish()).show();
+        }
         if ( activity.cxWorkEntity.subjectInfo == null)
             activity.cxWorkEntity.subjectInfo = new CxSurveyWorkEntity.SubjectInfoEntity();
 //        setLicenseKouOnclick();  //设置双证被扣单击事件

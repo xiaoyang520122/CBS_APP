@@ -50,14 +50,7 @@ import com.cninsure.cp.IndexActivity;
 import com.cninsure.cp.LoadingActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.activity.yjx.YjxSurveyActivity;
-import com.cninsure.cp.cx.CxDamageActivity;
-import com.cninsure.cp.cx.CxDisabyIdentifyActivity;
 import com.cninsure.cp.cx.CxDsBaoanInfoActivity;
-import com.cninsure.cp.cx.CxDsWorkActivity;
-import com.cninsure.cp.cx.CxInjuryMediateActivity;
-import com.cninsure.cp.cx.CxInjuryExamineActivity;
-import com.cninsure.cp.cx.CxInjuryExamineOnlyActivity;
-import com.cninsure.cp.cx.CxInjuryTrackActivity;
 import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
 import com.cninsure.cp.entity.BaseEntity;
 import com.cninsure.cp.entity.FCOrderEntity;
@@ -65,12 +58,15 @@ import com.cninsure.cp.entity.PagedRequest;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.YjxStatus;
+import com.cninsure.cp.entity.cx.CxNewAuditEntity;
 import com.cninsure.cp.entity.cx.CxOrderEntity;
+import com.cninsure.cp.entity.cx.CxOrderStatus;
 import com.cninsure.cp.entity.fc.APPRequestModel;
 import com.cninsure.cp.entity.fc.ShenheMsgEntity;
 import com.cninsure.cp.entity.yjx.YjxCaseDispatchTable;
 import com.cninsure.cp.entity.yjx.YjxOrderListEntity;
 import com.cninsure.cp.fc.activity.SurveyActivity;
+import com.cninsure.cp.fragment.utils.CxOrderListMoreOperationTool;
 import com.cninsure.cp.navi.NaviHelper;
 import com.cninsure.cp.utils.APPDownloadUtils;
 import com.cninsure.cp.utils.CallUtils;
@@ -151,7 +147,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 	}
 
 	/**
-	 * 如果选着转派公估师，提示用户是否取人转派，如果美选着转派公估师，提示用户。
+	 * 如果选着转派公估师，提示用户是否确认转派，如果没选择转派公估师，提示用户。
 	 */
 	private void showTransferDialog() { //transfer
 		if (cxChoiceGGSTool.choiceGGS!=null && cxChoiceGGSTool.choiceGGS.userId!=null){
@@ -172,7 +168,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		List<NameValuePair> paramsList = new ArrayList<>(6);
 		paramsList.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
 		paramsList.add(new BasicNameValuePair("id", cxChoiceGGSTool.orderId));
-		paramsList.add(new BasicNameValuePair("ggsUid", AppApplication.getUSER().data.userId));
+		paramsList.add(new BasicNameValuePair("ggsUid", cxChoiceGGSTool.choiceGGS.userId));
 		HttpUtils.requestPost(URLs.CX_ORDER_TRANSFER, paramsList, HttpRequestTool.CX_ORDER_TRANSFER);
 		LoadDialogUtil.setMessageAndShow(getActivity(), "加载中……");
 	}
@@ -362,7 +358,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		int rcode = Integer.valueOf(value.get(0).getName());
 		if (rcode == HttpRequestTool.RECEIVE_ORDER || rcode == HttpRequestTool.CANCEL_ORDER || rcode == HttpRequestTool.FC_GET_WORK_CASE_LIST
 				|| rcode == HttpRequestTool.CX_NEW_GET_GGS_ORDER || rcode == HttpRequestTool.SUBMIT_WORK || rcode == HttpRequestTool.GET_VERSION_INFO
-				|| rcode == HttpRequestTool.GET_ORDER_STATUS || rcode == HttpRequestTool.YJX_GGS_ORDER_LIST) {
+				|| rcode == HttpRequestTool.GET_ORDER_AUDIT_LIST || rcode == HttpRequestTool.YJX_GGS_ORDER_LIST) {
 			loadDialog.dismiss();
 		}
 		if (rcode == HttpRequestTool.FC_GET_WORK_CASE_LIST) {
@@ -378,64 +374,88 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		}
 
 		switch (CheckHttpResult.checkList(value, getActivity())) {
-		case HttpRequestTool.CX_NEW_GET_GGS_ORDER:
-			downloadOrderData(3);
-			jiexiDate(value.get(0).getValue());
-			break;
-		case HttpRequestTool.YJX_GGS_ORDER_LIST:
-			jiexiYjxDate(value.get(0).getValue());
-			// Displayorder();
-			break;
+			case HttpRequestTool.CX_NEW_GET_GGS_ORDER:
+				downloadOrderData(3);
+				jiexiDate(value.get(0).getValue());
+				break;
+			case HttpRequestTool.YJX_GGS_ORDER_LIST:
+				jiexiYjxDate(value.get(0).getValue());
+				// Displayorder();
+				break;
 
-		case HttpRequestTool.RECEIVE_ORDER:
-			ToastUtil.showToastLong(getActivity(), value.get(0).getValue());
-			if (isJumpToWork) {
-				jumpToWorkActivity(isJumpToWork, jumpOrderUid, Integer.parseInt(jumpType), jumpstatu,null);
-			}
-			downloadOrderData(1);
-			break;
-		case HttpRequestTool.CANCEL_ORDER:
-			ToastUtil.showToastLong(getActivity(), value.get(0).getValue());
-			downloadOrderData(1);
-			break;
-		case HttpRequestTool.SUBMIT_WORK:// 提交审核成功！
-			showSubmitSuccessAlert(value);
-			break;
-		case HttpRequestTool.FC_GET_WORK_CASE_LIST:// 获取非车任务列表！
-			jiexiFCdata(value.get(0).getValue());
-			// downloadOrderData(2);
-			break;
-		case HttpRequestTool.CLEAN_CID:
-			((IndexActivity) getActivity()).excetUser();// indexActivity中请求清空服务器端CID成功后在这里调用indexActivity中方法退出用户
-			break;
-		case HttpRequestTool.GET_VERSION_INFO:// 版本信息
-			handleVersion(value.get(0).getValue());
-			break;
-		case HttpRequestTool.GET_ORDER_STATUS: // 审核信息
-			showSHHMessage(value.get(0).getValue());
-			break;
-		case HttpRequestTool.YJX_ORDER_BACK: // 医健险调度退回
-			showYjxHintMsg(HttpRequestTool.YJX_ORDER_BACK,value.get(0).getValue());
-			break;
-		case HttpRequestTool.YJX_ORDER_ACCEPT: // 接受医健险调度
-			showYjxHintMsg(HttpRequestTool.YJX_ORDER_ACCEPT,value.get(0).getValue());
-			break;
-		case HttpRequestTool.CX_EXT_USER: //外部车童信息
-			LoadDialogUtil.dismissDialog();
-			extactUserUtil = new ExtactUserUtil();
-			extactUserUtil.isSignble(getActivity(), value.get(0).getValue());
-			break;
-		case HttpRequestTool.CX_ORDER_TRANSFER: //提交转派
-			LoadDialogUtil.dismissDialog();
-			downloadOrderData(2);
-			getTransferSubmitInfo(value.get(0).getValue());
-			break;
-		case HttpRequestTool.CX_GET_USER_BY_ORGID: //转派查询车童清单
-			cxChoiceGGSTool.setGGSList(value.get(0).getValue());
-			break;
+			case HttpRequestTool.RECEIVE_ORDER:
+				ToastUtil.showToastLong(getActivity(), value.get(0).getValue());
+				if (isJumpToWork) {
+					jumpToWorkActivity(isJumpToWork, jumpOrderUid, Integer.parseInt(jumpType), jumpstatu, null);
+				}
+				downloadOrderData(1);
+				break;
+			case HttpRequestTool.CANCEL_ORDER:
+				LoadDialogUtil.dismissDialog();
+				ToastUtil.showToastLong(getActivity(), value.get(0).getValue());
+				((IndexActivity)getActivity()).displayFragment(2);//重新加载Fragment以刷新界面
+				break;
+			case HttpRequestTool.SUBMIT_WORK:// 提交审核成功！
+				showSubmitSuccessAlert(value);
+				break;
+			case HttpRequestTool.FC_GET_WORK_CASE_LIST:// 获取非车任务列表！
+				jiexiFCdata(value.get(0).getValue());
+				// downloadOrderData(2);
+				break;
+			case HttpRequestTool.CLEAN_CID:
+				((IndexActivity) getActivity()).excetUser();// indexActivity中请求清空服务器端CID成功后在这里调用indexActivity中方法退出用户
+				break;
+			case HttpRequestTool.GET_VERSION_INFO:// 版本信息
+				handleVersion(value.get(0).getValue());
+				break;
+			case HttpRequestTool.GET_ORDER_AUDIT_LIST: // 审核信息
+				showSHHMessage(value.get(0).getValue());
+				break;
+			case HttpRequestTool.YJX_ORDER_BACK: // 医健险调度退回
+				showYjxHintMsg(HttpRequestTool.YJX_ORDER_BACK, value.get(0).getValue());
+				break;
+			case HttpRequestTool.YJX_ORDER_ACCEPT: // 接受医健险调度
+				showYjxHintMsg(HttpRequestTool.YJX_ORDER_ACCEPT, value.get(0).getValue());
+				break;
+			case HttpRequestTool.CX_EXT_USER: //外部车童信息
+				LoadDialogUtil.dismissDialog();
+				extactUserUtil = new ExtactUserUtil();
+				extactUserUtil.isSignble(getActivity(), value.get(0).getValue());
+				break;
+			case HttpRequestTool.CX_ORDER_TRANSFER: //提交转派
+				LoadDialogUtil.dismissDialog();
+				((IndexActivity)getActivity()).displayFragment(2);//重新加载Fragment以刷新界面
+				getTransferSubmitInfo(value.get(0).getValue());
+				break;
+			case HttpRequestTool.CX_GET_USER_BY_ORGID: //转派查询车童清单
+				cxChoiceGGSTool.setGGSList(value.get(0).getValue());
+				break;
+			case HttpRequestTool.CX_POST_CHARGE_BACK: //公估师退单
+				showRequestmsg(value.get(0).getValue());
+				((IndexActivity)getActivity()).displayFragment(2);//重新加载Fragment以刷新界面
+				break;
+			case HttpRequestTool.CX_POST_REVOKE: //公估师撤单
+				showRequestmsg(value.get(0).getValue());
+				((IndexActivity)getActivity()).displayFragment(2);//重新加载Fragment以刷新界面
+				break;
+			case HttpRequestTool.CX_ACCEPT_OR_REFUSE_ZP_ORDER: //接受或者拒绝转派
+				showRequestmsg(value.get(0).getValue());
+				((IndexActivity)getActivity()).displayFragment(2); //重新加载Fragment以刷新界面
+				break;
 
-		default:
-			break;
+			default:
+				break;
+		}
+	}
+
+	private void showRequestmsg(String json){
+		LoadDialogUtil.dismissDialog();
+		try {
+			BaseEntity requestMsg = JSON.parseObject(json,BaseEntity.class);
+			DialogUtil.getAlertDialog(getActivity(),requestMsg.msg,"提示").show();
+		} catch (Exception e) {
+			ToastUtil.showToastLong(getActivity(), json);
+			e.printStackTrace();
 		}
 	}
 
@@ -449,7 +469,8 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			if (basEn!=null && basEn.success){
 				ToastUtil.showToastLong(getActivity(),"转派成功！");
 			}else{
-				ToastUtil.showToastLong(getActivity(),"转派失败！");
+				DialogUtil.getErrDialog(getActivity(),"转派失败："+(basEn.msg==null?"":basEn.msg)).show();
+				ToastUtil.showToastLong(getActivity(),"转派失败："+(basEn.msg==null?"":basEn.msg));
 			}
 		}else{
 			ToastUtil.showToastLong(getActivity(),"转派失败！");}
@@ -636,7 +657,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				vh.firstButTv =(TextView) conview.findViewById(R.id.ONLI_cancel_order);
 				vh.secendButTv=(TextView) conview.findViewById(R.id.ONLI_accept_order);
 				conview.setTag(vh);
-				setOnButtonTvOnclick(data.get(item),item, vh.firstButTv, vh.secendButTv);
+				setOnButtonTvOnclick(data.get(item),item, vh.firstButTv, vh.secendButTv,vh);
 //			} else {
 //				vh = (ViewHoder) conview.getTag();
 //			}
@@ -672,12 +693,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				}else {
 					vh.callPhoneTv.setVisibility(View.VISIBLE);
 				}
-				vh.callPhoneTv.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View arg0) {
-						CallUtils.call(OrderNowFragment.this.getActivity(), idata.lxPhone);
-					}
-				});
+				vh.callPhoneTv.setOnClickListener(arg0 -> CallUtils.call(OrderNowFragment.this.getActivity(), idata.lxPhone));
 				vh.WTinfoTv.setVisibility(View.GONE);
 				vh.timeOutTv.setVisibility(View.GONE);
 				vh.rejectTv.setVisibility(View.GONE);
@@ -706,7 +722,6 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				//设置复制的提示图标
 				vh.wtren.setCompoundDrawablesWithIntrinsicBounds(null, null, getActivity().getResources().getDrawable(R.drawable.copy_somshing_yellow35), null);
 				CopyUtils.setCopyOnclickListener(getActivity(), vh.wtren, idata.uid); //点击复制任务编号
-//				conview.findViewById(R.id.ONLI_mcWtrenLO).setVisibility(View.GONE);
 				conview.findViewById(R.id.ONLI_mcContect).setVisibility(View.GONE);
 				conview.findViewById(R.id.ONLI_mcContectLO).setVisibility(View.GONE);
 				vh.WTinfoTv.setVisibility(View.GONE);
@@ -724,7 +739,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				vh.baoanNo.setText(idata.baoanNo);
 				vh.caseName.setText(idata.licensePlateBiaoDi);
 				String statuss=GetOrederStatus.fromStatuId(Integer.valueOf(idata.status));
-				vh.status.setText(statuss);
+				vh.status.setText(statuss+getZPStatus(idata));
 				vh.wtren.setText(idata.entrusterName);
 				vh.cxUintLink.setText(idata.baoanPersonName);
 				vh.lxPhone.setText(idata.baoanPersonPhone);
@@ -785,16 +800,14 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 					vh.rejectTv.setVisibility(View.VISIBLE);
 					downloadBohuiInfo(vh.rejectTv,idata.uid);
 				}
-				
 			}
 			/**公共部分**/
 			vh.copyTv.setOnClickListener(arg0 -> CopyUtils.copy(OrderNowFragment.this.getActivity(), vh.baoanNo.getText().toString()));
-			
 			return conview;
 		}
-		
+
 		/**设置item下面两个按钮对应的文本和事件=====================================================================**/
-		private void setOnButtonTvOnclick(final PublicOrderEntity idata,final int itemPostion,TextView firstTv,TextView secendTv){
+		private void setOnButtonTvOnclick(final PublicOrderEntity idata,final int itemPostion,TextView firstTv,TextView secendTv,ViewHoder vh){
 			// TODO Auto-generated method stub
 			if ("FC".equals(data.get(itemPostion).caseTypeAPP)) { //如果是非车业务只显示蓝色按钮，修改文本并设置点击事件（直接跳转到作业界面）
 //				firstTv.setVisibility(View.GONE);
@@ -823,48 +836,39 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			
 			/***到了这里就是车险的案件了***/
 			if (data.get(itemPostion).status == 2) {  //未接单状态 可以选择取消订单或接受
-				firstTv.setOnClickListener(arg0 -> {
-					firstTv.setText("拒绝/转派");
-					showUTChoiceDialog(itemPostion);
-				});
+				setTVByStatus(firstTv,idata,itemPostion);
+				if (!getZPWorkble(idata)) {secendTv.setTextColor(getActivity().getResources().getColor(R.color.hui_text_xh)); return;} //根据转派情况确定是否能操作。
+				secendTv.setTextColor(getActivity().getResources().getColor(R.color.bulue_main));
 				secendTv.setOnClickListener(arg0 -> {
 					reciveOrder(itemPostion);//接受订单
 				});
 				return;
 			} else if (data.get(itemPostion).status == 4) {//案件也接单，只显示蓝色按钮，修改文本并设置点击事件（直接跳转到作业界面）
-				setTVByStatus(firstTv,idata);
+				setTVByStatus(firstTv,idata,itemPostion);
 				secendTv.setText("去作业");
-//				firstTv.setOnClickListener(arg0 -> NaviHelper.startNavi(getActivity(), idata.caseLocationLatitude, idata.caseLocationLongitude,
-//						idata.caseLocation, idata.baoanPersonPhone));
+				if (!getZPWorkble(idata)) {secendTv.setTextColor(getActivity().getResources().getColor(R.color.hui_text_xh)); return;}//根据转派情况确定是否能操作。
+				secendTv.setTextColor(getActivity().getResources().getColor(R.color.bulue_main));
 				secendTv.setOnClickListener(arg0 -> jumpToWorkActivity(true, data.get(itemPostion).uid,
 						data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion)));
 			}  else if (data.get(itemPostion).status == 6) { /**案件作业中*/
 //				firstTv.setText("提交审核");
-				setTVByStatus(firstTv,idata);
+				setTVByStatus(firstTv,idata,itemPostion);
 				secendTv.setText("去作业");
-				
-//				firstTv.setOnClickListener(arg0 -> {//提交审核
-//					List<NameValuePair> params = new ArrayList<NameValuePair>();
-//					params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
-//					params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
-//					HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
-//					loadDialog.setMessage("操作中……").show();
-//				});
+				if (!getZPWorkble(idata)) {secendTv.setTextColor(getActivity().getResources().getColor(R.color.hui_text_xh)); return;}//根据转派情况确定是否能操作。
+				secendTv.setTextColor(getActivity().getResources().getColor(R.color.bulue_main));
 				secendTv.setOnClickListener(arg0 -> jumpToWorkActivity(true, data.get(itemPostion).uid,
 						data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion)));
 			} else if (data.get(itemPostion).status == 10) { /**审核退回*/
 //				firstTv.setText("提交审核");
-				setTVByStatus(firstTv,idata);
+				setTVByStatus(firstTv,idata,itemPostion);
 				secendTv.setText("去作业");
-//				firstTv.setOnClickListener(arg0 -> {//提交审核
-//					List<NameValuePair> params = new ArrayList<NameValuePair>();
-//					params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
-//					params.add(new BasicNameValuePair("orderUid", data.get(itemPostion).uid));
-//					HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
-//					loadDialog.setMessage("操作中……").show();
-//				});
+				if (!getZPWorkble(idata)) {secendTv.setTextColor(getActivity().getResources().getColor(R.color.hui_text_xh)); return;}//根据转派情况确定是否能操作。
+				secendTv.setTextColor(getActivity().getResources().getColor(R.color.bulue_main));
 				secendTv.setOnClickListener(arg0 -> jumpToWorkActivity(true, data.get(itemPostion).uid,
 						data.get(itemPostion).bussTypeId , data.get(itemPostion).status + "",data.get(itemPostion)));
+				vh.rejectTv.setText("审核信息！");
+				vh.rejectTv.setVisibility(View.VISIBLE);
+				downloadBohuiInfo(vh.rejectTv,idata.uid);
 			}
 		}
 
@@ -873,13 +877,14 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		 * @param itemPostion
 		 */
 		private void showUTChoiceDialog(int itemPostion) {
-			new AlertDialog.Builder(getActivity()).setTitle("选择！")
-					.setItems(new String[]{"拒绝", "转派"}, (dialog, which) -> {
-						if (which==0) cancelOrder(itemPostion);//拒绝订单
-						else {
-							cxChoiceGGSTool.showChoiceDialog(data.get(itemPostion).id + "");
-						}
-					}).create().show();
+//			new CxOrderListMoreOperationTool(getActivity()).showOperationDialog(data.get(itemPostion),cxChoiceGGSTool);
+//			new AlertDialog.Builder(getActivity()).setTitle("选择！")
+//					.setItems(new String[]{"拒绝", "转派"}, (dialog, which) -> {
+//						if (which==0) cancelOrder(itemPostion);//拒绝订单
+//						else {
+//							cxChoiceGGSTool.showChoiceDialog(data.get(itemPostion).id + "");
+//						}
+//					}).create().show();
 		}
 
 		/**
@@ -887,21 +892,66 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		 * @param firstTv
 		 * @param idata
 		 */
-		private void setTVByStatus(TextView firstTv, PublicOrderEntity idata) { //@TODO
-			//根据转派状态显示对应的文本
-			if (idata.transferStatus == null){ //没有转派记录 可以转派
-				SetTextUtil.setTextViewText(firstTv,"转派");
-				firstTv.setOnClickListener(v -> { cxChoiceGGSTool.showChoiceDialog(idata.id+""); });
-			}else if (idata.transferStatus == 0){ //转派中
-				SetTextUtil.setTextViewText(firstTv,"转派中");
-				firstTv.setOnClickListener(null);
-			}else if (idata.transferStatus == 2){ //转派被拒绝-可转派
-				SetTextUtil.setTextViewText(firstTv,"转派被拒绝");
-				firstTv.setOnClickListener(v -> { cxChoiceGGSTool.showChoiceDialog(idata.id+""); });
-			}else if (idata.transferStatus == 1){ //已转派
-				SetTextUtil.setTextViewText(firstTv,"已转派");
-				firstTv.setOnClickListener(null);
+		private void setTVByStatus(TextView firstTv, PublicOrderEntity idata,int itemPostion) {
+			if (idata.lastGgsUid!=null && idata.lastGgsUid.equals(AppApplication.getUSER().data.userId)) { //上一个转派人员UID与登录人员UId一致，订单为登录人员转派出去的，只能进行作业
+				//根据转派状态显示对应的文本
+				if (idata.transferStatus == null) { //没有转派记录 可以转派
+					SetTextUtil.setTextViewText(firstTv, "更多");
+					firstTv.setTextColor(getActivity().getResources().getColor(R.color.bulue_main));
+					firstTv.setOnClickListener(v -> {
+						new CxOrderListMoreOperationTool(getActivity()).showOperationDialog(data.get(itemPostion), cxChoiceGGSTool);
+					});
+				} else if (idata.transferStatus == 0) { //转派中
+					SetTextUtil.setTextViewText(firstTv, "转派中");
+					firstTv.setOnClickListener(null);
+				} else if (idata.transferStatus == 2) { //转派被拒绝-可转派
+					SetTextUtil.setTextViewText(firstTv, "更多");
+					firstTv.setTextColor(getActivity().getResources().getColor(R.color.bulue_main));
+					firstTv.setOnClickListener(v -> {
+						new CxOrderListMoreOperationTool(getActivity()).showOperationDialog(data.get(itemPostion), cxChoiceGGSTool);
+					});
+				} else if (idata.transferStatus == 1) { //已转派
+					SetTextUtil.setTextViewText(firstTv, "已转派");
+					firstTv.setOnClickListener(null);
+				}
+				//上一个转派人员UID与登录人员UId不一致，代表该订单是别人转派给自己的。
+			}else {
+				if (idata.transferStatus == null || idata.transferStatus != 0 ) { //没有转派记录 可以转派
+					SetTextUtil.setTextViewText(firstTv, "更多");
+					firstTv.setTextColor(getActivity().getResources().getColor(R.color.bulue_main));
+					firstTv.setOnClickListener(v -> {
+						new CxOrderListMoreOperationTool(getActivity()).showOperationDialog(data.get(itemPostion), cxChoiceGGSTool);
+					});
+				} else if (idata.transferStatus == 0) { //转派中
+					SetTextUtil.setTextViewText(firstTv, "接受/拒绝转派");
+					firstTv.setTextColor(getActivity().getResources().getColor(R.color.bulue_main));
+					firstTv.setOnClickListener(v -> showAcceptZPOrderAlert(idata));
+				}
 			}
+		}
+
+		/**
+		 * 弹框选择接受或者拒绝转派
+		 * @param idata
+		 */
+		private void showAcceptZPOrderAlert(PublicOrderEntity idata) {
+			new AlertDialog.Builder(getActivity()).setTitle("选择操作类型")
+					.setItems(new String[]{"接受转派", "拒绝转派"}, (dialog, which) -> {
+						if (which==0) acceptZPOrder(idata,URLs.CX_ACCEPT_ZP_ORDER); //接受转派
+						else if (which==1) acceptZPOrder(idata,URLs.CX_REFUSE_ZP_ORDER); //拒绝转派
+					}).setNegativeButton("取消",null)
+					.create().show();
+		}
+
+		/**
+		 * 接受转派订单
+		 * @param idata
+		 */
+		private void acceptZPOrder(PublicOrderEntity idata,String url) {
+			List<NameValuePair> paramsList = new ArrayList<>(6);
+			paramsList.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
+			paramsList.add(new BasicNameValuePair("id", idata.id+""));
+			HttpUtils.requestPost(url, paramsList, HttpRequestTool.CX_ACCEPT_OR_REFUSE_ZP_ORDER);
 		}
 
 		/***医健险案件item底部按钮点击事件设置***/
@@ -1043,7 +1093,66 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			TextView firstButTv,secendButTv;
 		}
 	}
-	
+
+	/**
+	 * 根据转派信息判断转派状态，分是否由登录用户转出或别人转入。
+	 * @param idata
+	 * @return
+	 */
+	private String getZPStatus(PublicOrderEntity idata) {
+		if (idata.lastGgsUid==null || idata.transferStatus == null) return ""; //没有转派人员和转派状态信息，就返回空字符串。
+		if (idata.lastGgsUid.equals(AppApplication.getUSER().data.userId)) { //上一个转派人员UID与登录人员UId一致，订单为登录人员转派出去的
+			//根据转派状态显示对应的文本
+			if (idata.transferStatus == 0) {
+				return "-转派中";
+			} else if (idata.transferStatus == 2) {
+				return "-转派被拒绝";
+			} else if (idata.transferStatus == 1) {
+				return "-已转派";
+			}
+		}else { //上一个转派人员UID与登录人员UId不一致，代表该订单是别人转派给自己的。
+			//根据转派状态显示对应的文本
+			if (idata.transferStatus == 0) {
+				return "-转派待确认";
+			} else if (idata.transferStatus == 2) {
+				return "-您已拒绝转派";
+			} else if (idata.transferStatus == 1) {
+				return "-接受的转派";
+			}
+		}
+		return "";
+	}
+
+	/**
+	 * 根据转派信息判断当前用户是否能进行作业操作，分是否由登录用户转出或别人转入。
+	 * 传true代表可以作业，传false代表不能作业。
+	 * @param idata
+	 * @return
+	 */
+	private boolean getZPWorkble(PublicOrderEntity idata) {
+		if (idata.lastGgsUid==null || idata.transferStatus == null) return true; //没有转派人员和转派状态信息，就返回空字符串。
+		if (idata.lastGgsUid.equals(AppApplication.getUSER().data.userId)) { //上一个转派人员UID与登录人员UId一致，订单为登录人员转派出去的
+			//根据转派状态显示对应的文本
+			if (idata.transferStatus == 0) {
+				return false; //转派中不能作业
+			} else if (idata.transferStatus == 2) {
+				return true; //对方拒绝转派，能作业。
+			} else if (idata.transferStatus == 1) {
+				return false; //对方接受转派，自己不能作业
+			}
+		}else { //上一个转派人员UID与登录人员UId不一致，代表该订单是别人转派给自己的。
+			//根据转派状态显示对应的文本
+			if (idata.transferStatus == 0) {
+				return false; //自己未接受该转派，不能作业
+			} else if (idata.transferStatus == 2) {
+				return false; //自己拒绝转派，不能作业
+			} else if (idata.transferStatus == 1) {
+				return true; //已接收的转派，可以作业
+			}
+		}
+		return true;
+	}
+
 	/**下载驳回信息
 	 * @param uid */
 	private void downloadBohuiInfo(TextView rejectTv, final String uid) {
@@ -1065,32 +1174,25 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		params2.add(AppApplication.getUSER().data.userId);
 		params2.add("orderUid");
 		params2.add(uid);
-		HttpUtils.requestGet(URLs.GET_ORDER_STATUS, params2, HttpRequestTool.GET_ORDER_STATUS);
+		HttpUtils.requestGet(URLs.GET_ORDER_AUDIT_LIST, params2, HttpRequestTool.GET_ORDER_AUDIT_LIST);
 	}
 	
 	/**解析审核信息**/
 	private void showSHHMessage(String value) {
-		ShenheMsgEntity SHHMsg= JSON.parseObject(value, ShenheMsgEntity.class);
+		List<CxNewAuditEntity> SHHMsg= JSON.parseArray(value, CxNewAuditEntity.class);
 		List<Map<String, String>> params=new ArrayList<Map<String, String>>();
 		Map<String, String> map;
-		map=new HashMap<String, String>();
-//		map.put("data", "");
-//		map.put("msg", "审核列表");
-//		params.add(map);
-		
-		if (SHHMsg!=null && SHHMsg.tableData != null && SHHMsg.tableData.data != null && SHHMsg.tableData.data.get(0).createDate!=null) {
-			for (int i = 0; i < SHHMsg.tableData.data.size(); i++) {
-				String cctype="";
-				for (int j = 0; j < SHHMsg.tableData.data.get(i).auditEvaluateTables.size(); j++) {
-					cctype+="\n"+"差错原因"+(j+1)+"："+SHHMsg.tableData.data.get(i).auditEvaluateTables.get(j).errorMessage+
-							"\n差错扣分："+SHHMsg.tableData.data.get(i).auditEvaluateTables.get(j).errorPoints;
-				}
+
+		if (SHHMsg!=null && SHHMsg.size()>0) {
+			for (int i = 0; i < SHHMsg.size(); i++) {
 					map=new HashMap<String, String>();
-					map.put("data", SHHMsg.tableData.data.get(i).createDate);
-					boolean ispasss=SHHMsg.tableData.data.get(i).isPass.equals("1");
+					map.put("data", SF.format(SHHMsg.get(i).auditTime));
+					boolean ispasss=SHHMsg.get(i).status==1;
 					String ispass=(ispasss)?"通过":"不通过";
-					map.put("msg", "审核结果："+ispass+"\n审核意见："+
-							SHHMsg.tableData.data.get(i).auditMessage+cctype);
+					map.put("msg", "审核结果："+ispass+"\n审核意见："+ SHHMsg.get(i).auditMsg);
+					if (SHHMsg.get(i).status== 0) //审核不通过
+						map.put("msg", "审核结果："+ispass+"\n审核意见："+ SHHMsg.get(i).auditMsg+"\n退回概述："+ SHHMsg.get(i).backSummary
+								+"\n退回原因："+ SHHMsg.get(i).backReasons);
 					params.add(map);
 			}
 		}else {
@@ -1104,7 +1206,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 				new String[]{"data","msg"},into);
 		ListView listView=new ListView(getActivity());
 		listView.setAdapter(simpleAdapter);
-		DialogUtil.getDialogByViewOnlistener(getActivity(), listView, "订单审核信息！", null).show();
+		DialogUtil.getDialogByViewTwoButton(getActivity(), listView, "订单审核信息！", null).show();
 		
 	}
 
@@ -1127,26 +1229,9 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 					case 0:
 						reciveOrder(itemId);
 						break;
-//					case 1://"接单并开始作业"
-//						reciveOrder(itemId);
-//						isJumpToWork = true;
-//						jumpOrderUid = data.get(itemId).uid;
-//						jumpType = data.get(itemId).bussTypeId + "";
-//						jumpstatu = data.get(itemId).status + "";
-//						break;
 					case 1:
 						cancelOrder(itemId);
 						break;
-//					case 2://查看案件详情
-//						PublicOrderEntity temp=data.get(itemId);
-//						Intent intent = new Intent(getActivity(), CaseInfoActivty.class);
-//						intent.putExtra("caseBaoanUid", data.get(itemId).caseBaoanUid);
-//						intent.putExtra("orderUid", data.get(itemId).uid);
-//						intent.putExtra("status", data.get(itemId).status);
-//						intent.putExtra("taskType", data.get(itemId).bussTypeId + "");
-//						getActivity().startActivity(intent);
-//						break;
-
 					default:
 						break;
 					}
@@ -1154,23 +1239,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 			}, "接单", "取消订单").show();//, "接单并开始作业", "查看案件详情"
 			return;
 		} else if (data.get(itemId).status == 2) {
-//			DialogUtil.getItemDialog(getActivity(), new DialogInterface.OnClickListener() {
-//
-//				@Override
-//				public void onClick(DialogInterface arg0, int lspoint) {
-//					if (lspoint == 0) {
 						jumpToWorkActivity(true, data.get(itemId).uid, data.get(itemId).bussTypeId, data.get(itemId).status + "",data.get(itemId));
-//					} else if (lspoint == 1) {
-//						PublicOrderEntity temp=data.get(itemId);
-//						Intent intent = new Intent(getActivity(), CaseInfoActivty.class);
-//						intent.putExtra("caseBaoanUid", data.get(itemId).caseBaoanUid);
-//						intent.putExtra("orderUid", data.get(itemId).uid);
-//						intent.putExtra("status", data.get(itemId).status);
-//						intent.putExtra("taskType", data.get(itemId).bussTypeId + "");
-//						getActivity().startActivity(intent);
-//					}
-//				}
-//			}, "填写作业信息", "查看案件详情").show();
 		}  else if (data.get(itemId).status == 7) {
 			DialogUtil.getItemDialog(getActivity(), new DialogInterface.OnClickListener() {
 
@@ -1185,38 +1254,18 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 					} else if (lspoint == 1) {
 						jumpToWorkActivity(true, data.get(itemId).uid, data.get(itemId).bussTypeId, data.get(itemId).status + "",data.get(itemId));
 					} 
-//					else if (lspoint == 2) {//查看案件详情
-//						Intent intent = new Intent(getActivity(), CaseInfoActivty.class);
-//						intent.putExtra("caseBaoanUid", data.get(itemId).caseBaoanUid);
-//						intent.putExtra("orderUid", data.get(itemId).uid);
-//						intent.putExtra("status", data.get(itemId).status);
-//						intent.putExtra("taskType", data.get(itemId).bussTypeId + "");
-//						getActivity().startActivity(intent);
-//					}
 				}
 			}, "提交审核", "填写作业信息").show();//, "查看案件详情"
 		} else if (data.get(itemId).status == 5) {
-			DialogUtil.getItemDialog(getActivity(), new DialogInterface.OnClickListener() {
-
-				@Override
-				public void onClick(DialogInterface arg0, int lspoint) {
-					if (lspoint == 0) {
-						List<NameValuePair> params = new ArrayList<NameValuePair>();
-						params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
-						params.add(new BasicNameValuePair("orderUid", data.get(itemId).uid));
-						HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
-						loadDialog.setMessage("操作中……").show();
-					} else if (lspoint == 1) {
-						jumpToWorkActivity(true, data.get(itemId).uid, data.get(itemId).bussTypeId, data.get(itemId).status + "",data.get(itemId));
-					}
-//					else if (lspoint == 2) {//, "查看案件详情"
-//						Intent intent = new Intent(getActivity(), CaseInfoActivty.class);
-//						intent.putExtra("caseBaoanUid", data.get(itemId).caseBaoanUid);
-//						intent.putExtra("orderUid", data.get(itemId).uid);
-//						intent.putExtra("status", data.get(itemId).status);
-//						intent.putExtra("taskType", data.get(itemId).bussTypeId + "");
-//						getActivity().startActivity(intent);
-//					}
+			DialogUtil.getItemDialog(getActivity(), (arg01, lspoint) -> {
+				if (lspoint == 0) {
+					List<NameValuePair> params = new ArrayList<NameValuePair>();
+					params.add(new BasicNameValuePair("userId", AppApplication.getUSER().data.userId));
+					params.add(new BasicNameValuePair("orderUid", data.get(itemId).uid));
+					HttpUtils.requestPost(URLs.SubmitWork(), params, HttpRequestTool.SUBMIT_WORK);
+					loadDialog.setMessage("操作中……").show();
+				} else if (lspoint == 1) {
+					jumpToWorkActivity(true, data.get(itemId).uid, data.get(itemId).bussTypeId, data.get(itemId).status + "",data.get(itemId));
 				}
 			}, "提交审核", "填写作业信息").show();//, "查看案件详情"
 		}
@@ -1321,17 +1370,7 @@ public class OrderNowFragment extends Fragment implements OnCheckedChangeListene
 		rd1 = (RadioButton) fragmentView.findViewById(R.id.OTCI_btn_1);
 		rd2 = (RadioButton) fragmentView.findViewById(R.id.OTCI_btn_2);
 		rd3 = (RadioButton) fragmentView.findViewById(R.id.OTCI_btn_3);
-		// if (FCorCX == 1) {
-		// rd1.setText("作业待处理");
-		// rd2.setText("作业处理中");
-		// rd3.setVisibility(View.GONE);
-		// } else {
-		// rd1.setText("未接单");
-		// rd2.setText("作业中");
-		// rd3.setVisibility(View.VISIBLE);
-		// }
 		radgrup.check(R.id.OTCI_btn_0);
-		// Displayorder();
 	}
 
 	private void recoverBg(TextView tv, int reid) {

@@ -118,7 +118,7 @@ public class YjxDispatchActivity extends BaseActivity {
 	 */
 	public void showDispatchWindow(final int dispatchType,YjxCaseDispatchTable editDiapcEn){
 		editDiapatchEn = editDiapcEn;
-		Dialog dialog = DialogUtil.getDialogByViewOnlistener(YjxDispatchActivity.this, getDispatchView(dispatchType), "调度", new DialogInterface.OnClickListener() {
+		Dialog dialog = DialogUtil.getDialogByViewTwoButton(YjxDispatchActivity.this, getDispatchView(dispatchType), "调度", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				submitDispatchInfo(dispatchType);

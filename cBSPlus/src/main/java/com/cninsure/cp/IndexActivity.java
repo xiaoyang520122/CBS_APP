@@ -304,7 +304,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener {
 		return view;
 	}
 
-	private void displayFragment(int itemfragment) {
+	public void displayFragment(int itemfragment) {
 		switch (itemfragment) {
 		case 1:
 			checkFragment(1);

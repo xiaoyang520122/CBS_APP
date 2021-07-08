@@ -139,12 +139,36 @@ public class DialogUtil {
 		defuldialog.setCanceledOnTouchOutside(true);
 		return defuldialog;
 	}
-	public static Dialog getDialogByViewOnlistener(Context context, View view,String title,DialogInterface.OnClickListener listener) {
+
+	public static Dialog getDialogByViewTwoButton(Context context, View view, String title, DialogInterface.OnClickListener listener) {
 		Builder buile = new AlertDialog.Builder(context);
 		buile.setTitle(title);
 		buile.setView(view);
 		buile.setNegativeButton("取消", null);
 		buile.setPositiveButton("确定", listener);
+		if (defuldialog!=null && defuldialog.isShowing()) {
+			dismiss();
+		}
+		defuldialog=buile.create();
+		defuldialog.setCancelable(true);
+		defuldialog.setCanceledOnTouchOutside(true);
+//		defuldialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+		return defuldialog;
+	}
+
+	/**
+	 *
+	 * @param context
+	 * @param view
+	 * @param title
+	 * @param listener
+	 * @return
+	 */
+	public static Dialog getDialogByViewOneButton(Context context, View view, String title, DialogInterface.OnClickListener listener) {
+		Builder buile = new AlertDialog.Builder(context);
+		buile.setTitle(title);
+		buile.setView(view);
+		buile.setPositiveButton("取消", listener);
 		if (defuldialog!=null && defuldialog.isShowing()) {
 			dismiss();
 		}

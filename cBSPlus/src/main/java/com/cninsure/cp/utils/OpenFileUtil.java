@@ -105,10 +105,11 @@ public class OpenFileUtil {
         intent.addCategory(Intent.CATEGORY_DEFAULT);
 
         //文件的类型
-        String type = "";
+        String type = "*/*";
+        String typeStr = path.substring(path.lastIndexOf("."));
         for(int i =0;i < MATCH_ARRAY.length;i++){
             //判断文件的格式
-            if(path.contains(MATCH_ARRAY[i][0])){
+            if(typeStr.equals(MATCH_ARRAY[i][0])){
                 type = MATCH_ARRAY[i][1];
                 break;
             }

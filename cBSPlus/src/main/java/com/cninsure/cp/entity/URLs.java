@@ -323,6 +323,8 @@ public class URLs implements Serializable {
 	public final static String YJXNEW_WORK_REMOVE = IPHOME +"/new/yjx/work/remove";
 	/**医健险新全流程V1 GET 获取 mediaTypeGroup*/
 	public final static String YJXNEW_GET_MEDIA_TYPE = IPHOME +"/dict/sys/listPage";
+	/**医健险新全流程V1 GET 单个调度详情 id=7  */
+	public final static String YJXNEW_GET_DISPATCH_INFO = IPHOME +"/new/yjx/dispatch/viewDetail";
 
 	/*****************车险全流程*******************/
 	/**车险 GET厂家、品牌、车系查询 （cateParentId1：厂家；2：品牌；3：车系；  cateCountry生产类型；0：全部；21：国产；20：进口；22：合资）*/
@@ -333,11 +335,21 @@ public class URLs implements Serializable {
 	public final static String CX_GET_CAR_PEIJIAN_LIST = PARTIPHOME +"/position/position_tree_children";
 	/**车险 GET 根据报案信息查询作业信息*/
 	public final static String CX_GET_WORK_BY_BAOANUID = IPHOME +"/cx/order/work/listByBaoan";
+	/**车险 POST 公估师退单 id:订单id；userId:用户id*/
+	public final static String CX_POST_CHARGE_BACK = IPHOME +"/cx/order/chargeback";
+	/**车险 POST 公估师退单 id:订单id；revokeTypeId:撤单理由id，revokeType:撤单理由，userId:用户ID，revokeDesc:撤单理由*/
+	public final static String CX_POST_REVOKE = IPHOME +"/cx/order/revoke";
+	/**获取订单审核信息 orderUid:订单uid    GET**/
+	public final static String GET_ORDER_AUDIT_LIST=IPHOME+"/cx/audit/list";
+	/**车险全流程新 接受转派 POST；id:订单id；userId**/
+	public final static String CX_ACCEPT_ZP_ORDER=IPHOME+"/cx/order/acceptOrder";
+	/**车险全流程新 拒绝转派 POST；id:订单id；userId**/
+	public final static String CX_REFUSE_ZP_ORDER=IPHOME+"/cx/order/refuseOrder";
 
 
-	
-	
-	
+
+
+
 	/**
 	 * code=1获取省份接口，code=2获取市县接口，code=3获取区接口
 	 * @param code

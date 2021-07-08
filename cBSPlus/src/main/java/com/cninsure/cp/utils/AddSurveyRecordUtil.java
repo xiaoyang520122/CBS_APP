@@ -34,7 +34,7 @@ public class AddSurveyRecordUtil implements  TextWatcher {
 		this.activity=activity;
 		inflater=LayoutInflater.from(this.activity);
 		view=getView();
-		dialog=DialogUtil.getDialogByViewOnlistener(activity, view, "添加查勘记录！", clickListener);
+		dialog=DialogUtil.getDialogByViewTwoButton(activity, view, "添加查勘记录！", clickListener);
 	}
 	
 	DialogInterface.OnClickListener clickListener=new DialogInterface.OnClickListener() {

@@ -405,7 +405,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="取消订单"
+                android:text="拒绝/转派"
                 android:textColor="@color/hui_text_xh"
                 android:textSize="@dimen/order_list_defaul" />
             <!-- android:background="@drawable/corners_hui_line5" -->

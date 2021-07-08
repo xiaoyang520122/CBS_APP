@@ -109,6 +109,7 @@ public class CxOrderEntity implements Serializable {
         public String investigations;//调查内容
         /**转派状态(0：转派待接收；1：已转派；2：拒绝转派)*/
         public Integer transferStatus;//转派状态(0：转派待接收；1：已转派；2：拒绝转派)
+        public String lastGgsUid;//上一个转派人员UID
 
         public Double baseFee;//基础费
         public Double extraFee;//超额附加费
@@ -185,6 +186,7 @@ public class CxOrderEntity implements Serializable {
             stdEnt.investigationType = investigationType;//调查类型  全案1，单项0
             /**转派状态(0：转派待接收；1：已转派；2：拒绝转派)*/
             stdEnt.transferStatus = transferStatus;//转派状态(0：转派待接收；1：已转派；2：拒绝转派)
+            stdEnt.lastGgsUid = lastGgsUid;// 上一个转派人员UID
 
             stdEnt.areaNo=areaNo;
 //            stdEnt.area=area;

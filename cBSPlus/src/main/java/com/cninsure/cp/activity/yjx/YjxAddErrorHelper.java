@@ -46,7 +46,7 @@ public class YjxAddErrorHelper {
 		for (int i = 0; i < errorTypeEn.tableData.data.size(); i++) {
 			errtypeArr.add(errorTypeEn.tableData.data.get(i).label);
 		}
-		DialogUtil.getDialogByViewOnlistener(context, getView(errorEn, changePoint), "添加差错信息", new DialogInterface.OnClickListener() {
+		DialogUtil.getDialogByViewTwoButton(context, getView(errorEn, changePoint), "添加差错信息", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				errorEntity = new SHHListEntity();

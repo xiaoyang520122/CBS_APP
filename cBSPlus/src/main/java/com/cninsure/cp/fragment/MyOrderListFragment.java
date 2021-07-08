@@ -1,5 +1,6 @@
 package com.cninsure.cp.fragment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +41,6 @@ import com.cninsure.cp.R;
 import com.cninsure.cp.activity.yjx.YjxBaoanInputActivity;
 import com.cninsure.cp.activity.yjx.YjxDispatchShenheActivity;
 import com.cninsure.cp.activty.CaseInfoActivty;
-import com.cninsure.cp.activty.DisplayOrderActivity;
 import com.cninsure.cp.cx.CxDsBaoanInfoActivity;
 import com.cninsure.cp.cx.CxJieBaoanInfoActivity;
 import com.cninsure.cp.entity.CaseOrder;
@@ -47,7 +48,9 @@ import com.cninsure.cp.entity.FCOrderEntity;
 import com.cninsure.cp.entity.PagedRequest;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
+import com.cninsure.cp.entity.cx.CxNewAuditEntity;
 import com.cninsure.cp.entity.cx.CxOrderEntity;
+import com.cninsure.cp.entity.cx.CxOrderStatus;
 import com.cninsure.cp.entity.fc.APPRequestModel;
 import com.cninsure.cp.entity.fc.ShenheMsgEntity;
 import com.cninsure.cp.entity.yjx.YjxOrderListEntity;
@@ -89,6 +92,8 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 	private RadioGroup radgrup;
 	/**listView数据为空时显示的提示*/
 //	private TextView emptyTv;
+	@SuppressLint("SimpleDateFormat")
+	private SimpleDateFormat SF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -207,7 +212,7 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 
 		int requestType = Integer.parseInt(value.get(0).getName());
 		if (requestType == HttpRequestTool.CX_NEW_GET_GGS_ORDER_COMPLATED || requestType ==  HttpRequestTool.GET_FC_WORKED_LIST
-				|| requestType == HttpRequestTool.GET_ORDER_STATUS|| requestType == HttpRequestTool.YJX_GGS_ORDER_LIST) { 
+				|| requestType == HttpRequestTool.GET_ORDER_STATUS|| requestType == HttpRequestTool.YJX_GGS_ORDER_LIST|| requestType == HttpRequestTool.GET_ORDER_AUDIT_LIST2) {
 			loadDialog.dismiss();
 		}
 		switch (CheckHttpResult.checkList(value, MyOrderListFragment.this.getActivity())) {
@@ -220,7 +225,10 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 			break;
 		case HttpRequestTool.GET_ORDER_STATUS: //审核信息
 			showSHHMessage(value.get(0).getValue());
-			break; 
+			break;
+		case HttpRequestTool.GET_ORDER_AUDIT_LIST2: //审核记录信息
+			showSHHMessage(value.get(0).getValue());
+			break;
 		case HttpRequestTool.YJX_GGS_ORDER_LIST: //医键险完成订单信息
 			getYjxFinishOrders(value.get(0).getValue());
 			break; 
@@ -643,33 +651,27 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 		params2.add(AppApplication.getUSER().data.userId);
 		params2.add("orderUid");
 		params2.add(uid);
-		HttpUtils.requestGet(URLs.GET_ORDER_STATUS, params2, HttpRequestTool.GET_ORDER_STATUS);
+		HttpUtils.requestGet(URLs.GET_ORDER_AUDIT_LIST, params2, HttpRequestTool.GET_ORDER_AUDIT_LIST2);
 	}
 	
 	/**解析审核信息**/
 	private void showSHHMessage(String value) {
-		ShenheMsgEntity SHHMsg= JSON.parseObject(value, ShenheMsgEntity.class);
+		List<CxNewAuditEntity> SHHMsg= JSON.parseArray(value, CxNewAuditEntity.class);
 		List<Map<String, String>> params=new ArrayList<Map<String, String>>();
 		Map<String, String> map;
-		map=new HashMap<String, String>();
-//		map.put("data", "");
-//		map.put("msg", "审核列表");
-//		params.add(map);
-		
-		if (SHHMsg!=null && SHHMsg.tableData != null && SHHMsg.tableData.data != null && SHHMsg.tableData.data.get(0).createDate!=null) {
-			for (int i = 0; i < SHHMsg.tableData.data.size(); i++) {
-				String cctype="";
-				for (int j = 0; j < SHHMsg.tableData.data.get(i).auditEvaluateTables.size(); j++) {
-					cctype+="\n"+"差错原因"+(j+1)+"："+SHHMsg.tableData.data.get(i).auditEvaluateTables.get(j).errorMessage+
-							"\n差错扣分："+SHHMsg.tableData.data.get(i).auditEvaluateTables.get(j).errorPoints;
-				}
-					map=new HashMap<String, String>();
-					map.put("data", SHHMsg.tableData.data.get(i).createDate);
-					boolean ispasss=SHHMsg.tableData.data.get(i).isPass.equals("1");
-					String ispass=(ispasss)?"通过":"不通过";
-					map.put("msg", "审核结果："+ispass+"\n审核意见："+
-							SHHMsg.tableData.data.get(i).auditMessage+cctype);
-					params.add(map);
+
+		if (SHHMsg!=null && SHHMsg.size()>0) {
+			for (int i = 0; i < SHHMsg.size(); i++) {
+				map=new HashMap<String, String>();
+				map.put("data", SF.format(SHHMsg.get(i).auditTime));
+				boolean ispasss=SHHMsg.get(i).status==1;
+				String ispass=(ispasss)?"通过":"不通过";
+				map.put("msg", "审核结果："+ispass+"\n审核意见："+
+						SHHMsg.get(i).auditMsg);
+				if (SHHMsg.get(i).status==0) //审核不通过
+					map.put("msg", "审核结果："+ispass+"\n审核意见："+ SHHMsg.get(i).auditMsg+"\n退回概述："+ SHHMsg.get(i).backSummary
+							+"\n退回原因："+ SHHMsg.get(i).backReasons);
+				params.add(map);
 			}
 		}else {
 			map=new HashMap<String, String>();
@@ -678,12 +680,12 @@ public class MyOrderListFragment extends Fragment implements OnItemClickListener
 			params.add(map);
 		}
 		int [] into=new int[]{R.id.LEAVINGitem_time,R.id.LEAVINGitem_message};
-		SimpleAdapter simpleAdapter=new SimpleAdapter(this.getActivity(), params, R.layout.leaving_message_item, 
+		SimpleAdapter simpleAdapter=new SimpleAdapter(this.getActivity(), params, R.layout.leaving_message_item,
 				new String[]{"data","msg"},into);
 		ListView listView=new ListView(getActivity());
 		listView.setAdapter(simpleAdapter);
-		DialogUtil.getDialogByViewOnlistener(getActivity(), listView, "订单审核信息！", null).show();
-		
+		DialogUtil.getDialogByViewTwoButton(getActivity(), listView, "订单审核信息！", null).show();
+
 	}
 
 	@Override

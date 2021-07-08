@@ -697,7 +697,7 @@ public class SurveyActivity extends BaseActivity implements OnPageChangeListener
 	  *code=0是新增 其他是编辑（集合下标）**/
 	private void getAddData(final int position) {
 		alertutil=new AlerViewUtil(this,R.layout.xb_amount_alert_view);
-		DialogUtil.getDialogByViewOnlistener(this, alertutil.getView(),"保单承保标的险别",new DialogInterface.OnClickListener() {
+		DialogUtil.getDialogByViewTwoButton(this, alertutil.getView(),"保单承保标的险别",new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				CasePolicyLevel cplel=alertutil.getdata();

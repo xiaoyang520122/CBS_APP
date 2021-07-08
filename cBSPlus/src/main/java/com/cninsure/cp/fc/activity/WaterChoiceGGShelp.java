@@ -58,7 +58,7 @@ public class WaterChoiceGGShelp  {
 	
 	
 	public void showChoiceDialog(){
-		DialogUtil.getDialogByViewOnlistener(activity, getView(), "选择公估师", new DialogInterface.OnClickListener() {
+		DialogUtil.getDialogByViewTwoButton(activity, getView(), "选择公估师", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				activity.addGGS(choiceGGS);

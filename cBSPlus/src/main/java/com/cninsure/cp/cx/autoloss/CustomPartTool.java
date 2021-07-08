@@ -21,6 +21,7 @@ import java.util.List;
  * @author :xy-wm
  * date:2021/5/25 12:35
  * usefuLness: CBS_APP
+ * 自定义配件工具
  */
 public class CustomPartTool {
     private CxDsWorkEntity workEntity; //智能定损信息

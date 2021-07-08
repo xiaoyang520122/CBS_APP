@@ -347,7 +347,12 @@ public class DiapersiveUserCenterActivity extends BaseActivity {
         oks.setSiteUrl(URLs.APP_DOWNLOAD_URL);
 
         // 启动分享GUI
-        oks.show(this);
+        try {
+            oks.show(this);
+        } catch (NoClassDefFoundError e) {
+            ToastUtil.showToastLong(this,"分享失败！");
+            e.printStackTrace();
+        }
     }
 
 }

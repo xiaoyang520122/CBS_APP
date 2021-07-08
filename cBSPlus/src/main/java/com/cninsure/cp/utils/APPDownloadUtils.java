@@ -80,9 +80,13 @@ public class APPDownloadUtils {
 	    downloadId = downloadManager.enqueue(request);
 	 
 	    //注册广播接收者，监听下载状态
-	    mContext.registerReceiver(receiver,
-	        new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-	    showDownloadDialog();//显示展示下载进度信息的Dialog
+		  try {
+			  mContext.registerReceiver(receiver,new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+			  showDownloadDialog();//显示展示下载进度信息的Dialog
+		  } catch (Exception e) {
+		  	ToastUtil.showToastLong(AppApplication.getInstance(),"获取下载信息失败！请重新登录后重试。");
+			  e.printStackTrace();
+		  }
 	  }
 
 	  /**进度信息*/

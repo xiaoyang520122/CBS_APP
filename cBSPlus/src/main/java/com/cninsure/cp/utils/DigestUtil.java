@@ -14,7 +14,8 @@ public class DigestUtil {
 	public static String getDigestByNamevaluepairList(List<NameValuePair> value) {
 
 		Map<String, String> map1 = new HashMap<String, String>();
-		for (NameValuePair nv : value) {
+		for (int i=0; i<value.size();i++) {
+			NameValuePair nv = value.get(i);
 			if (nv!=null)map1.put(nv.getName(), nv.getValue());
 		}
 

@@ -293,7 +293,7 @@ public class CxInjuryTrackActivity extends BaseActivity implements View.OnClickL
      */
     private void ShowEditDialog(Integer position) {
         View alertView = getAskView(position,View.GONE);
-        DialogUtil.getDialogByViewOnlistener(this, alertView, position != null ? "编辑项目" +(position+1) : "添加项目",
+        DialogUtil.getDialogByViewTwoButton(this, alertView, position != null ? "编辑项目" +(position+1) : "添加项目",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

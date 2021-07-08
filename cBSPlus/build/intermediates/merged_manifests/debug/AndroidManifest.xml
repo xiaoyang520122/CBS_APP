@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cninsure.cp"
-    android:versionCode="166"
-    android:versionName="V1.6.6" >
+    android:versionCode="169"
+    android:versionName="V1.6.9" >
 
     <uses-sdk
         android:minSdkVersion="21"
@@ -194,6 +194,7 @@
         <activity android:name="com.cninsure.cp.cx.CxDamageActivity" />
         <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity" />
         <activity android:name="com.cninsure.cp.cx.autoloss.AutoLossMainActivity" />
+        <activity android:name="com.cninsure.cp.cx.autoloss.AddPartInfoActivity" />
         <activity android:name="com.cninsure.cp.cx.autoloss.ChoiceFactoryActivity" />
         <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity" />
         <activity android:name="com.cninsure.cp.cx.CxDsWorkActivity" />

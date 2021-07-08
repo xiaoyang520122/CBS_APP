@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.cninsure.cp"
-    android:versionCode="166"
-    android:versionName="V1.6.6">
+    android:versionCode="169"
+    android:versionName="V1.6.9">
 
     <!-- 版本号必须是版本名称中数字部分，不能死其他，如版本号为V1.0.1时，版本号为101 -->
     <!-- <uses-sdk -->
@@ -183,6 +183,7 @@
         <activity android:name="com.cninsure.cp.cx.CxDamageActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity"></activity>
         <activity android:name=".cx.autoloss.AutoLossMainActivity"></activity>
+        <activity android:name=".cx.autoloss.AddPartInfoActivity"></activity>
         <activity android:name=".cx.autoloss.ChoiceFactoryActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxDsWorkActivity"></activity>

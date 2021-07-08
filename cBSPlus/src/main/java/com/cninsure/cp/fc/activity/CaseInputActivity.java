@@ -950,7 +950,7 @@ deputeItem 水险委托事项
 		final Spinner spinner=(Spinner)relationalInputView.findViewById(R.id.relationalINPUT_SPINN1);
 		spinner.setAdapter(new ArrayAdapter<String>(this, R.layout.spinner_item,
 				getResources().getStringArray(R.array.guanxiType)));
-		DialogUtil.getDialogByViewOnlistener(this, relationalInputView, "保险关系方", 
+		DialogUtil.getDialogByViewTwoButton(this, relationalInputView, "保险关系方", 
 				new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {

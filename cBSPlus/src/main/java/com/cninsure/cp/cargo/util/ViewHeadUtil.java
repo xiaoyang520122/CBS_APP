@@ -266,8 +266,8 @@ public class ViewHeadUtil {
     private void displayAskRecords(View view, SurveyAskRecordsEntity RaEn) {
         if (RaEn!=null) {
             SetTextUtil.setTextViewText(view.findViewById(R.id.cargoSA_askDate), RaEn.askDate);
-            SetTextUtil.setTextViewText(view.findViewById(R.id.cargoSA_start_askTimeRange), RaEn.askTimeRange == null ? null : RaEn.askTimeRange.get(0));
-            SetTextUtil.setTextViewText(view.findViewById(R.id.cargoSA_end_askTimeRange), RaEn.askTimeRange == null ? null : RaEn.askTimeRange.get(1));
+            if (RaEn.askTimeRange!=null && RaEn.askTimeRange.size()>0) SetTextUtil.setTextViewText(view.findViewById(R.id.cargoSA_start_askTimeRange),RaEn.askTimeRange.get(0));
+            if (RaEn.askTimeRange!=null && RaEn.askTimeRange.size()>0) SetTextUtil.setTextViewText(view.findViewById(R.id.cargoSA_end_askTimeRange), RaEn.askTimeRange.get(1));
             SetTextUtil.setEditText(view.findViewById(R.id.cargoSA_address),RaEn.address);
             SetTextUtil.setEditText(view.findViewById(R.id.cargoSA_askPeople),RaEn.askPeople);
             SetTextUtil.setEditText(view.findViewById(R.id.cargoSA_recordPeople),RaEn.recordPeople);

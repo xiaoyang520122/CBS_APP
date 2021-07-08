@@ -12,10 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -32,13 +30,10 @@ import com.cninsure.cp.cx.util.CxWorkSubmitUtil;
 import com.cninsure.cp.entity.BaseEntity;
 import com.cninsure.cp.entity.PublicOrderEntity;
 import com.cninsure.cp.entity.URLs;
-import com.cninsure.cp.entity.cx.CxDamageTaskEntity;
-import com.cninsure.cp.entity.cx.CxDamageWorkEntity;
 import com.cninsure.cp.entity.cx.CxDictEntity;
 import com.cninsure.cp.entity.cx.CxDsTaskEntity;
 import com.cninsure.cp.entity.cx.CxDsWorkEntity;
 import com.cninsure.cp.entity.cx.CxImagEntity;
-import com.cninsure.cp.entity.cx.CxInjuryTrackWorkEntity;
 import com.cninsure.cp.entity.cx.DictData;
 import com.cninsure.cp.photo.PickPhotoUtil;
 import com.cninsure.cp.utils.ActivityFinishUtil;
@@ -58,13 +53,10 @@ import org.apache.http.message.BasicNameValuePair;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.w3c.dom.Text;
 
 import java.io.File;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class CxDsWorkActivity extends BaseActivity implements View.OnClickListener {
 
@@ -309,14 +301,11 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void showSaveDialog() {
-        CxWorkSubmitUtil.showSaveDialog(this, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                isSubmit = which;
-                SaveDataToEntity();
-                if (which == 0 || new DoesPhotosMustPassTool(CxDsWorkActivity.this,imgEnList,QorderUid).isDsPass(taskEntity.data.contentJson)){ //暂存或者拍照齐全可以提交。
-                    CxWorkSubmitUtil.submit(CxDsWorkActivity.this,which,QorderUid,JSON.toJSONString(taskEntity.data.contentJson),taskEntity.data.id);
-                }
+        CxWorkSubmitUtil.showSaveDialog(this, (dialog, which) -> {
+            isSubmit = which;
+            SaveDataToEntity();
+            if (which == 0 || new DoesPhotosMustPassTool(CxDsWorkActivity.this,imgEnList,QorderUid).isDsPass(taskEntity.data.contentJson)){ //暂存或者拍照齐全可以提交。
+                CxWorkSubmitUtil.submit(CxDsWorkActivity.this,which,QorderUid,JSON.toJSONString(taskEntity.data.contentJson),taskEntity.data.id);
             }
         });
     }
@@ -429,7 +418,7 @@ public class CxDsWorkActivity extends BaseActivity implements View.OnClickListen
         tv.setText(text);
         tv.setPadding(20,10,10,10);
         tv.setTextSize(16);
-        DialogUtil.getDialogByViewOnlistener(this,tv,title,null).show();
+        DialogUtil.getDialogByViewTwoButton(this,tv,title,null).show();
     }
     private void showHjDialog() {
         CxDsWorkEntity damageEnt = taskEntity.data.contentJson;

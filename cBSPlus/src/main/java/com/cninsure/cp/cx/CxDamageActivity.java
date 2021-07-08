@@ -300,7 +300,7 @@ public class CxDamageActivity extends BaseActivity implements View.OnClickListen
         if (position!=null){
             displayAlertView(alertView,position);
         }
-        DialogUtil.getDialogByViewOnlistener(this, alertView, position != null ? "编辑项目" +(position+1) : "添加项目",
+        DialogUtil.getDialogByViewTwoButton(this, alertView, position != null ? "编辑项目" +(position+1) : "添加项目",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

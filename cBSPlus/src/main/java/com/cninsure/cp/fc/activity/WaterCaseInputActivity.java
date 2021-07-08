@@ -565,7 +565,7 @@ mainLoss_type 主要受损类型mainLossType
 		/**船舶吨位： **/
 		((Spinner)otherShpView.findViewById(R.id.WCI_Spinn_other_shipDw)).setAdapter(new ArrayAdapter<String>
 		(this, R.layout.spinner_item, dictEntity.getDictArr(dictEntity.data.ship_dw )));
-		DialogUtil.getDialogByViewOnlistener(this, otherShpView, "添加其他方船舶信息", 
+		DialogUtil.getDialogByViewTwoButton(this, otherShpView, "添加其他方船舶信息", 
 				new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface arg0, int arg1) {
@@ -609,7 +609,7 @@ mainLoss_type 主要受损类型mainLossType
 	/**添加关联方信息*/
 	private void addLaboratorian() {
 		LaboratorianDisplayView=inflater.inflate(R.layout.water_input_laboratorian_info_view, null);
-		DialogUtil.getDialogByViewOnlistener(this, LaboratorianDisplayView, "添加关联方信息", 
+		DialogUtil.getDialogByViewTwoButton(this, LaboratorianDisplayView, "添加关联方信息", 
 			new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
@@ -813,7 +813,7 @@ mainLoss_type 主要受损类型mainLossType
 	/**添加次委托方*/
 	private void addRelationals() {
 		relationalInputView=inflater.inflate(R.layout.water_input_relational_info_view, null);
-		DialogUtil.getDialogByViewOnlistener(this, relationalInputView, "添加关联方信息", 
+		DialogUtil.getDialogByViewTwoButton(this, relationalInputView, "添加关联方信息", 
 			new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {

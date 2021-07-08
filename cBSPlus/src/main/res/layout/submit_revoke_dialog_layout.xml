@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical">
+    <RadioGroup
+        android:id="@+id/revoke_radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/revoke_radiobutton_id0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未勘现场、私了销案"
+            android:padding="10dp" />
+
+        <RadioButton
+            android:id="@+id/revoke_radiobutton_id1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="交警扣车"
+            android:padding="10dp" />
+
+        <RadioButton
+            android:id="@+id/revoke_radiobutton_id2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="交警处理、现场未勘"
+            android:padding="10dp" />
+
+        <RadioButton
+            android:id="@+id/revoke_radiobutton_id3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="无需修复"
+            android:padding="10dp" />
+
+        <RadioButton
+            android:id="@+id/revoke_radiobutton_id4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="无损失"
+            android:padding="10dp" />
+
+        <RadioButton
+            android:id="@+id/revoke_radiobutton_id5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="其他" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/revoke_revokeDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corners_hui_line5"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:hint="请输入其他原因！"/>
+
+
+</LinearLayout>

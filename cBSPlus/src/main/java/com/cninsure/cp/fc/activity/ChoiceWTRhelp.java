@@ -64,7 +64,7 @@ public class ChoiceWTRhelp  {
 	}
 	
 	public void showChoiceDialog(){
-		Dialog dilog=DialogUtil.getDialogByViewOnlistener(activity, getView(), "选择委托人", new DialogInterface.OnClickListener() {
+		Dialog dilog=DialogUtil.getDialogByViewTwoButton(activity, getView(), "选择委托人", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				if (wtrEntity!=null && wtrEntity.name!=null) {

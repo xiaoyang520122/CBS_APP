@@ -76,7 +76,7 @@ public class ChoiceGGShelp  {
 	
 	
 	public void showChoiceDialog(){
-		DialogUtil.getDialogByViewOnlistener(getActivity(), getView(), "选择公估师", new DialogInterface.OnClickListener() {
+		DialogUtil.getDialogByViewTwoButton(getActivity(), getView(), "选择公估师", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				if (type==0) {

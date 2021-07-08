@@ -344,6 +344,16 @@ public class HttpRequestTool {
 	public final static int  CX_NEW_GET_GGS_ORDER_COMPLATED=1147;
 	/**医健险新全流程V1 GET 获取 mediaTypeGroup**/
 	public final static int  YJXNEW_GET_MEDIA_TYPE=1148;
+	/**车险全流程 公估师退单**/
+	public final static int  CX_POST_CHARGE_BACK=1149;
+	/**车险全流程 公估师撤单**/
+	public final static int  CX_POST_REVOKE=1150;
+	/**车险全流程 查询审核记录列表**/
+	public final static int  GET_ORDER_AUDIT_LIST=1151;
+	/**车险全流程 查询审核记录列表**/
+	public final static int  GET_ORDER_AUDIT_LIST2=1152;
+	/**车险全流程 接受或者拒绝转派。**/
+	public final static int  CX_ACCEPT_OR_REFUSE_ZP_ORDER=1153;
 
 
 

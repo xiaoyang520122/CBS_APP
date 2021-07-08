@@ -19,4 +19,6 @@ public class CxOrderStatus {
 	public static final int PASS = 9;//作业审核通过
 	public static final int ADOPT = 10;//作业审核退回
 	public static final int REMOVE = 99;//移除
+	//86撤单审核未找到审核人
+	// 88撤单审核通过
 }

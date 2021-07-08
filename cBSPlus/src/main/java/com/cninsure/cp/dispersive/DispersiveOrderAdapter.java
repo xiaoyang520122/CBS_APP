@@ -315,7 +315,7 @@ public class DispersiveOrderAdapter extends BaseAdapter {
     private void showBackAlertDialog(final DispersiveDispatchEntity.DispersiveDispatchItem caseDisTemp){
         View bacView = LayoutInflater.from(context).inflate(R.layout.back_order_layout,null);
 
-        DialogUtil.getDialogByViewOnlistener(context,bacView,"填写拒绝原因！", new DialogInterface.OnClickListener() {
+        DialogUtil.getDialogByViewTwoButton(context,bacView,"填写拒绝原因！", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (TextUtils.isEmpty(((EditText)bacView.findViewById(R.id.Back_Order_EditText)).getText().toString())){  //未填写拒绝原因
@@ -354,7 +354,7 @@ public class DispersiveOrderAdapter extends BaseAdapter {
     private void showCancelAlertDialog(final DispersiveDispatchEntity.DispersiveDispatchItem caseDisTemp){
         View bacView = LayoutInflater.from(context).inflate(R.layout.back_order_layout,null);
 
-        DialogUtil.getDialogByViewOnlistener(context,bacView,"任务提示！", new DialogInterface.OnClickListener() {
+        DialogUtil.getDialogByViewTwoButton(context,bacView,"任务提示！", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (TextUtils.isEmpty(((EditText)bacView.findViewById(R.id.Back_Order_EditText)).getText().toString())){  //未填写拒绝原因
