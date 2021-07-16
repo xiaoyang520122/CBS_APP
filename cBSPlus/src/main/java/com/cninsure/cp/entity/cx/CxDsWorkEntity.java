@@ -24,11 +24,12 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
     public Float dsRescueAmount;//定损施救费
     public Float hsRescueAmount;//核损施救费
     private Float dsAllTotalAmount;//定损总金额
+    private Float hsAllTotalAmount;//核损总金额
     public List<String> lossPosition ;//损失部位
 
     public Float getDsAllTotalAmount() {
-        float DsAllTotalAmountTemp = Float.parseFloat(getHjTotal())+Float.parseFloat(getGsTotal())+Float.parseFloat(getWxTotal());
-        return DsAllTotalAmountTemp;
+        dsAllTotalAmount = Float.parseFloat(getHjTotal())+Float.parseFloat(getGsTotal())+Float.parseFloat(getWxTotal());
+        return dsAllTotalAmount;
     }
 
     public String insuredPerson; //  被保险人
@@ -69,11 +70,11 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
 
     public static class CxDsReplaceInfos  implements Serializable {
         public Float unitPrice;//定损单价
-        public Integer unitCount;//数量
+        public Integer unitCount;//配件数量
         public Float unitTotalPrice;//定损小计
         public String remark;//定损备注
         public Float hsUnitPrice;//核价单价
-        public Integer hsUnitCount;//数量
+        public Integer hsUnitCount;//核损配件数量
         public Float hsUnitTotalPrice;//核损小计
         public String hsRemark;//核损备注
 
@@ -81,9 +82,18 @@ public class CxDsWorkEntity extends CxWorkAddressBaseEntity implements Serializa
         public String partPosId;// 配件所属部位id
         public String partName; // 配件名称 -换件项目
         public String  partCode; // 配件编码
-        public String localPrice; // 本地价格
+        public Float localPrice; // 本地价格
         public Integer isCustom;  //是否自定义配件
 
+        public void setUnitPrice(Float unitPrice) {
+            this.unitPrice = unitPrice;
+            if (unitCount!=null) unitTotalPrice = unitPrice * unitCount;
+        }
+
+        public void setUnitCount(Integer unitCount) {
+            this.unitCount = unitCount;
+            if (unitPrice!=null) unitTotalPrice = unitPrice * unitCount;
+        }
     }
     public static class CxDsReplaceInfosTotal  implements Serializable {
         public String dsFeeResidual;//定损残值

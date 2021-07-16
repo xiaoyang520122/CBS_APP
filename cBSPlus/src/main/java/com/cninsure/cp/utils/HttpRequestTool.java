@@ -354,6 +354,8 @@ public class HttpRequestTool {
 	public final static int  GET_ORDER_AUDIT_LIST2=1152;
 	/**车险全流程 接受或者拒绝转派。**/
 	public final static int  CX_ACCEPT_OR_REFUSE_ZP_ORDER=1153;
+	/**医健险新全流程V1 GET 获取字典值**/
+	public final static int GET_DICT_TWO = 1154;
 
 
 
@@ -491,7 +493,8 @@ public class HttpRequestTool {
 				httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 			}else{ //"application/json"请求
 				if (params.size()>0) url += "?";
-				for (NameValuePair nv : params){
+				for (int i=0;i< params.size();i++){
+					NameValuePair nv = params.get(i);
 					if (nv!=null){
 						url += nv.getName()+"="+nv.getValue()+"&";
 					}

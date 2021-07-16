@@ -13,6 +13,7 @@ public class CxDamageWorkEntity extends CxWorkAddressBaseEntity implements Seria
     public Float dsRescueAmount; // 定损施救费
     public Float hsRescueAmount; // 核损施救费
     public Float dsTotalAmount; // 定损总计
+    public Float hsTotalAmount; // 核损定损总计
     public String dsInstructions; // 定损说明
     public String surveyAddress; // 作业地点
     public List<MaterialsEntity> smallMaterials;

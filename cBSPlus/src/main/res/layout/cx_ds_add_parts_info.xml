@@ -6,14 +6,53 @@
     android:background="@color/hui_bg"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bule_text_h"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp" >
+
+        <TextView
+            android:id="@+id/cxdsAddPart_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/back_white_48"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/hui_text_xxxh"
+            android:textSize="@dimen/text_xh" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="换件项目"
+            android:padding="7dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_xh" />
+
+
+        <TextView
+            android:id="@+id/cxdsAddPart_paiJianKu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|right"
+            android:text="配件库"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_xh" />
+    </LinearLayout>
 
 
     <ListView
         android:id="@+id/cxdsAddPart_listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:divider="#00ffffff"
         android:layout_weight="1" />
 
 </LinearLayout>

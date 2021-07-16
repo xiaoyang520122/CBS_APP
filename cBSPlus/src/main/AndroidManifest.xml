@@ -183,7 +183,9 @@
         <activity android:name="com.cninsure.cp.cx.CxDamageActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxInjuryTrackActivity"></activity>
         <activity android:name=".cx.autoloss.AutoLossMainActivity"></activity>
-        <activity android:name=".cx.autoloss.AddPartInfoActivity"></activity>
+        <activity android:name=".cx.autoloss.AddPartInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
         <activity android:name=".cx.autoloss.ChoiceFactoryActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxDisabyIdentifyActivity"></activity>
         <activity android:name="com.cninsure.cp.cx.CxDsWorkActivity"></activity>

@@ -68,7 +68,6 @@ public class ImageUtil {
 	/**
 	 * 设置水印图片在左上角
 	 * 
-	 * @param Context
 	 * @param src
 	 * @param watermark
 	 * @param paddingLeft
@@ -204,8 +203,6 @@ public class ImageUtil {
 	 * @param text
 	 * @param size
 	 * @param color
-	 * @param paddingLeft
-	 * @param paddingTop
 	 * @return
 	 */
 	public static Bitmap drawTextByShadowToRightBottom(Context context, Bitmap bitmap, String text, int size, int color, int paddingRight, int paddingBottom) {

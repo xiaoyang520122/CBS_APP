@@ -36,7 +36,6 @@ public class DoesPhotosMustPassTool {
 
     private DoesPhotosMustPassTool(){}
     public DoesPhotosMustPassTool(Context context, List<CxImagEntity> imgEnList, String orderUid){
-//        this.baoanTaskEntity = baoanTaskEntity;
         this.imgEnList = imgEnList;
         this.context = context;
         this.orderUid = orderUid;

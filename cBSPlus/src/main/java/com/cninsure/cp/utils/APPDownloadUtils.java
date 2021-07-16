@@ -81,10 +81,14 @@ public class APPDownloadUtils {
 	 
 	    //注册广播接收者，监听下载状态
 		  try {
-			  mContext.registerReceiver(receiver,new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-			  showDownloadDialog();//显示展示下载进度信息的Dialog
+		  	if (mContext!=null) {
+				mContext.registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+			}else {
+				AppApplication.getInstance().registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+			}
+		  	showDownloadDialog();//显示展示下载进度信息的Dialog
 		  } catch (Exception e) {
-		  	ToastUtil.showToastLong(AppApplication.getInstance(),"获取下载信息失败！请重新登录后重试。");
+		  	ToastUtil.showToastLong(AppApplication.getInstance(),"获取下载信息失败！请重试。");
 			  e.printStackTrace();
 		  }
 	  }

@@ -2,13 +2,11 @@ package com.cninsure.cp.cx.autoloss;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -21,11 +19,9 @@ import com.cninsure.cp.BaseActivity;
 import com.cninsure.cp.R;
 import com.cninsure.cp.cx.autoloss.entity.CategoryTable;
 import com.cninsure.cp.cx.autoloss.entity.ModelTable;
-import com.cninsure.cp.entity.DictEntity;
 import com.cninsure.cp.entity.DictYjxEntity;
 import com.cninsure.cp.entity.URLs;
 import com.cninsure.cp.entity.cx.CxDsWorkEntity;
-import com.cninsure.cp.utils.DialogUtil;
 import com.cninsure.cp.utils.HttpRequestTool;
 import com.cninsure.cp.utils.HttpUtils;
 import com.cninsure.cp.utils.LoadDialogUtil;
@@ -42,7 +38,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -327,7 +322,7 @@ public class AutoLossMainActivity extends BaseActivity implements View.OnClickLi
     private void setCarStructure() {
         if (dictEntity.carStructure!=null){
             String[] tempArr = dictEntity.getLabletArr(dictEntity.carStructure);
-            dictEntity.getDictArr(dictEntity.carStructure);
+            dictEntity.getLabletList(dictEntity.carStructure);
             Dialog dialog = new AlertDialog.Builder(this).setTitle("选择车辆结构")
                     .setItems(tempArr, (dialog1, which) -> {
                         workEntity.carStructure = dictEntity.getValueByLable(dictEntity.carStructure,tempArr[which]);
@@ -464,6 +459,7 @@ public class AutoLossMainActivity extends BaseActivity implements View.OnClickLi
     private void addPart() {
         Intent intent = new Intent(this, AddPartInfoActivity.class);
         intent.putExtra("searchCateLevel", 1);
+        intent.putExtra("CxDsWorkEntity",workEntity);
         startActivity(intent);
     }
 

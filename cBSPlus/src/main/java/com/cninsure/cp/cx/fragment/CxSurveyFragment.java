@@ -108,6 +108,7 @@ public class CxSurveyFragment extends BaseFragment {
     }
 
     private void initView() {
+        if (activity.cxWorkEntity==null)activity.cxWorkEntity = new CxSurveyWorkEntity();
         if (activity.cxWorkEntity.surveyInfo==null)
             activity.cxWorkEntity.surveyInfo = new CxSurveyWorkEntity.SurveyInfoEntity();
         else
